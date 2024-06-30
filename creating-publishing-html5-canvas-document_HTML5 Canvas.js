@@ -626,10 +626,36 @@ if (reversed == null) { reversed = false; }
 	this.actionFrames = [59,60];
 	// timeline functions:
 	this.frame_59 = function() {
+		/* import flash.events.MouseEvent;
+		import flash.net.navigateToURL;
+		import flash.net.URLRequest;
+		
 		stop();
+		
+		this.playBtn.addEventListener(MouseEvent.CLICK, playClick);
+		
+		function playClick(event:MouseEvent):void {
+			this.gotoAndStop(this.currentFrame+1);
+		}
+		
+		this.aboutBtn.addEventListener(MouseEvent.CLICK, aboutClick);
+		
+		function aboutClick(event:MouseEvent) {
+			navigateToURL(new URLRequest("http://www.hungryherogame.com"));
+		}
+		
+		*/
 	}
 	this.frame_60 = function() {
+		/* import flash.events.MouseEvent;
+		
 		stop();
+		
+		this.addEventListener(MouseEvent.MOUSE_MOVE, onMove);
+		
+		function onMove(event:MouseEvent):void {
+			this.hero.y = event.stageY;
+		}*/
 	}
 
 	// actions tween:
