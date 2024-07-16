@@ -10,18 +10,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="authoring-tool" content="Adobe_Animate_CC">
-<title>creating-publishing-html5-canvas-document_HTML5 Canvas</title>
+<title>sushi</title>
 <!-- write your code here -->
+<style>
+  #animation_container {
+	position:absolute;
+	margin:auto;
+	left:0;right:0;
+	top:0;bottom:0;
+  }
+</style>
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-<script src="creating-publishing-html5-canvas-document_HTML5 Canvas.js"></script>
+<script src="sushi.js"></script>
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 function init() {
 	canvas = document.getElementById("canvas");
 	anim_container = document.getElementById("animation_container");
 	dom_overlay_container = document.getElementById("dom_overlay_container");
-	var comp=AdobeAn.getComposition("265AF007270A4FC7940491F52DECA76D");
+	var comp=AdobeAn.getComposition("298CE37B1C584F609F275B2E936489CF");
 	var lib=comp.getLibrary();
 	var loader = new createjs.LoadQueue(false);
 	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
@@ -42,7 +51,7 @@ function handleComplete(evt,comp) {
 	for(i=0; i<ssMetadata.length; i++) {
 		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
 	}
-	exportRoot = new lib.creatingpublishinghtml5canvasdocument_HTML5Canvas();
+	exportRoot = new lib.sushi();
 	stage = new lib.Stage(canvas);
 	stage.enableMouseOver();	
 	//Registers the "tick" event listener.
@@ -52,7 +61,7 @@ function handleComplete(evt,comp) {
 		createjs.Ticker.addEventListener("tick", stage);
 	}	    
 	//Code to support hidpi screens and responsive scaling.
-	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
+	AdobeAn.makeResponsive(true,'both',true,1,[canvas,anim_container,dom_overlay_container]);	
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 }
@@ -60,9 +69,9 @@ function handleComplete(evt,comp) {
 <!-- write your code here -->
 </head>
 <body onload="init();" style="margin:0px;">
-	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1024px; height:768px">
-		<canvas id="canvas" width="1024" height="768" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1024px; height:768px; position: absolute; left: 0px; top: 0px; display: block;">
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:640px; height:960px">
+		<canvas id="canvas" width="640" height="960" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:640px; height:960px; position: absolute; left: 0px; top: 0px; display: block;">
 		</div>
 	</div>
 </body>
