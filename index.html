@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="authoring-tool" content="Adobe_Animate_CC">
 <title>index</title>
 <!-- write your code here -->
@@ -22,7 +23,7 @@
   }
 </style>
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-<script src="index.js?a=4"></script>
+<script src="index.js?a=6"></script>
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 function init() {
@@ -64,12 +65,35 @@ function handleComplete(evt,comp) {
 	fnStartAnimation();
 }
 </script>
+
+<script>
+function getIFrameResolution() {
+    // iframe要素を取得
+    var iframe = document.getElementById('myIFrame');
+    if (iframe) {
+        // iframeの内容Documentを取得
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        // iframeの内容Windowを取得
+        var iframeWindow = iframe.contentWindow || iframe;
+
+        // iframeの解像度をアラートで表示
+        var resolution = {
+            width: iframeDocument.documentElement.clientWidth,
+            height: iframeDocument.documentElement.clientHeight
+        };
+        alert('IFrame Resolution: ' + resolution.width + 'x' + resolution.height);
+    } else {
+        alert('IFrame not found!');
+    }
+}
+</script>
 <!-- write your code here -->
 </head>
+<button onclick="getIFrameResolution()">IFrameの解像度を取得</button>
 <body onload="init();" style="margin:0px;">
-	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:420px; height:640px">
-		<canvas id="canvas" width="420" height="640" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:420px; height:640px; position: absolute; left: 0px; top: 0px; display: block;">
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:500px; height:1500px">
+		<canvas id="canvas" width="500" height="1500" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:500px; height:1500px; position: absolute; left: 0px; top: 0px; display: block;">
 		</div>
 	</div>
 </body>
