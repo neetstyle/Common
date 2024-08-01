@@ -1,9 +1,11 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-<title>index</title>
-
-
-	    <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ページ全体のスクロールを禁止させる方法1</title>
+    <style>
         body {
             margin: 0;
         }
@@ -17,29 +19,117 @@
             overflow: hidden;
         }
     </style>
-
-
-
-
-
     <script>
-
         window.addEventListener('DOMContentLoaded', () => {
             const body = document.getElementsByTagName('body')[0];
-
+            const btn = document.getElementById('btn');
+            btn.addEventListener('click', () => {
+                body.classList.toggle('no_scroll');
+            });
         });
     </script>
-
-
-
-
 </head>
 <body>
-
-
-
-aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />aaaaaaaaaaaaaaaa<br />
-
-
+<div class="btn_wrapper"><button id="btn">スクロール禁止ON/OFF</button></div>
+<p>サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト<br>
+    サンプルテキスト</p>
 </body>
 </html>
