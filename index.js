@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"full_atlas_1", frames: [[0,0,405,97]]}
+		{name:"index_atlas_1", frames: [[0,0,405,97]]}
 ];
 
 
@@ -28,7 +28,7 @@ lib.ssMetadata = [
 
 
 (lib.CachedBmp_2 = function() {
-	this.initialize(ss["full_atlas_1"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
@@ -37,11 +37,11 @@ lib.ssMetadata = [
 (lib.CachedBmp_1 = function() {
 	this.initialize(img.CachedBmp_1);
 }).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,2252,4874);
+p.nominalBounds = new cjs.Rectangle(0,0,2434,5056);
 
 
 // stage content:
-(lib.full = function(mode,startPosition,loop,reversed) {
+(lib.index = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -57,14 +57,14 @@ if (reversed == null) { reversed = false; }
 	this.instance.setTransform(462.1,1289.6,0.5,0.5);
 
 	this.instance_1 = new lib.CachedBmp_1();
-	this.instance_1.setTransform(-0.5,-0.5,0.5,0.5);
+	this.instance_1.setTransform(-46,-46,0.5,0.5);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(562,1217.5,563.5,1219);
+p.nominalBounds = new cjs.Rectangle(516.5,1172,654.5,1310);
 // library properties:
 lib.properties = {
 	id: '10506E02FB0AA147930408EB6BBEE7D8',
@@ -75,7 +75,7 @@ lib.properties = {
 	opacity: 1.00,
 	manifest: [
 		{src:"images/CachedBmp_1.png", id:"CachedBmp_1"},
-		{src:"images/full_atlas_1.png", id:"full_atlas_1"}
+		{src:"images/index_atlas_1.png", id:"index_atlas_1"}
 	],
 	preloads: []
 };
