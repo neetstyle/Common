@@ -2,7 +2,9 @@
 
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
-lib.ssMetadata = [];
+lib.ssMetadata = [
+		{name:"full_atlas_1", frames: [[0,0,405,97]]}
+];
 
 
 (lib.AnMovieClip = function(){
@@ -25,6 +27,19 @@ lib.ssMetadata = [];
 
 
 
+(lib.CachedBmp_2 = function() {
+	this.initialize(ss["full_atlas_1"]);
+	this.gotoAndStop(0);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.CachedBmp_1 = function() {
+	this.initialize(img.CachedBmp_1);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,2252,4874);
+
+
 // stage content:
 (lib.full = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
@@ -38,16 +53,18 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// レイヤー_1
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#0066CC").s().p("EhdeCvVQTexxauzTQKsnuNppRQIOllQaq8MCgdhqyQgiBFhsBHMibFBnAQ2kO/rqIDQy4NBujLMUgkVAb6gX3AbyQQqmOIdjBQN/lBLXjjQOrklSmkxQLOi4WZlUQU1k8KciRQRbjzOGiQQOOiRR8h1QKthGVmhyQqCBjxTBvQz7B/ncA+QxYCS1cEhQs6Cu5gGGQ6kGVtQDkQ2AF7xJGPQlwCHrfEXQqGDtnaB7QOewiQGurgEiZwAz8QDnj2GtmAUAkJggVAnOgcKQM7pRWFu/QaMxxI+mRQUhuWVzwgQTpu3VrxWQzOCE35DMQulB98cEDQxGCcorBXQuSCQrXCSQrsCXteDYQqyCsuLD8QpMCjj7BAQnZB5l3BDQu4Csr2hgQhPgKgvgSQhCgagdgxQgcgvAHhDQAFgxAahGQB3k+EGlhQB1idF9m9QECktE0l+IvrUZQiaDGhHBrQh1Cvg+CcQg/CcA9BPQAbAjA1ASQAlANA+AHQM+BlQljUQGRhQIYiQIOfkCQZenFZekyQLciJOaiOQImhURUieQa0j0NehyQWZi+R/h1UgnTAgDgkpAZ+QrSIAxBLlQzAM5pdGgUgiHAXZgVfARHQokG0qYIzQmbFdsMKjQoUHMj8D8QmhGfkAGKUBydglMB2agVWQbhk9R1hxQY/ifUpBxQANAtgVAvQ2LiV67CsQrRBHtRCFQqNBnuLCqUhzAAVihviAj8QDPlhFYlugEhruiigQKjtoIapcQKtr/Kco+QvEOewuUEQnkJFstQMQHhqDEclvg");
-	this.shape.setTransform(801.8245,1248.225);
+	this.instance = new lib.CachedBmp_2();
+	this.instance.setTransform(462.1,1289.6,0.5,0.5);
 
-	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+	this.instance_1 = new lib.CachedBmp_1();
+	this.instance_1.setTransform(-0.5,-0.5,0.5,0.5);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(325.2,1144.5,1515.8,1425.5);
+p.nominalBounds = new cjs.Rectangle(562,1217.5,563.5,1219);
 // library properties:
 lib.properties = {
 	id: '10506E02FB0AA147930408EB6BBEE7D8',
@@ -56,7 +73,10 @@ lib.properties = {
 	fps: 30,
 	color: "#FFFFFF",
 	opacity: 1.00,
-	manifest: [],
+	manifest: [
+		{src:"images/CachedBmp_1.png", id:"CachedBmp_1"},
+		{src:"images/full_atlas_1.png", id:"full_atlas_1"}
+	],
 	preloads: []
 };
 
