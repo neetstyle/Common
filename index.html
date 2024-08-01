@@ -67,8 +67,12 @@ function handleComplete(evt,comp) {
 
 <script>
 function getIFrameResolution() {
-    // iframe要素を取得
- var iframes = document.getElementsByClassName('payment-verification');
+    // クラス名でiframe要素を取得
+    var iframes = document.getElementsByClassName('payment-verification');
+    
+    // 最初の要素を取得する（クラス名が一意である場合）
+    var iframe = iframes[0];
+
     if (iframe) {
         // iframeの内容Documentを取得
         var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
