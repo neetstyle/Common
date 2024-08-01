@@ -41,6 +41,33 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	}
 
 
+(lib.bottomMenuNC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EgnDgD5MBOHAAAIAAHzMhOHAAAg");
+	this.shape.setTransform(250,25);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#99CC99").s().p("EgnDAD6IAAnzMBOHAAAIAAHzg");
+	this.shape_1.setTransform(250,25);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.bottomMenuNC, new cjs.Rectangle(-2.5,-2.5,505,55), null);
+
+
 (lib.bgMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -90,20 +117,29 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		//const width = document.documentElement.clientWidth;
-		//const height = document.documentElement.clientHeight;
-		//var canvasWidth = width;
-		//var canvasHeight = document.documentElement.clientHeight;
+		this.canvasScaleX = document.documentElement.clientWidth / 500;
+		this.canvasScaleY = document.documentElement.clientHeight / 500;
 		
-		
-		this.bgMC.scaleX = document.documentElement.clientWidth / 500;
-		this.bgMC.scaleY = document.documentElement.clientHeight / 500;
+		this.bgMC.scaleX = this.canvasScaleX;
+		this.bgMC.scaleY = this.canvasScaleY;
 		
 		//alert(this.bgMC.scaleX );
+		
+		this.bottomMenuMC.scaleX = this.canvasScaleX;
+		this.bottomMenuMC.scaleY = this.canvasScaleX;
+		
+		this.bottomMenuMC.y = 500 * this.canvasScaleY;
 	}
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// レイヤー_3
+	this.bottomMenuMC = new lib.bottomMenuNC();
+	this.bottomMenuMC.name = "bottomMenuMC";
+	this.bottomMenuMC.setTransform(0,261,1,1,0,0,0,0,50);
+
+	this.timeline.addTween(cjs.Tween.get(this.bottomMenuMC).wait(1));
 
 	// レイヤー_1
 	this.bgMC = new lib.bgMC();
