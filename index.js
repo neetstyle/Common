@@ -2,9 +2,7 @@
 
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
-lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[0,0,225,225]]}
-];
+lib.ssMetadata = [];
 
 
 (lib.AnMovieClip = function(){
@@ -24,14 +22,50 @@ lib.ssMetadata = [
 	}
 }).prototype = p = new cjs.MovieClip();
 // symbols:
+// helper functions:
+
+function mc_symbol_clone() {
+	var clone = this._cloneProps(new this.constructor(this.mode, this.startPosition, this.loop, this.reversed));
+	clone.gotoAndStop(this.currentFrame);
+	clone.paused = this.paused;
+	clone.framerate = this.framerate;
+	return clone;
+}
+
+function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
+	var prototype = cjs.extend(symbol, cjs.MovieClip);
+	prototype.clone = mc_symbol_clone;
+	prototype.nominalBounds = nominalBounds;
+	prototype.frameBounds = frameBounds;
+	return prototype;
+	}
 
 
+(lib.bgMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
 
-(lib.images = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(0);
-}).prototype = p = new cjs.Sprite();
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#FF0000").ss(5,1,1).p("EgnDgnDMBOHAAAMAAABOHMhOHAAAg");
+	this.shape.setTransform(250,250);
 
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#000000").s().p("EgnDAnEMAAAhOHMBOHAAAMAAABOHg");
+	this.shape_1.setTransform(250,250);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-2.5,-2.5,505,505), null);
 
 
 // stage content:
@@ -46,27 +80,50 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// レイヤー_1
-	this.instance = new lib.images();
-	this.instance.setTransform(0,0,2.2222,2.2222);
+	this.actionFrames = [0];
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		//const width = document.documentElement.clientWidth;
+		//const height = document.documentElement.clientHeight;
+		//var canvasWidth = width;
+		//var canvasHeight = document.documentElement.clientHeight;
+		
+		
+		this.bgMC.scaleX = document.documentElement.clientWidth / 500;
+		this.bgMC.scaleY = document.documentElement.clientHeight / 500;
+		
+		//alert(this.bgMC.scaleX );
+	}
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// レイヤー_1
+	this.bgMC = new lib.bgMC();
+	this.bgMC.name = "bgMC";
+
+	this.timeline.addTween(cjs.Tween.get(this.bgMC).wait(1));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(250,250,250,250);
+p.nominalBounds = new cjs.Rectangle(247.5,247.5,255,255);
 // library properties:
 lib.properties = {
-	id: '2B00AFE24692F54B994DDA463BA583A4',
+	id: '969C0F3DFF839440AC4059700CCE57F9',
 	width: 500,
 	height: 500,
 	fps: 30,
 	color: "#FFFFFF",
 	opacity: 1.00,
-	manifest: [
-		{src:"images/index_atlas_1.png", id:"index_atlas_1"}
-	],
+	manifest: [],
 	preloads: []
 };
 
@@ -103,7 +160,7 @@ an.bootstrapCallback=function(fnCallback) {
 };
 
 an.compositions = an.compositions || {};
-an.compositions['2B00AFE24692F54B994DDA463BA583A4'] = {
+an.compositions['969C0F3DFF839440AC4059700CCE57F9'] = {
 	getStage: function() { return exportRoot.stage; },
 	getLibrary: function() { return lib; },
 	getSpriteSheet: function() { return ss; },
