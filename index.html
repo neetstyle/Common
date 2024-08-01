@@ -1,72 +1,36 @@
 <!DOCTYPE html>
-<!--
-	NOTES:
-	1. All tokens are represented by '$' sign in the template.
-	2. You can write your code only wherever mentioned.
-	3. All occurrences of existing tokens will be replaced by their appropriate values.
-	4. Blank lines will be removed automatically.
-	5. Remove unnecessary comments before creating your template.
--->
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="authoring-tool" content="Adobe_Animate_CC">
 <title>index</title>
-<!-- write your code here -->
-
-
-
-    <style>
-        .no_scroll {
-            overflow: hidden;
-        }
-    </style>
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-			const body = document.getElementsByTagName('body')[0];
-			body.classList.toggle('no_scroll');
-        });
-    </script>
-
-
-
-
+<style>
+    .no_scroll {
+        overflow: hidden;
+    }
+</style>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.toggle('no_scroll');
+    });
+</script>
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <script src="index.js?a=11"></script>
-
-
-
 <script>
-
-
-
-
-
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 
-
-
-
-
-
-
 function init() {
-
-
-
-
-
-
 	canvas = document.getElementById("canvas");
 	anim_container = document.getElementById("animation_container");
 	dom_overlay_container = document.getElementById("dom_overlay_container");
 	var comp=AdobeAn.getComposition("969C0F3DFF839440AC4059700CCE57F9");
 	var lib=comp.getLibrary();
 
-
-lib.properties.width = document.documentElement.clientWidth;
-lib.properties.height = document.documentElement.clientHeight;
+	//resize
+	lib.properties.width = document.documentElement.clientWidth;
+	lib.properties.height = document.documentElement.clientHeight;
 
 	handleComplete({},comp);
 }
