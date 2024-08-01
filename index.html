@@ -69,7 +69,7 @@ function handleComplete(evt,comp) {
 <script>
 function getIFrameResolution() {
     // iframe要素を取得
-    var iframe = document.getElementById('myIFrame');
+ var iframes = document.getElementsByClassName('payment-verification');
     if (iframe) {
         // iframeの内容Documentを取得
         var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
