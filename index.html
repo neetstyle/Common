@@ -14,43 +14,52 @@
 <meta name="authoring-tool" content="Adobe_Animate_CC">
 <title>index</title>
 <!-- write your code here -->
+
+
+	    <style>
+        body {
+            margin: 0;
+        }
+        .btn_wrapper {
+            position: fixed;
+            top: 8px;
+            right: 8px;
+            z-index: 1;
+        }
+        .no_scroll {
+            overflow: hidden;
+        }
+    </style>
+
+
+
+
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <script src="index.js?a=11"></script>
+
+
+    <script>
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const body = document.getElementsByTagName('body')[0];
+            const btn = document.getElementById('btn');
+
+        });
+    </script>
+
+
 <script>
+
+
+
+
+
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 
 
 
-        document.addEventListener(
-            'touchmove',
-            scrollControll,
-            {
-                passive: false
-            }
-        );
 
 
-        document.removeEventListener(
-            'touchmove',
-            scrollControll,
-            {
-                passive: false
-            }
-        );
-
-    // add/removeEventListenerでアロー関数として定義するとイベントが削除されない
-    var scrollControll = function(event) {
-        if ($(event.target).closest('.js-can-scroll').length > 0) {
-            event.stopPropagation();
-        } else {
-            event.preventDefault();
-        }
-    };
-
-
-
-
-    
 
 
 function init() {
