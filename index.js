@@ -48,19 +48,19 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.instance = new lib.images();
-	this.instance.setTransform(0,0,2.2222,6.6667);
+	this.instance.setTransform(0,0,1.8666,2.8445);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(250,750,250,750);
+p.nominalBounds = new cjs.Rectangle(210,320,210,320);
 // library properties:
 lib.properties = {
 	id: '2B00AFE24692F54B994DDA463BA583A4',
-	width: 500,
-	height: 1500,
+	width: 420,
+	height: 640,
 	fps: 30,
 	color: "#FFFFFF",
 	opacity: 1.00,
