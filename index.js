@@ -48,7 +48,7 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.instance = new lib.images();
-	this.instance.setTransform(0,0,2.2222,2.2223);
+	this.instance.setTransform(0,0,2.2222,2.2222);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
