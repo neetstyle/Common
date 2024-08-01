@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[0,0,405,97]]}
+		{name:"index_atlas_1", frames: [[0,0,225,225]]}
 ];
 
 
@@ -27,17 +27,11 @@ lib.ssMetadata = [
 
 
 
-(lib.CachedBmp_2 = function() {
+(lib.images = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
-
-
-(lib.CachedBmp_1 = function() {
-	this.initialize(img.CachedBmp_1);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,2434,5056);
 
 
 // stage content:
@@ -53,28 +47,24 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// レイヤー_1
-	this.instance = new lib.CachedBmp_2();
-	this.instance.setTransform(462.1,1289.6,0.5,0.5);
+	this.instance = new lib.images();
+	this.instance.setTransform(0,0,2.2222,2.2222);
 
-	this.instance_1 = new lib.CachedBmp_1();
-	this.instance_1.setTransform(-46,-46,0.5,0.5);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(516.5,1172,654.5,1310);
+p.nominalBounds = new cjs.Rectangle(250,250,250,250);
 // library properties:
 lib.properties = {
-	id: '10506E02FB0AA147930408EB6BBEE7D8',
-	width: 1125,
-	height: 2436,
+	id: '2B00AFE24692F54B994DDA463BA583A4',
+	width: 500,
+	height: 500,
 	fps: 30,
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/CachedBmp_1.png", id:"CachedBmp_1"},
 		{src:"images/index_atlas_1.png", id:"index_atlas_1"}
 	],
 	preloads: []
@@ -113,7 +103,7 @@ an.bootstrapCallback=function(fnCallback) {
 };
 
 an.compositions = an.compositions || {};
-an.compositions['10506E02FB0AA147930408EB6BBEE7D8'] = {
+an.compositions['2B00AFE24692F54B994DDA463BA583A4'] = {
 	getStage: function() { return exportRoot.stage; },
 	getLibrary: function() { return lib; },
 	getSpriteSheet: function() { return ss; },
