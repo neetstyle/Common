@@ -25,10 +25,9 @@
 <script>
 
 window.Telegram.WebApp.expand();
-window.Telegram.WebApp.onEvent('backButtonClicked', function() {
-    // アプリを閉じる処理をカスタマイズ
-    console.log('Back button clicked, but app will not close.');
-});
+window.Telegram.WebApp.enableVerticalSwipes = false;
+
+
 
     window.addEventListener('DOMContentLoaded', () => {
 		const body = document.getElementsByTagName('body')[0];
