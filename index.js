@@ -78,6 +78,107 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
 
 
+(lib.ShopPanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.text = new cjs.Text("Shop", "100px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 102;
+	this.text.lineWidth = 1121;
+	this.text.parent = this;
+	this.text.setTransform(562.5,602);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
+	this.shape.setTransform(562.5,600);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
+	this.shape_1.setTransform(562.5,600);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
+
+
+(lib.HeaderMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4gXbMCvxAAAMAAAAu3MivxAAAg");
+	this.shape.setTransform(562.5,150);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#99CC99").s().p("EhX4AXcMAAAgu3MCvxAAAMAAAAu3g");
+	this.shape_1.setTransform(562.5,150);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(-2.5,-2.5,1130,305), null);
+
+
+(lib.GeneratorPanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.text = new cjs.Text("Generator", "100px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 102;
+	this.text.lineWidth = 1121;
+	this.text.parent = this;
+	this.text.setTransform(562.5,602);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
+	this.shape.setTransform(562.5,600);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
+	this.shape_1.setTransform(562.5,600);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
+
+
 (lib.UpgradeButtonMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -263,43 +364,6 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.AchievementButtonMC, new cjs.Rectangle(-2.5,-2.5,230,305), null);
 
 
-(lib.GeneratorPanelMC = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// レイヤー_2
-	this.text = new cjs.Text("Generator", "100px 'MS Gothic'");
-	this.text.textAlign = "center";
-	this.text.lineHeight = 102;
-	this.text.lineWidth = 1121;
-	this.text.parent = this;
-	this.text.setTransform(562.5,602);
-
-	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
-
-	// レイヤー_1
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
-	this.shape.setTransform(562.5,600);
-
-	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
-	this.shape_1.setTransform(562.5,600);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
-
-
 (lib.bgMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -327,7 +391,44 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-2.5,-2.5,1130,2441), null);
 
 
-(lib.UnderMenuMC = function(mode,startPosition,loop,reversed) {
+(lib.AchievementPanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.text = new cjs.Text("Achievement", "100px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 102;
+	this.text.lineWidth = 1121;
+	this.text.parent = this;
+	this.text.setTransform(562.5,602);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
+	this.shape.setTransform(562.5,600);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
+	this.shape_1.setTransform(562.5,600);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
+
+
+(lib.FooterMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -373,7 +474,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UnderMenuMC, new cjs.Rectangle(-2.5,-2.5,1130,305), null);
+}).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(-2.5,-2.5,1130,305), null);
 
 
 // stage content:
@@ -405,26 +506,49 @@ if (reversed == null) { reversed = false; }
 		this.bgMC.scaleX = this.canvasScaleX;
 		this.bgMC.scaleY = this.canvasScaleY;
 		
-		this.UnderMenuMC.scaleX = this.canvasScaleX;
-		this.UnderMenuMC.scaleY = this.canvasScaleX;
-		this.UnderMenuMC.y = 2436 * this.canvasScaleY;
+		this.HeaderMC.scaleX = this.canvasScaleX;
+		this.HeaderMC.scaleY = this.canvasScaleX;
+		
+		this.FooterMC.scaleX = this.canvasScaleX;
+		this.FooterMC.scaleY = this.canvasScaleX;
+		this.FooterMC.y = 2436 * this.canvasScaleY;
 		this.PanelOpen = function (_page)
 		{
 		    switch (_page) {
 		      case 0:
 				this.GeneratorPanelMC.visible = false;
 				this.UpgradePanelMC.visible = false;
+				this.ShopPanelMC.visible = false;
+				this.AchievementPanelMC.visible = false;
 				this.page = 0;
 		        break;
 		      case 1:
 				this.GeneratorPanelMC.visible = this.GeneratorPanelMC.visible ? false : true;
 				this.UpgradePanelMC.visible = false;
+				this.ShopPanelMC.visible = false;
+				this.AchievementPanelMC.visible = false;
 				this.page = this.GeneratorPanelMC.visible ? _page : 0;
 		        break;
 		     case 2:
 				this.GeneratorPanelMC.visible = false;
 				this.UpgradePanelMC.visible = this.UpgradePanelMC.visible ? false : true;
+				this.ShopPanelMC.visible = false;
+				this.AchievementPanelMC.visible = false;
 				this.page = this.UpgradePanelMC.visible ? _page : 0;
+				break;
+			case 3:
+				this.GeneratorPanelMC.visible = false;
+				this.UpgradePanelMC.visible = false;
+				this.ShopPanelMC.visible = this.ShopPanelMC.visible ? false : true;
+				this.AchievementPanelMC.visible = false;
+				this.page = this.ShopPanelMC.visible ? _page : 0;
+				break;
+			case 4:
+				this.GeneratorPanelMC.visible = false;
+				this.UpgradePanelMC.visible = false;
+				this.ShopPanelMC.visible = false;
+				this.AchievementPanelMC.visible = this.AchievementPanelMC.visible ? false : true;
+				this.page = this.AchievementPanelMC.visible ? _page : 0;
 				break;
 		    }
 		}
@@ -432,6 +556,8 @@ if (reversed == null) { reversed = false; }
 		this.page = 0;
 		this.GeneratorPanelMC.visible = false;
 		this.UpgradePanelMC.visible = false;
+		this.ShopPanelMC.visible = false;
+		this.AchievementPanelMC.visible = false;
 		
 		//GeneratorPanel
 		this.GeneratorPanelMC.visible = false;
@@ -454,10 +580,46 @@ if (reversed == null) { reversed = false; }
 		this.UpgradePanelMC.scaleX = this.canvasScaleX;
 		this.UpgradePanelMC.scaleY = this.canvasScaleX;
 		this.UpgradePanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
+		
+		//ShopPanel
+		this.ShopPanelMC.visible = false;
+		this.UnderMenuMC.ShopButtonMC.addEventListener("click", ClickHandler_ShopPanelOpen.bind(this));
+		function ClickHandler_ShopPanelOpen()
+		{
+			this.PanelOpen(3);
+		}
+		this.ShopPanelMC.scaleX = this.canvasScaleX;
+		this.ShopPanelMC.scaleY = this.canvasScaleX;
+		this.ShopPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;500
+		
+		//AchievementPanel
+		this.AchievementPanelMC.visible = false;
+		this.UnderMenuMC.AchievementButtonMC.addEventListener("click", ClickHandler_AchievementPanelOpen.bind(this));
+		function ClickHandler_AchievementPanelOpen()
+		{
+			this.PanelOpen(4);
+		}
+		this.AchievementPanelMC.scaleX = this.canvasScaleX;
+		this.AchievementPanelMC.scaleY = this.canvasScaleX;
+		this.AchievementPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;500
 	}
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// Achievement
+	this.AchievementPanelMC = new lib.AchievementPanelMC();
+	this.AchievementPanelMC.name = "AchievementPanelMC";
+	this.AchievementPanelMC.setTransform(0,2136,1,1,0,0,0,0,1200);
+
+	this.timeline.addTween(cjs.Tween.get(this.AchievementPanelMC).wait(1));
+
+	// Shop
+	this.ShopPanelMC = new lib.ShopPanelMC();
+	this.ShopPanelMC.name = "ShopPanelMC";
+	this.ShopPanelMC.setTransform(0,2136,1,1,0,0,0,0,1200);
+
+	this.timeline.addTween(cjs.Tween.get(this.ShopPanelMC).wait(1));
 
 	// Generator
 	this.GeneratorPanelMC = new lib.GeneratorPanelMC();
@@ -474,11 +636,14 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.UpgradePanelMC).wait(1));
 
 	// Menu
-	this.UnderMenuMC = new lib.UnderMenuMC();
-	this.UnderMenuMC.name = "UnderMenuMC";
-	this.UnderMenuMC.setTransform(0,2436,1,1,0,0,0,0,300);
+	this.HeaderMC = new lib.HeaderMC();
+	this.HeaderMC.name = "HeaderMC";
 
-	this.timeline.addTween(cjs.Tween.get(this.UnderMenuMC).wait(1));
+	this.FooterMC = new lib.FooterMC();
+	this.FooterMC.name = "FooterMC";
+	this.FooterMC.setTransform(0,2436,1,1,0,0,0,0,300);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.FooterMC},{t:this.HeaderMC}]}).wait(1));
 
 	// BG
 	this.bgMC = new lib.bgMC();
