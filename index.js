@@ -560,8 +560,7 @@ if (reversed == null) { reversed = false; }
 		this.AchievementPanelMC.visible = false;
 		
 		//GeneratorPanel
-		this.GeneratorPanelMC.visible = false;
-		this.UnderMenuMC.GeneratorButtonMC.addEventListener("click", ClickHandler_GeneratorPanelOpen.bind(this));
+		this.FooterMC.GeneratorButtonMC.addEventListener("click", ClickHandler_GeneratorPanelOpen.bind(this));
 		function ClickHandler_GeneratorPanelOpen()
 		{
 			this.PanelOpen(1);
@@ -571,8 +570,7 @@ if (reversed == null) { reversed = false; }
 		this.GeneratorPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 		
 		//UpgradePanel
-		this.UpgradePanelMC.visible = false;
-		this.UnderMenuMC.UpgradeButtonMC.addEventListener("click", ClickHandler_UpgradePanelOpen.bind(this));
+		this.FooterMC.UpgradeButtonMC.addEventListener("click", ClickHandler_UpgradePanelOpen.bind(this));
 		function ClickHandler_UpgradePanelOpen()
 		{
 			this.PanelOpen(2);
@@ -582,8 +580,7 @@ if (reversed == null) { reversed = false; }
 		this.UpgradePanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 		
 		//ShopPanel
-		this.ShopPanelMC.visible = false;
-		this.UnderMenuMC.ShopButtonMC.addEventListener("click", ClickHandler_ShopPanelOpen.bind(this));
+		this.FooterMC.ShopButtonMC.addEventListener("click", ClickHandler_ShopPanelOpen.bind(this));
 		function ClickHandler_ShopPanelOpen()
 		{
 			this.PanelOpen(3);
@@ -593,8 +590,7 @@ if (reversed == null) { reversed = false; }
 		this.ShopPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;500
 		
 		//AchievementPanel
-		this.AchievementPanelMC.visible = false;
-		this.UnderMenuMC.AchievementButtonMC.addEventListener("click", ClickHandler_AchievementPanelOpen.bind(this));
+		this.FooterMC.AchievementButtonMC.addEventListener("click", ClickHandler_AchievementPanelOpen.bind(this));
 		function ClickHandler_AchievementPanelOpen()
 		{
 			this.PanelOpen(4);
