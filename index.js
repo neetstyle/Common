@@ -64,18 +64,18 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
-	this.shape.setTransform(562.5,600);
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4htXMCvxAAAMAAADavMivxAAAg");
+	this.shape.setTransform(562.5,700);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
-	this.shape_1.setTransform(562.5,600);
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BtYMAAAjavMCvxAAAMAAADavg");
+	this.shape_1.setTransform(562.5,700);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
+}).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1405), null);
 
 
 (lib.ShopPanelMC = function(mode,startPosition,loop,reversed) {
@@ -101,18 +101,18 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
-	this.shape.setTransform(562.5,600);
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4htXMCvxAAAMAAADavMivxAAAg");
+	this.shape.setTransform(562.5,700);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
-	this.shape_1.setTransform(562.5,600);
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BtYMAAAjavMCvxAAAMAAADavg");
+	this.shape_1.setTransform(562.5,700);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
+}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1405), null);
 
 
 (lib.HeaderMC = function(mode,startPosition,loop,reversed) {
@@ -165,18 +165,18 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
-	this.shape.setTransform(562.5,600);
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4htXMCvxAAAMAAADavMivxAAAg");
+	this.shape.setTransform(562.5,700);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
-	this.shape_1.setTransform(562.5,600);
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BtYMAAAjavMCvxAAAMAAADavg");
+	this.shape_1.setTransform(562.5,700);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
+}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1405), null);
 
 
 (lib.UpgradeButtonMC = function(mode,startPosition,loop,reversed) {
@@ -377,18 +377,18 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
-	this.shape.setTransform(562.5,600);
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hljMCvxAAAMAAADLHMivxAAAg");
+	this.shape.setTransform(562.5,699.9977,1,1.0769);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
-	this.shape_1.setTransform(562.5,600);
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BlkMAAAjLHMCvxAAAMAAADLHg");
+	this.shape_1.setTransform(562.5,699.9977,1,1.0769);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1405), null);
 
 
 (lib.FooterMC = function(mode,startPosition,loop,reversed) {
@@ -566,11 +566,9 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(_targetMC, {
 				override: true
 			})
-			.to({
-				x: 0, y: 2436 + 1200 * this.canvasScaleX }, 250, createjs.Ease.expoOut)
+			.to({ x: 0, y: 2436 * this.canvasScaleY -300 * this.canvasScaleX + 1200 * this.canvasScaleX }, 250, createjs.Ease.backInOut)
 			.call(() => {
 				_targetMC.visible = false;
-				
 		    });
 		}
 		
@@ -582,8 +580,7 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(_targetMC, {
 				override: true
 			})
-			.to({
-				x: 0, y: 2436 * this.canvasScaleY -300 * this.canvasScaleX }, 250, createjs.Ease.expoOut);
+			.to({ x: 0, y: 2436 * this.canvasScaleY -300 * this.canvasScaleX }, 250, createjs.Ease.expoOut);
 		}
 	}
 
