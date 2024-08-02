@@ -164,29 +164,29 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// レイヤー_2
-	this.text = new cjs.Text("Generator", "15px 'MS Gothic'");
+	this.text = new cjs.Text("Generator", "30px 'MS Gothic'");
 	this.text.textAlign = "center";
-	this.text.lineHeight = 17;
-	this.text.lineWidth = 96;
+	this.text.lineHeight = 32;
+	this.text.lineWidth = 221;
 	this.text.parent = this;
-	this.text.setTransform(50,17);
+	this.text.setTransform(112.5,57);
 
 	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("Anzj5IPnAAIAAHzIvnAAg");
-	this.shape.setTransform(50,25);
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("AxkrtMAjJAAAIAAXbMgjJAAAg");
+	this.shape.setTransform(112.5,75);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#9999CC").s().p("AnzD6IAAnzIPnAAIAAHzg");
-	this.shape_1.setTransform(50,25);
+	this.shape_1.graphics.f("#9999CC").s().p("AxkLuIAA3bMAjJAAAIAAXbg");
+	this.shape_1.setTransform(112.5,75);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.GeneratorButtonMC, new cjs.Rectangle(-2.5,-2.5,105,55), null);
+}).prototype = getMCSymbolPrototype(lib.GeneratorButtonMC, new cjs.Rectangle(-2.5,-2.5,230,155), null);
 
 
 (lib.AchievementButtonMC = function(mode,startPosition,loop,reversed) {
@@ -239,18 +239,18 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#FF0000").ss(5,1,1).p("EgnDgnDMBOHAAAMAAABOHMhOHAAAg");
-	this.shape.setTransform(250,250);
+	this.shape.graphics.f().s("#FF0000").ss(5,1,1).p("EhX4i+TMCvxAAAMAAAF8nMivxAAAg");
+	this.shape.setTransform(562.5,1218);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#000000").s().p("EgnDAnEMAAAhOHMBOHAAAMAAABOHg");
-	this.shape_1.setTransform(250,250);
+	this.shape_1.graphics.f("#000000").s().p("EhX4C+UMAAAl8nMCvxAAAMAAAF8ng");
+	this.shape_1.setTransform(562.5,1218);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-2.5,-2.5,505,505), null);
+}).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-2.5,-2.5,1130,2441), null);
 
 
 (lib.UnderMenuMC = function(mode,startPosition,loop,reversed) {
@@ -289,18 +289,18 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EgnDgD5MBOHAAAIAAHzMhOHAAAg");
-	this.shape.setTransform(250,25);
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4gLtMCvxAAAIAAXbMivxAAAg");
+	this.shape.setTransform(562.5,75);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#99CC99").s().p("EgnDAD6IAAnzMBOHAAAIAAHzg");
-	this.shape_1.setTransform(250,25);
+	this.shape_1.graphics.f("#99CC99").s().p("EhX4ALuIAA3bMCvxAAAIAAXbg");
+	this.shape_1.setTransform(562.5,75);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UnderMenuMC, new cjs.Rectangle(-2.5,-2.5,505,55), null);
+}).prototype = getMCSymbolPrototype(lib.UnderMenuMC, new cjs.Rectangle(-2.5,-2.5,1130,155), null);
 
 
 // stage content:
@@ -333,8 +333,10 @@ if (reversed == null) { reversed = false; }
 			this.mainMC.packAnimeMC.gotoAndPlay("open");
 		}
 		*/
-		this.canvasScaleX = document.documentElement.clientWidth / 500;
-		this.canvasScaleY = document.documentElement.clientHeight / 500;
+		//1125 * 2436
+		
+		this.canvasScaleX = document.documentElement.clientWidth / 1125;
+		this.canvasScaleY = document.documentElement.clientHeight / 2436;
 		
 		this.bgMC.scaleX = this.canvasScaleX;
 		this.bgMC.scaleY = this.canvasScaleY;
@@ -343,7 +345,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.UnderMenuMC.scaleX = this.canvasScaleX;
 		this.UnderMenuMC.scaleY = this.canvasScaleX;
-		this.UnderMenuMC.y = 500 * this.canvasScaleY;
+		this.UnderMenuMC.y = 2436 * this.canvasScaleY;
 	}
 
 	// actions tween:
@@ -352,7 +354,7 @@ if (reversed == null) { reversed = false; }
 	// レイヤー_3
 	this.UnderMenuMC = new lib.UnderMenuMC();
 	this.UnderMenuMC.name = "UnderMenuMC";
-	this.UnderMenuMC.setTransform(0,261,1,1,0,0,0,0,50);
+	this.UnderMenuMC.setTransform(0,361,1,1,0,0,0,0,150);
 
 	this.timeline.addTween(cjs.Tween.get(this.UnderMenuMC).wait(1));
 
@@ -365,12 +367,12 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(247.5,247.5,255,255);
+p.nominalBounds = new cjs.Rectangle(560,1215.5,567.5,1223);
 // library properties:
 lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',
-	width: 500,
-	height: 500,
+	width: 1125,
+	height: 2436,
 	fps: 30,
 	color: "#FFFFFF",
 	opacity: 1.00,
