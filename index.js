@@ -169,24 +169,24 @@ if (reversed == null) { reversed = false; }
 	this.text.lineHeight = 32;
 	this.text.lineWidth = 221;
 	this.text.parent = this;
-	this.text.setTransform(112.5,57);
+	this.text.setTransform(112.5,113.6);
 
 	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("AxkrtMAjJAAAIAAXbMgjJAAAg");
-	this.shape.setTransform(112.5,75);
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("AxkzhMAjJAAAMAAAAnDMgjJAAAg");
+	this.shape.setTransform(112.5,125);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#9999CC").s().p("AxkLuIAA3bMAjJAAAIAAXbg");
-	this.shape_1.setTransform(112.5,75);
+	this.shape_1.graphics.f("#9999CC").s().p("AxkTiMAAAgnDMAjJAAAMAAAAnDg");
+	this.shape_1.setTransform(112.5,125);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.GeneratorButtonMC, new cjs.Rectangle(-2.5,-2.5,230,155), null);
+}).prototype = getMCSymbolPrototype(lib.GeneratorButtonMC, new cjs.Rectangle(-2.5,-2.5,230,255), null);
 
 
 (lib.AchievementButtonMC = function(mode,startPosition,loop,reversed) {
@@ -289,18 +289,18 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4gLtMCvxAAAIAAXbMivxAAAg");
-	this.shape.setTransform(562.5,75);
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4gThMCvxAAAMAAAAnDMivxAAAg");
+	this.shape.setTransform(562.5,125);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#99CC99").s().p("EhX4ALuIAA3bMCvxAAAIAAXbg");
-	this.shape_1.setTransform(562.5,75);
+	this.shape_1.graphics.f("#99CC99").s().p("EhX4ATiMAAAgnDMCvxAAAMAAAAnDg");
+	this.shape_1.setTransform(562.5,125);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UnderMenuMC, new cjs.Rectangle(-2.5,-2.5,1130,155), null);
+}).prototype = getMCSymbolPrototype(lib.UnderMenuMC, new cjs.Rectangle(-2.5,-2.5,1130,255), null);
 
 
 // stage content:
@@ -354,7 +354,7 @@ if (reversed == null) { reversed = false; }
 	// レイヤー_3
 	this.UnderMenuMC = new lib.UnderMenuMC();
 	this.UnderMenuMC.name = "UnderMenuMC";
-	this.UnderMenuMC.setTransform(0,361,1,1,0,0,0,0,150);
+	this.UnderMenuMC.setTransform(0,461,1,1,0,0,0,0,250);
 
 	this.timeline.addTween(cjs.Tween.get(this.UnderMenuMC).wait(1));
 
