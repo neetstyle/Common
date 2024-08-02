@@ -41,6 +41,43 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	}
 
 
+(lib.UpgradePanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.text = new cjs.Text("Upgrade", "100px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 102;
+	this.text.lineWidth = 1121;
+	this.text.parent = this;
+	this.text.setTransform(562.5,602);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
+	this.shape.setTransform(562.5,600);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
+	this.shape_1.setTransform(562.5,600);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
+
+
 (lib.UpgradeButtonMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -324,14 +361,6 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		/*
-		//パック開封ボタン
-		this.mainMC.packAnimeMC.openButton.addEventListener("click", ClickHandler_Open.bind(this));
-		function ClickHandler_Open()
-		{
-			this.mainMC.packAnimeMC.gotoAndPlay("open");
-		}
-		*/
 		//1125 * 2436
 		
 		this.canvasScaleX = document.documentElement.clientWidth / 1125;
@@ -345,19 +374,42 @@ if (reversed == null) { reversed = false; }
 		this.UnderMenuMC.scaleX = this.canvasScaleX;
 		this.UnderMenuMC.scaleY = this.canvasScaleX;
 		this.UnderMenuMC.y = 2436 * this.canvasScaleY;
+		//UpgradePanel
+		this.UpgradePanelMC.visible = false;
+		this.UnderMenuMC.GeneratorButtonMC.addEventListener("click", ClickHandler_UpgradePanelOpen.bind(this));
+		function ClickHandler_UpgradePanelOpen()
+		{
+			if(this.UpgradePanelMC.visible)
+				this.UpgradePanelMC.visible = false;
+			else
+				this.UpgradePanelMC.visible = true;
+		}
+		this.UpgradePanelMC.scaleX = this.canvasScaleX;
+		this.UpgradePanelMC.scaleY = this.canvasScaleX;
+		//this.UpgradePanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
+		
+		
+		this.UpgradePanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 	}
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
-	// レイヤー_3
+	// レイヤー_2
+	this.UpgradePanelMC = new lib.UpgradePanelMC();
+	this.UpgradePanelMC.name = "UpgradePanelMC";
+	this.UpgradePanelMC.setTransform(0,2136,1,1,0,0,0,0,1200);
+
+	this.timeline.addTween(cjs.Tween.get(this.UpgradePanelMC).wait(1));
+
+	// Menu
 	this.UnderMenuMC = new lib.UnderMenuMC();
 	this.UnderMenuMC.name = "UnderMenuMC";
 	this.UnderMenuMC.setTransform(0,2436,1,1,0,0,0,0,300);
 
 	this.timeline.addTween(cjs.Tween.get(this.UnderMenuMC).wait(1));
 
-	// レイヤー_1
+	// BG
 	this.bgMC = new lib.bgMC();
 	this.bgMC.name = "bgMC";
 
