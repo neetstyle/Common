@@ -263,6 +263,43 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.AchievementButtonMC, new cjs.Rectangle(-2.5,-2.5,230,305), null);
 
 
+(lib.GeneratorPanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.text = new cjs.Text("Generator", "100px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 102;
+	this.text.lineWidth = 1121;
+	this.text.parent = this;
+	this.text.setTransform(562.5,602);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hdvMCvxAAAMAAAC7fMivxAAAg");
+	this.shape.setTransform(562.5,600);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BdwMAAAi7fMCvxAAAMAAAC7fg");
+	this.shape_1.setTransform(562.5,600);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1205), null);
+
+
 (lib.bgMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -362,40 +399,74 @@ if (reversed == null) { reversed = false; }
 			this.isSingleFrame = true;
 		}
 		//1125 * 2436
-		
 		this.canvasScaleX = document.documentElement.clientWidth / 1125;
 		this.canvasScaleY = document.documentElement.clientHeight / 2436;
 		
 		this.bgMC.scaleX = this.canvasScaleX;
 		this.bgMC.scaleY = this.canvasScaleY;
 		
-		//alert(this.bgMC.scaleX );
-		
 		this.UnderMenuMC.scaleX = this.canvasScaleX;
 		this.UnderMenuMC.scaleY = this.canvasScaleX;
 		this.UnderMenuMC.y = 2436 * this.canvasScaleY;
+		this.PanelOpen = function (_page)
+		{
+		    switch (_page) {
+		      case 0:
+				this.GeneratorPanelMC.visible = false;
+				this.UpgradePanelMC.visible = false;
+				this.page = 0;
+		        break;
+		      case 1:
+				this.GeneratorPanelMC.visible = this.GeneratorPanelMC.visible ? false : true;
+				this.UpgradePanelMC.visible = false;
+				this.page = this.GeneratorPanelMC.visible ? _page : 0;
+		        break;
+		     case 2:
+				this.GeneratorPanelMC.visible = false;
+				this.UpgradePanelMC.visible = this.UpgradePanelMC.visible ? false : true;
+				this.page = this.UpgradePanelMC.visible ? _page : 0;
+				break;
+		    }
+		}
+		
+		this.page = 0;
+		this.GeneratorPanelMC.visible = false;
+		this.UpgradePanelMC.visible = false;
+		
+		//GeneratorPanel
+		this.GeneratorPanelMC.visible = false;
+		this.UnderMenuMC.GeneratorButtonMC.addEventListener("click", ClickHandler_GeneratorPanelOpen.bind(this));
+		function ClickHandler_GeneratorPanelOpen()
+		{
+			this.PanelOpen(1);
+		}
+		this.GeneratorPanelMC.scaleX = this.canvasScaleX;
+		this.GeneratorPanelMC.scaleY = this.canvasScaleX;
+		this.GeneratorPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
+		
 		//UpgradePanel
 		this.UpgradePanelMC.visible = false;
-		this.UnderMenuMC.GeneratorButtonMC.addEventListener("click", ClickHandler_UpgradePanelOpen.bind(this));
+		this.UnderMenuMC.UpgradeButtonMC.addEventListener("click", ClickHandler_UpgradePanelOpen.bind(this));
 		function ClickHandler_UpgradePanelOpen()
 		{
-			if(this.UpgradePanelMC.visible)
-				this.UpgradePanelMC.visible = false;
-			else
-				this.UpgradePanelMC.visible = true;
+			this.PanelOpen(2);
 		}
 		this.UpgradePanelMC.scaleX = this.canvasScaleX;
 		this.UpgradePanelMC.scaleY = this.canvasScaleX;
-		//this.UpgradePanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
-		
-		
 		this.UpgradePanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 	}
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
-	// レイヤー_2
+	// Generator
+	this.GeneratorPanelMC = new lib.GeneratorPanelMC();
+	this.GeneratorPanelMC.name = "GeneratorPanelMC";
+	this.GeneratorPanelMC.setTransform(0,2136,1,1,0,0,0,0,1200);
+
+	this.timeline.addTween(cjs.Tween.get(this.GeneratorPanelMC).wait(1));
+
+	// Upgrade
 	this.UpgradePanelMC = new lib.UpgradePanelMC();
 	this.UpgradePanelMC.name = "UpgradePanelMC";
 	this.UpgradePanelMC.setTransform(0,2136,1,1,0,0,0,0,1200);
