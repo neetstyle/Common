@@ -23,6 +23,10 @@
     }
 </style>
 <script>
+
+window.Telegram.WebApp.expand();
+
+
     window.addEventListener('DOMContentLoaded', () => {
 		const body = document.getElementsByTagName('body')[0];
 		body.classList.toggle('no_scroll');
@@ -71,10 +75,6 @@ function handleComplete(evt,comp) {
 <!-- write your code here -->
 </head>
 <body onload="init();" style="margin:0px;">
-
-<div id="assist-scroll-container" style="overflow: scroll;"></div>
-
-
 	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:500px; height:500px">
 		<canvas id="canvas" width="500" height="500" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
 		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:500px; height:500px; position: absolute; left: 0px; top: 0px; display: block;">
