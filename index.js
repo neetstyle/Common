@@ -41,7 +41,7 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	}
 
 
-(lib.bottomMenuNC = function(mode,startPosition,loop,reversed) {
+(lib.UpgradeButtonMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -52,20 +52,178 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
+	// レイヤー_2
+	this.text = new cjs.Text("Upgrade", "15px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 17;
+	this.text.lineWidth = 96;
+	this.text.parent = this;
+	this.text.setTransform(50,17);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EgnDgD5MBOHAAAIAAHzMhOHAAAg");
-	this.shape.setTransform(250,25);
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("Anzj5IPnAAIAAHzIvnAAg");
+	this.shape.setTransform(50,25);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#99CC99").s().p("EgnDAD6IAAnzMBOHAAAIAAHzg");
-	this.shape_1.setTransform(250,25);
+	this.shape_1.graphics.f("#9999CC").s().p("AnzD6IAAnzIPnAAIAAHzg");
+	this.shape_1.setTransform(50,25);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.bottomMenuNC, new cjs.Rectangle(-2.5,-2.5,505,55), null);
+}).prototype = getMCSymbolPrototype(lib.UpgradeButtonMC, new cjs.Rectangle(-2.5,-2.5,105,55), null);
+
+
+(lib.ShopButtonMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.text = new cjs.Text("Shop", "15px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 17;
+	this.text.lineWidth = 96;
+	this.text.parent = this;
+	this.text.setTransform(50,17);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("Anzj5IPnAAIAAHzIvnAAg");
+	this.shape.setTransform(50,25);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#9999CC").s().p("AnzD6IAAnzIPnAAIAAHzg");
+	this.shape_1.setTransform(50,25);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.ShopButtonMC, new cjs.Rectangle(-2.5,-2.5,105,55), null);
+
+
+(lib.InviteButtonMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.text = new cjs.Text("Invite", "15px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 17;
+	this.text.lineWidth = 96;
+	this.text.parent = this;
+	this.text.setTransform(50,17);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("Anzj5IPnAAIAAHzIvnAAg");
+	this.shape.setTransform(50,25);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#9999CC").s().p("AnzD6IAAnzIPnAAIAAHzg");
+	this.shape_1.setTransform(50,25);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.InviteButtonMC, new cjs.Rectangle(-2.5,-2.5,105,55), null);
+
+
+(lib.GeneratorButtonMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.text = new cjs.Text("Generator", "15px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 17;
+	this.text.lineWidth = 96;
+	this.text.parent = this;
+	this.text.setTransform(50,17);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("Anzj5IPnAAIAAHzIvnAAg");
+	this.shape.setTransform(50,25);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#9999CC").s().p("AnzD6IAAnzIPnAAIAAHzg");
+	this.shape_1.setTransform(50,25);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.GeneratorButtonMC, new cjs.Rectangle(-2.5,-2.5,105,55), null);
+
+
+(lib.AchievementButtonMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.text = new cjs.Text("Achievement", "15px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 17;
+	this.text.lineWidth = 96;
+	this.text.parent = this;
+	this.text.setTransform(50,17);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("Anzj5IPnAAIAAHzIvnAAg");
+	this.shape.setTransform(50,25);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#9999CC").s().p("AnzD6IAAnzIPnAAIAAHzg");
+	this.shape_1.setTransform(50,25);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.AchievementButtonMC, new cjs.Rectangle(-2.5,-2.5,105,55), null);
 
 
 (lib.bgMC = function(mode,startPosition,loop,reversed) {
@@ -95,6 +253,56 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-2.5,-2.5,505,505), null);
 
 
+(lib.UnderMenuMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_2
+	this.InviteButtonMC = new lib.InviteButtonMC();
+	this.InviteButtonMC.name = "InviteButtonMC";
+	this.InviteButtonMC.setTransform(450,25,1,1,0,0,0,50,25);
+
+	this.AchievementButtonMC = new lib.AchievementButtonMC();
+	this.AchievementButtonMC.name = "AchievementButtonMC";
+	this.AchievementButtonMC.setTransform(350,25,1,1,0,0,0,50,25);
+
+	this.ShopButtonMC = new lib.ShopButtonMC();
+	this.ShopButtonMC.name = "ShopButtonMC";
+	this.ShopButtonMC.setTransform(250,25,1,1,0,0,0,50,25);
+
+	this.UpgradeButtonMC = new lib.UpgradeButtonMC();
+	this.UpgradeButtonMC.name = "UpgradeButtonMC";
+	this.UpgradeButtonMC.setTransform(150,25,1,1,0,0,0,50,25);
+
+	this.GeneratorButtonMC = new lib.GeneratorButtonMC();
+	this.GeneratorButtonMC.name = "GeneratorButtonMC";
+	this.GeneratorButtonMC.setTransform(50,25,1,1,0,0,0,50,25);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorButtonMC},{t:this.UpgradeButtonMC},{t:this.ShopButtonMC},{t:this.AchievementButtonMC},{t:this.InviteButtonMC}]}).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EgnDgD5MBOHAAAIAAHzMhOHAAAg");
+	this.shape.setTransform(250,25);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#99CC99").s().p("EgnDAD6IAAnzMBOHAAAIAAHzg");
+	this.shape_1.setTransform(250,25);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.UnderMenuMC, new cjs.Rectangle(-2.5,-2.5,505,55), null);
+
+
 // stage content:
 (lib.index = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
@@ -117,6 +325,14 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
+		/*
+		//パック開封ボタン
+		this.mainMC.packAnimeMC.openButton.addEventListener("click", ClickHandler_Open.bind(this));
+		function ClickHandler_Open()
+		{
+			this.mainMC.packAnimeMC.gotoAndPlay("open");
+		}
+		*/
 		this.canvasScaleX = document.documentElement.clientWidth / 500;
 		this.canvasScaleY = document.documentElement.clientHeight / 500;
 		
@@ -125,21 +341,20 @@ if (reversed == null) { reversed = false; }
 		
 		//alert(this.bgMC.scaleX );
 		
-		this.bottomMenuMC.scaleX = this.canvasScaleX;
-		this.bottomMenuMC.scaleY = this.canvasScaleX;
-		
-		this.bottomMenuMC.y = 500 * this.canvasScaleY;
+		this.UnderMenuMC.scaleX = this.canvasScaleX;
+		this.UnderMenuMC.scaleY = this.canvasScaleX;
+		this.UnderMenuMC.y = 500 * this.canvasScaleY;
 	}
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// レイヤー_3
-	this.bottomMenuMC = new lib.bottomMenuNC();
-	this.bottomMenuMC.name = "bottomMenuMC";
-	this.bottomMenuMC.setTransform(0,261,1,1,0,0,0,0,50);
+	this.UnderMenuMC = new lib.UnderMenuMC();
+	this.UnderMenuMC.name = "UnderMenuMC";
+	this.UnderMenuMC.setTransform(0,261,1,1,0,0,0,0,50);
 
-	this.timeline.addTween(cjs.Tween.get(this.bottomMenuMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.UnderMenuMC).wait(1));
 
 	// レイヤー_1
 	this.bgMC = new lib.bgMC();

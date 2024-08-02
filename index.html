@@ -17,7 +17,11 @@
     });
 </script>
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-<script src="index.js?a=12"></script>
+<script>
+  var script = document.createElement('script');
+  script.src = 'index.js?a=' + Math.random();
+  document.head.appendChild(script);
+</script>
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 
