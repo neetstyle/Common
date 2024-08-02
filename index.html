@@ -72,7 +72,17 @@ function handleComplete(evt,comp) {
 
 
 window.Telegram.WebApp.expand();
-window.Telegram.WebApp.enableVerticalSwipes();
+window.Telegram.WebApp.disableVerticalSwipes();
+
+document.addEventListener("touchmove", function (event) {
+    event.preventDefault();
+},
+    {
+        passive: false
+    });
+
+
+
 
 
 
