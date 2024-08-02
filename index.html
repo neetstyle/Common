@@ -23,16 +23,20 @@
     }
 </style>
 <script>
-    window.addEventListener('DOMContentLoaded', () => {
+	window.addEventListener('DOMContentLoaded', () => {
 		const body = document.getElementsByTagName('body')[0];
 		body.classList.toggle('no_scroll');
-    });
+	});
+	//https://stackoverflow.com/questions/76842573/a-bug-with-collapsing-when-scrolling-in-web-app-for-telegram-bot
+	window.Telegram.WebApp.expand();
+	window.Telegram.WebApp.disableVerticalSwipes();
+	document.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
 </script>
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <script>
-  var script = document.createElement('script');
-  script.src = 'index.js?a=' + Math.random();
-  document.head.appendChild(script);
+	var script = document.createElement('script');
+	script.src = 'index.js?a=' + Math.random();
+	document.head.appendChild(script);
 </script>
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
@@ -66,26 +70,6 @@ function handleComplete(evt,comp) {
 	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
-
-
-
-
-
-window.Telegram.WebApp.expand();
-window.Telegram.WebApp.disableVerticalSwipes();
-
-document.addEventListener("touchmove", function (event) {
-    event.preventDefault();
-},
-    {
-        passive: false
-    });
-
-
-
-
-
-
 }
 </script>
 <!-- write your code here -->
