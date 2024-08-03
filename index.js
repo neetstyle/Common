@@ -703,18 +703,20 @@ if (reversed == null) { reversed = false; }
 		    velocity = 0;
 		    lastY = getY(event);
 		    lastMoveTime = new Date().getTime();
+			
+			
+		stage.getChildByName("aaaaaa").log.text = 123;		
+			
 		}
 		
 		
-		this.name = "a";
+		this.name = "aaaaaa";
 		
 			
-		//.text = isScrolling;	
-		
 		function doScroll(event) {
 			
 			
-			stage.getChildByName("a").log.text = isScrolling;	
+			
 			
 		    if (isScrolling) {
 		        event.preventDefault();
