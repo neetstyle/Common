@@ -691,9 +691,13 @@ if (reversed == null) { reversed = false; }
 		stage.addEventListener("stagemouseup", endScroll);
 		
 		// タッチイベントのリスナーを追加
-		content.addEventListener("touchstart", startScroll);
+		//content.addEventListener("touchstart", startScroll);
+		content.addEventListener("touchstart", startScroll, { capture: true });
 		stage.addEventListener("touchmove", doScroll);
 		stage.addEventListener("touchend", endScroll);
+		
+		
+		
 		
 		function startScroll(event) {
 		    event.preventDefault();
@@ -917,6 +921,12 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// レイヤー_2
+	this.text = new cjs.Text("3", "50px 'MS Gothic'", "#FF0000");
+	this.text.lineHeight = 52;
+	this.text.lineWidth = 598;
+	this.text.parent = this;
+	this.text.setTransform(2,167.15);
+
 	this.log3 = new cjs.Text("1", "50px 'MS Gothic'", "#FF0000");
 	this.log3.name = "log3";
 	this.log3.lineHeight = 52;
@@ -938,7 +948,7 @@ if (reversed == null) { reversed = false; }
 	this.log1.parent = this;
 	this.log1.setTransform(2,2);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.log1},{t:this.log2},{t:this.log3}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.log1},{t:this.log2},{t:this.log3},{t:this.text}]}).wait(1));
 
 	// Menu
 	this.HeaderMC = new lib.HeaderMC();
