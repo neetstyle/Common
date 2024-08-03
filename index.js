@@ -705,7 +705,7 @@ if (reversed == null) { reversed = false; }
 		    lastMoveTime = new Date().getTime();
 			
 			
-		stage.getChildByName("aaaaaa").log.text = 123;		
+		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();		
 			
 		}
 		
@@ -716,7 +716,7 @@ if (reversed == null) { reversed = false; }
 		function doScroll(event) {
 			
 			
-			
+			stage.getChildByName("aaaaaa").log2.text = isScrolling +" / " +new Date().getTime();	
 			
 		    if (isScrolling) {
 		        event.preventDefault();
@@ -755,6 +755,9 @@ if (reversed == null) { reversed = false; }
 		    }
 		    // 慣性スクロールのためのタイマーを開始
 		    createjs.Ticker.addEventListener("tick", applyInertia);
+		
+			stage.getChildByName("aaaaaa").log3.text = new Date().getTime();	
+			
 		}
 		
 		function applyInertia(event) {
@@ -914,14 +917,28 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// レイヤー_2
-	this.log = new cjs.Text("1", "50px 'MS Gothic'");
-	this.log.name = "log";
-	this.log.lineHeight = 52;
-	this.log.lineWidth = 598;
-	this.log.parent = this;
-	this.log.setTransform(110.05,27);
+	this.log3 = new cjs.Text("1", "50px 'MS Gothic'", "#FF0000");
+	this.log3.name = "log3";
+	this.log3.lineHeight = 52;
+	this.log3.lineWidth = 598;
+	this.log3.parent = this;
+	this.log3.setTransform(2,112.1);
 
-	this.timeline.addTween(cjs.Tween.get(this.log).wait(1));
+	this.log2 = new cjs.Text("1", "50px 'MS Gothic'", "#FF0000");
+	this.log2.name = "log2";
+	this.log2.lineHeight = 52;
+	this.log2.lineWidth = 598;
+	this.log2.parent = this;
+	this.log2.setTransform(2,57.05);
+
+	this.log1 = new cjs.Text("1", "50px 'MS Gothic'", "#FF0000");
+	this.log1.name = "log1";
+	this.log1.lineHeight = 52;
+	this.log1.lineWidth = 598;
+	this.log1.parent = this;
+	this.log1.setTransform(2,2);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.log1},{t:this.log2},{t:this.log3}]}).wait(1));
 
 	// Menu
 	this.HeaderMC = new lib.HeaderMC();
