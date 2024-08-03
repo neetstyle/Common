@@ -702,7 +702,7 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		canvas.addEventListener("touchstart", function(event) {
+		stage.addEventListener("touchstart", function(event) {
 			event.preventDefault();
 			stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
 		}); // 
