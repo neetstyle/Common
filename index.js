@@ -380,7 +380,7 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("rgba(153,153,153,0.518)").s().p("EhX4AH0IAAvnMCvxAAAIAAPng");
+	this.shape.graphics.f("#999999").s().p("EhX4AH0IAAvnMCvxAAAIAAPng");
 	this.shape.setTransform(562.5,50);
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
@@ -469,6 +469,7 @@ if (reversed == null) { reversed = false; }
 	// レイヤー_1
 	this.GeneratorCellMC = new lib.GeneratorCellMC();
 	this.GeneratorCellMC.name = "GeneratorCellMC";
+	this.GeneratorCellMC.setTransform(65,20);
 
 	this.timeline.addTween(cjs.Tween.get(this.GeneratorCellMC).wait(1));
 
@@ -480,7 +481,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.GeneratorContentMC, new cjs.Rectangle(-2,-2,1127,204), null);
+}).prototype = getMCSymbolPrototype(lib.GeneratorContentMC, new cjs.Rectangle(0,0,1125,222), null);
 
 
 (lib.FooterMC = function(mode,startPosition,loop,reversed) {
