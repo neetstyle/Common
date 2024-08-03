@@ -705,17 +705,21 @@ if (reversed == null) { reversed = false; }
 		    lastMoveTime = new Date().getTime();
 		}
 		
+		
+		this.name = "a";
+		
+			
+		//.text = isScrolling;	
+		
 		function doScroll(event) {
 			
-		
-		alert("doScroll");
-				
+			
 			
 		    if (isScrolling) {
 		        event.preventDefault();
 		        var dy = getY(event) - startY;
 		        content.y = startScrollY + dy;
-		
+		/*
 		        // スクロールの境界を設定
 		        if (content.y < minY) {
 		            content.y = minY;
@@ -723,7 +727,7 @@ if (reversed == null) { reversed = false; }
 		        if (content.y > maxY) {
 		            content.y = maxY;
 		        }
-		
+		*/
 		        // 慣性用の速度を計算
 		        var now = new Date().getTime();
 		        var timeDiff = now - lastMoveTime;
@@ -732,6 +736,12 @@ if (reversed == null) { reversed = false; }
 		        }
 		        lastY = getY(event);
 		        lastMoveTime = now;
+		
+		
+			stage.getChildByName("a").log.text = velocity;	
+			
+			
+			
 		    }
 		}
 		
@@ -900,6 +910,16 @@ if (reversed == null) { reversed = false; }
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// レイヤー_2
+	this.log = new cjs.Text("1", "50px 'MS Gothic'");
+	this.log.name = "log";
+	this.log.lineHeight = 52;
+	this.log.lineWidth = 598;
+	this.log.parent = this;
+	this.log.setTransform(110.05,27);
+
+	this.timeline.addTween(cjs.Tween.get(this.log).wait(1));
 
 	// Menu
 	this.HeaderMC = new lib.HeaderMC();
