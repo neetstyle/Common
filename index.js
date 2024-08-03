@@ -948,7 +948,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// レイヤー_2
-	this.text = new cjs.Text("15", "50px 'MS Gothic'", "#FF0000");
+	this.text = new cjs.Text("16", "50px 'MS Gothic'", "#FF0000");
 	this.text.lineHeight = 52;
 	this.text.lineWidth = 90;
 	this.text.parent = this;
