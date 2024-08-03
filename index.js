@@ -663,17 +663,8 @@ if (reversed == null) { reversed = false; }
 		}
 				
 		this.GeneratorPanelMC.GeneratorContentMC.GeneratorCellMC.visible = false;	
-				
-		
-		
-		
 		
 		this.GeneratorPanelMC.GeneratorContentMC.ContentBGMC.scaleY = (20 + 220 * buildingData.length) * 0.01;
-		
-		
-		
-		
-		
 		var content = this.GeneratorPanelMC.GeneratorContentMC;
 		var startY;
 		var startScrollY;
@@ -685,50 +676,12 @@ if (reversed == null) { reversed = false; }
 		var lastY;
 		var lastMoveTime;
 		
-		
-		
-		
-		 if (createjs.Touch.isSupported())
-		    createjs.Touch.enable(stage);
-		
-		
-		
 		// マウスイベントのリスナーを追加
 		content.addEventListener("mousedown", startScroll);
 		stage.addEventListener("stagemousemove", doScroll);
 		stage.addEventListener("stagemouseup", endScroll);
 		
-		// タッチイベントのリスナーを追加
-		//content.addEventListener("touchstart", startScroll);
-		//content.addEventListener("touchstart", startScroll, { capture: true });
-		//stage.addEventListener("touchmove", doScroll);
-		//stage.addEventListener("touchend", endScroll);
-		
-		
-		
-		
-		
-		/*
-		
-		stage.addEventListener("stagemousedown", function(event) {
-			event.preventDefault();
-			stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
-		}); // 
-		*/
-		
-		
-		
-		this.name = "aaaaaa";
-		
-		
-		
-		
 		function startScroll(event) {
-			
-		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();		
-			
-			
-			
 		    event.preventDefault();
 		    isScrolling = true;
 		    startY = getY(event);
@@ -736,24 +689,14 @@ if (reversed == null) { reversed = false; }
 		    velocity = 0;
 		    lastY = getY(event);
 		    lastMoveTime = new Date().getTime();
-			
-			
-			
-			
 		}
-		
-		
 			
 		function doScroll(event) {
-			
-			
-			stage.getChildByName("aaaaaa").log2.text = isScrolling +" / " +new Date().getTime();	
-			
 		    if (isScrolling) {
 		        event.preventDefault();
 		        var dy = getY(event) - startY;
 		        content.y = startScrollY + dy;
-		/*
+		
 		        // スクロールの境界を設定
 		        if (content.y < minY) {
 		            content.y = minY;
@@ -761,7 +704,7 @@ if (reversed == null) { reversed = false; }
 		        if (content.y > maxY) {
 		            content.y = maxY;
 		        }
-		*/
+		
 		        // 慣性用の速度を計算
 		        var now = new Date().getTime();
 		        var timeDiff = now - lastMoveTime;
@@ -770,11 +713,6 @@ if (reversed == null) { reversed = false; }
 		        }
 		        lastY = getY(event);
 		        lastMoveTime = now;
-		
-		
-			
-			
-			
 		    }
 		}
 		
@@ -786,9 +724,6 @@ if (reversed == null) { reversed = false; }
 		    }
 		    // 慣性スクロールのためのタイマーを開始
 		    createjs.Ticker.addEventListener("tick", applyInertia);
-		
-			stage.getChildByName("aaaaaa").log3.text = new Date().getTime();	
-			
 		}
 		
 		function applyInertia(event) {
@@ -819,6 +754,15 @@ if (reversed == null) { reversed = false; }
 		    }
 		    return event.stageY;
 		}
+		if (createjs.Touch.isSupported())
+		    createjs.Touch.enable(stage);
+		
+		
+		this.name = "aaaaaa";
+		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
+		 
+		 
+		
 		//1125 * 2436
 		this.canvasScaleX = document.documentElement.clientWidth / 1125;
 		this.canvasScaleY = document.documentElement.clientHeight / 2436;
@@ -952,21 +896,7 @@ if (reversed == null) { reversed = false; }
 	this.text.lineHeight = 52;
 	this.text.lineWidth = 90;
 	this.text.parent = this;
-	this.text.setTransform(2,167.15);
-
-	this.log3 = new cjs.Text("1", "50px 'MS Gothic'", "#FF0000");
-	this.log3.name = "log3";
-	this.log3.lineHeight = 52;
-	this.log3.lineWidth = 598;
-	this.log3.parent = this;
-	this.log3.setTransform(2,112.1);
-
-	this.log2 = new cjs.Text("1", "50px 'MS Gothic'", "#FF0000");
-	this.log2.name = "log2";
-	this.log2.lineHeight = 52;
-	this.log2.lineWidth = 598;
-	this.log2.parent = this;
-	this.log2.setTransform(2,57.05);
+	this.text.setTransform(2,57.05);
 
 	this.log1 = new cjs.Text("1", "50px 'MS Gothic'", "#FF0000");
 	this.log1.name = "log1";
@@ -975,7 +905,7 @@ if (reversed == null) { reversed = false; }
 	this.log1.parent = this;
 	this.log1.setTransform(2,2);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.log1},{t:this.log2},{t:this.log3},{t:this.text}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.log1},{t:this.text}]}).wait(1));
 
 	// Menu
 	this.HeaderMC = new lib.HeaderMC();
