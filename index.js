@@ -680,7 +680,6 @@ if (reversed == null) { reversed = false; }
 		var isScrolling = false;
 		var velocity = 0;
 		var friction = 0.95; // 慣性スクロールの減速率
-		//var minY = stage.canvas.height - content.nominalBounds.height;
 		var minY = -(20 + 220 * buildingData.length) + 1200;
 		var maxY = 0;
 		var lastY;
@@ -691,21 +690,28 @@ if (reversed == null) { reversed = false; }
 		stage.addEventListener("stagemousemove", doScroll);
 		stage.addEventListener("stagemouseup", endScroll);
 		
+		// タッチイベントのリスナーを追加
+		content.addEventListener("touchstart", startScroll);
+		stage.addEventListener("touchmove", doScroll);
+		stage.addEventListener("touchend", endScroll);
+		
 		function startScroll(event) {
+		    event.preventDefault();
 		    isScrolling = true;
-		    startY = event.stageY;
+		    startY = getY(event);
 		    startScrollY = content.y;
 		    velocity = 0;
-		    lastY = event.stageY;
+		    lastY = getY(event);
 		    lastMoveTime = new Date().getTime();
 		}
 		
 		function doScroll(event) {
 		    if (isScrolling) {
-		        var dy = event.stageY - startY;
+		        event.preventDefault();
+		        var dy = getY(event) - startY;
 		        content.y = startScrollY + dy;
 		
-		         // スクロールの境界を設定
+		        // スクロールの境界を設定
 		        if (content.y < minY) {
 		            content.y = minY;
 		        }
@@ -717,9 +723,9 @@ if (reversed == null) { reversed = false; }
 		        var now = new Date().getTime();
 		        var timeDiff = now - lastMoveTime;
 		        if (timeDiff > 0) { // timeDiffがゼロでないことを確認
-		            velocity = (event.stageY - lastY) / timeDiff * 1000; // ピクセル/秒に変換
+		            velocity = (getY(event) - lastY) / timeDiff * 1000; // ピクセル/秒に変換
 		        }
-		        lastY = event.stageY;
+		        lastY = getY(event);
 		        lastMoveTime = now;
 		    }
 		}
@@ -754,6 +760,13 @@ if (reversed == null) { reversed = false; }
 		            createjs.Ticker.removeEventListener("tick", applyInertia);
 		        }
 		    }
+		}
+		
+		function getY(event) {
+		    if (event.touches && event.touches.length > 0) {
+		        return event.touches[0].clientY;
+		    }
+		    return event.stageY;
 		}
 		//1125 * 2436
 		this.canvasScaleX = document.documentElement.clientWidth / 1125;
