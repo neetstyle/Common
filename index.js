@@ -702,10 +702,10 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		stage.addEventListener("touchstart", function(event) {
+		document.addEventListener("touchstart", function(event) {
 			event.preventDefault();
 			stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
-		}, true); // 
+		}); // 
 		
 		
 		
