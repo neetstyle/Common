@@ -324,9 +324,32 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		//元のは非表示
+		this.shape.visible = false;	
+		
+		//当たり判定用のビットマップを生成
+		var hitArea = new createjs.Shape();
+		hitArea.graphics.beginFill("#F00").drawRect(0, 0, 100, 100);
+		var bitmap = new createjs.Bitmap();
+		bitmap.hitArea = hitArea;
+		this.addChild(bitmap);
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("rgba(153,153,153,0.247)").s().p("AnzH0IAAvnIPnAAIAAPng");
+	this.shape.graphics.f("rgba(0,0,0,0.247)").s().p("AnzH0IAAvnIPnAAIAAPng");
 	this.shape.setTransform(50,50);
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
@@ -399,6 +422,91 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.AchievementCellMC, new cjs.Rectangle(-2,-2,1004,204), null);
+
+
+(lib.GeneratorDesciptionMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.scaleX = this.parent.canvasScaleX;
+		this.scaleY = this.parent.canvasScaleX;
+		this.y = document.documentElement.clientHeight / 2;
+		this.x = document.documentElement.clientWidth / 2;
+		this.visible = false;
+		this.CloseButtonMC.scaleX = document.documentElement.clientWidth / 100 / this.parent.canvasScaleX;
+		this.CloseButtonMC.scaleY = document.documentElement.clientHeight / 100 / this.parent.canvasScaleY;	
+		
+		this.ClickHandler_CloseDesciption = function()
+		{
+		//	this.visible = false;
+			
+			
+			createjs.Tween.get(this, {
+				override: true
+			})
+			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
+			.call(() => {
+				this.visible = false;
+		    });		
+			
+			
+		}
+		this.CloseButtonMC.addEventListener("click", this.ClickHandler_CloseDesciption.bind(this));
+		
+		
+		this.Open = function()
+		{
+			this.visible = true;
+			this.scaleX = 0;
+			this.scaleY = 0;	
+			
+			createjs.Tween.get(this, {
+				override: true
+			})
+			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);	
+		}
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// レイヤー_2
+	this.CloseButtonMC = new lib.ButtonMC();
+	this.CloseButtonMC.name = "CloseButtonMC";
+	this.CloseButtonMC.setTransform(500,500,1,1,0,0,0,50,50);
+
+	this.timeline.addTween(cjs.Tween.get(this.CloseButtonMC).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhOHhOHMCcPAAAMAAACcPMicPAAAg");
+	this.shape.setTransform(499.95,500);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#996699").s().p("EhOHBOIMAAAicPMCcPAAAMAAACcPg");
+	this.shape_1.setTransform(499.95,500);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.GeneratorDesciptionMC, new cjs.Rectangle(-2.5,-2.5,1005,1005), null);
 
 
 (lib.GeneratorCellMC = function(mode,startPosition,loop,reversed) {
@@ -688,31 +796,55 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		function ClickHandler_OpneDesciption()
+		if (createjs.Touch.isSupported())
+		    createjs.Touch.enable(stage);
+		
+		
+		this.name = "aaaaaa";
+		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
+		 
+		 
+		
+		//1125 * 2436
+		this.canvasScaleX = document.documentElement.clientWidth / 1125;
+		this.canvasScaleY = document.documentElement.clientHeight / 2436;
+		
+		this.bgMC.scaleX = this.canvasScaleX;
+		this.bgMC.scaleY = this.canvasScaleY;
+		
+		this.HeaderMC.scaleX = this.canvasScaleX;
+		this.HeaderMC.scaleY = this.canvasScaleX;
+		
+		this.FooterMC.scaleX = this.canvasScaleX;
+		this.FooterMC.scaleY = this.canvasScaleX;
+		this.FooterMC.y = 2436 * this.canvasScaleY;
+		this.ClickHandler_OpenDesciption = function ()
 		{
-		alert(1);
+			if(!isScrolled)
+				this.GeneratorDesciptionMC.Open();
 		}
+		
 		function ClickHandler_AddGenerator()
 		{
-		alert(2);
+			
+			
 		}
 			
+		
+		
 		
 				
 		for (let i = 0; i < buildingData.length; i++){
-			let newClip = this.GeneratorPanelMC.GeneratorContentMC.GeneratorCellMC.clone(true);
-			newClip.title.text = buildingData[i]["name"];
-			newClip.price.text = buildingData[i]["price"];
-			newClip.rank.text = 123;
-			newClip.x = 65;
-			newClip.y = 20 + 220 * i;		
-			this.GeneratorPanelMC.GeneratorContentMC.addChild(newClip);
-		
-			newClip.IconButtonMC.addEventListener("click", ClickHandler_OpneDesciption.bind(this));
-			newClip.ButtonMC.addEventListener("click", ClickHandler_AddGenerator.bind(this));
-			
-			
-			}
+			let clip = this.GeneratorPanelMC.GeneratorContentMC.GeneratorCellMC.clone(true);
+			clip.title.text = buildingData[i]["name"];
+			clip.price.text = buildingData[i]["price"];
+			clip.rank.text = 123;
+			clip.x = 65;
+			clip.y = 20 + 220 * i;		
+			this.GeneratorPanelMC.GeneratorContentMC.addChild(clip);
+			clip.IconButtonMC.addEventListener("click", this.ClickHandler_OpenDesciption.bind(this));
+			clip.ButtonMC.addEventListener("click", ClickHandler_AddGenerator.bind(this));
+		}
 				
 		this.GeneratorPanelMC.GeneratorContentMC.GeneratorCellMC.visible = false;	
 		
@@ -733,6 +865,8 @@ if (reversed == null) { reversed = false; }
 		stage.addEventListener("stagemousemove", doScroll);
 		stage.addEventListener("stagemouseup", endScroll);
 		
+		var isScrolled = false;
+		
 		function startScroll(event) {
 		    event.preventDefault();
 		    isScrolling = true;
@@ -741,6 +875,8 @@ if (reversed == null) { reversed = false; }
 		    velocity = 0;
 		    lastY = getY(event);
 		    lastMoveTime = new Date().getTime();
+			
+			isScrolled = false;
 		}
 			
 		function doScroll(event) {
@@ -765,6 +901,8 @@ if (reversed == null) { reversed = false; }
 		        }
 		        lastY = getY(event);
 		        lastMoveTime = now;
+			
+				isScrolled = true;
 		    }
 		}
 		
@@ -806,28 +944,6 @@ if (reversed == null) { reversed = false; }
 		    }
 		    return event.stageY;
 		}
-		if (createjs.Touch.isSupported())
-		    createjs.Touch.enable(stage);
-		
-		
-		this.name = "aaaaaa";
-		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
-		 
-		 
-		
-		//1125 * 2436
-		this.canvasScaleX = document.documentElement.clientWidth / 1125;
-		this.canvasScaleY = document.documentElement.clientHeight / 2436;
-		
-		this.bgMC.scaleX = this.canvasScaleX;
-		this.bgMC.scaleY = this.canvasScaleY;
-		
-		this.HeaderMC.scaleX = this.canvasScaleX;
-		this.HeaderMC.scaleY = this.canvasScaleX;
-		
-		this.FooterMC.scaleX = this.canvasScaleX;
-		this.FooterMC.scaleY = this.canvasScaleX;
-		this.FooterMC.y = 2436 * this.canvasScaleY;
 		this.page = 0;
 		this.GeneratorPanelMC.visible = false;
 		this.UpgradePanelMC.visible = false;
@@ -943,7 +1059,14 @@ if (reversed == null) { reversed = false; }
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
-	// レイヤー_2
+	// Desciption
+	this.GeneratorDesciptionMC = new lib.GeneratorDesciptionMC();
+	this.GeneratorDesciptionMC.name = "GeneratorDesciptionMC";
+	this.GeneratorDesciptionMC.setTransform(562.45,1218,1,1,0,0,0,499.9,500);
+
+	this.timeline.addTween(cjs.Tween.get(this.GeneratorDesciptionMC).wait(1));
+
+	// Log
 	this.text = new cjs.Text("16", "50px 'MS Gothic'", "#FF0000");
 	this.text.lineHeight = 52;
 	this.text.lineWidth = 90;
