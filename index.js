@@ -703,7 +703,7 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		content.addEventListener("touchstart", function (event) {
+		this.bgMC.addEventListener("touchstart", function (event) {
 		event.preventDefault();
 		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
 		});
