@@ -702,16 +702,10 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		
-		this.bgMC.addEventListener("touchstart", function (event) {
-		event.preventDefault();
-		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
-		});
-		
-		
-		
-		
-		
+		stage.addEventListener("touchstart", function(event) {
+			event.preventDefault();
+			stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
+		}, true); // 
 		
 		
 		
