@@ -714,6 +714,7 @@ if (reversed == null) { reversed = false; }
 		function doScroll(event) {
 			
 			
+			stage.getChildByName("a").log.text = isScrolling;	
 			
 		    if (isScrolling) {
 		        event.preventDefault();
@@ -738,7 +739,6 @@ if (reversed == null) { reversed = false; }
 		        lastMoveTime = now;
 		
 		
-			stage.getChildByName("a").log.text = velocity;	
 			
 			
 			
