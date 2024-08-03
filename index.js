@@ -686,15 +686,52 @@ if (reversed == null) { reversed = false; }
 		var lastMoveTime;
 		
 		// マウスイベントのリスナーを追加
-		content.addEventListener("mousedown", startScroll);
-		stage.addEventListener("stagemousemove", doScroll);
-		stage.addEventListener("stagemouseup", endScroll);
+		//content.addEventListener("mousedown", startScroll);
+		//stage.addEventListener("stagemousemove", doScroll);
+		//stage.addEventListener("stagemouseup", endScroll);
 		
 		// タッチイベントのリスナーを追加
 		//content.addEventListener("touchstart", startScroll);
 		//content.addEventListener("touchstart", startScroll, { capture: true });
 		//stage.addEventListener("touchmove", doScroll);
 		//stage.addEventListener("touchend", endScroll);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		function startScroll1(event) {
+		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
+		}
+		
+		function onScroll1(event) {
+		stage.getChildByName("aaaaaa").log2.text = new Date().getTime();	
+		}
+		
+		function endScroll1(event) {
+		stage.getChildByName("aaaaaa").log3.text = new Date().getTime();	
+		}
+		
+		function touchEventPolyfill(element) {
+		    element.addEventListener("mousedown", function(event) {
+		        startScroll1(event);
+		        window.addEventListener("mousemove", onScroll1);
+		        window.addEventListener("mouseup", function endMouseScroll1(event) {
+		            endScroll1(event);
+		            window.removeEventListener("mousemove", onScroll1);
+		            window.removeEventListener("mouseup", endMouseScroll1);
+		        });
+		    });
+		}
+		
+		touchEventPolyfill(content);
+		
+		
+		
 		
 		
 		
@@ -926,7 +963,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// レイヤー_2
-	this.text = new cjs.Text("8", "50px 'MS Gothic'", "#FF0000");
+	this.text = new cjs.Text("9", "50px 'MS Gothic'", "#FF0000");
 	this.text.lineHeight = 52;
 	this.text.lineWidth = 90;
 	this.text.parent = this;
