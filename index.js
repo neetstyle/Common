@@ -691,8 +691,8 @@ if (reversed == null) { reversed = false; }
 		//stage.addEventListener("stagemouseup", endScroll);
 		
 		// タッチイベントのリスナーを追加
-		//content.addEventListener("touchstart", startScroll);
-		content.addEventListener("touchstart", startScroll, { capture: true });
+		content.addEventListener("touchstart", startScroll);
+		//content.addEventListener("touchstart", startScroll, { capture: true });
 		//stage.addEventListener("touchmove", doScroll);
 		//stage.addEventListener("touchend", endScroll);
 		
@@ -700,6 +700,11 @@ if (reversed == null) { reversed = false; }
 		
 		
 		function startScroll(event) {
+			
+		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();		
+			
+			
+			
 		    event.preventDefault();
 		    isScrolling = true;
 		    startY = getY(event);
@@ -709,7 +714,7 @@ if (reversed == null) { reversed = false; }
 		    lastMoveTime = new Date().getTime();
 			
 			
-		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();		
+			
 			
 		}
 		
@@ -921,7 +926,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// レイヤー_2
-	this.text = new cjs.Text("5", "50px 'MS Gothic'", "#FF0000");
+	this.text = new cjs.Text("7", "50px 'MS Gothic'", "#FF0000");
 	this.text.lineHeight = 52;
 	this.text.lineWidth = 90;
 	this.text.parent = this;
