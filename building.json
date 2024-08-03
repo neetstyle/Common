@@ -2,141 +2,161 @@
 	{
 		"id": 1,
 		"name": "Cursor",
-		"icon": "",
-		"price": 15,
-		"sps": 0.1
+		"icon": "Cursor",
+		"cost": 15,
+		"sps": 0.1,
+		"desciption": "10秒毎に自動クリックします。"
 	},
 	{
 		"id": 2,
 		"name": "Grandma",
-		"icon": "",
-		"price": 100,
-		"sps": 1
+		"icon": "Grandma",
+		"cost": 100,
+		"sps": 1,
+		"desciption": "クッキーを焼いてくれる素敵なおばあちゃん。"
 	},
 	{
 		"id": 3,
 		"name": "Farm",
-		"icon": "",
-		"price": 1100,
-		"sps": 8
+		"icon": "Farm",
+		"cost": 1100,
+		"sps": 8,
+		"desciption": "クッキーの種からクッキーを育てます。"
 	},
 	{
 		"id": 4,
 		"name": "Mine",
-		"icon": "",
-		"price": 12000,
-		"sps": 47
+		"icon": "Mine",
+		"cost": 12000,
+		"sps": 47,
+		"desciption": "クッキー生地とチョコチップを掘り出します。"
 	},
 	{
 		"id": 5,
 		"name": "Factory",
-		"icon": "",
-		"price": 130000,
-		"sps": 260
+		"icon": "Factory",
+		"cost": 130000,
+		"sps": 260,
+		"desciption": "大量のクッキーを生産します。"
 	},
 	{
 		"id": 6,
 		"name": "Bank",
-		"icon": "",
-		"price": "1.4 million",
-		"sps": 1400
+		"icon": "Bank",
+		"cost": "1.4 million",
+		"sps": 1400,
+		"desciption": "利子からクッキーを生み出します。"
 	},
 	{
 		"id": 7,
 		"name": "Temple",
-		"icon": "",
-		"price": "20 million",
-		"sps": 7800
+		"icon": "Temple",
+		"cost": "20 million",
+		"sps": 7800,
+		"desciption": "貴重な古代クッキーの宝庫。"
 	},
 	{
 		"id": 8,
 		"name": "Wizard Tower",
-		"icon": "",
-		"price": "330 million",
-		"sps": 44000
+		"icon": "WizardTower",
+		"cost": "330 million",
+		"sps": 44000,
+		"desciption": "魔法の呪文でクッキーを召喚します。"
 	},
 	{
 		"id": 9,
 		"name": "Shipment",
-		"icon": "",
-		"price": "5.1 billion",
-		"sps": 260000
+		"icon": "Shipment",
+		"cost": "5.1 billion",
+		"sps": 260000,
+		"desciption": "クッキー星から新鮮なクッキーを輸送します。"
 	},
 	{
 		"id": 10,
 		"name": "Alchemy Lab",
-		"icon": "",
-		"price": "75 billion",
-		"sps": 1600000
+		"icon": "AlchemyLab",
+		"cost": "75 billion",
+		"sps": 1600000,
+		"desciption": "金をクッキーに変化させます。"
 	},
 	{
 		"id": 11,
 		"name": "Portal",
-		"icon": "",
-		"price": "1 trillion",
-		"sps": 10000000
+		"icon": "Portal",
+		"cost": "1 trillion",
+		"sps": 10000000,
+		"desciption": "クッキー界につながる扉を開きます。"
 	},
 	{
 		"id": 12,
 		"name": "Time Machine",
-		"icon": "",
-		"price": "14 trillion",
-		"sps": 65000000
+		"icon": "TimeMachine",
+		"cost": "14 trillion",
+		"sps": 65000000,
+		"desciption": "食べられる前のクッキーを過去から取り寄せます。"
 	},
 	{
 		"id": 13,
 		"name": "Antimatter Condenser",
-		"icon": "",
-		"price": "170 trillion",
-		"sps": 430000000
+		"icon": "AntimatterCondenser",
+		"cost": "170 trillion",
+		"sps": 430000000,
+		"desciption": "宇宙の反物質を圧縮しクッキーに変換します。"
 	},
 	{
 		"id": 14,
 		"name": "Prism",
-		"icon": "",
-		"price": "2.1 quadrillion",
-		"sps": 2900000000
+		"icon": "Prism",
+		"cost": "2.1 quadrillion",
+		"sps": 2900000000,
+		"desciption": "光をクッキーに変換します。"
 	},
 	{
 		"id": 15,
 		"name": "Chancemaker",
-		"icon": "",
-		"price": "26 quadrillion",
-		"sps": 21000000000
+		"icon": "Chancemaker",
+		"cost": "26 quadrillion",
+		"sps": 21000000000,
+		"desciption": "無からクッキーが生まれる可能性を作ります。"
 	},
 	{
 		"id": 16,
 		"name": "Fractal engine",
-		"icon": "",
-		"price": "310 quadrillion",
-		"sps": 150000000000
+		"icon": "Fractalengine",
+		"cost": "310 quadrillion",
+		"sps": 150000000000,
+		"desciption": "クッキーから更に多くのクッキーを生成します。"
 	},
 	{
 		"id": 17,
 		"name": "Javascript console",
-		"icon": "",
-		"price": "71 quintillion",
-		"sps": 1100000000000
+		"icon": "Javascriptconsole",
+		"cost": "71 quintillion",
+		"sps": 1100000000000,
+		"desciption": "このゲームを記述していることに他ならないコードからクッキーを生み出します。"
 	},
 	{
 		"id": 18,
 		"name": "Idleverse",
-		"icon": "",
-		"price": "12 sextillion",
-		"sps": 8300000000000
+		"icon": "Idleverse",
+		"cost": "12 sextillion",
+		"sps": 8300000000000,
+		"desciption": "test1"
 	},
 	{
 		"id": 19,
-		"name": "Cortex baker",
-		"icon": "",
-		"price": "1.9 septillion",
-		"sps": 64000000000000
+		"name": "CortexBaker",
+		"icon": "CortexBaker",
+		"cost": "1.9 septillion",
+		"sps": 64000000000000,
+		"desciption": "test2"
 	},
 	{
 		"id": 20,
 		"name": "You",
-		"icon": "",
-		"price": "540 septillion",
-		"sps": 510000000000000
+		"icon": "You",
+		"cost": "540 septillion",
+		"sps": 510000000000000,
+		"desciption": "test3"
 	}
 ]
