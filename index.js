@@ -702,7 +702,7 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		stage.addEventListener("touchstart", function(event) {
+		stage.addEventListener("stagemousedown", function(event) {
 			event.preventDefault();
 			stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
 		}); // 
@@ -940,7 +940,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// レイヤー_2
-	this.text = new cjs.Text("12", "50px 'MS Gothic'", "#FF0000");
+	this.text = new cjs.Text("13", "50px 'MS Gothic'", "#FF0000");
 	this.text.lineHeight = 52;
 	this.text.lineWidth = 90;
 	this.text.parent = this;
