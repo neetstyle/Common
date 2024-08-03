@@ -33,20 +33,13 @@
 
 
 <title>index</title>
-<style>
-    .no_scroll {
-        overflow: hidden;
-    }
-</style>
+
+
 <script>
-	window.addEventListener('DOMContentLoaded', () => {
-		const body = document.getElementsByTagName('body')[0];
-		body.classList.toggle('no_scroll');
-	});
-	//https://stackoverflow.com/questions/76842573/a-bug-with-collapsing-when-scrolling-in-web-app-for-telegram-bot
+
 	window.Telegram.WebApp.expand();
-	window.Telegram.WebApp.disableVerticalSwipes();
-	document.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+
+
 </script>
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <script>
