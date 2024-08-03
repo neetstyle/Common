@@ -16,6 +16,22 @@
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
+<script>
+	var buildingData;
+	document.addEventListener("DOMContentLoaded", function() {
+		fetch('building.json')
+		.then(response => response.json())
+	    .then(jsonData => {
+			//jsonData.forEach(item => {
+			//	console.log(`ID: ${item.id}, Name: ${item.name}, Detail: ${item.detail}`);
+			//});
+			buildingData = jsonData;
+    })
+    .catch(error => console.error('Error fetching JSON data:', error));
+});
+</script>
+
+
 <title>index</title>
 <style>
     .no_scroll {

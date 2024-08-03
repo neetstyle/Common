@@ -142,7 +142,7 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(-2.5,-2.5,1130,305), null);
 
 
-(lib.GeneratorPanelMC = function(mode,startPosition,loop,reversed) {
+(lib.GeneratorCellMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -153,30 +153,70 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// レイヤー_2
-	this.text = new cjs.Text("Generator", "100px 'MS Gothic'");
-	this.text.textAlign = "center";
-	this.text.lineHeight = 102;
-	this.text.lineWidth = 1121;
-	this.text.parent = this;
-	this.text.setTransform(562.5,602);
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		
+	}
 
-	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
-	// レイヤー_1
+	// レイヤー_3
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4htXMCvxAAAMAAADavMivxAAAg");
-	this.shape.setTransform(562.5,700);
+	this.shape.graphics.f().s("#00CC33").ss(4,1,1).p("ArtrtIXbAAIAAXbI3bAAg");
+	this.shape.setTransform(102,101);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#3399FF").s().p("EhX4BtYMAAAjavMCvxAAAMAAADavg");
-	this.shape_1.setTransform(562.5,700);
+	this.shape_1.graphics.f("#000000").s().p("ArtLuIAA3bIXbAAIAAXbg");
+	this.shape_1.setTransform(102,101);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
+	// レイヤー_2
+	this.rank = new cjs.Text("999", "50px 'MS Gothic'");
+	this.rank.name = "rank";
+	this.rank.lineHeight = 52;
+	this.rank.lineWidth = 106;
+	this.rank.parent = this;
+	this.rank.setTransform(836.25,73);
+
+	this.price = new cjs.Text("3,000,000", "50px 'MS Gothic'");
+	this.price.name = "price";
+	this.price.lineHeight = 52;
+	this.price.lineWidth = 528;
+	this.price.parent = this;
+	this.price.setTransform(202.1,114);
+
+	this.title = new cjs.Text("sushi shokunin", "50px 'MS Gothic'");
+	this.title.name = "title";
+	this.title.lineHeight = 52;
+	this.title.lineWidth = 596;
+	this.title.parent = this;
+	this.title.setTransform(202,28);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.title},{t:this.price},{t:this.rank}]}).wait(1));
+
+	// レイヤー_1
+	this.shape_2 = new cjs.Shape();
+	this.shape_2.graphics.f().s("#00CC33").ss(4,1,1).p("EhOHgPnMCcPAAAIAAfPMicPAAAg");
+	this.shape_2.setTransform(500,100);
+
+	this.shape_3 = new cjs.Shape();
+	this.shape_3.graphics.f("#CC3333").s().p("EhOHAPoIAA/PMCcPAAAIAAfPg");
+	this.shape_3.setTransform(500,100);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_3},{t:this.shape_2}]}).wait(1));
+
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1405), null);
+}).prototype = getMCSymbolPrototype(lib.GeneratorCellMC, new cjs.Rectangle(-2,-2,1004,204), null);
 
 
 (lib.UpgradeButtonMC = function(mode,startPosition,loop,reversed) {
@@ -327,6 +367,29 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.AchievementButtonMC, new cjs.Rectangle(-2.5,-2.5,230,305), null);
 
 
+(lib.ContentBGMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("rgba(153,153,153,0.518)").s().p("EhX4AH0IAAvnMCvxAAAIAAPng");
+	this.shape.setTransform(562.5,50);
+
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.ContentBGMC, new cjs.Rectangle(0,0,1125,100), null);
+
+
 (lib.bgMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -354,7 +417,7 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-2.5,-2.5,1130,2441), null);
 
 
-(lib.AchievementPanelMC = function(mode,startPosition,loop,reversed) {
+(lib.AchievementCellMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -366,29 +429,58 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// レイヤー_2
-	this.text = new cjs.Text("Achievement", "100px 'MS Gothic'");
-	this.text.textAlign = "center";
-	this.text.lineHeight = 102;
-	this.text.lineWidth = 1121;
-	this.text.parent = this;
-	this.text.setTransform(562.5,602);
+	this.title = new cjs.Text("aaaa", "100px 'MS Gothic'");
+	this.title.name = "title";
+	this.title.textAlign = "center";
+	this.title.lineHeight = 102;
+	this.title.lineWidth = 528;
+	this.title.parent = this;
+	this.title.setTransform(466.15,48.1);
 
-	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.title).wait(1));
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4hljMCvxAAAMAAADLHMivxAAAg");
-	this.shape.setTransform(562.5,699.9977,1,1.0769);
+	this.shape.graphics.f().s("#00CC33").ss(4,1,1).p("EhOHgPnMCcPAAAIAAfPMicPAAAg");
+	this.shape.setTransform(500,100);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#3399FF").s().p("EhX4BlkMAAAjLHMCvxAAAMAAADLHg");
-	this.shape_1.setTransform(562.5,699.9977,1,1.0769);
+	this.shape_1.graphics.f("#CC3333").s().p("EhOHAPoIAA/PMCcPAAAIAAfPg");
+	this.shape_1.setTransform(500,100);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1405), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementCellMC, new cjs.Rectangle(-2,-2,1004,204), null);
+
+
+(lib.GeneratorContentMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.GeneratorCellMC = new lib.GeneratorCellMC();
+	this.GeneratorCellMC.name = "GeneratorCellMC";
+
+	this.timeline.addTween(cjs.Tween.get(this.GeneratorCellMC).wait(1));
+
+	// BG
+	this.ContentBGMC = new lib.ContentBGMC();
+	this.ContentBGMC.name = "ContentBGMC";
+
+	this.timeline.addTween(cjs.Tween.get(this.ContentBGMC).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.GeneratorContentMC, new cjs.Rectangle(-2,-2,1127,204), null);
 
 
 (lib.FooterMC = function(mode,startPosition,loop,reversed) {
@@ -437,6 +529,105 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(-3.1,-2.5,1131.3,305), null);
 
 
+(lib.AchievementPanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_3
+	this.AchievementCellMC = new lib.AchievementCellMC();
+	this.AchievementCellMC.name = "AchievementCellMC";
+	this.AchievementCellMC.setTransform(560,176,1,1,0,0,0,500,100);
+
+	this.timeline.addTween(cjs.Tween.get(this.AchievementCellMC).wait(1));
+
+	// レイヤー_2
+	this.text = new cjs.Text("Achievement", "100px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 102;
+	this.text.lineWidth = 1121;
+	this.text.parent = this;
+	this.text.setTransform(562.5,602);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4htXMCvxAAAMAAADavMivxAAAg");
+	this.shape.setTransform(562.5,700);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BtYMAAAjavMCvxAAAMAAADavg");
+	this.shape_1.setTransform(562.5,700);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1405), null);
+
+
+(lib.GeneratorPanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Mask (mask)
+	var mask = new cjs.Shape();
+	mask._off = true;
+	mask.graphics.p("EhX4BtYMAAAjavMCvxAAAMAAADavg");
+	mask.setTransform(562.5,700);
+
+	// レイヤー_3
+	this.GeneratorContentMC = new lib.GeneratorContentMC();
+	this.GeneratorContentMC.name = "GeneratorContentMC";
+
+	var maskedShapeInstanceList = [this.GeneratorContentMC];
+
+	for(var shapedInstanceItr = 0; shapedInstanceItr < maskedShapeInstanceList.length; shapedInstanceItr++) {
+		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
+	}
+
+	this.timeline.addTween(cjs.Tween.get(this.GeneratorContentMC).wait(1));
+
+	// レイヤー_2
+	this.text = new cjs.Text("Generator", "100px 'MS Gothic'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 102;
+	this.text.lineWidth = 1121;
+	this.text.parent = this;
+	this.text.setTransform(562.5,602);
+
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4htXMCvxAAAMAAADavMivxAAAg");
+	this.shape.setTransform(562.5,700);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4BtYMAAAjavMCvxAAAMAAADavg");
+	this.shape_1.setTransform(562.5,700);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1405), null);
+
+
 // stage content:
 (lib.index = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
@@ -458,6 +649,110 @@ if (reversed == null) { reversed = false; }
 		}
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
+		}
+		for (let i = 0; i < buildingData.length; i++){
+		
+		let newClip = this.GeneratorPanelMC.GeneratorContentMC.GeneratorCellMC.clone(true);
+			newClip.title.text = buildingData[i]["name"];
+			newClip.price.text = buildingData[i]["price"];
+			newClip.rank.text = 123;
+			newClip.x = 65;
+			newClip.y = 20 + 220 * i;		
+			this.GeneratorPanelMC.GeneratorContentMC.addChild(newClip);
+		}
+				
+		this.GeneratorPanelMC.GeneratorContentMC.GeneratorCellMC.visible = false;	
+				
+		
+		
+		
+		
+		this.GeneratorPanelMC.GeneratorContentMC.ContentBGMC.scaleY = (20 + 220 * buildingData.length) * 0.01;
+		
+		
+		
+		
+		
+		var content = this.GeneratorPanelMC.GeneratorContentMC;
+		var startY;
+		var startScrollY;
+		var isScrolling = false;
+		var velocity = 0;
+		var friction = 0.95; // 慣性スクロールの減速率
+		//var minY = stage.canvas.height - content.nominalBounds.height;
+		var minY = -(20 + 220 * buildingData.length) + 1200;
+		var maxY = 0;
+		var lastY;
+		var lastMoveTime;
+		
+		// マウスイベントのリスナーを追加
+		content.addEventListener("mousedown", startScroll);
+		stage.addEventListener("stagemousemove", doScroll);
+		stage.addEventListener("stagemouseup", endScroll);
+		
+		function startScroll(event) {
+		    isScrolling = true;
+		    startY = event.stageY;
+		    startScrollY = content.y;
+		    velocity = 0;
+		    lastY = event.stageY;
+		    lastMoveTime = new Date().getTime();
+		}
+		
+		function doScroll(event) {
+		    if (isScrolling) {
+		        var dy = event.stageY - startY;
+		        content.y = startScrollY + dy;
+		
+		         // スクロールの境界を設定
+		        if (content.y < minY) {
+		            content.y = minY;
+		        }
+		        if (content.y > maxY) {
+		            content.y = maxY;
+		        }
+		
+		        // 慣性用の速度を計算
+		        var now = new Date().getTime();
+		        var timeDiff = now - lastMoveTime;
+		        if (timeDiff > 0) { // timeDiffがゼロでないことを確認
+		            velocity = (event.stageY - lastY) / timeDiff * 1000; // ピクセル/秒に変換
+		        }
+		        lastY = event.stageY;
+		        lastMoveTime = now;
+		    }
+		}
+		
+		function endScroll(event) {
+		    isScrolling = false;
+		    // 速度が小さい場合にリセット
+		    if (Math.abs(velocity) < 0.5) { // 閾値を適切に設定
+		        velocity = 0;
+		    }
+		    // 慣性スクロールのためのタイマーを開始
+		    createjs.Ticker.addEventListener("tick", applyInertia);
+		}
+		
+		function applyInertia(event) {
+		    if (!isScrolling) {
+		        content.y += velocity * event.delta / 1000; // velocityをタイムデルタに合わせて調整
+		        velocity *= friction;
+		
+		        // スクロールの境界を設定
+		        if (content.y < minY) {
+		            content.y = minY;
+		            velocity = 0;
+		        }
+		        if (content.y > maxY) {
+		            content.y = maxY;
+		            velocity = 0;
+		        }
+		
+		        // 慣性がほぼ止まったらタイマーを停止
+		        if (Math.abs(velocity) < 1) {
+		            createjs.Ticker.removeEventListener("tick", applyInertia);
+		        }
+		    }
 		}
 		//1125 * 2436
 		this.canvasScaleX = document.documentElement.clientWidth / 1125;
