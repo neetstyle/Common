@@ -696,6 +696,9 @@ if (reversed == null) { reversed = false; }
 		stage.addEventListener("touchend", endScroll);
 		
 		function startScroll(event) {
+			
+		alert("touchstart");
+			
 		    event.preventDefault();
 		    isScrolling = true;
 		    startY = getY(event);
