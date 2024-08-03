@@ -688,36 +688,37 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		 if (createjs.Touch.isSupported()) {
-		        createjs.Touch.enable(stage);
-		    }
+		 if (createjs.Touch.isSupported())
+		    createjs.Touch.enable(stage);
 		
 		
 		
 		// マウスイベントのリスナーを追加
-		//content.addEventListener("mousedown", startScroll);
-		//stage.addEventListener("stagemousemove", doScroll);
-		//stage.addEventListener("stagemouseup", endScroll);
+		content.addEventListener("mousedown", startScroll);
+		stage.addEventListener("stagemousemove", doScroll);
+		stage.addEventListener("stagemouseup", endScroll);
 		
 		// タッチイベントのリスナーを追加
-		content.addEventListener("touchstart", startScroll);
+		//content.addEventListener("touchstart", startScroll);
 		//content.addEventListener("touchstart", startScroll, { capture: true });
-		stage.addEventListener("touchmove", doScroll);
-		stage.addEventListener("touchend", endScroll);
+		//stage.addEventListener("touchmove", doScroll);
+		//stage.addEventListener("touchend", endScroll);
 		
 		
 		
 		
 		
-		
+		/*
 		
 		stage.addEventListener("stagemousedown", function(event) {
 			event.preventDefault();
 			stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
 		}); // 
+		*/
 		
 		
 		
+		this.name = "aaaaaa";
 		
 		
 		
@@ -741,8 +742,6 @@ if (reversed == null) { reversed = false; }
 			
 		}
 		
-		
-		this.name = "aaaaaa";
 		
 			
 		function doScroll(event) {
@@ -949,7 +948,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// レイヤー_2
-	this.text = new cjs.Text("14", "50px 'MS Gothic'", "#FF0000");
+	this.text = new cjs.Text("15", "50px 'MS Gothic'", "#FF0000");
 	this.text.lineHeight = 52;
 	this.text.lineWidth = 90;
 	this.text.parent = this;
