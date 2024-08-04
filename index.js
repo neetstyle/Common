@@ -126,6 +126,25 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
+	// レイヤー_3
+	this.Sps = new cjs.Text("123", "100px 'MS Gothic'");
+	this.Sps.name = "Sps";
+	this.Sps.textAlign = "center";
+	this.Sps.lineHeight = 102;
+	this.Sps.lineWidth = 848;
+	this.Sps.parent = this;
+	this.Sps.setTransform(590.15,158.1);
+
+	this.Sushi = new cjs.Text("123", "100px 'MS Gothic'");
+	this.Sushi.name = "Sushi";
+	this.Sushi.textAlign = "center";
+	this.Sushi.lineHeight = 102;
+	this.Sushi.lineWidth = 816;
+	this.Sushi.parent = this;
+	this.Sushi.setTransform(564.15,36.05);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.Sushi},{t:this.Sps}]}).wait(1));
+
 	// レイヤー_1
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4gXbMCvxAAAMAAAAu3MivxAAAg");
@@ -422,6 +441,78 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.AchievementCellMC, new cjs.Rectangle(-2,-2,1004,204), null);
+
+
+(lib.SushiMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.bitmap;
+		this.scaleX = this.parent.canvasScaleX;
+		this.scaleY = this.parent.canvasScaleX;
+		this.y = document.documentElement.clientHeight / 2;
+		this.x = document.documentElement.clientWidth / 2;
+		
+		
+		this.sushi = 0;
+		this.totalSushi = 0;
+		
+		this.ClickHandler_Click = function()
+		{
+		
+		
+		var amount = main.computedTouchSps;
+		
+			
+			//var amount = amount ? amount : main.computedTouchSpsCps;
+			
+			main.AddSushi(amount);
+			
+		}
+		
+		this.ButtonMC.addEventListener("click", this.ClickHandler_Click.bind(this));
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// レイヤー_3
+	this.ButtonMC = new lib.ButtonMC();
+	this.ButtonMC.name = "ButtonMC";
+	this.ButtonMC.setTransform(249,249,5.0002,5,0,0,0,49.8,49.8);
+
+	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).wait(1));
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(1,1,1).p("EgnDgnDMBOHAAAMAAABOHMhOHAAAg");
+	this.shape.setTransform(250,250);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#CC6633").s().p("EgnDAnEMAAAhOHMBOHAAAMAAABOHg");
+	this.shape_1.setTransform(250,250);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.SushiMC, new cjs.Rectangle(-1,-1,502,502), null);
 
 
 (lib.GeneratorDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -841,12 +932,173 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
+		this.name = "root";
+		
+		
+		class Generator
+		{
+		    constructor()
+			{
+				this.name ="";
+				this.id = 0;
+				this.sps = 0;
+				this.storedSps = 0;
+				this.amount = 0;
+		    }
+		
+			CalculateSps = function()
+			{
+				this.storedSps = this.sps;
+			}
+		}
+		
+		
+		class Main
+		{
+		    constructor()
+			{
+				this.root = stage.getChildByName("root");
+				
+		        this.sushi = 0;
+		        this.totalSushi = 0;
+				this.upgrade = [];
+				
+				this.sushiPs = 0;
+				this.add = 0;
+				this.computedTouchCps = 0
+				this.fractionSps = 0;
+				
+				this.upgrade.push(1);
+				this.upgrade.push(2);
+				this.upgrade.push(3);
+				this.upgrade.push(4);
+				
+				this.upgrade.push(104);
+				this.upgrade.push(105);
+				this.upgrade.push(106);
+				this.upgrade.push(107);
+				
+				this.computedTouchSps = this.TouchSps();
+				
+				this.cookiesPs ;
+		
+				this.generators = [];
+				
+				this.InitGenerators();
+				
+				this.generators[0].amount = 2;
+				this.generators[1].amount = 3;		
+				
+				
+		
+				this.lastTickTime = 0;
+				this.interval = 1000;
+				
+				createjs.Ticker.framerate = 60;
+				createjs.Ticker.timingMode = createjs.Ticker.RAF;
+				createjs.Ticker.addEventListener("tick", this.MainTick.bind(this));	
+		    }
+		
+		    InitGenerators() 
+			{
+				for (var i = 0; i < buildingData.length; i++)
+				{
+					var	generator = new Generator();
+					generator.name = buildingData[i]["name"];
+					generator.sps = buildingData[i]["sps"];
+					this.generators.push(generator);
+				}
+		    }
+		
+		
+		
+		    AddSushi(value) {
+		        this.sushi += value;
+		        this.totalSushi += value;
+				this.root.HeaderMC.Sushi.text = main.sushi;
+		    }
+		
+			ComputeCps = function(base,mult,bonus)
+			{
+				if (!bonus) bonus=0;
+				return ((base)*(Math.pow(2,mult))+bonus);
+			}
+		
+		    TouchSps() {
+		
+				var add = 0;
+		
+				//Fingers
+				for (i = 0; i < upgradeData.length; i++)
+				{
+					if(upgradeData[i].type == 2 && upgradeData[i].type2 == 3)
+					if(this.upgrade.includes(upgradeData[i].id))
+						add *= this.cookiesPs * upgradeData[i].sps;
+				}
+				
+				//Pointer
+				for (i = 0; i < upgradeData.length; i++)
+				{
+					if(upgradeData[i].type == 1)
+					if(this.upgrade.includes(upgradeData[i].id))
+						add += this.cookiesPs * upgradeData[i].sps;
+				}
+		
+				var mult=1;
+				var out = mult * this.ComputeCps(1, 1, add);
+		
+				
+			
+				return out;
+		    }
+		
+			CalculateGains = function()
+			{
+				this.sushiPs=0;
+				var mult=1;
+		
+				for (i = 0; i < this.generators.length; i++)
+				{
+					this.generators[i].CalculateSps();
+					this.generators[i].storedTotalSps = this.generators[i].amount * this.generators[i].storedSps;
+					
+					this.sushiPs += this.generators[i].storedTotalSps;
+				}
+				this.root.HeaderMC.Sps.text = "毎秒 : " + this.sushiPs;
+			}
+		
+		
+			MainTick = function(event)
+			{
+				var now = createjs.Ticker.getTime();
+				var delta = now - this.lastTickTime;
+				while (delta >= this.interval) {
+					//console.log("1秒経過");
+					
+					this.CalculateGains();
+					var ammount = this.sushiPs + this.fractionSps;
+					this.fractionSps = ammount - Math.floor(ammount);
+					ammount -= this.fractionSps;
+					this.AddSushi(ammount);
+					
+					delta -= this.interval;
+					this.lastTickTime += this.interval;
+				}
+				this.lastTickTime = now - delta;
+			}
+		
+		
+		
+		
+		}
+		
+		main = new Main();
 		if (createjs.Touch.isSupported())
 		    createjs.Touch.enable(stage);
 		
 		
-		this.name = "aaaaaa";
-		stage.getChildByName("aaaaaa").log1.text = new Date().getTime();	
+		//this.name = "root";
+		//stage.getChildByName("root").log1.text = new Date().getTime();	
 		 
 		 
 		
@@ -1130,14 +1382,14 @@ if (reversed == null) { reversed = false; }
 	this.text.lineHeight = 52;
 	this.text.lineWidth = 90;
 	this.text.parent = this;
-	this.text.setTransform(2,57.05);
+	this.text.setTransform(34,-249.05);
 
 	this.log1 = new cjs.Text("1", "50px 'MS Gothic'", "#FF0000");
 	this.log1.name = "log1";
 	this.log1.lineHeight = 52;
-	this.log1.lineWidth = 598;
+	this.log1.lineWidth = 580;
 	this.log1.parent = this;
-	this.log1.setTransform(2,2);
+	this.log1.setTransform(24.05,-334.1);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.log1},{t:this.text}]}).wait(1));
 
@@ -1179,6 +1431,13 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.UpgradePanelMC).wait(1));
 
+	// Sushi
+	this.SushiMC = new lib.SushiMC();
+	this.SushiMC.name = "SushiMC";
+	this.SushiMC.setTransform(562.5,1218,1,1,0,0,0,250,250);
+
+	this.timeline.addTween(cjs.Tween.get(this.SushiMC).wait(1));
+
 	// BG
 	this.bgMC = new lib.bgMC();
 	this.bgMC.name = "bgMC";
@@ -1188,7 +1447,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(559.4,1215.5,568.8000000000001,1223);
+p.nominalBounds = new cjs.Rectangle(559.4,881.9,568.8000000000001,1556.6);
 // library properties:
 lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',

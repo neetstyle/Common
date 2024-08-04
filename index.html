@@ -26,9 +26,18 @@
 			//	console.log(`ID: ${item.id}, Name: ${item.name}, Detail: ${item.detail}`);
 			//});
 			buildingData = jsonData;
-    })
-    .catch(error => console.error('Error fetching JSON data:', error));
-});
+    	})
+    	.catch(error => console.error('Error fetching JSON data:', error));
+	});
+	var upgradeData;
+	document.addEventListener("DOMContentLoaded", function() {
+		fetch('upgrade.json')
+		.then(response => response.json())
+	    .then(jsonData => {
+			upgradeData = jsonData;
+    	})
+    	.catch(error => console.error('Error fetching JSON data:', error));
+	});
 </script>
 
 
@@ -55,7 +64,7 @@
 	document.head.appendChild(script);
 </script>
 <script>
-var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, main;
 
 function init() {
 	canvas = document.getElementById("canvas");

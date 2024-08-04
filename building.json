@@ -1,162 +1,182 @@
 [
 	{
 		"id": 1,
-		"name": "Cursor",
+		"name": "カーソル",
 		"icon": "Cursor",
 		"cost": 15,
+		"display_cost": 15,
 		"sps": 0.1,
 		"desciption": "10秒毎に自動クリックします。"
 	},
 	{
 		"id": 2,
-		"name": "Grandma",
+		"name": "グランマ",
 		"icon": "Grandma",
 		"cost": 100,
+		"display_cost": 100,
 		"sps": 1,
 		"desciption": "クッキーを焼いてくれる素敵なおばあちゃん。"
 	},
 	{
 		"id": 3,
-		"name": "Farm",
+		"name": "農場",
 		"icon": "Farm",
 		"cost": 1100,
+		"display_cost": 1100,
 		"sps": 8,
 		"desciption": "クッキーの種からクッキーを育てます。"
 	},
 	{
 		"id": 4,
-		"name": "Mine",
+		"name": "鉱山",
 		"icon": "Mine",
 		"cost": 12000,
+		"display_cost": 12000,
 		"sps": 47,
 		"desciption": "クッキー生地とチョコチップを掘り出します。"
 	},
 	{
 		"id": 5,
-		"name": "Factory",
+		"name": "工場",
 		"icon": "Factory",
 		"cost": 130000,
+		"display_cost": 130000,
 		"sps": 260,
 		"desciption": "大量のクッキーを生産します。"
 	},
 	{
 		"id": 6,
-		"name": "Bank",
+		"name": "銀行",
 		"icon": "Bank",
-		"cost": "1.4 million",
+		"cost": 1400000,
+		"display_cost": "1.4 million",
 		"sps": 1400,
 		"desciption": "利子からクッキーを生み出します。"
 	},
 	{
 		"id": 7,
-		"name": "Temple",
+		"name": "神殿",
 		"icon": "Temple",
-		"cost": "20 million",
+		"cost": 20000000,
+		"display_cost": "20 million",
 		"sps": 7800,
 		"desciption": "貴重な古代クッキーの宝庫。"
 	},
 	{
 		"id": 8,
-		"name": "Wizard Tower",
+		"name": "魔法使いの塔",
 		"icon": "WizardTower",
-		"cost": "330 million",
+		"cost": 330000000,
+		"display_cost": "330 million",
 		"sps": 44000,
 		"desciption": "魔法の呪文でクッキーを召喚します。"
 	},
 	{
 		"id": 9,
-		"name": "Shipment",
+		"name": "宇宙船",
 		"icon": "Shipment",
-		"cost": "5.1 billion",
+		"cost": 5100000000,
+		"display_cost": "5.1 billion",
 		"sps": 260000,
 		"desciption": "クッキー星から新鮮なクッキーを輸送します。"
 	},
 	{
 		"id": 10,
-		"name": "Alchemy Lab",
+		"name": "錬金術室",
 		"icon": "AlchemyLab",
-		"cost": "75 billion",
+		"cost": 75000000000,
+		"display_cost": "75 billion",
 		"sps": 1600000,
 		"desciption": "金をクッキーに変化させます。"
 	},
 	{
 		"id": 11,
-		"name": "Portal",
+		"name": "ポータル",
 		"icon": "Portal",
-		"cost": "1 trillion",
+		"cost": 1000000000000,
+		"display_cost": "1 trillion",
 		"sps": 10000000,
 		"desciption": "クッキー界につながる扉を開きます。"
 	},
 	{
 		"id": 12,
-		"name": "Time Machine",
+		"name": "タイムマシン",
 		"icon": "TimeMachine",
-		"cost": "14 trillion",
+		"cost": 14000000000000,
+		"display_cost": "14 trillion",
 		"sps": 65000000,
 		"desciption": "食べられる前のクッキーを過去から取り寄せます。"
 	},
 	{
 		"id": 13,
-		"name": "Antimatter Condenser",
+		"name": "反物質凝縮器",
 		"icon": "AntimatterCondenser",
-		"cost": "170 trillion",
+		"cost": 170000000000000,
+		"display_cost": "170 trillion",
 		"sps": 430000000,
 		"desciption": "宇宙の反物質を圧縮しクッキーに変換します。"
 	},
 	{
 		"id": 14,
-		"name": "Prism",
+		"name": "プリズム",
 		"icon": "Prism",
-		"cost": "2.1 quadrillion",
+		"cost": 2100000000000000,
+		"display_cost": "2.1 quadrillion",
 		"sps": 2900000000,
 		"desciption": "光をクッキーに変換します。"
 	},
 	{
 		"id": 15,
-		"name": "Chancemaker",
+		"name": "チャンスメーカー",
 		"icon": "Chancemaker",
-		"cost": "26 quadrillion",
+		"cost": 26000000000000000,
+		"display_cost": "26 quadrillion",
 		"sps": 21000000000,
 		"desciption": "無からクッキーが生まれる可能性を作ります。"
 	},
 	{
 		"id": 16,
-		"name": "Fractal engine",
+		"name": "自己無限生成エンジン",
 		"icon": "Fractalengine",
-		"cost": "310 quadrillion",
+		"cost": 310000000000000000,
+		"display_cost": "310 quadrillion",
 		"sps": 150000000000,
 		"desciption": "クッキーから更に多くのクッキーを生成します。"
 	},
 	{
 		"id": 17,
-		"name": "Javascript console",
+		"name": "Javascriptコンソール",
 		"icon": "Javascriptconsole",
-		"cost": "71 quintillion",
+		"cost": 71000000000000000000,
+		"display_cost": "71 quintillion",
 		"sps": 1100000000000,
 		"desciption": "このゲームを記述していることに他ならないコードからクッキーを生み出します。"
 	},
 	{
 		"id": 18,
-		"name": "Idleverse",
+		"name": "遊休宇宙",
 		"icon": "Idleverse",
-		"cost": "12 sextillion",
+		"cost": 1.2e+22,
+		"display_cost": "12 sextillion",
 		"sps": 8300000000000,
-		"desciption": "test1"
+		"desciption": "この宇宙の外側にある別の宇宙を征服し、そこからクッキーを収奪してきてくれる施設。クッキーは多元宇宙をも超越する。"
 	},
 	{
 		"id": 19,
-		"name": "CortexBaker",
+		"name": "コーテックス・ベイカー",
 		"icon": "CortexBaker",
-		"cost": "1.9 septillion",
+		"cost": 1.9e+24,
+		"display_cost": "1.9 septillion",
 		"sps": 64000000000000,
-		"desciption": "test2"
+		"desciption": "夢からクッキーを生み出す。もうなんでもアリ。"
 	},
 	{
 		"id": 20,
-		"name": "You",
+		"name": "あなた",
 		"icon": "You",
-		"cost": "540 septillion",
+		"cost": 5.4e+26,
+		"display_cost": "540 septillion",
 		"sps": 510000000000000,
-		"desciption": "test3"
+		"desciption": "あなた"
 	}
 ]
