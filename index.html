@@ -2,8 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
+<meta name="authoring-tool" content="Adobe_Animate_CC">
+<title>index</title>
 
+
+<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
 <meta name='apple-mobile-web-app-capable' content='yes' />
 <meta name='full-screen' content='true' />
 <meta name='x5-fullscreen' content='true' />
@@ -13,9 +16,7 @@
 <meta http-equiv='expires' content='0' />
 <meta http-equiv="pragma" content="no-cache">  
 <meta http-equiv="Cache-Control" content="no-cache, no-store, no-siteapp" />
-
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
 <script>
 	var buildingData;
 	document.addEventListener("DOMContentLoaded", function() {
@@ -39,8 +40,6 @@
     	.catch(error => console.error('Error fetching JSON data:', error));
 	});
 </script>
-
-
 <title>index</title>
 <style>
     .no_scroll {
@@ -57,32 +56,53 @@
 	window.Telegram.WebApp.disableVerticalSwipes();
 	document.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
 </script>
-<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 <script>
-	var script = document.createElement('script');
-	script.src = 'index.js?a=' + Math.random();
-	document.head.appendChild(script);
+	WebFont.load({
+	    google: {
+	        families: ['Potta One']
+	    }
+	});
 </script>
+
+
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script src="index.js"></script>
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, main;
-
 function init() {
 	canvas = document.getElementById("canvas");
 	anim_container = document.getElementById("animation_container");
 	dom_overlay_container = document.getElementById("dom_overlay_container");
 	var comp=AdobeAn.getComposition("969C0F3DFF839440AC4059700CCE57F9");
 	var lib=comp.getLibrary();
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+	var lib=comp.getLibrary();
+	loader.loadManifest(lib.properties.manifest);
+
 
 	//resize
 	lib.properties.width = document.documentElement.clientWidth;
 	lib.properties.height = document.documentElement.clientHeight;
 
-	handleComplete({},comp);
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();	
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
 }
 function handleComplete(evt,comp) {
 	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
 	var lib=comp.getLibrary();
 	var ss=comp.getSpriteSheet();
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
 	exportRoot = new lib.index();
 	stage = new lib.Stage(canvas);	
 	//Registers the "tick" event listener.
@@ -100,9 +120,9 @@ function handleComplete(evt,comp) {
 <!-- write your code here -->
 </head>
 <body onload="init();" style="margin:0px;">
-	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:500px; height:500px">
-		<canvas id="canvas" width="500" height="500" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:500px; height:500px; position: absolute; left: 0px; top: 0px; display: block;">
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1125px; height:2436px">
+		<canvas id="canvas" width="1125" height="2436" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1125px; height:2436px; position: absolute; left: 0px; top: 0px; display: block;">
 		</div>
 	</div>
 </body>
