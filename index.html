@@ -5,6 +5,7 @@
 <meta name="authoring-tool" content="Adobe_Animate_CC">
 <title>index</title>
 
+
 <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
 <meta name='apple-mobile-web-app-capable' content='yes' />
 <meta name='full-screen' content='true' />
@@ -17,7 +18,27 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, no-siteapp" />
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-
+	var buildingData;
+	document.addEventListener("DOMContentLoaded", function() {
+		fetch('building.json')
+		.then(response => response.json())
+	    .then(jsonData => {
+			//jsonData.forEach(item => {
+			//	console.log(`ID: ${item.id}, Name: ${item.name}, Detail: ${item.detail}`);
+			//});
+			buildingData = jsonData;
+    	})
+    	.catch(error => console.error('Error fetching JSON data:', error));
+	});
+	var upgradeData;
+	document.addEventListener("DOMContentLoaded", function() {
+		fetch('upgrade.json')
+		.then(response => response.json())
+	    .then(jsonData => {
+			upgradeData = jsonData;
+    	})
+    	.catch(error => console.error('Error fetching JSON data:', error));
+	});
 </script>
 <title>index</title>
 <style>
@@ -25,9 +46,26 @@
         overflow: hidden;
     }
 </style>
+<script>
+	window.addEventListener('DOMContentLoaded', () => {
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.toggle('no_scroll');
+	});
+	//https://stackoverflow.com/questions/76842573/a-bug-with-collapsing-when-scrolling-in-web-app-for-telegram-bot
+	window.Telegram.WebApp.expand();
+	window.Telegram.WebApp.disableVerticalSwipes();
+	document.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+</script>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-
+<script>
+	WebFont.load({
+	    google: {
+	        families: ['Potta One']
+	    }
+	});
+</script>
 <script>
 	var script = document.createElement('script');
 	script.src = 'index.js?a=' + Math.random();

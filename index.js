@@ -217,9 +217,10 @@ if (reversed == null) { reversed = false; }
 		this.content;
 		this.count;
 		
-		this.Init2 = function() 
+		this.Reload = function() 
 		{
-			//this.parent.ContentBGMC.scaleY = (0 + 280 * this.count) * 0.01;
+			this.content.ContentBGMC.scaleY = (0 + 280 * this.count) * 0.01;
+			minY = -(50 + 280 * this.count) + 914;
 		}
 		
 		this.content.ContentBGMC.scaleY = (0 + 280 * this.count) * 0.01;
@@ -1505,7 +1506,7 @@ if (reversed == null) { reversed = false; }
 				let clip = this.GeneratorContentMC.GeneratorCellMC.clone(true);
 				clip.title.text = buildingData[i]["name"];
 				clip.cost.text = buildingData[i]["display_cost"];
-				clip.amount.text = 123;
+				clip.amount.text = main.generators[i].amount;
 				clip.x = 0;
 				clip.y = 0 + 280 * i;
 				clip.dataIndex = i;
@@ -1534,15 +1535,31 @@ if (reversed == null) { reversed = false; }
 		this.Open =  function() 
 		{
 			this.ScrollMC.Open();
+			this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));	
 		}
 		
 		this.Close =  function() 
 		{
 			this.ScrollMC.Close();
+			createjs.Ticker.removeEventListener("tick", this._Tick);	
 		}
 		
 		this.ScrollMC.content = this.GeneratorContentMC;
-		this.ScrollMC.count = buildingData.length;
+		
+		
+		this._Tick;
+		this.Tick = function(event)
+		{
+			var dispCount = 0;	
+			
+			for (var i = 0; i < main.generators.length; i++)
+			{
+				if(!main.generators[i].locked)
+					dispCount++;
+			}
+			this.ScrollMC.count = dispCount;
+			this.ScrollMC.Reload();
+		}
 	}
 
 	// actions tween:
@@ -1615,9 +1632,11 @@ if (reversed == null) { reversed = false; }
 				this.id = 0;
 				this.sps = 0;
 				this.storedSps = 0;
-				this.amount = 0;
+				this.amount = 0;//bought
 				this.totalSushies = 0;
 				this.storedTotalSps = 0;
+				this.baseCost = 0;//basePrice
+				this.locked = true;
 		    }
 		
 			CalculateSps = function()
@@ -1679,6 +1698,8 @@ if (reversed == null) { reversed = false; }
 					var	generator = new Generator();
 					generator.name = buildingData[i]["name"];
 					generator.sps = buildingData[i]["sps"];
+					generator.baseCost = buildingData[i]["cost"];
+					
 					this.generators.push(generator);
 				}
 		    }
@@ -1747,23 +1768,15 @@ if (reversed == null) { reversed = false; }
 					for (var i = 0; i < this.generators.length; i++)
 					{
 						this.generators[i].totalSushies += this.generators[i].storedTotalSps;
+						if (this.sushi >= this.generators[i].baseCost || this.generators[i].amount > 0)
+						{
+							this.generators[i].locked = false;
+						}
+						else
+						{
+							this.generators[i].locked=true;	
+						}
 					}
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 					var ammount = this.sushiPs + this.fractionSps;
 					this.fractionSps = ammount - Math.floor(ammount);
 					ammount -= this.fractionSps;
@@ -1961,11 +1974,11 @@ if (reversed == null) { reversed = false; }
 	// Desciption
 	this.UpgradeDesciptionMC = new lib.UpgradeDesciptionMC();
 	this.UpgradeDesciptionMC.name = "UpgradeDesciptionMC";
-	this.UpgradeDesciptionMC.setTransform(-1264.25,500,1,1,0,0,0,499.9,500);
+	this.UpgradeDesciptionMC.setTransform(-1293.9,985.5,1,1,0,0,0,522,572.5);
 
 	this.GeneratorDesciptionMC = new lib.GeneratorDesciptionMC();
 	this.GeneratorDesciptionMC.name = "GeneratorDesciptionMC";
-	this.GeneratorDesciptionMC.setTransform(-2654.25,500,1,1,0,0,0,499.9,500);
+	this.GeneratorDesciptionMC.setTransform(-2412.7,985.5,1,1,0,0,0,522,572.5);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC}]}).wait(1));
 
