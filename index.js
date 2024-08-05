@@ -3,10 +3,10 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[1617,0,417,182],[1127,0,488,182],[1127,184,262,232],[0,0,1125,300],[1391,184,262,232],[0,302,1125,278],[1391,418,209,209],[1655,184,262,232],[1602,418,137,86],[1127,418,262,232]]},
-		{name:"index_atlas_2", frames: [[0,1589,1123,305],[0,0,1125,985],[0,987,1000,600]]},
-		{name:"index_atlas_3", frames: [[0,0,1044,1145]]},
-		{name:"index_atlas_4", frames: [[0,0,1044,1145]]}
+		{name:"index_atlas_1", frames: [[0,0,1044,1145]]},
+		{name:"index_atlas_2", frames: [[0,0,1044,1145]]},
+		{name:"index_atlas_3", frames: [[0,1589,1123,305],[0,0,1125,985],[0,987,1000,600]]},
+		{name:"index_atlas_4", frames: [[1617,0,417,182],[1127,0,488,182],[1127,184,262,232],[0,0,1125,300],[1391,184,262,232],[0,302,1125,278],[1391,418,209,209],[1655,184,262,232],[1602,418,137,86],[1127,418,262,232]]}
 ];
 
 
@@ -31,28 +31,28 @@ lib.ssMetadata = [
 
 
 (lib.CachedBmp_2 = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(0);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.CachedBmp_1 = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(1);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib._Dialog = function() {
 	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementButton = function() {
+(lib.CachedBmp_1 = function() {
+	this.initialize(ss["index_atlas_4"]);
+	this.gotoAndStop(1);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib._Dialog = function() {
 	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(0);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.achievementButton = function() {
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
@@ -65,77 +65,77 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 
 (lib.cellBG = function() {
-	this.initialize(ss["index_atlas_2"]);
-	this.gotoAndStop(0);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.dialogBG = function() {
 	this.initialize(ss["index_atlas_3"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
+(lib.dialogBG = function() {
+	this.initialize(ss["index_atlas_2"]);
+	this.gotoAndStop(0);
+}).prototype = p = new cjs.Sprite();
+
+
+
 (lib.footer = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.generatorButton = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.header = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.iconFrame = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.panel = function() {
-	this.initialize(ss["index_atlas_2"]);
+	this.initialize(ss["index_atlas_3"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.shopButton = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.sushi = function() {
-	this.initialize(ss["index_atlas_2"]);
+	this.initialize(ss["index_atlas_3"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.sushiIcon = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.upgradeButton = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
@@ -775,49 +775,49 @@ if (reversed == null) { reversed = false; }
 
 	// Text
 	this.instance_1 = new lib.CachedBmp_1();
-	this.instance_1.setTransform(270.6,153,0.5,0.5);
+	this.instance_1.setTransform(271.6,153,0.5,0.5);
 
-	this.desciption = new cjs.Text("『押すだけで寿司が出てくる。\nたまにネタとシャリが逆さまですが。』", "50px 'Potta One'");
+	this.desciption = new cjs.Text("「押すだけで寿司が出てくる。\nたまにネタとシャリが逆さまですが。」", "50px 'Potta One'");
 	this.desciption.name = "desciption";
 	this.desciption.lineHeight = 74;
-	this.desciption.lineWidth = 900;
+	this.desciption.lineWidth = 901;
 	this.desciption.parent = this;
-	this.desciption.setTransform(77.85,337.35);
+	this.desciption.setTransform(81.85,338.35);
 
-	this.desciption3 = new cjs.Text("これまで[x]Sushi生産", "50px 'MS Gothic'");
+	this.desciption3 = new cjs.Text("各SushiFactoryが毎秒100.000million 生産", "50px 'Potta One'");
 	this.desciption3.name = "desciption3";
-	this.desciption3.lineHeight = 52;
-	this.desciption3.lineWidth = 896;
+	this.desciption3.lineHeight = 72;
+	this.desciption3.lineWidth = 938;
 	this.desciption3.parent = this;
-	this.desciption3.setTransform(62.05,948);
+	this.desciption3.setTransform(57,938);
 
-	this.desciption2 = new cjs.Text("[x][y]が毎秒[z]Sushi生産(合計SpSの[w]%)", "50px 'MS Gothic'");
+	this.desciption2 = new cjs.Text("各SushiFactoryが毎秒100.000million 生産", "50px 'Potta One'");
 	this.desciption2.name = "desciption2";
-	this.desciption2.lineHeight = 52;
+	this.desciption2.lineHeight = 72;
 	this.desciption2.lineWidth = 938;
 	this.desciption2.parent = this;
-	this.desciption2.setTransform(39.8,774);
+	this.desciption2.setTransform(57,759);
 
-	this.count = new cjs.Text("126", "60px 'Potta One'");
+	this.count = new cjs.Text("126", "60px 'Potta One'", "#C5253A");
 	this.count.name = "count";
 	this.count.lineHeight = 89;
 	this.count.lineWidth = 220;
 	this.count.parent = this;
-	this.count.setTransform(517,172);
+	this.count.setTransform(517,155);
 
-	this.desciption1 = new cjs.Text("各[x]が毎秒[y]Sushi生産", "50px 'MS Gothic'");
+	this.desciption1 = new cjs.Text("各SushiFactoryが毎秒100.000million 生産", "50px 'Potta One'");
 	this.desciption1.name = "desciption1";
-	this.desciption1.lineHeight = 52;
+	this.desciption1.lineHeight = 72;
 	this.desciption1.lineWidth = 938;
 	this.desciption1.parent = this;
-	this.desciption1.setTransform(48,566.2);
+	this.desciption1.setTransform(57,579.2);
 
 	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
 	this.title.name = "title";
 	this.title.lineHeight = 89;
 	this.title.lineWidth = 716;
 	this.title.parent = this;
-	this.title.setTransform(275,66);
+	this.title.setTransform(275,67);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.title},{t:this.desciption1},{t:this.count},{t:this.desciption2},{t:this.desciption3},{t:this.desciption},{t:this.instance_1}]}).wait(1));
 
