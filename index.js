@@ -3,9 +3,10 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[0,0,1044,1145]]},
+		{name:"index_atlas_1", frames: [[1617,0,417,182],[1127,0,488,182],[1127,184,262,232],[0,0,1125,300],[1391,184,262,232],[0,302,1125,278],[1391,418,209,209],[1655,184,262,232],[1602,418,137,86],[1127,418,262,232]]},
 		{name:"index_atlas_2", frames: [[0,1589,1123,305],[0,0,1125,985],[0,987,1000,600]]},
-		{name:"index_atlas_3", frames: [[0,582,262,232],[0,0,1125,300],[264,582,262,232],[0,302,1125,278],[1056,582,209,209],[528,582,262,232],[1127,0,137,86],[792,582,262,232]]}
+		{name:"index_atlas_3", frames: [[0,0,1044,1145]]},
+		{name:"index_atlas_4", frames: [[0,0,1044,1145]]}
 ];
 
 
@@ -29,9 +30,30 @@ lib.ssMetadata = [
 
 
 
-(lib.achievementButton = function() {
-	this.initialize(ss["index_atlas_3"]);
+(lib.CachedBmp_2 = function() {
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(0);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.CachedBmp_1 = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(1);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib._Dialog = function() {
+	this.initialize(ss["index_atlas_4"]);
+	this.gotoAndStop(0);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.achievementButton = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -42,12 +64,6 @@ lib.ssMetadata = [
 p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 
-(lib.bg_effect = function() {
-	this.initialize(img.bg_effect);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1125,2436);
-
-
 (lib.cellBG = function() {
 	this.initialize(ss["index_atlas_2"]);
 	this.gotoAndStop(0);
@@ -56,36 +72,36 @@ p.nominalBounds = new cjs.Rectangle(0,0,1125,2436);
 
 
 (lib.dialogBG = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_3"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.footer = function() {
-	this.initialize(ss["index_atlas_3"]);
-	this.gotoAndStop(1);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.generatorButton = function() {
-	this.initialize(ss["index_atlas_3"]);
-	this.gotoAndStop(2);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.header = function() {
-	this.initialize(ss["index_atlas_3"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.iconFrame = function() {
-	this.initialize(ss["index_atlas_3"]);
+(lib.generatorButton = function() {
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(4);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.header = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(5);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.iconFrame = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -98,8 +114,8 @@ p.nominalBounds = new cjs.Rectangle(0,0,1125,2436);
 
 
 (lib.shopButton = function() {
-	this.initialize(ss["index_atlas_3"]);
-	this.gotoAndStop(5);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -112,15 +128,15 @@ p.nominalBounds = new cjs.Rectangle(0,0,1125,2436);
 
 
 (lib.sushiIcon = function() {
-	this.initialize(ss["index_atlas_3"]);
-	this.gotoAndStop(6);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.upgradeButton = function() {
-	this.initialize(ss["index_atlas_3"]);
-	this.gotoAndStop(7);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -139,27 +155,6 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	prototype.frameBounds = frameBounds;
 	return prototype;
 	}
-
-
-(lib.シンボル1 = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// レイヤー_1
-	this.instance = new lib.bg_effect();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.シンボル1, new cjs.Rectangle(0,0,1125,2436), null);
 
 
 (lib.ShopPanelMC = function(mode,startPosition,loop,reversed) {
@@ -254,40 +249,43 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// レイヤー_3
+	// Text
+	this.instance = new lib.CachedBmp_2();
+	this.instance.setTransform(778.9,49.55,0.5,0.5);
+
 	this.text = new cjs.Text("Sushi!!", "100px 'Potta One'", "#FF0000");
 	this.text.textAlign = "center";
 	this.text.lineHeight = 147;
 	this.text.lineWidth = 816;
 	this.text.parent = this;
-	this.text.setTransform(490,335);
+	this.text.setTransform(433,609.1);
 
-	this.Sps = new cjs.Text("123", "100px 'MS Gothic'", "#FF0000");
+	this.Sps = new cjs.Text("per Second : 123,111 pieces", "50px 'Potta One'", "#DC962D");
 	this.Sps.name = "Sps";
 	this.Sps.textAlign = "center";
-	this.Sps.lineHeight = 102;
-	this.Sps.lineWidth = 848;
+	this.Sps.lineHeight = 74;
+	this.Sps.lineWidth = 1120;
 	this.Sps.parent = this;
-	this.Sps.setTransform(554.15,150.05);
+	this.Sps.setTransform(561.95,162);
 
-	this.Sushi = new cjs.Text("123", "100px 'MS Gothic'", "#FF0000");
+	this.Sushi = new cjs.Text("123.221", "100px 'Potta One'", "#FFFFFF");
 	this.Sushi.name = "Sushi";
-	this.Sushi.textAlign = "center";
-	this.Sushi.lineHeight = 102;
-	this.Sushi.lineWidth = 816;
+	this.Sushi.textAlign = "right";
+	this.Sushi.lineHeight = 147;
+	this.Sushi.lineWidth = 712;
 	this.Sushi.parent = this;
-	this.Sushi.setTransform(538.15,20.1);
+	this.Sushi.setTransform(756.2,33.55);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.Sushi},{t:this.Sps},{t:this.text}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.Sushi},{t:this.Sps},{t:this.text},{t:this.instance}]}).wait(1));
 
 	// BG
-	this.instance = new lib.header();
+	this.instance_1 = new lib.header();
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1125,481.8), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1125,755.9), null);
 
 
 (lib.ButtonMC = function(mode,startPosition,loop,reversed) {
@@ -776,12 +774,15 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	// Text
-	this.desciption = new cjs.Text("aaaaa", "50px 'MS Gothic'");
+	this.instance_1 = new lib.CachedBmp_1();
+	this.instance_1.setTransform(270.6,153,0.5,0.5);
+
+	this.desciption = new cjs.Text("『押すだけで寿司が出てくる。\nたまにネタとシャリが逆さまですが。』", "50px 'Potta One'");
 	this.desciption.name = "desciption";
-	this.desciption.lineHeight = 52;
-	this.desciption.lineWidth = 862;
+	this.desciption.lineHeight = 74;
+	this.desciption.lineWidth = 900;
 	this.desciption.parent = this;
-	this.desciption.setTransform(97.85,332.95);
+	this.desciption.setTransform(77.85,337.35);
 
 	this.desciption3 = new cjs.Text("これまで[x]Sushi生産", "50px 'MS Gothic'");
 	this.desciption3.name = "desciption3";
@@ -797,12 +798,12 @@ if (reversed == null) { reversed = false; }
 	this.desciption2.parent = this;
 	this.desciption2.setTransform(39.8,774);
 
-	this.count = new cjs.Text("999", "50px 'MS Gothic'");
+	this.count = new cjs.Text("126", "60px 'Potta One'");
 	this.count.name = "count";
-	this.count.lineHeight = 52;
-	this.count.lineWidth = 106;
+	this.count.lineHeight = 89;
+	this.count.lineWidth = 220;
 	this.count.parent = this;
-	this.count.setTransform(428.2,152);
+	this.count.setTransform(517,172);
 
 	this.desciption1 = new cjs.Text("各[x]が毎秒[y]Sushi生産", "50px 'MS Gothic'");
 	this.desciption1.name = "desciption1";
@@ -811,19 +812,24 @@ if (reversed == null) { reversed = false; }
 	this.desciption1.parent = this;
 	this.desciption1.setTransform(48,566.2);
 
-	this.title = new cjs.Text("sushi shokunin", "50px 'MS Gothic'");
+	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
 	this.title.name = "title";
-	this.title.lineHeight = 52;
-	this.title.lineWidth = 596;
+	this.title.lineHeight = 89;
+	this.title.lineWidth = 716;
 	this.title.parent = this;
-	this.title.setTransform(280.35,66.05);
+	this.title.setTransform(275,66);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.title},{t:this.desciption1},{t:this.count},{t:this.desciption2},{t:this.desciption3},{t:this.desciption}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.title},{t:this.desciption1},{t:this.count},{t:this.desciption2},{t:this.desciption3},{t:this.desciption},{t:this.instance_1}]}).wait(1));
+
+	// Mock
+	this.instance_2 = new lib._Dialog();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(1));
 
 	// BG
-	this.instance_1 = new lib.dialogBG();
+	this.instance_3 = new lib.dialogBG();
 
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(1));
 
 	// Mask
 	this.MaskMC = new lib.MaskMC();
@@ -1062,13 +1068,6 @@ if (reversed == null) { reversed = false; }
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
-
-	// Effect
-	this.instance = new lib.シンボル1();
-	this.instance.setTransform(562.5,1218,1,1,0,0,0,562.5,1218);
-	this.instance.compositeOperation = "multiply";
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	// BG
 	this.RadiationMC = new lib.RadiationMC();
@@ -1783,7 +1782,7 @@ if (reversed == null) { reversed = false; }
 					this.generators[i].storedTotalSps = this.generators[i].amount * this.generators[i].storedSps;
 					this.sushiPs += this.generators[i].storedTotalSps;
 				}
-				this.root.HeaderMC.Sps.text = "毎秒 : " + this.sushiPs;
+				this.root.HeaderMC.Sps.text = "per Second : " + this.sushiPs + " pieces";
 			}
 		
 		
@@ -2068,17 +2067,6 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.bgMC).wait(1));
 
-	// stageBackground
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("rgba(0,0,0,0)").ss(1,1,1,3,true).p("EhZci/3MCy5AAAMAAAF/vMiy5AAAg");
-	this.shape.setTransform(562.5,1218);
-
-	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#FFFFFF").s().p("EhZcC/4MAAAl/vMCy5AAAMAAAF/vg");
-	this.shape_1.setTransform(562.5,1218);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
-
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
@@ -2093,10 +2081,10 @@ lib.properties = {
 	opacity: 1.00,
 	manifest: [
 		{src:"images/bg1.png", id:"bg1"},
-		{src:"images/bg_effect.png", id:"bg_effect"},
 		{src:"images/index_atlas_1.png", id:"index_atlas_1"},
 		{src:"images/index_atlas_2.png", id:"index_atlas_2"},
-		{src:"images/index_atlas_3.png", id:"index_atlas_3"}
+		{src:"images/index_atlas_3.png", id:"index_atlas_3"},
+		{src:"images/index_atlas_4.png", id:"index_atlas_4"}
 	],
 	preloads: []
 };
