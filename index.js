@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[0,302,488,182],[490,302,262,232],[0,0,1125,300],[0,486,262,232],[1127,0,209,209],[754,302,262,232],[1127,211,137,86],[1018,302,262,232]]},
+		{name:"index_atlas_1", frames: [[1617,0,417,182],[1127,0,488,182],[1127,184,262,232],[0,0,1125,300],[1391,184,262,232],[0,302,1125,278],[1391,418,209,209],[1655,184,262,232],[1602,418,137,86],[1127,418,262,232]]},
 		{name:"index_atlas_2", frames: [[0,1589,1123,305],[0,0,1125,985],[0,987,1000,600]]},
 		{name:"index_atlas_3", frames: [[0,0,1044,1145]]}
 ];
@@ -29,16 +29,23 @@ lib.ssMetadata = [
 
 
 
-(lib.CachedBmp_1 = function() {
+(lib.CachedBmp_2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementButton = function() {
+(lib.CachedBmp_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(1);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.achievementButton = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -65,21 +72,28 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.footer = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(2);
+	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.generatorButton = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(3);
+	this.gotoAndStop(4);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.header = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.iconFrame = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(4);
+	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -93,7 +107,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.shopButton = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(5);
+	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -107,14 +121,14 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.sushiIcon = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(6);
+	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.upgradeButton = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(7);
+	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -214,6 +228,49 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.MaskMC, new cjs.Rectangle(0,0,100,100), null);
+
+
+(lib.HeaderMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Text
+	this.instance = new lib.CachedBmp_2();
+	this.instance.setTransform(778.9,49.55,0.5,0.5);
+
+	this.Sps = new cjs.Text("per Second : 123,111 pieces", "50px 'Potta One'", "#DC962D");
+	this.Sps.name = "Sps";
+	this.Sps.textAlign = "center";
+	this.Sps.lineHeight = 74;
+	this.Sps.lineWidth = 1120;
+	this.Sps.parent = this;
+	this.Sps.setTransform(561.95,162);
+
+	this.Sushi = new cjs.Text("123.221", "100px 'Potta One'", "#FFFFFF");
+	this.Sushi.name = "Sushi";
+	this.Sushi.textAlign = "right";
+	this.Sushi.lineHeight = 147;
+	this.Sushi.lineWidth = 712;
+	this.Sushi.parent = this;
+	this.Sushi.setTransform(756.2,33.55);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.Sushi},{t:this.Sps},{t:this.instance}]}).wait(1));
+
+	// BG
+	this.instance_1 = new lib.header();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1125,278), null);
 
 
 (lib.ButtonMC = function(mode,startPosition,loop,reversed) {
@@ -1940,11 +1997,14 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.log1},{t:this.text}]}).wait(1));
 
 	// Menu
+	this.HeaderMC = new lib.HeaderMC();
+	this.HeaderMC.name = "HeaderMC";
+
 	this.FooterMC = new lib.FooterMC();
 	this.FooterMC.name = "FooterMC";
 	this.FooterMC.setTransform(0,2436,1,1,0,0,0,0,300);
 
-	this.timeline.addTween(cjs.Tween.get(this.FooterMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.FooterMC},{t:this.HeaderMC}]}).wait(1));
 
 	// Achievement
 	this.AchievementPanelMC = new lib.AchievementPanelMC();
