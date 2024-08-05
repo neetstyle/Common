@@ -3,9 +3,10 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[1125,1113,488,182],[1002,0,262,232],[0,1113,1123,305],[0,1420,1125,300],[1002,234,262,232],[0,1722,1125,278],[1266,234,209,209],[1127,468,262,232],[0,0,1000,600],[1125,1297,137,86],[0,602,1125,509],[1266,0,262,232]]},
-		{name:"index_atlas_2", frames: [[0,0,1125,985],[0,987,1125,642]]},
-		{name:"index_atlas_3", frames: [[0,0,1044,1145]]}
+		{name:"index_atlas_1", frames: [[0,0,1044,1145]]},
+		{name:"index_atlas_2", frames: [[0,0,1125,1000],[0,1002,1125,1000]]},
+		{name:"index_atlas_3", frames: [[0,1589,1123,305],[0,0,1125,985],[0,987,1000,600]]},
+		{name:"index_atlas_4", frames: [[1127,0,488,182],[1617,0,262,232],[0,0,1125,300],[1127,184,262,232],[0,302,1125,278],[1127,418,209,209],[1391,234,262,232],[1881,0,137,86],[1655,234,262,232]]}
 ];
 
 
@@ -30,14 +31,14 @@ lib.ssMetadata = [
 
 
 (lib.CachedBmp_1 = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.achievementButton = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_4"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
@@ -50,85 +51,85 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 
 (lib.cellBG = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(2);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.dialogBG = function() {
 	this.initialize(ss["index_atlas_3"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.footer = function() {
+(lib.dialogBG = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(3);
+	this.gotoAndStop(0);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.footer = function() {
+	this.initialize(ss["index_atlas_4"]);
+	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.generatorButton = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(4);
+	this.initialize(ss["index_atlas_4"]);
+	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.header = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(5);
+	this.initialize(ss["index_atlas_4"]);
+	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.iconFrame = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(6);
+	this.initialize(ss["index_atlas_4"]);
+	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.panel = function() {
+	this.initialize(ss["index_atlas_3"]);
+	this.gotoAndStop(1);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.shopButton = function() {
+	this.initialize(ss["index_atlas_4"]);
+	this.gotoAndStop(6);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.sushi = function() {
+	this.initialize(ss["index_atlas_3"]);
+	this.gotoAndStop(2);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.sushiIcon = function() {
+	this.initialize(ss["index_atlas_4"]);
+	this.gotoAndStop(7);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.underBG = function() {
 	this.initialize(ss["index_atlas_2"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shopButton = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(7);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.sushi = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(8);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.sushiIcon = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(9);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.underBG = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(10);
-}).prototype = p = new cjs.Sprite();
-
-
-
 (lib.upgradeButton = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(11);
+	this.initialize(ss["index_atlas_4"]);
+	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -154,6 +155,49 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	prototype.frameBounds = frameBounds;
 	return prototype;
 	}
+
+
+(lib.UpperBGMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.instance = new lib.upperBG();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.UpperBGMC, new cjs.Rectangle(0,0,1125,1000), null);
+
+
+(lib.UnderBGMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.instance = new lib.underBG();
+	this.instance.setTransform(0,-490);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.UnderBGMC, new cjs.Rectangle(0,-490,1125,1000), null);
 
 
 (lib.ShopPanelMC = function(mode,startPosition,loop,reversed) {
@@ -272,14 +316,9 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
-	// Filter
-	this.instance_1 = new lib.upperBG();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
-
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1125,642), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1125,278), null);
 
 
 (lib.ButtonMC = function(mode,startPosition,loop,reversed) {
@@ -703,6 +742,8 @@ if (reversed == null) { reversed = false; }
 			this.visible = true;
 			this.scaleX = 0;
 			this.scaleY = 0;
+			
+			this.MaskMC.visible = false;
 			
 			createjs.Tween.get(this, {
 				override: true
@@ -1165,15 +1206,9 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
-	// Filter
-	this.instance_1 = new lib.underBG();
-	this.instance_1.setTransform(0,-209);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
-
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(0,-209,1125,509), null);
+}).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(0,0,1125,300), null);
 
 
 (lib.UpgradePanelMC = function(mode,startPosition,loop,reversed) {
@@ -1810,7 +1845,12 @@ if (reversed == null) { reversed = false; }
 		this.FooterMC.scaleY = this.canvasScaleX;
 		this.FooterMC.y = 2436 * this.canvasScaleY;
 		
+		this.UpperBGMC.scaleX = this.canvasScaleX;
+		this.UpperBGMC.scaleY = this.canvasScaleX;
 		
+		this.UnderBGMC.scaleX = this.canvasScaleX;
+		this.UnderBGMC.scaleY = this.canvasScaleX;
+		this.UnderBGMC.y = 2436 * this.canvasScaleY;
 		
 		this.executeNextFrame = function(callback) {
 		    setTimeout(callback, 1000);
@@ -2015,10 +2055,17 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.SushiMC).wait(1));
 
 	// BG
+	this.UpperBGMC = new lib.UpperBGMC();
+	this.UpperBGMC.name = "UpperBGMC";
+
+	this.UnderBGMC = new lib.UnderBGMC();
+	this.UnderBGMC.name = "UnderBGMC";
+	this.UnderBGMC.setTransform(0,2436,1,1,0,0,0,0,509);
+
 	this.bgMC = new lib.bgMC();
 	this.bgMC.name = "bgMC";
 
-	this.timeline.addTween(cjs.Tween.get(this.bgMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.bgMC},{t:this.UnderBGMC},{t:this.UpperBGMC}]}).wait(1));
 
 	this._renderFirstFrame();
 
@@ -2036,7 +2083,8 @@ lib.properties = {
 		{src:"images/bg1.png", id:"bg1"},
 		{src:"images/index_atlas_1.png", id:"index_atlas_1"},
 		{src:"images/index_atlas_2.png", id:"index_atlas_2"},
-		{src:"images/index_atlas_3.png", id:"index_atlas_3"}
+		{src:"images/index_atlas_3.png", id:"index_atlas_3"},
+		{src:"images/index_atlas_4.png", id:"index_atlas_4"}
 	],
 	preloads: []
 };
