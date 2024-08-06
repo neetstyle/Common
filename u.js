@@ -33,7 +33,15 @@ function numberWithCommas(x) {
 }
 
 function FormatShortNumber(num) {
-    if (num >= 1e30) {
+    if (num >= 1e42) {
+        return parseFloat((num / 1e42).toFixed(2)) + 'Tr'; // Tredecillion
+    } else if (num >= 1e39) {
+        return parseFloat((num / 1e39).toFixed(2)) + 'Du'; // Duodecillion
+    } else if (num >= 1e36) {
+        return parseFloat((num / 1e36).toFixed(2)) + 'U'; // Undecillion
+    } else if (num >= 1e33) {
+        return parseFloat((num / 1e33).toFixed(2)) + 'De'; // Decillion
+    } else if (num >= 1e30) {
         return parseFloat((num / 1e30).toFixed(2)) + 'N'; // Nonillion
     } else if (num >= 1e27) {
         return parseFloat((num / 1e27).toFixed(2)) + 'O'; // Octillion
@@ -59,7 +67,15 @@ function FormatShortNumber(num) {
 }
 
 function FormatNumber(num) {
-    if (num >= 1e30) {
+    if (num >= 1e42) {
+        return parseFloat((num / 1e42).toFixed(2)) + 'Tredecillion';
+    } else if (num >= 1e39) {
+        return parseFloat((num / 1e39).toFixed(2)) + 'Duodecillion';
+    } else if (num >= 1e36) {
+        return parseFloat((num / 1e36).toFixed(2)) + 'Undecillion';
+    } else if (num >= 1e33) {
+        return parseFloat((num / 1e33).toFixed(2)) + 'Decillion';
+    } else if (num >= 1e30) {
         return parseFloat((num / 1e30).toFixed(2)) + 'Nonillion';
     } else if (num >= 1e27) {
         return parseFloat((num / 1e27).toFixed(2)) + 'Octillion';

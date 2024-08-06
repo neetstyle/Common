@@ -86,16 +86,20 @@ function init() {
 	var comp=AdobeAn.getComposition("969C0F3DFF839440AC4059700CCE57F9");
 	var lib=comp.getLibrary();
 	var loader = new createjs.LoadQueue(false);
+	loader.installPlugin(createjs.Sound);
 	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
 	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
 	var lib=comp.getLibrary();
 	loader.loadManifest(lib.properties.manifest);
-
-
-	//resize
+	createjs.Sound.alternateExtensions = ["mp3"];
+	createjs.Sound.registerSound("click.mp3", "click");
+	createjs.Sound.registerSound("submit.mp3", "submit");
+	createjs.Sound.registerSound("open.mp3", "open");
+	createjs.Sound.registerSound("popup.mp3", "popup");
+	createjs.Sound.registerSound("generator.mp3", "generator");
+		//resize
 	lib.properties.width = document.documentElement.clientWidth;
 	lib.properties.height = document.documentElement.clientHeight;
-
 }
 function handleFileLoad(evt, comp) {
 	var images=comp.getImages();	
@@ -123,6 +127,8 @@ function handleComplete(evt,comp) {
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 }
+function playSound(id, loop, offset) {
+	return createjs.Sound.play(id, {'interrupt':createjs.Sound.INTERRUPT_EARLY, 'loop': loop, 'offset': offset});}
 </script>
 <!-- write your code here -->
 </head>
