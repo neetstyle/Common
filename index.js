@@ -157,6 +157,27 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	}
 
 
+(lib.SushiImageMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.instance = new lib.sushi();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.SushiImageMC, new cjs.Rectangle(0,0,1000,600), null);
+
+
 (lib.ShopPanelMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -792,33 +813,53 @@ if (reversed == null) { reversed = false; }
 		this.y = document.documentElement.clientHeight / 2;
 		this.x = document.documentElement.clientWidth / 2;
 		
-		
 		this.sushi = 0;
 		this.totalSushi = 0;
 		
-		this.ClickHandler_Click = function()
+		this.Click = function()
 		{
 		
 		
-		var amount = main.computedTouchSps;
-		
-			
+			var amount = main.computedTouchSps;
 			//var amount = amount ? amount : main.computedTouchSpsCps;
 			
 			main.AddSushi(amount);
 			
 		}
 		
-		this.ButtonMC.addEventListener("click", this.ClickHandler_Click.bind(this));
+		this.SushiImageMC.mouseEnabled = false;
+		
+		this.ButtonMC.on("mousedown", function(event) {
+			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
+				.to({ scaleX: 0.9, scaleY: 0.9 }, 250, createjs.Ease.elasticOut);
+		});
+		
+		this.ButtonMC.on("click", function(evt) {
+			this.parent.Click();
+			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
+				.to({ scaleX: 1.0, scaleY: 1.0 }, 250, createjs.Ease.elasticOut);
+		});
+		
+		this.ButtonMC.on("mouseover", function(event) {
+			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
+				.to({ scaleX: 1.1, scaleY: 1.1 }, 250, createjs.Ease.elasticOut);
+		});
+		
+		this.ButtonMC.on("mouseout", function(event) {
+			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
+				.to({ scaleX: 1.0, scaleY: 1.0 }, 250, createjs.Ease.elasticOut);
+		});
 	}
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// Image
-	this.instance = new lib.sushi();
+	this.SushiImageMC = new lib.SushiImageMC();
+	this.SushiImageMC.name = "SushiImageMC";
+	this.SushiImageMC.setTransform(500,300,1,1,0,0,0,500,300);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.SushiImageMC).wait(1));
 
 	// Button
 	this.ButtonMC = new lib.ButtonMC();
@@ -1387,7 +1428,7 @@ if (reversed == null) { reversed = false; }
 				//セルの生成
 				let clip = this.UpgradeContentMC.UpgradeCellMC.clone(true);
 				clip.title.text = upgradeData[i]["name"];
-				clip.cost.text = upgradeData[i]["display_cost"];
+				clip.cost.text = FormatNumber(upgradeData[i]["cost"]);
 				clip.x = 0;
 				clip.y = 0 + 280 * i;
 				clip.dataIndex = i;
@@ -1505,7 +1546,7 @@ if (reversed == null) { reversed = false; }
 				//セルの生成
 				let clip = this.GeneratorContentMC.GeneratorCellMC.clone(true);
 				clip.title.text = buildingData[i]["name"];
-				clip.cost.text = buildingData[i]["display_cost"];
+				clip.cost.text = FormatNumber(buildingData[i]["cost"]);
 				clip.amount.text = main.generators[i].amount;
 				clip.x = 0;
 				clip.y = 0 + 280 * i;
@@ -1707,7 +1748,7 @@ if (reversed == null) { reversed = false; }
 		    AddSushi(value) {
 		        this.sushi += value;
 		        this.totalSushi += value;
-				this.root.HeaderMC.Sushi.text = main.sushi + " pieces";
+				this.root.HeaderMC.Sushi.text = FormatNumber(main.sushi) + " pieces";
 		    }
 		
 			ComputeCps = function(base,mult,bonus)
@@ -1753,7 +1794,7 @@ if (reversed == null) { reversed = false; }
 					this.generators[i].storedTotalSps = this.generators[i].amount * this.generators[i].storedSps;
 					this.sushiPs += this.generators[i].storedTotalSps;
 				}
-				this.root.HeaderMC.Sps.text = "per Second : " + this.sushiPs + " pieces";
+				this.root.HeaderMC.Sps.text = "per Second : " + FormatNumber(this.sushiPs) + " pieces";
 			}
 		
 			MainTick = function(event)
@@ -1796,7 +1837,9 @@ if (reversed == null) { reversed = false; }
 		main = new Main();
 		if (createjs.Touch.isSupported())
 		    createjs.Touch.enable(stage);
-		
+		 
+		stage.enableMouseOver(20); 
+		 
 		//this.name = "root";
 		//stage.getChildByName("root").log1.text = new Date().getTime();	
 		
