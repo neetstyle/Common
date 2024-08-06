@@ -60,7 +60,8 @@ function FormatShortNumber(num) {
     } else if (num >= 1e6) {
         return parseFloat((num / 1e6).toFixed(2)) + 'M'; // Million
     } else if (num >= 1e3) {
-        return parseFloat((num / 1e3).toFixed(2)) + 'K'; // Thousand
+        //return parseFloat((num / 1e3).toFixed(2)) + 'K'; // Thousand
+		return numberWithCommas(num);
     } else {
         return numberWithCommas(num); // Less than a thousand
     }
@@ -68,33 +69,34 @@ function FormatShortNumber(num) {
 
 function FormatNumber(num) {
     if (num >= 1e42) {
-        return parseFloat((num / 1e42).toFixed(2)) + 'Tredecillion';
+        return parseFloat((num / 1e42).toFixed(2)) + ' Tredecillion';
     } else if (num >= 1e39) {
-        return parseFloat((num / 1e39).toFixed(2)) + 'Duodecillion';
+        return parseFloat((num / 1e39).toFixed(2)) + ' Duodecillion';
     } else if (num >= 1e36) {
-        return parseFloat((num / 1e36).toFixed(2)) + 'Undecillion';
+        return parseFloat((num / 1e36).toFixed(2)) + ' Undecillion';
     } else if (num >= 1e33) {
-        return parseFloat((num / 1e33).toFixed(2)) + 'Decillion';
+        return parseFloat((num / 1e33).toFixed(2)) + ' Decillion';
     } else if (num >= 1e30) {
-        return parseFloat((num / 1e30).toFixed(2)) + 'Nonillion';
+        return parseFloat((num / 1e30).toFixed(2)) + ' Nonillion';
     } else if (num >= 1e27) {
-        return parseFloat((num / 1e27).toFixed(2)) + 'Octillion';
+        return parseFloat((num / 1e27).toFixed(2)) + ' Octillion';
     } else if (num >= 1e24) {
-        return parseFloat((num / 1e24).toFixed(2)) + 'Septillion';
+        return parseFloat((num / 1e24).toFixed(2)) + ' Septillion';
     } else if (num >= 1e21) {
-        return parseFloat((num / 1e21).toFixed(2)) + 'Sextillion';
+        return parseFloat((num / 1e21).toFixed(2)) + ' Sextillion';
     } else if (num >= 1e18) {
-        return parseFloat((num / 1e18).toFixed(2)) + 'Quintillion';
+        return parseFloat((num / 1e18).toFixed(2)) + ' Quintillion';
     } else if (num >= 1e15) {
-        return parseFloat((num / 1e15).toFixed(2)) + 'Quadrillion';
+        return parseFloat((num / 1e15).toFixed(2)) +  'Quadrillion';
     } else if (num >= 1e12) {
-        return parseFloat((num / 1e12).toFixed(2)) + 'Trillion';
+        return parseFloat((num / 1e12).toFixed(2)) + ' Trillion';
     } else if (num >= 1e9) {
-        return parseFloat((num / 1e9).toFixed(2)) + 'Billion';
+        return parseFloat((num / 1e9).toFixed(2)) + ' Billion';
     } else if (num >= 1e6) {
-        return parseFloat((num / 1e6).toFixed(2)) + 'Million';
+        return parseFloat((num / 1e6).toFixed(2)) + ' Million';
     } else if (num >= 1e3) {
-        return parseFloat((num / 1e3).toFixed(2)) + 'Thousand';
+    	return numberWithCommas(num);
+        //return parseFloat((num / 1e3).toFixed(2)) + 'Thousand';
     } else {
         return numberWithCommas(num); // Less than a thousand
     }
