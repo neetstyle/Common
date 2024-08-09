@@ -1673,7 +1673,6 @@ if (reversed == null) { reversed = false; }
 		
 		this.Create = function() 
 		{
-			
 			//アップグレード
 			var posY = 600;
 			posY += 50;
@@ -1725,10 +1724,12 @@ if (reversed == null) { reversed = false; }
 		
 			posY += 250 * Math.ceil(upgradeCount / 4);
 		
+			//アチーブメント
 			posY += 50;
 			this.ContentMC.achievementTitle.y = posY;
 			posY += 100;
 		
+			var achievementCount = 0; 
 			for (var i = 0; i < main.achievements.length; i++)
 			{
 				let achievement = main.achievements[i];
@@ -1740,28 +1741,41 @@ if (reversed == null) { reversed = false; }
 				clipBG.y = posY + 250 * Math.floor(i / 4);
 				
 				//アイコン生成
-				var bitmap = new createjs.Bitmap("images/Icon/Achievement/" + achievement.data["icon"] + ".png");
+				var bitmap;
+				if(achievement.unlock)
+					bitmap = new createjs.Bitmap("images/Icon/Achievement/" + achievement.data["icon"] + ".png");
+				else
+					bitmap = new createjs.Bitmap("images/Icon/hatena.png");
 				this.ContentMC.addChild(bitmap);
 				achievement.clipBmp = bitmap;
 				bitmap.x = clipBG.x + 8;
 				bitmap.y = clipBG.y + 8;
-				bitmap.scaleX = 193 / 64;
-				bitmap.scaleY = 193 / 64;
+				bitmap.scaleX = 193 / bitmap.image.width;
+				bitmap.scaleY = 193 / bitmap.image.width;
 				bitmap.mouseEnabled = false;
 		
-				//ボタン生成
-				let clipButton = new lib.ButtonMC ();
-				this.ContentMC.addChild(clipButton);
-				achievement.clipButton = clipButton;
-				clipButton.x = clipBG.x;
-				clipButton.y = clipBG.y;
-				clipButton.scaleX = 209 / 100;
-				clipButton.scaleY = 209 / 100;
+				if(achievement.unlock)
+				{
+					//ボタン生成
+					let clipButton = new lib.ButtonMC ();
+					this.ContentMC.addChild(clipButton);
+					achievement.clipButton = clipButton;
+					clipButton.x = clipBG.x;
+					clipButton.y = clipBG.y;
+					clipButton.scaleX = 209 / 100;
+					clipButton.scaleY = 209 / 100;
 		
-				clipButton.addEventListener("click", function() {
-					this.OpenDesciption.call(this, achievement);
-				}.bind(this));
+					clipButton.addEventListener("click", function() {
+						this.OpenDesciption.call(this, achievement);
+					}.bind(this));
+				}
+				if(achievement.unlock)
+					achievementCount++;
 			}
+		
+			this.ContentMC.achievementTitle.text = "アチーブメント："
+				+ (achievementCount/main.achievements.length).toFixed(3) + "%"
+				+ "(" + achievementCount + "/" + main.achievements.length +")";
 		
 			posY += 250 * Math.ceil(main.achievements.length / 4);
 		
@@ -1783,7 +1797,7 @@ if (reversed == null) { reversed = false; }
 		
 			for (var i = 0; i < main.upgrades.length; i++)
 			{
-				if(main.upgrades[i].clipBG == null) continue;		
+				if(main.upgrades[i].clipBG === null) continue;		
 				let upgrade = main.upgrades[i];
 				this.ContentMC.removeChild(upgrade.clipBG);
 				this.ContentMC.removeChild(upgrade.clipBmp);
@@ -2210,7 +2224,6 @@ if (reversed == null) { reversed = false; }
 				this.data;
 				this.category = 1;
 				this.dir = "Generator";
-				this.clip;
 				this.sps = 0;
 				this.storedSps = 0;
 				this.amount = 0;//bought
@@ -2220,6 +2233,8 @@ if (reversed == null) { reversed = false; }
 				this.storedCost = 0;
 				this.lock = true;
 				this.free = 0;//?
+				
+				this.clip = null;
 		    }
 		
 			CalculateSps = function()
@@ -2235,16 +2250,16 @@ if (reversed == null) { reversed = false; }
 				this.data;
 				this.category = 2;
 				this.dir = "Upgrade";
-				this.clip;
+		
 				this.amount = 0;//bought
 				this.baseCost = 0;//basePrice
 				this.type = 0;
 				this.type2 = 0;
 				
-				//Achievement
-				this.clipBG;
-				this.clipBmp;
-				this.clipButton;
+				this.clip = null;
+				this.clipBG = null;
+				this.clipBmp = null;
+				this.clipButton = null;
 		    }
 		
 			//CalculateSps = function()
@@ -2260,10 +2275,12 @@ if (reversed == null) { reversed = false; }
 				this.data;
 				this.category = 3;
 				this.dir = "Achievement";
-				this.clip;
-				this.clipBmp;
-				this.clipBG;
-				this.clipButton;
+				this.unlock = false;
+				
+				this.clip = null;
+				this.clipBG = null;
+				this.clipBmp = null;
+				this.clipButton = null;
 		    }
 		}
 		
@@ -2361,6 +2378,9 @@ if (reversed == null) { reversed = false; }
 					var	achievement = new Achievement();
 					achievement.data = achievementData[i];	
 					this.achievements.push(achievement);
+					
+		achievement.unlock = Math.random() < 0.5 ? true : false;	
+					
 				}
 		    }
 		
