@@ -1,3 +1,23 @@
+var generatorData;
+fetch('generator.json')
+.then(response => response.json())
+.then(jsonData => {
+	generatorData = jsonData;
+	isLoad_generatorData = true;
+	checkInitialization();
+})
+.catch(error => console.error('Error fetching JSON data:', error));
+
+var upgradeData;
+fetch('upgrade.json')
+.then(response => response.json())
+.then(jsonData => {
+	upgradeData = jsonData;
+	isLoad_upgradeData = true;
+	checkInitialization();
+})
+.catch(error => console.error('Error fetching JSON data:', error));
+
 //テキスト自動折り返し
 function SetWrapText(textInstance, text)
 {
@@ -32,7 +52,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function FormatShortNumber(num) {
+function FormatShortNumber(num, n) {
     if (num >= 1e42) {
         return parseFloat((num / 1e42).toFixed(2)) + 'Tr'; // Tredecillion
     } else if (num >= 1e39) {
@@ -58,16 +78,21 @@ function FormatShortNumber(num) {
     } else if (num >= 1e9) {
         return parseFloat((num / 1e9).toFixed(2)) + 'B'; // Billion
     } else if (num >= 1e6) {
-        return parseFloat((num / 1e6).toFixed(2)) + 'M'; // Million
+		if(n < 2)
+			return parseFloat((num / 1e6).toFixed(2)) + 'M'; // Million
+		else
+			return numberWithCommas(num);
     } else if (num >= 1e3) {
-        //return parseFloat((num / 1e3).toFixed(2)) + 'K'; // Thousand
-		return numberWithCommas(num);
+		if(n < 1)
+			return parseFloat((num / 1e3).toFixed(2)) + 'K'; // Thousand
+		else
+			return numberWithCommas(num);
     } else {
         return numberWithCommas(num); // Less than a thousand
     }
 }
 
-function FormatNumber(num) {
+function FormatNumber(num, n) {
     if (num >= 1e42) {
         return parseFloat((num / 1e42).toFixed(2)) + ' Tredecillion';
     } else if (num >= 1e39) {
@@ -93,15 +118,19 @@ function FormatNumber(num) {
     } else if (num >= 1e9) {
         return parseFloat((num / 1e9).toFixed(2)) + ' Billion';
     } else if (num >= 1e6) {
-        return parseFloat((num / 1e6).toFixed(2)) + ' Million';
+		if(n < 2)
+			return parseFloat((num / 1e6).toFixed(2)) + ' Million';
+		else
+        	return numberWithCommas(num);
     } else if (num >= 1e3) {
-    	return numberWithCommas(num);
-        //return parseFloat((num / 1e3).toFixed(2)) + 'Thousand';
+		if(n < 1)
+			return parseFloat((num / 1e3).toFixed(2)) + 'Thousand';
+		else
+        	return numberWithCommas(num);
     } else {
         return numberWithCommas(num); // Less than a thousand
     }
 }
-
 
 function GetRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
