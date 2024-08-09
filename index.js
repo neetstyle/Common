@@ -634,7 +634,7 @@ if (reversed == null) { reversed = false; }
 		this.CloseButtonMC.scaleX = document.documentElement.clientWidth / 100 / this.parent.canvasScaleX;
 		this.CloseButtonMC.scaleY = document.documentElement.clientHeight / 100 / this.parent.canvasScaleY;	
 		
-		this.upgrade;
+		this.obj;
 		
 		this.CloseDesciption = function()
 		{
@@ -650,9 +650,9 @@ if (reversed == null) { reversed = false; }
 		} 
 		this.CloseButtonMC.addEventListener("click", this.CloseDesciption.bind(this));
 		
-		this.Open = function(_upgrade)
+		this.Open = function(_obj)
 		{
-			this.upgrade = _upgrade;
+			this.obj = _obj;
 			
 			this.visible = true;
 			this.scaleX = 0;
@@ -665,18 +665,18 @@ if (reversed == null) { reversed = false; }
 		
 			if( this.bitmap !== undefined)
 				this.removeChild(this.bitmap);
-		
+			
 			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/Icon/Upgrade/" + this.upgrade.data["icon"] + ".png");
-			this.addChild(this.bitmap);
-			this.bitmap.x = 54;
-			this.bitmap.y = 68;
-			this.bitmap.scaleX = 193 / 48;
-			this.bitmap.scaleY = 193 / 48;
-			this.bitmap.mouseEnabled = false;
+			var bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
+			this.addChild(bitmap);
+			bitmap.x = 54;
+			bitmap.y = 68;
+			bitmap.scaleX = 193 / bitmap.image.width;
+			bitmap.scaleY = 193 / bitmap.image.height;
+			bitmap.mouseEnabled = false;
 		
-			this.title.text = this.upgrade.data["name"];
-			this.desciption.text = this.upgrade.data["desciption"];
+			this.title.text = this.obj.data["name"];
+			this.desciption.text = this.obj.data["desciption"];
 			
 			SetWrapText(this.desciption);	
 				
@@ -983,7 +983,7 @@ if (reversed == null) { reversed = false; }
 		this.CloseButtonMC.scaleX = document.documentElement.clientWidth / 100 / this.parent.canvasScaleX;
 		this.CloseButtonMC.scaleY = document.documentElement.clientHeight / 100 / this.parent.canvasScaleY;	
 		
-		this.generator;
+		this.obj;
 		
 		this.CloseDesciption = function()
 		{
@@ -999,9 +999,9 @@ if (reversed == null) { reversed = false; }
 		} 
 		this.CloseButtonMC.addEventListener("click", this.CloseDesciption.bind(this));
 		
-		this.Open = function(_generator)
+		this.Open = function(_obj)
 		{
-			this.generator = _generator;
+			this.obj = _obj;
 			
 			this.visible = true;
 			this.scaleX = 0;
@@ -1016,17 +1016,17 @@ if (reversed == null) { reversed = false; }
 				this.removeChild(this.bitmap);
 		
 			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/Icon/Generator/" + this.generator.data["icon"] + ".png");
-			this.addChild(this.bitmap);
-			this.bitmap.x = 54;
-			this.bitmap.y = 68;
-			this.bitmap.scaleX = 193 / 64;
-			this.bitmap.scaleY = 193 / 64;
-			this.bitmap.mouseEnabled = false;
+			var bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
+			this.addChild(bitmap);
+			bitmap.x = 54;
+			bitmap.y = 68;
+			bitmap.scaleX = 193 / bitmap.image.width;
+			bitmap.scaleY = 193 / bitmap.image.height;
+			bitmap.mouseEnabled = false;
 		
-			this.title.text = this.generator.data["name"];
-			this.desciption.text = this.generator.data["desciption"];
-			this.amount.text = this.generator.amount;
+			this.title.text = this.obj.data["name"];
+			this.desciption.text = this.obj.data["desciption"];
+			this.amount.text = this.obj.amount;
 			
 			SetWrapText(this.desciption);	
 			
@@ -1038,18 +1038,18 @@ if (reversed == null) { reversed = false; }
 		{
 			var text1 = "各[x]が毎秒[y]Sushi生産";
 			this.desciption1.text = 
-				text1.replace("[x]", this.generator.data.name)
-				.replace("[y]", Math.floor(this.generator.storedTotalSps));
+				text1.replace("[x]", this.obj.data.name)
+				.replace("[y]", Math.floor(this.obj.storedTotalSps));
 			
 			var text2 = "[x][y]が毎秒[z]Sushi生産(合計SpSの[w]%)";
 			this.desciption2.text = 
-				text2.replace("[x]", this.generator.amount)
-				.replace("[y]", this.generator.data.name)
-				.replace("[z]", Math.floor(this.generator.storedTotalSps))
-				.replace("[w]", Math.floor(this.generator.storedTotalSps));
+				text2.replace("[x]", this.obj.amount)
+				.replace("[y]", this.obj.data.name)
+				.replace("[z]", Math.floor(this.obj.storedTotalSps))
+				.replace("[w]", Math.floor(this.obj.storedTotalSps));
 			
 			var text3 = "これまで[x]Sushi生産";
-			this.desciption3.text = text3.replace("[x]", Math.floor(this.generator.totalSushies));
+			this.desciption3.text = text3.replace("[x]", Math.floor(this.obj.totalSushies));
 		
 			SetWrapText(this.desciption1);
 			SetWrapText(this.desciption2);
@@ -1412,7 +1412,7 @@ if (reversed == null) { reversed = false; }
 		this.CloseButtonMC.scaleX = document.documentElement.clientWidth / 100 / this.parent.canvasScaleX;
 		this.CloseButtonMC.scaleY = document.documentElement.clientHeight / 100 / this.parent.canvasScaleY;	
 		
-		this.achievement;
+		this.data;
 		
 		this.CloseDesciption = function()
 		{
@@ -1428,9 +1428,9 @@ if (reversed == null) { reversed = false; }
 		} 
 		this.CloseButtonMC.addEventListener("click", this.CloseDesciption.bind(this));
 		
-		this.Open = function(_achievement)
+		this.Open = function(_obj)
 		{
-			this.achievement = _achievement;
+			this.obj = _obj;
 			
 			this.visible = true;
 			this.scaleX = 0;
@@ -1445,16 +1445,15 @@ if (reversed == null) { reversed = false; }
 				this.removeChild(this.bitmap);
 		
 			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/Icon/Achievement/" + this.achievement.data["icon"] + ".png");
-			this.addChild(this.bitmap);
-			this.bitmap.x = 54;
-			this.bitmap.y = 68;
-			this.bitmap.scaleX = 193 / 64;
-			this.bitmap.scaleY = 193 / 64;
-			this.bitmap.mouseEnabled = false;
+			var bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
+			this.addChild(bitmap);
+			bitmap.x = 54;
+			bitmap.y = 68;
+			bitmap.scaleX = 193 / bitmap.image.width;
+			bitmap.scaleY = 193 / bitmap.image.height;
 		
-			this.title.text = this.achievement.data["name"];
-			this.desciption.text = this.achievement.data["desciption"];
+			this.title.text = this.obj.data["name"];
+			this.desciption.text = this.obj.data["desciption"];
 			
 			SetWrapText(this.desciption);	
 		}
@@ -1527,17 +1526,13 @@ if (reversed == null) { reversed = false; }
 	this.achievementTitle.parent = this;
 	this.achievementTitle.setTransform(82,1094.2);
 
-	this.IconMC = new lib.IconMC();
-	this.IconMC.name = "IconMC";
-	this.IconMC.setTransform(1408.35,132.35,1,1,0,0,0,104.5,104.5);
-
 	this.text = new cjs.Text("提供中の寿司： 5.999 billion\n寿司生産数　5.999 billion\n施設数：23 ゲーム開始　7日, 1時間前\n毎秒の寿司提供数：359,343\n1タップあたりの寿司提供数：25\nタップ：234,432回", "40px 'Potta One'");
 	this.text.lineHeight = 60;
 	this.text.lineWidth = 959;
 	this.text.parent = this;
 	this.text.setTransform(84.2,148.3);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text},{t:this.IconMC},{t:this.achievementTitle},{t:this.upgradeTitle}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text},{t:this.achievementTitle},{t:this.upgradeTitle}]}).wait(1));
 
 	// BG
 	this.ContentBGMC = new lib.ButtonMC();
@@ -1548,7 +1543,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementContentMC, new cjs.Rectangle(0,0,1512.9,1183.1), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementContentMC, new cjs.Rectangle(0,0,1125,1183.1), null);
 
 
 (lib.UpgradeContentMC = function(mode,startPosition,loop,reversed) {
@@ -1668,56 +1663,67 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.OpenDesciption = function (achievement)
+		this.OpenDesciption = function (data)
 		{
 		    if (!this.ScrollMC.isScrolled()) {
-		        this.parent.AchievementDesciptionMC.Open(achievement);
+		        this.parent.AchievementDesciptionMC.Open(data);
 				playSound("popup");
 		    }
 		}
 		
 		this.Create = function() 
 		{
+			
+			//アップグレード
 			var posY = 600;
 			posY += 50;
 			this.ContentMC.upgradeTitle.y = posY;
 			posY += 100;
 			
-			for (var i = 0; i < main.achievements.length; i++)
+			var upgradeCount = 0; 
+			for (var i = 0; i < main.upgrades.length; i++)
 			{
-				let achievement = main.achievements[i];
+				if(main.upgrades[i].amount == 0) continue;
+		
+				let upgrade = main.upgrades[i];
 				
 				let clipBG = new lib.IconMC ();
 				this.ContentMC.addChild(clipBG);
-				achievement.clipBG = clipBG;
-				clipBG.x = 80 + 250 * (i % 4);
-				clipBG.y = posY + 250 * Math.floor(i / 4);
+				upgrade.clipBG = clipBG;
+				clipBG.x = 80 + 250 * (upgradeCount % 4);
+				clipBG.y = posY + 250 * Math.floor(upgradeCount / 4);
 				
 				//アイコン生成
-				var bitmap = new createjs.Bitmap("images/Icon/Achievement/" + achievement.data["icon"] + ".png");
+				var bitmap = new createjs.Bitmap("images/Icon/Upgrade/" + upgrade.data["icon"] + ".png");
 				this.ContentMC.addChild(bitmap);
-				achievement.clipBmp = bitmap;
+				upgrade.clipBmp = bitmap;
 				bitmap.x = clipBG.x + 8;
 				bitmap.y = clipBG.y + 8;
-				bitmap.scaleX = 193 / 64;
-				bitmap.scaleY = 193 / 64;
+				bitmap.scaleX = 193 / 48;
+				bitmap.scaleY = 193 / 48;
 				bitmap.mouseEnabled = false;
 		
 				//ボタン生成
 				let clipButton = new lib.ButtonMC ();
 				this.ContentMC.addChild(clipButton);
-				achievement.clipButton = clipButton;
+				upgrade.clipButton = clipButton;
 				clipButton.x = clipBG.x;
 				clipButton.y = clipBG.y;
 				clipButton.scaleX = 209 / 100;
 				clipButton.scaleY = 209 / 100;
 		
 				clipButton.addEventListener("click", function() {
-					this.OpenDesciption.call(this, achievement);
+					this.OpenDesciption.call(this, upgrade);
 				}.bind(this));
+			
+				upgradeCount++;
 			}
 		
-			posY += 250 * Math.ceil(main.achievements.length / 4);
+			this.ContentMC.upgradeTitle.text = "アップグレード："
+				+ (upgradeCount/main.upgrades.length).toFixed(3) + "%"
+				+ "(" + upgradeCount + "/" + main.upgrades.length +")";
+		
+			posY += 250 * Math.ceil(upgradeCount / 4);
 		
 			posY += 50;
 			this.ContentMC.achievementTitle.y = posY;
@@ -1762,8 +1768,36 @@ if (reversed == null) { reversed = false; }
 			this.ScrollMC.SetSize(posY);
 		}
 		
+		this.Reset = function() 
+		{
+			for (var i = 0; i < main.achievements.length; i++)
+			{
+				let achievement = main.achievements[i];
+				this.ContentMC.removeChild(achievement.clipBG);
+				this.ContentMC.removeChild(achievement.clipBmp);
+				this.ContentMC.removeChild(achievement.clipButton);
+				achievement.clipBG = null;
+				achievement.clipBmp = null;
+				achievement.clipButton = null;
+			}
+		
+			for (var i = 0; i < main.upgrades.length; i++)
+			{
+				if(main.upgrades[i].clipBG == null) continue;		
+				let upgrade = main.upgrades[i];
+				this.ContentMC.removeChild(upgrade.clipBG);
+				this.ContentMC.removeChild(upgrade.clipBmp);
+				this.ContentMC.removeChild(upgrade.clipButton);
+				upgrade.clipBG = null;
+				upgrade.clipBmp = null;
+				upgrade.clipButton = null;
+			}
+			this.Create();
+		}
+		
 		this.Open =  function() 
 		{
+			this.Reset()
 			this.ScrollMC.Open();
 		}
 		
@@ -2035,7 +2069,7 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));	
 		
 				//アイコン生成
-				var bitmap = new createjs.Bitmap("images/Icon/Generator/" + generator.data["icon"] + ".png");
+				var bitmap = new createjs.Bitmap("images/Icon/" + generator.dir + "/" + generator.data["icon"] + ".png");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 10;
 				bitmap.y = 10;
@@ -2174,6 +2208,8 @@ if (reversed == null) { reversed = false; }
 		    constructor()
 			{
 				this.data;
+				this.category = 1;
+				this.dir = "Generator";
 				this.clip;
 				this.sps = 0;
 				this.storedSps = 0;
@@ -2197,11 +2233,18 @@ if (reversed == null) { reversed = false; }
 		    constructor()
 			{
 				this.data;
+				this.category = 2;
+				this.dir = "Upgrade";
 				this.clip;
 				this.amount = 0;//bought
 				this.baseCost = 0;//basePrice
 				this.type = 0;
 				this.type2 = 0;
+				
+				//Achievement
+				this.clipBG;
+				this.clipBmp;
+				this.clipButton;
 		    }
 		
 			//CalculateSps = function()
@@ -2215,6 +2258,8 @@ if (reversed == null) { reversed = false; }
 		    constructor()
 			{
 				this.data;
+				this.category = 3;
+				this.dir = "Achievement";
 				this.clip;
 				this.clipBmp;
 				this.clipBG;
