@@ -2,316 +2,181 @@
 	{
 		"id": 1,
 		"type": 1,
-		"name": "a",
+		"name": "建造者",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 3,
+		"conditions2": "",
+		"desciption": "3建物を所有する。",
+		"memo": "ジェネレーターの数"
 	},
 	{
 		"id": 2,
 		"type": 1,
-		"name": "b",
+		"name": "建築士",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 10,
+		"conditions2": "",
+		"desciption": "10建物を所有する。",
+		"memo": ""
 	},
 	{
 		"id": 3,
 		"type": 1,
-		"name": "a",
+		"name": "向上する者",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 1000,
+		"conditions2": "",
+		"desciption": "1000建物を所有する。",
+		"memo": ""
 	},
 	{
 		"id": 4,
 		"type": 1,
-		"name": "b",
+		"name": "創造の主",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 2500,
+		"conditions2": "",
+		"desciption": "2500建物を所有する。",
+		"memo": ""
 	},
 	{
 		"id": 5,
 		"type": 1,
-		"name": "a",
+		"name": "全体構想",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 5000,
+		"conditions2": "",
+		"desciption": "5000建物を所有する。",
+		"memo": ""
 	},
 	{
 		"id": 6,
 		"type": 1,
-		"name": "b",
+		"name": "エキュメノポリス",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 7500,
+		"conditions2": "",
+		"desciption": "7500建物を所有する。",
+		"memo": ""
 	},
 	{
 		"id": 7,
 		"type": 1,
-		"name": "a",
+		"name": "ミリアド",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 10000,
+		"conditions2": "",
+		"desciption": "10000建物を所有する。",
+		"memo": ""
 	},
 	{
 		"id": 8,
-		"type": 1,
-		"name": "b",
+		"type": 2,
+		"name": "向上する者",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 3,
+		"conditions2": "",
+		"desciption": "3アップグレードを購入する。",
+		"memo": "アップグレードの数"
 	},
 	{
 		"id": 9,
-		"type": 1,
-		"name": "a",
+		"type": 2,
+		"name": "強化する者",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 10,
+		"conditions2": "",
+		"desciption": "10アップグレードを購入する。",
+		"memo": ""
 	},
 	{
 		"id": 10,
-		"type": 1,
-		"name": "b",
+		"type": 2,
+		"name": "アップグレーダー",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 100,
+		"conditions2": "",
+		"desciption": "100アップグレードを購入する。",
+		"memo": ""
 	},
 	{
 		"id": 11,
-		"type": 1,
-		"name": "a",
+		"type": 2,
+		"name": "進捗の主",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 200,
+		"conditions2": "",
+		"desciption": "200アップグレードを購入する。",
+		"memo": ""
 	},
 	{
 		"id": 12,
-		"type": 1,
-		"name": "b",
+		"type": 2,
+		"name": "全体像",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 300,
+		"conditions2": "",
+		"desciption": "300アップグレードを購入する。",
+		"memo": ""
 	},
 	{
 		"id": 13,
-		"type": 1,
-		"name": "a",
+		"type": 2,
+		"name": "付け足すものが何も残っていないとき",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 400,
+		"conditions2": "",
+		"desciption": "400アップグレードを購入する。",
+		"memo": ""
 	},
 	{
 		"id": 14,
-		"type": 1,
-		"name": "b",
+		"type": 2,
+		"name": "改善マニア",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 500,
+		"conditions2": "",
+		"desciption": "500アップグレードを購入する。",
+		"memo": ""
 	},
 	{
 		"id": 15,
-		"type": 1,
-		"name": "a",
+		"type": 2,
+		"name": "品質を超えて",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 600,
+		"conditions2": "",
+		"desciption": "600アップグレードを購入する。",
+		"memo": ""
 	},
 	{
 		"id": 101,
-		"type": 1,
-		"name": "b",
+		"type": 2,
+		"name": "頑張りすぎると、既に良いものをダメにしてしまう",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 700,
+		"conditions2": "",
+		"desciption": "700アップグレードを購入する。",
+		"memo": ""
 	},
 	{
 		"id": 102,
-		"type": 1,
-		"name": "a",
+		"type": 3,
+		"name": "博学",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 300,
+		"conditions2": 4000,
+		"desciption": "300アップグレードと4000建物を所有する。",
+		"memo": "アップグレードとジェネレーターの数"
 	},
 	{
 		"id": 103,
-		"type": 1,
-		"name": "b",
+		"type": 3,
+		"name": "ルネッサンスベーカー",
 		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 104,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 105,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 106,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 107,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 108,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 109,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 110,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 111,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 112,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 113,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 114,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 115,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 201,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 202,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 203,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 204,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 205,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 206,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 207,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 208,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 209,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 210,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 211,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 212,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 213,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 214,
-		"type": 1,
-		"name": "b",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	},
-	{
-		"id": 215,
-		"type": 1,
-		"name": "a",
-		"icon": "test",
-		"desciption": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		"conditions1": 400,
+		"conditions2": 8000,
+		"desciption": "400アップグレードと8000建物を所有する。",
+		"memo": ""
 	}
 ]

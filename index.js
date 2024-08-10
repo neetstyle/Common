@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[1127,0,488,182],[1617,0,262,232],[0,0,1125,300],[1127,184,262,232],[1881,88,48,48],[0,302,1125,278],[1127,418,209,209],[1391,234,262,232],[1881,0,137,86],[1655,234,262,232]]},
+		{name:"index_atlas_1", frames: [[1127,0,488,182],[1617,0,262,232],[0,0,1125,300],[1127,184,262,232],[1391,184,48,48],[0,302,1125,278],[1127,418,209,209],[1881,0,120,120],[1391,234,262,232],[1881,122,137,86],[1655,234,262,232]]},
 		{name:"index_atlas_2", frames: [[0,1589,1123,305],[0,0,1125,985],[0,987,1000,600]]},
 		{name:"index_atlas_3", frames: [[0,0,1125,1000],[0,1002,1125,1000]]},
 		{name:"index_atlas_4", frames: [[0,0,1044,1145]]}
@@ -99,6 +99,13 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 
 
+(lib._new = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(7);
+}).prototype = p = new cjs.Sprite();
+
+
+
 (lib.panel = function() {
 	this.initialize(ss["index_atlas_2"]);
 	this.gotoAndStop(1);
@@ -108,7 +115,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.shopButton = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(7);
+	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -122,7 +129,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.sushiIcon = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(8);
+	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -136,7 +143,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.upgradeButton = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(9);
+	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -199,6 +206,58 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-2.5,-2.5,1130,1405), null);
+
+
+(lib.NotificationMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Text
+	this.notification = new cjs.Text("99", "50px 'Potta One'", "#FFFFFF");
+	this.notification.name = "notification";
+	this.notification.textAlign = "center";
+	this.notification.lineHeight = 74;
+	this.notification.parent = this;
+	this.notification.setTransform(61,19.8);
+
+	this.timeline.addTween(cjs.Tween.get(this.notification).wait(1));
+
+	// BG
+	this.instance = new lib._new();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.NotificationMC, new cjs.Rectangle(0,0,120,120), null);
+
+
+(lib.NotificationIconMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// BG
+	this.instance = new lib._new();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.NotificationIconMC, new cjs.Rectangle(0,0,120,120), null);
 
 
 (lib.SushiImageMC = function(mode,startPosition,loop,reversed) {
@@ -1502,48 +1561,58 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.AchievementDesciptionMC, new cjs.Rectangle(0,0,1044,1145), null);
 
 
-(lib.AchievementContentMC = function(mode,startPosition,loop,reversed) {
+(lib.AchievementCellMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
 	props.mode = mode;
 	props.startPosition = startPosition;
-	props.labels = {};
+	props.labels = {"Active":0,"Lock":9};
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// Text
-	this.upgradeTitle = new cjs.Text("アップグレード", "60px 'Potta One'");
-	this.upgradeTitle.name = "upgradeTitle";
-	this.upgradeTitle.lineHeight = 89;
-	this.upgradeTitle.parent = this;
-	this.upgradeTitle.setTransform(82,502);
+	// Icon_Button
+	this.IconButtonMC = new lib.ButtonMC();
+	this.IconButtonMC.name = "IconButtonMC";
+	this.IconButtonMC.setTransform(0.4,0.4,2.0898,2.0899,0,0,0,0.2,0.2);
 
-	this.achievementTitle = new cjs.Text("アチーブメント", "60px 'Potta One'");
-	this.achievementTitle.name = "achievementTitle";
-	this.achievementTitle.lineHeight = 89;
-	this.achievementTitle.parent = this;
-	this.achievementTitle.setTransform(82,1094.2);
+	this.timeline.addTween(cjs.Tween.get(this.IconButtonMC).to({_off:true},9).wait(11));
 
-	this.text = new cjs.Text("提供中の寿司： 5.999 billion\n寿司生産数　5.999 billion\n施設数：23 ゲーム開始　7日, 1時間前\n毎秒の寿司提供数：359,343\n1タップあたりの寿司提供数：25\nタップ：234,432回", "40px 'Potta One'");
-	this.text.lineHeight = 60;
-	this.text.lineWidth = 959;
-	this.text.parent = this;
-	this.text.setTransform(84.2,148.3);
+	// hatena
+	this.instance = new lib.hatena();
+	this.instance.setTransform(8,8,4.0208,4.0208);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text},{t:this.achievementTitle},{t:this.upgradeTitle}]}).wait(1));
+	this.instance_1 = new lib.IconMC();
+	this.instance_1.setTransform(104.5,104.5,1,1,0,0,0,104.5,104.5);
 
-	// BG
-	this.ContentBGMC = new lib.ButtonMC();
-	this.ContentBGMC.name = "ContentBGMC";
-	this.ContentBGMC.setTransform(0,0,11.25,0.9999);
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.instance_1},{t:this.instance}]},9).wait(11));
 
-	this.timeline.addTween(cjs.Tween.get(this.ContentBGMC).wait(1));
+	// BG_Button
+	this.ButtonMC = new lib.ButtonMC();
+	this.ButtonMC.name = "ButtonMC";
+	this.ButtonMC.setTransform(0,0,2.0898,2.0899);
+
+	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).to({_off:true},9).wait(11));
+
+	// Notification
+	this.NotificationIconMC = new lib.NotificationIconMC();
+	this.NotificationIconMC.name = "NotificationIconMC";
+	this.NotificationIconMC.setTransform(209,0,1,1,0,0,0,60,60);
+
+	this.timeline.addTween(cjs.Tween.get(this.NotificationIconMC).to({_off:true},9).wait(11));
+
+	// Icon
+	this.IconMC = new lib.IconMC();
+	this.IconMC.name = "IconMC";
+	this.IconMC.setTransform(104.5,104.5,1,1,0,0,0,104.5,104.5);
+
+	this.timeline.addTween(cjs.Tween.get(this.IconMC).to({_off:true},9).wait(11));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementContentMC, new cjs.Rectangle(0,0,1125,1183.1), null);
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(0,-60,269,269);
 
 
 (lib.UpgradeContentMC = function(mode,startPosition,loop,reversed) {
@@ -1615,6 +1684,13 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
+	// Notification
+	this.AchievementNotificationMC = new lib.NotificationMC();
+	this.AchievementNotificationMC.name = "AchievementNotificationMC";
+	this.AchievementNotificationMC.setTransform(1073.55,74.1,1,1,0,0,0,60,60);
+
+	this.timeline.addTween(cjs.Tween.get(this.AchievementNotificationMC).wait(1));
+
 	// Button
 	this.AchievementButtonMC = new lib.AchievementButtonMC();
 	this.AchievementButtonMC.name = "AchievementButtonMC";
@@ -1640,10 +1716,10 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(0,0,1125,300), null);
+}).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(0,0,1133.6,300), null);
 
 
-(lib.AchievementPanelMC = function(mode,startPosition,loop,reversed) {
+(lib.AchievementContentMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -1654,217 +1730,41 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	this.isSingleFrame = false;
-	// timeline functions:
-	this.frame_0 = function() {
-		if(this.isSingleFrame) {
-			return;
-		}
-		if(this.totalFrames == 1) {
-			this.isSingleFrame = true;
-		}
-		this.OpenDesciption = function (data)
-		{
-		    if (!this.ScrollMC.isScrolled()) {
-		        this.parent.AchievementDesciptionMC.Open(data);
-				playSound("popup");
-		    }
-		}
-		
-		this.Create = function() 
-		{
-			//アップグレード
-			var posY = 600;
-			posY += 50;
-			this.ContentMC.upgradeTitle.y = posY;
-			posY += 100;
-			
-			var upgradeCount = 0; 
-			for (var i = 0; i < main.upgrades.length; i++)
-			{
-				if(main.upgrades[i].amount == 0) continue;
-		
-				let upgrade = main.upgrades[i];
-				
-				let clipBG = new lib.IconMC ();
-				this.ContentMC.addChild(clipBG);
-				upgrade.clipBG = clipBG;
-				clipBG.x = 80 + 250 * (upgradeCount % 4);
-				clipBG.y = posY + 250 * Math.floor(upgradeCount / 4);
-				
-				//アイコン生成
-				var bitmap = new createjs.Bitmap("images/Icon/Upgrade/" + upgrade.data["icon"] + ".png");
-				this.ContentMC.addChild(bitmap);
-				upgrade.clipBmp = bitmap;
-				bitmap.x = clipBG.x + 8;
-				bitmap.y = clipBG.y + 8;
-				bitmap.scaleX = 193 / 48;
-				bitmap.scaleY = 193 / 48;
-				bitmap.mouseEnabled = false;
-		
-				//ボタン生成
-				let clipButton = new lib.ButtonMC ();
-				this.ContentMC.addChild(clipButton);
-				upgrade.clipButton = clipButton;
-				clipButton.x = clipBG.x;
-				clipButton.y = clipBG.y;
-				clipButton.scaleX = 209 / 100;
-				clipButton.scaleY = 209 / 100;
-		
-				clipButton.addEventListener("click", function() {
-					this.OpenDesciption.call(this, upgrade);
-				}.bind(this));
-			
-				upgradeCount++;
-			}
-		
-			this.ContentMC.upgradeTitle.text = "アップグレード："
-				+ (upgradeCount/main.upgrades.length).toFixed(3) + "%"
-				+ "(" + upgradeCount + "/" + main.upgrades.length +")";
-		
-			posY += 250 * Math.ceil(upgradeCount / 4);
-		
-			//アチーブメント
-			posY += 50;
-			this.ContentMC.achievementTitle.y = posY;
-			posY += 100;
-		
-			var achievementCount = 0; 
-			for (var i = 0; i < main.achievements.length; i++)
-			{
-				let achievement = main.achievements[i];
-				
-				let clipBG = new lib.IconMC ();
-				this.ContentMC.addChild(clipBG);
-				achievement.clipBG = clipBG;
-				clipBG.x = 80 + 250 * (i % 4);
-				clipBG.y = posY + 250 * Math.floor(i / 4);
-				
-				//アイコン生成
-				var bitmap;
-				if(achievement.unlock)
-					bitmap = new createjs.Bitmap("images/Icon/Achievement/" + achievement.data["icon"] + ".png");
-				else
-					bitmap = new createjs.Bitmap("images/Icon/hatena.png");
-				this.ContentMC.addChild(bitmap);
-				achievement.clipBmp = bitmap;
-				bitmap.x = clipBG.x + 8;
-				bitmap.y = clipBG.y + 8;
-				bitmap.scaleX = 193 / bitmap.image.width;
-				bitmap.scaleY = 193 / bitmap.image.width;
-				bitmap.mouseEnabled = false;
-		
-				if(achievement.unlock)
-				{
-					//ボタン生成
-					let clipButton = new lib.ButtonMC ();
-					this.ContentMC.addChild(clipButton);
-					achievement.clipButton = clipButton;
-					clipButton.x = clipBG.x;
-					clipButton.y = clipBG.y;
-					clipButton.scaleX = 209 / 100;
-					clipButton.scaleY = 209 / 100;
-		
-					clipButton.addEventListener("click", function() {
-						this.OpenDesciption.call(this, achievement);
-					}.bind(this));
-				}
-				if(achievement.unlock)
-					achievementCount++;
-			}
-		
-			this.ContentMC.achievementTitle.text = "アチーブメント："
-				+ (achievementCount/main.achievements.length).toFixed(3) + "%"
-				+ "(" + achievementCount + "/" + main.achievements.length +")";
-		
-			posY += 250 * Math.ceil(main.achievements.length / 4);
-		
-			this.ScrollMC.SetSize(posY);
-		}
-		
-		this.Reset = function() 
-		{
-			for (var i = 0; i < main.achievements.length; i++)
-			{
-				let achievement = main.achievements[i];
-				this.ContentMC.removeChild(achievement.clipBG);
-				this.ContentMC.removeChild(achievement.clipBmp);
-				this.ContentMC.removeChild(achievement.clipButton);
-				achievement.clipBG = null;
-				achievement.clipBmp = null;
-				achievement.clipButton = null;
-			}
-		
-			for (var i = 0; i < main.upgrades.length; i++)
-			{
-				if(main.upgrades[i].clipBG === null) continue;		
-				let upgrade = main.upgrades[i];
-				this.ContentMC.removeChild(upgrade.clipBG);
-				this.ContentMC.removeChild(upgrade.clipBmp);
-				this.ContentMC.removeChild(upgrade.clipButton);
-				upgrade.clipBG = null;
-				upgrade.clipBmp = null;
-				upgrade.clipButton = null;
-			}
-			this.Create();
-		}
-		
-		this.Open =  function() 
-		{
-			this.Reset()
-			this.ScrollMC.Open();
-		}
-		
-		this.Close =  function() 
-		{
-			this.ScrollMC.Close();
-		}
-		
-		this.ScrollMC.content = this.ContentMC;
-	}
+	// Text
+	this.AchievementCellMC = new lib.AchievementCellMC();
+	this.AchievementCellMC.name = "AchievementCellMC";
+	this.AchievementCellMC.setTransform(82.2,1282.65);
 
-	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+	this.upgradeTitle = new cjs.Text("アップグレード", "60px 'Potta One'");
+	this.upgradeTitle.name = "upgradeTitle";
+	this.upgradeTitle.lineHeight = 89;
+	this.upgradeTitle.parent = this;
+	this.upgradeTitle.setTransform(82,502);
 
-	// AS
-	this.ScrollMC = new lib.ScrollMC();
-	this.ScrollMC.name = "ScrollMC";
-	this.ScrollMC.setTransform(-75,25,1,1,0,0,0,25,25);
+	this.achievementTitle = new cjs.Text("アチーブメント", "60px 'Potta One'");
+	this.achievementTitle.name = "achievementTitle";
+	this.achievementTitle.lineHeight = 89;
+	this.achievementTitle.parent = this;
+	this.achievementTitle.setTransform(82,1094.2);
 
-	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
+	this.text = new cjs.Text("提供中の寿司： 5.999 billion\n寿司生産数　5.999 billion\n施設数：23 ゲーム開始　7日, 1時間前\n毎秒の寿司提供数：359,343\n1タップあたりの寿司提供数：25\nタップ：234,432回", "40px 'Potta One'");
+	this.text.lineHeight = 60;
+	this.text.lineWidth = 959;
+	this.text.parent = this;
+	this.text.setTransform(84.2,148.3);
 
-	// Mask (mask)
-	var mask = new cjs.Shape();
-	mask._off = true;
-	mask.graphics.p("EhX4HUwMAAAupfMCvxAAAMAAAOpfg");
-	mask.setTransform(562.5,3040.7);
-
-	// Cell
-	this.ContentMC = new lib.AchievementContentMC();
-	this.ContentMC.name = "ContentMC";
-
-	var maskedShapeInstanceList = [this.ContentMC];
-
-	for(var shapedInstanceItr = 0; shapedInstanceItr < maskedShapeInstanceList.length; shapedInstanceItr++) {
-		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
-	}
-
-	this.timeline.addTween(cjs.Tween.get(this.ContentMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text},{t:this.achievementTitle},{t:this.upgradeTitle},{t:this.AchievementCellMC}]}).wait(1));
 
 	// BG
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4jqXMCvxAAAMAAAHUvMivxAAAg");
-	this.shape.setTransform(562.5,1500);
+	this.ContentBGMC = new lib.ButtonMC();
+	this.ContentBGMC.name = "ContentBGMC";
+	this.ContentBGMC.setTransform(0,0,11.25,0.9999);
 
-	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#3399FF").s().p("EhX4DqYMAAAnUvMCvxAAAMAAAHUvg");
-	this.shape_1.setTransform(562.5,1500);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.ContentBGMC).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3005), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementContentMC, new cjs.Rectangle(0,0,1125,1491.7), null);
 
 
 (lib.UpgradePanelMC = function(mode,startPosition,loop,reversed) {
@@ -1887,6 +1787,10 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
+		this.ContentMC.UpgradeCellMC.visible = false;
+		this.ScrollMC.content = this.ContentMC;
+		this._Tick;
+		
 		this.OpenDesciption = function (upgrade)
 		{
 		    if (!this.ScrollMC.isScrolled()) {
@@ -1904,7 +1808,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.Create = function() 
 		{
-			this.ContentMC.UpgradeCellMC.visible = false;
+		
 			
 			for (var i = 0; i < main.upgradesInStore.length; i++)
 			{
@@ -1947,7 +1851,6 @@ if (reversed == null) { reversed = false; }
 			this.Create();
 		}
 		
-		
 		this.Open =  function() 
 		{
 			this.ScrollMC.Open();
@@ -1960,9 +1863,6 @@ if (reversed == null) { reversed = false; }
 			createjs.Ticker.removeEventListener("tick", this._Tick);	
 		}
 		
-		this.ScrollMC.content = this.ContentMC;
-		
-		this._Tick;
 		this.Tick = function(event)
 		{
 			for (var i = 0; i < main.upgradesInStore.length; i++)
@@ -2042,6 +1942,10 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
+		this.ContentMC.GeneratorCellMC.visible = false;
+		this.ScrollMC.content = this.ContentMC;
+		this._Tick;
+		
 		this.OpenDesciption = function (generator)
 		{
 		    if (!this.ScrollMC.isScrolled()) {
@@ -2059,8 +1963,6 @@ if (reversed == null) { reversed = false; }
 		
 		this.Create = function() 
 		{
-			this.ContentMC.GeneratorCellMC.visible = false;
-			
 			for (var i = 0; i < main.generators.length; i++)
 			{
 				let generator = main.generators[i];
@@ -2105,9 +2007,6 @@ if (reversed == null) { reversed = false; }
 			createjs.Ticker.removeEventListener("tick", this._Tick);	
 		}
 		
-		this.ScrollMC.content = this.ContentMC;
-		
-		this._Tick;
 		this.Tick = function(event)
 		{
 			var dispCount = 0;	
@@ -2193,6 +2092,213 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-100.5,-0.5,1225.5,985.5), null);
 
 
+(lib.AchievementPanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.ContentMC.AchievementCellMC.visible = false;
+		this.ScrollMC.content = this.ContentMC;
+		
+		this.OpenDesciption = function (data)
+		{
+		    if (!this.ScrollMC.isScrolled()) {
+		        this.parent.AchievementDesciptionMC.Open(data);
+				playSound("popup");
+				if(data.unread)
+				{
+					main.RemoveAchievement();
+					data.unread = false;
+					data.achievementClip.NotificationIconMC.visible =  false;
+				}
+		    }
+		}
+		
+		this.Create = function() 
+		{
+			//アップグレード
+			var posY = 600;
+			posY += 50;
+			this.ContentMC.upgradeTitle.y = posY;
+			posY += 100;
+			
+			var upgradeCount = 0; 
+			for (var i = 0; i < main.upgrades.length; i++)
+			{
+				if(main.upgrades[i].amount == 0) continue;
+		
+				let upgrade = main.upgrades[i];
+				
+				let clip = new lib.AchievementCellMC();
+				this.ContentMC.addChild(clip);
+				upgrade.achievementClip = clip;
+				clip.x = 80 + 250 * (upgradeCount % 4);
+				clip.y = posY + 250 * Math.floor(upgradeCount / 4);
+				
+				clip.IconButtonMC.addEventListener("click", function() {
+					this.OpenDesciption.call(this, upgrade);
+				}.bind(this));
+				
+				//アイコン生成
+				var bitmap = new createjs.Bitmap("images/Icon/Upgrade/" + upgrade.data["icon"] + ".png");
+				clip.IconMC.addChild(bitmap);
+				bitmap.x = 10;
+				bitmap.y = 10;
+				bitmap.scaleX = 193 / 48;
+				bitmap.scaleY = 193 / 48;
+				bitmap.mouseEnabled = false;		
+				
+				clip.gotoAndStop("Active");
+				clip.NotificationIconMC.visible =  upgrade.unread;
+				upgradeCount++;
+			}
+		
+			this.ContentMC.upgradeTitle.text = "アップグレード："
+				+ (upgradeCount/main.upgrades.length).toFixed(3) + "%"
+				+ "(" + upgradeCount + "/" + main.upgrades.length +")";
+		
+			posY += 250 * Math.ceil(upgradeCount / 4);
+		
+			//アチーブメント
+			posY += 50;
+			this.ContentMC.achievementTitle.y = posY;
+			posY += 100;
+		
+			var achievementCount = 0; 
+			for (var i = 0; i < main.achievements.length; i++)
+			{
+				let achievement = main.achievements[i];
+				
+				let clip = new lib.AchievementCellMC();
+				this.ContentMC.addChild(clip);
+				achievement.achievementClip = clip;
+				clip.x = 80 + 250 * (i % 4);
+				clip.y = posY + 250 * Math.floor(i / 4);
+		
+				clip.IconButtonMC.addEventListener("click", function() {
+					this.OpenDesciption.call(this, achievement);
+				}.bind(this));
+				
+				//アイコン生成
+				var bitmap = new createjs.Bitmap("images/Icon/Achievement/" + achievement.data["icon"] + ".png");
+				clip.IconMC.addChild(bitmap);
+				bitmap.x = 10;
+				bitmap.y = 10;
+				bitmap.scaleX = 193 / 64;
+				bitmap.scaleY = 193 / 64;
+				bitmap.mouseEnabled = false;		
+				
+				if(achievement.unlock)
+				{
+					achievementCount++;
+					clip.gotoAndStop("Active");
+				}
+				else
+				{
+					clip.gotoAndStop("Lock");
+				}
+				clip.NotificationIconMC.visible =  achievement.unread;
+			}
+		
+			this.ContentMC.achievementTitle.text = "アチーブメント："
+				+ (achievementCount/main.achievements.length).toFixed(3) + "%"
+				+ "(" + achievementCount + "/" + main.achievements.length +")";
+		
+			posY += 250 * Math.ceil(main.achievements.length / 4);
+		
+			this.ScrollMC.SetSize(posY);
+		}
+		
+		this.Reset = function() 
+		{
+			for (var i = 0; i < main.achievements.length; i++)
+			{
+				let achievement = main.achievements[i];
+				this.ContentMC.removeChild(achievement.achievementClip);
+				achievement.achievementClip = null;
+			}
+		
+			for (var i = 0; i < main.upgrades.length; i++)
+			{
+				if(main.upgrades[i].achievementClip === null) continue;		
+				let upgrade = main.upgrades[i];
+				this.ContentMC.removeChild(upgrade.achievementClip);
+				upgrade.achievementClip = null;
+			}
+			this.Create();
+		}
+		
+		this.Open =  function() 
+		{
+			this.Reset()
+			this.ScrollMC.Open();
+		}
+		
+		this.Close =  function() 
+		{
+			this.ScrollMC.Close();
+		}
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// AS
+	this.ScrollMC = new lib.ScrollMC();
+	this.ScrollMC.name = "ScrollMC";
+	this.ScrollMC.setTransform(-75,25,1,1,0,0,0,25,25);
+
+	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
+
+	// Mask (mask)
+	var mask = new cjs.Shape();
+	mask._off = true;
+	mask.graphics.p("EhX4HUwMAAAupfMCvxAAAMAAAOpfg");
+	mask.setTransform(562.5,3040.7);
+
+	// Cell
+	this.ContentMC = new lib.AchievementContentMC();
+	this.ContentMC.name = "ContentMC";
+
+	var maskedShapeInstanceList = [this.ContentMC];
+
+	for(var shapedInstanceItr = 0; shapedInstanceItr < maskedShapeInstanceList.length; shapedInstanceItr++) {
+		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
+	}
+
+	this.timeline.addTween(cjs.Tween.get(this.ContentMC).wait(1));
+
+	// BG
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4jqXMCvxAAAMAAAHUvMivxAAAg");
+	this.shape.setTransform(562.5,1500);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4DqYMAAAnUvMCvxAAAMAAAHUvg");
+	this.shape_1.setTransform(562.5,1500);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3005), null);
+
+
 // stage content:
 (lib.index = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
@@ -2223,6 +2329,7 @@ if (reversed == null) { reversed = false; }
 			{
 				this.data;
 				this.category = 1;
+				this.clip = null;
 				this.dir = "Generator";
 				this.sps = 0;
 				this.storedSps = 0;
@@ -2233,8 +2340,6 @@ if (reversed == null) { reversed = false; }
 				this.storedCost = 0;
 				this.lock = true;
 				this.free = 0;//?
-				
-				this.clip = null;
 		    }
 		
 			CalculateSps = function()
@@ -2249,23 +2354,17 @@ if (reversed == null) { reversed = false; }
 			{
 				this.data;
 				this.category = 2;
+				this.clip = null;
+				this.achievementClip = null;
 				this.dir = "Upgrade";
 		
-				this.amount = 0;//bought
-				this.baseCost = 0;//basePrice
+				this.amount = 0;
+				this.baseCost = 0;
 				this.type = 0;
 				this.type2 = 0;
 				
-				this.clip = null;
-				this.clipBG = null;
-				this.clipBmp = null;
-				this.clipButton = null;
+				this.unread = true;
 		    }
-		
-			//CalculateSps = function()
-			//{
-			//	this.storedSps = this.sps;
-			//}
 		}
 		
 		class Achievement
@@ -2274,13 +2373,10 @@ if (reversed == null) { reversed = false; }
 			{
 				this.data;
 				this.category = 3;
+				this.achievementClip = null;
 				this.dir = "Achievement";
 				this.unlock = false;
-				
-				this.clip = null;
-				this.clipBG = null;
-				this.clipBmp = null;
-				this.clipButton = null;
+				this.unread = true;
 		    }
 		}
 		
@@ -2306,11 +2402,13 @@ if (reversed == null) { reversed = false; }
 		
 				this.generators = [];
 				this.Init_Generators();
+				this.generatorNum = 0;		
+				
 				
 				this.upgradesInStore = [];
 				this.upgrades = [];	
 				this.Init_Upgrades();
-				this.RebuildUpgrades();
+				this.upgradeNum = 0;	
 				
 				this.fps = 60;
 				this.lastTickTime = 0;
@@ -2318,34 +2416,10 @@ if (reversed == null) { reversed = false; }
 				
 				this.achievements = [];
 				this.Init_Achievements();
-		
-				this.computedTouchSps = this.TouchSps();		
-				
-				createjs.Ticker.framerate = this.fps;
-				createjs.Ticker.timingMode = createjs.Ticker.RAF;
-				createjs.Ticker.addEventListener("tick", this.MainTick.bind(this));	
+				this.achievementNotificationNum = 0;
 		    }
 		
-		
-			RebuildUpgrades = function()
-			{
-				var list=[];
-				for (var i = 0; i < this.upgrades.length; i++)
-				{
-					var upgrade = this.upgrades[i];
-					if (upgrade.amount == 0)
-					{
-						list.push(upgrade);
-					}
-				}
-				this.upgradesInStore=[];
-				for (var i in list)
-				{
-					this.upgradesInStore.push(list[i]);
-				}
-			}
-		
-		    Init_Upgrades() 
+			Init_Upgrades() 
 			{
 				for (var i = 0; i < upgradeData.length; i++)
 				{
@@ -2356,9 +2430,9 @@ if (reversed == null) { reversed = false; }
 					upgrade.type2 = upgradeData[i]["type2"];
 					this.upgrades.push(upgrade);
 				}
-		    }
+			}
 		
-		    Init_Generators() 
+			Init_Generators() 
 			{
 				for (var i = 0; i < generatorData.length; i++)
 				{
@@ -2366,152 +2440,174 @@ if (reversed == null) { reversed = false; }
 					generator.data = generatorData[i];
 					generator.sps = generatorData[i]["sps"];
 					generator.baseCost = generatorData[i]["cost"];
-					generator.storedCost = this.GetCost(generator);			
+					generator.storedCost = generator.baseCost;				
+					//generator.storedCost = this.GetCost(generator);			
 					this.generators.push(generator);
 				}
-		    }
+			}
 		
-		    Init_Achievements() 
+			Init_Achievements() 
 			{
 				for (var i = 0; i < achievementData.length; i++)
 				{
 					var	achievement = new Achievement();
 					achievement.data = achievementData[i];	
 					this.achievements.push(achievement);
-					
-		achievement.unlock = Math.random() < 0.5 ? true : false;	
-					
 				}
-		    }
+			}
+		}
 		
-		    AddSushi(value) {
-				if(this.isAddTouchCps)
-					value = value * 1000;		
-		        this.sushi += value;
-		        this.totalSushi += value;
-				this.root.HeaderMC.Sushi.text = FormatNumber(main.sushi, 1) + " pieces";
-		    }
-		
-			ComputeCps = function(base,mult,bonus)
+		main = new Main();
+		main.RebuildUpgrades = function()
+		{
+			var list=[];
+			for (var i = 0; i < this.upgrades.length; i++)
 			{
-				if (!bonus) bonus = 0;
-				return ((base)*(Math.pow(2,mult))+bonus);
+				var upgrade = this.upgrades[i];
+				if (upgrade.amount == 0)
+				{
+					list.push(upgrade);
+				}
+			}
+			this.upgradesInStore=[];
+			for (var i in list)
+			{
+				this.upgradesInStore.push(list[i]);
+			}
+		}
+		
+		main.AddSushi = function(value) 
+		{
+			if(this.isAddTouchCps)
+				value = value * 1000;		
+			this.sushi += value;
+			this.totalSushi += value;
+			this.root.HeaderMC.Sushi.text = FormatNumber(main.sushi, 1) + " pieces";
+		}
+		
+		main.ComputeCps = function(base,mult,bonus)
+		{
+			if (!bonus) bonus = 0;
+			return ((base)*(Math.pow(2,mult))+bonus);
+		}
+		
+		main.TouchSps = function()
+		{
+			var add = 0;
+		
+			//Fingers
+			for (var i = 0; i < this.upgrades.length; i++)
+			{
+				var upgrade = this.upgrades[i];			
+				if(upgrade.amount == 0) continue;
+				if(upgrade.type != 2) continue;
+						
+				if(upgrade.type2 == 2)
+				{	
+					add += upgradeData[i].sps;
+				}
+				else if(upgrade.type2 == 3)
+				{
+					add *= this.sushiPs * upgradeData[i].sps;
+				}
+			}
+			
+			//Pointer
+			for (i = 0; i < this.upgrades.length; i++)
+			{
+				var upgrade = this.upgrades[i];			
+				if(upgrade.amount == 0) continue;
+				
+				if(this.upgrades[i].type == 1)
+					add += this.sushiPs * upgradeData[i].sps;
 			}
 		
-		    TouchSps() {
+			var mult=1;
+			var out = mult * this.ComputeCps(1, 0, add);
 		
-				var add = 0;
+			return out;
+		}
 		
-				//Fingers
-				for (var i = 0; i < this.upgrades.length; i++)
-				{
-					var upgrade = this.upgrades[i];			
-					if(upgrade.amount == 0) continue;
-					if(upgrade.type != 2) continue;
-							
-					if(upgrade.type2 == 2)
-					{	
-						add += upgradeData[i].sps;
-					}
-					else if(upgrade.type2 == 3)
-					{
-						add *= this.sushiPs * upgradeData[i].sps;
-					}
-				}
-				
-				//Pointer
-				for (i = 0; i < this.upgrades.length; i++)
-				{
-					var upgrade = this.upgrades[i];			
-					if(upgrade.amount == 0) continue;
-					
-					if(this.upgrades[i].type == 1)
-						add += this.sushiPs * upgradeData[i].sps;
-				}
+		main.CalculateGains = function()
+		{
+			this.sushiPs=0;
+			var mult=1;
 		
-				var mult=1;
-				var out = mult * this.ComputeCps(1, 0, add);
-		
-				return out;
-		    }
-		
-			CalculateGains = function()
+			for (var i = 0; i < this.generators.length; i++)
 			{
-				this.sushiPs=0;
-				var mult=1;
+				this.generators[i].CalculateSps();
+				this.generators[i].storedTotalSps = this.generators[i].amount * this.generators[i].storedSps;
+				this.sushiPs += this.generators[i].storedTotalSps;
+				this.sushiPs = Number(this.sushiPs.toFixed(2));
+			}
+			this.root.HeaderMC.Sps.text = "per Second : " + FormatNumber(this.sushiPs, 1) + " pieces";
+		}
+		
+		main.BuyGenerator = function(generator)
+		{
+			if(this.sushi >= generator.storedCost)
+			{
+				this.sushi -= generator.storedCost;
+				generator.amount++;
+				generator.clip.amount.text = generator.amount;
+				main.CalculateGains();
+				playSound("generator");
+				generator.storedCost = this.GetCost(generator);
+				generator.clip.cost.text = FormatNumber(generator.storedCost, 1);
+				this.generatorNum++;
+				this.CheckAchievement_Generator();
+			}
+		}
+		
+		main.GetCost = function(generator)
+		{
+			var cost = generator.baseCost * Math.pow(this.priceIncrease, Math.max(0, generator.amount - generator.free));
+			return Math.ceil(cost);
+		}
+		
+		main.BuyUpgrade = function(upgrade)
+		{
+			if(this.sushi >= upgrade.baseCost)
+			{
+				this.sushi -= upgrade.baseCost;
+				upgrade.amount++;
+				main.CalculateGains();
+				playSound("generator");
+				this.RebuildUpgrades();
+				this.CalculateGains();
+				this.root.UpgradePanelMC.Reset();
+				this.upgradeNum++;
+				this.AddAchievement();
+				this.CheckAchievement_Generator();
+			}
+			this.computedTouchSps = this.TouchSps();
+		}
+		
+		main.MainTick = function(event)
+		{
+			var now = createjs.Ticker.getTime();
+			var delta = now - this.lastTickTime;
+			
+			while (delta >= this.interval)
+			{
+				//console.log("1秒経過");
+		
+				this.CalculateGains();
 		
 				for (var i = 0; i < this.generators.length; i++)
 				{
-					this.generators[i].CalculateSps();
-					this.generators[i].storedTotalSps = this.generators[i].amount * this.generators[i].storedSps;
-					this.sushiPs += this.generators[i].storedTotalSps;
-					this.sushiPs = Number(this.sushiPs.toFixed(2));
+					this.generators[i].totalSushies += this.generators[i].storedTotalSps;
 				}
-			
 		
-				this.root.HeaderMC.Sps.text = "per Second : " + FormatNumber(this.sushiPs, 1) + " pieces";
-			}
-		
-			BuyGenerator = function(generator)
-			{
-				if(this.sushi >= generator.storedCost)
-				{
-					this.sushi -= generator.storedCost;
-					generator.amount++;
-					generator.clip.amount.text = generator.amount;
-					main.CalculateGains();
-					playSound("generator");
-					generator.storedCost = this.GetCost(generator);
-					generator.clip.cost.text = FormatNumber(generator.storedCost, 1);
-				}
-			}
-		
-			GetCost = function(generator)
-			{
-				var cost = generator.baseCost * Math.pow(this.priceIncrease, Math.max(0, generator.amount - generator.free));
-				return Math.ceil(cost);
-			}
-		
-			BuyUpgrade = function(upgrade)
-			{
-				if(this.sushi >= upgrade.baseCost)
-				{
-					this.sushi -= upgrade.baseCost;
-					upgrade.amount++;
-					main.CalculateGains();
-					playSound("generator");
-					this.RebuildUpgrades();
-					this.CalculateGains();
+				var ammount = this.sushiPs + this.fractionSps;
+				this.fractionSps = ammount - Math.floor(ammount);
+				ammount -= this.fractionSps;
+				this.AddSushi(ammount);
 				
-					this.root.UpgradePanelMC.Reset();
-				}
-				this.computedTouchSps = this.TouchSps();
+				delta -= this.interval;
+				this.lastTickTime += this.interval;
 			}
-		
-			MainTick = function(event)
-			{
-				var now = createjs.Ticker.getTime();
-				var delta = now - this.lastTickTime;
-				while (delta >= this.interval) {
-					//console.log("1秒経過");
-					
-					this.CalculateGains();
-		
-					for (var i = 0; i < this.generators.length; i++)
-					{
-						this.generators[i].totalSushies += this.generators[i].storedTotalSps;
-					}
-		
-					var ammount = this.sushiPs + this.fractionSps;
-					this.fractionSps = ammount - Math.floor(ammount);
-					ammount -= this.fractionSps;
-					this.AddSushi(ammount);
-					
-					delta -= this.interval;
-					this.lastTickTime += this.interval;
-				}
-				this.lastTickTime = now - delta;
-			}
+			this.lastTickTime = now - delta;
 		}
 		
 		this.HeaderMC.DebugMC.on("click", function(evt) {
@@ -2523,16 +2619,47 @@ if (reversed == null) { reversed = false; }
 				this.status.text = "Debug";
 			}
 		});
+		main.AddAchievement = function()
+		{
+			this.achievementNotificationNum++;
+			this.root.FooterMC.AchievementNotificationMC.visible = true;
+			this.root.FooterMC.AchievementNotificationMC.notification.text = this.achievementNotificationNum;
+		}
 		
-		main = new Main();
-		if (createjs.Touch.isSupported())
-		    createjs.Touch.enable(stage);
-		 
-		stage.enableMouseOver(20); 
-		 
-		//this.name = "root";
-		//stage.getChildByName("root").log1.text = new Date().getTime();	
+		main.RemoveAchievement = function()
+		{
+			this.achievementNotificationNum--;
+			if(this.achievementNotificationNum <= 0)
+				this.root.FooterMC.AchievementNotificationMC.visible = false;
+			this.root.FooterMC.AchievementNotificationMC.notification.text = this.achievementNotificationNum;
+		}
 		
+		//実績、ジェネレーター・アップグレード
+		main.CheckAchievement_Generator = function(generator)
+		{
+			for (var i = 0; i < this.achievements.length; i++)
+			{
+				var achievement = this.achievements[i];
+				if(achievement.unlock == true) continue;
+				switch (achievement.data.type)
+				{
+					case 1://ジェネレーターの数
+						if(!(this.generatorNum >= achievement.data.conditions1)) continue;
+						break;
+					case 2://アップグレードの数
+						if(!(this.upgradeNum >= achievement.data.conditions1)) continue;
+						break;
+					case 3://アップグレードとジェネレーターの数
+						if(!(this.upgradeNum >= achievement.data.conditions1 && this.generatorNum >= achievement.data.conditions1
+						)) continue;
+						break;
+					default:
+						continue;
+				}
+				achievement.unlock = true;
+				this.AddAchievement();
+			}
+		}
 		//1125 * 2436
 		this.canvasScaleX = document.documentElement.clientWidth / 1125;
 		this.canvasScaleY = document.documentElement.clientHeight / 2436;
@@ -2556,15 +2683,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.MaskMC.visible = false;
 		
-		this.executeNextFrame = function(callback) {
-		    setTimeout(callback, 0);
-		}
-		
-		this.executeNextFrame(() => {
-			this.GeneratorPanelMC.Create();
-			this.UpgradePanelMC.Create();
-			this.AchievementPanelMC.Create();
-		});
+		this.FooterMC.AchievementNotificationMC.visible = false;
 		this.page = 0;
 		this.GeneratorPanelMC.visible = false;
 		this.UpgradePanelMC.visible = false;
@@ -2720,6 +2839,27 @@ if (reversed == null) { reversed = false; }
 			//createjs.Tween.get(this.BgMC, { override: true })
 			//.to({ y: y - document.documentElement.clientHeight / 2 }, 250, createjs.Ease.expoOut);
 		}
+		if (createjs.Touch.isSupported())
+		    createjs.Touch.enable(stage);
+		 
+		stage.enableMouseOver(20); 
+		
+		this.executeNextFrame = function(callback) {
+		    setTimeout(callback, 0);
+		}
+		
+		this.executeNextFrame(() => {
+			main.computedTouchSps = main.TouchSps();
+			main.RebuildUpgrades();	
+			
+			this.GeneratorPanelMC.Create();
+			this.UpgradePanelMC.Create();
+			//this.AchievementPanelMC.Create();
+		
+			createjs.Ticker.framerate = main.fps;
+			createjs.Ticker.timingMode = createjs.Ticker.RAF;
+			createjs.Ticker.addEventListener("tick", main.MainTick.bind(main));		
+		});
 	}
 
 	// actions tween:
@@ -2727,22 +2867,9 @@ if (reversed == null) { reversed = false; }
 
 	// AS_Game
 	this.instance = new lib.DispNumMC();
-	this.instance.setTransform(-131.7,-100.85);
+	this.instance.setTransform(-473.75,-100.85);
 
-	this.text = new cjs.Text("16", "50px 'MS Gothic'", "#FF0000");
-	this.text.lineHeight = 52;
-	this.text.lineWidth = 90;
-	this.text.parent = this;
-	this.text.setTransform(34,-249.05);
-
-	this.log1 = new cjs.Text("1", "50px 'MS Gothic'", "#FF0000");
-	this.log1.name = "log1";
-	this.log1.lineHeight = 52;
-	this.log1.lineWidth = 580;
-	this.log1.parent = this;
-	this.log1.setTransform(24.05,-334.1);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.log1},{t:this.text},{t:this.instance}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	// Desciption
 	this.AchievementDesciptionMC = new lib.AchievementDesciptionMC();
