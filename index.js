@@ -2386,54 +2386,19 @@ if (reversed == null) { reversed = false; }
 			{
 				this.root = stage.getChildByName("root");
 				
-				this.isAddTouchCps = false;	
-				
 		        this.sushi = 0;
 		        this.totalSushi = 0;
-				this.upgrade = [];
-				
 				this.sushiPs = 0;
-				this.add = 0;
 				this.computedTouchCps = 0
 				this.fractionSps = 0;
-				
 				this.priceIncrease = 1.15;
 				
-		
+				//this.upgrade = [];
+				//this.add = 0;
+				
+				//////////////////////////////////////////////////////////
+				//ジェネレーター
 				this.generators = [];
-				this.Init_Generators();
-				this.generatorNum = 0;		
-				
-				
-				this.upgradesInStore = [];
-				this.upgrades = [];	
-				this.Init_Upgrades();
-				this.upgradeNum = 0;	
-				
-				this.fps = 60;
-				this.lastTickTime = 0;
-				this.interval = 1000;		
-				
-				this.achievements = [];
-				this.Init_Achievements();
-				this.achievementNotificationNum = 0;
-		    }
-		
-			Init_Upgrades() 
-			{
-				for (var i = 0; i < upgradeData.length; i++)
-				{
-					var	upgrade = new Upgrade();
-					upgrade.data = upgradeData[i];
-					upgrade.baseCost = upgradeData[i]["cost"];
-					upgrade.type = upgradeData[i]["type"];
-					upgrade.type2 = upgradeData[i]["type2"];
-					this.upgrades.push(upgrade);
-				}
-			}
-		
-			Init_Generators() 
-			{
 				for (var i = 0; i < generatorData.length; i++)
 				{
 					var	generator = new Generator();
@@ -2444,17 +2409,45 @@ if (reversed == null) { reversed = false; }
 					//generator.storedCost = this.GetCost(generator);			
 					this.generators.push(generator);
 				}
-			}
-		
-			Init_Achievements() 
-			{
+				this.generatorNum = 0;		
+				
+				//////////////////////////////////////////////////////////
+				//アップグレード
+				this.upgradesInStore = [];
+				this.upgrades = [];	
+				for (var i = 0; i < upgradeData.length; i++)
+				{
+					var	upgrade = new Upgrade();
+					upgrade.data = upgradeData[i];
+					upgrade.baseCost = upgradeData[i]["cost"];
+					upgrade.type = upgradeData[i]["type"];
+					upgrade.type2 = upgradeData[i]["type2"];
+					this.upgrades.push(upgrade);
+				}		
+				this.upgradeNum = 0;	
+				
+				//////////////////////////////////////////////////////////
+				//実績
+				this.achievements = [];
 				for (var i = 0; i < achievementData.length; i++)
 				{
 					var	achievement = new Achievement();
 					achievement.data = achievementData[i];	
 					this.achievements.push(achievement);
 				}
-			}
+				this.achievementNotificationNum = 0;
+			
+				//////////////////////////////////////////////////////////
+				//Tick
+				this.fps = 60;
+				this.lastTickTime = 0;
+				this.interval = 1000;
+			
+				//////////////////////////////////////////////////////////
+				//Debug
+				this.isAddTouchCps = false;	
+		
+		    }
 		}
 		
 		main = new Main();
@@ -2585,29 +2578,28 @@ if (reversed == null) { reversed = false; }
 		
 		main.MainTick = function(event)
 		{
-			var now = createjs.Ticker.getTime();
+			var now = createjs.Ticker.getTime() * 0.001;
 			var delta = now - this.lastTickTime;
-			
-			while (delta >= this.interval)
+			//console.log(delta);
+		
+			this.interval += delta;
+			if(this.interval > 1)
 			{
-				//console.log("1秒経過");
-		
 				this.CalculateGains();
-		
-				for (var i = 0; i < this.generators.length; i++)
-				{
-					this.generators[i].totalSushies += this.generators[i].storedTotalSps;
-				}
-		
-				var ammount = this.sushiPs + this.fractionSps;
-				this.fractionSps = ammount - Math.floor(ammount);
-				ammount -= this.fractionSps;
-				this.AddSushi(ammount);
-				
-				delta -= this.interval;
-				this.lastTickTime += this.interval;
+				this.interval = 0;
 			}
-			this.lastTickTime = now - delta;
+			
+			for (var i = 0; i < this.generators.length; i++)
+			{
+				this.generators[i].totalSushies += this.generators[i].storedTotalSps * delta;
+			}
+		
+			var ammount = this.sushiPs * delta + this.fractionSps;
+			this.fractionSps = ammount - Math.floor(ammount);
+			ammount -= this.fractionSps;
+			this.AddSushi(ammount);
+				
+			this.lastTickTime = now;
 		}
 		
 		this.HeaderMC.DebugMC.on("click", function(evt) {
