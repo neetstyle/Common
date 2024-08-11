@@ -1218,6 +1218,7 @@ if (reversed == null) { reversed = false; }
 		this.CloseButtonMC.scaleY = document.documentElement.clientHeight / 100 / this.parent.canvasScaleY;	
 		
 		this.obj;
+		this.ratio;
 		
 		this.CloseDesciption = function()
 		{
@@ -1227,9 +1228,12 @@ if (reversed == null) { reversed = false; }
 			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
 			.call(() => {
 				this.visible = false;
-		    });	
-			createjs.Ticker.removeEventListener('tick', this._Tick);
+		    });
+		
 			playSound("popup");
+		
+			if(this.obj.amount > 0)
+				createjs.Ticker.removeEventListener('tick', this._Tick);
 		} 
 		this.CloseButtonMC.addEventListener("click", this.CloseDesciption.bind(this));
 		
@@ -1264,7 +1268,23 @@ if (reversed == null) { reversed = false; }
 			
 			SetWrapText(this.desciption);	
 			
-			this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));	
+			if(this.obj.amount > 0)
+			{
+				var total = 0;
+				for (var i = 0; i < main.generators.length; i++)
+				{
+					total += main.generators[i].storedTotalSps;	
+				}
+				this.ratio = this.obj.storedTotalSps / total * 100;
+		
+				this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));
+			}
+			else
+			{
+				this.desciption1.text = "";	
+				this.desciption2.text = "";	
+				this.desciption3.text = "";	
+			}
 		}
 		
 		this._Tick;
@@ -1273,17 +1293,17 @@ if (reversed == null) { reversed = false; }
 			var text1 = "各[x]が毎秒[y]Sushi生産";
 			this.desciption1.text = 
 				text1.replace("[x]", this.obj.data.name)
-				.replace("[y]", Math.floor(this.obj.storedTotalSps));
+				.replace("[y]", FormatNumber(Accuracy(this.obj.storedTotalSps), 1));
 			
 			var text2 = "[x][y]が毎秒[z]Sushi生産(合計SpSの[w]%)";
 			this.desciption2.text = 
 				text2.replace("[x]", this.obj.amount)
 				.replace("[y]", this.obj.data.name)
-				.replace("[z]", Math.floor(this.obj.storedTotalSps))
-				.replace("[w]", Math.floor(this.obj.storedTotalSps));
+				.replace("[z]", FormatNumber(Accuracy(this.obj.storedTotalSps * this.obj.amount), 1))
+				.replace("[w]", this.ratio.toFixed(1));
 			
 			var text3 = "これまで[x]Sushi生産";
-			this.desciption3.text = text3.replace("[x]", Math.floor(this.obj.totalSushies));
+			this.desciption3.text = text3.replace("[x]", FormatNumber(Math.floor(this.obj.totalSushies), 1));
 		
 			SetWrapText(this.desciption1);
 			SetWrapText(this.desciption2);
@@ -2772,7 +2792,6 @@ if (reversed == null) { reversed = false; }
 				this.generators[i].CalculateSps();
 				this.generators[i].storedTotalSps = this.generators[i].amount * this.generators[i].storedSps;
 				this.sushiPs += this.generators[i].storedTotalSps;
-				this.sushiPs = Number(this.sushiPs.toFixed(2));
 			}
 			this.root.HeaderMC.Sps.text = "per Second : " + FormatNumber(this.sushiPs, 1) + " pieces";
 		}

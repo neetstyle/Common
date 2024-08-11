@@ -1,22 +1,4 @@
-var generatorData;
-fetch('generator.json')
-.then(response => response.json())
-.then(jsonData => {
-	generatorData = jsonData;
-	isLoad_generatorData = true;
-	checkInitialization();
-})
-.catch(error => console.error('Error fetching JSON data:', error));
 
-var upgradeData;
-fetch('upgrade.json')
-.then(response => response.json())
-.then(jsonData => {
-	upgradeData = jsonData;
-	isLoad_upgradeData = true;
-	checkInitialization();
-})
-.catch(error => console.error('Error fetching JSON data:', error));
 
 //テキスト自動折り返し
 function SetWrapText(textInstance, text)
@@ -134,4 +116,8 @@ function FormatNumber(num, n) {
 
 function GetRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function Accuracy(value) {
+  return parseFloat(value.toFixed(2));
 }
