@@ -1066,9 +1066,6 @@ if (reversed == null) { reversed = false; }
 		
 		this.Click = function(evt)
 		{
-			if (!this.down) return; 
-				this.down = false;
-			
 			var amount = main.computedTouchSps;
 			main.AddSushi(amount);
 			main.totalClick++;
@@ -1147,10 +1144,16 @@ if (reversed == null) { reversed = false; }
 		});
 		
 		this.ButtonMC.on("click", function(evt) {
-			this.parent.Click(evt);
+		
+			if (this.down)
+			{
+				this.parent.Click(evt);
+				this.down = false;
+				playSound("click");
+			}
 			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
 				.to({ scaleX: 1.0, scaleY: 1.0 }, 250, createjs.Ease.elasticOut);
-			playSound("click");
+		
 		});
 		
 		this.ButtonMC.on("mouseover", function(event) {
