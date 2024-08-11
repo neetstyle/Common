@@ -1031,6 +1031,7 @@ if (reversed == null) { reversed = false; }
 		{
 			var amount = main.computedTouchSps;
 			main.AddSushi(amount);
+			main.totalClick++;
 			
 			var clip = new lib.DispNumMC();
 			this.parent.addChild(clip);
@@ -1923,11 +1924,15 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Notification
+	this.UpgradeNotificationMC = new lib.NotificationIconMC();
+	this.UpgradeNotificationMC.name = "UpgradeNotificationMC";
+	this.UpgradeNotificationMC.setTransform(510.2,74.1,1,1,0,0,0,60,60);
+
 	this.AchievementNotificationMC = new lib.NotificationMC();
 	this.AchievementNotificationMC.name = "AchievementNotificationMC";
 	this.AchievementNotificationMC.setTransform(1073.55,74.1,1,1,0,0,0,60,60);
 
-	this.timeline.addTween(cjs.Tween.get(this.AchievementNotificationMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.AchievementNotificationMC},{t:this.UpgradeNotificationMC}]}).wait(1));
 
 	// Button
 	this.AchievementButtonMC = new lib.AchievementButtonMC();
@@ -2046,11 +2051,9 @@ if (reversed == null) { reversed = false; }
 		
 		this.Create = function() 
 		{
-		
-			
-			for (var i = 0; i < main.upgradesInStore.length; i++)
+			for (var i = 0; i < main.upgradeStore.length; i++)
 			{
-				let upgrade = main.upgradesInStore[i];
+				let upgrade = main.upgradeStore[i];
 				
 				let clip = new lib.UpgradeCellMC();
 				this.ContentMC.addChild(clip);
@@ -2081,7 +2084,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.Reset = function() 
 		{
-			for (var i = 0; i < main.upgradesInStore.length; i++)
+			for (var i = 0; i < main.upgradeStore.length; i++)
 			{
 				main.upgrades[i].clpi = null;
 			}
@@ -2091,8 +2094,15 @@ if (reversed == null) { reversed = false; }
 		
 		this.Open =  function() 
 		{
+			if(main.upgradeNotification)
+			{
+				main.upgradeNotification = false;
+				this.parent.FooterMC.UpgradeNotificationMC.visible = false;
+			}
+		
+			this.Reset();
 			this.ScrollMC.Open();
-			this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));	
+			this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));
 		}
 		
 		this.Close =  function() 
@@ -2103,9 +2113,16 @@ if (reversed == null) { reversed = false; }
 		
 		this.Tick = function(event)
 		{
-			for (var i = 0; i < main.upgradesInStore.length; i++)
+			if(main.upgradeNotification)
 			{
-				let upgrade = main.upgradesInStore[i];
+				main.upgradeNotification = false;
+				this.parent.FooterMC.UpgradeNotificationMC.visible = false;
+				this.Reset();
+			}
+			
+			for (var i = 0; i < main.upgradeStore.length; i++)
+			{
+				let upgrade = main.upgradeStore[i];
 				if(main.sushi >= upgrade.baseCost)
 				{
 					upgrade.clip.gotoAndStop("Active");
@@ -2117,7 +2134,7 @@ if (reversed == null) { reversed = false; }
 					upgrade.clip.cost.color ="#C5253A";
 				}
 			}
-			this.ScrollMC.count = main.upgradesInStore.length;
+			this.ScrollMC.count = main.upgradeStore.length;
 			this.ScrollMC.Reload();
 		}
 	}
@@ -2630,7 +2647,7 @@ if (reversed == null) { reversed = false; }
 				this.computedTouchCps = 0
 				this.fractionSps = 0;
 				this.priceIncrease = 1.15;
-				
+				this.totalClick = 0;
 				//this.upgrade = [];
 				//this.add = 0;
 				
@@ -2651,7 +2668,7 @@ if (reversed == null) { reversed = false; }
 				
 				//////////////////////////////////////////////////////////
 				//アップグレード
-				this.upgradesInStore = [];
+				this.upgradeStore = [];
 				this.upgrades = [];	
 				for (var i = 0; i < upgradeData.length; i++)
 				{
@@ -2662,7 +2679,8 @@ if (reversed == null) { reversed = false; }
 					upgrade.type2 = upgradeData[i]["type2"];
 					this.upgrades.push(upgrade);
 				}		
-				this.upgradeNum = 0;	
+				this.upgradeNum = 0;
+				this.upgradeNotification = false;
 				
 				//////////////////////////////////////////////////////////
 				//実績
@@ -2708,24 +2726,6 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		main = new Main();
-		main.RebuildUpgrades = function()
-		{
-			var list=[];
-			for (var i = 0; i < this.upgrades.length; i++)
-			{
-				var upgrade = this.upgrades[i];
-				if (upgrade.amount == 0)
-				{
-					list.push(upgrade);
-				}
-			}
-			this.upgradesInStore=[];
-			for (var i in list)
-			{
-				this.upgradesInStore.push(list[i]);
-			}
-		}
-		
 		main.AddSushi = function(value) 
 		{
 			//Debug!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -2826,7 +2826,7 @@ if (reversed == null) { reversed = false; }
 				upgrade.amount++;
 				main.CalculateGains();
 				playSound("generator");
-				this.RebuildUpgrades();
+				this.RebuildStore();
 				this.CalculateGains();
 				this.root.UpgradePanelMC.Reset();
 				this.upgradeNum++;
@@ -2836,17 +2836,46 @@ if (reversed == null) { reversed = false; }
 			this.computedTouchSps = this.TouchSps();
 		}
 		
+		main.RebuildStore = function(upgrade)
+		{
+			var count = this.upgradeStore.length;
+			this.upgradeStore = [];
+			for (var i = 0; i < this.upgrades.length; i++)
+			{
+				var upgrade = this.upgrades[i];
+				if (upgrade.amount > 0) continue;
+				switch (upgrade.data.type)
+				{
+					case 1://クリック数
+						if(!(this.totalClick >= upgrade.conditions)) continue;
+						break;
+					case 2://総Sushi数
+						if(!(this.totalSushi >= upgrade.data.cost / 20)) continue;
+					break;
+					default:
+						continue;
+				}
+				this.upgradeStore.push(upgrade);
+			}
+		
+			if(this.upgradeStore.length > count)
+			{
+				this.upgradeNotification = true;
+				this.root.FooterMC.UpgradeNotificationMC.visible = true;
+			}
+		}
+		
 		main.MainTick = function(event)
 		{
 			var now = createjs.Ticker.getTime() * 0.001;
 			var delta = now - this.lastTickTime;
 			//console.log(delta);
 		
-		
 			this.interval += delta;
 			if(this.interval > 1)
 			{
 				this.CalculateGains();
+				this.RebuildStore();
 				this.interval = 0;
 				this.BGScroll();
 			}
@@ -3002,7 +3031,8 @@ if (reversed == null) { reversed = false; }
 		this.MaskMC.visible = false;
 		
 		this.FooterMC.AchievementNotificationMC.visible = false;
-		
+		this.FooterMC.UpgradeNotificationMC.visible = false;
+				
 		this.BgMC.SushiBGScrollMC.BG1MC.visible = false;
 		this.BgMC.SushiBGScrollMC.BG2MC.visible = false;
 		this.BgMC.SushiBGScrollMC.BG3MC.visible = false;
@@ -3173,7 +3203,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.executeNextFrame(() => {
 			main.computedTouchSps = main.TouchSps();
-			main.RebuildUpgrades();	
+			main.RebuildStore();	
 			
 			this.GeneratorPanelMC.Create();
 			this.UpgradePanelMC.Create();
