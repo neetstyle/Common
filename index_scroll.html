@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="authoring-tool" content="Adobe_Animate_CC">
+<title>index</title>
+
+
+<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
+<meta name='apple-mobile-web-app-capable' content='yes' />
+<meta name='full-screen' content='true' />
+<meta name='x5-fullscreen' content='true' />
+<meta name='360-fullscreen' content='true' />
+<meta name='laya' screenorientation='portrait' /> 
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+<meta http-equiv='expires' content='0' />
+<meta http-equiv="pragma" content="no-cache">  
+<meta http-equiv="Cache-Control" content="no-cache, no-store, no-siteapp" />
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+    .no_scroll {
+        overflow: hidden;
+    }
+</style>
+
+<title>index</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script>
+	var isLoad_generatorData = false;
+	var isLoad_upgradeData = false;
+	var isLoad_achievementData = false;
+	var isLoad_html = false;
+	var isLoad_webFont = false;
+	var isLoad_anime = false;
+
+	var script2 = document.createElement('script');
+	script2.src = 'u.js?a=' + Math.random();
+	document.head.appendChild(script2);
+
+	var generatorData;
+	fetch('generator.json')
+	.then(response => response.json())
+	.then(jsonData => {
+		generatorData = jsonData;
+		isLoad_generatorData = true;
+		checkInitialization();
+	})
+	.catch(error => console.error('Error fetching JSON data:', error));
+
+	var upgradeData;
+	fetch('upgrade.json')
+	.then(response => response.json())
+	.then(jsonData => {
+		upgradeData = jsonData;
+		isLoad_upgradeData = true;
+		checkInitialization();
+	})
+	.catch(error => console.error('Error fetching JSON data:', error));
+
+	var achievementData;
+	fetch('achievement.json')
+	.then(response => response.json())
+	.then(jsonData => {
+		achievementData = jsonData;
+		isLoad_achievementData = true;
+		checkInitialization();
+	})
+	.catch(error => console.error('Error fetching JSON data:', error));
+
+	window.addEventListener('DOMContentLoaded', () => {
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.toggle('no_scroll');
+	});
+	//https://stackoverflow.com/questions/76842573/a-bug-with-collapsing-when-scrolling-in-web-app-for-telegram-bot
+	window.Telegram.WebApp.expand();
+	window.Telegram.WebApp.disableVerticalSwipes();
+	document.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+
+	WebFont.load({
+	    google: {
+	        families: ['Potta One']
+	    },
+		active: function() {
+			isLoad_webFont = true;
+			checkInitialization();
+		}
+	});
+
+	window.addEventListener('load', function() {
+		var script3 = document.createElement('script');
+		script3.src = 'index.js?a=' + Math.random();
+		script3.onload = function() {
+			isLoad_anime = true;
+			checkInitialization();
+		};
+		document.head.appendChild(script3);
+	});
+
+	function init_body() {
+		isLoad_html = true
+		checkInitialization();
+	}
+	function checkInitialization() {
+		if (isLoad_generatorData && isLoad_upgradeData && isLoad_achievementData && isLoad_html && isLoad_webFont && isLoad_anime) {
+			init();
+		}
+	}
+</script>
+
+<script>
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, main;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("969C0F3DFF839440AC4059700CCE57F9");
+	var lib=comp.getLibrary();
+	var loader = new createjs.LoadQueue(false);
+	loader.installPlugin(createjs.Sound);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+	var lib=comp.getLibrary();
+	loader.loadManifest(lib.properties.manifest);
+	createjs.Sound.alternateExtensions = ["mp3"];
+	createjs.Sound.registerSound("mp3/click.mp3", "click");
+	createjs.Sound.registerSound("mp3/submit.mp3", "submit");
+	createjs.Sound.registerSound("mp3/open.mp3", "open");
+	createjs.Sound.registerSound("mp3/popup.mp3", "popup");
+	createjs.Sound.registerSound("mp3/generator.mp3", "generator");
+	//resize
+	lib.properties.width = document.documentElement.clientWidth;
+	lib.properties.height = document.documentElement.clientHeight;
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();	
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
+}
+function handleComplete(evt,comp) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib.index();
+	stage = new lib.Stage(canvas);	
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.framerate = lib.properties.fps;
+		createjs.Ticker.addEventListener("tick", stage);
+	}	    
+	//Code to support hidpi screens and responsive scaling.
+	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+function playSound(id, loop, offset) {
+	return createjs.Sound.play(id, {'interrupt':createjs.Sound.INTERRUPT_EARLY, 'loop': loop, 'offset': offset});}
+</script>
+<!-- write your code here -->
+</head>
+<!--<body onload="init();" style="margin:0px;">-->
+	<body onload="init_body();" style="margin:0px;">
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1125px; height:2436px">
+		<canvas id="canvas" width="1125" height="2436" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1125px; height:2436px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+</body>
+</html>

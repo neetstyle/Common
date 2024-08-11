@@ -1246,7 +1246,10 @@ if (reversed == null) { reversed = false; }
 		
 		this.InviteWindow = function()
 		{
-			Telegram.WebApp.showConfirm("111", this.AAA);	
+			//Telegram.WebApp.showConfirm("111", this.AAA);	
+			
+		Telegram.WebApp.requestContact(this.AAA);	
+		
 			
 			console.log("InviteWindow");
 		} 
@@ -1254,7 +1257,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.AAA = function()
 		{
-			alert(1);
+			alert("callback");
 		}
 	}
 
