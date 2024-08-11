@@ -1248,8 +1248,43 @@ if (reversed == null) { reversed = false; }
 		{
 			//Telegram.WebApp.showConfirm("111", this.AAA);	
 			
-		Telegram.WebApp.requestContact(this.AAA);	
+		//Telegram.WebApp.requestContact(this.AAA);	
 		
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		            Telegram.WebApp.showPopup({
+		                title: 'Invite Friends',
+		                message: 'Share this bot with your friends!',
+		                buttons: [
+		                    {
+		                        id: 'share',
+		                        type: 'default',
+		                        text: 'Share'
+		                    },
+		                    {
+		                        id: 'cancel',
+		                        type: 'destructive',
+		                        text: 'Cancel'
+		                    }
+		                ],
+		                callback: function(buttonId) {
+		                    if (buttonId === 'share') {
+		                        Telegram.WebApp.sendData('share');
+		                    }
+		                }
+		            });
+		  
+			
+			
+			
+			
 			
 			console.log("InviteWindow");
 		} 
