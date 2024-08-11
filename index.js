@@ -199,28 +199,6 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	}
 
 
-(lib.SushiEffectMC = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// レイヤー_1
-	this.instance = new lib.sushiMini();
-	this.instance.setTransform(-76,-76);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.SushiEffectMC, new cjs.Rectangle(-76,-76,150,150), null);
-
-
 (lib.ShopPanelMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -277,6 +255,28 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.SushiImageMC, new cjs.Rectangle(0,0,1000,600), null);
+
+
+(lib.SushiEffectMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.instance = new lib.sushiMini();
+	this.instance.setTransform(-76,-76);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.SushiEffectMC, new cjs.Rectangle(-76,-76,150,150), null);
 
 
 (lib.ScrollMC = function(mode,startPosition,loop,reversed) {
@@ -629,7 +629,7 @@ if (reversed == null) { reversed = false; }
 		
 		//当たり判定用のビットマップを生成
 		var hitArea = new createjs.Shape();
-		hitArea.graphics.beginFill("#F00").drawRect(0, 0, 100, 100);
+		hitArea.graphics.beginFill("#FFF").drawRect(0, 0, 100, 100);
 		var bitmap = new createjs.Bitmap();
 		bitmap.hitArea = hitArea;
 		this.addChild(bitmap);
@@ -1073,19 +1073,23 @@ if (reversed == null) { reversed = false; }
 			particle.scaleX = this.parent.canvasScaleX;
 			particle.scaleY = this.parent.canvasScaleX;
 			
-			var targetX = x + (Math.random() * 200 - 100);
+			var targetX = x + (Math.random() * 400 - 200);
 			var targetY = y + (Math.random() * 100 + 200);
 			var midY = y - (Math.random() * 100 + 50);
 		
 			createjs.Tween.get(particle)
-				.to({ rotation: particle.rotation + (0.5 - Math.random()) * 300 }, 1000, createjs.Ease.linear);
+				.to({ rotation: particle.rotation + (0.5 - Math.random()) * 300 }, 2000, createjs.Ease.linear);
 		
 			createjs.Tween.get(particle)
-				.to({ x: targetX }, 1000, createjs.Ease.sineInOut);
+				.to({ x: targetX }, 2000, createjs.Ease.linear);
 		
 			createjs.Tween.get(particle)
-				.to({ y: midY }, 400, createjs.Ease.quadOut)
-				.to({ y: targetY, alpha: 0 }, 600, createjs.Ease.quadIn)
+				.wait(1500)
+				.to({ alpha: 0 }, 500, createjs.Ease.linear);	
+			
+			createjs.Tween.get(particle)
+				.to({ y: midY }, 800, createjs.Ease.quadOut)
+				.to({ y: targetY}, 1200, createjs.Ease.quadIn)
 				.call(() => {
 					particle.visible = false;
 			});
@@ -2653,9 +2657,10 @@ if (reversed == null) { reversed = false; }
 				
 				//////////////////////////////////////////////////////////
 				//Tick
-				this.fps = 60;
+				this.fps = 30;
 				this.lastTickTime = 0;
 				this.interval = 1000;
+				this.bgLastTickTime = 0;
 			
 				//////////////////////////////////////////////////////////
 				//パーティクル
@@ -2723,7 +2728,7 @@ if (reversed == null) { reversed = false; }
 		main.TouchSps = function()
 		{
 			var add = 0;
-		
+			
 			//Fingers
 			for (var i = 0; i < this.upgrades.length; i++)
 			{
@@ -2737,10 +2742,10 @@ if (reversed == null) { reversed = false; }
 				}
 				else if(upgrade.type2 == 3)
 				{
-					add *= this.sushiPs * upgradeData[i].sps;
+					add *= upgradeData[i].sps;
 				}
 			}
-			
+		
 			//Pointer
 			for (i = 0; i < this.upgrades.length; i++)
 			{
@@ -2818,6 +2823,7 @@ if (reversed == null) { reversed = false; }
 			var delta = now - this.lastTickTime;
 			//console.log(delta);
 		
+		
 			this.interval += delta;
 			if(this.interval > 1)
 			{
@@ -2851,6 +2857,12 @@ if (reversed == null) { reversed = false; }
 		});
 		main.AddBGParticle = function()
 		{
+			var now = createjs.Ticker.getTime() * 0.001;
+			if(this.bgLastTickTime + 0.1 < now)
+				this.bgLastTickTime = now;
+			else
+				return;
+			
 			var particle = null;
 			for (var i = 0; i < this.bgParticles.length; i++)
 			{
@@ -2871,12 +2883,17 @@ if (reversed == null) { reversed = false; }
 			particle.alpha = 1;
 			
 			document.documentElement.clientWidth / 1125;
-			createjs.Tween.get(particle, { override: true })
-				.to({ y: 2535/ 1.5, alpha : 0, rotation : particle.rotation + (0.5 - Math.random()) * 300}, 5000, createjs.Ease.linear)
+			createjs.Tween.get(particle)
+				.to({ y: 2535 * 0.8, rotation : particle.rotation + (0.5 - Math.random()) * 300}, 4800, createjs.Ease.linear)
 				.call(() => {
 				particle.visible = false;
 		    });
-		//linear,sineIn
+		
+			createjs.Tween.get(particle)
+				.wait(3000)
+				.to({alpha : 0}, 2000, createjs.Ease.linear);
+		
+			//linear,sineIn
 		}
 		
 		main.BGScroll = function()
@@ -3149,7 +3166,7 @@ if (reversed == null) { reversed = false; }
 			
 			this.BgMC.SushiBGScrollMC.y = 0;
 			createjs.Tween.get(this.BgMC.SushiBGScrollMC, {loop: true})
-			.to({ y: (512 * 2.25) }, 4000, createjs.Ease.linear);	
+			.to({ y: (512 * 2.25) }, 3000, createjs.Ease.linear);	
 		});
 	}
 
@@ -3246,7 +3263,7 @@ lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',
 	width: 1125,
 	height: 2436,
-	fps: 60,
+	fps: 30,
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
