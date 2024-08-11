@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[514,582,488,182],[514,766,262,232],[1127,0,512,512],[1127,514,512,512],[0,582,512,512],[0,0,1125,300],[778,766,262,232],[1004,704,48,48],[0,302,1125,278],[0,1096,209,209],[1004,582,120,120],[514,1000,262,232],[363,1096,137,86],[211,1096,150,150],[778,1000,262,232]]},
+		{name:"index_atlas_1", frames: [[514,582,488,182],[1641,0,262,232],[1905,0,122,122],[1127,0,512,512],[1127,514,512,512],[0,582,512,512],[0,0,1125,300],[1641,234,262,232],[1905,334,48,48],[0,302,1125,278],[514,766,209,209],[725,766,172,216],[1905,124,120,120],[1641,468,262,232],[1905,246,137,86],[899,766,150,150],[1641,702,262,232]]},
 		{name:"index_atlas_2", frames: [[0,1589,1123,305],[0,0,1125,985],[0,987,1000,600]]},
 		{name:"index_atlas_3", frames: [[0,0,1125,1000],[0,1002,1125,1000]]},
 		{name:"index_atlas_4", frames: [[0,0,1044,1145]]}
@@ -57,23 +57,30 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 
 
-(lib.cookieShower1 = function() {
+(lib.close = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.cookieShower2 = function() {
+(lib.cookieShower1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.cookieShower3 = function() {
+(lib.cookieShower2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(4);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.cookieShower3 = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -87,42 +94,49 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.footer = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(5);
+	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.generatorButton = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(6);
+	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.hatena = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(7);
+	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.header = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(8);
+	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.iconFrame = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(9);
+	this.gotoAndStop(10);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.invite = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib._new = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(10);
+	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -136,7 +150,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.shopButton = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(11);
+	this.gotoAndStop(13);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -150,14 +164,14 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.sushiIcon = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(12);
+	this.gotoAndStop(14);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.sushiMini = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(13);
+	this.gotoAndStop(15);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -171,7 +185,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 (lib.upgradeButton = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(14);
+	this.gotoAndStop(16);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -650,6 +664,27 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.ButtonMC, new cjs.Rectangle(0,0,100,100), null);
 
 
+(lib.CloseButtonMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.instance = new lib.close();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.CloseButtonMC, new cjs.Rectangle(0,0,122,122), null);
+
+
 (lib.BG3MC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -879,7 +914,7 @@ if (reversed == null) { reversed = false; }
 	// Button
 	this.CloseButtonMC = new lib.ButtonMC();
 	this.CloseButtonMC.name = "CloseButtonMC";
-	this.CloseButtonMC.setTransform(500,500,1,1,0,0,0,50,50);
+	this.CloseButtonMC.setTransform(522,572.5,1,1,0,0,0,50,50);
 
 	this.timeline.addTween(cjs.Tween.get(this.CloseButtonMC).wait(1));
 
@@ -1142,6 +1177,165 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.SushiMC, new cjs.Rectangle(0,0,1000,600), null);
 
 
+(lib.InviteDesciptionMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.bitmap;
+		this.scaleX = this.parent.canvasScaleX;
+		this.scaleY = this.parent.canvasScaleX;
+		this.y = document.documentElement.clientHeight / 2;
+		this.x = document.documentElement.clientWidth / 2;
+		this.visible = false;
+		this.MaskButtonMC.scaleX = document.documentElement.clientWidth / 100 / this.parent.canvasScaleX;
+		this.MaskButtonMC.scaleY = document.documentElement.clientHeight / 100 / this.parent.canvasScaleY;	
+		
+		this.CloseDesciption = function()
+		{
+			this.parent.MaskMC.visible = false;
+			
+			createjs.Tween.get(this, { override: true })
+			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
+			.call(() => {
+				this.visible = false;
+		    });	
+			createjs.Ticker.removeEventListener('tick', this._Tick);
+			playSound("popup");
+		} 
+		this.CloseButtonMC.addEventListener("click", this.CloseDesciption.bind(this));
+		
+		this.Open = function(_obj)
+		{
+			this.obj = _obj;
+			
+			this.visible = true;
+			this.scaleX = 0;
+			this.scaleY = 0;
+			
+			this.parent.MaskMC.visible = true;
+			
+			createjs.Tween.get(this, { override: true })
+			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
+		}
+		
+		this.Mask = function(){} 
+		this.MaskButtonMC.addEventListener("click", this.Mask.bind(this));
+		
+		this.CopyCode = function()
+		{
+			navigator.clipboard.writeText("コピー：" + createjs.Ticker.getTime());
+			alert("Debug : Copy " + createjs.Ticker.getTime());
+		} 
+		this.CopyCodeButtonMC.addEventListener("click", this.CopyCode.bind(this));
+		
+		this.InviteWindow = function()
+		{
+			Telegram.WebApp.showConfirm("111", this.AAA);	
+			
+			console.log("InviteWindow");
+		} 
+		this.ChatButtonMC.addEventListener("click", this.InviteWindow.bind(this));
+		
+		this.AAA = function()
+		{
+			alert(1);
+		}
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// AS
+	this.text = new cjs.Text("ゲームに招待する", "50px 'Potta One'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 72;
+	this.text.parent = this;
+	this.text.setTransform(516.95,817.25);
+
+	this.text_1 = new cjs.Text("または招待コードをコピー", "50px 'Potta One'");
+	this.text_1.textAlign = "center";
+	this.text_1.lineHeight = 72;
+	this.text_1.parent = this;
+	this.text_1.setTransform(556.5,963.55);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text_1},{t:this.text}]}).wait(1));
+
+	// Button
+	this.ChatButtonMC = new lib.ButtonMC();
+	this.ChatButtonMC.name = "ChatButtonMC";
+	this.ChatButtonMC.setTransform(513.4,865.25,8.23,1,0,0,0,49.5,50);
+
+	this.CopyCodeButtonMC = new lib.ButtonMC();
+	this.CopyCodeButtonMC.name = "CopyCodeButtonMC";
+	this.CopyCodeButtonMC.setTransform(513.4,1011.55,8.23,1,0,0,0,49.5,50);
+
+	this.CloseButtonMC = new lib.CloseButtonMC();
+	this.CloseButtonMC.name = "CloseButtonMC";
+	this.CloseButtonMC.setTransform(1028,16,1,1,0,0,0,61,61);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.CloseButtonMC},{t:this.CopyCodeButtonMC},{t:this.ChatButtonMC}]}).wait(1));
+
+	// Mask
+	this.MaskButtonMC = new lib.ButtonMC();
+	this.MaskButtonMC.name = "MaskButtonMC";
+	this.MaskButtonMC.setTransform(522,572.5,1.0002,1.0002,0,0,0,50,50);
+
+	this.timeline.addTween(cjs.Tween.get(this.MaskButtonMC).wait(1));
+
+	// BG
+	this.instance = new lib.dialogBG();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.InviteDesciptionMC, new cjs.Rectangle(0,-45,1089,1190), null);
+
+
+(lib.InviteButtonMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Button
+	this.ButtonMC = new lib.ButtonMC();
+	this.ButtonMC.name = "ButtonMC";
+	this.ButtonMC.setTransform(0,0,1.72,2.16);
+
+	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).wait(1));
+
+	// レイヤー_1
+	this.instance = new lib.invite();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.InviteButtonMC, new cjs.Rectangle(0,0,172,216), null);
+
+
 (lib.HeaderMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -1318,7 +1512,7 @@ if (reversed == null) { reversed = false; }
 	// Button
 	this.CloseButtonMC = new lib.ButtonMC();
 	this.CloseButtonMC.name = "CloseButtonMC";
-	this.CloseButtonMC.setTransform(500,500,1,1,0,0,0,50,50);
+	this.CloseButtonMC.setTransform(526.1,577.2,1,1,0,0,0,50,50);
 
 	this.timeline.addTween(cjs.Tween.get(this.CloseButtonMC).wait(1));
 
@@ -1763,7 +1957,7 @@ if (reversed == null) { reversed = false; }
 	// Button
 	this.CloseButtonMC = new lib.ButtonMC();
 	this.CloseButtonMC.name = "CloseButtonMC";
-	this.CloseButtonMC.setTransform(500,500,1,1,0,0,0,50,50);
+	this.CloseButtonMC.setTransform(522,572.5,1,1,0,0,0,50,50);
 
 	this.timeline.addTween(cjs.Tween.get(this.CloseButtonMC).wait(1));
 
@@ -1982,7 +2176,7 @@ if (reversed == null) { reversed = false; }
 	this.upgradeTitle.name = "upgradeTitle";
 	this.upgradeTitle.lineHeight = 89;
 	this.upgradeTitle.parent = this;
-	this.upgradeTitle.setTransform(82,502);
+	this.upgradeTitle.setTransform(82,884.1);
 
 	this.achievementTitle = new cjs.Text("アチーブメント", "60px 'Potta One'");
 	this.achievementTitle.name = "achievementTitle";
@@ -1990,13 +2184,14 @@ if (reversed == null) { reversed = false; }
 	this.achievementTitle.parent = this;
 	this.achievementTitle.setTransform(82,1094.2);
 
-	this.text = new cjs.Text("提供中の寿司： 5.999 billion\n寿司生産数　5.999 billion\n施設数：23 ゲーム開始　7日, 1時間前\n毎秒の寿司提供数：359,343\n1タップあたりの寿司提供数：25\nタップ：234,432回", "40px 'Potta One'");
-	this.text.lineHeight = 60;
-	this.text.lineWidth = 959;
-	this.text.parent = this;
-	this.text.setTransform(84.2,148.3);
+	this.detail = new cjs.Text("提供中の寿司： 5.999 billion\n寿司生産数：5.999 billion\n施設数：23\nゲーム開始：7日, 1時間前\n毎秒の寿司提供数：359,343\n1タップあたりの寿司提供数：25\nタップ：234,432回", "50px 'Potta One'");
+	this.detail.name = "detail";
+	this.detail.lineHeight = 74;
+	this.detail.lineWidth = 959;
+	this.detail.parent = this;
+	this.detail.setTransform(84.2,148.3);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text},{t:this.achievementTitle},{t:this.upgradeTitle},{t:this.AchievementCellMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.detail},{t:this.achievementTitle},{t:this.upgradeTitle},{t:this.AchievementCellMC}]}).wait(1));
 
 	// BG
 	this.ContentBGMC = new lib.ButtonMC();
@@ -2387,7 +2582,7 @@ if (reversed == null) { reversed = false; }
 		this.Create = function() 
 		{
 			//アップグレード
-			var posY = 600;
+			var posY = 700;
 			posY += 50;
 			this.ContentMC.upgradeTitle.y = posY;
 			posY += 100;
@@ -2498,15 +2693,41 @@ if (reversed == null) { reversed = false; }
 			this.Create();
 		}
 		
+		this.Detail = function() 
+		{
+			this.ContentMC.detail.text = "提供中の寿司：[a]\n" + 
+				"寿司生産数：[b]\n" + 
+				"施設数：[c]\n"+
+				"ゲーム開始：X日 X時間前\n" + 
+				"毎秒の寿司提供数：[d]\n" + 
+				"1タップあたりの寿司提供数：[e]\n" + 
+				"タップ：[f]回";
+			
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[a]", FormatNumber(main.sushi, 1));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[b]", FormatNumber(main.totalSushi, 1));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[c]", FormatNumber(main.generatorNum, 1));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[d]", FormatNumber(main.sushiPs, 1));	
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[e]", FormatNumber(main.computedTouchCps, 1));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[f]",FormatNumber(main.totalClick, 1));
+		}
+		
 		this.Open =  function() 
 		{
-			this.Reset()
+			this.Detail();
+			this.Reset();
 			this.ScrollMC.Open();
+			this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));
 		}
 		
 		this.Close =  function() 
 		{
 			this.ScrollMC.Close();
+			createjs.Ticker.removeEventListener("tick", this._Tick);	
+		}
+		
+		this.Tick = function(event)
+		{
+			this.Detail();
 		}
 	}
 
@@ -3036,6 +3257,11 @@ if (reversed == null) { reversed = false; }
 		this.BgMC.SushiBGScrollMC.BG1MC.visible = false;
 		this.BgMC.SushiBGScrollMC.BG2MC.visible = false;
 		this.BgMC.SushiBGScrollMC.BG3MC.visible = false;
+		
+		this.InviteButtonMC.scaleX = this.canvasScaleX;
+		this.InviteButtonMC.scaleY = this.canvasScaleX;
+		this.InviteButtonMC.x = 930 * this.canvasScaleX;
+		this.InviteButtonMC.y = 300 * this.canvasScaleX;
 		//Layout
 		this.page = 0;
 		this.GeneratorPanelMC.visible = false;
@@ -3192,6 +3418,17 @@ if (reversed == null) { reversed = false; }
 			//createjs.Tween.get(this.BgMC, { override: true })
 			//.to({ y: y - document.documentElement.clientHeight / 2 }, 250, createjs.Ease.expoOut);
 		}
+		
+		
+		
+		
+		//Invite
+		this.InviteButtonMC.addEventListener("click", ClickHandler_InviteOpen.bind(this));
+		function ClickHandler_InviteOpen()
+		{
+			this.InviteDesciptionMC.Open();
+			playSound("popup");
+		}
 		if (createjs.Touch.isSupported())
 		    createjs.Touch.enable(stage);
 		 
@@ -3233,6 +3470,10 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.SushiEffectMC}]}).wait(1));
 
 	// Desciption
+	this.InviteDesciptionMC = new lib.InviteDesciptionMC();
+	this.InviteDesciptionMC.name = "InviteDesciptionMC";
+	this.InviteDesciptionMC.setTransform(-1409.7,1330.2,1,1,0,0,0,522,572.5);
+
 	this.AchievementDesciptionMC = new lib.AchievementDesciptionMC();
 	this.AchievementDesciptionMC.name = "AchievementDesciptionMC";
 	this.AchievementDesciptionMC.setTransform(-2453.7,1330.2,1,1,0,0,0,522,572.5);
@@ -3245,7 +3486,7 @@ if (reversed == null) { reversed = false; }
 	this.GeneratorDesciptionMC.name = "GeneratorDesciptionMC";
 	this.GeneratorDesciptionMC.setTransform(-2453.7,185.2,1,1,0,0,0,522,572.5);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.AchievementDesciptionMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.AchievementDesciptionMC},{t:this.InviteDesciptionMC}]}).wait(1));
 
 	// Mask
 	this.MaskMC = new lib.MaskMC();
@@ -3282,6 +3523,13 @@ if (reversed == null) { reversed = false; }
 	this.GeneratorPanelMC.setTransform(-3098.95,3588,1,1,0,0,0,0,913);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorPanelMC},{t:this.UpgradePanelMC},{t:this.AchievementPanelMC},{t:this.ShopPanelMC}]}).wait(1));
+
+	// Invite
+	this.InviteButtonMC = new lib.InviteButtonMC();
+	this.InviteButtonMC.name = "InviteButtonMC";
+	this.InviteButtonMC.setTransform(930,300);
+
+	this.timeline.addTween(cjs.Tween.get(this.InviteButtonMC).wait(1));
 
 	// Sushi
 	this.SushiMC = new lib.SushiMC();
