@@ -1239,53 +1239,16 @@ if (reversed == null) { reversed = false; }
 		
 		this.CopyCode = function()
 		{
-			navigator.clipboard.writeText("コピー：" + createjs.Ticker.getTime());
-			alert("Debug : Copy " + createjs.Ticker.getTime());
+			navigator.clipboard.writeText(createjs.Ticker.getTime());
+			//alert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime());
+			Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime(), this.BBB);	
 		} 
 		this.CopyCodeButtonMC.addEventListener("click", this.CopyCode.bind(this));
 		
 		this.InviteWindow = function()
 		{
 			//Telegram.WebApp.showConfirm("111", this.AAA);	
-			
-		//Telegram.WebApp.requestContact(this.AAA);	
-		
-			
-			
-			
-			
-			
-			
-			
-			
-		
-		            Telegram.WebApp.showPopup({
-		                title: 'Invite Friends',
-		                message: 'Share this bot with your friends!',
-		                buttons: [
-		                    {
-		                        id: 'share',
-		                        type: 'default',
-		                        text: 'Share'
-		                    },
-		                    {
-		                        id: 'cancel',
-		                        type: 'destructive',
-		                        text: 'Cancel'
-		                    }
-		                ],
-		                callback: function(buttonId) {
-		                    if (buttonId === 'share') {
-		                        Telegram.WebApp.sendData('share');
-		                    }
-		                }
-		            });
-		  
-			
-			
-			
-			
-			
+			//Telegram.WebApp.requestContact(this.AAA);	
 			console.log("InviteWindow");
 		} 
 		this.ChatButtonMC.addEventListener("click", this.InviteWindow.bind(this));
@@ -1293,6 +1256,11 @@ if (reversed == null) { reversed = false; }
 		this.AAA = function()
 		{
 			alert("callback");
+		} 
+		
+		this.BBB = function()
+		{
+		
 		}
 	}
 
