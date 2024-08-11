@@ -1062,7 +1062,7 @@ if (reversed == null) { reversed = false; }
 		this.y = document.documentElement.clientHeight / 2;
 		this.x = document.documentElement.clientWidth / 2;
 		
-		this.down = false;
+		this.isActive = false;
 		
 		this.Click = function(evt)
 		{
@@ -1135,8 +1135,8 @@ if (reversed == null) { reversed = false; }
 		this.SushiImageMC.mouseEnabled = false;
 		
 		this.ButtonMC.on("mousedown", function(event) {
-			if (this.parent.down) return; 
-				this.parent.down = true;
+			if (this.parent.isActive) return; 
+				this.parent.isActive = true;
 			
 			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
 				.to({ scaleX: 0.9, scaleY: 0.9 }, 250, createjs.Ease.elasticOut);
@@ -1144,10 +1144,10 @@ if (reversed == null) { reversed = false; }
 		
 		this.ButtonMC.on("click", function(evt) {
 		
-			if (this.parent.down)
+			if (this.parent.isActive)
 			{
 				this.parent.Click(evt);
-				this.parent.down = false;
+				this.parent.isActive = false;
 				playSound("click");
 			}
 			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
