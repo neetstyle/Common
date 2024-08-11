@@ -5,7 +5,6 @@
 <meta name="authoring-tool" content="Adobe_Animate_CC">
 <title>index</title>
 
-
 <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
 <meta name='apple-mobile-web-app-capable' content='yes' />
 <meta name='full-screen' content='true' />
@@ -17,6 +16,11 @@
 <meta http-equiv="pragma" content="no-cache">  
 <meta http-equiv="Cache-Control" content="no-cache, no-store, no-siteapp" />
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+    .no_scroll {
+        overflow: hidden;
+    }
+</style>
 
 <title>index</title>
 
@@ -64,8 +68,14 @@
 	})
 	.catch(error => console.error('Error fetching JSON data:', error));
 
+	window.addEventListener('DOMContentLoaded', () => {
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.toggle('no_scroll');
+	});
+	//https://stackoverflow.com/questions/76842573/a-bug-with-collapsing-when-scrolling-in-web-app-for-telegram-bot
 	window.Telegram.WebApp.expand();
 	window.Telegram.WebApp.disableVerticalSwipes();
+	document.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
 
 	WebFont.load({
 	    google: {

@@ -1062,8 +1062,13 @@ if (reversed == null) { reversed = false; }
 		this.y = document.documentElement.clientHeight / 2;
 		this.x = document.documentElement.clientWidth / 2;
 		
+		this.down = false;
+		
 		this.Click = function(evt)
 		{
+			if (!this.down) return; 
+				this.down = false;
+			
 			var amount = main.computedTouchSps;
 			main.AddSushi(amount);
 			main.totalClick++;
@@ -1085,6 +1090,7 @@ if (reversed == null) { reversed = false; }
 		
 			this.AddClickParticle(pt.x, pt.y);
 		}
+		
 		
 		this.AddClickParticle = function(x, y)
 		{
@@ -1133,6 +1139,9 @@ if (reversed == null) { reversed = false; }
 		this.SushiImageMC.mouseEnabled = false;
 		
 		this.ButtonMC.on("mousedown", function(event) {
+			if (this.parent.down) return; 
+				this.parent.down = true;
+			
 			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
 				.to({ scaleX: 0.9, scaleY: 0.9 }, 250, createjs.Ease.elasticOut);
 		});
@@ -1240,8 +1249,8 @@ if (reversed == null) { reversed = false; }
 		this.CopyCode = function()
 		{
 			navigator.clipboard.writeText(createjs.Ticker.getTime());
-			//alert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime());
-			Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime(), this.BBB);	
+			//Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime(), this.BBB);	
+			alert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime());
 		} 
 		this.CopyCodeButtonMC.addEventListener("click", this.CopyCode.bind(this));
 		
@@ -3266,7 +3275,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.InviteButtonMC.scaleX = this.canvasScaleX;
 		this.InviteButtonMC.scaleY = this.canvasScaleX;
-		this.InviteButtonMC.x = 930 * this.canvasScaleX;
+		this.InviteButtonMC.x = 920 * this.canvasScaleX;
 		this.InviteButtonMC.y = 300 * this.canvasScaleX;
 		//Layout
 		this.page = 0;
@@ -3425,9 +3434,7 @@ if (reversed == null) { reversed = false; }
 			//.to({ y: y - document.documentElement.clientHeight / 2 }, 250, createjs.Ease.expoOut);
 		}
 		
-		
-		
-		
+		//////////////////////////////////////////////////////////////////
 		//Invite
 		this.InviteButtonMC.addEventListener("click", ClickHandler_InviteOpen.bind(this));
 		function ClickHandler_InviteOpen()
@@ -3533,7 +3540,7 @@ if (reversed == null) { reversed = false; }
 	// Invite
 	this.InviteButtonMC = new lib.InviteButtonMC();
 	this.InviteButtonMC.name = "InviteButtonMC";
-	this.InviteButtonMC.setTransform(930,300);
+	this.InviteButtonMC.setTransform(920,300);
 
 	this.timeline.addTween(cjs.Tween.get(this.InviteButtonMC).wait(1));
 
