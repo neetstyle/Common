@@ -1088,7 +1088,6 @@ if (reversed == null) { reversed = false; }
 			this.AddClickParticle(pt.x, pt.y);
 		}
 		
-		
 		this.AddClickParticle = function(x, y)
 		{
 			var particle = null;
@@ -1145,10 +1144,10 @@ if (reversed == null) { reversed = false; }
 		
 		this.ButtonMC.on("click", function(evt) {
 		
-			if (this.down)
+			if (this.parent.down)
 			{
 				this.parent.Click(evt);
-				this.down = false;
+				this.parent.down = false;
 				playSound("click");
 			}
 			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
