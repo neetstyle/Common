@@ -120,7 +120,7 @@ function init() {
 	loader.installPlugin(createjs.Sound);
 	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
 	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
-	var lib=comp.getLibrary();
+	//var lib=comp.getLibrary();
 	loader.loadManifest(lib.properties.manifest);
 	createjs.Sound.alternateExtensions = ["mp3"];
 	createjs.Sound.registerSound("mp3/click.mp3", "click");
@@ -132,6 +132,7 @@ function init() {
 	lib.properties.width = document.documentElement.clientWidth;
 	lib.properties.height = document.documentElement.clientHeight;
 }
+
 function handleFileLoad(evt, comp) {
 	var images=comp.getImages();	
 	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
