@@ -3219,20 +3219,23 @@ if (reversed == null) { reversed = false; }
 				this.interval = 0;
 				this.BGScroll();
 				
+				alert(
 				
-			
+				performance.memory
+				
+				);
+					alert(
+				
+			performance.memory.jsHeapSizeLimit
+				
+				);
 				
 				if (performance.memory.jsHeapSizeLimit === 'undefined')
 				{
-		alert(1);			
-					
 					exportRoot.HeaderMC.debug.text = "";
 				}
 				else
 				{
-					
-		alert(2);			
-					
 					//console.log(performance.memory);
 					exportRoot.HeaderMC.debug.text = "使用可能 : ";
 					exportRoot.HeaderMC.debug.text += performance.memory.jsHeapSizeLimit.toLocaleString();
