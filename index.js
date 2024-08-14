@@ -3219,7 +3219,7 @@ if (reversed == null) { reversed = false; }
 				this.interval = 0;
 				this.BGScroll();
 				
-				if(typeof performance.memory === "undefined") {
+				if(typeof performance.memory === "undefined")
 				{
 					exportRoot.HeaderMC.debug.text = "";
 				}
