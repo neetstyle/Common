@@ -3026,9 +3026,10 @@ if (reversed == null) { reversed = false; }
 				
 				//////////////////////////////////////////////////////////
 				//Tick
-				//this.fps = 30;
-				this.lastTickTime = 0;
-				this.interval = 1000;
+				this.fps1LastTickTime = 0;
+				this.fps2LastTickTime = 0;
+				this.fps1Count = 0;
+				this.fps2Count = 0;
 				this.bgLastTickTime = 0;
 			
 				//////////////////////////////////////////////////////////
@@ -3065,7 +3066,7 @@ if (reversed == null) { reversed = false; }
 			
 			this.sushi += value;
 			this.totalSushi += value;
-			exportRoot.HeaderMC.Sushi_O.text = FormatNumber(main.sushi, 1, 0) + " pieces";
+			exportRoot.HeaderMC.Sushi_O.text = FormatNumber(main.sushi, 1, 2) + " pieces";
 			
 			this.AddBGParticle();
 		}
@@ -3207,16 +3208,17 @@ if (reversed == null) { reversed = false; }
 		
 		main.MainTick = function(event)
 		{
-			var now = createjs.Ticker.getTime() * 0.001;
-			var delta = now - this.lastTickTime;
-			//console.log(delta);
-		
-			this.interval += delta;
-			if(this.interval > 1)
+			this.fps1Count += event.delta;
+			if (this.fps1Count >= 1000 / 1)
 			{
+				//delta
+				var now = createjs.Ticker.getTime() * 0.001;
+				var delta = now - this.fps1LastTickTime;
+				this.fps1LastTickTime = now;
+				this.fps1Count = 0;
+				
 				this.CalculateGains();
 				this.RebuildStore();
-				this.interval = 0;
 				this.BGScroll();
 				
 				if(typeof performance.memory === "undefined")
@@ -3240,19 +3242,27 @@ if (reversed == null) { reversed = false; }
 				}
 			}
 			
-			for (var i = 0; i < this.generators.length; i++)
+			this.fps2Count += event.delta;
+			if (this.fps2Count >= 1000 / 10)
 			{
-				this.generators[i].totalSushies += this.generators[i].storedTotalSps * delta;
-			}
-		
-			var ammount = this.sushiPs * delta + this.fractionSps;
-			this.fractionSps = ammount - Math.floor(ammount);
-			ammount -= this.fractionSps;
-		
-			if(ammount > 0)
-				this.AddSushi(ammount);
+				//delta
+				var now = createjs.Ticker.getTime() * 0.001;
+				var delta = now - this.fps2LastTickTime;
+				this.fps2LastTickTime = now;
+				this.fps2Count = 0;
 				
-			this.lastTickTime = now;
+				for (var i = 0; i < this.generators.length; i++)
+				{
+					this.generators[i].totalSushies += this.generators[i].storedTotalSps * delta;
+				}
+		
+				var ammount = this.sushiPs * delta + this.fractionSps;
+				this.fractionSps = ammount - Math.floor(ammount);
+				ammount -= this.fractionSps;
+		
+				if(ammount > 0)
+					this.AddSushi(ammount);
+			}
 		}
 		this.HeaderMC.DebugMC.on("click", function(evt) {
 			if(main.isAddTouchCps){
