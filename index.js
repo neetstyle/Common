@@ -3220,19 +3220,19 @@ if (reversed == null) { reversed = false; }
 				this.BGScroll();
 				
 				
-		alert(
-				
-		performance
-		+" / "+		
-			performance.memory	
-				);		
+			
 				
 				if (performance.memory === 'undefined')
 				{
+		alert(1);			
+					
 					exportRoot.HeaderMC.debug.text = "";
 				}
 				else
 				{
+					
+		alert(2);			
+					
 					//console.log(performance.memory);
 					exportRoot.HeaderMC.debug.text = "使用可能 : ";
 					exportRoot.HeaderMC.debug.text += performance.memory.jsHeapSizeLimit.toLocaleString();
