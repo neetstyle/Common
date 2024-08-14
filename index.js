@@ -3218,6 +3218,15 @@ if (reversed == null) { reversed = false; }
 				this.RebuildStore();
 				this.interval = 0;
 				this.BGScroll();
+				
+				
+		alert(
+				
+		performance
+		+" / "+		
+			performance.memory	
+				);		
+				
 				if (performance.memory === 'undefined')
 				{
 					exportRoot.HeaderMC.debug.text = "";
