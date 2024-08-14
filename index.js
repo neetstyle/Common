@@ -3026,7 +3026,7 @@ if (reversed == null) { reversed = false; }
 				
 				//////////////////////////////////////////////////////////
 				//Tick
-				this.fps = 5;
+				this.fps = 24;
 				this.lastTickTime = 0;
 				this.interval = 1000;
 				this.bgLastTickTime = 0;
@@ -3218,21 +3218,25 @@ if (reversed == null) { reversed = false; }
 				this.RebuildStore();
 				this.interval = 0;
 				this.BGScroll();
-				
-		alert(performance.memory);		
-				
-				//console.log(performance.memory);
-				exportRoot.HeaderMC.debug.text = "使用可能 : ";
-				exportRoot.HeaderMC.debug.text += performance.memory.jsHeapSizeLimit.toLocaleString();
-				exportRoot.HeaderMC.debug.text += "\n";
-				exportRoot.HeaderMC.debug.text += "割り当て : ";
-				exportRoot.HeaderMC.debug.text += performance.memory.totalJSHeapSize.toLocaleString();
-				exportRoot.HeaderMC.debug.text += "\n";
-				exportRoot.HeaderMC.debug.text += "使用中 : ";
-				exportRoot.HeaderMC.debug.text += performance.memory.usedJSHeapSize.toLocaleString();
-				//jsHeapSizeLimit: 使用可能なJavaScriptヒープのメモリサイズ(bytes)
-				//totalJSHeapSize: その内、既に割り当てられたメモリサイズ(bytes)
-				//usedJSHeapSize: その内、現在使用中のメモリサイズ(bytes)
+				if (performance.memory === 'undefined')
+				{
+					exportRoot.HeaderMC.debug.text = "";
+				}
+				else
+				{
+					//console.log(performance.memory);
+					exportRoot.HeaderMC.debug.text = "使用可能 : ";
+					exportRoot.HeaderMC.debug.text += performance.memory.jsHeapSizeLimit.toLocaleString();
+					exportRoot.HeaderMC.debug.text += "\n";
+					exportRoot.HeaderMC.debug.text += "割り当て : ";
+					exportRoot.HeaderMC.debug.text += performance.memory.totalJSHeapSize.toLocaleString();
+					exportRoot.HeaderMC.debug.text += "\n";
+					exportRoot.HeaderMC.debug.text += "使用中 : ";
+					exportRoot.HeaderMC.debug.text += performance.memory.usedJSHeapSize.toLocaleString();
+					//jsHeapSizeLimit: 使用可能なJavaScriptヒープのメモリサイズ(bytes)
+					//totalJSHeapSize: その内、既に割り当てられたメモリサイズ(bytes)
+					//usedJSHeapSize: その内、現在使用中のメモリサイズ(bytes)
+				}
 			}
 			
 			for (var i = 0; i < this.generators.length; i++)
@@ -3588,7 +3592,7 @@ if (reversed == null) { reversed = false; }
 			//this.AchievementPanelMC.Create();
 		
 			createjs.Ticker.framerate = main.fps;
-			createjs.Ticker.timingMode = createjs.Ticker.RAF;
+			//createjs.Ticker.timingMode = createjs.Ticker.RAF;
 			createjs.Ticker.addEventListener("tick", main.MainTick.bind(main));	
 			
 			main.InitBGScroll();
@@ -3705,7 +3709,7 @@ lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',
 	width: 1125,
 	height: 2436,
-	fps: 5,
+	fps: 24,
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
