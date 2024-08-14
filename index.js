@@ -1405,7 +1405,7 @@ if (reversed == null) { reversed = false; }
 	this.debug = new cjs.Text("jsHeapSizeLimit\njsHeapSizeLimit\njsHeapSizeLimit", "50px 'MS Gothic'", "#FFFFFF");
 	this.debug.name = "debug";
 	this.debug.lineHeight = 52;
-	this.debug.lineWidth = 1356;
+	this.debug.lineWidth = 1104;
 	this.debug.parent = this;
 	this.debug.setTransform(2,280);
 
@@ -1447,7 +1447,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,-0.5,1360.4,932.8), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,-0.5,1125,436.5), null);
 
 
 (lib.GeneratorDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -3218,6 +3218,9 @@ if (reversed == null) { reversed = false; }
 				this.RebuildStore();
 				this.interval = 0;
 				this.BGScroll();
+				
+		alert(performance.memory);		
+				
 				//console.log(performance.memory);
 				exportRoot.HeaderMC.debug.text = "使用可能 : ";
 				exportRoot.HeaderMC.debug.text += performance.memory.jsHeapSizeLimit.toLocaleString();
