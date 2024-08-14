@@ -151,7 +151,8 @@ function handleComplete(evt,comp) {
 	//Registers the "tick" event listener.
 	fnStartAnimation = function() {
 		stage.addChild(exportRoot);
-		createjs.Ticker.framerate = lib.properties.fps;
+		createjs.Ticker.framerate = isMobile() ? 30 : 60;
+		//createjs.Ticker.framerate = lib.properties.fps;
 		createjs.Ticker.addEventListener("tick", stage);
 	}	    
 	//Code to support hidpi screens and responsive scaling.

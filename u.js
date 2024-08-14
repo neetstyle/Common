@@ -252,3 +252,29 @@ class Outline
         this.textRD.color = outline;
 	}
 }
+
+function isMobile() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // iOS detection
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return true;
+    }
+
+    // Android detection
+    if (/android/i.test(userAgent)) {
+        return true;
+    }
+
+    // Windows Phone detection
+    if (/windows phone/i.test(userAgent)) {
+        return true;
+    }
+
+    // Other mobile detection
+    if (/Mobile|Android|iP(ad|hone|od)|Opera Mini|IEMobile|WPDesktop/.test(userAgent)) {
+        return true;
+    }
+
+    return false;
+}

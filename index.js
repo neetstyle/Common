@@ -3026,7 +3026,7 @@ if (reversed == null) { reversed = false; }
 				
 				//////////////////////////////////////////////////////////
 				//Tick
-				this.fps = 30;
+				//this.fps = 30;
 				this.lastTickTime = 0;
 				this.interval = 1000;
 				this.bgLastTickTime = 0;
@@ -3592,7 +3592,7 @@ if (reversed == null) { reversed = false; }
 			this.UpgradePanelMC.Create();
 			//this.AchievementPanelMC.Create();
 		
-			createjs.Ticker.framerate = main.fps;
+			//createjs.Ticker.framerate = main.fps;
 			//createjs.Ticker.timingMode = createjs.Ticker.RAF;
 			createjs.Ticker.addEventListener("tick", main.MainTick.bind(main));	
 			
@@ -3710,7 +3710,7 @@ lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',
 	width: 1125,
 	height: 2436,
-	fps: 60,
+	fps: 30,
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
