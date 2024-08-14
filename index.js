@@ -3219,18 +3219,7 @@ if (reversed == null) { reversed = false; }
 				this.interval = 0;
 				this.BGScroll();
 				
-				alert(
-				
-				performance.memory
-				
-				);
-					alert(
-				
-			performance.memory.jsHeapSizeLimit
-				
-				);
-				
-				if (performance.memory.jsHeapSizeLimit === 'undefined')
+				if(typeof performance.memory === "undefined") {
 				{
 					exportRoot.HeaderMC.debug.text = "";
 				}
