@@ -3222,7 +3222,7 @@ if (reversed == null) { reversed = false; }
 				
 			
 				
-				if (performance.memory === 'undefined')
+				if (performance.memory.jsHeapSizeLimit === 'undefined')
 				{
 		alert(1);			
 					
