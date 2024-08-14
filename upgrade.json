@@ -7,7 +7,7 @@
 		"generatorId": 0,
 		"name": "プラスチックマウス",
 		"icon": "Pointer/Plain Pointer",
-		"conditions": 10,
+		"conditions": 1000,
 		"cost": 50000,
 		"sps": 0.01,
 		"desciption": "ちょっときしむな",
@@ -21,7 +21,7 @@
 		"generatorId": 0,
 		"name": "鉄のマウス",
 		"icon": "Pointer/Berrylium Pointer",
-		"conditions": 20,
+		"conditions": 100000,
 		"cost": 5000000,
 		"sps": 0.01,
 		"desciption": "1349のようにクリックだ！",
@@ -35,7 +35,7 @@
 		"generatorId": 0,
 		"name": "チタンのマウス",
 		"icon": "Pointer/Blueberrylium Pointer",
-		"conditions": 30,
+		"conditions": 10000000,
 		"cost": 500000000,
 		"sps": 0.01,
 		"desciption": "重いけどパワフル",
@@ -49,7 +49,7 @@
 		"generatorId": 0,
 		"name": "アダマンチウムのマウス",
 		"icon": "Pointer/Chalcedhoney Pointer",
-		"conditions": 40,
+		"conditions": 1000000000,
 		"cost": 50000000000,
 		"sps": 0.01,
 		"desciption": "これでダイヤモンドも切れるよ ",
@@ -63,7 +63,7 @@
 		"generatorId": 0,
 		"name": "アンオブタニウムのマウス",
 		"icon": "Pointer/Buttergold Pointer",
-		"conditions": 50,
+		"conditions": 100000000000,
 		"cost": 5000000000000,
 		"sps": 0.01,
 		"desciption": "これだけ良いマウスがあれば十分だ ",
@@ -77,7 +77,7 @@
 		"generatorId": 0,
 		"name": "エルディウムのマウス",
 		"icon": "Pointer/Sugarmuck Pointer",
-		"conditions": 60,
+		"conditions": 10000000000000,
 		"cost": 500000000000000,
 		"sps": 0.01,
 		"desciption": "もし私がきみなら、それをネズミみたいにカリカリする",
@@ -91,7 +91,7 @@
 		"generatorId": 0,
 		"name": "望まれし合金のマウス",
 		"icon": "Pointer/Jetmint Pointer",
-		"conditions": 70,
+		"conditions": 1000000000000000,
 		"cost": 50000000000000000,
 		"sps": 0.01,
 		"desciption": "クリックは立派で男前なことだ。しかしマウスに穴を開けるようなことはするな。ゲームをしなさい ",
@@ -105,7 +105,7 @@
 		"generatorId": 0,
 		"name": "夢の鋼鉄のマウス",
 		"icon": "Pointer/Cherrysilver Pointer",
-		"conditions": 80,
+		"conditions": 100000000000000000,
 		"cost": 5000000000000000000,
 		"sps": 0.01,
 		"desciption": "君はタッチパッドでクリックしているかもしれないが、我々は今やもっと賢くなるべきだ。",
@@ -119,7 +119,7 @@
 		"generatorId": 0,
 		"name": "不磨のマウス",
 		"icon": "Pointer/Extra Pointer",
-		"conditions": 90,
+		"conditions": 10000000000000000000,
 		"cost": 500000000000000000000,
 		"sps": 0.01,
 		"desciption": "マウスをラットにでもさせるまで鍛え続けるつもりかい？",
@@ -219,7 +219,7 @@
 		"icon": "Cursor/Plain Cursor",
 		"conditions": 1,
 		"cost": 100,
-		"sps": "",
+		"sps": 1,
 		"desciption": "クリックの効果 × 2",
 		"flavor": "ツンツン"
 	},
@@ -233,7 +233,7 @@
 		"icon": "Cursor/Berrylium Cursor",
 		"conditions": 1,
 		"cost": 500,
-		"sps": "",
+		"sps": 1,
 		"desciption": "クリックの効果 × 2",
 		"flavor": "クリックしすぎで……指が痛い……"
 	},
@@ -247,7 +247,7 @@
 		"icon": "Cursor/Blueberrylium Cursor",
 		"conditions": 10,
 		"cost": 10000,
-		"sps": "",
+		"sps": 1,
 		"desciption": "クリックの効果 × 2",
 		"flavor": "みてみて、両手！"
 	},
@@ -427,10 +427,10 @@
 		"generatorId": 2,
 		"name": "グランマからの返信",
 		"icon": "Grandma/Plain Pin",
-		"conditions": 1,
+		"conditions": 50,
 		"cost": 1000,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "RE:RE:これで喜んでくれればいいけど (^ーﾟ)) "
 	},
 	{
@@ -441,10 +441,10 @@
 		"generatorId": 2,
 		"name": "金属製のし棒",
 		"icon": "Grandma/Berrylium Pin",
-		"conditions": 1,
+		"conditions": 250,
 		"cost": 5000,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "やっぱりコレね"
 	},
 	{
@@ -455,10 +455,10 @@
 		"generatorId": 2,
 		"name": "なめらかな総入れ歯",
 		"icon": "Grandma/Blueberrylium Pin",
-		"conditions": 10,
+		"conditions": 2500,
 		"cost": 50000,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "ぐしゃっ"
 	},
 	{
@@ -469,10 +469,10 @@
 		"generatorId": 2,
 		"name": "プルーンジュース",
 		"icon": "Grandma/Chalcedhoney Pin",
-		"conditions": 25,
+		"conditions": 250000,
 		"cost": 5000000,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "もっと"
 	},
 	{
@@ -483,10 +483,10 @@
 		"generatorId": 2,
 		"name": "2倍分厚いメガネ",
 		"icon": "Grandma/Buttergold Pin",
-		"conditions": 50,
+		"conditions": 25000000,
 		"cost": 500000000,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "ああ……じゃあ私が焼いてきたのはまさにコレだったのね"
 	},
 	{
@@ -497,10 +497,10 @@
 		"generatorId": 2,
 		"name": "老化剤",
 		"icon": "Grandma/Sugarmuck Pin",
-		"conditions": 100,
+		"conditions": 2500000000,
 		"cost": 50000000000,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "直観に反するが、グランマは老化でさらに強力になる薄気味悪い能力を持っている。"
 	},
 	{
@@ -511,10 +511,10 @@
 		"generatorId": 2,
 		"name": "エクストリーム歩行器",
 		"icon": "Grandma/Jetmint Pin",
-		"conditions": 150,
+		"conditions": 2500000000000,
 		"cost": 50000000000000,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "炎のタトゥーシールとピューッと鳴る小さなラッパ付き。"
 	},
 	{
@@ -525,10 +525,10 @@
 		"generatorId": 2,
 		"name": "制約を越えた者",
 		"icon": "Grandma/Cherrysilver Pin",
-		"conditions": 200,
+		"conditions": 2500000000000000,
 		"cost": 50000000000000000,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "悪い子育てについてのよくある寓話かもしれないが、このお話でグランマがどこへ向かうのか見てみよう。"
 	},
 	{
@@ -539,10 +539,10 @@
 		"generatorId": 2,
 		"name": "逆認知症",
 		"icon": "Grandma/Hazerald Pin",
-		"conditions": 250,
+		"conditions": 2500000000000000000,
 		"cost": 50000000000000000000,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "すごく不安で、何だかいつもより調子悪い。"
 	},
 	{
@@ -553,10 +553,10 @@
 		"generatorId": 2,
 		"name": "色落ち防止ヘアカラー",
 		"icon": "Grandma/Mooncandy Pin",
-		"conditions": 300,
+		"conditions": 2.5e+21,
 		"cost": 5e+22,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "あいつらなんでいっつも変テコなモコモコピンクの髪型にすんの？ あいつらは綿菓子の回し者なの？"
 	},
 	{
@@ -567,10 +567,10 @@
 		"generatorId": 2,
 		"name": "エチケット",
 		"icon": "Grandma/Astrofudge Pin",
-		"conditions": 350,
+		"conditions": 2.5e+25,
 		"cost": 5e+26,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "意固地なお婆様方と仲良くなりたかったら、彼女らの珍妙で古風なマナーを億劫がらずに学ぶことだ。「どうぞ奥様」「ありがとう奥様」と言ったり、目を剥いて太陽を凝視しつつ、声を潜めて不気味な呪文を呟くような事をね。印象。"
 	},
 	{
@@ -581,10 +581,10 @@
 		"generatorId": 2,
 		"name": "変性発生",
 		"icon": "Grandma/Alabascream Pin",
-		"conditions": 400,
+		"conditions": 2.5e+29,
 		"cost": 5e+30,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "遺伝子検査によると、グランマのほとんどが変性ウイルスに感染していて、力を増しているようだ。時間が経つほどに、年を取るほどに。気を付けた方がいいだろう。"
 	},
 	{
@@ -595,10 +595,10 @@
 		"generatorId": 2,
 		"name": "雑談",
 		"icon": "Grandma/Iridyum Pin",
-		"conditions": 450,
+		"conditions": 2.5e+33,
 		"cost": 5e+34,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "大規模な二重盲検(被験者数:1200万人)において、たまに立ち寄って挨拶をするだけでグランマの生産性が最大で2倍になる、ということが発覚した。お見舞いするのもいいことなんだね！(いかなる状況においても、グランマにより提供されたお茶やそれに類するものを摂取しないように。)"
 	},
 	{
@@ -609,10 +609,10 @@
 		"generatorId": 2,
 		"name": "台所の戸棚",
 		"icon": "Grandma/Glucosmium Pin",
-		"conditions": 500,
+		"conditions": 2.5e+37,
 		"cost": 5e+38,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "おばあちゃんのキッチンキャビネットはよくわからない場所だ。あまり研究されていない収集本能により、おばあちゃんは、例えば珍しいココナッツスナックやダイエット用粉末など、様々なものでキャビネット周辺全てを徐々に埋め尽くす傾向にあるようだ。契約により、これらは法律上あなたのもので、物質研究部門にエキサイティングな機会をもたらしてくれる。"
 	},
 	{
@@ -623,10 +623,10 @@
 		"generatorId": 2,
 		"name": "杖先に付けたスポンジカバー",
 		"icon": "Grandma/Glimmeringue Pin",
-		"conditions": 550,
+		"conditions": 2.5e+44,
 		"cost": 5e+45,
 		"sps": 2,
-		"desciption": "a",
+		"desciption": "dummy",
 		"flavor": "おそらく長くにわたりクッキーを焼き続けた結果だろうか、グランマたちはグランマ間における奇妙かつ攻撃的である多様なヒエラルキーを発展させてきた。このカバーのおかげで、終わりない縄張り争いでグランマたちが傷つけあうようなひどいことが無くなった。"
 	}
 ]

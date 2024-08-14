@@ -866,7 +866,7 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.bitmap;
+		this.bitmap == null;
 		this.scaleX = this.parent.canvasScaleX;
 		this.scaleY = this.parent.canvasScaleX;
 		this.y = document.documentElement.clientHeight / 2;
@@ -905,17 +905,20 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
 		
-			if( this.bitmap !== undefined)
+			if( this.bitmap != null)
+			{
 				this.removeChild(this.bitmap);
+				this.bitmap == null;
+			}
 			
 			//アイコン生成
-			var bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
-			this.addChild(bitmap);
-			bitmap.x = 54;
-			bitmap.y = 68;
-			bitmap.scaleX = 193 / bitmap.image.width;
-			bitmap.scaleY = 193 / bitmap.image.height;
-			bitmap.mouseEnabled = false;
+			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
+			this.addChild(this.bitmap);
+			this.bitmap.x = 54;
+			this.bitmap.y = 68;
+			this.bitmap.scaleX = 193 / this.bitmap.image.width;
+			this.bitmap.scaleY = 193 / this.bitmap.image.height;
+			this.bitmap.mouseEnabled = false;
 		
 			this.title_O.text = this.obj.data["name"];
 			this.desciption.text = this.obj.data["desciption"];
@@ -1088,8 +1091,8 @@ if (reversed == null) { reversed = false; }
 			var clip = new lib.DispNumMC();
 			this.parent.addChild(clip);
 			
-			clip.num_O = new Outline(lib, clip.num, 5, "#FFFFFF", "#000000");	
-			clip.num_O.text = "+" + FormatShortNumber(amount, 0);	
+			clip.num_O = new Outline(lib, clip.num, 3, "#FFFFFF", "#000000");	
+			clip.num_O.text = "+" + FormatShortNumber(amount, 0, 0);	
 			
 			var pt = stage.globalToLocal(evt.stageX, evt.stageY);
 			clip.x = pt.x + GetRandomInt(-200, 200) * this.parent.canvasScaleX;
@@ -1398,6 +1401,16 @@ if (reversed == null) { reversed = false; }
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
+	// AS
+	this.debug = new cjs.Text("jsHeapSizeLimit\njsHeapSizeLimit\njsHeapSizeLimit", "50px 'MS Gothic'", "#FFFFFF");
+	this.debug.name = "debug";
+	this.debug.lineHeight = 52;
+	this.debug.lineWidth = 1104;
+	this.debug.parent = this;
+	this.debug.setTransform(2,280);
+
+	this.timeline.addTween(cjs.Tween.get(this.debug).wait(1));
+
 	// Text1
 	this.Sushi = new cjs.Text("123.221 pieces", "90px 'Potta One'", "#FFFFFF");
 	this.Sushi.name = "Sushi";
@@ -1434,7 +1447,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,-0.5,1125,278.5), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,-0.5,1125,436.5), null);
 
 
 (lib.GeneratorDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -1457,7 +1470,7 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.bitmap;
+		this.bitmap = null;
 		this.scaleX = this.parent.canvasScaleX;
 		this.scaleY = this.parent.canvasScaleX;
 		this.y = document.documentElement.clientHeight / 2;
@@ -1502,17 +1515,20 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
 		
-			if( this.bitmap !== undefined)
+			if( this.bitmap != null)
+			{
 				this.removeChild(this.bitmap);
+				this.bitmap == null;
+			}
 		
 			//アイコン生成
-			var bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
-			this.addChild(bitmap);
-			bitmap.x = 54;
-			bitmap.y = 68;
-			bitmap.scaleX = 193 / bitmap.image.width;
-			bitmap.scaleY = 193 / bitmap.image.height;
-			bitmap.mouseEnabled = false;
+			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
+			this.addChild(this.bitmap);
+			this.bitmap.x = 54;
+			this.bitmap.y = 68;
+			this.bitmap.scaleX = 193 / this.bitmap.image.width;
+			this.bitmap.scaleY = 193 / this.bitmap.image.height;
+			this.bitmap.mouseEnabled = false;
 		
 			this.title_O.text = this.obj.data["name"];
 			this.desciption.text = this.obj.data["desciption"];
@@ -1545,17 +1561,17 @@ if (reversed == null) { reversed = false; }
 			var text1 = "各[x]が毎秒[y]Sushi生産";
 			this.desciption1.text = 
 				text1.replace("[x]", this.obj.data.name)
-				.replace("[y]", FormatNumber(Accuracy(this.obj.storedTotalSps), 1));
+				.replace("[y]", FormatNumber(Accuracy(this.obj.storedTotalSps), 1, 0));
 			
 			var text2 = "[x][y]が毎秒[z]Sushi生産(合計SpSの[w]%)";
 			this.desciption2.text = 
 				text2.replace("[x]", this.obj.amount)
 				.replace("[y]", this.obj.data.name)
-				.replace("[z]", FormatNumber(Accuracy(this.obj.storedTotalSps * this.obj.amount), 1))
+				.replace("[z]", FormatNumber(Accuracy(this.obj.storedTotalSps * this.obj.amount), 1, 2))
 				.replace("[w]", this.ratio.toFixed(1));
 			
 			var text3 = "これまで[x]Sushi生産";
-			this.desciption3.text = text3.replace("[x]", FormatNumber(Math.floor(this.obj.totalSushies), 1));
+			this.desciption3.text = text3.replace("[x]", FormatNumber(Math.floor(this.obj.totalSushies), 1, 0));
 		
 			SetWrapText(this.desciption1);
 			SetWrapText(this.desciption2);
@@ -1969,7 +1985,7 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.bitmap;
+		this.bitmap == null;
 		this.scaleX = this.parent.canvasScaleX;
 		this.scaleY = this.parent.canvasScaleX;
 		this.y = document.documentElement.clientHeight / 2;
@@ -2008,16 +2024,19 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
 		
-			if( this.bitmap !== undefined)
+			if( this.bitmap != null)
+			{
 				this.removeChild(this.bitmap);
+				this.bitmap == null;
+			}
 		
 			//アイコン生成
-			var bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
-			this.addChild(bitmap);
-			bitmap.x = 54;
-			bitmap.y = 68;
-			bitmap.scaleX = 193 / bitmap.image.width;
-			bitmap.scaleY = 193 / bitmap.image.height;
+			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
+			this.addChild(this.bitmap);
+			this.bitmap.x = 54;
+			this.bitmap.y = 68;
+			this.bitmap.scaleX = 193 / this.bitmap.image.width;
+			this.bitmap.scaleY = 193 / this.bitmap.image.height;
 		
 			this.title_O.text = this.obj.data["name"];
 			this.desciption.text = this.obj.data["desciption"];
@@ -2333,7 +2352,7 @@ if (reversed == null) { reversed = false; }
 				clip.gotoAndStop("On");
 				clip.title.text = upgrade.data["name"];
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
-				clip.cost.text = FormatNumber(upgrade.baseCost, 1);
+				clip.cost.text = FormatNumber(upgrade.baseCost, 1, 0);
 				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");				
 				
 				clip.x = 0;
@@ -2504,7 +2523,7 @@ if (reversed == null) { reversed = false; }
 				clip.title.text = generator.data["name"];
 				clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
-				clip.cost.text = FormatNumber(generator.storedCost, 1);
+				clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
 				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");			
 				clip.amount.text = generator.amount;
 				clip.x = 0;
@@ -2787,12 +2806,12 @@ if (reversed == null) { reversed = false; }
 				"1タップあたりの寿司提供数：[e]\n" + 
 				"タップ：[f]回";
 			
-			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[a]", FormatNumber(main.sushi, 1));
-			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[b]", FormatNumber(main.totalSushi, 1));
-			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[c]", FormatNumber(main.generatorNum, 1));
-			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[d]", FormatNumber(main.sushiPs, 1));	
-			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[e]", FormatNumber(main.computedTouchSps, 1));
-			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[f]",FormatNumber(main.totalClick, 1));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[a]", FormatNumber(main.sushi, 1, 0));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[b]", FormatNumber(main.totalSushi, 1, 0));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[c]", FormatNumber(main.generatorNum, 1, 0));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[d]", FormatNumber(main.sushiPs, 1, 2));	
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[e]", FormatNumber(main.computedTouchSps, 1, 0));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[f]",FormatNumber(main.totalClick, 1, 0));
 		}
 		
 		this.Open =  function() 
@@ -3007,7 +3026,7 @@ if (reversed == null) { reversed = false; }
 				
 				//////////////////////////////////////////////////////////
 				//Tick
-				this.fps = 30;
+				this.fps = 5;
 				this.lastTickTime = 0;
 				this.interval = 1000;
 				this.bgLastTickTime = 0;
@@ -3046,7 +3065,7 @@ if (reversed == null) { reversed = false; }
 			
 			this.sushi += value;
 			this.totalSushi += value;
-			exportRoot.HeaderMC.Sushi_O.text = FormatNumber(main.sushi, 1) + " pieces";
+			exportRoot.HeaderMC.Sushi_O.text = FormatNumber(main.sushi, 1, 0) + " pieces";
 			
 			this.AddBGParticle();
 		}
@@ -3060,14 +3079,19 @@ if (reversed == null) { reversed = false; }
 		main.TouchSps = function()
 		{
 			var add = 0;
-		
+			var add2 = 0;
+			
 			//Fingers
 			for (var i = 0; i < this.upgrades.length; i++)
 			{
 				var upgrade = this.upgrades[i];			
 				if(upgrade.amount == 0) continue;
 				if(upgrade.data.type != 3) continue;
-						
+					
+				if(upgrade.data.subType == 1)
+				{	
+					add2 += upgradeData[i].sps;
+				}
 				if(upgrade.data.subType == 2)
 				{	
 					add += upgradeData[i].sps;
@@ -3091,7 +3115,7 @@ if (reversed == null) { reversed = false; }
 		//console.log(upgrade.data.name +" / "+add);	
 		
 			var mult=1;
-			var out = mult * this.ComputeCps(1, 0, add);
+			var out = mult * this.ComputeCps(1, add2, add);
 		
 			return out;
 		}
@@ -3107,7 +3131,7 @@ if (reversed == null) { reversed = false; }
 				this.generators[i].storedTotalSps = this.generators[i].amount * this.generators[i].storedSps;
 				this.sushiPs += this.generators[i].storedTotalSps;
 			}
-			exportRoot.HeaderMC.Sps_O.text = "per Second : " + FormatNumber(this.sushiPs, 1) + " pieces";
+			exportRoot.HeaderMC.Sps_O.text = "per Second : " + FormatNumber(this.sushiPs, 1, 2) + " pieces";
 		}
 		
 		main.BuyGenerator = function(generator)
@@ -3120,7 +3144,7 @@ if (reversed == null) { reversed = false; }
 				main.CalculateGains();
 				playSound("generator");
 				generator.storedCost = this.GetCost(generator);
-				generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1);
+				generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
 				this.generatorNum++;
 				this.CheckAchievement_Generator();
 			}
@@ -3194,6 +3218,18 @@ if (reversed == null) { reversed = false; }
 				this.RebuildStore();
 				this.interval = 0;
 				this.BGScroll();
+				//console.log(performance.memory);
+				exportRoot.HeaderMC.debug.text = "使用可能 : ";
+				exportRoot.HeaderMC.debug.text += performance.memory.jsHeapSizeLimit.toLocaleString();
+				exportRoot.HeaderMC.debug.text += "\n";
+				exportRoot.HeaderMC.debug.text += "割り当て : ";
+				exportRoot.HeaderMC.debug.text += performance.memory.totalJSHeapSize.toLocaleString();
+				exportRoot.HeaderMC.debug.text += "\n";
+				exportRoot.HeaderMC.debug.text += "使用中 : ";
+				exportRoot.HeaderMC.debug.text += performance.memory.usedJSHeapSize.toLocaleString();
+				//jsHeapSizeLimit: 使用可能なJavaScriptヒープのメモリサイズ(bytes)
+				//totalJSHeapSize: その内、既に割り当てられたメモリサイズ(bytes)
+				//usedJSHeapSize: その内、現在使用中のメモリサイズ(bytes)
 			}
 			
 			for (var i = 0; i < this.generators.length; i++)
@@ -3666,7 +3702,7 @@ lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',
 	width: 1125,
 	height: 2436,
-	fps: 30,
+	fps: 5,
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
