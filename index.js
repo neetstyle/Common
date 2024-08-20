@@ -256,7 +256,6 @@ if (reversed == null) { reversed = false; }
 			.call(() => {
 				this.visible = false;
 		    });	
-			createjs.Ticker.removeEventListener('tick', this._Tick);
 			playSound("popup");
 		} 
 		
@@ -926,10 +925,16 @@ if (reversed == null) { reversed = false; }
 			minY = -(50 + 280 * this.count) + 914;
 		}
 		
-		this.SetSize = function(size) 
+		this.SetFullSize = function(size) 
 		{
 			this.content.ContentBGMC.scaleY = size * 0.01;
 			minY = -size + (document.documentElement.clientHeight / this.parent.parent.canvasScaleX)	-300 -278;
+		}
+		
+		this.SetSize = function(size) 
+		{
+			this.content.ContentBGMC.scaleY = size * 0.01;
+			minY = -size + 914;
 		}
 		
 		this.content.ContentBGMC.scaleY = (0 + 280 * this.count) * 0.01;
@@ -1454,7 +1459,7 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.RadiationMC, new cjs.Rectangle(0,0,2436,2436), null);
 
 
-(lib.AchievementDesciptionMC = function(mode,startPosition,loop,reversed) {
+(lib.AchievementActiveMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -1465,111 +1470,16 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	this.isSingleFrame = false;
-	// timeline functions:
-	this.frame_0 = function() {
-		if(this.isSingleFrame) {
-			return;
-		}
-		if(this.totalFrames == 1) {
-			this.isSingleFrame = true;
-		}
-		this.bitmap == null;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		this.y = document.documentElement.clientHeight / 2;
-		this.x = document.documentElement.clientWidth / 2;
-		this.visible = false;
-		
-		this.title_O = new Outline(lib, this.title, 5, "#000000", "#FFFFFF");
-		this.data;
-		
-		this.Close = function()
-		{
-			this.parent.MaskMC.removeEventListener("click", this._close);
-			this.parent.MaskMC.visible = false;
-			
-			createjs.Tween.get(this, { override: true })
-			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
-			.call(() => {
-				this.visible = false;
-		    });	
-			createjs.Ticker.removeEventListener('tick', this._Tick);
-			playSound("popup");
-		} 
-		
-		this.Open = function(_obj)
-		{
-			this.obj = _obj;
-			
-			this.visible = true;
-			this.scaleX = 0;
-			this.scaleY = 0;
-			
-			this._close = this.parent.MaskMC.addEventListener("click", this.Close.bind(this));
-			this.parent.MaskMC.visible = true;
-			
-			createjs.Tween.get(this, { override: true })
-			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
-		
-			if( this.bitmap != null)
-			{
-				this.removeChild(this.bitmap);
-				this.bitmap == null;
-			}
-		
-			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
-			this.addChild(this.bitmap);
-			this.bitmap.x = 54;
-			this.bitmap.y = 68;
-			this.bitmap.scaleX = 193 / this.bitmap.image.width;
-			this.bitmap.scaleY = 193 / this.bitmap.image.height;
-		
-			this.title_O.text = this.obj.data["name"];
-			this.desciption.text = this.obj.data["desciption"];
-			
-			SetWrapText(this.desciption);	
-		}
-	}
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(20,1,1).p("AxGxGMAiNAAAMAAAAiNMgiNAAAg");
+	this.shape.setTransform(109.5,109.5);
 
-	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
-
-	// IconBG
-	this.instance = new lib.iconFrame();
-	this.instance.setTransform(46,60);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	// Text_title
-	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
-	this.title.name = "title";
-	this.title.lineHeight = 87;
-	this.title.lineWidth = 716;
-	this.title.parent = this;
-	this.title.setTransform(275,67);
-
-	this.timeline.addTween(cjs.Tween.get(this.title).wait(1));
-
-	// Text
-	this.desciption = new cjs.Text("「押すだけで寿司が出てくる。\nたまにネタとシャリが逆さまですが。」", "50px 'Potta One'");
-	this.desciption.name = "desciption";
-	this.desciption.lineHeight = 72;
-	this.desciption.lineWidth = 901;
-	this.desciption.parent = this;
-	this.desciption.setTransform(81.85,338.35);
-
-	this.timeline.addTween(cjs.Tween.get(this.desciption).wait(1));
-
-	// BG
-	this.instance_1 = new lib.dialogBG();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementDesciptionMC, new cjs.Rectangle(0,0,1044,1145), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementActiveMC, new cjs.Rectangle(-10,-10,239,239), null);
 
 
 (lib.UpgradeCellMC = function(mode,startPosition,loop,reversed) {
@@ -1679,7 +1589,7 @@ if (reversed == null) { reversed = false; }
 		this.visible = false;
 		
 		this.title_O = new Outline(lib, this.title, 5, "#000000", "#FFFFFF");
-		this.data;
+		this.obj;
 		
 		this.stop();
 		
@@ -1693,7 +1603,6 @@ if (reversed == null) { reversed = false; }
 			.call(() => {
 				this.visible = false;
 		    });	
-			createjs.Ticker.removeEventListener('tick', this._Tick);
 			playSound("popup");
 		} 
 		this.CloseButtonMC.addEventListener("click", this.Close.bind(this));
@@ -2325,15 +2234,12 @@ if (reversed == null) { reversed = false; }
 			.call(() => {
 				this.visible = false;
 		    });	
-			createjs.Ticker.removeEventListener('tick', this._Tick);
 			playSound("popup");
 		} 
 		this.CloseButtonMC.addEventListener("click", this.Close.bind(this));
 		
-		this.Open = function(_obj)
+		this.Open = function()
 		{
-			this.obj = _obj;
-			
 			this.visible = true;
 			this.scaleX = 0;
 			this.scaleY = 0;
@@ -2821,6 +2727,143 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-654.2,-1124.9,2436,3560.9), null);
 
 
+(lib.AchievementDesciptionMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.bitmap == null;
+		this.scaleX = this.parent.canvasScaleX;
+		this.scaleY = this.parent.canvasScaleX;
+		//this.y = document.documentElement.clientHeight / 2;
+		//this.y = ((2436 * this.parent.canvasScaleY -300 * this.parent.canvasScaleX -914 * this.parent.canvasScaleX)
+		//		- (278 * this.parent.canvasScaleX)) / 2 + (278 * this.parent.canvasScaleX);
+		this.y = ((2436 * this.parent.canvasScaleY -300 * this.parent.canvasScaleX -914 * this.parent.canvasScaleX)
+				- (278 * this.parent.canvasScaleX)) / 2 + (278 * this.parent.canvasScaleX);
+		this.x = document.documentElement.clientWidth / 2;
+		this.visible = false;
+		
+		this.title_O = new Outline(lib, this.title, 5, "#000000", "#FFFFFF");
+		this.obj;
+		
+		this.Close = function()
+		{
+			//this.parent.MaskMC.removeEventListener("click", this._close);
+			//this.parent.MaskMC.visible = false;
+			this.ButtonMC.removeEventListener("click", this._close);	
+			this.obj.achievementClip.AchievementActiveMC.visible = false;
+			
+			createjs.Tween.get(this, { override: true })
+			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
+			.call(() => {
+				this.visible = false;
+		    });	
+			playSound("popup");
+		} 
+		
+		this.Open = function(_obj)
+		{
+			this.obj = _obj;
+			
+			this.visible = true;
+			this.scaleX = 0;
+			this.scaleY = 0;
+			
+			//this._close = this.parent.MaskMC.addEventListener("click", this.Close.bind(this));
+			//this.parent.MaskMC.visible = true;
+			this._close = this.ButtonMC.addEventListener("click", this.Close.bind(this));	
+			
+			createjs.Tween.get(this, { override: true })
+			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
+		
+			if( this.bitmap != null)
+			{
+				this.removeChild(this.bitmap);
+				this.bitmap == null;
+			}
+		
+			//アイコン生成
+			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
+			this.addChild(this.bitmap);
+			this.bitmap.x = 65;
+			this.bitmap.y = 95;
+			this.bitmap.scaleX = 193 / this.bitmap.image.width;
+			this.bitmap.scaleY = 193 / this.bitmap.image.height;
+		
+			this.title_O.text = this.obj.data["name"];
+			this.desciption.text = this.obj.data["desciption"];
+			
+			SetWrapText(this.desciption);	
+		}
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// Button
+	this.ButtonMC = new lib.ButtonMC();
+	this.ButtonMC.name = "ButtonMC";
+	this.ButtonMC.setTransform(565.05,188,10.5,3,0,0,0,50,50);
+
+	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).wait(1));
+
+	// IconBG
+	this.instance = new lib.iconFrame();
+	this.instance.setTransform(57,84);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	// Text_title
+	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
+	this.title.name = "title";
+	this.title.lineHeight = 87;
+	this.title.lineWidth = 779;
+	this.title.parent = this;
+	this.title.setTransform(272,67);
+
+	this.timeline.addTween(cjs.Tween.get(this.title).wait(1));
+
+	// Text
+	this.desciption = new cjs.Text("「押すだけで寿司が出てくる。\nたまにネタとシャリが逆さまですが。」", "45px 'Potta One'");
+	this.desciption.name = "desciption";
+	this.desciption.lineHeight = 65;
+	this.desciption.lineWidth = 810;
+	this.desciption.parent = this;
+	this.desciption.setTransform(272,167.2);
+
+	this.timeline.addTween(cjs.Tween.get(this.desciption).wait(1));
+
+	// BG
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(1,1,1).p("EhSBgXbMCkDAAAMAAAAu3MikDAAAg");
+	this.shape.setTransform(565.05,188);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#FF0000").s().p("EhSBAXcMAAAgu3MCkDAAAMAAAAu3g");
+	this.shape_1.setTransform(565.05,188);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.AchievementDesciptionMC, new cjs.Rectangle(39.1,37,1052,302), null);
+
+
 (lib.AchievementCellMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -2848,6 +2891,13 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.instance_1},{t:this.instance}]},9).wait(11));
 
+	// Active
+	this.AchievementActiveMC = new lib.AchievementActiveMC();
+	this.AchievementActiveMC.name = "AchievementActiveMC";
+	this.AchievementActiveMC.setTransform(109.5,109.5,1,1,0,0,0,109.5,109.5);
+
+	this.timeline.addTween(cjs.Tween.get(this.AchievementActiveMC).to({_off:true},9).wait(11));
+
 	// BG_Button
 	this.ButtonMC = new lib.ButtonMC();
 	this.ButtonMC.name = "ButtonMC";
@@ -2872,7 +2922,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,-60,269,269);
+p.nominalBounds = new cjs.Rectangle(-10,-60,279,289);
 
 
 (lib.UpgradeContentMC = function(mode,startPosition,loop,reversed) {
@@ -3104,7 +3154,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementContentMC, new cjs.Rectangle(0,0,1125,1491.7), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementContentMC, new cjs.Rectangle(0,0,1125,1511.7), null);
 
 
 (lib.UpgradePanelMC = function(mode,startPosition,loop,reversed) {
@@ -3493,7 +3543,7 @@ if (reversed == null) { reversed = false; }
 			//////////////////////////////////////
 		
 			posY += 50;
-			this.ScrollMC.SetSize(posY);
+			this.ScrollMC.SetFullSize(posY);
 		}
 		
 		this.Reset = function() 
@@ -3770,7 +3820,20 @@ if (reversed == null) { reversed = false; }
 					data.unread = false;
 					data.achievementClip.DoddMC.visible =  false;
 				}
-		    }
+			
+				for (var i = 0; i < main.achievements.length; i++)
+				{
+					main.achievements[i].achievementClip.AchievementActiveMC.visible = false;
+				}
+		
+				for (var i = 0; i < main.upgrades.length; i++)
+				{
+					if(main.upgrades[i].achievementClip == null) continue;
+						main.upgrades[i].achievementClip.AchievementActiveMC.visible = false;
+				}
+		
+				data.achievementClip.AchievementActiveMC.visible = true;
+			}
 		}
 		
 		this.Create = function() 
@@ -3810,6 +3873,7 @@ if (reversed == null) { reversed = false; }
 				
 				clip.gotoAndStop("Active");
 				clip.DoddMC.visible =  upgrade.unread;
+				clip.AchievementActiveMC.visible = false;
 				upgradeCount++;
 			}
 		
@@ -3859,6 +3923,7 @@ if (reversed == null) { reversed = false; }
 					clip.gotoAndStop("Lock");
 				}
 				clip.DoddMC.visible =  achievement.unread;
+				clip.AchievementActiveMC.visible = false;
 			}
 		
 			this.ContentMC.achievementTitle.text = "アチーブメント："
@@ -3867,6 +3932,7 @@ if (reversed == null) { reversed = false; }
 		
 			posY += 250 * Math.ceil(main.achievements.length / 4);
 		
+			//this.ScrollMC.SetFullSize(posY);
 			this.ScrollMC.SetSize(posY);
 		}
 		
@@ -4632,6 +4698,8 @@ if (reversed == null) { reversed = false; }
 				case 4:
 					this.Close(this.AchievementPanelMC);
 					this.AchievementPanelMC.Close();
+					if(this.AchievementDesciptionMC	.visible)
+						this.AchievementDesciptionMC.Close();
 					break;
 		    }	
 		
@@ -4652,7 +4720,7 @@ if (reversed == null) { reversed = false; }
 						this.ShopPanelMC.Open();
 						break;
 					case 4:
-						this.Open(this.AchievementPanelMC, true);
+						this.Open(this.AchievementPanelMC, false);
 						this.AchievementPanelMC.Open();
 						break;
 				}
@@ -4845,6 +4913,10 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.NotificationMC).wait(1));
 
 	// Desciption
+	this.AchievementDesciptionMC = new lib.AchievementDesciptionMC();
+	this.AchievementDesciptionMC.name = "AchievementDesciptionMC";
+	this.AchievementDesciptionMC.setTransform(-2498.9,1011.9,1,1,0,0,0,565.1,188);
+
 	this.MessageMC = new lib.MessageMC();
 	this.MessageMC.name = "MessageMC";
 	this.MessageMC.setTransform(-2224.55,2176.6,1,1,0,0,0,509.1,45.5);
@@ -4857,10 +4929,6 @@ if (reversed == null) { reversed = false; }
 	this.InviteDesciptionMC.name = "InviteDesciptionMC";
 	this.InviteDesciptionMC.setTransform(-1409.7,-959.8,1,1,0,0,0,522,572.5);
 
-	this.AchievementDesciptionMC = new lib.AchievementDesciptionMC();
-	this.AchievementDesciptionMC.name = "AchievementDesciptionMC";
-	this.AchievementDesciptionMC.setTransform(-2453.7,1330.2,1,1,0,0,0,522,572.5);
-
 	this.UpgradeDesciptionMC = new lib.UpgradeDesciptionMC();
 	this.UpgradeDesciptionMC.name = "UpgradeDesciptionMC";
 	this.UpgradeDesciptionMC.setTransform(-1409.7,185.2,1,1,0,0,0,522,572.5);
@@ -4869,7 +4937,7 @@ if (reversed == null) { reversed = false; }
 	this.GeneratorDesciptionMC.name = "GeneratorDesciptionMC";
 	this.GeneratorDesciptionMC.setTransform(-2453.7,185.2,1,1,0,0,0,522,572.5);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.AchievementDesciptionMC},{t:this.InviteDesciptionMC},{t:this.ShopDesciptionMC},{t:this.MessageMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.InviteDesciptionMC},{t:this.ShopDesciptionMC},{t:this.MessageMC},{t:this.AchievementDesciptionMC}]}).wait(1));
 
 	// Mask2
 	this.Mask2MC = new lib.MaskMC();
