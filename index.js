@@ -2384,7 +2384,7 @@ if (reversed == null) { reversed = false; }
 	this.debug.lineHeight = 52;
 	this.debug.lineWidth = 1104;
 	this.debug.parent = this;
-	this.debug.setTransform(-558.15,-618.15);
+	this.debug.setTransform(2,280);
 
 	this.timeline.addTween(cjs.Tween.get(this.debug).wait(1));
 
@@ -2424,7 +2424,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(-560.1,-620.1,1685.1,898.1), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,-0.5,1125,436.5), null);
 
 
 (lib.GeneratorCellMC = function(mode,startPosition,loop,reversed) {
@@ -3662,6 +3662,7 @@ if (reversed == null) { reversed = false; }
 		{
 		    if (!this.ScrollMC.isScrolled()) {
 				main.BuyGenerator(generator);
+				generator.clip.DoddMC.visible = false;
 		    }
 		}
 		
@@ -4117,6 +4118,8 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
+		//////////////////////////////////////////////////////////
+		//Data
 		class Generator
 		{
 		    constructor()
@@ -4319,6 +4322,8 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		main = new Main();
+		//////////////////////////////////////////////////////////
+		//Game
 		main.AddSushi = function(value) 
 		{
 			//Debug!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -4545,6 +4550,8 @@ if (reversed == null) { reversed = false; }
 					this.AddSushi(ammount);
 			}
 		}
+		//////////////////////////////////////////////////////////
+		//Debug
 		this.HeaderMC.DebugMC.on("click", function(evt) {
 			if(main.isAddTouchCps){
 				main.isAddTouchCps = false;
@@ -4554,6 +4561,46 @@ if (reversed == null) { reversed = false; }
 				this.status.text = "Debug";
 			}
 		});
+		//////////////////////////////////////////////////////////
+		//Layout
+		//1125 * 2436
+		this.canvasScaleX = document.documentElement.clientWidth / 1125;
+		this.canvasScaleY = document.documentElement.clientHeight / 2436;
+		
+		this.BgMC.scaleX = this.canvasScaleX;
+		this.BgMC.scaleY = this.canvasScaleY;
+		
+		this.HeaderMC.scaleX = this.canvasScaleX;
+		this.HeaderMC.scaleY = this.canvasScaleX;
+		
+		this.FooterMC.scaleX = this.canvasScaleX;
+		this.FooterMC.scaleY = this.canvasScaleX;
+		this.FooterMC.y = 2436 * this.canvasScaleY;
+		
+		this.UpperBGMC.scaleX = this.canvasScaleX;
+		this.UpperBGMC.scaleY = this.canvasScaleX;
+		
+		this.UnderBGMC.scaleX = this.canvasScaleX;
+		this.UnderBGMC.scaleY = this.canvasScaleX;
+		this.UnderBGMC.y = 2436 * this.canvasScaleY;
+		
+		this.MaskMC.visible = false;
+		this.Mask2MC.visible = false;
+		
+		this.FooterMC.AchievementBadgeMC.visible = false;
+		this.FooterMC.GeneratorDoddMC.visible = false;
+		this.FooterMC.UpgradeDoddMC.visible = false;
+		
+		this.BgMC.SushiBGScrollMC.BG1MC.visible = false;
+		this.BgMC.SushiBGScrollMC.BG2MC.visible = false;
+		this.BgMC.SushiBGScrollMC.BG3MC.visible = false;
+		
+		this.InviteButtonMC.scaleX = this.canvasScaleX;
+		this.InviteButtonMC.scaleY = this.canvasScaleX;
+		this.InviteButtonMC.x = 920 * this.canvasScaleX;
+		this.InviteButtonMC.y = 300 * this.canvasScaleX;
+		//////////////////////////////////////////////////////////
+		//Effect
 		main.AddBGParticle = function()
 		{
 			var now = createjs.Ticker.getTime() * 0.001;
@@ -4625,6 +4672,8 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(exportRoot.BgMC.SushiBGScrollMC, {loop: true})
 			.to({ y: (1125 * 1.0) }, 3500, createjs.Ease.linear);	
 		}
+		//////////////////////////////////////////////////////////
+		//Achievement
 		main.AddAchievement = function(achievement)
 		{
 			this.achievementNotificationNum++;
@@ -4668,43 +4717,9 @@ if (reversed == null) { reversed = false; }
 				this.AddAchievement(achievement);
 			}
 		}
-		//Layout
-		//1125 * 2436
-		this.canvasScaleX = document.documentElement.clientWidth / 1125;
-		this.canvasScaleY = document.documentElement.clientHeight / 2436;
+		//////////////////////////////////////////////////////////
+		//Panel
 		
-		this.BgMC.scaleX = this.canvasScaleX;
-		this.BgMC.scaleY = this.canvasScaleY;
-		
-		this.HeaderMC.scaleX = this.canvasScaleX;
-		this.HeaderMC.scaleY = this.canvasScaleX;
-		
-		this.FooterMC.scaleX = this.canvasScaleX;
-		this.FooterMC.scaleY = this.canvasScaleX;
-		this.FooterMC.y = 2436 * this.canvasScaleY;
-		
-		this.UpperBGMC.scaleX = this.canvasScaleX;
-		this.UpperBGMC.scaleY = this.canvasScaleX;
-		
-		this.UnderBGMC.scaleX = this.canvasScaleX;
-		this.UnderBGMC.scaleY = this.canvasScaleX;
-		this.UnderBGMC.y = 2436 * this.canvasScaleY;
-		
-		this.MaskMC.visible = false;
-		this.Mask2MC.visible = false;
-		
-		this.FooterMC.AchievementBadgeMC.visible = false;
-		this.FooterMC.GeneratorDoddMC.visible = false;
-		this.FooterMC.UpgradeDoddMC.visible = false;
-		
-		this.BgMC.SushiBGScrollMC.BG1MC.visible = false;
-		this.BgMC.SushiBGScrollMC.BG2MC.visible = false;
-		this.BgMC.SushiBGScrollMC.BG3MC.visible = false;
-		
-		this.InviteButtonMC.scaleX = this.canvasScaleX;
-		this.InviteButtonMC.scaleY = this.canvasScaleX;
-		this.InviteButtonMC.x = 920 * this.canvasScaleX;
-		this.InviteButtonMC.y = 300 * this.canvasScaleX;
 		//Layout
 		this.page = 0;
 		this.GeneratorPanelMC.visible = false;
@@ -4874,6 +4889,8 @@ if (reversed == null) { reversed = false; }
 			this.InviteDesciptionMC.Open();
 			playSound("popup");
 		}
+		//////////////////////////////////////////////////////////
+		//Shop
 		main.AddGoldenSushi = function(value) 
 		{
 			this.goldenSushi += value;
@@ -4885,6 +4902,8 @@ if (reversed == null) { reversed = false; }
 			this.goldenSushi -= value;
 			exportRoot.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
 		}
+		//////////////////////////////////////////////////////////
+		//Notification
 		this.NotificationMC.message_O = new Outline(lib, exportRoot.NotificationMC.message, 5, "#000000", "#FFFFFF");
 		this.NotificationMC.bitmap = null;
 		exportRoot.NotificationMC.visible = false;
@@ -4946,6 +4965,9 @@ if (reversed == null) { reversed = false; }
 			exportRoot.NotificationMC.bitmap.scaleX = 150 / 64;
 			exportRoot.NotificationMC.bitmap.scaleY = 150 / 64;
 		}
+		//////////////////////////////////////////////////////////
+		//Init
+		
 		if (createjs.Touch.isSupported())
 		    createjs.Touch.enable(stage);
 		 
@@ -4969,6 +4991,17 @@ if (reversed == null) { reversed = false; }
 			
 			main.InitBGScroll();
 		});
+		
+		//////////////////////////////////////////////////////////
+		//BGM
+		function resumeAudioContext(event)
+		{
+			window.removeEventListener('click', resumeAudioContext);
+			window.removeEventListener('touchstart', resumeAudioContext);
+			playSound("bgm", -1);
+		}
+		window.addEventListener('click', resumeAudioContext);
+		window.addEventListener('touchstart', resumeAudioContext);
 	}
 
 	// actions tween:
