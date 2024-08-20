@@ -543,10 +543,10 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Text
-	this.message = new cjs.Text("AAAAAAAAAAが追加されました", "50px 'Potta One'", "#FFFFFF");
+	this.message = new cjs.Text("AAAAAAAAAAが追加されました\nああああああああああああああああ", "45px 'Potta One'", "#FFFFFF");
 	this.message.name = "message";
-	this.message.lineHeight = 74;
-	this.message.lineWidth = 820;
+	this.message.lineHeight = 67;
+	this.message.lineWidth = 833;
 	this.message.parent = this;
 	this.message.setTransform(232.1,67.25);
 
@@ -2461,6 +2461,13 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.MaskMC).wait(9).to({_off:false},0).wait(10).to({alpha:1},0).wait(11));
 
+	// Dodd
+	this.DoddMC = new lib.DoddMC();
+	this.DoddMC.name = "DoddMC";
+	this.DoddMC.setTransform(1063,73,1,1,0,0,0,60,60);
+
+	this.timeline.addTween(cjs.Tween.get(this.DoddMC).wait(30));
+
 	// レイヤー_8
 	this.titleHatena = new cjs.Text("???", "60px 'Potta One'");
 	this.titleHatena.name = "titleHatena";
@@ -3070,6 +3077,10 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Badge
+	this.GeneratorDoddMC = new lib.DoddMC();
+	this.GeneratorDoddMC.name = "GeneratorDoddMC";
+	this.GeneratorDoddMC.setTransform(252.05,74.1,1,1,0,0,0,60,60);
+
 	this.UpgradeDoddMC = new lib.DoddMC();
 	this.UpgradeDoddMC.name = "UpgradeDoddMC";
 	this.UpgradeDoddMC.setTransform(510.2,74.1,1,1,0,0,0,60,60);
@@ -3078,7 +3089,7 @@ if (reversed == null) { reversed = false; }
 	this.AchievementBadgeMC.name = "AchievementBadgeMC";
 	this.AchievementBadgeMC.setTransform(1073.55,74.1,1,1,0,0,0,60,60);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.AchievementBadgeMC},{t:this.UpgradeDoddMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.AchievementBadgeMC},{t:this.UpgradeDoddMC},{t:this.GeneratorDoddMC}]}).wait(1));
 
 	// Button
 	this.AchievementButtonMC = new lib.AchievementButtonMC();
@@ -3231,7 +3242,7 @@ if (reversed == null) { reversed = false; }
 				bitmap.scaleY = 193 / 48;
 				bitmap.mouseEnabled = false;
 			
-				upgrade.clip.DoddMC.visible = upgrade.additionUnread ? true : false;
+				upgrade.clip.DoddMC.visible = upgrade.doddState == 1 ? true : false;
 			}	
 		}
 		
@@ -3266,7 +3277,8 @@ if (reversed == null) { reversed = false; }
 			for (var i = 0; i < main.upgradeStore.length; i++)
 			{
 				let upgrade = main.upgradeStore[i];
-				upgrade.additionUnread = false;
+				if(upgrade.doddState == 1)
+					upgrade.doddState =2;
 			}	
 		}
 		
@@ -3642,6 +3654,7 @@ if (reversed == null) { reversed = false; }
 		    if (!this.ScrollMC.isScrolled()) {
 		        this.parent.GeneratorDesciptionMC.Open(generator);
 				playSound("popup");
+				generator.clip.DoddMC.visible = false;
 		    }
 		}
 		
@@ -3686,11 +3699,25 @@ if (reversed == null) { reversed = false; }
 				bitmap.scaleX = 193 / 64;
 				bitmap.scaleY = 193 / 64;
 				bitmap.mouseEnabled = false;
+			
+				generator.clip.DoddMC.visible = generator.doddState == 1 ? true : false;
 			}
 		}
 		
 		this.Open =  function() 
 		{
+			if(main.generatorNotification)
+			{
+				main.generatorNotification = false;
+				this.parent.FooterMC.GeneratorDoddMC.visible = false;
+				
+				for (var i = 0; i < main.generators.length; i++)
+				{
+					let generator = main.generators[i];
+					generator.clip.DoddMC.visible = generator.doddState == 1 ? true : false;
+				}
+			}
+		
 			this.ScrollMC.Open();
 			this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));	
 		}
@@ -3698,11 +3725,32 @@ if (reversed == null) { reversed = false; }
 		this.Close =  function() 
 		{
 			this.ScrollMC.Close();
-			createjs.Ticker.removeEventListener("tick", this._Tick);	
+			createjs.Ticker.removeEventListener("tick", this._Tick);
+		
+			for (var i = 0; i < main.generators.length; i++)
+			{
+				let generator = main.generators[i];
+				if(generator.doddState == 1)
+				{
+					generator.doddState = 2;
+					generator.clip.DoddMC.visible = false;
+				}
+			}
 		}
 		
 		this.Tick = function(event)
 		{
+			if(main.generatorNotification)
+			{
+				main.generatorNotification = false;
+				this.parent.FooterMC.GeneratorDoddMC.visible = false;
+				for (var i = 0; i < main.generators.length; i++)
+				{
+					let generator = main.generators[i];
+					generator.clip.DoddMC.visible = generator.doddState == 1 ? true : false;
+				}
+			}
+		
 			var dispCount = 0;	
 			var lastLocked = 0;
 			for (var i = 0; i < main.generators.length; i++)
@@ -3812,12 +3860,22 @@ if (reversed == null) { reversed = false; }
 		this.OpenDesciption = function (data)
 		{
 		    if (!this.ScrollMC.isScrolled()) {
+				
+				if(this.parent.AchievementDesciptionMC.visible)
+				{
+					if(this.parent.AchievementDesciptionMC.obj.data.id == data.data.id)
+					{
+						this.parent.AchievementDesciptionMC.Close();
+						return;
+					}
+				}
+				
 		        this.parent.AchievementDesciptionMC.Open(data);
 				playSound("popup");
-				if(data.unread)
+				if(data.isAchievementUnread)
 				{
 					main.RemoveAchievement();
-					data.unread = false;
+					data.isAchievementUnread = false;
 					data.achievementClip.DoddMC.visible =  false;
 				}
 			
@@ -3872,7 +3930,7 @@ if (reversed == null) { reversed = false; }
 				bitmap.mouseEnabled = false;		
 				
 				clip.gotoAndStop("Active");
-				clip.DoddMC.visible =  upgrade.unread;
+				clip.DoddMC.visible =  upgrade.isAchievementUnread;
 				clip.AchievementActiveMC.visible = false;
 				upgradeCount++;
 			}
@@ -3922,7 +3980,7 @@ if (reversed == null) { reversed = false; }
 				{
 					clip.gotoAndStop("Lock");
 				}
-				clip.DoddMC.visible =  achievement.unread;
+				clip.DoddMC.visible =  achievement.isAchievementUnread;
 				clip.AchievementActiveMC.visible = false;
 			}
 		
@@ -4076,8 +4134,10 @@ if (reversed == null) { reversed = false; }
 				this.storedCost = 0;
 				this.lock = true;
 				this.free = 0;//?
-				
 				this.upgrades = [];
+				this.isNotification = false;		//通知を表示したか
+				this.doddState = 0;					//バッジを表示したか
+				this.isAchievementUnread = true;	//Achievementで表示したか
 		    }
 		
 			CalculateSps = function()
@@ -4107,9 +4167,9 @@ if (reversed == null) { reversed = false; }
 				this.amount = 0;
 				this.baseCost = 0;
 				
-				this.notification = false;
-				this.additionUnread = true;
-				this.unread = true;
+				this.isNotification = false;
+				this.doddState = 0;
+				this.isAchievementUnread = true;
 		    }
 		}
 		
@@ -4134,7 +4194,10 @@ if (reversed == null) { reversed = false; }
 				this.achievementClip = null;
 				this.dir = "Achievement";
 				this.unlock = false;
-				this.unread = true;
+		
+				this.isNotification = false;
+				this.doddState = 0;
+				this.isAchievementUnread = true;
 		    }
 		}
 		
@@ -4195,7 +4258,8 @@ if (reversed == null) { reversed = false; }
 					generator.CalculateSps();
 					this.generators.push(generator);
 				}
-				this.generatorNum = 0;		
+				this.generatorNum = 0;
+				this.generatorNotification = false;
 		
 				//////////////////////////////////////////////////////////
 				//ショップ
@@ -4372,9 +4436,26 @@ if (reversed == null) { reversed = false; }
 			this.computedTouchSps = this.TouchSps();
 		}
 		
-		main.RebuildStore = function(upgrade)
+		main.RebuildGenerator = function()
 		{
-			var count = this.upgradeStore.length;
+			for (var i = 0; i < main.generators.length; i++)
+			{
+				let generator = main.generators[i];
+		
+				if(main.sushi >= generator.storedCost)
+				{
+					if(generator.doddState == 0)
+					{
+						generator.doddState = 1;
+						this.generatorNotification = true;
+						exportRoot.FooterMC.GeneratorDoddMC.visible = true;				
+					}
+				}
+			}
+		}
+		
+		main.RebuildStore = function()
+		{
 			this.upgradeStore = [];
 			for (var i = 0; i < this.upgrades.length; i++)
 			{
@@ -4394,18 +4475,18 @@ if (reversed == null) { reversed = false; }
 						continue;
 				}
 				this.upgradeStore.push(upgrade);
-			
-				if(!upgrade.notification)
-				{
-					upgrade.notification = true;
-					this.AddNotification(upgrade.data.name + "がアップグレードに追加されました" ,"images/Icon/" + upgrade.dir + "/" + upgrade.data["icon"] + ".png");
-				}
-			}
 		
-			if(this.upgradeStore.length > count)
-			{
-				this.upgradeNotification = true;
-				exportRoot.FooterMC.UpgradeDoddMC.visible = true;
+				if(upgrade.doddState == 0)
+				{
+					upgrade.doddState = 1;
+					this.upgradeNotification = true;
+					exportRoot.FooterMC.UpgradeDoddMC.visible = true;
+				}
+				//if(!upgrade.notification)
+				//{
+				//	upgrade.notification = true;
+				//	this.AddNotification(upgrade.data.name + "がアップグレードに追加されました" ,"images/Icon/" + upgrade.dir + "/" + upgrade.data["icon"] + ".png");
+				//}
 			}
 		}
 		
@@ -4423,6 +4504,7 @@ if (reversed == null) { reversed = false; }
 				this.CalculateGains();
 				this.RebuildStore();
 				this.BGScroll();
+				this.RebuildGenerator();
 				
 				if(typeof performance.memory === "undefined")
 				{
@@ -4543,7 +4625,7 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(exportRoot.BgMC.SushiBGScrollMC, {loop: true})
 			.to({ y: (1125 * 1.0) }, 3500, createjs.Ease.linear);	
 		}
-		main.AddAchievement = function()
+		main.AddAchievement = function(achievement)
 		{
 			this.achievementNotificationNum++;
 			exportRoot.FooterMC.AchievementBadgeMC.visible = true;
@@ -4581,7 +4663,9 @@ if (reversed == null) { reversed = false; }
 						continue;
 				}
 				achievement.unlock = true;
-				this.AddAchievement();
+			
+				this.AddNotification("実績が解除されました\n" + achievement.data.desciption ,"images/Icon/" + achievement.dir + "/" + achievement.data["icon"] + ".png");
+				this.AddAchievement(achievement);
 			}
 		}
 		//Layout
@@ -4610,8 +4694,9 @@ if (reversed == null) { reversed = false; }
 		this.Mask2MC.visible = false;
 		
 		this.FooterMC.AchievementBadgeMC.visible = false;
+		this.FooterMC.GeneratorDoddMC.visible = false;
 		this.FooterMC.UpgradeDoddMC.visible = false;
-				
+		
 		this.BgMC.SushiBGScrollMC.BG1MC.visible = false;
 		this.BgMC.SushiBGScrollMC.BG2MC.visible = false;
 		this.BgMC.SushiBGScrollMC.BG3MC.visible = false;
@@ -4845,7 +4930,7 @@ if (reversed == null) { reversed = false; }
 				});
 		
 			exportRoot.NotificationMC.message_O.text = this.notifications[0].message;
-			SetWrapOutlineText(exportRoot.NotificationMC.message_O);		
+			//SetWrapOutlineText(exportRoot.NotificationMC.message_O);		
 			
 			if( exportRoot.NotificationMC.bitmap != null)
 			{
@@ -4858,8 +4943,8 @@ if (reversed == null) { reversed = false; }
 			exportRoot.NotificationMC.addChild(exportRoot.NotificationMC.bitmap);
 			exportRoot.NotificationMC.bitmap.x = 70;
 			exportRoot.NotificationMC.bitmap.y = 70;
-			exportRoot.NotificationMC.bitmap.scaleX = 193 / 64;
-			exportRoot.NotificationMC.bitmap.scaleY = 193 / 64;
+			exportRoot.NotificationMC.bitmap.scaleX = 150 / 64;
+			exportRoot.NotificationMC.bitmap.scaleY = 150 / 64;
 		}
 		if (createjs.Touch.isSupported())
 		    createjs.Touch.enable(stage);
