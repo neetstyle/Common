@@ -55,7 +55,7 @@ function CheckInitializationData()
 //--------------------------------------------------------------------------
 
 //テキスト自動折り返し
-function SetWrapText(textInstance, text)
+function SetWrapText(textInstance)
 {
 	var text = 	textInstance.text;
 	var initWidth = textInstance.lineWidth;
@@ -82,6 +82,19 @@ function SetWrapText(textInstance, text)
 	}
 	lines.push(prevText);
 	textInstance.text = lines.join('\n');
+}
+
+function SetWrapOutlineText(textInstance)
+{
+	SetWrapText(textInstance.textL);
+	SetWrapText(textInstance.textR);
+	SetWrapText(textInstance.textU);
+	SetWrapText(textInstance.textD);
+	SetWrapText(textInstance.textC);
+	SetWrapText(textInstance.textLU);
+	SetWrapText(textInstance.textLD);
+	SetWrapText(textInstance.textRU);
+	SetWrapText(textInstance.textRD);
 }
 
 function numberWithCommas(x) {
