@@ -255,8 +255,9 @@ if (reversed == null) { reversed = false; }
 			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
 			.call(() => {
 				this.visible = false;
-		    });	
-			playSound("popup");
+		    });
+			if(main.Debug_isSound)
+				playSound("popup");
 		} 
 		
 		this.Open = function(_obj)
@@ -606,9 +607,10 @@ if (reversed == null) { reversed = false; }
 			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
 			.call(() => {
 				this.visible = false;
-		    });	
+		    });
 		
-			playSound("popup");
+			if(main.Debug_isSound)
+				playSound("popup");
 		} 
 		
 		this.Open = function(_message)
@@ -644,6 +646,58 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.MessageMC, new cjs.Rectangle(0,0,1018.2,90.9), null);
+
+
+(lib.DoddMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// BG
+	this.instance = new lib._new();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.DoddMC, new cjs.Rectangle(0,0,120,120), null);
+
+
+(lib.BadgeMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Text
+	this.notification = new cjs.Text("99", "50px 'Potta One'", "#FFFFFF");
+	this.notification.name = "notification";
+	this.notification.textAlign = "center";
+	this.notification.lineHeight = 74;
+	this.notification.parent = this;
+	this.notification.setTransform(61,19.8);
+
+	this.timeline.addTween(cjs.Tween.get(this.notification).wait(1));
+
+	// BG
+	this.instance = new lib._new();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.BadgeMC, new cjs.Rectangle(0,0,120,120), null);
 
 
 (lib.GeneratorDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -690,7 +744,8 @@ if (reversed == null) { reversed = false; }
 				this.visible = false;
 		    });
 		
-			playSound("popup");
+			if(main.Debug_isSound)
+				playSound("popup");
 		
 			if(this.obj.amount > 0)
 				createjs.Ticker.removeEventListener('tick', this._Tick);
@@ -1114,27 +1169,6 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.IconMC, new cjs.Rectangle(0,0,209,209), null);
 
 
-(lib.DoddMC = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// BG
-	this.instance = new lib._new();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.DoddMC, new cjs.Rectangle(0,0,120,120), null);
-
-
 (lib.DispNumMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -1177,23 +1211,23 @@ if (reversed == null) { reversed = false; }
 	this.status.name = "status";
 	this.status.textAlign = "center";
 	this.status.lineHeight = 89;
-	this.status.lineWidth = 296;
+	this.status.lineWidth = 496;
 	this.status.parent = this;
-	this.status.setTransform(150,2);
+	this.status.setTransform(250,2);
 
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#FFFFFF").ss(1,1,1).p("A3bnzMAu3AAAIAAPnMgu3AAAg");
-	this.shape.setTransform(150,50);
+	this.shape.graphics.f().s("#FFFFFF").ss(1,1,1).p("EgnDgHzMBOHAAAIAAPnMhOHAAAg");
+	this.shape.setTransform(250,50);
 
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#C5253A").s().p("A3bH0IAAvnMAu3AAAIAAPng");
-	this.shape_1.setTransform(150,50);
+	this.shape_1.graphics.f("#C5253A").s().p("EgnDAH0IAAvnMBOHAAAIAAPng");
+	this.shape_1.setTransform(250,50);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape},{t:this.status}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.DebugMC, new cjs.Rectangle(-1,-1,302,102), null);
+}).prototype = getMCSymbolPrototype(lib.DebugMC, new cjs.Rectangle(-1,-1,502,102), null);
 
 
 (lib.ContainerMC = function(mode,startPosition,loop,reversed) {
@@ -1278,37 +1312,6 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.ButtonMC, new cjs.Rectangle(0,0,100,100), null);
-
-
-(lib.BadgeMC = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// Text
-	this.notification = new cjs.Text("99", "50px 'Potta One'", "#FFFFFF");
-	this.notification.name = "notification";
-	this.notification.textAlign = "center";
-	this.notification.lineHeight = 74;
-	this.notification.parent = this;
-	this.notification.setTransform(61,19.8);
-
-	this.timeline.addTween(cjs.Tween.get(this.notification).wait(1));
-
-	// BG
-	this.instance = new lib._new();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.BadgeMC, new cjs.Rectangle(0,0,120,120), null);
 
 
 (lib.BG3MC = function(mode,startPosition,loop,reversed) {
@@ -1603,7 +1606,8 @@ if (reversed == null) { reversed = false; }
 			.call(() => {
 				this.visible = false;
 		    });	
-			playSound("popup");
+			if(main.Debug_isSound)
+				playSound("popup");
 		} 
 		this.CloseButtonMC.addEventListener("click", this.Close.bind(this));
 		
@@ -2041,6 +2045,48 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.ShopCell1MC, new cjs.Rectangle(0,0,209,299.9), null);
 
 
+(lib.OptionContentMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Text
+	this.BGMButtonMC = new lib.DebugMC();
+	this.BGMButtonMC.name = "BGMButtonMC";
+	this.BGMButtonMC.setTransform(830,432.85,1,1,0,0,0,250,50);
+
+	this.SoundButtonMC = new lib.DebugMC();
+	this.SoundButtonMC.name = "SoundButtonMC";
+	this.SoundButtonMC.setTransform(290.65,432.85,1,1,0,0,0,250,50);
+
+	this.MemoryButtonMC = new lib.DebugMC();
+	this.MemoryButtonMC.name = "MemoryButtonMC";
+	this.MemoryButtonMC.setTransform(830,271.95,1,1,0,0,0,250,50);
+
+	this.SpeedButtonMC = new lib.DebugMC();
+	this.SpeedButtonMC.name = "SpeedButtonMC";
+	this.SpeedButtonMC.setTransform(290.65,271.95,1,1,0,0,0,250,50);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.SpeedButtonMC},{t:this.MemoryButtonMC},{t:this.SoundButtonMC},{t:this.BGMButtonMC}]}).wait(1));
+
+	// BG
+	this.ContentBGMC = new lib.ButtonMC();
+	this.ContentBGMC.name = "ContentBGMC";
+	this.ContentBGMC.setTransform(0,0,11.25,0.9999);
+
+	this.timeline.addTween(cjs.Tween.get(this.ContentBGMC).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.OptionContentMC, new cjs.Rectangle(0,0,1125,483.4), null);
+
+
 (lib.SushiMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -2157,7 +2203,8 @@ if (reversed == null) { reversed = false; }
 			{
 				this.parent.Click(evt);
 				this.parent.isActive = false;
-				playSound("click");
+				if(main.Debug_isSound)
+					playSound("click");
 			}
 			createjs.Tween.get(this.parent.SushiImageMC, { override: true })
 				.to({ scaleX: 1.0, scaleY: 1.0 }, 250, createjs.Ease.elasticOut);
@@ -2233,8 +2280,9 @@ if (reversed == null) { reversed = false; }
 			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
 			.call(() => {
 				this.visible = false;
-		    });	
-			playSound("popup");
+		    });
+			if(main.Debug_isSound)
+				playSound("popup");
 		} 
 		this.CloseButtonMC.addEventListener("click", this.Close.bind(this));
 		
@@ -2411,11 +2459,11 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.Sps).wait(1));
 
 	// Debug
-	this.DebugMC = new lib.DebugMC();
-	this.DebugMC.name = "DebugMC";
-	this.DebugMC.setTransform(973.95,50,1,1,0,0,0,150,50);
+	this.OptionButtonMC = new lib.ButtonMC();
+	this.OptionButtonMC.name = "OptionButtonMC";
+	this.OptionButtonMC.setTransform(50,50,1,1,0,0,0,50,50);
 
-	this.timeline.addTween(cjs.Tween.get(this.DebugMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.OptionButtonMC).wait(1));
 
 	// BG
 	this.instance = new lib.header();
@@ -2424,7 +2472,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,-0.5,1125,436.5), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1125,436), null);
 
 
 (lib.GeneratorCellMC = function(mode,startPosition,loop,reversed) {
@@ -2779,8 +2827,9 @@ if (reversed == null) { reversed = false; }
 			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
 			.call(() => {
 				this.visible = false;
-		    });	
-			playSound("popup");
+		    });
+			if(main.Debug_isSound)
+				playSound("popup");
 		} 
 		
 		this.Open = function(_obj)
@@ -3036,6 +3085,101 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.ShopContentMC, new cjs.Rectangle(0,0,1125,1642.5), null);
 
 
+(lib.OptionPanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.ScrollMC.content = this.ContentMC;
+		
+		this.Create = function() 
+		{
+			//////////////////////////////////////
+			//
+			var posY = 100;
+		
+		
+			posY += 50;
+			this.ScrollMC.SetFullSize(posY);
+		}
+		
+		this.Reset = function() 
+		{
+		
+			this.Create();
+		}
+		
+		this.Open =  function() 
+		{
+			this.Reset();
+			this.ScrollMC.Open();
+		}
+		
+		this.Close =  function() 
+		{
+			this.ScrollMC.Close();
+		}
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// AS
+	this.ScrollMC = new lib.ScrollMC();
+	this.ScrollMC.name = "ScrollMC";
+	this.ScrollMC.setTransform(-75,25,1,1,0,0,0,25,25);
+
+	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
+
+	// Mask (mask)
+	var mask = new cjs.Shape();
+	mask._off = true;
+	mask.graphics.p("EhX4HUwMAAAupfMCvxAAAMAAAOpfg");
+	mask.setTransform(562.5,3040.7);
+
+	// Cell
+	this.ContentMC = new lib.OptionContentMC();
+	this.ContentMC.name = "ContentMC";
+
+	var maskedShapeInstanceList = [this.ContentMC];
+
+	for(var shapedInstanceItr = 0; shapedInstanceItr < maskedShapeInstanceList.length; shapedInstanceItr++) {
+		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
+	}
+
+	this.timeline.addTween(cjs.Tween.get(this.ContentMC).wait(1));
+
+	// BG
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4jqXMCvxAAAMAAAHUvMivxAAAg");
+	this.shape.setTransform(562.5,1500);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4DqYMAAAnUvMCvxAAAMAAAHUvg");
+	this.shape_1.setTransform(562.5,1500);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.OptionPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3005), null);
+
+
 (lib.GeneratorContentMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -3196,7 +3340,8 @@ if (reversed == null) { reversed = false; }
 		{
 		    if (!this.ScrollMC.isScrolled()) {
 		        this.parent.UpgradeDesciptionMC.Open(upgrade);
-				playSound("popup");
+				if(main.Debug_isSound)
+					playSound("popup");
 				upgrade.clip.DoddMC.visible = false;
 		    }
 		}
@@ -3377,7 +3522,8 @@ if (reversed == null) { reversed = false; }
 		{
 		    if (!this.ScrollMC.isScrolled()) {
 		        this.parent.ShopDesciptionMC.Open(data);
-				playSound("popup");
+				if(main.Debug_isSound)
+					playSound("popup");
 		    }
 		}
 		
@@ -3653,7 +3799,8 @@ if (reversed == null) { reversed = false; }
 		{
 		    if (!this.ScrollMC.isScrolled()) {
 		        this.parent.GeneratorDesciptionMC.Open(generator);
-				playSound("popup");
+				if(main.Debug_isSound)
+					playSound("popup");
 				generator.clip.DoddMC.visible = false;
 		    }
 		}
@@ -3872,7 +4019,8 @@ if (reversed == null) { reversed = false; }
 				}
 				
 		        this.parent.AchievementDesciptionMC.Open(data);
-				playSound("popup");
+				if(main.Debug_isSound)
+					playSound("popup");
 				if(data.isAchievementUnread)
 				{
 					main.RemoveAchievement();
@@ -4081,19 +4229,13 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.ContentMC).wait(1));
 
 	// BG
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4jqXMCvxAAAMAAAHUvMivxAAAg");
-	this.shape.setTransform(562.5,1500);
+	this.instance = new lib.panel();
 
-	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#3399FF").s().p("EhX4DqYMAAAnUvMCvxAAAMAAAHUvg");
-	this.shape_1.setTransform(562.5,1500);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3005), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-100.5,-0.5,1225.5,1512.2), null);
 
 
 // stage content:
@@ -4317,7 +4459,10 @@ if (reversed == null) { reversed = false; }
 			
 				//////////////////////////////////////////////////////////
 				//Debug
-				this.isAddTouchCps = false;	
+				this.Debug_isSpeed = false;
+				this.Debug_isMemory = false;
+				this.Debug_isSound = true;
+				this.Debug_isBGM = true;
 		    }
 		}
 		
@@ -4326,8 +4471,7 @@ if (reversed == null) { reversed = false; }
 		//Game
 		main.AddSushi = function(value) 
 		{
-			//Debug!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			if(this.isAddTouchCps)
+			if(this.Debug_isSpeed)
 				value = value * 1000;
 			
 			this.sushi += value;
@@ -4409,7 +4553,8 @@ if (reversed == null) { reversed = false; }
 				generator.amount++;
 				generator.clip.amount.text = generator.amount;
 				main.CalculateGains();
-				playSound("generator");
+				if(main.Debug_isSound)
+					playSound("generator");
 				generator.storedCost = this.GetCost(generator);
 				generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
 				this.generatorNum++;
@@ -4430,7 +4575,8 @@ if (reversed == null) { reversed = false; }
 				this.sushi -= upgrade.baseCost;
 				upgrade.amount++;
 				main.CalculateGains();
-				playSound("generator");
+				if(main.Debug_isSound)
+					playSound("generator");
 				this.RebuildStore();
 				this.CalculateGains();
 				exportRoot.UpgradePanelMC.Reset();
@@ -4510,22 +4656,7 @@ if (reversed == null) { reversed = false; }
 				this.RebuildStore();
 				this.BGScroll();
 				this.RebuildGenerator();
-				
-				if(typeof performance.memory === "undefined")
-				{
-					exportRoot.HeaderMC.debug.text = "";
-				}
-				else
-				{
-					exportRoot.HeaderMC.debug.text = "使用可能 : ";
-					exportRoot.HeaderMC.debug.text += performance.memory.jsHeapSizeLimit.toLocaleString();
-					exportRoot.HeaderMC.debug.text += "\n";
-					exportRoot.HeaderMC.debug.text += "割り当て : ";
-					exportRoot.HeaderMC.debug.text += performance.memory.totalJSHeapSize.toLocaleString();
-					exportRoot.HeaderMC.debug.text += "\n";
-					exportRoot.HeaderMC.debug.text += "使用中 : ";
-					exportRoot.HeaderMC.debug.text += performance.memory.usedJSHeapSize.toLocaleString();
-				}
+				this.Debug_Memory();
 			}
 			
 			this.fps2Count += event.delta;
@@ -4552,15 +4683,64 @@ if (reversed == null) { reversed = false; }
 		}
 		//////////////////////////////////////////////////////////
 		//Debug
-		this.HeaderMC.DebugMC.on("click", function(evt) {
-			if(main.isAddTouchCps){
-				main.isAddTouchCps = false;
-				this.status.text = "Normal";
-			}else{
-				main.isAddTouchCps = true;
-				this.status.text = "Debug";
-			}
+		this.OptionPanelMC.ContentMC.SpeedButtonMC.on("click", function(evt) {
+			main.Debug_isSpeed = !main.Debug_isSpeed;
+			this.status.text = main.Debug_isSpeed ? "AddSushi*100" : "Normal";
+			COOKIES.setCookie('debug_speed', main.Debug_isSpeed ? "1" : "0", 30);
 		});
+		
+		this.OptionPanelMC.ContentMC.MemoryButtonMC.on("click", function(evt) {
+			main.Debug_isMemory = !main.Debug_isMemory;
+			this.status.text = main.Debug_isMemory ? "ViewMemory" : "HiddenMemory";
+			COOKIES.setCookie('debug_memory', main.Debug_isMemory ? "1" : "0", 30);
+		});
+		
+		this.OptionPanelMC.ContentMC.SoundButtonMC.on("click", function(evt) {
+			main.Debug_isSound = !main.Debug_isSound;
+			this.status.text = main.Debug_isSound ? "Sound ON" : "Sound OFF";
+			COOKIES.setCookie('debug_sound', main.Debug_isSound ? "1" : "0", 30);
+		});
+		
+		this.OptionPanelMC.ContentMC.BGMButtonMC.on("click", function(evt) {
+			main.Debug_isBGM = !main.Debug_isBGM;
+			this.status.text = main.Debug_isBGM ? "BGM ON" : "BGM OFF";
+			COOKIES.setCookie('debug_bgm', main.Debug_isBGM ? "1" : "0", 30);
+		});
+		
+		main.Debug_Init = function()
+		{
+			this.Debug_isSpeed = COOKIES.getCookie('debug_speed') == "1";
+			exportRoot.OptionPanelMC.ContentMC.SpeedButtonMC.status.text = main.Debug_isSpeed ? "AddSushi*100" : "Normal";
+		
+			this.Debug_isMemory = COOKIES.getCookie('debug_memory') == "1";
+			exportRoot.OptionPanelMC.ContentMC.MemoryButtonMC.status.text = main.Debug_isMemory ? "ViewMemory" : "HiddenMemory";
+			
+			this.Debug_isSound = (COOKIES.getCookie('debug_sound') == "" || COOKIES.getCookie('debug_sound') == "1");
+			exportRoot.OptionPanelMC.ContentMC.SoundButtonMC.status.text = main.Debug_isSound ? "Sound ON" : "Sound OFF";
+			
+			this.Debug_isBGM = (COOKIES.getCookie('debug_bgm') == "" || COOKIES.getCookie('debug_bgm') == "1");
+			exportRoot.OptionPanelMC.ContentMC.BGMButtonMC.status.text = main.Debug_isBGM ? "BGM ON" : "BGM OFF";
+		}
+		
+		main.Debug_Memory = function()
+		{
+			if(this.Debug_isMemory)
+			{
+				exportRoot.HeaderMC.debug.visible = true;
+				exportRoot.HeaderMC.debug.text = "使用可能 : ";
+				exportRoot.HeaderMC.debug.text += performance.memory.jsHeapSizeLimit.toLocaleString();
+				exportRoot.HeaderMC.debug.text += "\n";
+				exportRoot.HeaderMC.debug.text += "割り当て : ";
+				exportRoot.HeaderMC.debug.text += performance.memory.totalJSHeapSize.toLocaleString();
+				exportRoot.HeaderMC.debug.text += "\n";
+				exportRoot.HeaderMC.debug.text += "使用中 : ";
+				exportRoot.HeaderMC.debug.text += performance.memory.usedJSHeapSize.toLocaleString();
+			}
+			else
+			{
+				exportRoot.HeaderMC.debug.visible = false;
+			}
+		}
 		//////////////////////////////////////////////////////////
 		//Layout
 		//1125 * 2436
@@ -4732,7 +4912,8 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_GeneratorPanelOpen()
 		{
 			this.PanelOpen(1);
-			playSound("open");
+			if(main.Debug_isSound)
+				playSound("open");
 		}
 		this.GeneratorPanelMC.scaleX = this.canvasScaleX;
 		this.GeneratorPanelMC.scaleY = this.canvasScaleX;
@@ -4745,7 +4926,8 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_UpgradePanelOpen()
 		{
 			this.PanelOpen(2);
-			playSound("open");
+			if(main.Debug_isSound)
+				playSound("open");
 		}
 		this.UpgradePanelMC.scaleX = this.canvasScaleX;
 		this.UpgradePanelMC.scaleY = this.canvasScaleX;
@@ -4758,7 +4940,8 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_ShopPanelOpen()
 		{
 			this.PanelOpen(3);
-			playSound("open");
+			if(main.Debug_isSound)
+				playSound("open");
 		}
 		this.ShopPanelMC.scaleX = this.canvasScaleX;
 		this.ShopPanelMC.scaleY = this.canvasScaleX;
@@ -4771,13 +4954,28 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_AchievementPanelOpen()
 		{
 			this.PanelOpen(4);
-			playSound("open");
+			if(main.Debug_isSound)
+				playSound("open");
 		}
 		this.AchievementPanelMC.scaleX = this.canvasScaleX;
 		this.AchievementPanelMC.scaleY = this.canvasScaleX;
 		this.AchievementPanelMC.x = 0;
 		this.AchievementPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 		this.AchievementPanelMC.visible = false;	
+		
+		//OptionPanel
+		this.HeaderMC.OptionButtonMC.addEventListener("click", ClickHandler_OptionPanelOpen.bind(this));
+		function ClickHandler_OptionPanelOpen()
+		{
+			this.PanelOpen(5);
+			if(main.Debug_isSound)
+				playSound("open");
+		}
+		this.OptionPanelMC.scaleX = this.canvasScaleX;
+		this.OptionPanelMC.scaleY = this.canvasScaleX;
+		this.OptionPanelMC.x = 0;
+		this.OptionPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
+		this.OptionPanelMC.visible = false;	
 		
 		this.PanelOpen = function (_page)
 		{
@@ -4801,6 +4999,10 @@ if (reversed == null) { reversed = false; }
 					if(this.AchievementDesciptionMC	.visible)
 						this.AchievementDesciptionMC.Close();
 					break;
+				case 5:
+					this.Close(this.OptionPanelMC);
+					this.OptionPanelMC.Close();
+					break;
 		    }	
 		
 			if(this.page != _page)
@@ -4822,6 +5024,10 @@ if (reversed == null) { reversed = false; }
 					case 4:
 						this.Open(this.AchievementPanelMC, false);
 						this.AchievementPanelMC.Open();
+						break;
+					case 5:
+						this.Open(this.OptionPanelMC, true);
+						this.OptionPanelMC.Open();
 						break;
 				}
 				this.page = _page;
@@ -4887,7 +5093,8 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_InviteOpen()
 		{
 			this.InviteDesciptionMC.Open();
-			playSound("popup");
+			if(main.Debug_isSound)
+				playSound("popup");
 		}
 		//////////////////////////////////////////////////////////
 		//Shop
@@ -4990,6 +5197,7 @@ if (reversed == null) { reversed = false; }
 			createjs.Ticker.addEventListener("tick", main.MainTick.bind(main));	
 			
 			main.InitBGScroll();
+			main.Debug_Init();
 		});
 		
 		//////////////////////////////////////////////////////////
@@ -4998,7 +5206,8 @@ if (reversed == null) { reversed = false; }
 		{
 			window.removeEventListener('click', resumeAudioContext);
 			window.removeEventListener('touchstart', resumeAudioContext);
-			playSound("bgm", -1);
+			if(main.Debug_isBGM)
+				playSound("bgm", -1);
 		}
 		window.addEventListener('click', resumeAudioContext);
 		window.addEventListener('touchstart', resumeAudioContext);
@@ -5082,23 +5291,27 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.FooterMC},{t:this.HeaderMC}]}).wait(1));
 
 	// Panel
+	this.OptionPanelMC = new lib.OptionPanelMC();
+	this.OptionPanelMC.name = "OptionPanelMC";
+	this.OptionPanelMC.setTransform(2249.85,3588,1,1,0,0,0,-2.3,913);
+
 	this.ShopPanelMC = new lib.ShopPanelMC();
 	this.ShopPanelMC.name = "ShopPanelMC";
-	this.ShopPanelMC.setTransform(-288.4,3595,1,1,0,0,0,0,920);
+	this.ShopPanelMC.setTransform(-286.4,3588,1,1,0,0,0,2,913);
 
 	this.AchievementPanelMC = new lib.AchievementPanelMC();
 	this.AchievementPanelMC.name = "AchievementPanelMC";
-	this.AchievementPanelMC.setTransform(973.35,3594.6,1,1,0,0,0,0,919.6);
+	this.AchievementPanelMC.setTransform(972.55,3588,1,1,0,0,0,-0.8,913);
 
 	this.UpgradePanelMC = new lib.UpgradePanelMC();
 	this.UpgradePanelMC.name = "UpgradePanelMC";
-	this.UpgradePanelMC.setTransform(-1790.7,3590.6,1,1,0,0,0,0,915.6);
+	this.UpgradePanelMC.setTransform(-1790.7,3588,1,1,0,0,0,0,913);
 
 	this.GeneratorPanelMC = new lib.GeneratorPanelMC();
 	this.GeneratorPanelMC.name = "GeneratorPanelMC";
 	this.GeneratorPanelMC.setTransform(-3098.95,3588,1,1,0,0,0,0,913);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorPanelMC},{t:this.UpgradePanelMC},{t:this.AchievementPanelMC},{t:this.ShopPanelMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorPanelMC},{t:this.UpgradePanelMC},{t:this.AchievementPanelMC},{t:this.ShopPanelMC},{t:this.OptionPanelMC}]}).wait(1));
 
 	// Invite
 	this.InviteButtonMC = new lib.InviteButtonMC();
@@ -5130,7 +5343,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(-2636.9,-359.3,5700,9075);
+p.nominalBounds = new cjs.Rectangle(-2636.9,-359.3,6016.6,9075);
 // library properties:
 lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',

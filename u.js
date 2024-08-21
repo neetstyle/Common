@@ -345,3 +345,29 @@ function isMobile() {
 
     return false;
 }
+
+var COOKIES = COOKIES || {
+    getCookie: function(cName) {
+        if(cName != '' || cName != null) {
+            var set_replace = '(?:(?:^|.*\s*)' + cName + '\s*\=\s*([^;]*).*$)|^.*$';
+            return document.cookie.replace(new RegExp(set_replace), '$1');
+        }
+    },
+    setCookie: function(cName, cValue, cTime) {
+        var time = cTime ? (60 * 60 * 24) * cTime : '';
+        if(cName != '' || cName != null) {
+            document.cookie = cName + '=' + cValue + ';domain=' + location.hostname + ';max-age=' + time;
+        }
+    },
+    deleteCookie: function(cName) {
+        if(cName != '' || cName != null) {
+            COOKIES.setCookie(cName, '', 0);
+        }
+    }
+};
+
+//var get_cookie = COOKIES.getCookie('hoge');
+//COOKIES.setCookie('hoge', 'hogehoge', 30);
+//COOKIES.deleteCookie('hoge');
+
+
