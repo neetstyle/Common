@@ -2118,7 +2118,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.Click = function(evt)
 		{
-			var amount = main.computedTouchSps;
+			var amount = main.touchSps;
 			main.AddSushi(amount);
 			main.totalClick++;
 			
@@ -3361,16 +3361,17 @@ if (reversed == null) { reversed = false; }
 				
 				let clip = new lib.UpgradeCellMC();
 				this.ContentMC.addChild(clip);
-				clip.gotoAndStop("On");
+				//clip.gotoAndStop("On");
 				clip.title.text = upgrade.data["name"];
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
-				clip.cost.text = FormatNumber(upgrade.baseCost, 1, 0);
+				clip.cost.text = FormatNumber(upgrade.data["cost"], 1, 0);
 				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");				
 				
 				clip.x = 0;
 				clip.y = 0 + 280 * i;
 				upgrade.clip = clip;
-			
+				//console.log(upgrade.data.name +" / "+ upgrade.clip);
+				
 				clip.IconButtonMC.addEventListener("click", function() {
 					this.OpenDesciption.call(this, upgrade);
 				}.bind(this));	
@@ -3387,15 +3388,15 @@ if (reversed == null) { reversed = false; }
 				bitmap.scaleY = 193 / 48;
 				bitmap.mouseEnabled = false;
 			
-				upgrade.clip.DoddMC.visible = upgrade.doddState == 1 ? true : false;
+				upgrade.clip.DoddMC.visible = upgrade.doddState == 2 ? true : false;
 			}	
 		}
 		
 		this.Reset = function() 
 		{
-			for (var i = 0; i < main.upgradeStore.length; i++)
+			for (var i = 0; i < main.upgrades.length; i++)
 			{
-				main.upgrades[i].clpi = null;
+				main.upgrades[i].clip = null;
 			}
 			this.ContentMC.removeAllChildren();
 			this.Create();
@@ -3422,8 +3423,8 @@ if (reversed == null) { reversed = false; }
 			for (var i = 0; i < main.upgradeStore.length; i++)
 			{
 				let upgrade = main.upgradeStore[i];
-				if(upgrade.doddState == 1)
-					upgrade.doddState =2;
+				if(upgrade.doddState == 2)
+					upgrade.doddState = 3;
 			}	
 		}
 		
@@ -3439,7 +3440,8 @@ if (reversed == null) { reversed = false; }
 			for (var i = 0; i < main.upgradeStore.length; i++)
 			{
 				let upgrade = main.upgradeStore[i];
-				if(main.sushi >= upgrade.baseCost)
+				
+				if(main.sushi >= upgrade.data.cost)
 				{
 					upgrade.clip.gotoAndStop("Active");
 					upgrade.clip.cost_O.color ="#00FF00";
@@ -3802,6 +3804,7 @@ if (reversed == null) { reversed = false; }
 				if(main.Debug_isSound)
 					playSound("popup");
 				generator.clip.DoddMC.visible = false;
+				generator.doddState = 3;
 		    }
 		}
 		
@@ -3810,6 +3813,7 @@ if (reversed == null) { reversed = false; }
 		    if (!this.ScrollMC.isScrolled()) {
 				main.BuyGenerator(generator);
 				generator.clip.DoddMC.visible = false;
+				generator.doddState = 3;
 		    }
 		}
 		
@@ -3821,7 +3825,7 @@ if (reversed == null) { reversed = false; }
 				
 				let clip = new lib.GeneratorCellMC ();
 				this.ContentMC.addChild(clip);
-				clip.gotoAndStop("On");
+				//clip.gotoAndStop("On");
 				clip.title.text = generator.data["name"];
 				clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
@@ -3848,7 +3852,7 @@ if (reversed == null) { reversed = false; }
 				bitmap.scaleY = 193 / 64;
 				bitmap.mouseEnabled = false;
 			
-				generator.clip.DoddMC.visible = generator.doddState == 1 ? true : false;
+				generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
 			}
 		}
 		
@@ -3862,7 +3866,7 @@ if (reversed == null) { reversed = false; }
 				for (var i = 0; i < main.generators.length; i++)
 				{
 					let generator = main.generators[i];
-					generator.clip.DoddMC.visible = generator.doddState == 1 ? true : false;
+					generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
 				}
 			}
 		
@@ -3878,9 +3882,9 @@ if (reversed == null) { reversed = false; }
 			for (var i = 0; i < main.generators.length; i++)
 			{
 				let generator = main.generators[i];
-				if(generator.doddState == 1)
+				if(generator.doddState == 2)
 				{
-					generator.doddState = 2;
+					generator.doddState = 3;
 					generator.clip.DoddMC.visible = false;
 				}
 			}
@@ -3895,7 +3899,7 @@ if (reversed == null) { reversed = false; }
 				for (var i = 0; i < main.generators.length; i++)
 				{
 					let generator = main.generators[i];
-					generator.clip.DoddMC.visible = generator.doddState == 1 ? true : false;
+					generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
 				}
 			}
 		
@@ -4176,7 +4180,7 @@ if (reversed == null) { reversed = false; }
 			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[b]", FormatNumber(main.totalSushi, 1, 0));
 			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[c]", FormatNumber(main.generatorNum, 1, 0));
 			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[d]", FormatNumber(main.sushiPs, 1, 2));	
-			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[e]", FormatNumber(main.computedTouchSps, 1, 0));
+			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[e]", FormatNumber(main.touchSps, 1, 0));
 			this.ContentMC.detail.text = this.ContentMC.detail.text.replace("[f]",FormatNumber(main.totalClick, 1, 0));
 		}
 		
@@ -4270,24 +4274,22 @@ if (reversed == null) { reversed = false; }
 				this.category = 1;
 				this.clip = null;
 				this.dir = "Generator";
-				this.sps = 0;
+				
 				this.storedSps = 0;
-				this.amount = 0;//bought
+				this.amount = 0;
 				this.totalSushies = 0;
 				this.storedTotalSps = 0;
-				this.baseCost = 0;//basePrice
 				this.storedCost = 0;
-				this.lock = true;
-				this.free = 0;//?
 				this.upgrades = [];
+				
 				this.isNotification = false;		//通知を表示したか
-				this.doddState = 0;					//バッジを表示したか
-				this.isAchievementUnread = true;	//Achievementで表示したか
+				this.doddState = 0;					//0:初期、1:表示、2:バッジ表示、3:バッジ削除済み
 		    }
 		
+			//一秒あたりの寿司
 			CalculateSps = function()
 			{
-				var mult=1;
+				var mult = 1;
 				for (var i = 0; i < this.upgrades.length; i++)
 				{
 					if(this.upgrades[i].amount > 0 && this.upgrades[i].data.type == 1)
@@ -4295,7 +4297,13 @@ if (reversed == null) { reversed = false; }
 						mult *= this.upgrades[i].data.sps;
 					}
 				}
-				this.storedSps = this.sps * mult;
+				this.storedSps = this.data.sps * mult;
+			}
+		
+			//コストの計算
+			CalculateCost = function()
+			{
+				this.storedCost = Math.ceil(this.data.cost * Math.pow(main.priceIncrease, this.amount));
 			}
 		}
 		
@@ -4310,7 +4318,6 @@ if (reversed == null) { reversed = false; }
 				this.dir = "Upgrade";
 		
 				this.amount = 0;
-				this.baseCost = 0;
 				
 				this.isNotification = false;
 				this.doddState = 0;
@@ -4359,17 +4366,15 @@ if (reversed == null) { reversed = false; }
 		{
 		    constructor()
 			{
-		        this.sushi = 0;
-		        this.totalSushi = 0;
-				this.sushiPs = 0;
-				this.computedTouchSps = 0
-				this.fractionSps = 0;
-				this.priceIncrease = 1.15;
-				this.totalClick = 0;
-				//this.upgrade = [];
-				//this.add = 0;
-				this.goldenSushi = 0;
-				this.skinId = 0;
+		        this.sushi = 0;				//所持寿司
+		        this.totalSushi = 0;		//生成寿司
+				this.sushiPs = 0;			//一秒間当たりの寿司
+				this.fractionSps = 0;		//小数点以下の寿司
+				this.touchSps = 0			//クリック当たりの寿司
+				this.totalClick = 0;		//トータルクリック数
+				this.goldenSushi = 0;		//ゴールデン寿司
+				this.priceIncrease = 1.15;	//価格の上昇率
+				this.skinId = 0;			//スキンId
 				
 				//////////////////////////////////////////////////////////
 				//アップグレード
@@ -4379,7 +4384,6 @@ if (reversed == null) { reversed = false; }
 				{
 					var	upgrade = new Upgrade();
 					upgrade.data = upgradeData[i];
-					upgrade.baseCost = upgradeData[i]["cost"];
 					this.upgrades.push(upgrade);
 				}		
 				this.upgradeNum = 0;
@@ -4391,10 +4395,7 @@ if (reversed == null) { reversed = false; }
 				for (var i = 0; i < generatorData.length; i++)
 				{
 					var	generator = new Generator();
-					generator.data = generatorData[i];
-					generator.sps = generatorData[i]["sps"];
-					generator.baseCost = generatorData[i]["cost"];
-					generator.storedCost = generator.baseCost;						
+					generator.data = generatorData[i];			
 					for (var s = 0; s < this.upgrades.length; s++)
 					{
 						if(generator.data.id == this.upgrades[s].data.generatorId)
@@ -4455,6 +4456,7 @@ if (reversed == null) { reversed = false; }
 				}
 			
 				//////////////////////////////////////////////////////////
+				//通知
 				this.notifications = [];
 			
 				//////////////////////////////////////////////////////////
@@ -4481,66 +4483,53 @@ if (reversed == null) { reversed = false; }
 			this.AddBGParticle();
 		}
 		
-		main.ComputeCps = function(base,mult,bonus)
-		{
-			if (!bonus) bonus = 0;
-			return ((base)*(Math.pow(2,mult))+bonus);
-		}
-		
 		main.TouchSps = function()
 		{
-			var add = 0;
-			var add2 = 0;
+			var bonus = 0;
+			var mult = 0;
 			
 			//Fingers
 			for (var i = 0; i < this.upgrades.length; i++)
 			{
-				var upgrade = this.upgrades[i];			
+				var upgrade = this.upgrades[i];
 				if(upgrade.amount == 0) continue;
 				if(upgrade.data.type != 3) continue;
-					
+		
 				if(upgrade.data.subType == 1)
 				{	
-					add2 += upgradeData[i].sps;
+					mult += upgrade.data.sps;
 				}
 				if(upgrade.data.subType == 2)
 				{	
-					add += upgradeData[i].sps;
+					bonus += upgrade.data.sps;
 				}
 				else if(upgrade.data.subType == 3)
 				{
-					add *= upgradeData[i].sps;
+					bonus *= upgrade.data.sps;
 				}
 			}
-		//console.log(add);
 		
 			//Pointer
 			for (i = 0; i < this.upgrades.length; i++)
 			{
-				var upgrade = this.upgrades[i];			
+				var upgrade = this.upgrades[i];
 				if(upgrade.amount == 0) continue;
 				if(upgrade.data.type != 2) continue;
-				add += this.sushiPs * upgradeData[i].sps;
+				add += this.sushiPs * upgrade.data.sps;
 			}
 		
-		//console.log(upgrade.data.name +" / "+add);	
-		
-			var mult=1;
-			var out = mult * this.ComputeCps(1, add2, add);
-		
-			return out;
+			return Math.pow(2, mult) + bonus;
 		}
 		
 		main.CalculateGains = function()
 		{
-			this.sushiPs=0;
-			var mult=1;
-		
+			this.sushiPs = 0;
 			for (var i = 0; i < this.generators.length; i++)
 			{
-				this.generators[i].CalculateSps();
-				this.generators[i].storedTotalSps = this.generators[i].amount * this.generators[i].storedSps;
-				this.sushiPs += this.generators[i].storedTotalSps;
+				var generator = this.generators[i];
+				generator.CalculateSps();
+				generator.storedTotalSps = generator.amount * generator.storedSps;
+				this.sushiPs += generator.storedTotalSps;
 			}
 			exportRoot.HeaderMC.Sps_O.text = "per Second : " + FormatNumber(this.sushiPs, 1, 2) + " pieces";
 		}
@@ -4555,36 +4544,39 @@ if (reversed == null) { reversed = false; }
 				main.CalculateGains();
 				if(main.Debug_isSound)
 					playSound("generator");
-				generator.storedCost = this.GetCost(generator);
+				generator.CalculateCost();
 				generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
 				this.generatorNum++;
 				this.CheckAchievement_Generator();
 			}
 		}
 		
-		main.GetCost = function(generator)
+		main.CalculateGeneratorCost = function()
 		{
-			var cost = generator.baseCost * Math.pow(this.priceIncrease, Math.max(0, generator.amount - generator.free));
-			return Math.ceil(cost);
+			for (var i = 0; i < this.generators.length; i++)
+			{
+				this.generators[i].CalculateCost();
+			}
 		}
 		
 		main.BuyUpgrade = function(upgrade)
 		{
-			if(this.sushi >= upgrade.baseCost)
+			if(this.sushi >= upgrade.data.cost)
 			{
-				this.sushi -= upgrade.baseCost;
+				this.sushi -= upgrade.data.cost;
 				upgrade.amount++;
 				main.CalculateGains();
-				if(main.Debug_isSound)
-					playSound("generator");
 				this.RebuildStore();
 				this.CalculateGains();
 				exportRoot.UpgradePanelMC.Reset();
 				this.upgradeNum++;
 				this.AddAchievement();
 				this.CheckAchievement_Generator();
+				
+				if(main.Debug_isSound)
+					playSound("generator");
 			}
-			this.computedTouchSps = this.TouchSps();
+			this.touchSps = this.TouchSps();
 		}
 		
 		main.RebuildGenerator = function()
@@ -4597,7 +4589,7 @@ if (reversed == null) { reversed = false; }
 				{
 					if(generator.doddState == 0)
 					{
-						generator.doddState = 1;
+						generator.doddState = 2;
 						this.generatorNotification = true;
 						exportRoot.FooterMC.GeneratorDoddMC.visible = true;				
 					}
@@ -4607,6 +4599,7 @@ if (reversed == null) { reversed = false; }
 		
 		main.RebuildStore = function()
 		{
+			var isRebuild = false;
 			this.upgradeStore = [];
 			for (var i = 0; i < this.upgrades.length; i++)
 			{
@@ -4630,15 +4623,19 @@ if (reversed == null) { reversed = false; }
 				if(upgrade.doddState == 0)
 				{
 					upgrade.doddState = 1;
+					isRebuild = true;
+				}
+			
+				if(upgrade.doddState == 1 && main.sushi >= upgrade.data.cost)
+				{
+					upgrade.doddState = 2;
 					this.upgradeNotification = true;
 					exportRoot.FooterMC.UpgradeDoddMC.visible = true;
 				}
-				//if(!upgrade.notification)
-				//{
-				//	upgrade.notification = true;
-				//	this.AddNotification(upgrade.data.name + "がアップグレードに追加されました" ,"images/Icon/" + upgrade.dir + "/" + upgrade.data["icon"] + ".png");
-				//}
 			}
+		
+			if(isRebuild && !this.upgradeNotification)
+				exportRoot.UpgradePanelMC.Reset();
 		}
 		
 		main.MainTick = function(event)
@@ -5185,8 +5182,15 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		this.executeNextFrame(() => {
-			main.computedTouchSps = main.TouchSps();
+			
+			
+			
+			
+			main.touchSps = main.TouchSps();
 			main.RebuildStore();	
+			
+			
+		main.CalculateGeneratorCost();	
 			
 			this.GeneratorPanelMC.Create();
 			this.UpgradePanelMC.Create();
@@ -5216,21 +5220,18 @@ if (reversed == null) { reversed = false; }
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
-	// DataClass
-	this.instance = new lib.ContainerMC();
-	this.instance.setTransform(-641,-336.45);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
 	// Game
+	this.instance = new lib.ContainerMC();
+	this.instance.setTransform(-641,-307.85);
+
 	this.SushiEffectMC = new lib.SushiEffectMC();
 	this.SushiEffectMC.name = "SushiEffectMC";
-	this.SushiEffectMC.setTransform(-386.2,-219.9);
+	this.SushiEffectMC.setTransform(-386.2,-191.3);
 
 	this.instance_1 = new lib.DispNumMC();
-	this.instance_1.setTransform(-473.75,-100.85);
+	this.instance_1.setTransform(-473.75,-72.25);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.SushiEffectMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.SushiEffectMC},{t:this.instance}]}).wait(1));
 
 	// Message
 	this.NotificationMC = new lib.NotificationMC();
