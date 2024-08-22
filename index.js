@@ -2296,32 +2296,34 @@ if (reversed == null) { reversed = false; }
 		
 		this.Mask = function(){} 
 		
+		this.Share = function()
+		{
+			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
+			{
+				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + Telegram.WebApp.initDataUnsafe.user.id + "&text=寿司を作ろう";
+				window.location.href = url;
+			}
+			else
+				this.parent.MessageMC.Open("Sorry, only in the Telegram.");	
+		
+		} 
+		this.ShareButtonMC.addEventListener("click", this.Share.bind(this));
+		
 		this.CopyCode = function()
 		{
-			navigator.clipboard.writeText(createjs.Ticker.getTime());
-			Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime(), this.BBB);	
-			//alert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime());
+			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
+			{
+				navigator.clipboard.writeText(createjs.Ticker.getTime());
+				Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime(), this.CopyCodeCallBack);	
+			}
+			else
+				this.parent.MessageMC.Open("Sorry, only in the Telegram.");	
 		} 
 		this.CopyCodeButtonMC.addEventListener("click", this.CopyCode.bind(this));
 		
-		this.InviteWindow = function()
+		this.CopyCodeCallBack = function()
 		{
-			var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + Telegram.WebApp.initDataUnsafe.user.id + "&text=寿司を作ろう";
-			
-			alert(url);	
-			
-			window.location.href = url;
-		} 
-		this.ChatButtonMC.addEventListener("click", this.InviteWindow.bind(this));
-		
-		this.AAA = function()
-		{
-			alert("callback");
-		} 
-		
-		this.BBB = function()
-		{
-		
+			console.log("CopyCodeCallBack");
 		}
 	}
 
@@ -2344,9 +2346,9 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text_1},{t:this.text}]}).wait(1));
 
 	// Button
-	this.ChatButtonMC = new lib.ButtonMC();
-	this.ChatButtonMC.name = "ChatButtonMC";
-	this.ChatButtonMC.setTransform(513.4,865.25,8.23,1,0,0,0,49.5,50);
+	this.ShareButtonMC = new lib.ButtonMC();
+	this.ShareButtonMC.name = "ShareButtonMC";
+	this.ShareButtonMC.setTransform(513.4,865.25,8.23,1,0,0,0,49.5,50);
 
 	this.CopyCodeButtonMC = new lib.ButtonMC();
 	this.CopyCodeButtonMC.name = "CopyCodeButtonMC";
@@ -2356,7 +2358,7 @@ if (reversed == null) { reversed = false; }
 	this.CloseButtonMC.name = "CloseButtonMC";
 	this.CloseButtonMC.setTransform(1028,16,1,1,0,0,0,61,61);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.CloseButtonMC},{t:this.CopyCodeButtonMC},{t:this.ChatButtonMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.CloseButtonMC},{t:this.CopyCodeButtonMC},{t:this.ShareButtonMC}]}).wait(1));
 
 	// BG
 	this.instance = new lib.dialogBG();
@@ -5237,14 +5239,21 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.NotificationMC).wait(1));
 
-	// Desciption
-	this.AchievementDesciptionMC = new lib.AchievementDesciptionMC();
-	this.AchievementDesciptionMC.name = "AchievementDesciptionMC";
-	this.AchievementDesciptionMC.setTransform(-2498.9,1011.9,1,1,0,0,0,565.1,188);
+	// Mask2
+	this.Mask2MC = new lib.MaskMC();
+	this.Mask2MC.name = "Mask2MC";
+	this.Mask2MC.setTransform(563,1218,50.0005,50.0005,0,0,0,50,50);
 
+	this.timeline.addTween(cjs.Tween.get(this.Mask2MC).wait(1));
+
+	// Desciption
 	this.MessageMC = new lib.MessageMC();
 	this.MessageMC.name = "MessageMC";
 	this.MessageMC.setTransform(-2224.55,2176.6,1,1,0,0,0,509.1,45.5);
+
+	this.AchievementDesciptionMC = new lib.AchievementDesciptionMC();
+	this.AchievementDesciptionMC.name = "AchievementDesciptionMC";
+	this.AchievementDesciptionMC.setTransform(-2498.9,1011.9,1,1,0,0,0,565.1,188);
 
 	this.ShopDesciptionMC = new lib.ShopDesciptionMC();
 	this.ShopDesciptionMC.name = "ShopDesciptionMC";
@@ -5262,14 +5271,7 @@ if (reversed == null) { reversed = false; }
 	this.GeneratorDesciptionMC.name = "GeneratorDesciptionMC";
 	this.GeneratorDesciptionMC.setTransform(-2453.7,185.2,1,1,0,0,0,522,572.5);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.InviteDesciptionMC},{t:this.ShopDesciptionMC},{t:this.MessageMC},{t:this.AchievementDesciptionMC}]}).wait(1));
-
-	// Mask2
-	this.Mask2MC = new lib.MaskMC();
-	this.Mask2MC.name = "Mask2MC";
-	this.Mask2MC.setTransform(563,1218,50.0005,50.0005,0,0,0,50,50);
-
-	this.timeline.addTween(cjs.Tween.get(this.Mask2MC).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.InviteDesciptionMC},{t:this.ShopDesciptionMC},{t:this.AchievementDesciptionMC},{t:this.MessageMC}]}).wait(1));
 
 	// Mask
 	this.MaskMC = new lib.MaskMC();
