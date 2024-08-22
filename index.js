@@ -5213,8 +5213,7 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		
-		Telegram.WebApp.onEvent('backButtonClicked', this.AAA)
+		Telegram.WebApp.onEvent('backButtonClicked', this.AAA);
 		
 		
 		
@@ -5223,15 +5222,6 @@ if (reversed == null) { reversed = false; }
 		
 		        alert(1);
 			
-			
-		    // ユーザーに確認を求める
-		    if (confirm("Are you sure you want to exit?")) {
-		        // ユーザーが「OK」を選んだ場合、WebAppを閉じる
-		        Telegram.WebApp.close();
-		    } else {
-		        // ユーザーが「キャンセル」を選んだ場合は何もしない
-		        alert(2);
-		    }	
 			
 			
 		};
