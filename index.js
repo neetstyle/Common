@@ -2313,18 +2313,14 @@ if (reversed == null) { reversed = false; }
 		{
 			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
 			{
-				navigator.clipboard.writeText(createjs.Ticker.getTime());
-				Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime(), this.CopyCodeCallBack);	
+				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + Telegram.WebApp.initDataUnsafe.user.id + "&text=寿司を作ろう";
+				navigator.clipboard.writeText(url);
+				Telegram.WebApp.showAlert("招待URLをクリップボードにコピーしました。");	
 			}
 			else
 				this.parent.MessageMC.Open("Sorry, only in the Telegram.");	
 		} 
 		this.CopyCodeButtonMC.addEventListener("click", this.CopyCode.bind(this));
-		
-		this.CopyCodeCallBack = function()
-		{
-			console.log("CopyCodeCallBack");
-		}
 	}
 
 	// actions tween:
@@ -5214,6 +5210,25 @@ if (reversed == null) { reversed = false; }
 		}
 		window.addEventListener('click', resumeAudioContext);
 		window.addEventListener('touchstart', resumeAudioContext);
+		
+		
+		
+		// バックボタンのクリックイベントハンドラーを設定
+		Telegram.WebApp.BackButton.onClick(function() {
+		    // ユーザーに確認を求める
+		    if (confirm("Are you sure you want to exit?")) {
+		        // ユーザーが「OK」を選んだ場合、WebAppを閉じる
+		        Telegram.WebApp.close();
+		    } else {
+		        // ユーザーが「キャンセル」を選んだ場合は何もしない
+		        console.log("Exit cancelled.");
+		    }
+		});
+		
+		// バックボタンがクリックされたときの処理を解除する場合
+		Telegram.WebApp.BackButton.offClick = function() {
+		    console.log("Back button click event has been removed.");
+		};
 	}
 
 	// actions tween:
