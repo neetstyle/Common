@@ -2312,6 +2312,9 @@ if (reversed == null) { reversed = false; }
 		this.InviteWindow = function()
 		{
 			var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + Telegram.WebApp.initDataUnsafe.user; + "&text=寿司を作ろう";
+			
+		alert(url);	
+			
 			window.location.href = url;
 		} 
 		this.ChatButtonMC.addEventListener("click", this.InviteWindow.bind(this));
