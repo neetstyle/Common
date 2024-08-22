@@ -3,13 +3,13 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[0,0,1125,1126]]},
-		{name:"index_atlas_2", frames: [[0,0,1125,1126]]},
-		{name:"index_atlas_3", frames: [[0,0,1125,1126]]},
+		{name:"index_atlas_1", frames: [[0,582,262,232],[1127,370,122,122],[0,0,1125,300],[264,582,262,232],[1301,88,64,64],[1367,88,48,48],[0,302,1125,278],[1056,582,209,209],[1127,0,172,216],[1251,370,120,120],[528,582,262,232],[1301,0,137,86],[1127,218,150,150],[792,582,262,232]]},
+		{name:"index_atlas_2", frames: [[0,1589,1123,305],[0,0,1125,985],[0,987,1000,600]]},
+		{name:"index_atlas_3", frames: [[0,0,1125,1000],[0,1002,1125,1000]]},
 		{name:"index_atlas_4", frames: [[0,0,1044,1145]]},
-		{name:"index_atlas_5", frames: [[0,0,1125,1000],[0,1002,1125,1000]]},
-		{name:"index_atlas_6", frames: [[0,1589,1123,305],[0,0,1125,985],[0,987,1000,600]]},
-		{name:"index_atlas_7", frames: [[0,582,262,232],[1127,370,122,122],[0,0,1125,300],[264,582,262,232],[1301,88,64,64],[1367,88,48,48],[0,302,1125,278],[1056,582,209,209],[1127,0,172,216],[1251,370,120,120],[528,582,262,232],[1301,0,137,86],[1127,218,150,150],[792,582,262,232]]}
+		{name:"index_atlas_5", frames: [[0,0,1125,1126]]},
+		{name:"index_atlas_6", frames: [[0,0,1125,1126]]},
+		{name:"index_atlas_7", frames: [[0,0,1125,1126]]}
 ];
 
 
@@ -34,7 +34,7 @@ lib.ssMetadata = [
 
 
 (lib.achievementButton = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
@@ -47,14 +47,14 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 
 (lib.cellBG = function() {
-	this.initialize(ss["index_atlas_6"]);
+	this.initialize(ss["index_atlas_2"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.close = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
@@ -68,133 +68,133 @@ p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
 
 
 (lib.footer = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.generatorButton = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.goldenSushi = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.hatena = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.header = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.iconFrame = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.invite = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib._new = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.panel = function() {
-	this.initialize(ss["index_atlas_6"]);
+	this.initialize(ss["index_atlas_2"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.shopButton = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.sushi = function() {
-	this.initialize(ss["index_atlas_6"]);
+	this.initialize(ss["index_atlas_2"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.sushiIcon = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.sushiMini = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.SushiScroll1 = function() {
-	this.initialize(ss["index_atlas_1"]);
+	this.initialize(ss["index_atlas_7"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.SushiScroll2 = function() {
-	this.initialize(ss["index_atlas_2"]);
+	this.initialize(ss["index_atlas_6"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.SushiScroll3 = function() {
-	this.initialize(ss["index_atlas_3"]);
+	this.initialize(ss["index_atlas_5"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.underBG = function() {
-	this.initialize(ss["index_atlas_5"]);
+	this.initialize(ss["index_atlas_3"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.upgradeButton = function() {
-	this.initialize(ss["index_atlas_7"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(13);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.upperBG = function() {
-	this.initialize(ss["index_atlas_5"]);
+	this.initialize(ss["index_atlas_3"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
@@ -2304,19 +2304,15 @@ if (reversed == null) { reversed = false; }
 		this.CopyCode = function()
 		{
 			navigator.clipboard.writeText(createjs.Ticker.getTime());
-			//Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime(), this.BBB);	
-			alert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime());
+			Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime(), this.BBB);	
+			//alert("招待コードをクリップボードにコピーしました。\n" + createjs.Ticker.getTime());
 		} 
 		this.CopyCodeButtonMC.addEventListener("click", this.CopyCode.bind(this));
 		
 		this.InviteWindow = function()
 		{
-			var url = "https://t.me/share/url?url=https://www.google.com/&text=hello";
+			var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + Telegram.WebApp.initDataUnsafe.user; + "&text=寿司を作ろう";
 			window.location.href = url;
-			
-			//Telegram.WebApp.showConfirm("111", this.AAA);	
-			//Telegram.WebApp.requestContact(this.AAA);	
-			//console.log("InviteWindow");
 		} 
 		this.ChatButtonMC.addEventListener("click", this.InviteWindow.bind(this));
 		
