@@ -5213,9 +5213,16 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		// バックボタンのクリックイベントハンドラーを設定
-		Telegram.WebApp.BackButton.onClick(function() {
-		alert(1);	
+		
+		Telegram.WebApp.onEvent('backButtonClicked', this.AAA)
+		
+		
+		
+		// バックボタンがクリックされたときの処理を解除する場合
+		this.AAA = function() {
+		
+		        alert(1);
+			
 			
 		    // ユーザーに確認を求める
 		    if (confirm("Are you sure you want to exit?")) {
@@ -5223,13 +5230,10 @@ if (reversed == null) { reversed = false; }
 		        Telegram.WebApp.close();
 		    } else {
 		        // ユーザーが「キャンセル」を選んだ場合は何もしない
-		        console.log("Exit cancelled.");
-		    }
-		});
-		
-		// バックボタンがクリックされたときの処理を解除する場合
-		Telegram.WebApp.BackButton.offClick = function() {
-		    console.log("Back button click event has been removed.");
+		        alert(2);
+		    }	
+			
+			
 		};
 	}
 
