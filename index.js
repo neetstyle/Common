@@ -5214,7 +5214,7 @@ if (reversed == null) { reversed = false; }
 		
 		
 		Telegram.WebApp.onEvent('backButtonClicked', this.AAA);
-		
+		Telegram.WebApp.BackButton.hide();
 		
 		
 		// バックボタンがクリックされたときの処理を解除する場合
