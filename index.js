@@ -5215,6 +5215,8 @@ if (reversed == null) { reversed = false; }
 		
 		// バックボタンのクリックイベントハンドラーを設定
 		Telegram.WebApp.BackButton.onClick(function() {
+		alert(1);	
+			
 		    // ユーザーに確認を求める
 		    if (confirm("Are you sure you want to exit?")) {
 		        // ユーザーが「OK」を選んだ場合、WebAppを閉じる
