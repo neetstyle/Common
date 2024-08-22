@@ -2,7 +2,9 @@
 
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
-lib.ssMetadata = [];
+lib.ssMetadata = [
+		{name:"index_atlas_1", frames: [[5694,1449,262,232],[0,0,2436,2436],[4567,1128,1123,305],[7992,370,122,122],[5819,0,1044,1145],[5692,1147,1125,300],[5958,1449,262,232],[8116,370,64,64],[8144,218,48,48],[4567,1449,1125,278],[5694,1683,209,209],[7992,0,172,216],[7992,494,120,120],[2438,1128,1125,985],[6222,1449,262,232],[3565,1128,1000,600],[7992,616,137,86],[7992,218,150,150],[2438,0,1125,1126],[3565,0,1125,1126],[4692,0,1125,1126],[6865,0,1125,1000],[6486,1449,262,232],[6865,1002,1125,1000]]}
+];
 
 
 (lib.AnMovieClip = function(){
@@ -26,147 +28,171 @@ lib.ssMetadata = [];
 
 
 (lib.achievementButton = function() {
-	this.initialize(img.achievementButton);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,262,232);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(0);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.bg1 = function() {
-	this.initialize(img.bg1);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,2436,2436);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(1);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.cellBG = function() {
-	this.initialize(img.cellBG);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1123,305);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(2);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.close = function() {
-	this.initialize(img.close);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,122,122);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(3);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.dialogBG = function() {
-	this.initialize(img.dialogBG);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1044,1145);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(4);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.footer = function() {
-	this.initialize(img.footer);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1125,300);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(5);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.generatorButton = function() {
-	this.initialize(img.generatorButton);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,262,232);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(6);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.goldenSushi = function() {
-	this.initialize(img.goldenSushi);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,64,64);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(7);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.hatena = function() {
-	this.initialize(img.hatena);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,48,48);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(8);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.header = function() {
-	this.initialize(img.header);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1125,278);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(9);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.iconFrame = function() {
-	this.initialize(img.iconFrame);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,209,209);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(10);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.invite = function() {
-	this.initialize(img.invite);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,172,216);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(11);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib._new = function() {
-	this.initialize(img._new);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,120,120);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(12);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.panel = function() {
-	this.initialize(img.panel);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1125,985);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(13);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.shopButton = function() {
-	this.initialize(img.shopButton);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,262,232);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(14);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.sushi = function() {
-	this.initialize(img.sushi);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1000,600);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(15);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.sushiIcon = function() {
-	this.initialize(img.sushiIcon);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,137,86);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(16);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.sushiMini = function() {
-	this.initialize(img.sushiMini);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,150,150);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(17);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.SushiScroll1 = function() {
-	this.initialize(img.SushiScroll1);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1125,1126);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(18);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.SushiScroll2 = function() {
-	this.initialize(img.SushiScroll2);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1125,1126);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(19);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.SushiScroll3 = function() {
-	this.initialize(img.SushiScroll3);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1125,1126);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(20);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.underBG = function() {
-	this.initialize(img.underBG);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1125,1000);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(21);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.upgradeButton = function() {
-	this.initialize(img.upgradeButton);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,262,232);
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(22);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.upperBG = function() {
-	this.initialize(img.upperBG);
-}).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,1125,1000);// helper functions:
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(23);
+}).prototype = p = new cjs.Sprite();
+// helper functions:
 
 function mc_symbol_clone() {
 	var clone = this._cloneProps(new this.constructor(this.mode, this.startPosition, this.loop, this.reversed));
@@ -2280,10 +2306,9 @@ if (reversed == null) { reversed = false; }
 		
 		this.InviteWindow = function()
 		{
-			var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + Telegram.WebApp.initDataUnsafe.user + "&text=寿司を作ろう";
+			var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + Telegram.WebApp.initDataUnsafe.user.id + "&text=寿司を作ろう";
 			
 			alert(url);	
-		alert(Telegram.WebApp.initDataUnsafe.user);	
 			
 			window.location.href = url;
 		} 
@@ -5326,30 +5351,7 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/achievementButton.png", id:"achievementButton"},
-		{src:"images/bg1.png", id:"bg1"},
-		{src:"images/cellBG.png", id:"cellBG"},
-		{src:"images/close.png", id:"close"},
-		{src:"images/dialogBG.png", id:"dialogBG"},
-		{src:"images/footer.png", id:"footer"},
-		{src:"images/generatorButton.png", id:"generatorButton"},
-		{src:"images/goldenSushi.png", id:"goldenSushi"},
-		{src:"images/hatena.png", id:"hatena"},
-		{src:"images/header.png", id:"header"},
-		{src:"images/iconFrame.png", id:"iconFrame"},
-		{src:"images/invite.png", id:"invite"},
-		{src:"images/_new.png", id:"_new"},
-		{src:"images/panel.png", id:"panel"},
-		{src:"images/shopButton.png", id:"shopButton"},
-		{src:"images/sushi.png", id:"sushi"},
-		{src:"images/sushiIcon.png", id:"sushiIcon"},
-		{src:"images/sushiMini.png", id:"sushiMini"},
-		{src:"images/SushiScroll1.png", id:"SushiScroll1"},
-		{src:"images/SushiScroll2.png", id:"SushiScroll2"},
-		{src:"images/SushiScroll3.png", id:"SushiScroll3"},
-		{src:"images/underBG.png", id:"underBG"},
-		{src:"images/upgradeButton.png", id:"upgradeButton"},
-		{src:"images/upperBG.png", id:"upperBG"}
+		{src:"images/index_atlas_1.png", id:"index_atlas_1"}
 	],
 	preloads: []
 };
