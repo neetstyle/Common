@@ -5213,13 +5213,12 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		Telegram.WebApp.onEvent('backButtonClicked', this.AAA);
+		Telegram.WebApp.onEvent('backButtonClicked', aaaa);
 		Telegram.WebApp.BackButton.hide();
 		
 		
-		// バックボタンがクリックされたときの処理を解除する場合
-		this.AAA = function() {
-		
+		function aaaa()
+		{
 		        alert(1);
 			
 			
