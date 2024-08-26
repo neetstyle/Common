@@ -2292,9 +2292,87 @@ if (reversed == null) { reversed = false; }
 			
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
+		
+			this.invitationCount.text = main.invitationCount;
+		
+			if(main.invitationState <  1 && main.invitationCount >= 1)
+				this.invitationState1.text = "受け取り可能";
+			else if(main.invitationState >  0)
+				this.invitationState1.text = "完了";
+			else
+				this.invitationState1.text = "未達成";
+		
+			if(main.invitationState <  2 && main.invitationCount >= 5)
+				this.invitationState2.text = "受け取り可能";
+			else if(main.invitationState >  1)
+				this.invitationState2.text = "完了";
+			else
+				this.invitationState2.text = "未達成";
+		
+			if(main.invitationState <  3 && main.invitationCount >= 10)
+				this.invitationState3.text = "受け取り可能";
+			else if(main.invitationState >  2)
+				this.invitationState3.text = "完了";
+			else
+				this.invitationState3.text = "未達成";
+		
+			if(main.invitationState < 4 && main.invitationCount >= 50)
+				this.invitationState4.text = "受け取り可能";
+			else if(main.invitationState >  3)
+				this.invitationState4.text = "完了";
+			else
+				this.invitationState4.text = "未達成";
 		}
 		
 		this.Mask = function(){} 
+		
+		this.State1 = function()
+		{
+			if(main.invitationState ==  0 && main.invitationCount >= 1)
+			{
+				this.parent.MessageMC.Open("GoludenSushiを10入手しました");
+				main.invitationState = 1;
+				main.goldenSushi += 10;
+				this.invitationState1.text = "完了";
+			}
+		}
+		this.invitationState1Button.addEventListener("click", this.State1.bind(this));
+		
+		this.State2 = function()
+		{
+			if(main.invitationState ==  1 && main.invitationCount >= 5)
+			{
+				this.parent.MessageMC.Open("GoludenSushiを10入手しました");
+				main.invitationState = 2;
+				main.goldenSushi += 10;
+				this.invitationState2.text = "完了";
+			}
+		}
+		this.invitationState2Button.addEventListener("click", this.State2.bind(this));
+		
+		this.State3 = function()
+		{
+			if(main.invitationState ==  2 && main.invitationCount >= 10)
+			{
+				this.parent.MessageMC.Open("GoludenSushiを10入手しました");
+				main.invitationState = 3;
+				main.goldenSushi += 10;
+				this.invitationState3.text = "完了";
+			}
+		}
+		this.invitationState3Button.addEventListener("click", this.State3.bind(this));
+		
+		this.State4 = function()
+		{
+			if(main.invitationState ==  3 && main.invitationCount >= 50)
+			{
+				this.parent.MessageMC.Open("GoludenSushiを10入手しました");
+				main.invitationState = 4;
+				main.goldenSushi += 10;
+				this.invitationState4.text = "完了";
+			}
+		}
+		this.invitationState4Button.addEventListener("click", this.State4.bind(this));
 		
 		this.Share = function()
 		{
@@ -2355,6 +2433,98 @@ if (reversed == null) { reversed = false; }
 	this.CloseButtonMC.setTransform(1028,16,1,1,0,0,0,61,61);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.CloseButtonMC},{t:this.CopyCodeButtonMC},{t:this.ShareButtonMC}]}).wait(1));
+
+	// レイヤー_2
+	this.invitationState4Button = new lib.ButtonMC();
+	this.invitationState4Button.name = "invitationState4Button";
+	this.invitationState4Button.setTransform(821.05,548.65,1,1,0,0,0,50,50);
+
+	this.invitationState3Button = new lib.ButtonMC();
+	this.invitationState3Button.name = "invitationState3Button";
+	this.invitationState3Button.setTransform(821.05,430.7,1,1,0,0,0,50,50);
+
+	this.invitationState2Button = new lib.ButtonMC();
+	this.invitationState2Button.name = "invitationState2Button";
+	this.invitationState2Button.setTransform(821.05,322.55,1,1,0,0,0,50,50);
+
+	this.invitationState1Button = new lib.ButtonMC();
+	this.invitationState1Button.name = "invitationState1Button";
+	this.invitationState1Button.setTransform(821.05,214.3,1,1,0,0,0,50,50);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.invitationState1Button},{t:this.invitationState2Button},{t:this.invitationState3Button},{t:this.invitationState4Button}]}).wait(1));
+
+	// Text
+	this.invitationState4 = new cjs.Text("完了", "50px 'Potta One'");
+	this.invitationState4.name = "invitationState4";
+	this.invitationState4.textAlign = "center";
+	this.invitationState4.lineHeight = 72;
+	this.invitationState4.parent = this;
+	this.invitationState4.setTransform(821.2,506.65);
+
+	this.invitationState3 = new cjs.Text("完了", "50px 'Potta One'");
+	this.invitationState3.name = "invitationState3";
+	this.invitationState3.textAlign = "center";
+	this.invitationState3.lineHeight = 72;
+	this.invitationState3.parent = this;
+	this.invitationState3.setTransform(821.2,398.5);
+
+	this.invitationState2 = new cjs.Text("完了", "50px 'Potta One'");
+	this.invitationState2.name = "invitationState2";
+	this.invitationState2.textAlign = "center";
+	this.invitationState2.lineHeight = 72;
+	this.invitationState2.parent = this;
+	this.invitationState2.setTransform(821.2,292.25);
+
+	this.invitationState1 = new cjs.Text("完了", "50px 'Potta One'");
+	this.invitationState1.name = "invitationState1";
+	this.invitationState1.textAlign = "center";
+	this.invitationState1.lineHeight = 72;
+	this.invitationState1.parent = this;
+	this.invitationState1.setTransform(821.2,184.1);
+
+	this.text_2 = new cjs.Text("友達の報酬Sushi1000", "50px 'Potta One'");
+	this.text_2.lineHeight = 72;
+	this.text_2.lineWidth = 519;
+	this.text_2.parent = this;
+	this.text_2.setTransform(256.4,642.85);
+
+	this.text_3 = new cjs.Text("50人招待する", "50px 'Potta One'");
+	this.text_3.lineHeight = 72;
+	this.text_3.lineWidth = 519;
+	this.text_3.parent = this;
+	this.text_3.setTransform(134.35,506.65);
+
+	this.text_4 = new cjs.Text("10人招待する", "50px 'Potta One'");
+	this.text_4.lineHeight = 72;
+	this.text_4.lineWidth = 519;
+	this.text_4.parent = this;
+	this.text_4.setTransform(134.35,398.5);
+
+	this.text_5 = new cjs.Text("5人招待する", "50px 'Potta One'");
+	this.text_5.lineHeight = 72;
+	this.text_5.lineWidth = 519;
+	this.text_5.parent = this;
+	this.text_5.setTransform(134.35,292.25);
+
+	this.text_6 = new cjs.Text("1人招待する", "50px 'Potta One'");
+	this.text_6.lineHeight = 72;
+	this.text_6.lineWidth = 519;
+	this.text_6.parent = this;
+	this.text_6.setTransform(134.35,184.1);
+
+	this.invitationCount = new cjs.Text("000", "50px 'Potta One'");
+	this.invitationCount.name = "invitationCount";
+	this.invitationCount.lineHeight = 72;
+	this.invitationCount.parent = this;
+	this.invitationCount.setTransform(690.05,79);
+
+	this.text_7 = new cjs.Text("これまで招待した人数:", "50px 'Potta One'");
+	this.text_7.lineHeight = 72;
+	this.text_7.lineWidth = 519;
+	this.text_7.parent = this;
+	this.text_7.setTransform(134.35,79);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text_7},{t:this.invitationCount},{t:this.text_6},{t:this.text_5},{t:this.text_4},{t:this.text_3},{t:this.text_2},{t:this.invitationState1},{t:this.invitationState2},{t:this.invitationState3},{t:this.invitationState4}]}).wait(1));
 
 	// BG
 	this.instance = new lib.dialogBG();
@@ -4370,6 +4540,8 @@ if (reversed == null) { reversed = false; }
 				this.goldenSushi = 0;		//ゴールデン寿司
 				this.priceIncrease = 1.15;	//価格の上昇率
 				this.skinId = 0;			//スキンId
+				this.invitationCount = 49;	//招待数
+				this.invitationState = 0;	//招待報酬 0:未受取、1:1人、2:5人、3:10人、4:50人
 				
 				//////////////////////////////////////////////////////////
 				//アップグレード
@@ -5210,20 +5382,6 @@ if (reversed == null) { reversed = false; }
 		}
 		window.addEventListener('click', resumeAudioContext);
 		window.addEventListener('touchstart', resumeAudioContext);
-		
-		
-		
-		Telegram.WebApp.onEvent('backButtonClicked', aaaa);
-		Telegram.WebApp.BackButton.hide();
-		
-		
-		function aaaa()
-		{
-		        alert(1);
-			
-			
-			
-		};
 	}
 
 	// actions tween:
@@ -5243,11 +5401,15 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.SushiEffectMC},{t:this.instance}]}).wait(1));
 
 	// Message
+	this.MessageMC = new lib.MessageMC();
+	this.MessageMC.name = "MessageMC";
+	this.MessageMC.setTransform(-2224.55,2176.6,1,1,0,0,0,509.1,45.5);
+
 	this.NotificationMC = new lib.NotificationMC();
 	this.NotificationMC.name = "NotificationMC";
 	this.NotificationMC.setTransform(-2773.7,2256.55);
 
-	this.timeline.addTween(cjs.Tween.get(this.NotificationMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.NotificationMC},{t:this.MessageMC}]}).wait(1));
 
 	// Mask2
 	this.Mask2MC = new lib.MaskMC();
@@ -5257,10 +5419,6 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.Mask2MC).wait(1));
 
 	// Desciption
-	this.MessageMC = new lib.MessageMC();
-	this.MessageMC.name = "MessageMC";
-	this.MessageMC.setTransform(-2224.55,2176.6,1,1,0,0,0,509.1,45.5);
-
 	this.AchievementDesciptionMC = new lib.AchievementDesciptionMC();
 	this.AchievementDesciptionMC.name = "AchievementDesciptionMC";
 	this.AchievementDesciptionMC.setTransform(-2498.9,1011.9,1,1,0,0,0,565.1,188);
@@ -5281,7 +5439,7 @@ if (reversed == null) { reversed = false; }
 	this.GeneratorDesciptionMC.name = "GeneratorDesciptionMC";
 	this.GeneratorDesciptionMC.setTransform(-2453.7,185.2,1,1,0,0,0,522,572.5);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.InviteDesciptionMC},{t:this.ShopDesciptionMC},{t:this.AchievementDesciptionMC},{t:this.MessageMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.InviteDesciptionMC},{t:this.ShopDesciptionMC},{t:this.AchievementDesciptionMC}]}).wait(1));
 
 	// Mask
 	this.MaskMC = new lib.MaskMC();
