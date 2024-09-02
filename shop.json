@@ -6,7 +6,7 @@
 		"icon": "goldenSushi200",
 		"price": 200,
 		"value": 200,
-		"desciption": "",
+		"desciption": "GoldenSushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -16,7 +16,7 @@
 		"icon": "goldenSushi2000",
 		"price": 2000,
 		"value": 2000,
-		"desciption": "",
+		"desciption": "GoldenSushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -26,7 +26,7 @@
 		"icon": "goldenSushi2500",
 		"price": 20000,
 		"value": 20000,
-		"desciption": "",
+		"desciption": "GoldenSushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -36,7 +36,7 @@
 		"icon": "sushi2000",
 		"price": 60,
 		"value": 2000,
-		"desciption": "",
+		"desciption": "Sushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -46,7 +46,7 @@
 		"icon": "sushi10000",
 		"price": 500,
 		"value": 10000,
-		"desciption": "",
+		"desciption": "Sushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -56,7 +56,7 @@
 		"icon": "sushi100000",
 		"price": 4500,
 		"value": 100000,
-		"desciption": "",
+		"desciption": "Sushiを購入します。",
 		"detail": ""
 	},
 	{
