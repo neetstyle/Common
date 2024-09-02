@@ -1813,20 +1813,20 @@ if (reversed == null) { reversed = false; }
 			{
 				case 1:
 					//this.regY = 1145 / 2;
-					this.ShopType1ButtonMC.price.text = this.obj.data["price"];
+					this.ShopType1ButtonMC.price.text = this.obj.data["price"].toLocaleString();
 					this.gotoAndStop("type1");
 					break;
 				case 2:
 					if(this.obj.data.price > main.goldenSushi)
 					{
 						//this.ShopType2ButtonMC.price.text = this.obj.data["price"] + "(所持" + main.goldenSushi + ")";
-						this.ShopType2ButtonMC.price.text = this.obj.data["price"];
+						this.ShopType2ButtonMC.price.text = this.obj.data["price"].toLocaleString();
 						this.ShopType2ButtonMC.gotoAndStop("Shortage");
 					}
 					else
 					{
 						this.ShopType2ButtonMC.gotoAndStop("Active");
-						this.ShopType2ButtonMC.price.text = this.obj.data["price"];
+						this.ShopType2ButtonMC.price.text = this.obj.data["price"].toLocaleString();
 					}
 					this.gotoAndStop("type2");
 					break;
@@ -1841,12 +1841,12 @@ if (reversed == null) { reversed = false; }
 					{
 						this.ShopType3ButtonMC.gotoAndStop("Shortage");
 						//this.ShopType3ButtonMC.price.text = this.obj.data["price"] + "(所持" + main.goldenSushi + ")";
-						this.ShopType3ButtonMC.price.text = this.obj.data["price"];
+						this.ShopType3ButtonMC.price.text = this.obj.data["price"].toLocaleString();
 					}
 					else
 					{
 						this.ShopType3ButtonMC.gotoAndStop("Active");
-						this.ShopType3ButtonMC.price.text = this.obj.data["price"];
+						this.ShopType3ButtonMC.price.text = this.obj.data["price"].toLocaleString();
 					}
 					
 					break;
@@ -1865,12 +1865,12 @@ if (reversed == null) { reversed = false; }
 					{
 						this.ShopType4ButtonMC.gotoAndStop("Shortage");	
 						//this.ShopType4ButtonMC.price.text = this.obj.data["price"] + "(所持" + main.goldenSushi + ")";
-						this.ShopType4ButtonMC.price.text = this.obj.data["price"];
+						this.ShopType4ButtonMC.price.text = this.obj.data["price"].toLocaleString();
 					}
 					else
 					{
 						this.ShopType4ButtonMC.gotoAndStop("NotPurchased");
-						this.ShopType4ButtonMC.price.text = this.obj.data["price"];
+						this.ShopType4ButtonMC.price.text = this.obj.data["price"].toLocaleString();
 					}
 					break;
 			}
