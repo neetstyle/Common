@@ -129,6 +129,10 @@ function init() {
 	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
 	var lib=comp.getLibrary();
 	loader.loadManifest(lib.properties.manifest);
+
+console.log(1);
+
+
 }
 function handleFileLoad(evt, comp) {
 	var images=comp.getImages();	
