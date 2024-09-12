@@ -3376,8 +3376,8 @@ if (reversed == null) { reversed = false; }
 			bmp6.y = 0;
 		}
 		
-		this.rareAnimeMC.gotoAndPlay("rare" + rarity[this.parent.parent.currentIndex]);
-		this.cardBackEffectMC.gotoAndPlay("rare" + rarity[this.parent.parent.currentIndex]);
+		//this.rareAnimeMC.gotoAndPlay("rare" + rarity[this.parent.parent.currentIndex]);
+		//this.cardBackEffectMC.gotoAndPlay("rare" + rarity[this.parent.parent.currentIndex]);
 		this.cardBaseMC.gotoAndStop("rare" + rarity[this.parent.parent.currentIndex]);
 		this.cardBaseMC.cardGlowEffectMC.gotoAndPlay("rare" + rarity[this.parent.parent.currentIndex]);
 		
@@ -3413,6 +3413,14 @@ if (reversed == null) { reversed = false; }
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).wait(7).call(this.frame_7).wait(15).call(this.frame_22).wait(38).call(this.frame_60).wait(1));
 
+	// white
+	this.instance = new lib.eff_mat("single",0);
+	this.instance.setTransform(375,667);
+	this.instance.alpha = 0.8008;
+	this.instance._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(18).to({_off:false},0).wait(1).to({alpha:1},0).wait(2).to({alpha:0.3984},0).to({alpha:0},3).to({_off:true},1).wait(36));
+
 	// star
 	this.rareAnimeMC = new lib.rareAnimeMC();
 	this.rareAnimeMC.name = "rareAnimeMC";
@@ -3428,6 +3436,28 @@ if (reversed == null) { reversed = false; }
 	this.serialNumberMC._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.serialNumberMC).wait(7).to({_off:false},0).wait(54));
+
+	// white
+	this.instance_1 = new lib.eff_mat("single",0);
+	this.instance_1.setTransform(375,667);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(2).to({startPosition:0},0).to({alpha:0},8).to({_off:true},1).wait(50));
+
+	// eff_wave
+	this.instance_2 = new lib.eff_wave_anim2();
+	this.instance_2.setTransform(375.05,667,0.46,0.66,0,0,0,0.4,0.4);
+	this.instance_2.alpha = 0.3984;
+	this.instance_2._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(21).to({_off:false},0).wait(1).to({regX:0,regY:0,scaleX:0.5602,scaleY:0.7602,x:374.8227,y:666.7347,alpha:0.4605},0).wait(1).to({regX:0.3,regY:0.4,scaleX:0.7883,scaleY:0.9883,x:375.05,y:667.1,alpha:0.6016},0).wait(1).to({regX:0,regY:0,scaleX:1.0902,scaleY:1.2902,x:374.7574,y:666.6739,alpha:0.3916},0).wait(1).to({regX:0.4,regY:0.4,scaleX:1.3669,scaleY:1.5668,x:375.2,y:667.3,alpha:0.1992},0).wait(1).to({regX:0,regY:0,scaleX:1.5893,scaleY:1.7893,x:374.5854,y:666.622,alpha:0.1563},0).wait(1).to({scaleX:1.765,scaleY:1.965,x:374.5344,y:666.5999,alpha:0.1224},0).wait(1).to({scaleX:1.9049,scaleY:2.1049,x:374.4938,y:666.5823,alpha:0.0955},0).wait(1).to({scaleX:2.0174,scaleY:2.2173,x:374.4611,y:666.5681,alpha:0.0738},0).wait(1).to({scaleX:2.1083,scaleY:2.3083,x:374.4347,y:666.5567,alpha:0.0562},0).wait(1).to({scaleX:2.182,scaleY:2.3819,x:374.4133,y:666.5474,alpha:0.042},0).wait(1).to({scaleX:2.2414,scaleY:2.4413,x:374.3961,y:666.54,alpha:0.0306},0).wait(1).to({scaleX:2.2888,scaleY:2.4888,x:374.3823,y:666.534,alpha:0.0214},0).wait(1).to({scaleX:2.3261,scaleY:2.5261,x:374.3715,y:666.5293,alpha:0.0142},0).wait(1).to({scaleX:2.3546,scaleY:2.5546,x:374.3632,y:666.5257,alpha:0.0087},0).wait(1).to({scaleX:2.3754,scaleY:2.5754,x:374.3571,y:666.5231,alpha:0.0047},0).wait(1).to({scaleX:2.3895,scaleY:2.5894,x:374.3531,y:666.5213,alpha:0.002},0).wait(1).to({scaleX:2.3974,scaleY:2.5974,x:374.3507,y:666.5203,alpha:0.0005},0).wait(1).to({regX:0.1,regY:0.4,scaleX:2.4,scaleY:2.5999,x:375.2,y:667.7,alpha:0},0).to({_off:true},1).wait(21));
+
+	// eff_wave
+	this.instance_3 = new lib.eff_wave_anim2();
+	this.instance_3.setTransform(375.05,667,0.46,0.66,0,0,0,0.4,0.4);
+	this.instance_3.alpha = 0.3984;
+	this.instance_3._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(22).to({_off:false},0).wait(1).to({regX:0,regY:0,scaleX:0.5602,scaleY:0.7602,x:374.8227,y:666.7347,alpha:0.4605},0).wait(1).to({regX:0.3,regY:0.4,scaleX:0.7883,scaleY:0.9883,x:375.05,y:667.1,alpha:0.6016},0).wait(1).to({regX:0,regY:0,scaleX:1.0902,scaleY:1.2902,x:374.7574,y:666.6739,alpha:0.3916},0).wait(1).to({regX:0.4,regY:0.4,scaleX:1.3669,scaleY:1.5668,x:375.2,y:667.3,alpha:0.1992},0).wait(1).to({regX:0,regY:0,scaleX:1.5893,scaleY:1.7893,x:374.5854,y:666.622,alpha:0.1563},0).wait(1).to({scaleX:1.765,scaleY:1.965,x:374.5344,y:666.5999,alpha:0.1224},0).wait(1).to({scaleX:1.9049,scaleY:2.1049,x:374.4938,y:666.5823,alpha:0.0955},0).wait(1).to({scaleX:2.0174,scaleY:2.2173,x:374.4611,y:666.5681,alpha:0.0738},0).wait(1).to({scaleX:2.1083,scaleY:2.3083,x:374.4347,y:666.5567,alpha:0.0562},0).wait(1).to({scaleX:2.182,scaleY:2.3819,x:374.4133,y:666.5474,alpha:0.042},0).wait(1).to({scaleX:2.2414,scaleY:2.4413,x:374.3961,y:666.54,alpha:0.0306},0).wait(1).to({scaleX:2.2888,scaleY:2.4888,x:374.3823,y:666.534,alpha:0.0214},0).wait(1).to({scaleX:2.3261,scaleY:2.5261,x:374.3715,y:666.5293,alpha:0.0142},0).wait(1).to({scaleX:2.3546,scaleY:2.5546,x:374.3632,y:666.5257,alpha:0.0087},0).wait(1).to({scaleX:2.3754,scaleY:2.5754,x:374.3571,y:666.5231,alpha:0.0047},0).wait(1).to({scaleX:2.3895,scaleY:2.5894,x:374.3531,y:666.5213,alpha:0.002},0).wait(1).to({scaleX:2.3974,scaleY:2.5974,x:374.3507,y:666.5203,alpha:0.0005},0).wait(1).to({regX:0.1,regY:0.4,scaleX:2.4,scaleY:2.5999,x:375.2,y:667.7,alpha:0},0).to({_off:true},1).wait(20));
 
 	// frontEffect
 	this.cardFrontEffectMC = new lib.cardFrontEffectMC();
