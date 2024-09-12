@@ -3117,8 +3117,6 @@ if (reversed == null) { reversed = false; }
 
 	// timeline functions:
 	this.frame_7 = function() {
-		/*
-		
 		//カード画像
 		this.cardBaseMC.cardMC.timeline.removeTween(this.cardBaseMC.cardMC.timeline.tweens[0]);
 		this.cardBaseMC.cardMC.removeAllChildren();
@@ -3134,7 +3132,7 @@ if (reversed == null) { reversed = false; }
 			bmp6.x = 0;
 			bmp6.y = 0;
 		}
-		
+		/*
 		this.rareAnimeMC.gotoAndPlay("rare" + rarity[this.parent.parent.currentIndex]);
 		this.cardBackEffectMC.gotoAndPlay("rare" + rarity[this.parent.parent.currentIndex]);
 		this.cardBaseMC.gotoAndStop("rare" + rarity[this.parent.parent.currentIndex]);
