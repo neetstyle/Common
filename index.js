@@ -5899,8 +5899,9 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		alert(window.Telegram.WebApp.initData);
-		alert(window.Telegram.WebApp.initData.user);
+		alert(Telegram.WebApp.initDataUnsafe.user.id);
+		
+		
 		
 		/*
 		function Register() {
