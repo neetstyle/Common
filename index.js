@@ -5932,26 +5932,44 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		    var xhr = new XMLHttpRequest();
-		    xhr.open('POST', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register', true);
-		    xhr.setRequestHeader('Content-Type', 'application/json');
-		    xhr.setRequestHeader('accept', 'application/json');
-		    xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
+		{
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register', true);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.setRequestHeader('accept', 'application/json');
+			xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
 		
-		    xhr.onload = function() {
-		        if (xhr.status === 200) {
-		console.error("Success: ");
-		        } else {
-		console.error("Error: " + xhr.status);
-		        }
-		    };
+			xhr.onload = function() {
+				console.error(xhr.status);
+			};
 		
-		    xhr.onerror = function() {
-		console.error("Request failed");
-		    };
+			xhr.onerror = function() {
+			console.error("Request failed");
+			};
 		
-		xhr.send();
+			xhr.send();
+		}
 		
+		
+		
+		
+		{
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/me', true);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.setRequestHeader('accept', 'application/json');
+			xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
+		
+			xhr.onload = function() {
+				console.error(xhr.status);
+			};
+		
+			xhr.onerror = function() {
+				console.error("Request failed");
+			};
+		
+			xhr.send();
+		}
 		
 		
 		
