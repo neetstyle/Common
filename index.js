@@ -5903,6 +5903,9 @@ if (reversed == null) { reversed = false; }
 		
 		//7248313827
 		
+		alert(window.Telegram.WebApp.initData);
+		
+		
 		
 		function Register() {
 			const data = {
@@ -5915,7 +5918,9 @@ if (reversed == null) { reversed = false; }
 		        contentType: 'application/json',
 		        data: JSON.stringify(data),
 		        headers: {
-		            'Authorization': Telegram.WebApp.initDataUnsafe.user.id,
+		'Authorization': window.Telegram.WebApp.initData.
+					//'Authorization': 7248313827,
+		            //'Authorization': Telegram.WebApp.initDataUnsafe.user.id,
 		            'accept': 'application/json'
 					},
 		        success: function(response) {
@@ -5929,7 +5934,7 @@ if (reversed == null) { reversed = false; }
 		    });
 		}
 		Register();
-		
+		/*
 		function GetGenerator() {
 			
 		    $.ajax({
@@ -5938,7 +5943,8 @@ if (reversed == null) { reversed = false; }
 		        dataType: 'json',
 		        contentType: 'application/json',
 		        headers: {
-		            'Authorization': Telegram.WebApp.initDataUnsafe.user.id
+					'Authorization': 7248313827
+		            //'Authorization': Telegram.WebApp.initDataUnsafe.user.id
 		        },
 		        success: function(response) {
 					alert("Success: " + response);
@@ -5951,6 +5957,7 @@ if (reversed == null) { reversed = false; }
 		    });
 		}
 		GetGenerator();
+		*/
 	}
 
 	// actions tween:
