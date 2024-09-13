@@ -3621,7 +3621,8 @@ if (reversed == null) { reversed = false; }
 		this.mainMC.cardAnimeMC.skipButton.addEventListener('click',ClickHandler_NextPage);
 		function ClickHandler_NextPage()
 		{
-			console.log("Next : " + this.currentIndex);	
+			console.log("Next : " + exportRoot.currentIndex);	
+			
 			if(rarity.length > exportRoot.currentIndex+1){
 				exportRoot.currentIndex++;
 				exportRoot.mainMC.gotoAndPlay("pack");	
