@@ -5906,7 +5906,7 @@ if (reversed == null) { reversed = false; }
 		alert(window.Telegram.WebApp.initData);
 		
 		
-		/*
+		
 		function Register() {
 			const data = {
 		        referralCode: null
@@ -5918,7 +5918,7 @@ if (reversed == null) { reversed = false; }
 		        contentType: 'application/json',
 		        data: JSON.stringify(data),
 		        headers: {
-		'Authorization': window.Telegram.WebApp.initData.
+		'Authorization': window.Telegram.WebApp.initData,
 					//'Authorization': 7248313827,
 		            //'Authorization': Telegram.WebApp.initDataUnsafe.user.id,
 		            'accept': 'application/json'
@@ -5934,7 +5934,7 @@ if (reversed == null) { reversed = false; }
 		    });
 		}
 		Register();
-		*/
+		
 		
 		/*
 		function GetGenerator() {
