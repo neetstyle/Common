@@ -5919,10 +5919,12 @@ if (reversed == null) { reversed = false; }
 		            'accept': 'application/json'
 					},
 		        success: function(response) {
-					console.error("Success: " + response);
+					alert("Success: " + response);
+					//console.error("Success: " + response);
 		        },
 		        error: function(jqXHR, textStatus, errorThrown) {
-		            console.error("Error: " + textStatus, errorThrown);
+					alert("Error: " + textStatus, errorThrown);
+		            //console.error("Error: " + textStatus, errorThrown);
 		        }
 		    });
 		}
@@ -5939,10 +5941,12 @@ if (reversed == null) { reversed = false; }
 		            'Authorization': Telegram.WebApp.initDataUnsafe.user.id
 		        },
 		        success: function(response) {
-					console.error("Success: " + response);
+					alert("Success: " + response);
+					//console.error("Success: " + response);
 		        },
 		        error: function(jqXHR, textStatus, errorThrown) {
-		            console.error("Error: " + textStatus, errorThrown);
+					alert("Error: " + textStatus, errorThrown);
+		            //console.error("Error: " + textStatus, errorThrown);
 		        }
 		    });
 		}
