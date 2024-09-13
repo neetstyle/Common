@@ -5896,6 +5896,61 @@ if (reversed == null) { reversed = false; }
 		}
 		window.addEventListener('click', resumeAudioContext);
 		window.addEventListener('touchstart', resumeAudioContext);
+		
+		
+		
+		
+		alert(window.Telegram.WebApp.initData.user);
+		
+		/*
+		function Register() {
+			
+			//const data = {
+		    //    referralCode: "testReferralCode"
+		    //};
+		
+		    $.ajax({
+				url: 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register',
+		        method: 'POST',
+		        dataType: 'json',
+		        contentType: 'application/json',
+		        //data: JSON.stringify(data),
+		        headers: {
+		            'accept': 'application/json',
+		            'Authorization': window.Telegram.WebApp.initData.user
+		        },
+		        success: function(response) {
+					console.error("Success: " + response);
+		        },
+		        error: function(jqXHR, textStatus, errorThrown) {
+		            console.error("Error: " + textStatus, errorThrown);
+		        }
+		    });
+		}
+		
+		Register();
+		*/
+		/*
+		function GetGenerator() {
+			
+		    $.ajax({
+				url: 'https://clicker-api.tomoya-ishisaka.workers.dev/generator',
+		        method: 'GET',
+		        dataType: 'json',
+		        contentType: 'application/json',
+		        headers: {
+		            'Authorization': 1234
+		        },
+		        success: function(response) {
+					console.error("Success: " + response);
+		        },
+		        error: function(jqXHR, textStatus, errorThrown) {
+		            console.error("Error: " + textStatus, errorThrown);
+		        }
+		    });
+		}
+		GetGenerator();
+		*/
 	}
 
 	// actions tween:
