@@ -5931,11 +5931,11 @@ if (reversed == null) { reversed = false; }
 		*/
 		
 		
-		alert(2);
-		
+		alert(3);
+		/*
 		{
 		    var data = {
-		        referralCode: "1"
+		        referralCode: null
 		    };
 			var xhr = new XMLHttpRequest();
 			xhr.open('POST', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register', true);
@@ -5974,39 +5974,38 @@ if (reversed == null) { reversed = false; }
 		
 			xhr.send();
 		}
+		*/
 		
 		
 		
-		
-		/*
 		function Register() {
-			//const data = {
-		    //    referralCode: null
-		    //};
+			const data = {
+		        referralCode: null
+		    };
 		    $.ajax({
 				url: 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register',
 		        method: 'POST',
 		        dataType: 'json',
 		        contentType: 'application/json',
-		        //data: JSON.stringify(data),
+		        data: JSON.stringify(data),
 		        headers: {
-					'Authorization': window.Telegram.WebApp.initData
+					'Authorization': window.Telegram.WebApp.initData,
 					//'Authorization': 7248313827,
 		            //'Authorization': Telegram.WebApp.initDataUnsafe.user.id,
-		            //'accept': 'application/json'
+		            'accept': 'application/json'
 					},
 		        success: function(response) {
-					alert("Success: " + response);
-					//console.error("Success: " + response);
+					//alert("Success: " + response);
+					console.error("Success: " + response);
 		        },
 		        error: function(jqXHR, textStatus, errorThrown) {
-					alert("Error: " + textStatus, errorThrown);
-		            //console.error("Error: " + textStatus, errorThrown);
+					//alert("Error: " + textStatus, errorThrown);
+		            console.error("Error: " + textStatus, errorThrown);
 		        }
 		    });
 		}
 		Register();
-		*/
+		
 		
 		
 		
