@@ -5906,7 +5906,7 @@ if (reversed == null) { reversed = false; }
 		alert(window.Telegram.WebApp.initData);
 		
 		
-		
+		/*
 		function Register() {
 			const data = {
 		        referralCode: null
@@ -5934,6 +5934,8 @@ if (reversed == null) { reversed = false; }
 		    });
 		}
 		Register();
+		*/
+		
 		/*
 		function GetGenerator() {
 			
