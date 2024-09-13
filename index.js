@@ -5934,7 +5934,7 @@ if (reversed == null) { reversed = false; }
 		
 		{
 		    var data = {
-		        referralCode: null
+		        referralCode: "null"
 		    };	
 			
 			var xhr = new XMLHttpRequest();
