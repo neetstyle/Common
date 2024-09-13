@@ -5931,8 +5931,7 @@ if (reversed == null) { reversed = false; }
 		*/
 		
 		
-		alert(3);
-		/*
+		
 		{
 		    var data = {
 		        referralCode: null
@@ -5948,14 +5947,14 @@ if (reversed == null) { reversed = false; }
 			};
 		
 			xhr.onerror = function() {
-			console.error("Request failed");
+				console.error("Request failed");
 			};
 		
 			xhr.send(JSON.stringify(data));
 		}
 		
 		
-		
+		/*
 		
 		{
 			var xhr = new XMLHttpRequest();
@@ -5974,7 +5973,7 @@ if (reversed == null) { reversed = false; }
 		
 			xhr.send();
 		}
-		*/
+		
 		
 		
 		
@@ -6006,7 +6005,7 @@ if (reversed == null) { reversed = false; }
 		}
 		Register();
 		
-		
+		*/
 		
 		
 		/*
