@@ -5908,20 +5908,20 @@ if (reversed == null) { reversed = false; }
 		
 		
 		function Register() {
-			const data = {
-		        referralCode: null
-		    };
+			//const data = {
+		    //    referralCode: null
+		    //};
 		    $.ajax({
 				url: 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register',
 		        method: 'POST',
 		        dataType: 'json',
 		        contentType: 'application/json',
-		        data: JSON.stringify(data),
+		        //data: JSON.stringify(data),
 		        headers: {
-		'Authorization': window.Telegram.WebApp.initData,
+					'Authorization': window.Telegram.WebApp.initData
 					//'Authorization': 7248313827,
 		            //'Authorization': Telegram.WebApp.initDataUnsafe.user.id,
-		            'accept': 'application/json'
+		            //'accept': 'application/json'
 					},
 		        success: function(response) {
 					alert("Success: " + response);
@@ -5934,6 +5934,8 @@ if (reversed == null) { reversed = false; }
 		    });
 		}
 		Register();
+		
+		
 		
 		
 		/*
