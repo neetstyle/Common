@@ -5931,16 +5931,12 @@ if (reversed == null) { reversed = false; }
 		*/
 		
 		
-		alert(1);
+		alert(2);
+		
 		{
 		    var data = {
-		        referralCode: null
-		    };	
-			
-		
-		alert(JSON.stringify(data));
-		
-		
+		        referralCode: "1"
+		    };
 			var xhr = new XMLHttpRequest();
 			xhr.open('POST', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register', true);
 			xhr.setRequestHeader('Content-Type', 'application/json');
@@ -5954,10 +5950,6 @@ if (reversed == null) { reversed = false; }
 			xhr.onerror = function() {
 			console.error("Request failed");
 			};
-		
-		
-		
-		
 		
 			xhr.send(JSON.stringify(data));
 		}
