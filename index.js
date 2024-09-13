@@ -5934,7 +5934,7 @@ if (reversed == null) { reversed = false; }
 		
 		{
 		    var data = {
-		        referralCode: "null"
+		        referralCode: null
 		    };	
 			
 			var xhr = new XMLHttpRequest();
@@ -5951,7 +5951,7 @@ if (reversed == null) { reversed = false; }
 			console.error("Request failed");
 			};
 		
-			xhr.send(data);
+			xhr.send(JSON.stringify(data));
 		}
 		
 		
