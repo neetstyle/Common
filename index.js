@@ -5903,10 +5903,37 @@ if (reversed == null) { reversed = false; }
 		
 		//7248313827
 		
-		alert(window.Telegram.WebApp.initData);
+		//alert(window.Telegram.WebApp.initData);
 		
 		
 		
+		
+		
+		function Register() {
+		    $.ajax({
+				url: 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register',
+		        method: 'POST',
+		        dataType: 'json',
+		        contentType: 'application/json',
+		        headers: {
+					'Authorization': window.Telegram.WebApp.initData,
+		            'accept': 'application/json'
+					},
+		        success: function(response) {
+					console.error("Success: " + response);
+		        },
+		        error: function(jqXHR, textStatus, errorThrown) {
+		            console.error("Error: " + textStatus, errorThrown);
+		        }
+		    });
+		}
+		Register();
+		
+		
+		
+		
+		
+		/*
 		function Register() {
 			//const data = {
 		    //    referralCode: null
@@ -5934,7 +5961,7 @@ if (reversed == null) { reversed = false; }
 		    });
 		}
 		Register();
-		
+		*/
 		
 		
 		
