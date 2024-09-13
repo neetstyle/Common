@@ -3603,10 +3603,7 @@ if (reversed == null) { reversed = false; }
 		this.mainMC.packAnimeMC.openButton.addEventListener("click", ClickHandler_Open.bind(this));
 		function ClickHandler_Open()
 		{
-			
 			console.log("Open : " + this.currentIndex);	
-			
-			
 			this.mainMC.packAnimeMC.gotoAndPlay("open");
 		}
 		
@@ -3616,6 +3613,7 @@ if (reversed == null) { reversed = false; }
 		this.mainMC.positionAnimeMC.skipButton.addEventListener("click", ClickHandler_Skip.bind(this));
 		function ClickHandler_Skip()
 		{
+			console.log("Skip : " + this.currentIndex);	
 			this.mainMC.gotoAndStop("card");
 		}
 		
@@ -3623,6 +3621,7 @@ if (reversed == null) { reversed = false; }
 		this.mainMC.cardAnimeMC.skipButton.addEventListener('click',ClickHandler_NextPage);
 		function ClickHandler_NextPage()
 		{
+			console.log("Next : " + this.currentIndex);	
 			if(rarity.length > exportRoot.currentIndex+1){
 				exportRoot.currentIndex++;
 				exportRoot.mainMC.gotoAndPlay("pack");	
