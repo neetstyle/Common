@@ -5951,6 +5951,11 @@ if (reversed == null) { reversed = false; }
 			console.error("Request failed");
 			};
 		
+		
+		
+		alert(JSON.stringify(data));
+		
+		
 			xhr.send(JSON.stringify(data));
 		}
 		
