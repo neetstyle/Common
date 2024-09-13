@@ -5899,27 +5899,25 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		alert(Telegram.WebApp.initDataUnsafe.user.id);
+		//alert(Telegram.WebApp.initDataUnsafe.user.id);
+		
+		//7248313827
 		
 		
-		
-		/*
 		function Register() {
-			
-			//const data = {
-		    //    referralCode: "testReferralCode"
-		    //};
-		
+			const data = {
+		        referralCode: null
+		    };
 		    $.ajax({
 				url: 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register',
 		        method: 'POST',
 		        dataType: 'json',
 		        contentType: 'application/json',
-		        //data: JSON.stringify(data),
+		        data: JSON.stringify(data),
 		        headers: {
-		            'accept': 'application/json',
-		            'Authorization': window.Telegram.WebApp.initData.user
-		        },
+		            'Authorization': Telegram.WebApp.initDataUnsafe.user.id,
+		            'accept': 'application/json'
+					},
 		        success: function(response) {
 					console.error("Success: " + response);
 		        },
@@ -5928,10 +5926,8 @@ if (reversed == null) { reversed = false; }
 		        }
 		    });
 		}
-		
 		Register();
-		*/
-		/*
+		
 		function GetGenerator() {
 			
 		    $.ajax({
@@ -5940,7 +5936,7 @@ if (reversed == null) { reversed = false; }
 		        dataType: 'json',
 		        contentType: 'application/json',
 		        headers: {
-		            'Authorization': 1234
+		            'Authorization': Telegram.WebApp.initDataUnsafe.user.id
 		        },
 		        success: function(response) {
 					console.error("Success: " + response);
@@ -5951,7 +5947,6 @@ if (reversed == null) { reversed = false; }
 		    });
 		}
 		GetGenerator();
-		*/
 	}
 
 	// actions tween:
