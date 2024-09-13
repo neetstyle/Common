@@ -5937,6 +5937,10 @@ if (reversed == null) { reversed = false; }
 		        referralCode: null
 		    };	
 			
+		
+		alert(JSON.stringify(data));
+		
+		
 			var xhr = new XMLHttpRequest();
 			xhr.open('POST', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register', true);
 			xhr.setRequestHeader('Content-Type', 'application/json');
@@ -5953,7 +5957,6 @@ if (reversed == null) { reversed = false; }
 		
 		
 		
-		alert(JSON.stringify(data));
 		
 		
 			xhr.send(JSON.stringify(data));
