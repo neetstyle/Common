@@ -6023,8 +6023,7 @@ if (reversed == null) { reversed = false; }
 		        dataType: 'json',
 		        contentType: 'application/json',
 		        headers: {
-					'Authorization': 7248313827
-		            //'Authorization': Telegram.WebApp.initDataUnsafe.user.id
+		            'Authorization': Telegram.WebApp.initDataUnsafe.user.id
 		        },
 		        success: function(response) {
 					alert("Success: " + response);
