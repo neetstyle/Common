@@ -5931,7 +5931,7 @@ if (reversed == null) { reversed = false; }
 		*/
 		
 		
-		
+		/*
 		{
 		    var data = {
 		        referralCode: null
@@ -5954,9 +5954,9 @@ if (reversed == null) { reversed = false; }
 		
 			xhr.send(JSON.stringify(data));
 		}
+		*/
 		
-		
-		
+		/*
 		{
 			var xhr = new XMLHttpRequest();
 			xhr.open('GET', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/me', true);
@@ -5977,6 +5977,9 @@ if (reversed == null) { reversed = false; }
 		
 			xhr.send();
 		}
+		*/
+		
+		
 		/*
 		
 		
@@ -6012,7 +6015,6 @@ if (reversed == null) { reversed = false; }
 		*/
 		
 		
-		/*
 		function GetGenerator() {
 			
 		    $.ajax({
@@ -6035,7 +6037,6 @@ if (reversed == null) { reversed = false; }
 		    });
 		}
 		GetGenerator();
-		*/
 	}
 
 	// actions tween:
