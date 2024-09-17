@@ -5980,6 +5980,47 @@ if (reversed == null) { reversed = false; }
 		*/
 		
 		
+		{
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/me', true);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.setRequestHeader('accept', 'application/json');
+			xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
+		
+			xhr.onload = function() {
+				if (xhr.status >= 200 && xhr.status < 300) {
+			
+					var responseData = JSON.parse(xhr.responseText);
+					console.log(responseData);
+				} else {
+					console.error("Request failed with status: " + xhr.status);
+				}
+			};
+		
+			xhr.onerror = function() {
+				console.error("Request failed");		
+			};
+		
+			xhr.send();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		/*
 		
 		
