@@ -5943,18 +5943,19 @@ if (reversed == null) { reversed = false; }
 			xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
 		
 			xhr.onload = function() {
-				console.error(xhr.status);
+		//		console.error(xhr.status);
+		alert(xhr.status);	
 			};
 		
 			xhr.onerror = function() {
-				console.error("Request failed");
+		//		console.error("Request failed");
+		alert("Request failed");		
 			};
 		
 			xhr.send(JSON.stringify(data));
 		}
 		
 		
-		/*
 		
 		{
 			var xhr = new XMLHttpRequest();
@@ -5964,16 +5965,19 @@ if (reversed == null) { reversed = false; }
 			xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
 		
 			xhr.onload = function() {
-				console.error(xhr.status);
+		//		console.error(xhr.status);
+			alert(xhr.status);		
 			};
 		
 			xhr.onerror = function() {
-				console.error("Request failed");
+		//		console.error("Request failed");
+		alert("Request failed");			
+				
 			};
 		
 			xhr.send();
 		}
-		
+		/*
 		
 		
 		
