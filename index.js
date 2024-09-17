@@ -6004,7 +6004,7 @@ if (reversed == null) { reversed = false; }
 			xhr.send();
 		}
 		
-		
+			console.log(window.Telegram.WebApp.initData);
 		
 		
 		
