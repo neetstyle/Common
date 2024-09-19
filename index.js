@@ -4046,15 +4046,14 @@ if (reversed == null) { reversed = false; }
 				let clip = new lib.UpgradeCellMC();
 				this.ContentMC.addChild(clip);
 				//clip.gotoAndStop("On");
-				clip.title.text = upgrade.data["name"];
+				clip.title.text = upgrade.name;
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
-				clip.cost.text = FormatNumber(upgrade.data["cost"], 1, 0);
+				clip.cost.text = FormatNumber(upgrade.price, 1, 0);
 				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");				
 				
 				clip.x = 0;
 				clip.y = 0 + 280 * i;
 				upgrade.clip = clip;
-				//console.log(upgrade.data.name +" / "+ upgrade.clip);
 				
 				clip.IconButtonMC.addEventListener("click", function() {
 					this.OpenDesciption.call(this, upgrade);
@@ -4064,7 +4063,7 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));	
 		
 				//アイコン生成
-				var bitmap = new createjs.Bitmap("images/Icon/Upgrade/" + upgrade.data["icon"] + ".png");
+				var bitmap = new createjs.Bitmap("images/Icon/Upgrade/" + upgrade.id + ".png");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 10;
 				bitmap.y = 10;
@@ -4125,7 +4124,7 @@ if (reversed == null) { reversed = false; }
 			{
 				let upgrade = main.upgradeStore[i];
 				
-				if(main.sushi >= upgrade.data.cost)
+				if(main.sushi >= upgrade.price)
 				{
 					upgrade.clip.gotoAndStop("Active");
 					upgrade.clip.cost_O.color ="#00FF00";
@@ -4506,19 +4505,20 @@ if (reversed == null) { reversed = false; }
 		
 		this.Create = function() 
 		{
-			for (var i = 0; i < main.generators.length; i++)
+			for (let i = 0; i < main.generators.length; i++)
 			{
 				let generator = main.generators[i];
 				
 				let clip = new lib.GeneratorCellMC ();
 				this.ContentMC.addChild(clip);
 				//clip.gotoAndStop("On");
-				clip.title.text = generator.data["name"];
-				clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
+				clip.title_O.text = generator.name;
+				clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
 				clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
-				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");			
-				clip.amount.text = generator.amount;
+				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");
+				clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
+				clip.amount.text = generator.posession;
 				clip.x = 0;
 				clip.y = 0 + 280 * i;
 				generator.clip = clip;
@@ -4531,7 +4531,7 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));	
 		
 				//アイコン生成
-				var bitmap = new createjs.Bitmap("images/Icon/" + generator.dir + "/" + generator.data["icon"] + ".png");
+				let bitmap = new createjs.Bitmap("images/Icon/" + generator.dir + "/" + generator.id + ".png");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 10;
 				bitmap.y = 10;
@@ -4543,14 +4543,14 @@ if (reversed == null) { reversed = false; }
 			}
 		}
 		
-		this.Open =  function() 
+		this.Open = function() 
 		{
 			if(main.generatorNotification)
 			{
 				main.generatorNotification = false;
 				this.parent.FooterMC.GeneratorDoddMC.visible = false;
 				
-				for (var i = 0; i < main.generators.length; i++)
+				for (let i = 0; i < main.generators.length; i++)
 				{
 					let generator = main.generators[i];
 					generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
@@ -4566,7 +4566,7 @@ if (reversed == null) { reversed = false; }
 			this.ScrollMC.Close();
 			createjs.Ticker.removeEventListener("tick", this._Tick);
 		
-			for (var i = 0; i < main.generators.length; i++)
+			for (let i = 0; i < main.generators.length; i++)
 			{
 				let generator = main.generators[i];
 				if(generator.doddState == 2)
@@ -4581,31 +4581,35 @@ if (reversed == null) { reversed = false; }
 		{
 			if(main.generatorNotification)
 			{
+				//タブの通知の削除
 				main.generatorNotification = false;
 				this.parent.FooterMC.GeneratorDoddMC.visible = false;
-				for (var i = 0; i < main.generators.length; i++)
+				for (let i = 0; i < main.generators.length; i++)
 				{
+					//一覧の通知の削除
 					let generator = main.generators[i];
 					generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
 				}
 			}
 		
-			var dispCount = 0;	
-			var lastLocked = 0;
-			for (var i = 0; i < main.generators.length; i++)
+			let dispCount = 0;	
+			let lastLocked = 0;
+			for (let i = 0; i < main.generators.length; i++)
 			{
 				let generator = main.generators[i];
 				
 				generator.clip.visible = true;	
-		
-				if (generator.amount > 0)
+				
+				if (generator.posession > 0)
 				{
+					//購入済み
 					generator.clip.gotoAndStop("Active");
 					lastLocked = 0;
 					dispCount++;
 				}
-				else if(main.sushi >= generator.storedCost)
+				else if(main.sushi >= generator.availableSushiCount)
 				{
+					//購入可能
 					generator.clip.gotoAndStop("Lock");
 					dispCount++;
 				}
@@ -4613,6 +4617,7 @@ if (reversed == null) { reversed = false; }
 				{
 					if(lastLocked < 2)
 					{
+						//不明
 						generator.clip.gotoAndStop("Notice");
 						dispCount++;
 					}
@@ -4948,40 +4953,56 @@ if (reversed == null) { reversed = false; }
 		{
 		    constructor()
 			{
-				this.data;
+				//this.data;
 				this.category = 1;
 				this.clip = null;
 				this.dir = "Generator";
 				
-				this.storedSps = 0;
-				this.amount = 0;
+				//this.amount = 0;
 				this.totalSushies = 0;
 				this.storedTotalSps = 0;
-				this.storedCost = 0;
+		
 				this.upgrades = [];
 				
 				this.isNotification = false;		//通知を表示したか
 				this.doddState = 0;					//0:初期、1:表示、2:バッジ表示、3:バッジ削除済み
+				
+				
+				
+				this.available = false;
+				this.availableSushiCount = 0;
+				this.description = "";
+				this.id = 0;
+				this.name = "";
+				this.posession = 0;
+				this.power = 0;
+				this.price = 0;
+				
+				this.storedCost = 0;	//計算済み価格
+				this.storedSps = 0;		//ジェネレーター生産量
+				
 		    }
 		
-			//一秒あたりの寿司
 			CalculateSps = function()
 			{
-				var mult = 1;
-				for (var i = 0; i < this.upgrades.length; i++)
+				let mult = 1;
+				for (let i = 0; i < this.upgrades.length; i++)
 				{
-					if(this.upgrades[i].amount > 0 && this.upgrades[i].data.type == 1)
-					{
-						mult *= this.upgrades[i].data.sps;
-					}
+					let upgrade = this.upgrades[i];
+					if(!upgrade.available)
+						continue;
+					mult *= upgrade.operationValue;
 				}
-				this.storedSps = this.data.sps * mult;
+				//todo
+				//ジェネレーター生産量 = base_sps * user_generator_upgrades.multiplier * global_multiplier
+				this.storedSps = this.power * mult * main.multiplier;
 			}
 		
 			//コストの計算
 			CalculateCost = function()
 			{
-				this.storedCost = Math.ceil(this.data.cost * Math.pow(main.priceIncrease, this.amount));
+				//todo
+				this.storedCost = Math.ceil(this.price * Math.pow(main.priceIncrease, this.posession - 1));
 			}
 		}
 		
@@ -4989,17 +5010,31 @@ if (reversed == null) { reversed = false; }
 		{
 		    constructor()
 			{
-				this.data;
 				this.category = 2;
 				this.clip = null;
 				this.achievementClip = null;
 				this.dir = "Upgrade";
 		
-				this.amount = 0;
+				//this.amount = 0;
 				
 				this.isNotification = false;
 				this.doddState = 0;
 				this.isAchievementUnread = true;
+				
+				
+				this.available = false;
+				this.availableHasGeneratorCount = 0;
+				this.availableHasGeneratorMstId = 0;
+				this.availableSushiCount = 0;
+				this.description = "";
+				this.id = 0;
+				this.name = "";
+				this.operationType = 0;
+				this.operationValue = 0;
+				this.posession = 0;
+				this.price = 0;
+				this.targetGeneratorMstId = 0;
+				this.targetType = 0;
 		    }
 		}
 		
@@ -5047,65 +5082,54 @@ if (reversed == null) { reversed = false; }
 		        this.sushi = 0;				//所持寿司
 		        this.totalSushi = 0;		//生成寿司
 				this.sushiPs = 0;			//一秒間当たりの寿司
+				this.sushiAdd = 0;			//サーバとの差分
 				this.fractionSps = 0;		//小数点以下の寿司
 				this.touchSps = 0			//クリック当たりの寿司
 				this.totalClick = 0;		//トータルクリック数
 				this.goldenSushi = 0;		//ゴールデン寿司
+				this.totalGoldenSushi = 0;		//ゴールデン寿司
 				this.priceIncrease = 1.15;	//価格の上昇率
 				this.skinId = 0;			//スキンId
 				this.invitationCount = 49;	//招待数
 				this.invitationState = 0;	//招待報酬 0:未受取、1:1人、2:5人、3:10人、4:50人
 				
+				this.multiplier = 1;
+				
 				//////////////////////////////////////////////////////////
 				//アップグレード
 				this.upgradeStore = [];
 				this.upgrades = [];	
-				for (var i = 0; i < upgradeData.length; i++)
-				{
-					var	upgrade = new Upgrade();
-					upgrade.data = upgradeData[i];
-					this.upgrades.push(upgrade);
-				}		
 				this.upgradeNum = 0;
 				this.upgradeNotification = false;
 				
 				//////////////////////////////////////////////////////////
 				//ジェネレーター
 				this.generators = [];
-				for (var i = 0; i < generatorData.length; i++)
-				{
-					var	generator = new Generator();
-					generator.data = generatorData[i];			
-					for (var s = 0; s < this.upgrades.length; s++)
-					{
-						if(generator.data.id == this.upgrades[s].data.generatorId)
-							generator.upgrades.push(this.upgrades[s]);
-					}
-					generator.CalculateSps();
-					this.generators.push(generator);
-				}
 				this.generatorNum = 0;
 				this.generatorNotification = false;
-		
 				//////////////////////////////////////////////////////////
 				//ショップ
 				this.shops = [];
+		/*
 				for (var i = 0; i < shopData.length; i++)
 				{
 					var	shop = new Shop();
 					shop.data = shopData[i];	
 					this.shops.push(shop);
 				}
+		*/
 			
 				//////////////////////////////////////////////////////////
 				//実績
 				this.achievements = [];
+		/*
 				for (var i = 0; i < achievementData.length; i++)
 				{
 					var	achievement = new Achievement();
 					achievement.data = achievementData[i];	
 					this.achievements.push(achievement);
 				}
+		*/
 				this.achievementNotificationNum = 0;
 				
 				//////////////////////////////////////////////////////////
@@ -5119,7 +5143,7 @@ if (reversed == null) { reversed = false; }
 				//////////////////////////////////////////////////////////
 				//パーティクル
 				this.bgParticles = [];
-				for (var i = 0; i < 50; i++)
+				for (let i = 0; i < 50; i++)
 				{
 					let clip = new lib.SushiEffectMC();
 					exportRoot.BgMC.addChild(clip);
@@ -5127,7 +5151,7 @@ if (reversed == null) { reversed = false; }
 					clip.visible = false;
 				}
 				this.clickParticles = [];
-				for (var i = 0; i < 30; i++)
+				for (let i = 0; i < 30; i++)
 				{
 					let clip = new lib.SushiEffectMC();
 					exportRoot.addChild(clip);
@@ -5158,47 +5182,44 @@ if (reversed == null) { reversed = false; }
 			
 			this.sushi += value;
 			this.totalSushi += value;
+			this.sushiAdd += value;
 			exportRoot.HeaderMC.Sushi_O.text = FormatNumber(main.sushi, 1, 2) + " pieces";
 			
 			this.AddBGParticle();
 		}
 		
+		main.UseSushi = function(value) 
+		{
+			this.sushi -= value;
+			this.sushiAdd -= value;
+			exportRoot.HeaderMC.Sushi_O.text = FormatNumber(main.sushi, 1, 2) + " pieces";
+		}
+		
 		main.TouchSps = function()
 		{
-			var bonus = 0;
-			var mult = 0;
+			var mult = 1;
+			var add = 1;
 			
-			//Fingers
 			for (var i = 0; i < this.upgrades.length; i++)
 			{
 				var upgrade = this.upgrades[i];
-				if(upgrade.amount == 0) continue;
-				if(upgrade.data.type != 3) continue;
-		
-				if(upgrade.data.subType == 1)
-				{	
-					mult += upgrade.data.sps;
-				}
-				if(upgrade.data.subType == 2)
-				{	
-					bonus += upgrade.data.sps;
-				}
-				else if(upgrade.data.subType == 3)
+				if(!upgrade.available)
+					continue;
+			
+				switch (upgrade.operationType)
 				{
-					bonus *= upgrade.data.sps;
+					case 1:
+						mult *= upgrade.operationValue;
+						break;
+					case 2:
+						add += upgrade.operationValue;
+						break;
+					default:
+						continue;
 				}
 			}
-		
-			//Pointer
-			for (i = 0; i < this.upgrades.length; i++)
-			{
-				var upgrade = this.upgrades[i];
-				if(upgrade.amount == 0) continue;
-				if(upgrade.data.type != 2) continue;
-				add += this.sushiPs * upgrade.data.sps;
-			}
-		
-			return Math.pow(2, mult) + bonus;
+			//クリック生産量 = (base_click_power * click_multiplier + total_sps * click_cps_boost) * global_multiplier
+			return (add * mult) * this.multiplier;
 		}
 		
 		main.CalculateGains = function()
@@ -5208,17 +5229,20 @@ if (reversed == null) { reversed = false; }
 			{
 				var generator = this.generators[i];
 				generator.CalculateSps();
-				generator.storedTotalSps = generator.amount * generator.storedSps;
+				generator.storedTotalSps = generator.posession * generator.storedSps;
 				this.sushiPs += generator.storedTotalSps;
 			}
 			exportRoot.HeaderMC.Sps_O.text = "per Second : " + FormatNumber(this.sushiPs, 1, 2) + " pieces";
 		}
 		
+		/*
 		main.BuyGenerator = function(generator)
 		{
-			if(this.sushi >= generator.storedCost)
+			
+			console.log(generator.data.price);
+			if(this.sushi >= generator.data.price)
 			{
-				this.sushi -= generator.storedCost;
+				this.sushi -= generator.data.price;
 				generator.amount++;
 				generator.clip.amount.text = generator.amount;
 				main.CalculateGains();
@@ -5228,8 +5252,77 @@ if (reversed == null) { reversed = false; }
 				generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
 				this.generatorNum++;
 				this.CheckAchievement_Generator();
+				
+				console.log(1);
 			}
 		}
+		*/
+		
+		main.BuyGenerator = async function(generator)
+		{
+			if(this.sushi >= generator.storedCost)
+			{
+				var suhiAdd = this.sushiAdd + generator.storedCost;
+				this.sushiAdd = 0;
+				this.UseSushi(generator.storedCost);
+				generator.posession++;
+				generator.CalculateCost();
+				main.CalculateGains();
+				generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
+				generator.clip.amount.text = generator.posession;
+				this.generatorNum++;
+				this.CheckAchievement_Generator();		
+		
+				if(main.Debug_isSound)
+					playSound("generator");
+		
+				try {
+					//寿司の差分を更新
+					await API_Request({
+						url: api_host + '/sushi/add',
+						method: 'POST',
+						data: {
+							amount: suhiAdd
+						}
+					});	
+					
+					//ジェネレーター購入
+					await API_Request({
+						url: api_host + '/generator/' + generator.id + '/purchase',
+						method: 'POST'
+					});
+		/*
+					var API_generators = await API_Request({
+						url: api_host + '/generator'
+					});	
+				
+					for (var i = 0; i < API_generators["items"].length; i++)
+					{
+						var generator = main.generators[i];
+						generator.available = API_generators["items"][i].false;
+						generator.posession = Number(API_generators["items"][i].posession);
+						generator.CalculateCost();
+						generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
+						generator.clip.amount.text = generator.posession;
+					}
+		*/
+			
+				} catch (error) {
+					console.error("todo:ジェネレーター購入エラー", error);
+				}
+			};
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		main.CalculateGeneratorCost = function()
 		{
@@ -5241,10 +5334,10 @@ if (reversed == null) { reversed = false; }
 		
 		main.BuyUpgrade = function(upgrade)
 		{
-			if(this.sushi >= upgrade.data.cost)
+			if(this.sushi >= upgrade.price)
 			{
-				this.sushi -= upgrade.data.cost;
-				upgrade.amount++;
+				this.sushi -= upgrade.price;
+				upgrade.posession++;
 				main.CalculateGains();
 				this.RebuildStore();
 				this.CalculateGains();
@@ -5263,10 +5356,10 @@ if (reversed == null) { reversed = false; }
 		{
 			for (var i = 0; i < main.generators.length; i++)
 			{
-				let generator = main.generators[i];
-		
-				if(main.sushi >= generator.storedCost)
+				var generator = main.generators[i];
+				if(main.sushi >= generator.availableSushiCount)
 				{
+					//0:初期、1:表示、2:バッジ表示、3:バッジ削除済み
 					if(generator.doddState == 0)
 					{
 						generator.doddState = 2;
@@ -5277,36 +5370,47 @@ if (reversed == null) { reversed = false; }
 			}
 		}
 		
+		main.GetGenerator = function(id)
+		{
+			for (var i = 0; i < main.generators.length; i++)
+			{
+				if(main.generators[i].id == id)
+					return main.generators[i];
+			}
+		}
+		
 		main.RebuildStore = function()
 		{
 			var isRebuild = false;
 			this.upgradeStore = [];
-			for (var i = 0; i < this.upgrades.length; i++)
+			for (let i = 0; i < this.upgrades.length; i++)
 			{
-				var upgrade = this.upgrades[i];
-				if (upgrade.amount > 0) continue;
-				switch (upgrade.data.lockType)
+				let upgrade = this.upgrades[i];
+				
+				//ジェネレーターの所持数による開放
+				if(upgrade.availableHasGeneratorMstId > 0)
 				{
-					case 1://総Sushi数
-						if(!(this.totalSushi >= upgrade.data.cost / 20)) continue;
-						if(!(this.generators[upgrade.data.generatorId - 1].amount > 0)) continue;
-						break;
-					case 2://クリック数
-						//console.log(this.totalClick +" / "+ upgrade.data.conditions);
-						if(!(this.totalClick >= upgrade.data.conditions)) continue;
-						break;
-					default:
+					if(upgrade.availableHasGeneratorCount > main.GetGenerator(upgrade.availableHasGeneratorMstId).posession)
 						continue;
 				}
+				//生成寿司数による解放
+				else 
+				{
+					if(upgrade.availableHasGeneratorMstId > main.totalSushi)
+						continue;
+				}
+			
+				//条件を満たせた場合の処理する
 				this.upgradeStore.push(upgrade);
-		
+					
+				//0:初期、1:表示、2:バッジ表示、3:バッジ削除済み
 				if(upgrade.doddState == 0)
 				{
 					upgrade.doddState = 1;
 					isRebuild = true;
 				}
-			
-				if(upgrade.doddState == 1 && main.sushi >= upgrade.data.cost)
+				
+				if(upgrade.doddState == 1 && main.sushi >= upgrade.price)
 				{
 					upgrade.doddState = 2;
 					this.upgradeNotification = true;
@@ -5850,28 +5954,232 @@ if (reversed == null) { reversed = false; }
 			exportRoot.NotificationMC.bitmap.scaleX = 208 / 64;
 			exportRoot.NotificationMC.bitmap.scaleY = 208 / 64;
 		}
+		var authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
+		//authorization = window.Telegram.WebApp.initData;
+		var api_host = "https://clicker-api.tomoya-ishisaka.workers.dev";
+		
+		function API_Request(options) {
+		    return new Promise(function(resolve, reject) {
+		        var defaultOptions = {
+		            method: 'GET',
+		            dataType: 'json',
+		            contentType: 'application/json',
+		            headers: {
+		                'Authorization': authorization
+		            },
+		            success: function(response) {
+		                resolve(response);  // 成功した場合はresolveを呼ぶ
+		            },
+		            error: function(jqXHR, textStatus, errorThrown) {
+		                reject(jqXHR);  // エラーが発生した場合はrejectを呼ぶ
+		            }
+		        };
+		
+		        var finalOptions = $.extend({}, defaultOptions, options);
+				if (options.data)
+		            finalOptions.data = JSON.stringify(options.data);
+		        $.ajax(finalOptions);
+		    });
+		}
+		
+		
+			
+			
+		/*
+		API_Request({
+			url: api_host + '/sushi/add',
+			method: 'POST',
+			data: {
+		        amount: 100
+		    },
+			success: function(response) {
+				console.log("購入完了");
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log("購入完了失敗");
+			}
+		});
+		*/
+		/*
+		{
+		    var data = {
+		        amount: 100
+		    };
+		
+		    $.ajax({
+				url: api_host + '/sushi/add',
+		        method: 'POST',
+		        dataType: 'json',
+		        contentType: 'application/json',
+		        headers: {
+					'Authorization': authorization
+					},
+		        success: function(response) {
+					console.log("Success: " + response);
+		        },
+		        error: function(jqXHR, textStatus, errorThrown) {
+		            console.error("Error: " + textStatus, errorThrown);
+		        },
+				data: JSON.stringify(data)
+		
+		    });
+		}
+		
+		
+		
+		{
+		    var data = {
+		        amount: 100
+		    };
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', api_host + '/sushi/add', true);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.setRequestHeader('Authorization', authorization);
+			xhr.onload = function() {
+				console.log(xhr.status);
+			};
+			xhr.onerror = function() {
+				console.log("Request failed");
+			};
+			xhr.send(JSON.stringify(data));
+		}
+		*/
+		
+		
+		
+		
+		/*
+		
+		var userData;
+		var generatorData;
+		
+		function API_Request(options) {
+		    // デフォルト設定
+		    var defaultOptions = {
+		        method: 'GET',
+		        dataType: 'json',
+		        contentType: 'application/json',
+		        headers: {
+		            'Authorization': authorization
+		        }
+		    };
+		    var finalOptions = $.extend({}, defaultOptions, options);
+		    $.ajax(finalOptions);
+		}
+		
+		
+		function API_Init() {
+		    API_Request({
+		        url: api_host + '/user/me',
+		        success: function(response) {
+		            console.log("ユーザデータ取得完了");
+		            userData = response;
+					AAA();
+		        },
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log("未登録につき登録");
+					API_Registration();
+		        }
+		    });
+		}
+		
+		function API_Registration() {
+		    API_Request({
+		        url: api_host + '/user/me',
+				method: 'POST',
+		        success: function(response) {
+		            console.log("ユーザデータ取得完了");
+		            userData = response;
+		        },
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log("新規登録失敗");
+		        }
+		    });
+		}
+		
+		
+		function API_Generator() {
+		    API_Request({
+		        url: api_host + '/generator',
+		        success: function(response) {
+		            console.log("ジェネレータ取得完了");
+		            generatorData = response;
+					BBB();
+		        },
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log("未登録につき登録");
+		        }
+		    });
+		}
+		
+		
+		*/
+		
+		
+		
+		
+		
+		
+		/*
+		function API_Me() {
+		    $.ajax({
+				url: api_host + '/user/me',
+		        method: 'GET',
+		        dataType: 'json',
+		        contentType: 'application/json',
+		        headers: {
+		            'Authorization': authorization
+		        },
+		        success: function(response) {
+					console.log("ユーザデータ取得完了");
+					userData = response;
+		        },
+		        error: function(jqXHR, textStatus, errorThrown) {
+		            //console.error("Error: " + textStatus, errorThrown);
+					console.error("未登録につき登録");
+					API_Register():
+		        }
+		    });
+		}
+		
+		function API_Register() {
+		    $.ajax({
+				url: api_host + 'user/register',
+		        method: 'POST',
+		        dataType: 'json',
+		        contentType: 'application/json',
+		        headers: {
+					'Authorization': window.Telegram.WebApp.initData,
+		            'accept': 'application/json'
+					},
+		        success: function(response) {
+					console.error("Success: " + response);
+		        },
+		        error: function(jqXHR, textStatus, errorThrown) {
+		            //console.error("Error: " + textStatus, errorThrown);
+					console.error("新規登録失敗");
+		        }
+		    });
+		}
+		*/
 		//////////////////////////////////////////////////////////
 		//Init
+		
 		
 		if (createjs.Touch.isSupported())
 		    createjs.Touch.enable(stage);
 		 
 		stage.enableMouseOver(20); 
 		
+		/*
 		this.executeNextFrame = function(callback) {
 		    setTimeout(callback, 0);
 		}
 		
 		this.executeNextFrame(() => {
-			
-			
-			
-			
 			main.touchSps = main.TouchSps();
 			main.RebuildStore();	
-			
-			
-		main.CalculateGeneratorCost();	
+			main.CalculateGeneratorCost();	
 			
 			this.GeneratorPanelMC.Create();
 			this.UpgradePanelMC.Create();
@@ -5884,6 +6192,7 @@ if (reversed == null) { reversed = false; }
 			main.InitBGScroll();
 			main.Debug_Init();
 		});
+		*/
 		
 		//////////////////////////////////////////////////////////
 		//BGM
@@ -5897,210 +6206,107 @@ if (reversed == null) { reversed = false; }
 		window.addEventListener('click', resumeAudioContext);
 		window.addEventListener('touchstart', resumeAudioContext);
 		
+		var API_userData;
+		var API_generatorsData;
+		var API_upgradesData;
 		
-		
-		//alert(Telegram.WebApp.initDataUnsafe.user.id);
-		
-		//7248313827
-		
-		//alert(window.Telegram.WebApp.initData);
-		
-		
-		
-		
-		/*
-		function Register() {
-		    $.ajax({
-				url: 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register',
-		        method: 'POST',
-		        dataType: 'json',
-		        contentType: 'application/json',
-		        headers: {
-					'Authorization': window.Telegram.WebApp.initData,
-		            'accept': 'application/json'
-					},
-		        success: function(response) {
-					console.error("Success: " + response);
-		        },
-		        error: function(jqXHR, textStatus, errorThrown) {
-		            console.error("Error: " + textStatus, errorThrown);
-		        }
-		    });
+		async function fetchSequentialAPIs() {
+		    try {
+		        API_userData = await API_Request({
+		            url: api_host + '/user/me'
+		        });
+		        API_generatorsData = await API_Request({
+		            url: api_host + '/generator'
+		        });
+		        API_upgradesData = await API_Request({
+		            url: api_host + '/upgrade'
+		        });
+		    } catch (error) {
+		        console.error("todo:初期データロード", error);
+		    }
 		}
-		Register();
-		*/
 		
+		this.run = async function() {
+			await fetchSequentialAPIs();
+			
+			console.log(API_userData);
+			console.log(API_generatorsData);
+			console.log(API_upgradesData);
+			
+			//////////////////////////////////////////////////////////
+			//ユーザデータ
+			main.sushi = Number(API_userData["user"].currentSushiCount);
+			main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
+			main.totalSushi = Number(API_userData["user"].totalSushiCount);
+			main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
+			//////////////////////////////////////////////////////////
+			//アップグレード
+			for (var i = 0; i < API_upgradesData["items"].length; i++)
+			{
+				var	upgrade = new Upgrade();
+				upgrade.available = API_upgradesData["items"][i].available;
+				upgrade.availableHasGeneratorCount = Number(API_upgradesData["items"][i].availableHasGeneratorCount);
+				upgrade.availableHasGeneratorMstId = Number(API_upgradesData["items"][i].availableHasGeneratorMstId);
+				upgrade.availableSushiCount = Number(API_upgradesData["items"][i].availableSushiCount);
+				upgrade.description = API_upgradesData["items"][i].description;
+				upgrade.id = Number(API_upgradesData["items"][i].id);
+				upgrade.name = API_upgradesData["items"][i].name;
+				upgrade.operationType = Number(API_upgradesData["items"][i].operationType);
+				upgrade.operationValue = Number(API_upgradesData["items"][i].operationValue);
+				upgrade.posession = Number(API_upgradesData["items"][i].posession);
+				upgrade.price = Number(API_upgradesData["items"][i].price);
+				upgrade.targetGeneratorMstId = Number(API_upgradesData["items"][i].targetGeneratorMstId);
+				upgrade.targetType = Number(API_upgradesData["items"][i].targetType);
+				main.upgrades.push(upgrade);
+			}
 		
-		/*
-		{
-		    var data = {
-		        referralCode: null
-		    };
-			var xhr = new XMLHttpRequest();
-			xhr.open('POST', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register', true);
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			xhr.setRequestHeader('accept', 'application/json');
-			xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
-		
-			xhr.onload = function() {
-		//		console.error(xhr.status);
-		alert(xhr.status);	
-			};
-		
-			xhr.onerror = function() {
-		//		console.error("Request failed");
-		alert("Request failed");		
-			};
-		
-			xhr.send(JSON.stringify(data));
-		}
-		*/
-		
-		/*
-		{
-			var xhr = new XMLHttpRequest();
-			xhr.open('GET', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/me', true);
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			xhr.setRequestHeader('accept', 'application/json');
-			xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
-		
-			xhr.onload = function() {
-		//		console.error(xhr.status);
-			alert(xhr.status);		
-			};
-		
-			xhr.onerror = function() {
-		//		console.error("Request failed");
-		alert("Request failed");			
+			//////////////////////////////////////////////////////////
+			//ジェネレーター
+			for (var i = 0; i < API_generatorsData["items"].length; i++)
+			{
+				var	generator = new Generator();
+				generator.id = Number(API_generatorsData["items"][i].id);
+				generator.available = API_generatorsData["items"][i].false;
+				generator.availableSushiCount = Number(API_generatorsData["items"][i].availableSushiCount);	
+				generator.description =  API_generatorsData["items"][i].description;
+				generator.name = API_generatorsData["items"][i].name;
+				generator.posession = Number(API_generatorsData["items"][i].posession);
+				generator.power = Number(API_generatorsData["items"][i].power);
+				generator.price = Number(API_generatorsData["items"][i].price);
 				
-			};
-		
-			xhr.send();
-		}
-		*/
-		
-		
-		{
-			var xhr = new XMLHttpRequest();
-			xhr.open('GET', 'https://clicker-api.tomoya-ishisaka.workers.dev/user/me', true);
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			xhr.setRequestHeader('accept', 'application/json');
-			xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
-		
-			xhr.onload = function() {
-				if (xhr.status >= 200 && xhr.status < 300) {
-			
-					var responseData = JSON.parse(xhr.responseText);
-					console.log(responseData);
-				} else {
-					console.error("Request failed with status: " + xhr.status);
+				for (var s = 0; s < main.upgrades.length; s++)
+				{
+					if(main.upgrades[s].targetGeneratorMstId === null)
+						continue;
+					
+					if(generator.id == main.upgrades[s].targetGeneratorMstId)
+						generator.upgrades.push(main.upgrades[s]);
 				}
-			};
+				generator.CalculateSps();
+				main.generators.push(generator);
+			}
+			//////////////////////////////////////////////////////////
 		
-			xhr.onerror = function() {
-				console.error("Request failed");		
-			};
 		
-			xhr.send();
+		
+		
+		
+		main.touchSps = main.TouchSps();
+		main.RebuildStore();	
+		main.CalculateGeneratorCost();	
+		
+		this.GeneratorPanelMC.Create();
+		this.UpgradePanelMC.Create();
+		
+		createjs.Ticker.addEventListener("tick", main.MainTick.bind(main));	
+		
+		main.InitBGScroll();
+		main.Debug_Init();
+		
+		
 		}
 		
-		
-		
-		
-		{
-			var xhr = new XMLHttpRequest();
-			xhr.open('GET', 'https://clicker-api.tomoya-ishisaka.workers.dev/generator', true);
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			xhr.setRequestHeader('accept', 'application/json');
-			xhr.setRequestHeader('Authorization', window.Telegram.WebApp.initData);
-		
-			xhr.onload = function() {
-				if (xhr.status >= 200 && xhr.status < 300) {
-			
-					var responseData = JSON.parse(xhr.responseText);
-					console.log(responseData);
-				} else {
-					console.error("Request failed with status: " + xhr.status);
-				}
-			};
-		
-			xhr.onerror = function() {
-				console.error("Request failed");		
-			};
-		
-			xhr.send();
-		}
-		
-		
-			console.log(window.Telegram.WebApp.initData);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		
-		
-		
-		function Register() {
-			const data = {
-		        referralCode: null
-		    };
-		    $.ajax({
-				url: 'https://clicker-api.tomoya-ishisaka.workers.dev/user/register',
-		        method: 'POST',
-		        dataType: 'json',
-		        contentType: 'application/json',
-		        data: JSON.stringify(data),
-		        headers: {
-					'Authorization': window.Telegram.WebApp.initData,
-					//'Authorization': 7248313827,
-		            //'Authorization': Telegram.WebApp.initDataUnsafe.user.id,
-		            'accept': 'application/json'
-					},
-		        success: function(response) {
-					//alert("Success: " + response);
-					console.error("Success: " + response);
-		        },
-		        error: function(jqXHR, textStatus, errorThrown) {
-					//alert("Error: " + textStatus, errorThrown);
-		            console.error("Error: " + textStatus, errorThrown);
-		        }
-		    });
-		}
-		Register();
-		
-		*/
-		
-		/*
-		function GetGenerator() {
-			
-		    $.ajax({
-				url: 'https://clicker-api.tomoya-ishisaka.workers.dev/generator',
-		        method: 'GET',
-		        dataType: 'json',
-		        contentType: 'application/json',
-		        headers: {
-		            'Authorization': Telegram.WebApp.initDataUnsafe.user.id
-		        },
-		        success: function(response) {
-					alert("Success: " + response);
-					//console.error("Success: " + response);
-		        },
-		        error: function(jqXHR, textStatus, errorThrown) {
-					alert("Error: " + textStatus, errorThrown);
-		            //console.error("Error: " + textStatus, errorThrown);
-		        }
-		    });
-		}
-		GetGenerator();
-		*/
+		this.run();
 	}
 
 	// actions tween:
