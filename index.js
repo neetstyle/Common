@@ -3730,8 +3730,6 @@ if (reversed == null) { reversed = false; }
 							main.log("Unknown payment status");
 		            }
 		        });	
-		    try {
-		
 		    } catch (error) {
 				main.log("支払い失敗");
 				main.log(error.message);
