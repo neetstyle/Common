@@ -6415,7 +6415,7 @@ if (reversed == null) { reversed = false; }
 		
 			//////////////////////////////////////////////////////////
 			//アップグレード
-			for (var i = 0; i < API_upgradesData["items"].length; i++)
+			for (let i = 0; i < API_upgradesData["items"].length; i++)
 			{
 				var	upgrade = new Upgrade();
 				upgrade.available = API_upgradesData["items"][i].available;
@@ -6436,7 +6436,7 @@ if (reversed == null) { reversed = false; }
 		
 			//////////////////////////////////////////////////////////
 			//ジェネレーター
-			for (var i = 0; i < API_generatorsData["items"].length; i++)
+			for (let i = 0; i < API_generatorsData["items"].length; i++)
 			{
 				var	generator = new Generator();
 				generator.id = Number(API_generatorsData["items"][i].id);
@@ -6448,7 +6448,7 @@ if (reversed == null) { reversed = false; }
 				generator.power = Number(API_generatorsData["items"][i].power);
 				generator.price = Number(API_generatorsData["items"][i].price);
 				
-				for (var s = 0; s < main.upgrades.length; s++)
+				for (let s = 0; s < main.upgrades.length; s++)
 				{
 					if(main.upgrades[s].targetGeneratorMstId === null)
 						continue;
@@ -6462,7 +6462,7 @@ if (reversed == null) { reversed = false; }
 		
 			//////////////////////////////////////////////////////////
 			//寿司ショップ
-			for (var i = 0; i < API_sushiShopData["items"].length; i++)
+			for (let i = 0; i < API_sushiShopData["items"].length; i++)
 			{
 				var	sushiShop = new SushiShop();
 				sushiShop.id = Number(API_sushiShopData["items"][i].id);
@@ -6474,7 +6474,7 @@ if (reversed == null) { reversed = false; }
 		
 			//////////////////////////////////////////////////////////
 			//金寿司ショップ
-			for (var i = 0; i < API_goldenSushiShopData["items"].length; i++)
+			for (let i = 0; i < API_goldenSushiShopData["items"].length; i++)
 			{
 				var	goldenSushiShop = new GoldenSushiShop();
 				goldenSushiShop.id = Number(API_goldenSushiShopData["items"][i].id);
