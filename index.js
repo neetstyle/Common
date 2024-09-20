@@ -3634,6 +3634,14 @@ if (reversed == null) { reversed = false; }
 		
 		this.SubmitType1 = async function()
 		{
+			
+		
+		console.log("s1");
+		console.log(this.obj.id);	
+		console.log("s2");
+				
+			
+			
 		    try {
 				console.log("API.ゴールデン寿司を購入");
 				var data = await main.API_Request({
@@ -3644,6 +3652,10 @@ if (reversed == null) { reversed = false; }
 		    } catch (error) {
 				console.error("todo:ゴールデン寿司を購入エラー", error);
 		    }
+		
+		console.log(data.paymentUrl);
+		
+		
 			WebApp.openInvoice(data.paymentUrl, (status) => {});
 		}
 		
@@ -4712,7 +4724,6 @@ if (reversed == null) { reversed = false; }
 				
 				let clip = new lib.GeneratorCellMC ();
 				this.ContentMC.addChild(clip);
-				//clip.gotoAndStop("On");
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
 				clip.title_O.text = generator.name;
 				clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
