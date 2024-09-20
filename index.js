@@ -4698,10 +4698,10 @@ if (reversed == null) { reversed = false; }
 		{
 			
 			
+			var a = generator;
 			
 			
-			
-		console.log("rrrrrrrrrrrrrr");
+		console.log("aaaaaaaaaaaaaaaaaaaaaaa");
 			
 			
 		console.log("1s");
@@ -4718,7 +4718,9 @@ if (reversed == null) { reversed = false; }
 			if (this.ScrollMC.isScrolled())
 				return;
 			
-			main.BuyGenerator(generator);
+		main.BuyGenerator(a);	
+			
+			//main.BuyGenerator(generator);
 			generator.clip.DoddMC.visible = false;
 			generator.doddState = 3;
 		}
@@ -4726,45 +4728,43 @@ if (reversed == null) { reversed = false; }
 		this.Create = function() 
 		{
 			var self = this;
-			let i =0;
-			main.generators.forEach(function(item) {
-				let clip = new lib.GeneratorCellMC ();
+			for (let i = 0; i < main.generators.length; i++)
+			{
+				var generator = main.generators[i];
+				
+				var clip = new lib.GeneratorCellMC ();
 				this.ContentMC.addChild(clip);
+				//clip.gotoAndStop("On");
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
-				clip.title_O.text = item.name;
+				clip.title_O.text = generator.name;
 				clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
-				clip.cost.text = FormatNumber(item.storedCost, 1, 0);
+				clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
 				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");
-				clip.cost_O.text = FormatNumber(item.storedCost, 1, 0);
-				clip.posession.text = item.posession;
+				clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
+				clip.posession.text = generator.posession;
 				clip.x = 0;
 				clip.y = 0 + 280 * i;
-				item.clip = clip;
-		
+				generator.clip = clip;
+			
 				clip.IconButtonMC.addEventListener("click", function() {
-					this.OpenDesciption.call(this, item);
+					this.OpenDesciption.call(this, generator);
 				}.bind(this));	
 				clip.ButtonMC.addEventListener("click", function() {
-		//			this.AddGenerator.call(this, item);
-			
-		self.AddGenerator.call(this, item);
-					
-				}.bind(this));
-			
+					//this.AddGenerator.call(this, generator);
+					self.AddGenerator.call(this, generator);
+				}.bind(this));	
+		
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/Icon/" + item.dir + "/" + item.id + ".png");
+				let bitmap = new createjs.Bitmap("images/Icon/" + generator.dir + "/" + generator.id + ".png");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 10;
 				bitmap.y = 10;
 				bitmap.scaleX = 193 / 64;
 				bitmap.scaleY = 193 / 64;
 				bitmap.mouseEnabled = false;
-		
-				item.clip.DoddMC.visible = item.doddState == 2 ? true : false;
-		
-				i++;
-			}, this);
-		
+			
+				generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
+			}
 		
 			/*
 			for (let i = 0; i < main.generators.length; i++)
