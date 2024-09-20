@@ -4258,9 +4258,9 @@ if (reversed == null) { reversed = false; }
 		{
 			for (var i = 0; i < main.upgradeStore.length; i++)
 			{
-				let upgrade = main.upgradeStore[i];
+				var upgrade = main.upgradeStore[i];
 				
-				let clip = new lib.UpgradeCellMC();
+				var clip = new lib.UpgradeCellMC();
 				this.ContentMC.addChild(clip);
 				//clip.gotoAndStop("On");
 				clip.title.text = upgrade.name;
@@ -4708,9 +4708,9 @@ if (reversed == null) { reversed = false; }
 		{
 			for (let i = 0; i < main.generators.length; i++)
 			{
-				let generator = main.generators[i];
+				var generator = main.generators[i];
 				
-				let clip = new lib.GeneratorCellMC ();
+				var clip = new lib.GeneratorCellMC ();
 				this.ContentMC.addChild(clip);
 				//clip.gotoAndStop("On");
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
