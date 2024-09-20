@@ -3696,11 +3696,11 @@ if (reversed == null) { reversed = false; }
 		    }
 		}
 		
-		this.processPayment(paymentUrl) {
+		this.processPayment = function(paymentUrl) {
 		    return new Promise((resolve, reject) => {
 		        window.Telegram.WebApp.openInvoice(paymentUrl, (status) => {
 		            console.log("Payment status:", status);
-		            
+		            main.log("Payment status : " + status);
 		            switch(status) {
 		                case "paid":
 		                    resolve("Payment successful");
