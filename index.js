@@ -5484,8 +5484,12 @@ if (reversed == null) { reversed = false; }
 		//ジェネレータの購入
 		main.BuyGenerator = async function(generator)
 		{
+			console.log(1);
 			if(this.sushi >= generator.storedCost)
 			{
+				
+		console.log(2);		
+				
 				this.buyGeneratorTask++;
 				var suhiAdd = this.sushiAdd + generator.storedCost;
 				this.sushiAdd = 0;
