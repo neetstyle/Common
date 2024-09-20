@@ -5485,6 +5485,11 @@ if (reversed == null) { reversed = false; }
 		main.BuyGenerator = async function(generator)
 		{
 			console.log(1);
+			
+			
+			console.log(this.sushi);	
+			console.log(generator.storedCost);	
+			
 			if(this.sushi >= generator.storedCost)
 			{
 				
