@@ -4698,7 +4698,6 @@ if (reversed == null) { reversed = false; }
 		{
 			
 			
-			var a = generator;
 			
 			
 		console.log("ccccccccccccccc");
@@ -4718,7 +4717,7 @@ if (reversed == null) { reversed = false; }
 			if (this.ScrollMC.isScrolled())
 				return;
 			
-		main.BuyGenerator(a);	
+		main.BuyGenerator(generator.id);	
 			
 			//main.BuyGenerator(generator);
 			generator.clip.DoddMC.visible = false;
@@ -5544,12 +5543,12 @@ if (reversed == null) { reversed = false; }
 		main.buyGeneratorTask = 0;
 		
 		//ジェネレータの購入
-		main.BuyGenerator = async function(generator)
+		main.BuyGenerator = async function(id)
 		{
 			
-			
+			  const generator = main.generators.find(g => g.id === generatorId);
 		
-		console.log("2s");
+		console.log("2sssssssssssssss");
 		console.log(generator);
 		console.log(generator.name);	
 		console.log(generator.price);	
