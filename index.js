@@ -3714,7 +3714,7 @@ if (reversed == null) { reversed = false; }
 					maxAttempts: 3
 				});
 			
-		        window.Telegram.WebApp.openInvoice(paymentUrl, (status) => {
+		        window.Telegram.WebApp.openInvoice(data.paymentUrl, (status) => {
 		            main.log("Payment status : " + status);
 		            switch(status) {
 		                case "paid":
