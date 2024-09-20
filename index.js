@@ -3684,8 +3684,41 @@ if (reversed == null) { reversed = false; }
 		    } catch (error) {
 				console.error("todo:ゴールデン寿司を購入エラー", error);
 		    }
-			window.Telegram.WebApp.openInvoice(data.paymentUrl, (status) => {});
+			//window.Telegram.WebApp.openInvoice(data.paymentUrl, (status) => {});
+		
+		    try {
+		        const result = await processPayment(data.paymentUrl);
+				main.log("支払い完了");
+				main.log(result);
+		    } catch (error) {
+				main.log("支払い失敗");
+				main.log(error.message);
+		    }
 		}
+		
+		this.processPayment(paymentUrl) {
+		    return new Promise((resolve, reject) => {
+		        window.Telegram.WebApp.openInvoice(paymentUrl, (status) => {
+		            console.log("Payment status:", status);
+		            
+		            switch(status) {
+		                case "paid":
+		                    resolve("Payment successful");
+		                    break;
+		                case "cancelled":
+		                    reject(new Error("Payment was cancelled"));
+		                    break;
+		                case "failed":
+		                    reject(new Error("Payment failed"));
+		                    break;
+		                default:
+		                    reject(new Error("Unknown payment status"));
+		            }
+		        });
+		    });
+		}
+		
+		
 		
 		/*
 		this.SubmitType1 = function()
@@ -5951,6 +5984,11 @@ if (reversed == null) { reversed = false; }
 		window.addEventListener('unhandledrejection', function(event) {
 			exportRoot.LogPanelMC.ContentMC.log.text += `Unhandled Promise Rejection: ${event.reason}` + "\n";
 		});
+		
+		main.log = function(str)
+		{
+			exportRoot.LogPanelMC.ContentMC.log.text += str + "\n";
+		}
 		//////////////////////////////////////////////////////////
 		//Layout
 		//1125 * 2436
