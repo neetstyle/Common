@@ -4716,50 +4716,41 @@ if (reversed == null) { reversed = false; }
 		
 		this.Create = function() 
 		{
-			
-			
 			let i =0;
-			  main.generators.forEach(function(generator) {
-				  
-				var clip = new lib.GeneratorCellMC ();
+			main.generators.forEach(function(item) {
+				let clip = new lib.GeneratorCellMC ();
 				this.ContentMC.addChild(clip);
-				//clip.gotoAndStop("On");
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
-				clip.title_O.text = generator.name;
+				clip.title_O.text = item.name;
 				clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
-				clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
+				clip.cost.text = FormatNumber(item.storedCost, 1, 0);
 				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");
-				clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
-				clip.posession.text = generator.posession;
+				clip.cost_O.text = FormatNumber(item.storedCost, 1, 0);
+				clip.posession.text = item.posession;
 				clip.x = 0;
 				clip.y = 0 + 280 * i;
-				generator.clip = clip;
-			
+				item.clip = clip;
+		
 				clip.IconButtonMC.addEventListener("click", function() {
-					this.OpenDesciption.call(this, generator);
+					this.OpenDesciption.call(this, item);
 				}.bind(this));	
 				clip.ButtonMC.addEventListener("click", function() {
-					this.AddGenerator.call(this, generator);
+					this.AddGenerator.call(this, item);
 				}.bind(this));	
 		
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/Icon/" + generator.dir + "/" + generator.id + ".png");
+				let bitmap = new createjs.Bitmap("images/Icon/" + item.dir + "/" + item.id + ".png");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 10;
 				bitmap.y = 10;
 				bitmap.scaleX = 193 / 64;
 				bitmap.scaleY = 193 / 64;
 				bitmap.mouseEnabled = false;
-			
-				generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
-				  
-			
-			i++;
-			
-		    }, this);
 		
+				item.clip.DoddMC.visible = item.doddState == 2 ? true : false;
 		
-		
+				i++;
+			}, this);
 		
 		
 			/*
