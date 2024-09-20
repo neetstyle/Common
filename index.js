@@ -3687,22 +3687,24 @@ if (reversed == null) { reversed = false; }
 			//window.Telegram.WebApp.openInvoice(data.paymentUrl, (status) => {});
 		    try {
 		        const result = await processPayment(data.paymentUrl);
-				main.log("支払い完了");
-				main.log(result);
+				//main.log("支払い完了");
+				//main.log(result);
 		    } catch (error) {
-				main.log("支払い失敗");
-				main.log(error.message);
+				//main.log("支払い失敗");
+				//main.log(error.message);
 		    }
 		}
 		
 		this.processPayment = function(paymentUrl) {
+			
+		main.log("1 : " + paymentUrl);	
+			
 		    return new Promise((resolve, reject) => {
 				
-		main.log(paymentUrl);		
+		main.log("2 : " + paymentUrl);	
 				
 				
 		        window.Telegram.WebApp.openInvoice(paymentUrl, (status) => {
-		            console.log("Payment status:", status);
 		            main.log("Payment status : " + status);
 		            switch(status) {
 		                case "paid":
