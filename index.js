@@ -4700,7 +4700,7 @@ if (reversed == null) { reversed = false; }
 			
 			
 			
-		console.log("ccccccccccccccc");
+		console.log("dddddddddddd");
 			
 			
 		console.log("1s");
@@ -4717,7 +4717,7 @@ if (reversed == null) { reversed = false; }
 			if (this.ScrollMC.isScrolled())
 				return;
 			
-		main.BuyGenerator(generator.id);	
+		main.BuyGenerator(generator);	
 			
 			//main.BuyGenerator(generator);
 			generator.clip.DoddMC.visible = false;
@@ -5543,11 +5543,10 @@ if (reversed == null) { reversed = false; }
 		main.buyGeneratorTask = 0;
 		
 		//ジェネレータの購入
-		main.BuyGenerator = async function(id)
+		main.BuyGenerator = async function(generator)
 		{
 			
-			  const generator = main.generators.find(g => g.id === generatorId);
-		
+			
 		console.log("2sssssssssssssss");
 		console.log(generator);
 		console.log(generator.name);	
@@ -5599,7 +5598,7 @@ if (reversed == null) { reversed = false; }
 						url: '/generator',
 						maxAttempts: 3
 					});
-				
+				/*
 					if(this.buyGeneratorTask == 1)
 					{
 						for (var i = 0; i < API_generatorsData["items"].length; i++)
@@ -5612,6 +5611,7 @@ if (reversed == null) { reversed = false; }
 							generator.clip.posession.text = generator.posession;
 						}
 					}
+				*/
 					this.buyGeneratorTask--;
 				} catch (error) {
 					console.error("todo:ジェネレーター購入エラー", error);
