@@ -3701,11 +3701,14 @@ if (reversed == null) { reversed = false; }
 		}
 		*/
 		
-		
-		
+		this.Block = function(){}
 		
 		this.SubmitType1 = async function()
 		{
+			this.parent.Mask3MC.visible = true;
+		
+			var isSuccess = false;
+			
 		    try {
 				console.log("API.ゴールデン寿司を購入");
 				var data = await main.API_Request({
@@ -3719,22 +3722,45 @@ if (reversed == null) { reversed = false; }
 		            switch(status) {
 		                case "paid":
 							main.log("支払い完了");
+							isSuccess = true;
 		                    break;
 		                case "cancelled":
-							main.log("Payment was cancelled");					
+							this.parent.MessageMC.Open("Cancelled");					
 		                    break;
 		                case "failed":
-								main.log("Payment failed");
+							this.parent.MessageMC.Open("Payment failed");
 		                    break;
 		                default:
-							main.log("Unknown payment status");
+							this.parent.MessageMC.Open("Unknown payment status");
 		            }
 		        });	
 		    } catch (error) {
-				main.log("支払い失敗");
-				main.log(error.message);
+				this.parent.MessageMC.Open(error.message);
+				//main.log(error.message);
 		    }
+		
+			if(isSuccess)
+			{
+				console.log("API.ユーザ情報取得");
+		        API_userData = await main.API_Request({
+		            url: '/user/me',
+					maxAttempts: 3
+		        });
+				main.sushi = Number(API_userData["user"].currentSushiCount);
+				main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
+				main.totalSushi = Number(API_userData["user"].totalSushiCount);
+				main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
+			}
+			this.parent.Mask3MC.visible = false;
 		}
+		
+		this.Type1 = function()
+		{
+			
+			main.AddGoldenSushi(this.obj.data.value);
+			this.parent.MessageMC.Open( this.obj.data.name + "を受け取りました");
+			this.Close();
+		} 
 		
 		
 		
@@ -6063,6 +6089,9 @@ if (reversed == null) { reversed = false; }
 		
 		this.MaskMC.visible = false;
 		this.Mask2MC.visible = false;
+		this.Mask3MC.visible = false;
+		this.Block = function(){}
+		this.Mask3MC.addEventListener("click", this.Block.bind(this));
 		
 		this.FooterMC.AchievementBadgeMC.visible = false;
 		this.FooterMC.GeneratorDoddMC.visible = false;
@@ -6512,8 +6541,8 @@ if (reversed == null) { reversed = false; }
 		window.addEventListener('touchstart', resumeAudioContext);
 		//////////////////////////////////////////////////////////
 		//API
-		//var authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
-		authorization = window.Telegram.WebApp.initData;
+		var authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
+		//authorization = window.Telegram.WebApp.initData;
 		var api_host = "https://clicker-api.tomoya-ishisaka.workers.dev";
 		
 		main.API_Request = function(options) {
@@ -6799,6 +6828,13 @@ if (reversed == null) { reversed = false; }
 	this.LodingMC.name = "LodingMC";
 
 	this.timeline.addTween(cjs.Tween.get(this.LodingMC).wait(1));
+
+	// Mask3
+	this.Mask3MC = new lib.MaskMC();
+	this.Mask3MC.name = "Mask3MC";
+	this.Mask3MC.setTransform(563,1218,50.0005,50.0005,0,0,0,50,50);
+
+	this.timeline.addTween(cjs.Tween.get(this.Mask3MC).wait(1));
 
 	// Mask2
 	this.Mask2MC = new lib.MaskMC();
