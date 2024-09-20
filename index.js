@@ -4696,79 +4696,21 @@ if (reversed == null) { reversed = false; }
 		
 		this.AddGenerator = function (generator)
 		{
-			
-			
-		console.log("dddddddddddd");
-			
-			
-		console.log("1s");
-		console.log(generator);
-		console.log(generator.name);	
-		console.log(generator.price);	
-		console.log(generator.storedCost);	
-		console.log("1e");
-			
-		
-			
-			
-			
 			if (this.ScrollMC.isScrolled())
 				return;
 			
-		main.BuyGenerator(generator, generator.id);	
-			
-			//main.BuyGenerator(generator);
+			main.BuyGenerator(generator);
 			generator.clip.DoddMC.visible = false;
 			generator.doddState = 3;
 		}
 		
 		this.Create = function() 
 		{
-			var self = this;
 			for (let i = 0; i < main.generators.length; i++)
 			{
 				let generator = main.generators[i];
 				
 				let clip = new lib.GeneratorCellMC ();
-				this.ContentMC.addChild(clip);
-				//clip.gotoAndStop("On");
-				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
-				clip.title_O.text = generator.name;
-				clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
-				clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
-				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");
-				clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
-				clip.posession.text = generator.posession;
-				clip.x = 0;
-				clip.y = 0 + 280 * i;
-				generator.clip = clip;
-			
-				clip.IconButtonMC.addEventListener("click", function() {
-					this.OpenDesciption.call(this, generator);
-				}.bind(this));	
-				clip.ButtonMC.addEventListener("click", function() {
-					//this.AddGenerator.call(this, generator);
-					self.AddGenerator.call(this, generator);
-				}.bind(this));	
-		
-				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/Icon/" + generator.dir + "/" + generator.id + ".png");
-				clip.IconMC.addChild(bitmap);
-				bitmap.x = 10;
-				bitmap.y = 10;
-				bitmap.scaleX = 193 / 64;
-				bitmap.scaleY = 193 / 64;
-				bitmap.mouseEnabled = false;
-			
-				generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
-			}
-		
-			/*
-			for (let i = 0; i < main.generators.length; i++)
-			{
-				var generator = main.generators[i];
-				
-				var clip = new lib.GeneratorCellMC ();
 				this.ContentMC.addChild(clip);
 				//clip.gotoAndStop("On");
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
@@ -4800,7 +4742,6 @@ if (reversed == null) { reversed = false; }
 			
 				generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
 			}
-			*/
 		}
 		
 		this.Open = function() 
@@ -5541,25 +5482,12 @@ if (reversed == null) { reversed = false; }
 		main.buyGeneratorTask = 0;
 		
 		//ジェネレータの購入
-		main.BuyGenerator = async function(generator, id)
+		main.BuyGenerator = async function(generator)
 		{
-			
-			
-			console.log("id " + id);
-			
-		console.log("2sssssssssssssss");
-		console.log(generator);
-		console.log(generator.name);	
-		console.log(generator.price);	
-		console.log(generator.storedCost);	
-		console.log("2e");
-				
-			
-			
 			if(this.sushi >= generator.storedCost)
 			{
 				this.buyGeneratorTask++;
-				var suhiAdd = this.sushiAdd + generator.storedCost;
+				let suhiAdd = this.sushiAdd + generator.storedCost;
 				this.sushiAdd = 0;
 				this.UseSushi(generator.storedCost);
 				generator.posession++;
@@ -5598,20 +5526,19 @@ if (reversed == null) { reversed = false; }
 						url: '/generator',
 						maxAttempts: 3
 					});
-				/*
+		
 					if(this.buyGeneratorTask == 1)
 					{
 						for (var i = 0; i < API_generatorsData["items"].length; i++)
 						{
-							var generator = main.generators[i];
-							generator.available = API_generatorsData["items"][i].false;
-							generator.posession = Number(API_generatorsData["items"][i].posession);
-							generator.CalculateCost();
-							generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
-							generator.clip.posession.text = generator.posession;
+							let _generator = main.generators[i];
+							_generator.available = API_generatorsData["items"][i].false;
+							_generator.posession = Number(API_generatorsData["items"][i].posession);
+							_generator.CalculateCost();
+							_generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
+							_generator.clip.posession.text = generator.posession;
 						}
 					}
-				*/
 					this.buyGeneratorTask--;
 				} catch (error) {
 					console.error("todo:ジェネレーター購入エラー", error);
@@ -5633,7 +5560,7 @@ if (reversed == null) { reversed = false; }
 		{
 			if(this.sushi >= upgrade.price)
 			{
-				var suhiAdd = this.sushiAdd + upgrade.price;
+				let suhiAdd = this.sushiAdd + upgrade.price;
 				this.sushiAdd = 0;
 				this.UseSushi(upgrade.price);
 				upgrade.posession = true;
@@ -5675,11 +5602,11 @@ if (reversed == null) { reversed = false; }
 						maxAttempts: 3
 					});
 				
-					for (var i = 0; i < API_upgradesData["items"].length; i++)
+					for (let i = 0; i < API_upgradesData["items"].length; i++)
 					{
-						var upgrade = main.upgrades[i];
-						upgrade.available = API_upgradesData["items"][i].available;
-						upgrade.posession = API_upgradesData["items"][i].posession;
+						let _upgrade = main.upgrades[i];
+						_upgrade.available = API_upgradesData["items"][i].available;
+						_upgrade.posession = API_upgradesData["items"][i].posession;
 					}
 					this.RebuildStore();
 				} catch (error) {
