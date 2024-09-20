@@ -3684,8 +3684,8 @@ if (reversed == null) { reversed = false; }
 		    } catch (error) {
 				console.error("todo:ゴールデン寿司を購入エラー", error);
 		    }
-			//window.Telegram.WebApp.openInvoice(data.paymentUrl, (status) => {});
-		
+			window.Telegram.WebApp.openInvoice(data.paymentUrl, (status) => {});
+		/*
 		    try {
 		        const result = await processPayment(data.paymentUrl);
 				main.log("支払い完了");
@@ -3694,6 +3694,7 @@ if (reversed == null) { reversed = false; }
 				main.log("支払い失敗");
 				main.log(error.message);
 		    }
+		*/
 		}
 		
 		this.processPayment = function(paymentUrl) {
