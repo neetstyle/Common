@@ -4696,16 +4696,6 @@ if (reversed == null) { reversed = false; }
 		
 		this.AddGenerator = function (generator)
 		{
-		
-		
-		console.log("1s");
-		console.log(generator.name);	
-		console.log(generator.price);	
-		console.log(generator.storedCost);	
-		console.log("1e");
-				
-			
-			
 			if (this.ScrollMC.isScrolled())
 				return;
 			
@@ -5533,8 +5523,20 @@ if (reversed == null) { reversed = false; }
 		//ジェネレータの購入
 		main.BuyGenerator = async function(generator)
 		{
+			
+			
+		console.log("1s");
+		console.log(generator.name);	
+		console.log(generator.price);	
+		console.log(generator.storedCost);	
+		
+			console.log(this.sushi +" / "+ generator.storedCost);	
+			
 			if(this.sushi >= generator.storedCost)
 			{
+				
+		console.log("1e");			
+				
 				this.buyGeneratorTask++;
 				var suhiAdd = this.sushiAdd + generator.storedCost;
 				this.sushiAdd = 0;
