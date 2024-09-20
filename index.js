@@ -3672,17 +3672,8 @@ if (reversed == null) { reversed = false; }
 		    }
 		}
 		
-		
 		this.SubmitType1 = async function()
 		{
-			
-		
-		console.log("s1");
-		console.log(this.obj.id);	
-		console.log("s2");
-				
-			
-			
 		    try {
 				console.log("API.ゴールデン寿司を購入");
 				var data = await main.API_Request({
@@ -3693,11 +3684,7 @@ if (reversed == null) { reversed = false; }
 		    } catch (error) {
 				console.error("todo:ゴールデン寿司を購入エラー", error);
 		    }
-		
-		console.log(data.paymentUrl);
-		
-		
-			WebApp.openInvoice(data.paymentUrl, (status) => {});
+			window.Telegram.WebApp.openInvoice(data.paymentUrl, (status) => {});
 		}
 		
 		/*
