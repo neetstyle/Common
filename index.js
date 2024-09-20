@@ -3671,7 +3671,7 @@ if (reversed == null) { reversed = false; }
 				}
 		    }
 		}
-		
+		/*
 		this.SubmitType1 = async function()
 		{
 		    try {
@@ -3681,6 +3681,11 @@ if (reversed == null) { reversed = false; }
 					method: 'POST',
 					maxAttempts: 3
 				});
+			
+			
+			
+			
+			
 		    } catch (error) {
 				console.error("todo:ゴールデン寿司を購入エラー", error);
 		    }
@@ -3694,15 +3699,56 @@ if (reversed == null) { reversed = false; }
 				//main.log(error.message);
 		    }
 		}
+		*/
 		
+		
+		
+		
+		this.SubmitType1 = async function()
+		{
+		    try {
+				console.log("API.ゴールデン寿司を購入");
+				var data = await main.API_Request({
+					url: '/market/golden-sushi/' + this.obj.id + '/purchase',
+					method: 'POST',
+					maxAttempts: 3
+				});
+			
+		        window.Telegram.WebApp.openInvoice(paymentUrl, (status) => {
+		            main.log("Payment status : " + status);
+		            switch(status) {
+		                case "paid":
+							main.log("支払い完了");
+		                    break;
+		                case "cancelled":
+							main.log("Payment was cancelled");					
+		                    break;
+		                case "failed":
+								main.log("Payment failed");
+		                    break;
+		                default:
+							main.log("Unknown payment status");
+		            }
+		        });	
+		    try {
+		
+		    } catch (error) {
+				main.log("支払い失敗");
+				main.log(error.message);
+		    }
+		}
+		
+		
+		
+		/*
 		this.processPayment = function(paymentUrl) {
 			
-		main.log("1 : " + paymentUrl);	
+			//ここまで呼ばれない
+			main.log("2 : " + paymentUrl);	
 			
 		    return new Promise((resolve, reject) => {
 				
-		main.log("2 : " + paymentUrl);	
-				
+			main.log("3 : " + paymentUrl);
 				
 		        window.Telegram.WebApp.openInvoice(paymentUrl, (status) => {
 		            main.log("Payment status : " + status);
@@ -3722,7 +3768,7 @@ if (reversed == null) { reversed = false; }
 		        });
 		    });
 		}
-		
+		*/
 		
 		
 		/*
