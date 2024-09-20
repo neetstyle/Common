@@ -4701,7 +4701,7 @@ if (reversed == null) { reversed = false; }
 			
 			
 			
-		
+		console.log("rrrrrrrrrrrrrr");
 			
 			
 		console.log("1s");
@@ -4725,6 +4725,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.Create = function() 
 		{
+			var self = this;
 			let i =0;
 			main.generators.forEach(function(item) {
 				let clip = new lib.GeneratorCellMC ();
@@ -4744,7 +4745,10 @@ if (reversed == null) { reversed = false; }
 					this.OpenDesciption.call(this, item);
 				}.bind(this));	
 				clip.ButtonMC.addEventListener("click", function() {
-					this.AddGenerator.call(this, item);
+		//			this.AddGenerator.call(this, item);
+			
+		self.AddGenerator.call(this, item);
+					
 				}.bind(this));
 			
 				//アイコン生成
