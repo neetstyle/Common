@@ -4715,7 +4715,7 @@ if (reversed == null) { reversed = false; }
 			if (this.ScrollMC.isScrolled())
 				return;
 			
-		main.BuyGenerator(generator, id);	
+		main.BuyGenerator(generator, generator.id);	
 			
 			//main.BuyGenerator(generator);
 			generator.clip.DoddMC.visible = false;
@@ -5545,8 +5545,7 @@ if (reversed == null) { reversed = false; }
 		{
 			
 			
-			console.log("id : " + id);
-			
+			console.log("id " + id);
 			
 		console.log("2sssssssssssssss");
 		console.log(generator);
