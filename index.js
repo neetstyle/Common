@@ -3519,6 +3519,8 @@ if (reversed == null) { reversed = false; }
 		
 		this.stop();
 		
+		this.Mask = function(){} 
+		
 		this.Close = function()
 		{
 			this.parent.MaskMC.removeEventListener("click", this._mask);
@@ -3562,7 +3564,6 @@ if (reversed == null) { reversed = false; }
 			this.bitmap.scaleX = 209 / this.bitmap.image.width;
 			this.bitmap.scaleY = 209 / this.bitmap.image.height;
 		*/
-		
 		
 			this.title_O.text = this.obj.name;
 			//this.desciption.text = this.obj.data["desciption"];
@@ -3635,73 +3636,7 @@ if (reversed == null) { reversed = false; }
 			}
 		}
 		
-		this.Mask = function(){} 
 		
-		
-		
-		//ユーザ認証
-		this.UserAuthentication = async function()
-		{
-		    try {
-				console.log("API.ユーザ情報取得");
-		        API_userData = await API_Request({
-		            url: '/user/me',
-					maxAttempts: 1
-		        });
-				console.log(API_userData);
-		    } catch (error) {
-				try {
-					console.log("API.新規ユーザ登録");
-					await API_Request({
-						url: '/user/register',
-						method: 'POST',
-						maxAttempts: 1,
-						data: {
-							referralCode: null
-						}
-					});
-					console.log("API.ユーザ情報取得");
-					API_userData = await API_Request({
-						url: '/user/me',
-						maxAttempts: 1
-					});
-					console.log(API_userData);
-				} catch (recoveryError) {
-					this.MessageMC.Open( "please wait a while and try again.");
-				}
-		    }
-		}
-		/*
-		this.SubmitType1 = async function()
-		{
-		    try {
-				console.log("API.ゴールデン寿司を購入");
-				var data = await main.API_Request({
-					url: '/market/golden-sushi/' + this.obj.id + '/purchase',
-					method: 'POST',
-					maxAttempts: 3
-				});
-			
-			
-			
-			
-			
-		    } catch (error) {
-				console.error("todo:ゴールデン寿司を購入エラー", error);
-		    }
-			//window.Telegram.WebApp.openInvoice(data.paymentUrl, (status) => {});
-		    try {
-		        const result = await processPayment(data.paymentUrl);
-				//main.log("支払い完了");
-				//main.log(result);
-		    } catch (error) {
-				//main.log("支払い失敗");
-				//main.log(error.message);
-		    }
-		}
-		*/
-		
-		this.Block = function(){}
 		
 		this.SubmitType1 = async function()
 		{
@@ -3746,78 +3681,66 @@ if (reversed == null) { reversed = false; }
 		            url: '/user/me',
 					maxAttempts: 3
 		        });
-				main.sushi = Number(API_userData["user"].currentSushiCount);
+		
 				main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
-				main.totalSushi = Number(API_userData["user"].totalSushiCount);
 				main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
+				this.parent.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
 			}
+		
 			this.parent.Mask3MC.visible = false;
-		}
-		
-		this.Type1 = function()
-		{
-			
-			main.AddGoldenSushi(this.obj.data.value);
-			this.parent.MessageMC.Open( this.obj.data.name + "を受け取りました");
 			this.Close();
-		} 
-		
-		
-		
-		/*
-		this.processPayment = function(paymentUrl) {
-			
-			//ここまで呼ばれない
-			main.log("2 : " + paymentUrl);	
-			
-		    return new Promise((resolve, reject) => {
-				
-			main.log("3 : " + paymentUrl);
-				
-		        window.Telegram.WebApp.openInvoice(paymentUrl, (status) => {
-		            main.log("Payment status : " + status);
-		            switch(status) {
-		                case "paid":
-		                    resolve("Payment successful");
-		                    break;
-		                case "cancelled":
-		                    reject(new Error("Payment was cancelled"));
-		                    break;
-		                case "failed":
-		                    reject(new Error("Payment failed"));
-		                    break;
-		                default:
-		                    reject(new Error("Unknown payment status"));
-		            }
-		        });
-		    });
 		}
-		*/
-		
-		
-		/*
-		this.SubmitType1 = function()
-		{
-			
-			main.AddGoldenSushi(this.obj.data.value);
-			this.parent.MessageMC.Open( this.obj.data.name + "を受け取りました");
-			this.Close();
-		} 
-		*/
-		
-		
-		
-		
 		this.ShopType1ButtonMC.addEventListener("click", this.SubmitType1.bind(this));
 		
-		this.SubmitType2 = function()
+		this.SubmitType2 = async function()
 		{
-			if(this.obj.data.price > main.goldenSushi)
+			if(this.obj.price > main.goldenSushi)
 				return;
 			
-			main.RemoveGoldenSushi(this.obj.data.price);
-			main.AddSushi(this.obj.data.value);
-			this.parent.MessageMC.Open( this.obj.data.name + "を受け取りました");
+			this.parent.Mask3MC.visible = true;
+		
+			if(main.sushiAdd > 0)
+			{
+				console.log("API.クリックで得た寿司を保存");
+				await main.API_Request({
+					url: '/sushi/add',
+					method: 'POST',
+					maxAttempts: 3,
+					data: {
+						amount: main.sushiAdd
+					}
+				});	
+				main.sushiAdd = 0;
+			}
+		
+		    try {
+				console.log("API.寿司を購入");
+				await main.API_Request({
+					url: '/market/sushi/' + this.obj.id + '/purchase',
+					method: 'POST',
+					maxAttempts: 3,
+				});
+		    } catch (error) {
+				this.parent.MessageMC.Open("購入に失敗しました");
+				this.parent.Mask3MC.visible = false;
+				this.Close();
+				return;
+		    }
+			
+			console.log("API.自身のユーザー情報を得る");
+			API_userData = await main.API_Request({
+				url: '/user/me',
+				maxAttempts: 3
+			});
+			
+			main.sushi = Number(API_userData["user"].currentSushiCount);
+			main.totalSushi = Number(API_userData["user"].totalSushiCount);
+			main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
+			this.parent.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
+			main.SushiDisplayUdates();
+			this.parent.MessageMC.Open( this.obj.name + "を受け取りました");
+		
+			this.parent.Mask3MC.visible = false;
 			this.Close();
 		} 
 		this.ShopType2ButtonMC.addEventListener("click", this.SubmitType2.bind(this));
@@ -5612,8 +5535,10 @@ if (reversed == null) { reversed = false; }
 				//Tick
 				this.fps1LastTickTime = 0;
 				this.fps2LastTickTime = 0;
+				this.fps3LastTickTime = -60;
 				this.fps1Count = 0;
 				this.fps2Count = 0;
+				this.fps3Count = 0;
 				this.bgLastTickTime = 0;
 			
 				//////////////////////////////////////////////////////////
@@ -5983,6 +5908,23 @@ if (reversed == null) { reversed = false; }
 				if(ammount > 0)
 					this.AddSushi(ammount);
 			}
+		
+			{
+				let now = createjs.Ticker.getTime() * 0.001;
+				if (now - this.fps3LastTickTime >= 60)
+				{
+					this.fps3LastTickTime = now;
+					console.log("API.最新ログイン日時を更新");
+					main.API_Request({
+						url: '/user/online',
+						method: 'POST',
+						maxAttempts: 1
+					});
+				}
+		
+			}
+		
+		
 		}
 		//////////////////////////////////////////////////////////
 		//Debug
