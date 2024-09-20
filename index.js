@@ -4701,7 +4701,7 @@ if (reversed == null) { reversed = false; }
 			var a = generator;
 			
 			
-		console.log("aaaaaaaaaaaaaaaaaaaaaaa");
+		console.log("ccccccccccccccc");
 			
 			
 		console.log("1s");
@@ -4730,9 +4730,9 @@ if (reversed == null) { reversed = false; }
 			var self = this;
 			for (let i = 0; i < main.generators.length; i++)
 			{
-				var generator = main.generators[i];
+				let generator = main.generators[i];
 				
-				var clip = new lib.GeneratorCellMC ();
+				let clip = new lib.GeneratorCellMC ();
 				this.ContentMC.addChild(clip);
 				//clip.gotoAndStop("On");
 				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
