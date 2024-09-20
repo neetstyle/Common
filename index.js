@@ -2207,19 +2207,19 @@ if (reversed == null) { reversed = false; }
 	// Text
 	this.BGMButtonMC = new lib.DebugMC();
 	this.BGMButtonMC.name = "BGMButtonMC";
-	this.BGMButtonMC.setTransform(830,432.85,1,1,0,0,0,250,50);
+	this.BGMButtonMC.setTransform(834.05,416.1,1,1,0,0,0,250,50);
 
 	this.SoundButtonMC = new lib.DebugMC();
 	this.SoundButtonMC.name = "SoundButtonMC";
-	this.SoundButtonMC.setTransform(290.65,432.85,1,1,0,0,0,250,50);
+	this.SoundButtonMC.setTransform(302.05,416.1,1,1,0,0,0,250,50);
 
 	this.MemoryButtonMC = new lib.DebugMC();
 	this.MemoryButtonMC.name = "MemoryButtonMC";
-	this.MemoryButtonMC.setTransform(830,271.95,1,1,0,0,0,250,50);
+	this.MemoryButtonMC.setTransform(834.05,210,1,1,0,0,0,250,50);
 
 	this.SpeedButtonMC = new lib.DebugMC();
 	this.SpeedButtonMC.name = "SpeedButtonMC";
-	this.SpeedButtonMC.setTransform(290.65,271.95,1,1,0,0,0,250,50);
+	this.SpeedButtonMC.setTransform(302.05,210,1,1,0,0,0,250,50);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.SpeedButtonMC},{t:this.MemoryButtonMC},{t:this.SoundButtonMC},{t:this.BGMButtonMC}]}).wait(1));
 
@@ -2232,7 +2232,44 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.OptionContentMC, new cjs.Rectangle(0,0,1125,483.4), null);
+}).prototype = getMCSymbolPrototype(lib.OptionContentMC, new cjs.Rectangle(0,0,1125,466.6), null);
+
+
+(lib.LogContentMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Text
+	this.log = new cjs.Text("", "30px 'Potta One'", "#FFFFFF");
+	this.log.name = "log";
+	this.log.lineHeight = 45;
+	this.log.lineWidth = 1121;
+	this.log.parent = this;
+	this.log.setTransform(2,152);
+
+	this.ClearButtonMC = new lib.DebugMC();
+	this.ClearButtonMC.name = "ClearButtonMC";
+	this.ClearButtonMC.setTransform(562.5,100,1,1,0,0,0,250,50);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.ClearButtonMC},{t:this.log}]}).wait(1));
+
+	// BG
+	this.ContentBGMC = new lib.ButtonMC();
+	this.ContentBGMC.name = "ContentBGMC";
+	this.ContentBGMC.setTransform(0,0,11.25,0.9999);
+
+	this.timeline.addTween(cjs.Tween.get(this.ContentBGMC).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.LogContentMC, new cjs.Rectangle(0,0,1125,1406.3), null);
 
 
 (lib.SushiMC = function(mode,startPosition,loop,reversed) {
@@ -2903,11 +2940,15 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.Sps).wait(1));
 
 	// Debug
+	this.LogButtonMC = new lib.ButtonMC();
+	this.LogButtonMC.name = "LogButtonMC";
+	this.LogButtonMC.setTransform(1074.3,50,1,1,0,0,0,50,50);
+
 	this.OptionButtonMC = new lib.ButtonMC();
 	this.OptionButtonMC.name = "OptionButtonMC";
 	this.OptionButtonMC.setTransform(50,50,1,1,0,0,0,50,50);
 
-	this.timeline.addTween(cjs.Tween.get(this.OptionButtonMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.OptionButtonMC},{t:this.LogButtonMC}]}).wait(1));
 
 	// BG
 	this.instance = new lib.header();
@@ -4006,6 +4047,101 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.OptionPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3005), null);
+
+
+(lib.LogPanelMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.ScrollMC.content = this.ContentMC;
+		
+		this.Create = function() 
+		{
+			//////////////////////////////////////
+			//
+			var posY = 100;
+		
+		
+			posY += 50;
+			this.ScrollMC.SetFullSize(posY);
+		}
+		
+		this.Reset = function() 
+		{
+		
+			this.Create();
+		}
+		
+		this.Open =  function() 
+		{
+			this.Reset();
+			this.ScrollMC.Open();
+		}
+		
+		this.Close =  function() 
+		{
+			this.ScrollMC.Close();
+		}
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// AS
+	this.ScrollMC = new lib.ScrollMC();
+	this.ScrollMC.name = "ScrollMC";
+	this.ScrollMC.setTransform(-75,25,1,1,0,0,0,25,25);
+
+	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
+
+	// Mask (mask)
+	var mask = new cjs.Shape();
+	mask._off = true;
+	mask.graphics.p("EhX4HUwMAAAupfMCvxAAAMAAAOpfg");
+	mask.setTransform(562.5,3040.7);
+
+	// Cell
+	this.ContentMC = new lib.LogContentMC();
+	this.ContentMC.name = "ContentMC";
+
+	var maskedShapeInstanceList = [this.ContentMC];
+
+	for(var shapedInstanceItr = 0; shapedInstanceItr < maskedShapeInstanceList.length; shapedInstanceItr++) {
+		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
+	}
+
+	this.timeline.addTween(cjs.Tween.get(this.ContentMC).wait(1));
+
+	// BG
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("EhX4jqXMCvxAAAMAAAHUvMivxAAAg");
+	this.shape.setTransform(562.5,1500);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#3399FF").s().p("EhX4DqYMAAAnUvMCvxAAAMAAAHUvg");
+	this.shape_1.setTransform(562.5,1500);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.LogPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3005), null);
 
 
 (lib.GeneratorContentMC = function(mode,startPosition,loop,reversed) {
@@ -5813,6 +5949,21 @@ if (reversed == null) { reversed = false; }
 				exportRoot.HeaderMC.debug.visible = false;
 			}
 		}
+		
+		////////////////////////
+		this.LogPanelMC.ContentMC.ClearButtonMC.status.text = "Clear";
+		this.LogPanelMC.ContentMC.ClearButtonMC.on("click", function(evt) {
+			this.LogPanelMC.ContentMC.log.text = "";
+		});
+		
+		window.onerror = function(message, source, lineno, colno, error) {
+		    exportRoot.LogPanelMC.ContentMC.log.text +=`Error: ${message}\nLine: ${lineno}` + "\n";
+		    return true;
+		};
+		
+		window.addEventListener('unhandledrejection', function(event) {
+			exportRoot.LogPanelMC.ContentMC.log.text += `Unhandled Promise Rejection: ${event.reason}` + "\n";
+		});
 		//////////////////////////////////////////////////////////
 		//Layout
 		//1125 * 2436
@@ -6056,6 +6207,20 @@ if (reversed == null) { reversed = false; }
 		this.OptionPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 		this.OptionPanelMC.visible = false;	
 		
+		//LogPanel
+		this.HeaderMC.LogButtonMC.addEventListener("click", ClickHandler_LogPanelOpen.bind(this));
+		function ClickHandler_LogPanelOpen()
+		{
+			this.PanelOpen(6);
+			if(main.Debug_isSound)
+				playSound("open");
+		}
+		this.LogPanelMC.scaleX = this.canvasScaleX;
+		this.LogPanelMC.scaleY = this.canvasScaleX;
+		this.LogPanelMC.x = 0;
+		this.LogPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
+		this.LogPanelMC.visible = false;	
+		
 		this.PanelOpen = function (_page)
 		{
 			switch (this.page)
@@ -6082,6 +6247,10 @@ if (reversed == null) { reversed = false; }
 					this.Close(this.OptionPanelMC);
 					this.OptionPanelMC.Close();
 					break;
+				case 6:
+					this.Close(this.LogPanelMC);
+					this.LogPanelMC.Close();
+					break;
 		    }	
 		
 			if(this.page != _page)
@@ -6107,6 +6276,10 @@ if (reversed == null) { reversed = false; }
 					case 5:
 						this.Open(this.OptionPanelMC, true);
 						this.OptionPanelMC.Open();
+						break;
+					case 6:
+						this.Open(this.LogPanelMC, true);
+						this.LogPanelMC.Open();
 						break;
 				}
 				this.page = _page;
@@ -6605,6 +6778,10 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.FooterMC},{t:this.HeaderMC}]}).wait(1));
 
 	// Panel
+	this.LogPanelMC = new lib.LogPanelMC();
+	this.LogPanelMC.name = "LogPanelMC";
+	this.LogPanelMC.setTransform(3584.5,2675);
+
 	this.OptionPanelMC = new lib.OptionPanelMC();
 	this.OptionPanelMC.name = "OptionPanelMC";
 	this.OptionPanelMC.setTransform(2249.85,3588,1,1,0,0,0,-2.3,913);
@@ -6625,7 +6802,7 @@ if (reversed == null) { reversed = false; }
 	this.GeneratorPanelMC.name = "GeneratorPanelMC";
 	this.GeneratorPanelMC.setTransform(-3098.95,3588,1,1,0,0,0,0,913);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorPanelMC},{t:this.UpgradePanelMC},{t:this.AchievementPanelMC},{t:this.ShopPanelMC},{t:this.OptionPanelMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorPanelMC},{t:this.UpgradePanelMC},{t:this.AchievementPanelMC},{t:this.ShopPanelMC},{t:this.OptionPanelMC},{t:this.LogPanelMC}]}).wait(1));
 
 	// Invite
 	this.InviteButtonMC = new lib.InviteButtonMC();
@@ -6657,7 +6834,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(-2636.9,-1179.8,6016.6,9895.5);
+p.nominalBounds = new cjs.Rectangle(-2636.9,-1179.8,7348.9,9895.5);
 // library properties:
 lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',
