@@ -6832,7 +6832,7 @@ if (reversed == null) { reversed = false; }
 	// Panel
 	this.LogPanelMC = new lib.LogPanelMC();
 	this.LogPanelMC.name = "LogPanelMC";
-	this.LogPanelMC.setTransform(3584.5,2675);
+	this.LogPanelMC.setTransform(3584.5,3588,1,1,0,0,0,0,913);
 
 	this.OptionPanelMC = new lib.OptionPanelMC();
 	this.OptionPanelMC.name = "OptionPanelMC";
