@@ -81,25 +81,19 @@
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, main;
 function init() {
+
+	console.log("v1");
+
 	canvas = document.getElementById("canvas");
 	anim_container = document.getElementById("animation_container");
 	dom_overlay_container = document.getElementById("dom_overlay_container");
 	var comp=AdobeAn.getComposition("969C0F3DFF839440AC4059700CCE57F9");
 	var lib=comp.getLibrary();
-	//var loader = new createjs.LoadQueue(false);
-var loader = new createjs.LoadQueue(true);
+	var loader = new createjs.LoadQueue(true);
 	loader.installPlugin(createjs.Sound);
 	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
 	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
-
-
-	loader.addEventListener("progress", function(evt){handleProgress(evt,comp)});
-
-
-
-
-
-
+	loader.addEventListener("progress", function(evt){handleProgress(evt)});
 	loader.loadManifest(lib.properties.manifest);
 	createjs.Sound.alternateExtensions = ["mp3"];
 	createjs.Sound.registerSound("sounds/click.mp3", "click");
@@ -111,24 +105,13 @@ var loader = new createjs.LoadQueue(true);
 	//resize
 	lib.properties.width = document.documentElement.clientWidth;
 	lib.properties.height = document.documentElement.clientHeight;
-
-
-
-console.log("start5");
-
-
-
 }
-
-function handleProgress(evt, comp) {
-	console.log(evt.progress);
-	console.log(evt);
-	console.log(comp);
+function handleProgress(evt) {
+    var progressBar = document.getElementById("progress_bar");
+    var progress = (evt.progress * 100).toFixed(2);
+    progressBar.style.width = progress + "%";
+    console.log("Loading progress: " + progress + "%");
 }
-
-
-
-
 function handleFileLoad(evt, comp) {
 	var images=comp.getImages();	
 	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
@@ -155,18 +138,47 @@ function handleComplete(evt,comp) {
 	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
+
+	// ローディング画面を非表示にする
+    var loadingScreen = document.getElementById("loading_screen");
+    loadingScreen.style.display = "none";
+    console.log("Loading complete");
 }
 function playSound(id, loop, offset) {
-	return createjs.Sound.play(id, {'interrupt':createjs.Sound.INTERRUPT_EARLY, 'loop': loop, 'offset': offset});}
+	return createjs.Sound.play(id, {'interrupt':createjs.Sound.INTERRUPT_EARLY, 'loop': loop, 'offset': offset});
+}
 </script>
 <!-- write your code here -->
 </head>
-<!--<body onload="init();" style="margin:0px;">-->
-	<body onload="init_body();" style="margin:0px;">
+<!--<body onload="init();" style="margin:0px;">
+<body onload="init_body();" style="margin:0px;">
 	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1125px; height:2436px">
 		<canvas id="canvas" width="1125" height="2436" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
 		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1125px; height:2436px; position: absolute; left: 0px; top: 0px; display: block;">
 		</div>
 	</div>
 </body>
+-->
+
+
+
+<body onload="init_body(); style="margin:0px;">
+    <div id="loading_screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; z-index: 9999;">
+        <img id="loading_background" src="images/loding-background.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+        <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
+        <div id="progress_bar_container" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 80%; height: 20px; background-color: rgba(255,255,255,0.3);">
+            <div id="progress_bar" style="width: 0%; height: 100%; background-color: #ffffff;"></div>
+        </div>
+    </div>
+    <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1125px; height:2436px">
+        <canvas id="canvas" width="1125" height="2436" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+        <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1125px; height:2436px; position: absolute; left: 0px; top: 0px; display: block;">
+        </div>
+    </div>
+</body>
+
+
+
+
+
 </html>
