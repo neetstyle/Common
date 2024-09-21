@@ -92,12 +92,9 @@ function init() {
 	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
 
 
-
-
+	loader.addEventListener("progress", function(evt){handleProgress(evt,comp)});
+loader.setMaxConnections(1);
 console.log("start");
-
-
-loader.addEventListener("progress", handleProgress);
 
 
 
@@ -124,9 +121,13 @@ loader.addEventListener("progress", handleProgress);
 
 }
 
-function handleProgress(event) {
+function handleFileLoad(evt, comp) {
 console.log(event.progress);
+console.log(event);
+console.log(comp);
 }
+
+
 
 
 function handleFileLoad(evt, comp) {
