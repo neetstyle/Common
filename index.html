@@ -93,8 +93,8 @@ function init() {
 
 
 	loader.addEventListener("progress", function(evt){handleProgress(evt,comp)});
-loader.setMaxConnections(1);
-console.log("start3");
+
+console.log("start4");
 
 
 
@@ -117,13 +117,11 @@ console.log("start3");
 
 
 
-
-
 }
 
 function handleProgress(evt, comp) {
-console.log(event.progress);
-console.log(event);
+console.log(evt.progress);
+console.log(evt);
 console.log(comp);
 }
 
