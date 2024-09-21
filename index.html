@@ -86,7 +86,8 @@ function init() {
 	dom_overlay_container = document.getElementById("dom_overlay_container");
 	var comp=AdobeAn.getComposition("969C0F3DFF839440AC4059700CCE57F9");
 	var lib=comp.getLibrary();
-	var loader = new createjs.LoadQueue(false);
+	//var loader = new createjs.LoadQueue(false);
+var loader = new createjs.LoadQueue(true);
 	loader.installPlugin(createjs.Sound);
 	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
 	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
@@ -94,7 +95,7 @@ function init() {
 
 	loader.addEventListener("progress", function(evt){handleProgress(evt,comp)});
 
-console.log("start4");
+
 
 
 
@@ -113,16 +114,16 @@ console.log("start4");
 
 
 
-
+console.log("start5");
 
 
 
 }
 
 function handleProgress(evt, comp) {
-console.log(evt.progress);
-console.log(evt);
-console.log(comp);
+	console.log(evt.progress);
+	console.log(evt);
+	console.log(comp);
 }
 
 
