@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="authoring-tool" content="Adobe_Animate_CC">
-<title>index</title>
+<title>Sushi</title>
 
 <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
 <meta name='apple-mobile-web-app-capable' content='yes' />
@@ -16,19 +15,16 @@
 <meta http-equiv="pragma" content="no-cache">  
 <meta http-equiv="Cache-Control" content="no-cache, no-store, no-siteapp" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <style>
     .no_scroll {
         overflow: hidden;
     }
 </style>
 
-<title>index</title>
-
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <script>
-
 	var isLoad_html = false;
 	var isLoad_webFont = false;
 	var isLoad_anime = false;
@@ -71,6 +67,7 @@
 		isLoad_html = true
 		checkInitialization();
 	}
+
 	function checkInitialization() {
 		if (isLoad_html && isLoad_webFont && isLoad_anime && isLoad_data) {
 			init();
@@ -81,9 +78,7 @@
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, main;
 function init() {
-
 	console.log("v2");
-
 	canvas = document.getElementById("canvas");
 	anim_container = document.getElementById("animation_container");
 	dom_overlay_container = document.getElementById("dom_overlay_container");
@@ -94,7 +89,6 @@ function init() {
 	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
 	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
 	loader.addEventListener("progress", function(evt){handleProgress(evt)});
-	loader.loadManifest(lib.properties.manifest);
 	createjs.Sound.alternateExtensions = ["mp3"];
 	createjs.Sound.registerSound("sounds/click.mp3", "click");
 	createjs.Sound.registerSound("sounds/submit.mp3", "submit");
@@ -102,7 +96,8 @@ function init() {
 	createjs.Sound.registerSound("sounds/popup.mp3", "popup");
 	createjs.Sound.registerSound("sounds/generator.mp3", "generator");
 	createjs.Sound.registerSound("sounds/bgm.mp3", "bgm");
-	//resize
+	loader.loadManifest(lib.properties.manifest);
+
 	lib.properties.width = document.documentElement.clientWidth;
 	lib.properties.height = document.documentElement.clientHeight;
 }
@@ -117,7 +112,6 @@ function handleFileLoad(evt, comp) {
 	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
 }
 function handleComplete(evt,comp) {
-	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
 	var lib=comp.getLibrary();
 	var ss=comp.getSpriteSheet();
 	var queue = evt.target;
@@ -139,29 +133,15 @@ function handleComplete(evt,comp) {
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 
-	// ローディング画面を非表示にする
     var loadingScreen = document.getElementById("loading_screen");
     loadingScreen.style.display = "none";
-    console.log("Loading complete");
 }
 function playSound(id, loop, offset) {
 	return createjs.Sound.play(id, {'interrupt':createjs.Sound.INTERRUPT_EARLY, 'loop': loop, 'offset': offset});
 }
 </script>
-<!-- write your code here -->
+
 </head>
-<!--<body onload="init();" style="margin:0px;">
-<body onload="init_body();" style="margin:0px;">
-	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1125px; height:2436px">
-		<canvas id="canvas" width="1125" height="2436" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1125px; height:2436px; position: absolute; left: 0px; top: 0px; display: block;">
-		</div>
-	</div>
-</body>
--->
-
-
-
 <body onload="init_body();" style="margin:0px;">
     <div id="loading_screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; z-index: 9999;">
         <img id="loading_background" src="images/loding-background.jpg" style="width: 100%; height: 100%; object-fit: cover;">
@@ -176,9 +156,4 @@ function playSound(id, loop, offset) {
         </div>
     </div>
 </body>
-
-
-
-
-
 </html>

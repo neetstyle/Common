@@ -6483,8 +6483,8 @@ if (reversed == null) { reversed = false; }
 		window.addEventListener('touchstart', resumeAudioContext);
 		//////////////////////////////////////////////////////////
 		//API
-		var authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
-		//authorization = window.Telegram.WebApp.initData;
+		//var authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
+		authorization = window.Telegram.WebApp.initData;
 		var api_host = "https://clicker-api.tomoya-ishisaka.workers.dev";
 		
 		main.API_Request = function(options) {
@@ -6832,7 +6832,7 @@ if (reversed == null) { reversed = false; }
 	// Panel
 	this.LogPanelMC = new lib.LogPanelMC();
 	this.LogPanelMC.name = "LogPanelMC";
-	this.LogPanelMC.setTransform(3584.5,3588,1,1,0,0,0,0,913);
+	this.LogPanelMC.setTransform(3584.5,3590,1,1,0,0,0,0,913);
 
 	this.OptionPanelMC = new lib.OptionPanelMC();
 	this.OptionPanelMC.name = "OptionPanelMC";
@@ -6886,7 +6886,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(-2636.9,-1179.8,7348.9,9895.5);
+p.nominalBounds = new cjs.Rectangle(-2636.9,-1179.8,7348.9,9897.5);
 // library properties:
 lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',
