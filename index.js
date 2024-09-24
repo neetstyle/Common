@@ -895,25 +895,6 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// Text
-	this.message = new cjs.Text("データ同期画面(仮)", "100px 'Potta One'", "#FFFFFF");
-	this.message.name = "message";
-	this.message.textAlign = "center";
-	this.message.lineHeight = 147;
-	this.message.lineWidth = 1121;
-	this.message.parent = this;
-	this.message.setTransform(562.5,2074.85);
-
-	this.message_1 = new cjs.Text("へい、らっしゃい！", "100px 'Potta One'", "#FFFFFF");
-	this.message_1.name = "message_1";
-	this.message_1.textAlign = "center";
-	this.message_1.lineHeight = 147;
-	this.message_1.lineWidth = 1121;
-	this.message_1.parent = this;
-	this.message_1.setTransform(562.5,1137.55);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.message_1},{t:this.message}]}).wait(1));
-
 	// BG
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f("#000000").s().p("EhX4C+UMAAAl8nMCvxAAAMAAAF8ng");
@@ -4973,15 +4954,16 @@ if (reversed == null) { reversed = false; }
 					lastLocked = 0;
 					dispCount++;
 				}
-				else if(main.sushi >= generator.availableSushiCount)
+				else if((main.sushi >= generator.availableSushiCount || generator.available ) && lastLocked == 0)
 				{
 					//購入可能
 					generator.clip.gotoAndStop("Lock");
 					dispCount++;
+					lastLocked++;
 				}
 				else
 				{
-					if(lastLocked < 1)
+					if(lastLocked == 0)
 					{
 						//不明
 						generator.clip.gotoAndStop("Notice");
@@ -4991,9 +4973,8 @@ if (reversed == null) { reversed = false; }
 					{
 						generator.clip.visible = false;	
 					}
+					lastLocked++;
 				}
-			
-				lastLocked++;
 				
 				if(main.sushi >= generator.storedCost)
 					generator.clip.cost_O.color = "#00FF00";
@@ -5334,8 +5315,6 @@ if (reversed == null) { reversed = false; }
 				this.isNotification = false;		//通知を表示したか
 				this.doddState = 0;					//0:初期、1:表示、2:バッジ表示、3:バッジ削除済み
 				
-				
-				
 				this.available = false;
 				this.availableSushiCount = 0;
 				this.description = "";
@@ -5343,7 +5322,9 @@ if (reversed == null) { reversed = false; }
 				this.name = "";
 				this.posession = 0;
 				this.power = 0;
-				this.price = 0;
+				this.basePrice = 0;
+				this.nextPrice = 0;
+				this.priceScalingFactor = 0;
 				
 				this.storedCost = 0;	//計算済み価格
 				this.storedSps = 0;		//ジェネレーター生産量
@@ -5360,15 +5341,13 @@ if (reversed == null) { reversed = false; }
 						continue;
 					mult *= upgrade.operationValue;
 				}
-				//todo
-				//ジェネレーター生産量 = base_sps * user_generator_upgrades.multiplier * global_multiplier
-				this.storedSps = this.power * mult * main.multiplier;
+				this.storedSps = this.power * mult * main.global_multiplier;
 			}
 		
 			//コストの計算
 			CalculateCost = function()
 			{
-				this.storedCost = Math.ceil(this.price * Math.pow(main.priceIncrease, this.posession));
+				this.storedCost = Math.ceil(this.basePrice * Math.pow(this.priceScalingFactor, this.posession));
 			}
 		}
 		
@@ -5412,7 +5391,7 @@ if (reversed == null) { reversed = false; }
 				this.category = 4;
 				this.clip = null;
 				this.dir = "Shop";
-				this.isPurchase = false;
+				this.isPurchase = false;//購入済みか
 		    }
 		}
 		
@@ -5423,7 +5402,6 @@ if (reversed == null) { reversed = false; }
 				this.category = 4;
 				this.clip = null;
 				this.dir = "Shop";
-				this.isPurchase = false;//これなんだろう
 				
 				this.id = 0;
 				this.name = "";
@@ -5440,7 +5418,6 @@ if (reversed == null) { reversed = false; }
 				this.category = 4;
 				this.clip = null;
 				this.dir = "Shop";
-				this.isPurchase = false;//これなんだろう
 				
 				this.id = 0;
 				this.name = "";
@@ -5483,17 +5460,19 @@ if (reversed == null) { reversed = false; }
 		        this.totalSushi = 0;		//生成寿司
 				this.sushiPs = 0;			//一秒間当たりの寿司
 				this.sushiAdd = 0;			//サーバとの差分
+				this.sushiDebt = 0;			//
 				this.fractionSps = 0;		//小数点以下の寿司
 				this.touchSps = 0			//クリック当たりの寿司
 				this.totalClick = 0;		//トータルクリック数
 				this.goldenSushi = 0;		//ゴールデン寿司
-				this.totalGoldenSushi = 0;		//ゴールデン寿司
+				this.totalGoldenSushi = 0;	//トータルゴールデン寿司
 				this.priceIncrease = 1.15;	//価格の上昇率
 				this.skinId = 0;			//スキンId
 				this.invitationCount = 49;	//招待数
 				this.invitationState = 0;	//招待報酬 0:未受取、1:1人、2:5人、3:10人、4:50人
 				
-				this.multiplier = 1;
+				this.global_multiplier = 1;
+				this.click_cps_boost = 1;
 				
 				//////////////////////////////////////////////////////////
 				//アップグレード
@@ -5593,7 +5572,7 @@ if (reversed == null) { reversed = false; }
 		main.UseSushi = function(value) 
 		{
 			this.sushi -= value;
-			this.sushiAdd -= value;
+			//this.sushiAdd -= value;
 			this.SushiDisplayUdates();
 		}
 		
@@ -5627,8 +5606,7 @@ if (reversed == null) { reversed = false; }
 						continue;
 				}
 			}
-			//クリック生産量 = (base_click_power * click_multiplier + total_sps * click_cps_boost) * global_multiplier
-			return (add * mult) * this.multiplier;
+			return (add * mult + main.sushiPs * main.click_cps_boost) * main.global_multiplier;
 		}
 		
 		//自動生産の更新
@@ -5645,70 +5623,81 @@ if (reversed == null) { reversed = false; }
 			exportRoot.HeaderMC.Sps_O.text = "per Second : " + FormatNumber(this.sushiPs, 1, 2) + " pieces";
 		}
 		
-		
-		main.buyGeneratorTask = 0;
-		
 		//ジェネレータの購入
 		main.BuyGenerator = async function(generator)
 		{
 			if(this.sushi >= generator.storedCost)
 			{
+				//----------------------------------------------
+				//仮想的に購入
 				this.buyGeneratorTask++;
-				let suhiAdd = this.sushiAdd + generator.storedCost;
-				this.sushiAdd = 0;
 				this.UseSushi(generator.storedCost);
 				generator.posession++;
 				generator.CalculateCost();
 				main.CalculateGains();
+				main.touchSps = main.TouchSps();
 				generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
 				generator.clip.posession.text = generator.posession;
-				this.generatorNum++;
-				this.CheckAchievement_Generator();		
-		
+				
+		//todo
+		this.generatorNum++;
+		this.CheckAchievement_Generator();
+				
 				if(main.Debug_isSound)
 					playSound("generator");
-		
+				//----------------------------------------------
+				//購入
 				try {
 					console.log("API.現在の寿司の更新");
 					//寿司の差分を更新
 					await main.API_Request({
 						url: '/sushi/add',
 						method: 'POST',
-						maxAttempts: 3,
 						data: {
-							amount: suhiAdd
+							amount: this.sushiAdd
 						}
-					});	
-					
+					});
+					this.sushiAdd = 0;
+				
 					console.log("API.ジェネレーター購入");
 					//ジェネレーター購入
 					await main.API_Request({
 						url: '/generator/' + generator.id + '/purchase',
-						method: 'POST',
-						maxAttempts: 3,
+						method: 'POST'
 					});
+				} catch (error) {
+						console.error("ジェネレーター購入エラー", error);
+					
+						exportRoot.Mask3MC.visible = true;
+					
+						console.log("API.自身のユーザー情報を得る");
+						API_userData = await main.API_Request({
+							url: '/user/me'
+						});
 		
-					console.log("API.ジェネレーター取得");
-					API_generatorsData = await main.API_Request({
-						url: '/generator',
-						maxAttempts: 3
-					});
-		
-					if(this.buyGeneratorTask == 1)
-					{
+						console.log("API.ジェネレーター取得");
+						API_generatorsData = await main.API_Request({
+							url: '/generator'
+						});
+					
 						for (var i = 0; i < API_generatorsData["items"].length; i++)
 						{
 							let _generator = main.generators[i];
-							_generator.available = API_generatorsData["items"][i].false;
+							_generator.available = API_generatorsData["items"][i].available;
 							_generator.posession = Number(API_generatorsData["items"][i].posession);
-							_generator.CalculateCost();
-							_generator.clip.cost_O.text = FormatNumber(generator.storedCost, 1, 0);
-							_generator.clip.posession.text = generator.posession;
-						}
-					}
-					this.buyGeneratorTask--;
-				} catch (error) {
-					console.error("todo:ジェネレーター購入エラー", error);
+							_generator.basePrice = Number(API_generatorsData["items"][i].basePrice);
+							_generator.nextPrice = Number(API_generatorsData["items"][i].nextPrice);
+							_generator.clip.cost_O.text = FormatNumber(_generator.storedCost, 1, 0);
+							_generator.clip.posession.text = _generator.posession;
+						}			
+					
+						main.touchSps = Number(API_userData.sushiPerClick);
+						main.sushi = Number(API_userData["user"].currentSushiCount);
+						main.totalSushi = Number(API_userData["user"].totalSushiCount);
+						main.SushiDisplayUdates();
+					
+						exportRoot.Mask3MC.visible = false;
+						exportRoot.MessageMC.Open( "通信エラーです");
 				}
 			};
 		}
@@ -5727,58 +5716,79 @@ if (reversed == null) { reversed = false; }
 		{
 			if(this.sushi >= upgrade.price)
 			{
-				let suhiAdd = this.sushiAdd + upgrade.price;
-				this.sushiAdd = 0;
+				//----------------------------------------------
+				//仮想的に購入
 				this.UseSushi(upgrade.price);
 				upgrade.posession = true;
-				main.CalculateGains();
-				this.RebuildStore();
 				this.CalculateGains();
-				exportRoot.UpgradePanelMC.Reset();
-				this.upgradeNum++;
-				this.AddAchievement();
-				this.CheckAchievement_Generator();
+				this.RebuildStore();
 				this.touchSps = this.TouchSps();
+				exportRoot.UpgradePanelMC.Reset();
+				
+		//todo
+		this.upgradeNum++;
+		this.AddAchievement();
+		this.CheckAchievement_Generator();
+				
 				
 				if(main.Debug_isSound)
 					playSound("generator");
-				
+				//----------------------------------------------
+				//購入
 				try {
 					console.log("API.現在の寿司の更新");
 					//寿司の差分を更新
 					await main.API_Request({
 						url: '/sushi/add',
 						method: 'POST',
-						maxAttempts: 3,
 						data: {
-							amount: suhiAdd
+							amount: this.sushiAdd
 						}
-					});	
-					
+					});
+					this.sushiAdd = 0;
+				
 					console.log("API.アップグレード購入");
 					//ジェネレーター購入
 					await main.API_Request({
 						url: '/upgrade/' + upgrade.id + '/purchase',
-						method: 'POST',
-						maxAttempts: 3,
+						method: 'POST'
+					});
+				} catch (error) {
+					console.error("アップグレード購入エラー", error);
+				
+					exportRoot.Mask3MC.visible = true;
+				
+					console.log("API.自身のユーザー情報を得る");
+					API_userData = await main.API_Request({
+						url: '/user/me'
 					});
 		
+					this.touchSps = Number(API_userData.sushiPerClick);
+					this.sushi = Number(API_userData["user"].currentSushiCount);
+					this.totalSushi = Number(API_userData["user"].totalSushiCount);
+					this.SushiDisplayUdates();
+					this.CalculateGains();
+					this.RebuildStore();
+					this.touchSps = this.TouchSps();
+					exportRoot.Mask3MC.visible = false;
+					exportRoot.MessageMC.Open( "通信エラーです");
+				}
+			
+				try {
 					console.log("API.アップグレード取得");
 					API_upgradesData = await main.API_Request({
-						url: '/upgrade',
-						maxAttempts: 3
+						url: '/upgrade'
 					});
 				
 					for (let i = 0; i < API_upgradesData["items"].length; i++)
 					{
-						let _upgrade = main.upgrades[i];
+						let _upgrade = this.upgrades[i];
 						_upgrade.available = API_upgradesData["items"][i].available;
 						_upgrade.posession = API_upgradesData["items"][i].posession;
 					}
 					this.RebuildStore();
-				} catch (error) {
-					console.error("todo:アップグレード購入エラー", error);
-				}
+				} catch (error) { }
+		
 			}
 		}
 		
@@ -5869,6 +5879,24 @@ if (reversed == null) { reversed = false; }
 			//	exportRoot.UpgradePanelMC.Reset();
 		}
 		
+		//寿司の同期
+		main.SushiUpdate = async function()
+		{
+			try {
+				console.log("API.現在の寿司の更新");
+				await main.API_Request({
+					url: '/sushi/add',
+					method: 'POST',
+					data: {
+						amount: this.sushiAdd
+					}
+				});	
+				this.sushiAdd = 0;
+			} catch (error) {
+				console.error("現在の寿司の更新エラー", error);
+			}
+		}
+		
 		main.MainTick = function(event)
 		{
 			this.fps1Count += event.delta;
@@ -5917,9 +5945,10 @@ if (reversed == null) { reversed = false; }
 					console.log("API.最新ログイン日時を更新");
 					main.API_Request({
 						url: '/user/online',
-						method: 'POST',
-						maxAttempts: 1
+						method: 'POST'
 					});
+					//todoオートセーブは切ってあるよ！！！！！！！！
+					//main.SushiUpdate();
 				}
 		
 			}
@@ -6483,10 +6512,10 @@ if (reversed == null) { reversed = false; }
 		window.addEventListener('touchstart', resumeAudioContext);
 		//////////////////////////////////////////////////////////
 		//API
-		//var authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
-		authorization = window.Telegram.WebApp.initData;
+		var authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
+		//authorization = window.Telegram.WebApp.initData;
 		var api_host = "https://clicker-api.tomoya-ishisaka.workers.dev";
-		
+		/*
 		main.API_Request = function(options) {
 		    const fullUrl = api_host + options.url;
 		    const maxAttempts = options.maxAttempts || 3;
@@ -6540,6 +6569,78 @@ if (reversed == null) { reversed = false; }
 		                }
 		            }
 		        };
+		        await requestWithRetry();
+		    });
+		}
+		*/
+		main.API_Request = function(options) {
+		    const fullUrl = api_host + options.url;
+		    const maxAttempts = options.maxAttempts || 3;
+		    let attempts = 0;
+		
+		    // $.ajaxをPromise化する関数
+		    function ajaxPromise(finalOptions) {
+		        return new Promise(function(resolve, reject) {
+		            $.ajax({
+		                ...finalOptions,
+		                success: function(response) {
+		                    resolve(response);
+		                },
+		                error: function(jqXHR, textStatus, errorThrown) {
+		                    if (textStatus === "timeout") {
+		                        reject({ reason: "timeout", jqXHR }); // タイムアウトの場合
+		                    } else {
+		                        reject({ reason: "other", jqXHR });  // タイムアウト以外
+		                    }
+		                }
+		            });
+		        });
+		    }
+		
+		    return new Promise(async function(resolve, reject) {
+		        const requestWithRetry = async () => {
+		            while (attempts < maxAttempts) {
+		                attempts++;
+		                try {
+		                    var defaultOptions = {
+		                        method: 'GET',
+		                        dataType: 'json',
+		                        contentType: 'application/json',
+		                        headers: {
+		                            'Authorization': authorization
+		                        }
+		                    };
+		                    var finalOptions = $.extend({}, defaultOptions, options);
+		                    finalOptions.url = api_host + options.url;
+		
+		                    if (options.data) {
+		                        finalOptions.data = JSON.stringify(options.data);
+		                    }
+		
+		                    // $.ajaxのPromise化された結果をawaitで待機
+		                    const response = await ajaxPromise(finalOptions);
+		                    resolve(response);  // 成功した場合はPromiseを解決
+		                    return;  // 成功したらループを抜ける
+		                } catch (error) {
+		                    if (error.reason === "timeout") {
+		                        console.log(`試行 ${attempts} 回目失敗: タイムアウト`);
+		                    } else {
+		                        // タイムアウト以外のエラーは即座に失敗とする
+		                        reject(`APIリクエストが失敗しました。エラー: ${error.jqXHR.statusText}`);
+		                        return;
+		                    }
+		
+		                    if (attempts >= maxAttempts) {
+		                        reject(`APIリクエストが${maxAttempts}回失敗しました。エラー: タイムアウト`);
+		                        return;
+		                    }
+		
+		                    // タイムアウトの場合のみ1秒間待機して再試行
+		                    await new Promise(resolve => setTimeout(resolve, 1000));
+		                }
+		            }
+		        };
+		
 		        await requestWithRetry();
 		    });
 		}
@@ -6628,6 +6729,7 @@ if (reversed == null) { reversed = false; }
 			
 			//////////////////////////////////////////////////////////
 			//ユーザデータ
+			main.touchSps = Number(API_userData.sushiPerClick);
 			main.sushi = Number(API_userData["user"].currentSushiCount);
 			main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
 			main.totalSushi = Number(API_userData["user"].totalSushiCount);
@@ -6660,14 +6762,15 @@ if (reversed == null) { reversed = false; }
 			{
 				var	generator = new Generator();
 				generator.id = Number(API_generatorsData["items"][i].id);
-				generator.available = API_generatorsData["items"][i].false;
+				generator.available = API_generatorsData["items"][i].available;
 				generator.availableSushiCount = Number(API_generatorsData["items"][i].availableSushiCount);	
 				generator.description =  API_generatorsData["items"][i].description;
 				generator.name = API_generatorsData["items"][i].name;
 				generator.posession = Number(API_generatorsData["items"][i].posession);
 				generator.power = Number(API_generatorsData["items"][i].power);
-				generator.price = Number(API_generatorsData["items"][i].price);
-				
+				generator.basePrice = Number(API_generatorsData["items"][i].basePrice);
+				generator.nextPrice = Number(API_generatorsData["items"][i].nextPrice);
+				generator.priceScalingFactor = Number(API_generatorsData["items"][i].priceScalingFactor);
 				for (let s = 0; s < main.upgrades.length; s++)
 				{
 					if(main.upgrades[s].targetGeneratorMstId === null)
@@ -6710,8 +6813,7 @@ if (reversed == null) { reversed = false; }
 				createjs.Touch.enable(stage);
 			 
 			stage.enableMouseOver(20); 
-		
-			main.touchSps = main.TouchSps();
+			//main.touchSps = main.TouchSps();
 			main.CalculateGeneratorCost();	//ジェネレータの価格の更新
 			main.RebuildGenerator();		//ジェネレータ一覧の更新
 			main.CalculateGains();			//SushiPSの計算
@@ -6726,6 +6828,8 @@ if (reversed == null) { reversed = false; }
 			//this.AchievementPanelMC.Create();
 			createjs.Ticker.addEventListener("tick", main.MainTick.bind(main));	
 			this.LodingMC.visible = false;
+			
+			hiddenLoadingScreen();
 		}
 		
 		this.RunApp = async function()

@@ -133,11 +133,13 @@ function handleComplete(evt,comp) {
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 
-    var loadingScreen = document.getElementById("loading_screen");
-    loadingScreen.style.display = "none";
 }
 function playSound(id, loop, offset) {
 	return createjs.Sound.play(id, {'interrupt':createjs.Sound.INTERRUPT_EARLY, 'loop': loop, 'offset': offset});
+}
+function hiddenLoadingScreen() {
+    var loadingScreen = document.getElementById("loading_screen");
+    loadingScreen.style.display = "none";
 }
 </script>
 
