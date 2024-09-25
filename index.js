@@ -1998,9 +1998,9 @@ if (reversed == null) { reversed = false; }
 			this.SliderButtonMC.gotoAndStop(str);
 		}
 		this.SetValue = function(_value) {
-			content.x = _value * maxX;
+			content.x = _value * (maxX - minX) + minX;
 			mask.scaleX = content.x	/ maxX * 2;
-			value.text = Math.round(content.x	/ (maxX - minX) * 100);
+			value.text = Math.round((content.x - minX) / (maxX - minX) * 100);
 		}
 		var callback;
 		this.SetCallBack = function(_callback) {
@@ -2012,7 +2012,7 @@ if (reversed == null) { reversed = false; }
 		var startX;
 		var startScrollX;
 		var isScrolling = false;
-		var minX = 0 +50;
+		var minX = 0 + 50;
 		var maxX = 662 - 50;
 		isScrolled = false;
 		
@@ -2043,15 +2043,15 @@ if (reversed == null) { reversed = false; }
 		        }
 				isScrolled = true;
 			
-				mask.scaleX = content.x	/ (maxX - minX) * 2;
-				value.text = Math.round(content.x	/ (maxX - minX) * 100);
+				mask.scaleX = (content.x - minX) / (maxX - minX) * 2;
+				value.text = Math.round((content.x - minX) / (maxX - minX) * 100);
 		    }
 		}
 		
 		function endScroll(event) {
 		    isScrolling = false;
 			if(callback)
-				callback(content.x	/ (maxX - minX));
+				callback((content.x - minX) / (maxX - minX));
 		}
 		
 		function getX(event) {
@@ -2075,7 +2075,7 @@ if (reversed == null) { reversed = false; }
 	this.value.lineHeight = 72;
 	this.value.lineWidth = 154;
 	this.value.parent = this;
-	this.value.setTransform(769.15,-36.7);
+	this.value.setTransform(755.15,-36.7);
 
 	this.timeline.addTween(cjs.Tween.get(this.value).wait(1));
 
@@ -2105,7 +2105,7 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance_1 = new lib.a1();
-	this.instance_1.setTransform(709,-32);
+	this.instance_1.setTransform(695,-32);
 
 	this.instance_2 = new lib.a5();
 	this.instance_2.setTransform(0,-23);
@@ -2114,7 +2114,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.SliderMC, new cjs.Rectangle(0,-58,848.2,126), null);
+}).prototype = getMCSymbolPrototype(lib.SliderMC, new cjs.Rectangle(0,-58,834.2,126), null);
 
 
 (lib.ShopConfilmCell2MC = function(mode,startPosition,loop,reversed) {
@@ -3051,7 +3051,7 @@ if (reversed == null) { reversed = false; }
 	this.text.lineHeight = 52;
 	this.text.lineWidth = 108;
 	this.text.parent = this;
-	this.text.setTransform(-4.15,25);
+	this.text.setTransform(34,185);
 
 	this.DebugButtonMC = new lib.ButtonMC();
 	this.DebugButtonMC.name = "DebugButtonMC";
@@ -3059,7 +3059,7 @@ if (reversed == null) { reversed = false; }
 
 	this.OptionButtonMC = new lib.ButtonMC();
 	this.OptionButtonMC.name = "OptionButtonMC";
-	this.OptionButtonMC.setTransform(50,50,1,1,0,0,0,50,50);
+	this.OptionButtonMC.setTransform(88.15,210,1,1,0,0,0,50,50);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.OptionButtonMC},{t:this.DebugButtonMC},{t:this.text}]}).wait(1));
 
@@ -3070,7 +3070,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(-6.1,0,1131.1,436), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1125,436), null);
 
 
 (lib.GeneratorCellMC = function(mode,startPosition,loop,reversed) {
@@ -3337,7 +3337,7 @@ if (reversed == null) { reversed = false; }
 	this.title.lineHeight = 72;
 	this.title.lineWidth = 146;
 	this.title.parent = this;
-	this.title.setTransform(87.9,958);
+	this.title.setTransform(103.9,958);
 
 	this.desciption = new cjs.Text("Setting", "70px 'Potta One'", "#FFFFFF");
 	this.desciption.name = "desciption";
@@ -3361,7 +3361,7 @@ if (reversed == null) { reversed = false; }
 	this.title_2.lineHeight = 72;
 	this.title_2.lineWidth = 146;
 	this.title_2.parent = this;
-	this.title_2.setTransform(87.9,713.1);
+	this.title_2.setTransform(103.9,713.1);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.title_2},{t:this.title_1},{t:this.desciption},{t:this.title}]}).wait(1));
 
@@ -3385,11 +3385,11 @@ if (reversed == null) { reversed = false; }
 	// BG
 	this.BGMSliderMC = new lib.SliderMC();
 	this.BGMSliderMC.name = "BGMSliderMC";
-	this.BGMSliderMC.setTransform(519.9,776.1,1,1,0,0,0,331,23);
+	this.BGMSliderMC.setTransform(188.9,753.1);
 
 	this.SESliderMC = new lib.SliderMC();
 	this.SESliderMC.name = "SESliderMC";
-	this.SESliderMC.setTransform(519.9,1015.4,1,1,0,0,0,331,23);
+	this.SESliderMC.setTransform(188.9,992.4);
 
 	this.instance_1 = new lib.title();
 	this.instance_1.setTransform(-36,50);
@@ -3961,8 +3961,6 @@ if (reversed == null) { reversed = false; }
 			}
 		}
 		
-		
-		
 		this.SubmitType1 = async function()
 		{
 			this.parent.Mask3MC.visible = true;
@@ -3976,6 +3974,8 @@ if (reversed == null) { reversed = false; }
 					method: 'POST',
 					maxAttempts: 3
 				});
+			
+				main.log(data.paymentUrl);
 			
 		        window.Telegram.WebApp.openInvoice(data.paymentUrl, (status) => {
 		            main.log("Payment status : " + status);
@@ -3996,7 +3996,7 @@ if (reversed == null) { reversed = false; }
 		        });	
 		    } catch (error) {
 				this.parent.MessageMC.Open(error.message);
-				//main.log(error.message);
+				main.log(error.message);
 		    }
 		
 			if(isSuccess)
@@ -7018,6 +7018,9 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		this.RunApp();
+		
+		//this.LodingMC.visible = false;
+		//hiddenLoadingScreen();
 	}
 
 	// actions tween:
