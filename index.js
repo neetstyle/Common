@@ -492,6 +492,8 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
 		
+			main.PlaySE("popup");
+		
 			if( this.bitmap != null)
 			{
 				this.removeChild(this.bitmap);
@@ -510,8 +512,7 @@ if (reversed == null) { reversed = false; }
 			this.title_O.text = this.obj.name;
 			this.description.text = this.obj.description;
 			
-			SetWrapText(this.description);	
-				
+			SetWrapText(this.description);
 		}
 	}
 
@@ -1123,6 +1124,8 @@ if (reversed == null) { reversed = false; }
 			
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
+		
+			main.PlaySE("popup");
 		
 			if( this.bitmap != null)
 			{
@@ -2597,6 +2600,8 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
 		
+			main.PlaySE("popup");
+		
 			if( this.bitmap != null)
 			{
 				this.removeChild(this.bitmap);
@@ -2721,6 +2726,8 @@ if (reversed == null) { reversed = false; }
 			
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
+		
+			main.PlaySE("popup");
 		
 			this.invitationCount.text = main.invitationCount;
 		
@@ -3303,6 +3310,8 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
 		
+			main.PlaySE("open");
+		
 			this.BGMSliderMC.SetValue(main.bgm);
 			this.BGMSliderMC.SetIcon("BGM");
 			this.BGMSliderMC.SetCallBack(this.ChangeBGMVolume);
@@ -3871,6 +3880,8 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
 		
+			main.PlaySE("popup");
+		
 			if( this.bitmap != null)
 			{
 				this.removeChild(this.bitmap);
@@ -4363,6 +4374,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.Open =  function() 
 		{
+			main.PlaySE("open");
 			this.Reset();
 			this.ScrollMC.Open();
 		}
@@ -4634,7 +4646,6 @@ if (reversed == null) { reversed = false; }
 			return;
 		
 			this.parent.UpgradeDesciptionMC.Open(upgrade);
-			main.PlaySE("popup");
 			upgrade.clip.DoddMC.visible = false;
 		}
 		
@@ -4695,6 +4706,8 @@ if (reversed == null) { reversed = false; }
 		
 		this.Open =  function() 
 		{
+			main.PlaySE("open");
+			
 			if(main.upgradeNotification)
 			{
 				main.upgradeNotification = false;
@@ -4815,7 +4828,6 @@ if (reversed == null) { reversed = false; }
 		{
 		    if (!this.ScrollMC.isScrolled()) {
 		        this.parent.ShopDesciptionMC.Open(data);
-				main.PlaySE("popup");
 		    }
 		}
 		
@@ -5000,6 +5012,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.Open =  function() 
 		{
+			main.PlaySE("open");
 			this.Reset();
 			this.ScrollMC.Open();
 		}
@@ -5078,7 +5091,6 @@ if (reversed == null) { reversed = false; }
 				return;
 			
 			this.parent.GeneratorDesciptionMC.Open(generator);
-			main.PlaySE("popup");
 			generator.clip.DoddMC.visible = false;
 			generator.doddState = 3;
 		}
@@ -5134,6 +5146,8 @@ if (reversed == null) { reversed = false; }
 		
 		this.Open = function() 
 		{
+			main.PlaySE("open");
+			
 			if(main.generatorNotification)
 			{
 				main.generatorNotification = false;
@@ -5483,6 +5497,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.Open =  function() 
 		{
+			main.PlaySE("open");
 			this.Detail();
 			this.Reset();
 			this.ScrollMC.Open();
@@ -6524,7 +6539,6 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_GeneratorPanelOpen()
 		{
 			this.PanelOpen(1);
-			main.PlaySE("open");
 		}
 		this.GeneratorPanelMC.scaleX = this.canvasScaleX;
 		this.GeneratorPanelMC.scaleY = this.canvasScaleX;
@@ -6537,7 +6551,6 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_UpgradePanelOpen()
 		{
 			this.PanelOpen(2);
-			main.PlaySE("open");
 		}
 		this.UpgradePanelMC.scaleX = this.canvasScaleX;
 		this.UpgradePanelMC.scaleY = this.canvasScaleX;
@@ -6550,7 +6563,6 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_ShopPanelOpen()
 		{
 			this.PanelOpen(3);
-			main.PlaySE("open");
 		}
 		this.ShopPanelMC.scaleX = this.canvasScaleX;
 		this.ShopPanelMC.scaleY = this.canvasScaleX;
@@ -6563,7 +6575,6 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_AchievementPanelOpen()
 		{
 			this.PanelOpen(4);
-			main.PlaySE("open");
 		}
 		this.AchievementPanelMC.scaleX = this.canvasScaleX;
 		this.AchievementPanelMC.scaleY = this.canvasScaleX;
@@ -6576,7 +6587,6 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_DebugPanelOpen()
 		{
 			this.PanelOpen(5);
-			main.PlaySE("open");
 		}
 		this.DebugPanelMC.scaleX = this.canvasScaleX;
 		this.DebugPanelMC.scaleY = this.canvasScaleX;
@@ -6700,7 +6710,6 @@ if (reversed == null) { reversed = false; }
 		function ClickHandler_InviteOpen()
 		{
 			this.InviteDesciptionMC.Open();
-			main.PlaySE("popup");
 		}
 		
 		//////////////////////////////////////////////////////////
