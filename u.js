@@ -370,5 +370,3 @@ var COOKIES = COOKIES || {
 //var get_cookie = COOKIES.getCookie('hoge');
 //COOKIES.setCookie('hoge', 'hogehoge', 30);
 //COOKIES.deleteCookie('hoge');
-
-
