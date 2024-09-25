@@ -6,7 +6,7 @@
 		"icon": "test",
 		"conditions1": 3,
 		"conditions2": "",
-		"desciption": "3建物を所有する。",
+		"description": "3建物を所有する。",
 		"memo": "ジェネレーターの数"
 	},
 	{
@@ -16,7 +16,7 @@
 		"icon": "test",
 		"conditions1": 10,
 		"conditions2": "",
-		"desciption": "10建物を所有する。",
+		"description": "10建物を所有する。",
 		"memo": ""
 	},
 	{
@@ -26,7 +26,7 @@
 		"icon": "test",
 		"conditions1": 1000,
 		"conditions2": "",
-		"desciption": "1000建物を所有する。",
+		"description": "1000建物を所有する。",
 		"memo": ""
 	},
 	{
@@ -36,7 +36,7 @@
 		"icon": "test",
 		"conditions1": 2500,
 		"conditions2": "",
-		"desciption": "2500建物を所有する。",
+		"description": "2500建物を所有する。",
 		"memo": ""
 	},
 	{
@@ -46,7 +46,7 @@
 		"icon": "test",
 		"conditions1": 5000,
 		"conditions2": "",
-		"desciption": "5000建物を所有する。",
+		"description": "5000建物を所有する。",
 		"memo": ""
 	},
 	{
@@ -56,7 +56,7 @@
 		"icon": "test",
 		"conditions1": 7500,
 		"conditions2": "",
-		"desciption": "7500建物を所有する。",
+		"description": "7500建物を所有する。",
 		"memo": ""
 	},
 	{
@@ -66,7 +66,7 @@
 		"icon": "test",
 		"conditions1": 10000,
 		"conditions2": "",
-		"desciption": "10000建物を所有する。",
+		"description": "10000建物を所有する。",
 		"memo": ""
 	},
 	{
@@ -76,7 +76,7 @@
 		"icon": "test",
 		"conditions1": 3,
 		"conditions2": "",
-		"desciption": "3アップグレードを購入する。",
+		"description": "3アップグレードを購入する。",
 		"memo": "アップグレードの数"
 	},
 	{
@@ -86,7 +86,7 @@
 		"icon": "test",
 		"conditions1": 10,
 		"conditions2": "",
-		"desciption": "10アップグレードを購入する。",
+		"description": "10アップグレードを購入する。",
 		"memo": ""
 	},
 	{
@@ -96,7 +96,7 @@
 		"icon": "test",
 		"conditions1": 100,
 		"conditions2": "",
-		"desciption": "100アップグレードを購入する。",
+		"description": "100アップグレードを購入する。",
 		"memo": ""
 	},
 	{
@@ -106,7 +106,7 @@
 		"icon": "test",
 		"conditions1": 200,
 		"conditions2": "",
-		"desciption": "200アップグレードを購入する。",
+		"description": "200アップグレードを購入する。",
 		"memo": ""
 	},
 	{
@@ -116,7 +116,7 @@
 		"icon": "test",
 		"conditions1": 300,
 		"conditions2": "",
-		"desciption": "300アップグレードを購入する。",
+		"description": "300アップグレードを購入する。",
 		"memo": ""
 	},
 	{
@@ -126,7 +126,7 @@
 		"icon": "test",
 		"conditions1": 400,
 		"conditions2": "",
-		"desciption": "400アップグレードを購入する。",
+		"description": "400アップグレードを購入する。",
 		"memo": ""
 	},
 	{
@@ -136,7 +136,7 @@
 		"icon": "test",
 		"conditions1": 500,
 		"conditions2": "",
-		"desciption": "500アップグレードを購入する。",
+		"description": "500アップグレードを購入する。",
 		"memo": ""
 	},
 	{
@@ -146,7 +146,7 @@
 		"icon": "test",
 		"conditions1": 600,
 		"conditions2": "",
-		"desciption": "600アップグレードを購入する。",
+		"description": "600アップグレードを購入する。",
 		"memo": ""
 	},
 	{
@@ -156,7 +156,7 @@
 		"icon": "test",
 		"conditions1": 700,
 		"conditions2": "",
-		"desciption": "700アップグレードを購入する。",
+		"description": "700アップグレードを購入する。",
 		"memo": ""
 	},
 	{
@@ -166,7 +166,7 @@
 		"icon": "test",
 		"conditions1": 300,
 		"conditions2": 4000,
-		"desciption": "300アップグレードと4000建物を所有する。",
+		"description": "300アップグレードと4000建物を所有する。",
 		"memo": "アップグレードとジェネレーターの数"
 	},
 	{
@@ -176,7 +176,7 @@
 		"icon": "test",
 		"conditions1": 400,
 		"conditions2": 8000,
-		"desciption": "400アップグレードと8000建物を所有する。",
+		"description": "400アップグレードと8000建物を所有する。",
 		"memo": ""
 	}
 ]

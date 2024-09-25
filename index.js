@@ -3303,14 +3303,10 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
 		
-			var bgm = COOKIES.getCookie('bgm');
-			main.bgm = (bgm =="") ? main.bgm : Number(bgm);
 			this.BGMSliderMC.SetValue(main.bgm);
 			this.BGMSliderMC.SetIcon("BGM");
 			this.BGMSliderMC.SetCallBack(this.ChangeBGMVolume);
 		
-			var se = COOKIES.getCookie('se');
-			main.se = (se =="") ? main.se : Number(se);
 			this.SESliderMC.SetValue(main.se);
 			this.SESliderMC.SetIcon("SE");
 			this.SESliderMC.SetCallBack(this.ChangeSEVolume);
@@ -3665,17 +3661,17 @@ if (reversed == null) { reversed = false; }
 			}
 		
 			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
+			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.id + ".png");
 			this.addChild(this.bitmap);
 			this.bitmap.x = 65;
 			this.bitmap.y = 45;
 			this.bitmap.scaleX = 193 / this.bitmap.image.width;
 			this.bitmap.scaleY = 193 / this.bitmap.image.height;
 		
-			this.title_O.text = this.obj.data["name"];
-			this.desciption.text = this.obj.data["desciption"];
+			this.title_O.text = this.obj.name;
+			this.description.text = this.obj.description;
 			
-			SetWrapText(this.desciption);	
+			SetWrapText(this.description);	
 		}
 	}
 
@@ -3706,14 +3702,14 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.title).wait(1));
 
 	// Text
-	this.desciption = new cjs.Text("「押すだけで寿司が出てくる。\nたまにネタとシャリが逆さまですが。」", "50px 'Potta One'");
-	this.desciption.name = "desciption";
-	this.desciption.lineHeight = 72;
-	this.desciption.lineWidth = 975;
-	this.desciption.parent = this;
-	this.desciption.setTransform(78,272.75);
+	this.description = new cjs.Text("「押すだけで寿司が出てくる。\nたまにネタとシャリが逆さまですが。」", "50px 'Potta One'");
+	this.description.name = "description";
+	this.description.lineHeight = 72;
+	this.description.lineWidth = 975;
+	this.description.parent = this;
+	this.description.setTransform(78,272.75);
 
-	this.timeline.addTween(cjs.Tween.get(this.desciption).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.description).wait(1));
 
 	// BG
 	this.instance_1 = new lib.achievementDesciption();
@@ -5300,7 +5296,7 @@ if (reversed == null) { reversed = false; }
 				
 				if(this.parent.AchievementDesciptionMC.visible)
 				{
-					if(this.parent.AchievementDesciptionMC.obj.data.id == data.data.id)
+					if(this.parent.AchievementDesciptionMC.obj.id == data.id)
 					{
 						this.parent.AchievementDesciptionMC.Close();
 						return;
@@ -5710,6 +5706,14 @@ if (reversed == null) { reversed = false; }
 				this.isNotification = false;
 				this.doddState = 0;
 				this.isAchievementUnread = true;
+				
+				
+				
+		
+				this.id = 0;
+				this.name = "";
+				this.description = "";
+				
 		    }
 		}
 		
@@ -5745,8 +5749,8 @@ if (reversed == null) { reversed = false; }
 				this.global_multiplier = 1;
 				this.click_cps_boost = 1;
 				//////////////////////////////////////////////////////////
-				this.bgm = 0.5;
-				this.se = 1;
+				this.bgm = 0.25;
+				this.se = 0.8;
 				this.bgm_instance = null;
 				
 				//////////////////////////////////////////////////////////
@@ -5780,7 +5784,13 @@ if (reversed == null) { reversed = false; }
 				for (var i = 0; i < achievementData.length; i++)
 				{
 					var	achievement = new Achievement();
-					achievement.data = achievementData[i];	
+					achievement.data = achievementData[i];
+					
+		achievement.id = achievement.data.id;
+		achievement.name = achievement.data.name;
+		achievement.description = achievement.data.description;		
+					
+					
 					this.achievements.push(achievement);
 				}
 				this.achievementNotificationNum = 0;
@@ -6271,24 +6281,25 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		////////////////////////
+		
 		this.DebugPanelMC.ContentMC.ClearButtonMC.status.text = "Clear";
 		this.DebugPanelMC.ContentMC.ClearButtonMC.on("click", function(evt) {
 			exportRoot.DebugPanelMC.ContentMC.log.text = "";
 		});
-		
-		window.onerror = function(message, source, lineno, colno, error) {
-		    exportRoot.DebugPanelMC.ContentMC.log.text +=`Error: ${message}\nLine: ${lineno}` + "\n";
-		    return true;
-		};
-		
-		window.addEventListener('unhandledrejection', function(event) {
-			exportRoot.DebugPanelMC.ContentMC.log.text += `Unhandled Promise Rejection: ${event.reason}` + "\n";
-		});
-		
 		main.log = function(str)
 		{
 			exportRoot.DebugPanelMC.ContentMC.log.text += str + "\n";
 		}
+		///*
+		window.onerror = function(message, source, lineno, colno, error) {
+		    main.log(`Error: ${message}\nLine: ${lineno}`);
+		    return true;
+		};
+		
+		window.addEventListener('unhandledrejection', function(event) {
+			main.log(`Unhandled Promise Rejection: ${event.reason}`);
+		});
+		//*/
 		//////////////////////////////////////////////////////////
 		//Layout
 		//1125 * 2436
@@ -6413,6 +6424,14 @@ if (reversed == null) { reversed = false; }
 		
 		//////////////////////////////////////////////////////////
 		//BGM
+		var bgm = COOKIES.getCookie('bgm');
+		main.bgm = (bgm =="") ? main.bgm : Number(bgm);
+		COOKIES.setCookie('bgm', main.bgm, 30);
+		
+		var se = COOKIES.getCookie('se');
+		main.se = (se =="") ? main.se : Number(se);
+		COOKIES.setCookie('se', main.se, 30);
+		
 		function resumeAudioContext(event)
 		{
 			window.removeEventListener('click', resumeAudioContext);
