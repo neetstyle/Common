@@ -6021,6 +6021,7 @@ if (reversed == null) { reversed = false; }
 			//仮想的に購入
 			this.UseSushi(upgrade.price);
 			upgrade.posession = true;
+			upgrade.available = true;
 			this.CalculateGains();
 			this.RebuildStore();
 			this.touchSps = this.TouchSps();
@@ -6123,6 +6124,7 @@ if (reversed == null) { reversed = false; }
 		
 		main.RebuildStore = function()
 		{
+			let num =  this.upgradeStore.length;
 			//var isRebuild = false;
 			this.upgradeStore = [];
 			for (let i = 0; i < this.upgrades.length; i++)
@@ -6164,12 +6166,14 @@ if (reversed == null) { reversed = false; }
 				if(upgrade.posession)
 					continue;
 				
-				
-		
-			
-							
-				
 				this.upgradeStore.push(upgrade);
+			}
+		
+			//todo同じ数の場合があるはずなので直す
+			if(num != this.upgradeStore.length)
+			{
+				this.upgradeNotification = true;
+				exportRoot.FooterMC.UpgradeDoddMC.visible = true;
 			}
 		
 			//if(isRebuild && !this.upgradeNotification)
@@ -7059,14 +7063,14 @@ if (reversed == null) { reversed = false; }
 
 	// Game
 	this.instance = new lib.ContainerMC();
-	this.instance.setTransform(-641,-307.85);
+	this.instance.setTransform(-641,-303.85);
 
 	this.SushiEffectMC = new lib.SushiEffectMC();
 	this.SushiEffectMC.name = "SushiEffectMC";
-	this.SushiEffectMC.setTransform(-386.2,-191.3);
+	this.SushiEffectMC.setTransform(-386.2,-187.3);
 
 	this.instance_1 = new lib.DispNumMC();
-	this.instance_1.setTransform(-473.75,-72.25);
+	this.instance_1.setTransform(-473.75,-68.25);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.SushiEffectMC},{t:this.instance}]}).wait(1));
 
