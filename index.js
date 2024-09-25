@@ -5999,12 +5999,6 @@ if (reversed == null) { reversed = false; }
 		//アップグレードの購入
 		main.BuyUpgrade = async function(upgrade)
 		{
-			
-		alert(
-			upgrade.name +" / "+
-		this.sushi +" / " + upgrade.price	
-			);	
-			
 			if(this.sushi < upgrade.price)
 				return;
 		
@@ -6187,6 +6181,8 @@ if (reversed == null) { reversed = false; }
 		
 		main.MainTick = function(event)
 		{
+			//todoオフライン時の処理が入ってないよ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+			
 			this.fps1Count += event.delta;
 			if (this.fps1Count >= 1000 / 1)
 			{
@@ -6235,13 +6231,11 @@ if (reversed == null) { reversed = false; }
 						url: '/user/online',
 						method: 'POST'
 					});
-					//todoオートセーブは切ってあるよ！！！！！！！！
+					//todoオートセーブは切ってあるよ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 					//main.SushiUpdate();
 				}
 		
 			}
-		
-		
 		}
 		//////////////////////////////////////////////////////////
 		//Debug
