@@ -499,7 +499,7 @@ if (reversed == null) { reversed = false; }
 			}
 			
 			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
+			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.id + ".png");
 			this.addChild(this.bitmap);
 			this.bitmap.x = 54;
 			this.bitmap.y = 68;
@@ -507,10 +507,10 @@ if (reversed == null) { reversed = false; }
 			this.bitmap.scaleY = 193 / this.bitmap.image.height;
 			this.bitmap.mouseEnabled = false;
 		
-			this.title_O.text = this.obj.data["name"];
-			this.desciption.text = this.obj.data["desciption"];
+			this.title_O.text = this.obj.name;
+			this.description.text = this.obj.description;
 			
-			SetWrapText(this.desciption);	
+			SetWrapText(this.description);	
 				
 		}
 	}
@@ -535,14 +535,14 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.title).wait(1));
 
 	// Text
-	this.desciption = new cjs.Text("「押すだけで寿司が出てくる。\nたまにネタとシャリが逆さまですが。」", "50px 'Potta One'");
-	this.desciption.name = "desciption";
-	this.desciption.lineHeight = 72;
-	this.desciption.lineWidth = 901;
-	this.desciption.parent = this;
-	this.desciption.setTransform(81.85,338.35);
+	this.description = new cjs.Text("「押すだけで寿司が出てくる。\nたまにネタとシャリが逆さまですが。」", "50px 'Potta One'");
+	this.description.name = "description";
+	this.description.lineHeight = 72;
+	this.description.lineWidth = 901;
+	this.description.parent = this;
+	this.description.setTransform(81.85,338.35);
 
-	this.timeline.addTween(cjs.Tween.get(this.desciption).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.description).wait(1));
 
 	// BG
 	this.instance_1 = new lib.dialogBG();
