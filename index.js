@@ -6070,11 +6070,7 @@ if (reversed == null) { reversed = false; }
 				this.CalculateGains();
 				this.RebuildStore();
 				this.touchSps = this.TouchSps();
-				exportRoot.Mask3MC.visible = false;
-				exportRoot.MessageMC.Open( "通信エラーです");
-			}
-		
-			try {
+			
 				console.log("API.アップグレード取得");
 				API_upgradesData = await main.API_Request({
 					url: '/upgrade'
@@ -6086,8 +6082,11 @@ if (reversed == null) { reversed = false; }
 					_upgrade.available = API_upgradesData["items"][i].available;
 					_upgrade.posession = API_upgradesData["items"][i].posession;
 				}
-				this.RebuildStore();
-			} catch (error) { }
+				this.RebuildStore();	
+			
+				exportRoot.Mask3MC.visible = false;
+				exportRoot.MessageMC.Open( "通信エラーです");
+			}
 		}
 		
 		main.RebuildGenerator = function()
@@ -6124,19 +6123,20 @@ if (reversed == null) { reversed = false; }
 		
 		main.RebuildStore = function()
 		{
-			let num =  this.upgradeStore.length;
-			//var isRebuild = false;
+			var isRebuild = false;
 			this.upgradeStore = [];
 			for (let i = 0; i < this.upgrades.length; i++)
 			{
 				let upgrade = this.upgrades[i];
-				/*
+		
+				//所持している場合
+				if(upgrade.posession)
+					continue;		
+				
 				//ジェネレーターの所持数による開放
 				if(upgrade.availableHasGeneratorMstId > 0)
-				{
 					if(upgrade.availableHasGeneratorCount > main.GetGenerator(upgrade.availableHasGeneratorMstId).posession)
 						continue;
-				}
 			
 				//生成寿司数による解放
 				if(upgrade.availableSushiCount > main.totalSushi)
@@ -6158,26 +6158,10 @@ if (reversed == null) { reversed = false; }
 					this.upgradeNotification = true;
 					exportRoot.FooterMC.UpgradeDoddMC.visible = true;
 				}
-				*/
-				
-				if(!upgrade.available)
-					continue;
-				
-				if(upgrade.posession)
-					continue;
-				
-				this.upgradeStore.push(upgrade);
 			}
 		
-			//todo同じ数の場合があるはずなので直す
-			if(num != this.upgradeStore.length)
-			{
-				this.upgradeNotification = true;
-				exportRoot.FooterMC.UpgradeDoddMC.visible = true;
-			}
-		
-			//if(isRebuild && !this.upgradeNotification)
-			//	exportRoot.UpgradePanelMC.Reset();
+			if(isRebuild && !this.upgradeNotification)
+				exportRoot.UpgradePanelMC.Reset();
 		}
 		
 		//寿司の同期
