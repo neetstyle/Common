@@ -7041,9 +7041,15 @@ if (reversed == null) { reversed = false; }
 		//this.LodingMC.visible = false;
 		//hiddenLoadingScreen();
 		 
-			alert(123);
+		alert(window.Telegram.WebApp.BiometricManager.isBiometricAvailable);
+		alert(window.Telegram.WebApp.BiometricManager.isAccessRequested);
+		
+		
 		
 		window.Telegram.WebApp.BiometricManager.init(this.AAA );
+		
+		alert(window.Telegram.WebApp.BiometricManager.isAccessRequested);
+		
 		
 		//console.log(window.Telegram.WebApp.BiometricManager);
 		
