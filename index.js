@@ -7044,7 +7044,7 @@ if (reversed == null) { reversed = false; }
 		
 		
 		main.log(
-		window.Telegram.WebApp.BiometricManager;
+		window.Telegram.WebApp.BiometricManager.deviceId
 		);
 	}
 
