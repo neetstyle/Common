@@ -7041,9 +7041,7 @@ if (reversed == null) { reversed = false; }
 		//this.LodingMC.visible = false;
 		//hiddenLoadingScreen();
 		
-		main.log(
-		window.Telegram.BiometricManager;
-		);
+		
 		
 		main.log(
 		window.Telegram.WebApp.BiometricManager;
