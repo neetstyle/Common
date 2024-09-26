@@ -6777,8 +6777,13 @@ if (reversed == null) { reversed = false; }
 		if(!isMobile())
 			authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
 		var api_host = "https://clicker-api.tomoya-ishisaka.workers.dev";
+		var deviceId ="";
 		
 		main.API_Request = function(options) {
+			
+			
+		main.log(deviceId);		
+			
 		    const fullUrl = api_host + options.url;
 		    const maxAttempts = options.maxAttempts || 3;
 		    let attempts = 0;
@@ -6812,7 +6817,8 @@ if (reversed == null) { reversed = false; }
 		                        dataType: 'json',
 		                        contentType: 'application/json',
 		                        headers: {
-		                            'Authorization': authorization
+		                            'Authorization': authorization,
+									'Device-Id' : deviceId
 		                        }
 		                    };
 		                    var finalOptions = $.extend({}, defaultOptions, options);
@@ -7036,37 +7042,22 @@ if (reversed == null) { reversed = false; }
 				this.Run();
 		}
 		
-		this.RunApp();
-		
 		//this.LodingMC.visible = false;
 		//hiddenLoadingScreen();
-		 
-		alert(111);
-		alert(window.Telegram.WebApp.BiometricManager.isBiometricAvailable);
-		alert(window.Telegram.WebApp.BiometricManager.isAccessRequested);
 		
-		
-		this.AAA =  function()
-		{
-		
-		alert(window.Telegram.WebApp.BiometricManager.isInited);
-		alert(window.Telegram.WebApp.BiometricManager.deviceId);
+		this.CheckDeviceId = () => {
+		    deviceId = window.Telegram.WebApp.BiometricManager.deviceId;
+			this.RunApp();
 		}
 		
-		
-		
-		
-		window.Telegram.WebApp.BiometricManager.init(this.AAA );
-		
-		alert(window.Telegram.WebApp.BiometricManager.isAccessRequested);
-		
-		
-		//console.log(window.Telegram.WebApp.BiometricManager);
-		
-		//alert(window.Telegram.WebApp.BiometricManager.deviceId);
-		//main.log(
-		//window.Telegram.WebApp.BiometricManager.deviceId
-		//);
+		if(isMobile())
+		{
+			window.Telegram.WebApp.BiometricManager.init(this.CheckDeviceId);
+		}
+		else
+		{
+			this.RunApp();
+		}
 	}
 
 	// actions tween:
