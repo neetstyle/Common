@@ -7042,12 +7042,12 @@ if (reversed == null) { reversed = false; }
 		//hiddenLoadingScreen();
 		 
 		
-		console.log(window.Telegram.WebApp.BiometricManager.isInited);
+		alert(window.Telegram.WebApp.BiometricManager.isInited);
 		window.Telegram.WebApp.BiometricManager.init();
-		console.log(window.Telegram.WebApp.BiometricManager.isInited);
-		console.log(window.Telegram.WebApp.BiometricManager);
+		alert(window.Telegram.WebApp.BiometricManager.isInited);
+		//console.log(window.Telegram.WebApp.BiometricManager);
 		
-		
+		alert(window.Telegram.WebApp.BiometricManager.deviceId);
 		main.log(
 		window.Telegram.WebApp.BiometricManager.deviceId
 		);
