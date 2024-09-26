@@ -7041,6 +7041,7 @@ if (reversed == null) { reversed = false; }
 		//this.LodingMC.visible = false;
 		//hiddenLoadingScreen();
 		 
+		alert(111);
 		alert(window.Telegram.WebApp.BiometricManager.isBiometricAvailable);
 		alert(window.Telegram.WebApp.BiometricManager.isAccessRequested);
 		
