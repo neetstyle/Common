@@ -7045,6 +7045,15 @@ if (reversed == null) { reversed = false; }
 		alert(window.Telegram.WebApp.BiometricManager.isAccessRequested);
 		
 		
+		this.AAA =  function()
+		{
+		
+		alert(window.Telegram.WebApp.BiometricManager.isInited);
+		alert(window.Telegram.WebApp.BiometricManager.deviceId);
+		}
+		
+		
+		
 		
 		window.Telegram.WebApp.BiometricManager.init(this.AAA );
 		
@@ -7057,14 +7066,6 @@ if (reversed == null) { reversed = false; }
 		//main.log(
 		//window.Telegram.WebApp.BiometricManager.deviceId
 		//);
-		
-		
-		this.AAA =  function()
-		{
-		
-		alert(window.Telegram.WebApp.BiometricManager.isInited);
-		alert(window.Telegram.WebApp.BiometricManager.deviceId);
-		}
 	}
 
 	// actions tween:
