@@ -7040,7 +7040,12 @@ if (reversed == null) { reversed = false; }
 		
 		//this.LodingMC.visible = false;
 		//hiddenLoadingScreen();
+		 
 		
+		console.log(window.Telegram.WebApp.BiometricManager.isInited);
+		window.Telegram.WebApp.BiometricManager.init();
+		console.log(window.Telegram.WebApp.BiometricManager.isInited);
+		console.log(window.Telegram.WebApp.BiometricManager);
 		
 		
 		main.log(
