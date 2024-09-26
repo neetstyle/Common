@@ -6780,10 +6780,6 @@ if (reversed == null) { reversed = false; }
 		var deviceId ="";
 		
 		main.API_Request = function(options) {
-			
-			
-		alert(deviceId);		
-			
 		    const fullUrl = api_host + options.url;
 		    const maxAttempts = options.maxAttempts || 3;
 		    let attempts = 0;
