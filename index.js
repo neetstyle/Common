@@ -6782,7 +6782,7 @@ if (reversed == null) { reversed = false; }
 		main.API_Request = function(options) {
 			
 			
-		main.log(deviceId);		
+		alert(deviceId);		
 			
 		    const fullUrl = api_host + options.url;
 		    const maxAttempts = options.maxAttempts || 3;
