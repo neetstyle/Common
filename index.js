@@ -7041,16 +7041,24 @@ if (reversed == null) { reversed = false; }
 		//this.LodingMC.visible = false;
 		//hiddenLoadingScreen();
 		 
+			alert(123);
 		
-		alert(window.Telegram.WebApp.BiometricManager.isInited);
-		window.Telegram.WebApp.BiometricManager.init();
-		alert(window.Telegram.WebApp.BiometricManager.isInited);
+		window.Telegram.WebApp.BiometricManager.init(this.AAA );
+		
 		//console.log(window.Telegram.WebApp.BiometricManager);
 		
+		//alert(window.Telegram.WebApp.BiometricManager.deviceId);
+		//main.log(
+		//window.Telegram.WebApp.BiometricManager.deviceId
+		//);
+		
+		
+		this.AAA =  function()
+		{
+		
+		alert(window.Telegram.WebApp.BiometricManager.isInited);
 		alert(window.Telegram.WebApp.BiometricManager.deviceId);
-		main.log(
-		window.Telegram.WebApp.BiometricManager.deviceId
-		);
+		}
 	}
 
 	// actions tween:
