@@ -7192,58 +7192,6 @@ if (reversed == null) { reversed = false; }
 			}
 			this.RunApp();
 		}
-		
-		window.Telegram.WebApp.onEvent('backButtonClicked', function() {
-			alert(1);
-			
-			main.API_Request({
-				url: '/sushi/add',
-				method: 'POST',
-				data: {
-					amount: 101
-				}
-			});	
-		});
-		
-		window.Telegram.WebApp.onEvent('mainButtonClicked', function() {
-			alert(1);
-			
-			main.API_Request({
-				url: '/sushi/add',
-				method: 'POST',
-				data: {
-					amount: 102
-				}
-			});	
-		});
-		
-		
-		
-		window.Telegram.WebApp.onEvent('secondaryButtonClicked', function() {
-			alert(1);
-			
-			main.API_Request({
-				url: '/sushi/add',
-				method: 'POST',
-				data: {
-					amount: 103
-				}
-			});	
-		});
-		
-		
-		
-		window.Telegram.WebApp.onEvent('settingsButtonClicked', function() {
-			alert(1);
-			
-			main.API_Request({
-				url: '/sushi/add',
-				method: 'POST',
-				data: {
-					amount: 104
-				}
-			});	
-		});
 	}
 
 	// actions tween:
