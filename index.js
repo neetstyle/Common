@@ -6089,6 +6089,7 @@ if (reversed == null) { reversed = false; }
 			for (let i = 0; i < main.generators.length; i++)
 			{
 				let generator = main.generators[i];
+				
 				if(main.sushi >= generator.availableSushiCount)
 				{
 					//0:初期、1:表示、2:バッジ表示、3:バッジ削除済み
@@ -6800,7 +6801,7 @@ if (reversed == null) { reversed = false; }
 				for (var i = 0; i < this.generators.length; i++)
 				{	
 					if(this.generators[i].posession > 0)
-						is.generators[i].doddState = 3;
+						this.generators[i].doddState = 3;
 				}
 			}
 			else
@@ -6811,6 +6812,9 @@ if (reversed == null) { reversed = false; }
 				{
 					let array2 = array1[i].split(':');
 					 main.GetGenerator(array2[0]).doddState = array2[1];
+					
+					
+					console.log( main.GetGenerator(array2[0]).id+"/"+main.GetGenerator(array2[0]).doddState );	
 				}
 			}
 		}
@@ -6825,7 +6829,7 @@ if (reversed == null) { reversed = false; }
 			{
 				array.push(this.generators[i].id +":" +this.generators[i].doddState);
 			}
-			localStorage.setItem('gn', array.join(":"));
+			localStorage.setItem('gn', array.join(","));
 		}
 		//////////////////////////////////////////////////////////
 		//API
