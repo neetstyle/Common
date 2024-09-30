@@ -7192,6 +7192,18 @@ if (reversed == null) { reversed = false; }
 			}
 			this.RunApp();
 		}
+		
+		window.addEventListener('beforeunload', function (event) {
+			console.log("API.現在の寿司の更新");
+			await main.API_Request({
+				url: '/sushi/add',
+				method: 'POST',
+				data: {
+					amount: this.sushiAdd
+				}
+			});	
+			this.sushiAdd = 0;
+		});
 	}
 
 	// actions tween:
