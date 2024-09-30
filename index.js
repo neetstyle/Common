@@ -7052,6 +7052,18 @@ if (reversed == null) { reversed = false; }
 		}
 		else
 		{
+			
+		
+		alert(localStorage.getItem('uniqueId'));	
+			
+			if (localStorage.getItem('uniqueId'))
+				deviceId = localStorage.getItem('uniqueId')
+			else
+			{
+				deviceId = Math.random().toString()
+				localStorage.setItem('uniqueId', deviceId)		
+			}
+		
 			this.RunApp();
 		}
 	}
