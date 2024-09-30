@@ -7193,7 +7193,7 @@ if (reversed == null) { reversed = false; }
 			this.RunApp();
 		}
 		
-		window.addEventListener('beforeunload', function (event) {
+		window.Telegram.WebApp.onEvent('backButtonClicked', function() {
 			main.API_Request({
 				url: '/sushi/add',
 				method: 'POST',
