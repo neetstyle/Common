@@ -7192,13 +7192,6 @@ if (reversed == null) { reversed = false; }
 			}
 			this.RunApp();
 		}
-		
-		window.Telegram.WebApp.onEvent('close', function() {
-		
-			
-		alert("close");	
-			
-		});
 	}
 
 	// actions tween:
