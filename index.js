@@ -7198,10 +7198,10 @@ if (reversed == null) { reversed = false; }
 				url: '/sushi/add',
 				method: 'POST',
 				data: {
-					amount: this.sushiAdd
+					amount: main.sushiAdd
 				}
 			});	
-			this.sushiAdd = 0;
+			main.sushiAdd = 0;
 		});
 	}
 
