@@ -6110,11 +6110,12 @@ if (reversed == null) { reversed = false; }
 		
 		main.GetGenerator = function(id)
 		{
-			for (var i = 0; i < main.generators.length; i++)
-			{
-				if(main.generators[i].id == id)
-					return main.generators[i];
-			}
+		    return this.generators.find(generator => generator.id == id);
+		}
+		
+		main.GetUpgrade = function(id)
+		{
+		    return this.upgrades.find(upgrade => upgrade.id == id);
 		}
 		
 		main.RebuildStore = function()
@@ -6259,13 +6260,13 @@ if (reversed == null) { reversed = false; }
 		
 		this.DebugPanelMC.ContentMC.ClearNotificationButtonMC.on("click", function(evt) {
 			for (let i = 0; i < main.generators.length; i++)
-			{
 				main.generators[i].doddState = 0;
-			}	
+			for (let i = 0; i < main.upgrades.length; i++)
+				main.upgrades[i].doddState = 0;
 			main.SetGeneratorNotification();
+			main.SetUpgradeNotification();
 			main.PlaySE("click");
 		});
-		
 		
 		main.Debug_Init = function()
 		{
@@ -6791,11 +6792,11 @@ if (reversed == null) { reversed = false; }
 		
 		main.GetGeneratorNotification = function() 
 		{
-			let generatorNotification = localStorage.getItem('gn')
+			let notification = localStorage.getItem('gn')
 			
-			console.log("GeneratorNotification : " + generatorNotification);	
+			console.log("GeneratorNotification : " + notification);	
 			
-			if(generatorNotification === null)
+			if(notification === null)
 			{
 				//別端末の場合は通知は無し
 				for (var i = 0; i < this.generators.length; i++)
@@ -6806,15 +6807,12 @@ if (reversed == null) { reversed = false; }
 			}
 			else
 			{
-				let array1 = generatorNotification.split(',');
+				let array1 = notification.split(',');
 			
 				for (let i = 0; i < array1.length; i++)
 				{
 					let array2 = array1[i].split(':');
 					 main.GetGenerator(array2[0]).doddState = array2[1];
-					
-					
-					console.log( main.GetGenerator(array2[0]).id+"/"+main.GetGenerator(array2[0]).doddState );	
 				}
 			}
 		}
@@ -6830,6 +6828,46 @@ if (reversed == null) { reversed = false; }
 				array.push(this.generators[i].id +":" +this.generators[i].doddState);
 			}
 			localStorage.setItem('gn', array.join(","));
+		}
+		
+		main.GetUpgradeNotification = function() 
+		{
+			let notification = localStorage.getItem('ug')
+			
+			console.log("UpgradeNotification : " + notification);	
+			
+			if(notification === null)
+			{
+				//別端末の場合は通知は無し
+				for (var i = 0; i < this.upgrades.length; i++)
+				{	
+					if(this.upgrades[i].posession)
+						this.upgrades[i].doddState = 3;
+				}
+			}
+			else
+			{
+				let array1 = notification.split(',');
+			
+				for (let i = 0; i < array1.length; i++)
+				{
+					let array2 = array1[i].split(':');
+					 main.GetUpgrade(array2[0]).doddState = array2[1];
+				}
+			}
+		}
+		
+		main.SetUpgradeNotification = function() 
+		{
+			console.log("SetUpgradeNotification");
+			
+			let array =[];
+			
+			for (var i = 0; i < this.upgrades.length; i++)
+			{
+				array.push(this.upgrades[i].id +":" +this.upgrades[i].doddState);
+			}
+			localStorage.setItem('ug', array.join(","));
 		}
 		//////////////////////////////////////////////////////////
 		//API
@@ -6928,24 +6966,28 @@ if (reversed == null) { reversed = false; }
 		            url: '/generator'
 		        });
 				console.log(API_generatorsData);
+				setProgress(85);
 			
 				console.log("API.アップグレード取得");
 		        API_upgradesData = await main.API_Request({
 		            url: '/upgrade'
 		        });
 				console.log(API_upgradesData);
+				setProgress(90);
 			
 				console.log("API.寿司ショップ取得");
 		        API_sushiShopData = await main.API_Request({
 		            url: '/market/sushi'
 		        });
 				console.log(API_sushiShopData);
+				setProgress(95);
 			
 				console.log("API.金寿司ショップ取得");
 		        API_goldenSushiShopData = await main.API_Request({
 		            url: '/market/golden-sushi'
 		        });
 				console.log(API_goldenSushiShopData);
+				setProgress(100);
 			
 		    } catch (error) {
 		        console.error("todo:初期データロード", error);
@@ -6961,6 +7003,7 @@ if (reversed == null) { reversed = false; }
 		            url: '/user/me'
 		        });
 				console.log(API_userData);
+				setProgress(80);
 		    } catch (error) {
 				try {
 					console.log("API.新規ユーザ登録");
@@ -6971,11 +7014,13 @@ if (reversed == null) { reversed = false; }
 							referralCode: null
 						}
 					});
+					setProgress(77);
 					console.log("API.ユーザ情報取得");
 					API_userData = await main.API_Request({
 						url: '/user/me'
 					});
 					console.log(API_userData);
+				setProgress(80);
 				} catch (recoveryError) {
 					this.MessageMC.Open( "please wait a while and try again.");
 				}
@@ -7015,7 +7060,7 @@ if (reversed == null) { reversed = false; }
 				upgrade.targetType = Number(API_upgradesData["items"][i].targetType);
 				main.upgrades.push(upgrade);
 			}
-		
+			main.GetUpgradeNotification();
 			//////////////////////////////////////////////////////////
 			//ジェネレーター
 			for (let i = 0; i < API_generatorsData["items"].length; i++)
@@ -7042,7 +7087,6 @@ if (reversed == null) { reversed = false; }
 				generator.CalculateSps();
 				main.generators.push(generator);
 			}
-			//localStorage.clear();
 			main.GetGeneratorNotification();
 		
 			//////////////////////////////////////////////////////////

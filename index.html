@@ -104,7 +104,7 @@ function init() {
 function handleProgress(evt) {
     var progressBar = document.getElementById("progress_bar");
     var progress = (evt.progress * 100).toFixed(2);
-    progressBar.style.width = progress + "%";
+    progressBar.style.width = (progress * 0.75) + "%";
     console.log("Loading progress: " + progress + "%");
 }
 function handleFileLoad(evt, comp) {
@@ -137,6 +137,10 @@ function handleComplete(evt,comp) {
 function hiddenLoadingScreen() {
     var loadingScreen = document.getElementById("loading_screen");
     loadingScreen.style.display = "none";
+}
+function setProgress(progress) {
+    var progressBar = document.getElementById("progress_bar");
+    progressBar.style.width = progress + "%";
 }
 </script>
 
