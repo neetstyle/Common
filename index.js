@@ -7194,8 +7194,7 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		window.addEventListener('beforeunload', function (event) {
-			console.log("API.現在の寿司の更新");
-			await main.API_Request({
+			main.API_Request({
 				url: '/sushi/add',
 				method: 'POST',
 				data: {
