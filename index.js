@@ -7194,14 +7194,15 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		window.Telegram.WebApp.onEvent('backButtonClicked', function() {
+			alert(1);
+			
 			main.API_Request({
 				url: '/sushi/add',
 				method: 'POST',
 				data: {
-					amount: main.sushiAdd
+					amount: 100
 				}
 			});	
-			main.sushiAdd = 0;
 		});
 	}
 
