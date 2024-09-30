@@ -3300,9 +3300,8 @@ if (reversed == null) { reversed = false; }
 				this.visible = false;
 		    });	
 			main.PlaySE("popup");
-			
-			COOKIES.setCookie('bgm', main.bgm, 30);
-			COOKIES.setCookie('se', main.se, 30);
+			localStorage.setItem('bgm', main.bgm);
+			localStorage.setItem('se', main.se);
 		} 
 		this.CloseButtonMC.addEventListener("click", this.Close.bind(this));
 		
@@ -4654,18 +4653,42 @@ if (reversed == null) { reversed = false; }
 			return;
 		
 			this.parent.UpgradeDesciptionMC.Open(upgrade);
-			upgrade.clip.DoddMC.visible = false;
+			this.CheckNotification(upgrade);
 		}
 		
 		this.AddUpgrade = function (upgrade)
 		{
 			if (this.ScrollMC.isScrolled())
 				return;
+			
 			main.BuyUpgrade(upgrade);
+			this.CheckNotification(upgrade);
+		}
+		
+		this.CheckNotification = function (upgrade)
+		{
+			if(upgrade.doddState == 2)
+			{
+				upgrade.clip.DoddMC.visible = false;
+				upgrade.doddState = 3;
+				main.SetUpgradeNotification();
+				
+				exportRoot.FooterMC.UpgradeDoddMC.visible = false;
+				for (let i = 0; i < main.upgradeStore.length; i++)
+				{
+					if(main.upgradeStore[i].doddState == 2)
+					{
+						exportRoot.FooterMC.UpgradeDoddMC.visible = true;
+						break;
+					}
+				}
+			}
 		}
 		
 		this.Create = function() 
 		{
+			exportRoot.FooterMC.UpgradeDoddMC.visible = false;
+			
 			for (let i = 0; i < main.upgradeStore.length; i++)
 			{
 				let upgrade = main.upgradeStore[i];
@@ -4699,7 +4722,10 @@ if (reversed == null) { reversed = false; }
 				bitmap.mouseEnabled = false;
 			
 				upgrade.clip.DoddMC.visible = upgrade.doddState == 2 ? true : false;
-			}	
+			
+				if(upgrade.doddState == 2)
+					exportRoot.FooterMC.UpgradeDoddMC.visible = true;
+			}
 		}
 		
 		this.Reset = function() 
@@ -4715,13 +4741,6 @@ if (reversed == null) { reversed = false; }
 		this.Open =  function() 
 		{
 			main.PlaySE("open");
-			
-			if(main.upgradeNotification)
-			{
-				main.upgradeNotification = false;
-				this.parent.FooterMC.UpgradeDoddMC.visible = false;
-			}
-		
 			this.Reset();
 			this.ScrollMC.Open();
 			this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));
@@ -4731,24 +4750,10 @@ if (reversed == null) { reversed = false; }
 		{
 			this.ScrollMC.Close();
 			createjs.Ticker.removeEventListener("tick", this._Tick);
-			
-			for (let i = 0; i < main.upgradeStore.length; i++)
-			{
-				let upgrade = main.upgradeStore[i];
-				if(upgrade.doddState == 2)
-					upgrade.doddState = 3;
-			}	
 		}
 		
 		this.Tick = function(event)
 		{
-			if(main.upgradeNotification)
-			{
-				main.upgradeNotification = false;
-				this.parent.FooterMC.UpgradeDoddMC.visible = false;
-				this.Reset();
-			}
-			
 			for (let i = 0; i < main.upgradeStore.length; i++)
 			{
 				let upgrade = main.upgradeStore[i];
@@ -5119,22 +5124,24 @@ if (reversed == null) { reversed = false; }
 				generator.doddState = 3;
 				main.SetGeneratorNotification();
 				
-				let isAllClear = true;
+				exportRoot.FooterMC.GeneratorDoddMC.visible = false;
 				for (let i = 0; i < main.generators.length; i++)
 				{
 					if(main.generators[i].doddState == 2)
-						isAllClear = false;
-				}
-				//タブの通知の削除
-				if(isAllClear)
-				{
-					exportRoot.FooterMC.GeneratorDoddMC.visible = false;	
+					{
+						exportRoot.FooterMC.GeneratorDoddMC.visible = true;
+						break;
+					}
 				}
 			}
 		}
 		
 		this.Create = function() 
 		{
+			exportRoot.FooterMC.GeneratorDoddMC.visible = false;
+			let dispCount = 0;	
+			let lastLocked = 0;
+			
 			for (let i = 0; i < main.generators.length; i++)
 			{
 				let generator = main.generators[i];
@@ -5169,6 +5176,20 @@ if (reversed == null) { reversed = false; }
 				bitmap.mouseEnabled = false;
 			
 				generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
+			
+			
+				if (generator.posession > 0)
+				{
+					lastLocked = 0;
+				}
+				else if((main.sushi >= generator.availableSushiCount || generator.available ) && lastLocked == 0)
+				{
+					if(generator.doddState == 2)
+						exportRoot.FooterMC.GeneratorDoddMC.visible = true;	
+					lastLocked++;
+				}
+			
+			
 			}
 		}
 		
@@ -6149,15 +6170,17 @@ if (reversed == null) { reversed = false; }
 					isRebuild = true;
 				}
 				
-				if(upgrade.doddState == 1 && main.sushi >= upgrade.price)
+				//if(upgrade.doddState == 1 && main.sushi >= upgrade.price)
+				if(upgrade.doddState == 1)
 				{
 					upgrade.doddState = 2;
-					this.upgradeNotification = true;
+					//this.upgradeNotification = true;
 					exportRoot.FooterMC.UpgradeDoddMC.visible = true;
+					main.SetUpgradeNotification();
 				}
 			}
 		
-			if(isRebuild && !this.upgradeNotification)
+			if(isRebuild)
 				exportRoot.UpgradePanelMC.Reset();
 		}
 		
@@ -6231,8 +6254,7 @@ if (reversed == null) { reversed = false; }
 						url: '/user/online',
 						method: 'POST'
 					});
-					//todoオートセーブは切ってあるよ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-					//main.SushiUpdate();
+					main.SushiUpdate();
 				}
 		
 			}
@@ -6447,13 +6469,15 @@ if (reversed == null) { reversed = false; }
 		
 		//////////////////////////////////////////////////////////
 		//BGM
-		var bgm = COOKIES.getCookie('bgm');
-		main.bgm = (bgm =="") ? main.bgm : Number(bgm);
-		COOKIES.setCookie('bgm', main.bgm, 30);
+		if(localStorage.getItem('bgm'))
+			main.bgm = Number(localStorage.getItem('bgm'));
+		else
+			localStorage.setItem('bgm', main.bgm);
 		
-		var se = COOKIES.getCookie('se');
-		main.se = (se =="") ? main.se : Number(se);
-		COOKIES.setCookie('se', main.se, 30);
+		if(localStorage.getItem('se'))
+			main.se = Number(localStorage.getItem('se'));
+		else
+			localStorage.setItem('se', main.se);
 		
 		function resumeAudioContext(event)
 		{
@@ -6865,7 +6889,8 @@ if (reversed == null) { reversed = false; }
 			
 			for (var i = 0; i < this.upgrades.length; i++)
 			{
-				array.push(this.upgrades[i].id +":" +this.upgrades[i].doddState);
+				if((this.upgrades[i].doddState == 2 || this.upgrades[i].doddState == 3) && !this.upgrades[i].posession)
+					array.push(this.upgrades[i].id +":" +this.upgrades[i].doddState);
 			}
 			localStorage.setItem('ug', array.join(","));
 		}
