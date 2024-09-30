@@ -1569,13 +1569,13 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// レイヤー_1
-	this.status = new cjs.Text("Normal", "60px 'Potta One'", "#FFFFFF");
+	this.status = new cjs.Text("Normal", "40px 'Potta One'", "#FFFFFF");
 	this.status.name = "status";
 	this.status.textAlign = "center";
-	this.status.lineHeight = 89;
+	this.status.lineHeight = 60;
 	this.status.lineWidth = 496;
 	this.status.parent = this;
-	this.status.setTransform(250,2);
+	this.status.setTransform(250,20);
 
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f().s("#FFFFFF").ss(1,1,1).p("EgnDgHzMBOHAAAIAAPnMhOHAAAg");
@@ -3208,6 +3208,14 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Text
+	this.ClearNotificationButtonMC = new lib.DebugMC();
+	this.ClearNotificationButtonMC.name = "ClearNotificationButtonMC";
+	this.ClearNotificationButtonMC.setTransform(290,228,1,1,0,0,0,250,50);
+
+	this.LocalStorageButtonMC = new lib.DebugMC();
+	this.LocalStorageButtonMC.name = "LocalStorageButtonMC";
+	this.LocalStorageButtonMC.setTransform(834.4,228,1,1,0,0,0,250,50);
+
 	this.MemoryButtonMC = new lib.DebugMC();
 	this.MemoryButtonMC.name = "MemoryButtonMC";
 	this.MemoryButtonMC.setTransform(834.4,100,1,1,0,0,0,250,50);
@@ -3221,13 +3229,13 @@ if (reversed == null) { reversed = false; }
 	this.log.lineHeight = 45;
 	this.log.lineWidth = 1121;
 	this.log.parent = this;
-	this.log.setTransform(2,304.05);
+	this.log.setTransform(-20.5,422.1);
 
 	this.ClearButtonMC = new lib.DebugMC();
 	this.ClearButtonMC.name = "ClearButtonMC";
-	this.ClearButtonMC.setTransform(290,228,1,1,0,0,0,250,50);
+	this.ClearButtonMC.setTransform(290,370.1,1,1,0,0,0,250,50);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.ClearButtonMC},{t:this.log},{t:this.SpeedButtonMC},{t:this.MemoryButtonMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.ClearButtonMC},{t:this.log},{t:this.SpeedButtonMC},{t:this.MemoryButtonMC},{t:this.LocalStorageButtonMC},{t:this.ClearNotificationButtonMC}]}).wait(1));
 
 	// BG
 	this.ContentBGMC = new lib.ButtonMC();
@@ -3238,7 +3246,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.DebugContentMC, new cjs.Rectangle(0,0,1125,1558.4), null);
+}).prototype = getMCSymbolPrototype(lib.DebugContentMC, new cjs.Rectangle(-22.5,0,1147.5,1676.4), null);
 
 
 (lib.ConfigDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -5091,8 +5099,7 @@ if (reversed == null) { reversed = false; }
 				return;
 			
 			this.parent.GeneratorDesciptionMC.Open(generator);
-			generator.clip.DoddMC.visible = false;
-			generator.doddState = 3;
+			this.CheckNotification(generator);
 		}
 		
 		this.AddGenerator = function (generator)
@@ -5101,8 +5108,29 @@ if (reversed == null) { reversed = false; }
 				return;
 			
 			main.BuyGenerator(generator);
-			generator.clip.DoddMC.visible = false;
-			generator.doddState = 3;
+			this.CheckNotification(generator);
+		}
+		
+		this.CheckNotification = function (generator)
+		{
+			if(generator.doddState == 2)
+			{
+				generator.clip.DoddMC.visible = false;
+				generator.doddState = 3;
+				main.SetGeneratorNotification();
+				
+				let isAllClear = true;
+				for (let i = 0; i < main.generators.length; i++)
+				{
+					if(main.generators[i].doddState == 2)
+						isAllClear = false;
+				}
+				//タブの通知の削除
+				if(isAllClear)
+				{
+					exportRoot.FooterMC.GeneratorDoddMC.visible = false;	
+				}
+			}
 		}
 		
 		this.Create = function() 
@@ -5147,19 +5175,6 @@ if (reversed == null) { reversed = false; }
 		this.Open = function() 
 		{
 			main.PlaySE("open");
-			
-			if(main.generatorNotification)
-			{
-				main.generatorNotification = false;
-				this.parent.FooterMC.GeneratorDoddMC.visible = false;
-				
-				for (let i = 0; i < main.generators.length; i++)
-				{
-					let generator = main.generators[i];
-					generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
-				}
-			}
-		
 			this.ScrollMC.Open();
 			this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));	
 		}
@@ -5168,33 +5183,10 @@ if (reversed == null) { reversed = false; }
 		{
 			this.ScrollMC.Close();
 			createjs.Ticker.removeEventListener("tick", this._Tick);
-		
-			for (let i = 0; i < main.generators.length; i++)
-			{
-				let generator = main.generators[i];
-				if(generator.doddState == 2)
-				{
-					generator.doddState = 3;
-					generator.clip.DoddMC.visible = false;
-				}
-			}
 		}
 		
 		this.Tick = function(event)
 		{
-			if(main.generatorNotification)
-			{
-				//タブの通知の削除
-				main.generatorNotification = false;
-				this.parent.FooterMC.GeneratorDoddMC.visible = false;
-				for (let i = 0; i < main.generators.length; i++)
-				{
-					//一覧の通知の削除
-					let generator = main.generators[i];
-					generator.clip.DoddMC.visible = generator.doddState == 2 ? true : false;
-				}
-			}
-		
 			let dispCount = 0;	
 			let lastLocked = 0;
 			for (let i = 0; i < main.generators.length; i++)
@@ -5202,6 +5194,9 @@ if (reversed == null) { reversed = false; }
 				let generator = main.generators[i];
 				
 				generator.clip.visible = true;	
+				
+				if(generator.doddState == 2)
+					generator.clip.DoddMC.visible = true;		
 				
 				if (generator.posession > 0)
 				{
@@ -5593,7 +5588,7 @@ if (reversed == null) { reversed = false; }
 		
 				this.upgrades = [];
 				
-				this.isNotification = false;		//通知を表示したか
+				//this.isNotification = false;		//通知を表示したか
 				this.doddState = 0;					//0:初期、1:表示、2:バッジ表示、3:バッジ削除済み
 				
 				this.available = false;
@@ -5643,7 +5638,7 @@ if (reversed == null) { reversed = false; }
 		
 				//this.amount = 0;
 				
-				this.isNotification = false;
+				//this.isNotification = false;
 				this.doddState = 0;
 				this.isAchievementUnread = true;
 				
@@ -5718,7 +5713,7 @@ if (reversed == null) { reversed = false; }
 				this.dir = "Achievement";
 				this.unlock = false;
 		
-				this.isNotification = false;
+				//this.isNotification = false;
 				this.doddState = 0;
 				this.isAchievementUnread = true;
 				
@@ -5779,7 +5774,7 @@ if (reversed == null) { reversed = false; }
 				//ジェネレーター
 				this.generators = [];
 				this.generatorNum = 0;
-				this.generatorNotification = false;
+				//this.generatorNotification = false;
 				//////////////////////////////////////////////////////////
 				//ショップ
 				this.shops = [];
@@ -6091,22 +6086,22 @@ if (reversed == null) { reversed = false; }
 		
 		main.RebuildGenerator = function()
 		{
-			for (var i = 0; i < main.generators.length; i++)
+			for (let i = 0; i < main.generators.length; i++)
 			{
-				var generator = main.generators[i];
+				let generator = main.generators[i];
 				if(main.sushi >= generator.availableSushiCount)
 				{
 					//0:初期、1:表示、2:バッジ表示、3:バッジ削除済み
-					if(generator.posession > 0)
+					if(generator.posession > 0 && generator.doddState != 3)
 					{
 						generator.doddState = 3;
-						
+						this.SetGeneratorNotification();
 					}
 					else if(generator.doddState == 0)
 					{
 						generator.doddState = 2;
-						this.generatorNotification = true;
-						exportRoot.FooterMC.GeneratorDoddMC.visible = true;				
+						exportRoot.FooterMC.GeneratorDoddMC.visible = true;	
+						this.SetGeneratorNotification();				
 					}
 				}
 			}
@@ -6246,21 +6241,41 @@ if (reversed == null) { reversed = false; }
 			main.Debug_isSpeed = !main.Debug_isSpeed;
 			this.status.text = main.Debug_isSpeed ? "AddSushi*100" : "Normal";
 			COOKIES.setCookie('debug_speed', main.Debug_isSpeed ? "1" : "0", 30);
+			main.PlaySE("click");
 		});
 		
 		this.DebugPanelMC.ContentMC.MemoryButtonMC.on("click", function(evt) {
 			main.Debug_isMemory = !main.Debug_isMemory;
 			this.status.text = main.Debug_isMemory ? "ViewMemory" : "HiddenMemory";
 			COOKIES.setCookie('debug_memory', main.Debug_isMemory ? "1" : "0", 30);
+			main.PlaySE("click");
 		});
+		
+		this.DebugPanelMC.ContentMC.LocalStorageButtonMC.on("click", function(evt) {
+			localStorage.clear();
+			main.PlaySE("click");
+		});
+		
+		this.DebugPanelMC.ContentMC.ClearNotificationButtonMC.on("click", function(evt) {
+			for (let i = 0; i < main.generators.length; i++)
+			{
+				main.generators[i].doddState = 0;
+			}	
+			main.SetGeneratorNotification();
+			main.PlaySE("click");
+		});
+		
 		
 		main.Debug_Init = function()
 		{
 			this.Debug_isSpeed = COOKIES.getCookie('debug_speed') == "1";
-			exportRoot.DebugPanelMC.ContentMC.SpeedButtonMC.status.text = main.Debug_isSpeed ? "AddSushi*100" : "Normal";
+			exportRoot.DebugPanelMC.ContentMC.SpeedButtonMC.status.text = main.Debug_isSpeed ? "AddSushi*100" : "NormalSpeed";
 		
 			this.Debug_isMemory = COOKIES.getCookie('debug_memory') == "1";
 			exportRoot.DebugPanelMC.ContentMC.MemoryButtonMC.status.text = main.Debug_isMemory ? "ViewMemory" : "HiddenMemory";
+		
+			exportRoot.DebugPanelMC.ContentMC.LocalStorageButtonMC.status.text = "StorageClear";
+			exportRoot.DebugPanelMC.ContentMC.ClearNotificationButtonMC.status.text = "ResetNotification";
 		}
 		
 		main.Debug_Memory = function()
@@ -6288,6 +6303,7 @@ if (reversed == null) { reversed = false; }
 		this.DebugPanelMC.ContentMC.ClearButtonMC.status.text = "Clear";
 		this.DebugPanelMC.ContentMC.ClearButtonMC.on("click", function(evt) {
 			exportRoot.DebugPanelMC.ContentMC.log.text = "";
+			main.PlaySE("click");
 		});
 		main.log = function(str)
 		{
@@ -6771,6 +6787,46 @@ if (reversed == null) { reversed = false; }
 			exportRoot.NotificationMC.bitmap.scaleX = 208 / 64;
 			exportRoot.NotificationMC.bitmap.scaleY = 208 / 64;
 		}
+		
+		main.GetGeneratorNotification = function() 
+		{
+			let generatorNotification = localStorage.getItem('gn')
+			
+			console.log("GeneratorNotification : " + generatorNotification);	
+			
+			if(generatorNotification === null)
+			{
+				//別端末の場合は通知は無し
+				for (var i = 0; i < this.generators.length; i++)
+				{	
+					if(this.generators[i].posession > 0)
+						is.generators[i].doddState = 3;
+				}
+			}
+			else
+			{
+				let array1 = generatorNotification.split(',');
+			
+				for (let i = 0; i < array1.length; i++)
+				{
+					let array2 = array1[i].split(':');
+					 main.GetGenerator(array2[0]).doddState = array2[1];
+				}
+			}
+		}
+		
+		main.SetGeneratorNotification = function() 
+		{
+			console.log("SetGeneratorNotification");
+			
+			let array =[];
+			
+			for (var i = 0; i < this.generators.length; i++)
+			{
+				array.push(this.generators[i].id +":" +this.generators[i].doddState);
+			}
+			localStorage.setItem('gn', array.join(":"));
+		}
 		//////////////////////////////////////////////////////////
 		//API
 		var authorization = window.Telegram.WebApp.initData;
@@ -6982,6 +7038,8 @@ if (reversed == null) { reversed = false; }
 				generator.CalculateSps();
 				main.generators.push(generator);
 			}
+			//localStorage.clear();
+			main.GetGeneratorNotification();
 		
 			//////////////////////////////////////////////////////////
 			//寿司ショップ
@@ -7052,10 +7110,6 @@ if (reversed == null) { reversed = false; }
 		}
 		else
 		{
-			
-		
-		alert(localStorage.getItem('uniqueId'));	
-			
 			if (localStorage.getItem('uniqueId'))
 				deviceId = localStorage.getItem('uniqueId')
 			else
@@ -7063,7 +7117,6 @@ if (reversed == null) { reversed = false; }
 				deviceId = Math.random().toString()
 				localStorage.setItem('uniqueId', deviceId)		
 			}
-		
 			this.RunApp();
 		}
 	}
