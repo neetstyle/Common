@@ -71,24 +71,44 @@
 		checkInitialization();
 	}
 
-	async function checkInitialization() {
-		if (isLoad_html && isLoad_webFont && isLoad_anime && isLoad_data) {
-		    try {
-				console.log("API.ユーザ情報取得");
-			    API_userData = await API_Request({
-			        url: '/user/me'
-			    });
-				console.log(API_userData);
-				document.getElementById("loading_screen").style.display = "block";
-				init();
-		    } catch (error) {
-		    	document.getElementById("registration").style.display = "block";
-		    }
-		document.getElementById("loading_screen").style.display = "none";
-		document.getElementById("registration").style.display = "none";
-		document.getElementById("animation_container").style.display = "block";
-		init();
+	function checkInitialization() {
+		if (!(isLoad_html && isLoad_webFont && isLoad_anime && isLoad_data))
+			return;
+
+		if(isMobile())
+		{
+			window.Telegram.WebApp.BiometricManager.init(this.CheckDeviceId);
 		}
+		else
+		{
+			if (localStorage.getItem('uniqueId'))
+				deviceId = localStorage.getItem('uniqueId')
+			else
+			{
+				deviceId = Math.random().toString()
+				localStorage.setItem('uniqueId', deviceId)		
+			}
+			this.checkInitialization2();
+		}
+	}
+
+	this.CheckDeviceId = () => {
+	    deviceId = window.Telegram.WebApp.BiometricManager.deviceId;
+		checkInitialization2();
+	}
+
+	async function checkInitialization2() {
+	    try {
+			console.log("API.ユーザ情報取得");
+		    API_userData = await API_Request({
+		        url: '/user/me'
+		    });
+			console.log(API_userData);
+			document.getElementById("loading_screen").style.display = "block";
+			init();
+	    } catch (error) {
+	    	document.getElementById("registration").style.display = "block";
+	    }
 	}
 
 	document.addEventListener('DOMContentLoaded', function() {
@@ -131,6 +151,7 @@
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, main;
 var API_userData;
+var deviceId = "";
 function init() {
 	console.log("v2");
 	canvas = document.getElementById("canvas");
@@ -227,7 +248,7 @@ function setProgress(progress) {
         <img id="loading_background" src="images/loding-background.jpg" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
     <div id="content-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 2;">
-        <div id="content" style="width: 100%; height: 100%; max-width: 70vh; aspect-ratio: 1125 / 2436; position: relative;">
+        <div id="content" style="width: 100%; height: 100%; max-width: 55vh; aspect-ratio: 1125 / 2436; position: relative;">
 
             <div id="registration" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;">
                 <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>

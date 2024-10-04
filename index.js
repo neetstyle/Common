@@ -6459,7 +6459,7 @@ if (reversed == null) { reversed = false; }
 			particle.rotation = Math.random() * 360;	
 			particle.alpha = 1;
 			
-			document.documentElement.clientWidth / 1125;
+			lib.properties.width / 1125;
 			createjs.Tween.get(particle)
 				.to({ y: 2535 * 0.9, rotation : particle.rotation + (0.5 - Math.random()) * 300}, 6000, createjs.Ease.linear)
 				.call(() => {
@@ -6607,10 +6607,7 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(1);
 		}
-		this.GeneratorPanelMC.scaleX = this.canvasScaleX;
-		this.GeneratorPanelMC.scaleY = this.canvasScaleX;
 		this.GeneratorPanelMC.x = 0;
-		this.GeneratorPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX + 914 * this.canvasScaleX;
 		this.GeneratorPanelMC.visible = false;	
 		
 		//UpgradePanel
@@ -6619,10 +6616,7 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(2);
 		}
-		this.UpgradePanelMC.scaleX = this.canvasScaleX;
-		this.UpgradePanelMC.scaleY = this.canvasScaleX;
 		this.UpgradePanelMC.x = 0;
-		this.UpgradePanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 		this.UpgradePanelMC.visible = false;	
 		
 		//ShopPanel
@@ -6631,10 +6625,7 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(3);
 		}
-		this.ShopPanelMC.scaleX = this.canvasScaleX;
-		this.ShopPanelMC.scaleY = this.canvasScaleX;
 		this.ShopPanelMC.x = 0;
-		this.ShopPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 		this.ShopPanelMC.visible = false;	
 		
 		//AchievementPanel
@@ -6643,10 +6634,7 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(4);
 		}
-		this.AchievementPanelMC.scaleX = this.canvasScaleX;
-		this.AchievementPanelMC.scaleY = this.canvasScaleX;
 		this.AchievementPanelMC.x = 0;
-		this.AchievementPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 		this.AchievementPanelMC.visible = false;	
 		
 		//DebugPanel
@@ -6655,11 +6643,32 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(5);
 		}
-		this.DebugPanelMC.scaleX = this.canvasScaleX;
-		this.DebugPanelMC.scaleY = this.canvasScaleX;
 		this.DebugPanelMC.x = 0;
-		this.DebugPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
 		this.DebugPanelMC.visible = false;	
+		
+		this.resizeCanvas = function() {
+			this.GeneratorPanelMC.scaleX = this.canvasScaleX;
+			this.GeneratorPanelMC.scaleY = this.canvasScaleX;
+			this.GeneratorPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
+			
+			this.UpgradePanelMC.scaleX = this.canvasScaleX;
+			this.UpgradePanelMC.scaleY = this.canvasScaleX;
+			this.UpgradePanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;	
+		
+			this.ShopPanelMC.scaleX = this.canvasScaleX;
+			this.ShopPanelMC.scaleY = this.canvasScaleX;
+			this.ShopPanelMC.y = (914 * this.canvasScaleX) + (278 * this.canvasScaleX);
+		
+			this.AchievementPanelMC.scaleX = this.canvasScaleX;
+			this.AchievementPanelMC.scaleY = this.canvasScaleX;
+			this.AchievementPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
+		
+			this.DebugPanelMC.scaleX = this.canvasScaleX;
+			this.DebugPanelMC.scaleY = this.canvasScaleX;
+			this.DebugPanelMC.y = 2436 * this.canvasScaleY -300 * this.canvasScaleX;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
 		
 		this.PanelOpen = function (_page)
 		{
@@ -6937,7 +6946,7 @@ if (reversed == null) { reversed = false; }
 		if(!isMobile())
 			authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
 		var api_host = "https://clicker-api.tomoya-ishisaka.workers.dev";
-		var deviceId ="";
+		//var deviceId ="";
 		
 		main.API_Request = function(options) {
 		    const fullUrl = api_host + options.url;
@@ -7055,7 +7064,7 @@ if (reversed == null) { reversed = false; }
 		        console.error("todo:初期データロード", error);
 		    }
 		}
-		
+		/*
 		//ユーザ認証
 		this.UserAuthentication = async function()
 		{
@@ -7088,7 +7097,7 @@ if (reversed == null) { reversed = false; }
 				}
 		    }
 		}
-		
+		*/
 		this.Run = async function()
 		{
 			await this.fetchSequentialAPIs();
@@ -7199,16 +7208,21 @@ if (reversed == null) { reversed = false; }
 			hiddenLoadingScreen();
 		}
 		
+			if(API_userData !== undefined)
+				this.Run();
+		
+		/*
 		this.RunApp = async function()
 		{
-		    await this.UserAuthentication();
+		    //await this.UserAuthentication();
 			if(API_userData !== undefined)
 				this.Run();
 		}
-		
+		*/
 		//this.LodingMC.visible = false;
 		//hiddenLoadingScreen();
 		
+		/*
 		this.CheckDeviceId = () => {
 		    deviceId = window.Telegram.WebApp.BiometricManager.deviceId;
 			this.RunApp();
@@ -7229,6 +7243,8 @@ if (reversed == null) { reversed = false; }
 			}
 			this.RunApp();
 		}
+		var deviceId ="";
+		*/
 	}
 
 	// actions tween:
