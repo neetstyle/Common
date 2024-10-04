@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[7824,2166,300,128],[3090,2539,300,128],[2088,3040,516,176],[2171,3218,516,176],[3392,2539,136,68],[0,2438,1042,985],[4611,1997,904,153],[0,3425,516,176],[5367,2152,148,89],[8031,2004,115,115],[5517,2119,118,66],[1044,2438,1042,889],[4611,2152,754,101],[8134,1127,48,48],[8059,1060,120,65],[8035,1748,116,126],[8035,1876,116,126],[5738,2256,662,46],[2171,3396,662,46],[6780,1128,1042,1191],[7907,0,262,232],[3090,3018,1125,478],[4611,1359,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[6865,3308,1123,305],[8059,936,122,122],[3565,1871,1044,1145],[5323,3323,1125,300],[7907,234,262,232],[3090,2669,374,91],[7824,1959,205,205],[1044,3329,1125,278],[7824,1748,209,209],[7992,2296,172,216],[2171,3498,1125,206],[5517,1997,120,120],[4217,3258,1104,319],[6865,2321,1125,985],[7824,1128,308,308],[7824,1438,308,308],[7907,468,262,232],[3090,2438,452,99],[4425,3579,542,104],[2088,2438,1000,600],[7992,2514,137,86],[7907,936,150,150],[5653,0,1125,1126],[6780,0,1125,1126],[5653,1128,1125,1126],[3298,3579,1125,123],[4611,2256,1125,1000],[7907,702,262,232],[5738,2321,1125,1000]]}
+		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[7824,2166,300,128],[3215,2438,300,128],[3215,3325,516,176],[3733,3325,516,176],[3215,2568,136,68],[0,2438,1042,985],[4611,1997,904,153],[1044,3329,516,176],[5367,2152,148,89],[8031,2004,115,115],[5517,2119,118,66],[1044,2438,1042,889],[4611,2152,754,101],[8134,1127,48,48],[8059,1060,120,65],[8035,1748,116,126],[8035,1876,116,126],[5738,2256,662,46],[2088,3239,662,46],[6780,1128,1042,1191],[7907,0,262,232],[2088,2438,1125,478],[4611,1359,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[3194,3018,1123,305],[8059,936,122,122],[3565,1871,1044,1145],[4319,3258,1125,300],[7907,234,262,232],[544,3425,374,91],[7824,1959,205,205],[6865,3308,1125,278],[7824,1748,209,209],[7992,2296,172,216],[5446,3323,1125,206],[5517,1997,120,120],[2088,2918,1104,319],[6865,2321,1125,985],[7824,1128,308,308],[7824,1438,308,308],[7907,468,262,232],[1562,3329,452,99],[0,3425,542,104],[7992,2514,137,86],[7907,936,150,150],[5653,0,1125,1126],[6780,0,1125,1126],[5653,1128,1125,1126],[2088,3325,1125,123],[4611,2256,1125,1000],[7907,702,262,232],[5738,2321,1125,1000]]}
 ];
 
 
@@ -349,72 +349,65 @@ lib.ssMetadata = [
 
 
 
-(lib.sushi = function() {
+(lib.sushiIcon = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.sushiIcon = function() {
+(lib.sushiMini = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.sushiMini = function() {
+(lib.SushiScroll1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll1 = function() {
+(lib.SushiScroll2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(49);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll2 = function() {
+(lib.SushiScroll3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(50);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll3 = function() {
+(lib.title = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(51);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.title = function() {
+(lib.underBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.underBG = function() {
+(lib.upgradeButton = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(53);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.upgradeButton = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(54);
-}).prototype = p = new cjs.Sprite();
-
-
-
 (lib.upperBG = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(55);
+	this.gotoAndStop(54);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -1293,14 +1286,10 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// レイヤー_1
-	this.instance = new lib.sushi();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.SushiImageMC, new cjs.Rectangle(0,0,1000,600), null);
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(0,0,1000,1000);
 
 
 (lib.SushiEffectMC = function(mode,startPosition,loop,reversed) {
@@ -2429,29 +2418,13 @@ if (reversed == null) { reversed = false; }
 		this.bitmap = null;
 		this.isActive = false;
 		
-		
-		
-		RemoveCompletelyAndSafely(this.SushiImageMC.instance   );
-		
-		
-		
-			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/Icon/Skin/skin_00.webp");
-			this.SushiImageMC.addChild(this.bitmap);
-			this.bitmap.x = 0;
-			this.bitmap.y = 0;
-			this.bitmap.scaleX = 0.5;
-			this.bitmap.scaleY = 0.5;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		//アイコン生成
+		this.bitmap = new createjs.Bitmap("images/Icon/Skin/skin_00.webp");
+		this.SushiImageMC.addChild(this.bitmap);
+		this.bitmap.x = 0;
+		this.bitmap.y = 0;
+		this.bitmap.scaleX = 0.5;
+		this.bitmap.scaleY = 0.5;
 		
 		this.Click = function(evt)
 		{
@@ -2564,20 +2537,20 @@ if (reversed == null) { reversed = false; }
 	// Image
 	this.SushiImageMC = new lib.SushiImageMC();
 	this.SushiImageMC.name = "SushiImageMC";
-	this.SushiImageMC.setTransform(500,300,1,1,0,0,0,500,300);
+	this.SushiImageMC.setTransform(500,302.5,1,1,0,0,0,500,500);
 
 	this.timeline.addTween(cjs.Tween.get(this.SushiImageMC).wait(1));
 
 	// Button
 	this.ButtonMC = new lib.ButtonMC();
 	this.ButtonMC.name = "ButtonMC";
-	this.ButtonMC.setTransform(498,298.8,10,6,0,0,0,49.8,49.8);
+	this.ButtonMC.setTransform(498,300.5,10,10,0,0,0,49.8,49.8);
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.SushiMC, new cjs.Rectangle(0,0,1000,600), null);
+}).prototype = getMCSymbolPrototype(lib.SushiMC, new cjs.Rectangle(0,-197.5,1000,1000), null);
 
 
 (lib.InviteRewardDesciptionMC = function(mode,startPosition,loop,reversed) {
