@@ -65,18 +65,72 @@
 
 	function init_body() {
 		isLoad_html = true
+		document.getElementById("loading_screen").style.display = "none";
+		document.getElementById("registration").style.display = "none";
+		document.getElementById("animation_container").style.display = "none";
 		checkInitialization();
 	}
 
-	function checkInitialization() {
+	async function checkInitialization() {
 		if (isLoad_html && isLoad_webFont && isLoad_anime && isLoad_data) {
-			init();
+		    try {
+				console.log("API.ユーザ情報取得");
+			    API_userData = await API_Request({
+			        url: '/user/me'
+			    });
+				console.log(API_userData);
+				document.getElementById("loading_screen").style.display = "block";
+				init();
+		    } catch (error) {
+		    	document.getElementById("registration").style.display = "block";
+		    }
+		document.getElementById("loading_screen").style.display = "none";
+		document.getElementById("registration").style.display = "none";
+		document.getElementById("animation_container").style.display = "block";
+		init();
 		}
 	}
+
+	document.addEventListener('DOMContentLoaded', function() {
+	    const registerButton = document.getElementById('register_button');
+	    registerButton.addEventListener('click', registration);
+	});
+
+	async function registration() {
+	    const inviteCodeInput = document.getElementById('invite_code');
+		let referralCode = null;
+		if(inviteCodeInput.value != "")
+			referralCode = inviteCodeInput.value;
+		try {
+			console.log("API.新規ユーザ登録");
+			await API_Request({
+				url: '/user/register',
+				method: 'POST',
+				data: {
+					referralCode: null
+				}
+			});
+			console.log("API.ユーザ情報取得");
+			API_userData = await API_Request({
+				url: '/user/me'
+			});
+			console.log(API_userData);
+		} catch (error) {
+			//todo:登録失敗処理
+			return;
+		}
+		document.getElementById("loading_screen").style.display = "block";
+		document.getElementById("registration").style.display = "none";
+		init();
+	}
+
+
+
 </script>
 
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, main;
+var API_userData;
 function init() {
 	console.log("v2");
 	canvas = document.getElementById("canvas");
@@ -97,10 +151,39 @@ function init() {
 	createjs.Sound.registerSound("sounds/generator.mp3", "generator");
 	createjs.Sound.registerSound("sounds/bgm.mp3", "bgm");
 	loader.loadManifest(lib.properties.manifest);
-
-	lib.properties.width = document.documentElement.clientWidth;
-	lib.properties.height = document.documentElement.clientHeight;
+	document.getElementById("animation_container").style.display = "block";
 }
+
+function resizeCanvas(domContainers, lib) {
+	var lastW, lastH;		
+	window.addEventListener('resize', resizeCanvas);		
+	resizeCanvas();		
+	function resizeCanvas() {
+		const size = anim_container.getBoundingClientRect();
+		lib.properties.width = size.width;
+		lib.properties.height = size.height;
+
+		var w = lib.properties.width, h = lib.properties.height;			
+		var iw = window.innerWidth, ih=window.innerHeight;			
+		var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h;			
+
+		domContainers.width = w * pRatio;			
+		domContainers.height = h * pRatio;
+
+		stage.scaleX = pRatio;			
+		stage.scaleY = pRatio;
+		lastW = iw; lastH = ih;          
+		stage.tickOnUpdate = false;            
+		stage.update();            
+		stage.tickOnUpdate = true;		
+	}
+}
+
+
+
+
+
+
 function handleProgress(evt) {
     var progressBar = document.getElementById("progress_bar");
     var progress = (evt.progress * 100).toFixed(2);
@@ -129,33 +212,50 @@ function handleComplete(evt,comp) {
 		createjs.Ticker.addEventListener("tick", stage);
 	}	    
 	//Code to support hidpi screens and responsive scaling.
-	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
+	//AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
+	resizeCanvas(canvas,lib);
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 
 }
 function hiddenLoadingScreen() {
-    var loadingScreen = document.getElementById("loading_screen");
-    loadingScreen.style.display = "none";
+    document.getElementById("loading_screen").style.display = "none";
 }
 function setProgress(progress) {
-    var progressBar = document.getElementById("progress_bar");
-    progressBar.style.width = progress + "%";
+    document.getElementById("progress_bar").style.width = progress + "%";
 }
-</script>
 
+</script>
 </head>
 <body onload="init_body();" style="margin:0px;">
-    <div id="loading_screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; z-index: 9999;">
+    <div id="bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; z-index: 1;">
         <img id="loading_background" src="images/loding-background.jpg" style="width: 100%; height: 100%; object-fit: cover;">
-        <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
-        <div id="progress_bar_container" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 80%; height: 20px; background-color: rgba(255,255,255,0.3);">
-            <div id="progress_bar" style="width: 0%; height: 100%; background-color: #ffffff;"></div>
-        </div>
     </div>
-    <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1125px; height:2436px">
-        <canvas id="canvas" width="1125" height="2436" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-        <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1125px; height:2436px; position: absolute; left: 0px; top: 0px; display: block;">
+    <div id="content-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+        <div id="content" style="width: 100%; height: 100%; max-width: 50vh; aspect-ratio: 1125 / 2436; position: relative;">
+
+            <div id="registration" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;">
+                <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
+                <div id="registration_form" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background-color: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 10px; text-align: center;">
+                    <h2 style="font-family: Arial, sans-serif; color: black;">New registration</h2>
+                    <input type="text" id="invite_code" placeholder="invitation code" style="width: 95%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <button id="register_button" style="width: 100%; padding: 10px; background-color: #28a745; color: white; font-size: 16px; border: none; border-radius: 5px; cursor: pointer;">I will become a sushi master!</button>
+                </div>
+            </div>
+
+            <div id="loading_screen" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; z-index: 9999;">
+                <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
+                <div id="progress_bar_container" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 80%; height: 20px; background-color: rgba(255,255,255,0.3);">
+                    <div id="progress_bar" style="width: 0%; height: 100%; background-color: #ffffff;"></div>
+                </div>
+            </div>
+
+            <div id="animation_container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color:rgba(255, 255, 255, 1.00);">
+                <canvas id="canvas" style="position: absolute; display: block; width: 100%; height: 100%; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+                <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:100%; height:100%; position: absolute; left: 0; top: 0; display: block;">
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

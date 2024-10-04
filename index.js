@@ -455,11 +455,15 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.bitmap;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		this.y = document.documentElement.clientHeight / 2;
-		this.x = document.documentElement.clientWidth / 2;
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = lib.properties.height / 2;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
+		this.bitmap = null;
 		this.visible = false;
 		
 		this.title_O = new Outline(lib, this.title, 5, "#000000", "#FFFFFF");
@@ -835,11 +839,15 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.bitmap == null;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		this.y = document.documentElement.clientHeight / 2;
-		this.x = document.documentElement.clientWidth / 2;
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = lib.properties.height / 2;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
+		this.bitmap = null;
 		this.visible = false;
 		
 		//this.message_O = new Outline(lib, this.message, 5, "#000000", "#FFFFFF");
@@ -1081,11 +1089,15 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = lib.properties.height / 2;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
 		this.bitmap = null;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		this.y = document.documentElement.clientHeight / 2;
-		this.x = document.documentElement.clientWidth / 2;
 		this.visible = false;
 		
 		this.title_O = new Outline(lib, this.title, 5, "#000000", "#FFFFFF");
@@ -2406,11 +2418,15 @@ if (reversed == null) { reversed = false; }
 			this.isSingleFrame = true;
 		}
 		//Layout
-		this.bitmap;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		this.y = document.documentElement.clientHeight / 2;
-		this.x = document.documentElement.clientWidth / 2;
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = lib.properties.height / 2;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
+		this.bitmap = null;
 		
 		this.isActive = false;
 		
@@ -2561,11 +2577,15 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.bitmap;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		this.y = document.documentElement.clientHeight / 2;
-		this.x = document.documentElement.clientWidth / 2;
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = lib.properties.height / 2;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
+		this.bitmap = null;
 		this.visible = false;
 		
 		this.obj;
@@ -2689,11 +2709,15 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.bitmap;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		this.y = document.documentElement.clientHeight / 2;
-		this.x = document.documentElement.clientWidth / 2;
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = lib.properties.height / 2;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
+		this.bitmap = null;
 		this.visible = false;
 		
 		this.InviteList1MC.title.text = "1人招待する";
@@ -3269,11 +3293,15 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.bitmap;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		this.y = document.documentElement.clientHeight / 2;
-		this.x = document.documentElement.clientWidth / 2;
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = lib.properties.height / 2;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
+		this.bitmap = null;
 		this.visible = false;
 		
 		this.stop();
@@ -3626,15 +3654,16 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.bitmap == null;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		//this.y = document.documentElement.clientHeight / 2;
-		//this.y = ((2436 * this.parent.canvasScaleY -300 * this.parent.canvasScaleX -914 * this.parent.canvasScaleX)
-		//		- (278 * this.parent.canvasScaleX)) / 2 + (278 * this.parent.canvasScaleX);
-		this.y = ((2436 * this.parent.canvasScaleY -300 * this.parent.canvasScaleX -914 * this.parent.canvasScaleX)
-				- (278 * this.parent.canvasScaleX)) / 2 + (278 * this.parent.canvasScaleX);
-		this.x = document.documentElement.clientWidth / 2;
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = ((2436 * this.parent.canvasScaleY -300 * this.parent.canvasScaleX -914 * this.parent.canvasScaleX)
+					- (278 * this.parent.canvasScaleX)) / 2 + (278 * this.parent.canvasScaleX);
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
+		this.bitmap = null;
 		this.visible = false;
 		
 		this.title_O = new Outline(lib, this.title, 5, "#000000", "#FFFFFF");
@@ -3845,11 +3874,15 @@ if (reversed == null) { reversed = false; }
 
 	// timeline functions:
 	this.frame_0 = function() {
-		this.bitmap;
-		this.scaleX = this.parent.canvasScaleX;
-		this.scaleY = this.parent.canvasScaleX;
-		this.y = document.documentElement.clientHeight / 2;
-		this.x = document.documentElement.clientWidth / 2;
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = lib.properties.height / 2;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
+		this.bitmap = null;
 		this.visible = false;
 		
 		this.title_O = new Outline(lib, this.title, 5, "#000000", "#FFFFFF");
@@ -6348,47 +6381,51 @@ if (reversed == null) { reversed = false; }
 		//////////////////////////////////////////////////////////
 		//Layout
 		//1125 * 2436
-		this.canvasScaleX = document.documentElement.clientWidth / 1125;
-		this.canvasScaleY = document.documentElement.clientHeight / 2436;
+		this.resizeCanvas = function() {
+			this.canvasScaleX = lib.properties.width / 1125;
+			this.canvasScaleY = lib.properties.height / 2436;
 		
-		this.BgMC.scaleX = this.canvasScaleX;
-		this.BgMC.scaleY = this.canvasScaleY;
+			this.BgMC.scaleX = this.canvasScaleX;
+			this.BgMC.scaleY = this.canvasScaleY;
 		
-		this.HeaderMC.scaleX = this.canvasScaleX;
-		this.HeaderMC.scaleY = this.canvasScaleX;
+			this.HeaderMC.scaleX = this.canvasScaleX;
+			this.HeaderMC.scaleY = this.canvasScaleX;
 		
-		this.FooterMC.scaleX = this.canvasScaleX;
-		this.FooterMC.scaleY = this.canvasScaleX;
-		this.FooterMC.y = 2436 * this.canvasScaleY;
+			this.FooterMC.scaleX = this.canvasScaleX;
+			this.FooterMC.scaleY = this.canvasScaleX;
+			this.FooterMC.y = 2436 * this.canvasScaleY;
 		
-		this.UpperBGMC.scaleX = this.canvasScaleX;
-		this.UpperBGMC.scaleY = this.canvasScaleX;
+			this.UpperBGMC.scaleX = this.canvasScaleX;
+			this.UpperBGMC.scaleY = this.canvasScaleX;
 		
-		this.UnderBGMC.scaleX = this.canvasScaleX;
-		this.UnderBGMC.scaleY = this.canvasScaleX;
-		this.UnderBGMC.y = 2436 * this.canvasScaleY;
+			this.UnderBGMC.scaleX = this.canvasScaleX;
+			this.UnderBGMC.scaleY = this.canvasScaleX;
+			this.UnderBGMC.y = 2436 * this.canvasScaleY;
 		
-		this.MaskMC.visible = false;
-		this.Mask2MC.visible = false;
-		this.Mask3MC.visible = false;
-		this.Block = function(){}
-		this.Mask3MC.addEventListener("click", this.Block.bind(this));
+			this.MaskMC.visible = false;
+			this.Mask2MC.visible = false;
+			this.Mask3MC.visible = false;
+			this.Block = function(){}
+			this.Mask3MC.addEventListener("click", this.Block.bind(this));
 		
-		this.FooterMC.AchievementBadgeMC.visible = false;
-		this.FooterMC.GeneratorDoddMC.visible = false;
-		this.FooterMC.UpgradeDoddMC.visible = false;
+			this.FooterMC.AchievementBadgeMC.visible = false;
+			this.FooterMC.GeneratorDoddMC.visible = false;
+			this.FooterMC.UpgradeDoddMC.visible = false;
 		
-		this.BgMC.SushiBGScrollMC.BG1MC.visible = false;
-		this.BgMC.SushiBGScrollMC.BG2MC.visible = false;
-		this.BgMC.SushiBGScrollMC.BG3MC.visible = false;
+			this.BgMC.SushiBGScrollMC.BG1MC.visible = false;
+			this.BgMC.SushiBGScrollMC.BG2MC.visible = false;
+			this.BgMC.SushiBGScrollMC.BG3MC.visible = false;
 		
-		this.InviteButtonMC.scaleX = this.canvasScaleX;
-		this.InviteButtonMC.scaleY = this.canvasScaleX;
-		this.InviteButtonMC.x = 920 * this.canvasScaleX;
-		this.InviteButtonMC.y = 300 * this.canvasScaleX;
+			this.InviteButtonMC.scaleX = this.canvasScaleX;
+			this.InviteButtonMC.scaleY = this.canvasScaleX;
+			this.InviteButtonMC.x = 920 * this.canvasScaleX;
+			this.InviteButtonMC.y = 300 * this.canvasScaleX;
 		
-		this.LodingMC.scaleX = this.canvasScaleX;
-		this.LodingMC.scaleY = this.canvasScaleY;
+			this.LodingMC.scaleX = this.canvasScaleX;
+			this.LodingMC.scaleY = this.canvasScaleY;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
 		
 		this.LodingMC.addEventListener("click", function() {
 			console.log("Click LodingMC");
@@ -6977,7 +7014,7 @@ if (reversed == null) { reversed = false; }
 		
 		//////////////////////////////////////////////////////////
 		//Init
-		var API_userData;
+		//var API_userData;
 		var API_generatorsData;
 		var API_upgradesData;
 		var API_sushiShopData;

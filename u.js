@@ -370,3 +370,146 @@ var COOKIES = COOKIES || {
 //var get_cookie = COOKIES.getCookie('hoge');
 //COOKIES.setCookie('hoge', 'hogehoge', 30);
 //COOKIES.deleteCookie('hoge');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////
+//API
+var authorization = window.Telegram.WebApp.initData;
+if(!isMobile())
+	authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
+var api_host = "https://clicker-api.tomoya-ishisaka.workers.dev";
+var deviceId ="";
+
+function API_Request(options) {
+    const fullUrl = api_host + options.url;
+    const maxAttempts = options.maxAttempts || 3;
+    let attempts = 0;
+
+    // $.ajaxをPromise化する関数
+    function ajaxPromise(finalOptions) {
+        return new Promise(function(resolve, reject) {
+            $.ajax({
+                ...finalOptions,
+                success: function(response) {
+                    resolve(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    if (textStatus === "timeout") {
+                        reject({ reason: "timeout", jqXHR }); // タイムアウトの場合
+                    } else {
+                        reject({ reason: "other", jqXHR });  // タイムアウト以外
+                    }
+                }
+            });
+        });
+    }
+
+    return new Promise(async function(resolve, reject) {
+        const requestWithRetry = async () => {
+            while (attempts < maxAttempts) {
+                attempts++;
+                try {
+                    var defaultOptions = {
+                        method: 'GET',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        headers: {
+                            'Authorization': authorization,
+							'Device-Id' : deviceId
+                        }
+                    };
+                    var finalOptions = $.extend({}, defaultOptions, options);
+                    finalOptions.url = api_host + options.url;
+
+                    if (options.data) {
+                        finalOptions.data = JSON.stringify(options.data);
+                    }
+
+                    // $.ajaxのPromise化された結果をawaitで待機
+                    const response = await ajaxPromise(finalOptions);
+                    resolve(response);  // 成功した場合はPromiseを解決
+                    return;  // 成功したらループを抜ける
+                } catch (error) {
+                    if (error.reason === "timeout") {
+                        console.log(`試行 ${attempts} 回目失敗: タイムアウト`);
+                    } else {
+                        // タイムアウト以外のエラーは即座に失敗とする
+                        reject(`APIリクエストが失敗しました。エラー: ${error.jqXHR.statusText}`);
+                        return;
+                    }
+
+                    if (attempts >= maxAttempts) {
+                        reject(`APIリクエストが${maxAttempts}回失敗しました。エラー: タイムアウト`);
+                        return;
+                    }
+
+                    // タイムアウトの場合のみ1秒間待機して再試行
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+            }
+        };
+
+        await requestWithRetry();
+    });
+}
+
+/*
+this.RunApp = async function()
+{
+    await this.UserAuthentication();
+	if(API_userData !== undefined)
+		this.Run();
+}
+
+
+this.CheckDeviceId = () => {
+    deviceId = window.Telegram.WebApp.BiometricManager.deviceId;
+	this.RunApp();
+}
+
+if(isMobile())
+{
+	window.Telegram.WebApp.BiometricManager.init(this.CheckDeviceId);
+}
+else
+{
+	if (localStorage.getItem('uniqueId'))
+		deviceId = localStorage.getItem('uniqueId')
+	else
+	{
+		deviceId = Math.random().toString()
+		localStorage.setItem('uniqueId', deviceId)		
+	}
+	this.RunApp();
+}
+*/
+
