@@ -4702,7 +4702,7 @@ if (reversed == null) { reversed = false; }
 		{
 			if(upgrade.doddState == 2)
 			{
-				upgrade.clip.DoddMC.visible = false;
+				//upgrade.clip.DoddMC.visible = false;
 				upgrade.doddState = 3;
 				main.SetUpgradeNotification();
 				
@@ -6882,7 +6882,7 @@ if (reversed == null) { reversed = false; }
 				for (let i = 0; i < array1.length; i++)
 				{
 					let array2 = array1[i].split(':');
-					 main.GetGenerator(array2[0]).doddState = array2[1];
+					main.GetGenerator(array2[0]).doddState = array2[1];
 				}
 			}
 		}
