@@ -258,15 +258,16 @@ function setProgress(progress) {
                 <div id="registration_form" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background-color: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 10px; text-align: center;">
                     <h2 style="font-family: Arial, sans-serif; color: black;">New registration</h2>
 
-123
+12345
 <input type="text" 
        id="invite_code" 
        placeholder="invitation code" 
        style="width: 95%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" 
-       inputmode="numeric" 
+       inputmode="decimal" 
        pattern="[0-9]*"
        enterkeyhint="done" 
        onkeydown="if(event.key === 'Enter'){ document.getElementById('register_button').click(); }">
+
 <button id="register_button" 
         style="width: 100%; padding: 10px; background-color: #28a745; color: white; font-size: 16px; border: none; border-radius: 5px; cursor: pointer;" 
         onclick="registration();">I will become a sushi master!</button>
