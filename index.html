@@ -111,12 +111,11 @@
 	    }
 	}
 
-	document.addEventListener('DOMContentLoaded', function() {
-	    const registerButton = document.getElementById('register_button');
-	    registerButton.addEventListener('click', registration);
-	});
-
 	async function registration() {
+		if(isRegistration)
+			return;
+		isRegistration = true;
+
 		document.getElementById('invite_code').blur();
 	    const inviteCodeInput = document.getElementById('invite_code');
 		let referralCode = null;
@@ -131,27 +130,32 @@
 					referralCode: null
 				}
 			});
+		} catch (error) {
+			//todo:登録失敗処理
+			isRegistration = false;
+			return;
+		}
+
+		try {
 			console.log("API.ユーザ情報取得");
 			API_userData = await API_Request({
 				url: '/user/me'
 			});
 			console.log(API_userData);
 		} catch (error) {
-			//todo:登録失敗処理
+			location.reload();
 			return;
 		}
 		document.getElementById("loading_screen").style.display = "block";
 		document.getElementById("registration").style.display = "none";
 		init();
 	}
-
-
-
 </script>
 
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, main;
 var API_userData;
+var isRegistration = false;
 function init() {
 	console.log("v2");
 	canvas = document.getElementById("canvas");
