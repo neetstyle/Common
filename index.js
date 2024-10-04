@@ -2427,8 +2427,31 @@ if (reversed == null) { reversed = false; }
 		window.addEventListener('resize', this.resizeCanvas.bind(this));	
 		this.resizeCanvas();
 		this.bitmap = null;
-		
 		this.isActive = false;
+		
+		
+		
+		RemoveCompletelyAndSafely(this.SushiImageMC.instance   );
+		
+		
+		
+			//アイコン生成
+			this.bitmap = new createjs.Bitmap("images/Icon/Skin/skin_00.webp");
+			this.SushiImageMC.addChild(this.bitmap);
+			this.bitmap.x = 0;
+			this.bitmap.y = 0;
+			this.bitmap.scaleX = 0.5;
+			this.bitmap.scaleY = 0.5;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		this.Click = function(evt)
 		{
