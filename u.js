@@ -481,35 +481,3 @@ function API_Request(options) {
         await requestWithRetry();
     });
 }
-
-/*
-this.RunApp = async function()
-{
-    await this.UserAuthentication();
-	if(API_userData !== undefined)
-		this.Run();
-}
-
-
-this.CheckDeviceId = () => {
-    deviceId = window.Telegram.WebApp.BiometricManager.deviceId;
-	this.RunApp();
-}
-
-if(isMobile())
-{
-	window.Telegram.WebApp.BiometricManager.init(this.CheckDeviceId);
-}
-else
-{
-	if (localStorage.getItem('uniqueId'))
-		deviceId = localStorage.getItem('uniqueId')
-	else
-	{
-		deviceId = Math.random().toString()
-		localStorage.setItem('uniqueId', deviceId)		
-	}
-	this.RunApp();
-}
-*/
-

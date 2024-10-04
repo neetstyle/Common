@@ -4016,7 +4016,7 @@ if (reversed == null) { reversed = false; }
 			
 		    try {
 				console.log("API.ゴールデン寿司を購入");
-				var data = await main.API_Request({
+				var data = await API_Request({
 					url: '/market/golden-sushi/' + this.obj.id + '/purchase',
 					method: 'POST',
 					maxAttempts: 3
@@ -4049,7 +4049,7 @@ if (reversed == null) { reversed = false; }
 			if(isSuccess)
 			{
 				console.log("API.ユーザ情報取得");
-		        API_userData = await main.API_Request({
+		        API_userData = await API_Request({
 		            url: '/user/me',
 					maxAttempts: 3
 		        });
@@ -4074,7 +4074,7 @@ if (reversed == null) { reversed = false; }
 			if(main.sushiAdd > 0)
 			{
 				console.log("API.クリックで得た寿司を保存");
-				await main.API_Request({
+				await API_Request({
 					url: '/sushi/add',
 					method: 'POST',
 					maxAttempts: 3,
@@ -4087,7 +4087,7 @@ if (reversed == null) { reversed = false; }
 		
 		    try {
 				console.log("API.寿司を購入");
-				await main.API_Request({
+				await API_Request({
 					url: '/market/sushi/' + this.obj.id + '/purchase',
 					method: 'POST',
 					maxAttempts: 3,
@@ -4100,7 +4100,7 @@ if (reversed == null) { reversed = false; }
 		    }
 			
 			console.log("API.自身のユーザー情報を得る");
-			API_userData = await main.API_Request({
+			API_userData = await API_Request({
 				url: '/user/me',
 				maxAttempts: 3
 			});
@@ -5999,7 +5999,7 @@ if (reversed == null) { reversed = false; }
 			try {
 				console.log("API.現在の寿司の更新");
 				//寿司の差分を更新
-				await main.API_Request({
+				await API_Request({
 					url: '/sushi/add',
 					method: 'POST',
 					data: {
@@ -6010,7 +6010,7 @@ if (reversed == null) { reversed = false; }
 			
 				console.log("API.ジェネレーター購入");
 				//ジェネレーター購入
-				await main.API_Request({
+				await API_Request({
 					url: '/generator/' + generator.id + '/purchase',
 					method: 'POST'
 				});
@@ -6020,12 +6020,12 @@ if (reversed == null) { reversed = false; }
 					exportRoot.Mask3MC.visible = true;
 				
 					console.log("API.自身のユーザー情報を得る");
-					API_userData = await main.API_Request({
+					API_userData = await API_Request({
 						url: '/user/me'
 					});
 		
 					console.log("API.ジェネレーター取得");
-					API_generatorsData = await main.API_Request({
+					API_generatorsData = await API_Request({
 						url: '/generator'
 					});
 				
@@ -6087,7 +6087,7 @@ if (reversed == null) { reversed = false; }
 			try {
 				console.log("API.現在の寿司の更新");
 				//寿司の差分を更新
-				await main.API_Request({
+				await API_Request({
 					url: '/sushi/add',
 					method: 'POST',
 					data: {
@@ -6098,7 +6098,7 @@ if (reversed == null) { reversed = false; }
 			
 				console.log("API.アップグレード購入");
 				//ジェネレーター購入
-				await main.API_Request({
+				await API_Request({
 					url: '/upgrade/' + upgrade.id + '/purchase',
 					method: 'POST'
 				});
@@ -6108,7 +6108,7 @@ if (reversed == null) { reversed = false; }
 				exportRoot.Mask3MC.visible = true;
 			
 				console.log("API.自身のユーザー情報を得る");
-				API_userData = await main.API_Request({
+				API_userData = await API_Request({
 					url: '/user/me'
 				});
 		
@@ -6121,7 +6121,7 @@ if (reversed == null) { reversed = false; }
 				this.touchSps = this.TouchSps();
 			
 				console.log("API.アップグレード取得");
-				API_upgradesData = await main.API_Request({
+				API_upgradesData = await API_Request({
 					url: '/upgrade'
 				});
 			
@@ -6222,7 +6222,7 @@ if (reversed == null) { reversed = false; }
 		{
 			try {
 				console.log("API.現在の寿司の更新");
-				await main.API_Request({
+				await API_Request({
 					url: '/sushi/add',
 					method: 'POST',
 					data: {
@@ -6283,7 +6283,7 @@ if (reversed == null) { reversed = false; }
 				{
 					this.fps3LastTickTime = now;
 					console.log("API.最新ログイン日時を更新");
-					main.API_Request({
+					API_Request({
 						url: '/user/online',
 						method: 'POST'
 					});
@@ -6402,20 +6402,6 @@ if (reversed == null) { reversed = false; }
 			this.UnderBGMC.scaleY = this.canvasScaleX;
 			this.UnderBGMC.y = 2436 * this.canvasScaleY;
 		
-			this.MaskMC.visible = false;
-			this.Mask2MC.visible = false;
-			this.Mask3MC.visible = false;
-			this.Block = function(){}
-			this.Mask3MC.addEventListener("click", this.Block.bind(this));
-		
-			this.FooterMC.AchievementBadgeMC.visible = false;
-			this.FooterMC.GeneratorDoddMC.visible = false;
-			this.FooterMC.UpgradeDoddMC.visible = false;
-		
-			this.BgMC.SushiBGScrollMC.BG1MC.visible = false;
-			this.BgMC.SushiBGScrollMC.BG2MC.visible = false;
-			this.BgMC.SushiBGScrollMC.BG3MC.visible = false;
-		
 			this.InviteButtonMC.scaleX = this.canvasScaleX;
 			this.InviteButtonMC.scaleY = this.canvasScaleX;
 			this.InviteButtonMC.x = 920 * this.canvasScaleX;
@@ -6426,6 +6412,20 @@ if (reversed == null) { reversed = false; }
 		}
 		window.addEventListener('resize', this.resizeCanvas.bind(this));	
 		this.resizeCanvas();
+		
+		this.MaskMC.visible = false;
+		this.Mask2MC.visible = false;
+		this.Mask3MC.visible = false;
+		this.Block = function(){}
+		this.Mask3MC.addEventListener("click", this.Block.bind(this));
+		
+		this.FooterMC.AchievementBadgeMC.visible = false;
+		this.FooterMC.GeneratorDoddMC.visible = false;
+		this.FooterMC.UpgradeDoddMC.visible = false;
+		
+		this.BgMC.SushiBGScrollMC.BG1MC.visible = false;
+		this.BgMC.SushiBGScrollMC.BG2MC.visible = false;
+		this.BgMC.SushiBGScrollMC.BG3MC.visible = false;
 		
 		this.LodingMC.addEventListener("click", function() {
 			console.log("Click LodingMC");
@@ -6941,87 +6941,6 @@ if (reversed == null) { reversed = false; }
 			localStorage.setItem('ug', array.join(","));
 		}
 		//////////////////////////////////////////////////////////
-		//API
-		var authorization = window.Telegram.WebApp.initData;
-		if(!isMobile())
-			authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
-		var api_host = "https://clicker-api.tomoya-ishisaka.workers.dev";
-		//var deviceId ="";
-		
-		main.API_Request = function(options) {
-		    const fullUrl = api_host + options.url;
-		    const maxAttempts = options.maxAttempts || 3;
-		    let attempts = 0;
-		
-		    // $.ajaxをPromise化する関数
-		    function ajaxPromise(finalOptions) {
-		        return new Promise(function(resolve, reject) {
-		            $.ajax({
-		                ...finalOptions,
-		                success: function(response) {
-		                    resolve(response);
-		                },
-		                error: function(jqXHR, textStatus, errorThrown) {
-		                    if (textStatus === "timeout") {
-		                        reject({ reason: "timeout", jqXHR }); // タイムアウトの場合
-		                    } else {
-		                        reject({ reason: "other", jqXHR });  // タイムアウト以外
-		                    }
-		                }
-		            });
-		        });
-		    }
-		
-		    return new Promise(async function(resolve, reject) {
-		        const requestWithRetry = async () => {
-		            while (attempts < maxAttempts) {
-		                attempts++;
-		                try {
-		                    var defaultOptions = {
-		                        method: 'GET',
-		                        dataType: 'json',
-		                        contentType: 'application/json',
-		                        headers: {
-		                            'Authorization': authorization,
-									'Device-Id' : deviceId
-		                        }
-		                    };
-		                    var finalOptions = $.extend({}, defaultOptions, options);
-		                    finalOptions.url = api_host + options.url;
-		
-		                    if (options.data) {
-		                        finalOptions.data = JSON.stringify(options.data);
-		                    }
-		
-		                    // $.ajaxのPromise化された結果をawaitで待機
-		                    const response = await ajaxPromise(finalOptions);
-		                    resolve(response);  // 成功した場合はPromiseを解決
-		                    return;  // 成功したらループを抜ける
-		                } catch (error) {
-		                    if (error.reason === "timeout") {
-		                        console.log(`試行 ${attempts} 回目失敗: タイムアウト`);
-		                    } else {
-		                        // タイムアウト以外のエラーは即座に失敗とする
-		                        reject(`APIリクエストが失敗しました。エラー: ${error.jqXHR.statusText}`);
-		                        return;
-		                    }
-		
-		                    if (attempts >= maxAttempts) {
-		                        reject(`APIリクエストが${maxAttempts}回失敗しました。エラー: タイムアウト`);
-		                        return;
-		                    }
-		
-		                    // タイムアウトの場合のみ1秒間待機して再試行
-		                    await new Promise(resolve => setTimeout(resolve, 1000));
-		                }
-		            }
-		        };
-		
-		        await requestWithRetry();
-		    });
-		}
-		
-		//////////////////////////////////////////////////////////
 		//Init
 		//var API_userData;
 		var API_generatorsData;
@@ -7033,28 +6952,28 @@ if (reversed == null) { reversed = false; }
 		{
 		    try {
 				console.log("API.ジェネレーター取得");
-		        API_generatorsData = await main.API_Request({
+		        API_generatorsData = await API_Request({
 		            url: '/generator'
 		        });
 				console.log(API_generatorsData);
 				setProgress(85);
 			
 				console.log("API.アップグレード取得");
-		        API_upgradesData = await main.API_Request({
+		        API_upgradesData = await API_Request({
 		            url: '/upgrade'
 		        });
 				console.log(API_upgradesData);
 				setProgress(90);
 			
 				console.log("API.寿司ショップ取得");
-		        API_sushiShopData = await main.API_Request({
+		        API_sushiShopData = await API_Request({
 		            url: '/market/sushi'
 		        });
 				console.log(API_sushiShopData);
 				setProgress(95);
 			
 				console.log("API.金寿司ショップ取得");
-		        API_goldenSushiShopData = await main.API_Request({
+		        API_goldenSushiShopData = await API_Request({
 		            url: '/market/golden-sushi'
 		        });
 				console.log(API_goldenSushiShopData);
@@ -7064,40 +6983,7 @@ if (reversed == null) { reversed = false; }
 		        console.error("todo:初期データロード", error);
 		    }
 		}
-		/*
-		//ユーザ認証
-		this.UserAuthentication = async function()
-		{
-		    try {
-				console.log("API.ユーザ情報取得");
-		        API_userData = await main.API_Request({
-		            url: '/user/me'
-		        });
-				console.log(API_userData);
-				setProgress(80);
-		    } catch (error) {
-				try {
-					console.log("API.新規ユーザ登録");
-					await main.API_Request({
-						url: '/user/register',
-						method: 'POST',
-						data: {
-							referralCode: null
-						}
-					});
-					setProgress(77);
-					console.log("API.ユーザ情報取得");
-					API_userData = await main.API_Request({
-						url: '/user/me'
-					});
-					console.log(API_userData);
-				setProgress(80);
-				} catch (recoveryError) {
-					this.MessageMC.Open( "please wait a while and try again.");
-				}
-		    }
-		}
-		*/
+		
 		this.Run = async function()
 		{
 			await this.fetchSequentialAPIs();
@@ -7208,43 +7094,8 @@ if (reversed == null) { reversed = false; }
 			hiddenLoadingScreen();
 		}
 		
-			if(API_userData !== undefined)
-				this.Run();
-		
-		/*
-		this.RunApp = async function()
-		{
-		    //await this.UserAuthentication();
-			if(API_userData !== undefined)
-				this.Run();
-		}
-		*/
-		//this.LodingMC.visible = false;
-		//hiddenLoadingScreen();
-		
-		/*
-		this.CheckDeviceId = () => {
-		    deviceId = window.Telegram.WebApp.BiometricManager.deviceId;
-			this.RunApp();
-		}
-		
-		if(isMobile())
-		{
-			window.Telegram.WebApp.BiometricManager.init(this.CheckDeviceId);
-		}
-		else
-		{
-			if (localStorage.getItem('uniqueId'))
-				deviceId = localStorage.getItem('uniqueId')
-			else
-			{
-				deviceId = Math.random().toString()
-				localStorage.setItem('uniqueId', deviceId)		
-			}
-			this.RunApp();
-		}
-		var deviceId ="";
-		*/
+		if(API_userData !== undefined)
+			this.Run();
 	}
 
 	// actions tween:
