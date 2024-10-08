@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[3215,2438,300,128],[3215,2568,300,128],[0,3425,516,176],[518,3425,516,176],[3215,2698,136,68],[3565,1871,1042,985],[3381,3338,904,153],[2254,3463,516,176],[7907,2615,148,89],[8029,2498,115,115],[7907,2706,118,66],[1127,2438,1042,889],[4287,3465,754,101],[3353,2698,120,65],[8059,2242,116,126],[8059,2370,116,126],[3316,3493,662,46],[5043,3511,662,46],[6780,1128,1042,1191],[3215,2858,1125,478],[4609,2506,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[2171,3065,1039,224],[8048,994,122,122],[5448,3258,1125,251],[4609,1359,1042,1145],[7702,3424,374,91],[7907,211,205,205],[6575,3323,1125,227],[7907,0,209,209],[7907,418,214,190],[7907,994,139,132],[7907,610,214,190],[8040,2050,150,190],[7907,802,214,190],[7824,2050,214,190],[1127,3329,1125,206],[3475,2698,87,70],[7907,2394,120,120],[7824,1748,300,300],[7907,2516,90,90],[8057,2615,90,90],[4342,3144,1104,319],[0,2438,1125,985],[7824,1128,308,308],[7824,1438,308,308],[7702,3323,452,99],[2772,3463,542,104],[7907,2242,150,150],[5653,0,1125,1126],[6780,0,1125,1126],[5653,1128,1125,1126],[2254,3338,1125,123],[5653,2256,1125,1000],[2171,2438,1042,625],[6780,2321,1125,1000]]}
+		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[0,3425,516,176],[518,3425,516,176],[7907,2706,136,68],[3565,1871,1042,985],[3381,3338,904,153],[2254,3463,516,176],[7907,2615,148,89],[8029,2498,115,115],[8045,2774,118,66],[1127,2438,1042,889],[4287,3465,754,101],[8045,2707,120,65],[8059,2242,116,126],[8059,2370,116,126],[5873,3511,662,46],[1036,3537,662,46],[6780,1128,1042,1191],[3215,2858,1125,478],[4609,2506,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[2772,3463,542,104],[5497,3511,374,91],[2171,3065,1039,224],[8048,994,122,122],[5448,3258,1125,251],[4609,1359,1042,1145],[7907,211,205,205],[6575,3323,1125,227],[7824,1748,300,300],[3215,2438,300,300],[7907,0,209,209],[7907,418,214,190],[7907,994,139,132],[7907,610,214,190],[8040,2050,150,190],[7907,802,214,190],[7824,2050,214,190],[1127,3329,1125,206],[7907,2776,102,63],[7907,2841,87,70],[7907,2394,120,120],[7702,3323,300,300],[7907,2516,90,90],[8057,2615,90,90],[4342,3144,1104,319],[0,2438,1125,985],[7824,1128,308,308],[3860,3493,300,128],[3215,2740,300,86],[7824,1438,308,308],[5043,3511,452,99],[3316,3493,542,104],[7907,2242,150,150],[5653,0,1125,1126],[6780,0,1125,1126],[5653,1128,1125,1126],[2254,3338,1125,123],[5653,2256,1125,1000],[2171,2438,1042,625],[6780,2321,1125,1000]]}
 ];
 
 
@@ -41,161 +41,161 @@ lib.ssMetadata = [
 
 
 
-(lib._17 = function() {
+(lib._2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._18 = function() {
+(lib._2_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._2 = function() {
+(lib._20 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._2_1 = function() {
+(lib._3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._20 = function() {
+(lib._3_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._3 = function() {
+(lib._4 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._3_1 = function() {
+(lib._4_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._4 = function() {
+(lib._5 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._4_1 = function() {
+(lib._5_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._5 = function() {
+(lib._6 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._5_1 = function() {
+(lib._7 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._6 = function() {
+(lib.a1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(13);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._7 = function() {
+(lib.a2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(14);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a1 = function() {
+(lib.a3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(15);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a2 = function() {
+(lib.a4 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(16);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a3 = function() {
+(lib.a5 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(17);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a4 = function() {
+(lib.a6 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(18);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a5 = function() {
+(lib.achievementDesciption = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(19);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a6 = function() {
+(lib.achievementDetailBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(20);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementDesciption = function() {
+(lib.bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(21);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementDetailBG = function() {
+(lib.bg1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(22);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg = function() {
+(lib.bg1_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(23);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg1 = function() {
+(lib.bg2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(24);
 }).prototype = p = new cjs.Sprite();
@@ -230,212 +230,240 @@ lib.ssMetadata = [
 
 
 
-(lib.goldenSushiBG = function() {
+(lib.hatena = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.hatena = function() {
+(lib.header_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.header_bg = function() {
+(lib.icon_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.iconFrame = function() {
+(lib.icon_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_achievement_button = function() {
+(lib.iconFrame = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_config_button = function() {
+(lib.menu_achievement_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_generator_button = function() {
+(lib.menu_config_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_invite = function() {
+(lib.menu_generator_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_shop_button = function() {
+(lib.menu_invite = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_upgrade_button = function() {
+(lib.menu_shop_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.messageBG = function() {
+(lib.menu_upgrade_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_sushi = function() {
+(lib.messageBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._new = function() {
+(lib.mini_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(41);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not = function() {
+(lib.mini_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(42);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification1 = function() {
+(lib._new = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(43);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification2 = function() {
+(lib.not = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(44);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.NotificationBG = function() {
+(lib.notification1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(45);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.panel = function() {
+(lib.notification2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_goldenSushi_icon = function() {
+(lib.NotificationBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_sushi_icon = function() {
+(lib.panel = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTile2 = function() {
+(lib.shop_goldenSushi_icon = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(49);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTitle = function() {
+(lib.shop_label2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(50);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.sushiMini = function() {
+(lib.shop_label3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(51);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll1 = function() {
+(lib.shop_sushi_icon = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll2 = function() {
+(lib.subTile2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(53);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll3 = function() {
+(lib.subTitle = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(54);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.title = function() {
+(lib.sushiMini = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(55);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.underBG = function() {
+(lib.SushiScroll1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(56);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.upgrade_bg = function() {
+(lib.SushiScroll2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(57);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.upperBG = function() {
+(lib.SushiScroll3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(58);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.title = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(59);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.underBG = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(60);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.upgrade_bg = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(61);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.upperBG = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(62);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -732,25 +760,23 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Text
-	this.title = new cjs.Text("アップグレード", "50px 'Potta One'");
+	this.title = new cjs.Text("Golden Sushi", "60px 'Potta One'");
 	this.title.name = "title";
-	this.title.textAlign = "center";
-	this.title.lineHeight = 74;
-	this.title.lineWidth = 538;
+	this.title.lineHeight = 89;
+	this.title.lineWidth = 434;
 	this.title.parent = this;
-	this.title.setTransform(321,15);
+	this.title.setTransform(59,4);
 
 	this.timeline.addTween(cjs.Tween.get(this.title).wait(1));
 
 	// BG
-	this.instance = new lib.subTitle();
-	this.instance.setTransform(50,0);
+	this.instance = new lib.bg1_1();
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopSubTitleMC, new cjs.Rectangle(50,0,542,104), null);
+}).prototype = getMCSymbolPrototype(lib.ShopSubTitleMC, new cjs.Rectangle(0,0,542,104), null);
 
 
 (lib.ShopActiveMC = function(mode,startPosition,loop,reversed) {
@@ -2202,40 +2228,43 @@ if (reversed == null) { reversed = false; }
 	// Icon_Button
 	this.IconButtonMC = new lib.ButtonMC();
 	this.IconButtonMC.name = "IconButtonMC";
-	this.IconButtonMC.setTransform(0.6,0.6,3.0799,3.0799,0,0,0,0.2,0.2);
+	this.IconButtonMC.setTransform(0.6,0.6,2.9999,2.9999,0,0,0,0.2,0.2);
 
 	this.timeline.addTween(cjs.Tween.get(this.IconButtonMC).wait(1));
 
-	// Text
-	this.amount = new cjs.Text("×100", "60px 'Potta One'", "#C5253A");
+	// Text_amount
+	this.amount = new cjs.Text("×2,000", "60px 'Potta One'");
 	this.amount.name = "amount";
-	this.amount.textAlign = "center";
+	this.amount.textAlign = "right";
 	this.amount.lineHeight = 89;
-	this.amount.lineWidth = 304;
+	this.amount.lineWidth = 286;
 	this.amount.parent = this;
-	this.amount.setTransform(154,219);
+	this.amount.setTransform(284,205);
 
-	this.price = new cjs.Text("1,000", "60px 'Potta One'", "#FFFFFF");
+	this.timeline.addTween(cjs.Tween.get(this.amount).wait(1));
+
+	// Text
+	this.price = new cjs.Text("60", "55px 'Potta One'", "#FFFFFF");
 	this.price.name = "price";
 	this.price.textAlign = "right";
-	this.price.lineHeight = 89;
+	this.price.lineHeight = 82;
 	this.price.lineWidth = 196;
 	this.price.parent = this;
-	this.price.setTransform(278,337);
+	this.price.setTransform(265.95,308.9);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.price},{t:this.amount}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.price).wait(1));
 
 	// Icon
-	this.instance = new lib.shop_sushi_icon();
+	this.instance = new lib.shop_label3();
+	this.instance.setTransform(0,306);
 
-	this.instance_1 = new lib._17();
-	this.instance_1.setTransform(5,320);
+	this.instance_1 = new lib.icon_sushi();
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopCell2MC, new cjs.Rectangle(0,0,308,448), null);
+}).prototype = getMCSymbolPrototype(lib.ShopCell2MC, new cjs.Rectangle(-4,0,304,392), null);
 
 
 (lib.ShopCell1MC = function(mode,startPosition,loop,reversed) {
@@ -2252,40 +2281,43 @@ if (reversed == null) { reversed = false; }
 	// Icon_Button
 	this.IconButtonMC = new lib.ButtonMC();
 	this.IconButtonMC.name = "IconButtonMC";
-	this.IconButtonMC.setTransform(0.6,0.6,3.08,3.0799,0,0,0,0.2,0.2);
+	this.IconButtonMC.setTransform(0.6,0.6,3,2.9999,0,0,0,0.2,0.2);
 
 	this.timeline.addTween(cjs.Tween.get(this.IconButtonMC).wait(1));
 
-	// text
-	this.amount = new cjs.Text("×100", "60px 'Potta One'", "#C5253A");
+	// Text_amount
+	this.amount = new cjs.Text("×2,000", "60px 'Potta One'");
 	this.amount.name = "amount";
-	this.amount.textAlign = "center";
+	this.amount.textAlign = "right";
 	this.amount.lineHeight = 89;
-	this.amount.lineWidth = 304;
+	this.amount.lineWidth = 286;
 	this.amount.parent = this;
-	this.amount.setTransform(154,219);
+	this.amount.setTransform(284,205);
 
+	this.timeline.addTween(cjs.Tween.get(this.amount).wait(1));
+
+	// text
 	this.price = new cjs.Text("1,000", "60px 'Potta One'", "#FFFFFF");
 	this.price.name = "price";
 	this.price.textAlign = "center";
 	this.price.lineHeight = 89;
 	this.price.lineWidth = 296;
 	this.price.parent = this;
-	this.price.setTransform(155,318.55);
+	this.price.setTransform(150,301.55);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.price},{t:this.amount}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.price).wait(1));
 
 	// Icon
-	this.instance = new lib.shop_goldenSushi_icon();
+	this.instance = new lib.shop_label2();
+	this.instance.setTransform(0,303);
 
-	this.instance_1 = new lib._18();
-	this.instance_1.setTransform(5,320);
+	this.instance_1 = new lib.icon_golden();
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopCell1MC, new cjs.Rectangle(0,0,308,448), null);
+}).prototype = getMCSymbolPrototype(lib.ShopCell1MC, new cjs.Rectangle(-4,0,304,431), null);
 
 
 (lib.SushiMC = function(mode,startPosition,loop,reversed) {
@@ -2908,7 +2940,8 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		this.Sushi_O = new Outline(lib, this.Sushi, 5, "#FFFFFF", "#000000");
+		this.SushiL_O = new Outline(lib, this.SushiL, 5, "#FFFFFF", "#000000");
+		this.SushiR_O = new Outline(lib, this.SushiR, 5, "#FFFFFF", "#000000");
 		this.Sps_O = new Outline(lib, this.Sps, 5, "#DC962D", "#000000");
 	}
 
@@ -2925,18 +2958,28 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.debug).wait(1));
 
-	// Text1
-	this.Sushi = new cjs.Text("123.221 pieces", "90px 'Potta One'", "#FFFFFF");
-	this.Sushi.name = "Sushi";
-	this.Sushi.textAlign = "center";
-	this.Sushi.lineHeight = 132;
-	this.Sushi.lineWidth = 1121;
-	this.Sushi.parent = this;
-	this.Sushi.setTransform(562.5,7);
+	// Text_SushiR
+	this.SushiR = new cjs.Text("pieces", "50px 'Potta One'", "#FFFFFF");
+	this.SushiR.name = "SushiR";
+	this.SushiR.lineHeight = 74;
+	this.SushiR.lineWidth = 438;
+	this.SushiR.parent = this;
+	this.SushiR.setTransform(728.05,37.9);
 
-	this.timeline.addTween(cjs.Tween.get(this.Sushi).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.SushiR).wait(1));
 
-	// Text2
+	// Text_SushiL
+	this.SushiL = new cjs.Text("123.221", "80px 'Potta One'", "#FFFFFF");
+	this.SushiL.name = "SushiL";
+	this.SushiL.textAlign = "right";
+	this.SushiL.lineHeight = 118;
+	this.SushiL.lineWidth = 496;
+	this.SushiL.parent = this;
+	this.SushiL.setTransform(523,14);
+
+	this.timeline.addTween(cjs.Tween.get(this.SushiL).wait(1));
+
+	// Text_Sps
 	this.Sps = new cjs.Text("per Second : 123,111 pieces", "50px 'Potta One'", "#DC962D");
 	this.Sps.name = "Sps";
 	this.Sps.textAlign = "center";
@@ -2971,7 +3014,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1125,1758), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1168.2,1758), null);
 
 
 (lib.GeneratorCellMC = function(mode,startPosition,loop,reversed) {
@@ -4319,39 +4362,31 @@ if (reversed == null) { reversed = false; }
 	// Text
 	this.SkinTitleMC = new lib.ShopSubTitleMC();
 	this.SkinTitleMC.name = "SkinTitleMC";
-	this.SkinTitleMC.setTransform(0,2206.55);
+	this.SkinTitleMC.setTransform(32,2206.55);
 
 	this.RoboTitleMC = new lib.ShopSubTitleMC();
 	this.RoboTitleMC.name = "RoboTitleMC";
-	this.RoboTitleMC.setTransform(0,1498.3);
+	this.RoboTitleMC.setTransform(32,1498.3);
 
 	this.GoldenSushiTitleMC = new lib.ShopSubTitleMC();
 	this.GoldenSushiTitleMC.name = "GoldenSushiTitleMC";
-	this.GoldenSushiTitleMC.setTransform(0,200);
+	this.GoldenSushiTitleMC.setTransform(31,109);
 
 	this.SushiTitleMC = new lib.ShopSubTitleMC();
 	this.SushiTitleMC.name = "SushiTitleMC";
-	this.SushiTitleMC.setTransform(0,850);
+	this.SushiTitleMC.setTransform(32,715.95);
 
-	this.goldenSushiTitle = new cjs.Text("Shop", "70px 'Potta One'", "#FFFFFF");
-	this.goldenSushiTitle.name = "goldenSushiTitle";
-	this.goldenSushiTitle.textAlign = "center";
-	this.goldenSushiTitle.lineHeight = 103;
-	this.goldenSushiTitle.lineWidth = 1121;
-	this.goldenSushiTitle.parent = this;
-	this.goldenSushiTitle.setTransform(562.5,56);
-
-	this.goldenSushi = new cjs.Text("11111", "50px 'Potta One'", "#FFFFFF");
+	this.goldenSushi = new cjs.Text("10", "60px 'Potta One'", "#FFFFFF");
 	this.goldenSushi.name = "goldenSushi";
 	this.goldenSushi.textAlign = "right";
-	this.goldenSushi.lineHeight = 74;
+	this.goldenSushi.lineHeight = 89;
 	this.goldenSushi.lineWidth = 194;
 	this.goldenSushi.parent = this;
-	this.goldenSushi.setTransform(1059.6,218);
+	this.goldenSushi.setTransform(1068.6,22.6);
 
 	this.ShopCell2MC = new lib.ShopCell2MC();
 	this.ShopCell2MC.name = "ShopCell2MC";
-	this.ShopCell2MC.setTransform(50,1013.75);
+	this.ShopCell2MC.setTransform(60,849.7);
 
 	this.ShopCell3MC = new lib.ShopCell3MC();
 	this.ShopCell3MC.name = "ShopCell3MC";
@@ -4359,16 +4394,16 @@ if (reversed == null) { reversed = false; }
 
 	this.ShopCell1MC = new lib.ShopCell1MC();
 	this.ShopCell1MC.name = "ShopCell1MC";
-	this.ShopCell1MC.setTransform(50,340.9);
+	this.ShopCell1MC.setTransform(60,243.85);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.ShopCell1MC},{t:this.ShopCell3MC},{t:this.ShopCell2MC},{t:this.goldenSushi},{t:this.goldenSushiTitle},{t:this.SushiTitleMC},{t:this.GoldenSushiTitleMC},{t:this.RoboTitleMC},{t:this.SkinTitleMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.ShopCell1MC},{t:this.ShopCell3MC},{t:this.ShopCell2MC},{t:this.goldenSushi},{t:this.SushiTitleMC},{t:this.GoldenSushiTitleMC},{t:this.RoboTitleMC},{t:this.SkinTitleMC}]}).wait(1));
 
 	// Image
-	this.instance = new lib.goldenSushiBG();
-	this.instance.setTransform(713,209);
+	this.instance = new lib.mini_golden();
+	this.instance.setTransform(739,40);
 
-	this.instance_1 = new lib.title();
-	this.instance_1.setTransform(0,48);
+	this.instance_1 = new lib.bg2();
+	this.instance_1.setTransform(726,24);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
 
@@ -4929,7 +4964,7 @@ if (reversed == null) { reversed = false; }
 		{
 			//////////////////////////////////////
 			//GoldenSushi
-			let posY = 200;
+			let posY = 100;
 			this.ContentMC.GoldenSushiTitleMC.y = posY;
 			this.ContentMC.GoldenSushiTitleMC.title.text = "Golden Sushi";
 			this.ContentMC.goldenSushi.text = main.goldenSushi;
@@ -4944,7 +4979,7 @@ if (reversed == null) { reversed = false; }
 				this.ContentMC.addChild(clip);
 				goldenSushiShop.clip = clip;
 				clip.x = 50 + 355 * (goldenSushiCount % 3);
-				clip.y = posY + 350 * Math.floor(goldenSushiCount / 3);
+				clip.y = posY + 450 * Math.floor(goldenSushiCount / 3);
 				
 				clip.IconButtonMC.addEventListener("click", function() {
 					this.OpenDesciption.call(this, goldenSushiShop);
@@ -4952,16 +4987,17 @@ if (reversed == null) { reversed = false; }
 			
 				clip.price.text = goldenSushiShop.price.toLocaleString();
 				clip.amount.text = "×" + goldenSushiShop.amount.toLocaleString();		
-		
+				clip.amount_O = new Outline(lib, clip.amount, 5, "#000000", "#FFFFFF");
+			
 				clip.gotoAndStop("Active");
 				goldenSushiCount++;
 			}
 		
-			posY += 350 * Math.ceil(goldenSushiCount / 3);
+			posY += 450 * Math.ceil(goldenSushiCount / 3);
 		
 			//////////////////////////////////////
 			//Sushi
-			posY += 130;
+			posY += 30;
 			this.ContentMC.SushiTitleMC.y = posY;
 			this.ContentMC.SushiTitleMC.title.text = "Sushi";
 			posY += 130;
@@ -4975,26 +5011,27 @@ if (reversed == null) { reversed = false; }
 				this.ContentMC.addChild(clip);
 				sushiShop.clip = clip;
 				clip.x = 50 + 355 * (sushiCount % 3);
-				clip.y = posY + 350 * Math.floor(sushiCount / 3);
+				clip.y = posY + 420 * Math.floor(sushiCount / 3);
 				
 				clip.IconButtonMC.addEventListener("click", function() {
 					this.OpenDesciption.call(this, sushiShop);
 				}.bind(this));
 				
 				clip.price.text = sushiShop.price.toLocaleString();
-				clip.amount.text = "×" + sushiShop.amount.toLocaleString();		
+				clip.amount.text = "×" + sushiShop.amount.toLocaleString();
+				clip.amount_O = new Outline(lib, clip.amount, 5, "#000000", "#FFFFFF");	
 				
 				clip.gotoAndStop("Active");
 				sushiCount++;
 			}
 		
-			posY += 350 * Math.ceil(sushiCount / 3);
+			posY += 420 * Math.ceil(sushiCount / 3);
 		
 			//////////////////////////////////////
 			//Robo
-			posY += 130;
+			posY += 30;
 			this.ContentMC.RoboTitleMC.y = posY;
-			this.ContentMC.RoboTitleMC.title.text = "オンライン寿司ロボ";
+			this.ContentMC.RoboTitleMC.title.text = "Sushi Robot";
 			posY += 130;
 		
 			let roboCount = 0; 
@@ -5042,7 +5079,7 @@ if (reversed == null) { reversed = false; }
 			//Skin
 			posY += 20;
 			this.ContentMC.SkinTitleMC.y = posY;
-			this.ContentMC.SkinTitleMC.title.text = "見た目をカスタマイズ";
+			this.ContentMC.SkinTitleMC.title.text = "Skin";
 			posY += 130;
 			
 			let skinCount = 0; 
@@ -5130,8 +5167,8 @@ if (reversed == null) { reversed = false; }
 	// Mask (mask)
 	var mask = new cjs.Shape();
 	mask._off = true;
-	mask.graphics.p("EhX4HUwMAAAupfMCvxAAAMAAAOpfg");
-	mask.setTransform(562.5,3040.7);
+	mask.graphics.p("EhX4HXGMAAAupfMCvxAAAMAAAOpfg");
+	mask.setTransform(562.5,3015);
 
 	// Cell
 	this.ContentMC = new lib.ShopContentMC();
@@ -5152,7 +5189,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-100.5,-0.5,1225.5,2436.5), null);
+}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-100.5,-197,1225.5,2633), null);
 
 
 (lib.GeneratorPanelMC = function(mode,startPosition,loop,reversed) {
@@ -5973,7 +6010,13 @@ if (reversed == null) { reversed = false; }
 		//所持寿司の表示更新
 		main.SushiDisplayUdates = function() 
 		{
-			exportRoot.HeaderMC.Sushi_O.text = FormatNumber(main.sushi, 1, 2) + " pieces";
+			exportRoot.HeaderMC.SushiL_O.text = FormatNumber1(main.sushi, 1, 2);
+			exportRoot.HeaderMC.SushiR_O.text = " " + FormatNumber2(main.sushi, 1, 2) + " pieces";
+			let lw = exportRoot.HeaderMC.SushiL_O.base.getMeasuredWidth();
+			let rw = exportRoot.HeaderMC.SushiR_O.base.getMeasuredWidth();
+			let centerX = 1125 / 2;
+			exportRoot.HeaderMC.SushiR_O.x = (centerX - (lw + rw) / 2) + lw;
+			exportRoot.HeaderMC.SushiL_O.x = exportRoot.HeaderMC.SushiR_O.x;
 		}
 		
 		//クリック生産量の更新
@@ -6014,7 +6057,7 @@ if (reversed == null) { reversed = false; }
 				generator.storedTotalSps = generator.posession * generator.storedSps;
 				this.sushiPs += generator.storedTotalSps;
 			}
-			exportRoot.HeaderMC.Sps_O.text = "per Second : " + FormatNumber(this.sushiPs, 1, 2) + " pieces";
+			this.SushiDisplayUdates();
 		}
 		
 		//ジェネレータの購入

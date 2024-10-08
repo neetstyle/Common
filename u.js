@@ -182,6 +182,86 @@ function FormatNumber(num, n, f) {
     }
 }
 
+function FormatNumber1(num, n, f) {
+    if (num >= 1e42) {
+        return parseFloat((num / 1e42).toFixed(f));
+    } else if (num >= 1e39) {
+        return parseFloat((num / 1e39).toFixed(f));
+    } else if (num >= 1e36) {
+        return parseFloat((num / 1e36).toFixed(f));
+    } else if (num >= 1e33) {
+        return parseFloat((num / 1e33).toFixed(f));
+    } else if (num >= 1e30) {
+        return parseFloat((num / 1e30).toFixed(f));
+    } else if (num >= 1e27) {
+        return parseFloat((num / 1e27).toFixed(f));
+    } else if (num >= 1e24) {
+        return parseFloat((num / 1e24).toFixed(f));
+    } else if (num >= 1e21) {
+        return parseFloat((num / 1e21).toFixed(f));
+    } else if (num >= 1e18) {
+        return parseFloat((num / 1e18).toFixed(f));
+    } else if (num >= 1e15) {
+        return parseFloat((num / 1e15).toFixed(f));
+    } else if (num >= 1e12) {
+        return parseFloat((num / 1e12).toFixed(f));
+    } else if (num >= 1e9) {
+        return parseFloat((num / 1e9).toFixed(f));
+    } else if (num >= 1e6) {
+		if(n < 2)
+			return parseFloat((num / 1e6).toFixed(f));
+		else
+        	return numberWithCommas(parseFloat(num.toFixed(f)));
+    } else if (num >= 1e3) {
+		if(n < 1)
+			return parseFloat((num / 1e3).toFixed(f));
+		else
+        	return numberWithCommas(parseFloat(num.toFixed(f)));
+    } else {
+        return numberWithCommas(parseFloat(num.toFixed(f)));
+    }
+}
+
+function FormatNumber2(num, n, f) {
+    if (num >= 1e42) {
+        return 'Tredecillion';
+    } else if (num >= 1e39) {
+        return 'Duodecillion';
+    } else if (num >= 1e36) {
+        return 'Undecillion';
+    } else if (num >= 1e33) {
+        return 'Decillion';
+    } else if (num >= 1e30) {
+        return 'Nonillion';
+    } else if (num >= 1e27) {
+        return 'Octillion';
+    } else if (num >= 1e24) {
+        return 'Septillion';
+    } else if (num >= 1e21) {
+        return 'Sextillion';
+    } else if (num >= 1e18) {
+        return 'Quintillion';
+    } else if (num >= 1e15) {
+        return 'Quadrillion';
+    } else if (num >= 1e12) {
+        return 'Trillion';
+    } else if (num >= 1e9) {
+        return 'Billion';
+    } else if (num >= 1e6) {
+		if(n < 2)
+			return 'Million';
+		else
+        	return '';
+    } else if (num >= 1e3) {
+		if(n < 1)
+			return 'Thousand';
+		else
+        	return '';
+    } else {
+        return '';
+    }
+}
+
 function GetRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -230,7 +310,8 @@ class Outline
 	{
 		this.container = new lib.ContainerMC();
 		GetTween(obj.parent, obj).target = this.container;		
-		
+		this.size = size;
+
 		this.textL = obj.clone();
 		this.textL.color = outline;
 		this.textL.x -= size;
@@ -280,6 +361,11 @@ class Outline
 		this.container.addChildAt(this.textC, 8);
 	}
 
+   	get base()
+   	{
+        return this.textC;
+    }
+
    	get text()
    	{
         return this.textC.text;
@@ -319,6 +405,24 @@ class Outline
         this.textRU.color = outline;
         this.textRD.color = outline;
 	}
+
+	set x(value)
+    {
+        this.textL.x = value - this.size;
+        this.textU.x = value;
+        this.textD.x = value
+        this.textR.x = value + this.size;
+        this.textC.x = value;
+		this.textLU.x = value - this.size;
+        this.textLD.x = value - this.size;
+        this.textRU.x = value + this.size;
+     	this.textRD.x = value + this.size;
+    }
+
+	get x()
+    {
+        return this.textC.x;
+    }
 }
 
 function isMobile() {
