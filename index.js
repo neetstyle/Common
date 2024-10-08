@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[3215,2438,300,128],[3215,2568,300,128],[4287,3465,516,176],[4805,3465,516,176],[3354,2698,136,68],[3565,1871,1042,985],[3381,3338,904,153],[3381,3493,516,176],[7907,2615,148,89],[8029,2498,115,115],[8029,2707,118,66],[1127,2438,1042,889],[2254,3546,754,101],[7907,2706,120,65],[8059,2242,116,126],[8059,2370,116,126],[544,3558,662,46],[1208,3558,662,46],[6780,1128,1042,1191],[3215,2858,1125,478],[4609,2506,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[2171,3065,1039,224],[5448,3258,1123,305],[8048,994,122,122],[6573,3323,1125,251],[4609,1359,1042,1145],[7700,3424,374,91],[7907,211,205,205],[1127,3329,1125,227],[7907,0,209,209],[7907,418,214,190],[7907,994,139,132],[7907,610,214,190],[8040,2050,150,190],[7907,802,214,190],[7824,2050,214,190],[2254,3338,1125,206],[3354,2768,87,70],[7907,2394,120,120],[7824,1748,300,300],[7907,2516,90,90],[8057,2615,90,90],[4342,3144,1104,319],[0,2438,1125,985],[7824,1128,308,308],[7824,1438,308,308],[7700,3323,452,99],[0,3550,542,104],[3215,2698,137,86],[7907,2242,150,150],[5653,0,1125,1126],[6780,0,1125,1126],[5653,1128,1125,1126],[0,3425,1125,123],[5653,2256,1125,1000],[2171,2438,1042,625],[6780,2321,1125,1000]]}
+		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[3215,2438,300,128],[3215,2568,300,128],[0,3425,516,176],[518,3425,516,176],[3215,2698,136,68],[3565,1871,1042,985],[3381,3338,904,153],[2254,3463,516,176],[7907,2615,148,89],[8029,2498,115,115],[7907,2706,118,66],[1127,2438,1042,889],[4287,3465,754,101],[3353,2698,120,65],[8059,2242,116,126],[8059,2370,116,126],[3316,3493,662,46],[5043,3511,662,46],[6780,1128,1042,1191],[3215,2858,1125,478],[4609,2506,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[2171,3065,1039,224],[8048,994,122,122],[5448,3258,1125,251],[4609,1359,1042,1145],[7702,3424,374,91],[7907,211,205,205],[6575,3323,1125,227],[7907,0,209,209],[7907,418,214,190],[7907,994,139,132],[7907,610,214,190],[8040,2050,150,190],[7907,802,214,190],[7824,2050,214,190],[1127,3329,1125,206],[3475,2698,87,70],[7907,2394,120,120],[7824,1748,300,300],[7907,2516,90,90],[8057,2615,90,90],[4342,3144,1104,319],[0,2438,1125,985],[7824,1128,308,308],[7824,1438,308,308],[7702,3323,452,99],[2772,3463,542,104],[7907,2242,150,150],[5653,0,1125,1126],[6780,0,1125,1126],[5653,1128,1125,1126],[2254,3338,1125,123],[5653,2256,1125,1000],[2171,2438,1042,625],[6780,2321,1125,1000]]}
 ];
 
 
@@ -209,247 +209,233 @@ lib.ssMetadata = [
 
 
 
-(lib.cellBG = function() {
+(lib.close = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(26);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.close = function() {
+(lib.footer_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(27);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.footer_bg = function() {
+(lib.generator_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.generator_bg = function() {
+(lib.goldenSushiBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.goldenSushiBG = function() {
+(lib.hatena = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.hatena = function() {
+(lib.header_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.header_bg = function() {
+(lib.iconFrame = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.iconFrame = function() {
+(lib.menu_achievement_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_achievement_button = function() {
+(lib.menu_config_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_config_button = function() {
+(lib.menu_generator_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_generator_button = function() {
+(lib.menu_invite = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_invite = function() {
+(lib.menu_shop_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_shop_button = function() {
+(lib.menu_upgrade_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_upgrade_button = function() {
+(lib.messageBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.messageBG = function() {
+(lib.mini_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_sushi = function() {
+(lib._new = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(41);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._new = function() {
+(lib.not = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(42);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not = function() {
+(lib.notification1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(43);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification1 = function() {
+(lib.notification2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(44);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification2 = function() {
+(lib.NotificationBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(45);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.NotificationBG = function() {
+(lib.panel = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.panel = function() {
+(lib.shop_goldenSushi_icon = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_goldenSushi_icon = function() {
+(lib.shop_sushi_icon = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_sushi_icon = function() {
+(lib.subTile2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(49);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTile2 = function() {
+(lib.subTitle = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(50);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTitle = function() {
+(lib.sushiMini = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(51);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.sushiIcon = function() {
+(lib.SushiScroll1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.sushiMini = function() {
+(lib.SushiScroll2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(53);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll1 = function() {
+(lib.SushiScroll3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(54);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll2 = function() {
+(lib.title = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(55);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll3 = function() {
+(lib.underBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(56);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.title = function() {
+(lib.upgrade_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(57);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.underBG = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(58);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.upgrade_bg = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(59);
-}).prototype = p = new cjs.Sprite();
-
-
-
 (lib.upperBG = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(60);
+	this.gotoAndStop(58);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -1348,14 +1334,14 @@ if (reversed == null) { reversed = false; }
 		
 		this.Reload = function() 
 		{
-			this.content.ContentBGMC.scaleY = (0 + 280 * this.count) * 0.01;
-			minY = -(50 + 280 * this.count) + 914;
+			this.content.ContentBGMC.scaleY = (0 + 240 * this.count) * 0.01;
+			minY = -(50 + 240 * this.count) + 914;
 		}
 		
 		this.SetFullSize = function(size) 
 		{
 			this.content.ContentBGMC.scaleY = size * 0.01;
-			minY = -size + (document.documentElement.clientHeight / this.parent.parent.canvasScaleX)	-300 -278;
+			minY = -size + (document.documentElement.clientHeight / this.parent.parent.canvasScaleX)	-251 -227;
 		}
 		
 		this.SetSize = function(size) 
@@ -1364,7 +1350,7 @@ if (reversed == null) { reversed = false; }
 			minY = -size + 914;
 		}
 		
-		this.content.ContentBGMC.scaleY = (0 + 280 * this.count) * 0.01;
+		this.content.ContentBGMC.scaleY = (0 + 240 * this.count) * 0.01;
 		
 		var content = this.content;
 		var startY;
@@ -1372,7 +1358,7 @@ if (reversed == null) { reversed = false; }
 		var isScrolling = false;
 		var velocity = 0;
 		var friction = 0.95; // 慣性スクロールの減速率
-		var minY = -(50 + 280 * this.count) + 914;
+		var minY = -(50 + 240 * this.count) + 914;
 		var maxY = 0;
 		var lastY;
 		var lastMoveTime;
@@ -1955,21 +1941,21 @@ if (reversed == null) { reversed = false; }
 	// Icon_Button
 	this.IconButtonMC = new lib.ButtonMC();
 	this.IconButtonMC.name = "IconButtonMC";
-	this.IconButtonMC.setTransform(22.55,38.25,2.66,2.5598,0,0,0,0.2,0.1);
+	this.IconButtonMC.setTransform(76.35,56.35,1.7,1.6999,0,0,0,0.2,0.2);
 
 	this.timeline.addTween(cjs.Tween.get(this.IconButtonMC).wait(20));
 
 	// BG_Button
 	this.ButtonMC = new lib.ButtonMC();
 	this.ButtonMC.name = "ButtonMC";
-	this.ButtonMC.setTransform(0,27,11.25,2.7998);
+	this.ButtonMC.setTransform(48,34,10.2799,2.1202);
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).to({_off:true},9).wait(11));
 
 	// Mask
 	this.MaskMC = new lib.MaskMC();
 	this.MaskMC.name = "MaskMC";
-	this.MaskMC.setTransform(28.5,38.25,10.8025,2.56,0,0,0,0.6,0.1);
+	this.MaskMC.setTransform(49.05,34.2,10.28,2.12,0,0,0,0.1,0.1);
 	this.MaskMC.alpha = 0.5;
 	this.MaskMC._off = true;
 
@@ -1978,53 +1964,63 @@ if (reversed == null) { reversed = false; }
 	// Dodd
 	this.DoddMC = new lib.DoddMC();
 	this.DoddMC.name = "DoddMC";
-	this.DoddMC.setTransform(1068.05,67.7,0.5,0.5,0,0,0,60,60);
+	this.DoddMC.setTransform(1044,65,0.5,0.5,0,0,0,60,60);
 
 	this.timeline.addTween(cjs.Tween.get(this.DoddMC).wait(20));
 
 	// Icon
 	this.IconMC = new lib.IconMC();
 	this.IconMC.name = "IconMC";
-	this.IconMC.setTransform(162.5,168.5,1,1,0,0,0,104.5,104.5);
+	this.IconMC.setTransform(75.5,55);
 
 	this.timeline.addTween(cjs.Tween.get(this.IconMC).wait(20));
 
+	// Text_description
+	this.description = new cjs.Text("Sushi factory doubles", "40px 'Potta One'", "#723826");
+	this.description.name = "description";
+	this.description.lineHeight = 58;
+	this.description.lineWidth = 783;
+	this.description.parent = this;
+	this.description.setTransform(265,167);
+
+	this.timeline.addTween(cjs.Tween.get(this.description).wait(20));
+
 	// Text_title
-	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
+	this.title = new cjs.Text("chopstick", "40px 'Potta One'");
 	this.title.name = "title";
-	this.title.lineHeight = 89;
+	this.title.lineHeight = 60;
 	this.title.lineWidth = 779;
 	this.title.parent = this;
-	this.title.setTransform(284.55,70.35);
+	this.title.setTransform(261,45);
 
 	this.timeline.addTween(cjs.Tween.get(this.title).wait(20));
 
 	// Text_cost
-	this.cost = new cjs.Text("3.158,759", "60px 'Potta One'", "#C5253A");
+	this.cost = new cjs.Text("3.158,759", "40px 'Potta One'", "#0D9000");
 	this.cost.name = "cost";
-	this.cost.lineHeight = 89;
+	this.cost.lineHeight = 60;
 	this.cost.lineWidth = 636;
 	this.cost.parent = this;
-	this.cost.setTransform(427.6,158.25);
+	this.cost.setTransform(350,110);
 
 	this.timeline.addTween(cjs.Tween.get(this.cost).wait(20));
 
 	// Sushi
-	this.instance = new lib.sushiIcon();
-	this.instance.setTransform(280,164);
+	this.instance = new lib.mini_sushi();
+	this.instance.setTransform(269,112,0.8,0.8);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(20));
 
 	// BG
-	this.instance_1 = new lib.cellBG();
-	this.instance_1.setTransform(0,13);
+	this.instance_1 = new lib.cell_bg1();
+	this.instance_1.setTransform(45,32);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(20));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,13,1125,305);
+p.nominalBounds = new cjs.Rectangle(45,32,1039,224);
 
 
 (lib.ShopConfilmCell2MC = function(mode,startPosition,loop,reversed) {
@@ -3006,16 +3002,16 @@ if (reversed == null) { reversed = false; }
 	// Mask
 	this.MaskMC = new lib.MaskMC();
 	this.MaskMC.name = "MaskMC";
-	this.MaskMC.setTransform(49.1,35.2,10.8025,2.118,0,0,0,0.1,0.1);
+	this.MaskMC.setTransform(49.05,34.2,10.28,2.12,0,0,0,0.1,0.1);
 	this.MaskMC.alpha = 0.5;
 	this.MaskMC._off = true;
 
-	this.timeline.addTween(cjs.Tween.get(this.MaskMC).wait(9).to({_off:false},0).wait(10).to({regX:0.6,scaleX:10.28,scaleY:2.12,x:54.15,y:34.2,alpha:1},0).wait(11));
+	this.timeline.addTween(cjs.Tween.get(this.MaskMC).wait(9).to({_off:false},0).wait(10).to({regX:0.6,x:54.15,alpha:1},0).wait(11));
 
 	// Dodd
 	this.DoddMC = new lib.DoddMC();
 	this.DoddMC.name = "DoddMC";
-	this.DoddMC.setTransform(1045.3,63.55,0.5,0.5,0,0,0,60,60);
+	this.DoddMC.setTransform(1044,65,0.5,0.5,0,0,0,60,60);
 
 	this.timeline.addTween(cjs.Tween.get(this.DoddMC).wait(30));
 
@@ -3089,7 +3085,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(45,31,1083.3,224);
+p.nominalBounds = new cjs.Rectangle(45,31,1039,224);
 
 
 (lib.DebugContentMC = function(mode,startPosition,loop,reversed) {
@@ -3902,7 +3898,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpgradeContentMC, new cjs.Rectangle(0,0,1125,318), null);
+}).prototype = getMCSymbolPrototype(lib.UpgradeContentMC, new cjs.Rectangle(0,0,1125,256), null);
 
 
 (lib.ShopDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -4748,9 +4744,11 @@ if (reversed == null) { reversed = false; }
 		
 		this.CheckNotification = function (upgrade)
 		{
+			let num = 0;
 			if(upgrade.doddState == 2)
 			{
-				//upgrade.clip.DoddMC.visible = false;
+				if(upgrade.clip !== null)
+					upgrade.clip.DoddMC.visible = false;
 				upgrade.doddState = 3;
 				main.SetUpgradeNotification();
 				
@@ -4760,9 +4758,10 @@ if (reversed == null) { reversed = false; }
 					if(main.upgradeStore[i].doddState == 2)
 					{
 						exportRoot.FooterMC.UpgradeBadgeMC.visible = true;
-						break;
+						num++;
 					}
 				}
+				exportRoot.FooterMC.UpgradeBadgeMC.notification.text = num;	
 			}
 		}
 		
@@ -4778,12 +4777,13 @@ if (reversed == null) { reversed = false; }
 				this.ContentMC.addChild(clip);
 				//clip.gotoAndStop("On");
 				clip.title.text = upgrade.name;
-				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
+				//clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
 				clip.cost.text = FormatNumber(upgrade.price, 1, 0);
-				clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");				
+				//clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");				
+				clip.description.text = upgrade.description;
 				
 				clip.x = 0;
-				clip.y = 0 + 280 * i;
+				clip.y = 0 + 240 * i;
 				upgrade.clip = clip;
 				
 				clip.IconButtonMC.addEventListener("click", function() {
@@ -4798,8 +4798,8 @@ if (reversed == null) { reversed = false; }
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
-				bitmap.scaleX = 0.666;
-				bitmap.scaleY = 0.666;
+				bitmap.scaleX = 170 / 300;
+				bitmap.scaleY = 170 / 300;
 				bitmap.mouseEnabled = false;
 			
 				upgrade.clip.DoddMC.visible = upgrade.doddState == 2 ? true : false;
@@ -4842,12 +4842,12 @@ if (reversed == null) { reversed = false; }
 				if(main.sushi >= upgrade.price)
 				{
 					upgrade.clip.gotoAndStop("Active");
-					upgrade.clip.cost_O.color ="#00FF00";
+					upgrade.clip.cost.color ="#0D9000";
 				}
 				else
 				{
 					upgrade.clip.gotoAndStop("Lock");
-					upgrade.clip.cost_O.color ="#C5253A";
+					upgrade.clip.cost.color ="#C5253A";
 				}
 			}
 			this.ScrollMC.count = main.upgradeStore.length;
@@ -4868,8 +4868,8 @@ if (reversed == null) { reversed = false; }
 	// Mask (mask)
 	var mask = new cjs.Shape();
 	mask._off = true;
-	mask.graphics.p("EhX4BEIMAAAiIPMCvxAAAMAAACIPg");
-	mask.setTransform(562.5,476.7);
+	mask.graphics.p("EhX4BE6MAAAiJzMCvxAAAMAAACJzg");
+	mask.setTransform(562.5,471);
 
 	// Cell
 	this.ContentMC = new lib.UpgradeContentMC();
@@ -4890,7 +4890,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-100.5,-0.5,1225.5,985.5), null);
+}).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-100.5,-665,1225.5,1758), null);
 
 
 (lib.ShopPanelMC = function(mode,startPosition,loop,reversed) {
@@ -5329,7 +5329,7 @@ if (reversed == null) { reversed = false; }
 				if(main.sushi >= generator.storedCost)
 					generator.clip.cost.color = "#0D9000";
 				else
-					generator.clip.cost.color = "#C5253A";//00FF00//C5253A
+					generator.clip.cost.color = "#C5253A";
 			
 			}
 			this.ScrollMC.count = dispCount;
@@ -5350,8 +5350,8 @@ if (reversed == null) { reversed = false; }
 	// Mask (mask)
 	var mask = new cjs.Shape();
 	mask._off = true;
-	mask.graphics.p("EhX4BEIMAAAiIPMCvxAAAMAAACIPg");
-	mask.setTransform(562.5,476.7);
+	mask.graphics.p("EhX4BE6MAAAiJzMCvxAAAMAAACJzg");
+	mask.setTransform(562.5,471);
 
 	// Cell
 	this.ContentMC = new lib.GeneratorContentMC();
@@ -6219,6 +6219,7 @@ if (reversed == null) { reversed = false; }
 		
 		main.RebuildStore = function()
 		{
+			var num = 0;
 			var isRebuild = false;
 			this.upgradeStore = [];
 			for (let i = 0; i < this.upgrades.length; i++)
@@ -6256,7 +6257,12 @@ if (reversed == null) { reversed = false; }
 					exportRoot.FooterMC.UpgradeBadgeMC.visible = true;
 					main.SetUpgradeNotification();
 				}
+			
+				if(upgrade.doddState == 2)
+					num++;
 			}
+		
+			exportRoot.FooterMC.UpgradeBadgeMC.notification.text = num;
 		
 			if(isRebuild)
 				exportRoot.UpgradePanelMC.Reset();
@@ -6697,7 +6703,7 @@ if (reversed == null) { reversed = false; }
 		
 			this.ShopPanelMC.scaleX = this.canvasScaleX;
 			this.ShopPanelMC.scaleY = this.canvasScaleX;
-			this.ShopPanelMC.y = (914 * this.canvasScaleX) + (278 * this.canvasScaleX);
+			this.ShopPanelMC.y = (914 * this.canvasScaleX) + (227 * this.canvasScaleX);
 		
 			this.AchievementPanelMC.scaleX = this.canvasScaleX;
 			this.AchievementPanelMC.scaleY = this.canvasScaleX;
@@ -6798,7 +6804,7 @@ if (reversed == null) { reversed = false; }
 			if(isFull)
 			{
 				//パネルの移動
-				var y = (914 * this.canvasScaleX) + (278 * this.canvasScaleX);		
+				var y = (914 * this.canvasScaleX) + (227 * this.canvasScaleX);		
 				createjs.Tween.get(_targetMC, { override: true })
 				.to({ x: 0, y: y }, 250, createjs.Ease.bounceOut);
 			}
@@ -6810,7 +6816,7 @@ if (reversed == null) { reversed = false; }
 			
 				//寿司の移動
 				var y = ((2436 * this.canvasScaleY -251 * this.canvasScaleX -914 * this.canvasScaleX)
-					- (278 * this.canvasScaleX)) / 2 + (278 * this.canvasScaleX);
+					- (227 * this.canvasScaleX)) / 2 + (227 * this.canvasScaleX);
 				createjs.Tween.get(this.SushiMC, { override: true })
 				.to({ y: y }, 250, createjs.Ease.cubicInOut);
 			}
