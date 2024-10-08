@@ -4566,7 +4566,7 @@ if (reversed == null) { reversed = false; }
 
 	this.AchievementBadgeMC = new lib.BadgeMC();
 	this.AchievementBadgeMC.name = "AchievementBadgeMC";
-	this.AchievementBadgeMC.setTransform(1073.55,74.1,1,1,0,0,0,60,60);
+	this.AchievementBadgeMC.setTransform(926.55,56,1,1,0,0,0,45,45);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.AchievementBadgeMC},{t:this.GeneratorDoddMC},{t:this.UpgradeBadgeMC}]}).wait(1));
 
