@@ -6,7 +6,7 @@
 		"icon": "goldenSushi200",
 		"price": 200,
 		"value": 200,
-		"desciption": "GoldenSushiを購入します。",
+		"description": "GoldenSushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -16,7 +16,7 @@
 		"icon": "goldenSushi2000",
 		"price": 2000,
 		"value": 2000,
-		"desciption": "GoldenSushiを購入します。",
+		"description": "GoldenSushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -26,7 +26,7 @@
 		"icon": "goldenSushi2500",
 		"price": 20000,
 		"value": 20000,
-		"desciption": "GoldenSushiを購入します。",
+		"description": "GoldenSushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -36,7 +36,7 @@
 		"icon": "sushi2000",
 		"price": 60,
 		"value": 2000,
-		"desciption": "Sushiを購入します。",
+		"description": "Sushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -46,7 +46,7 @@
 		"icon": "sushi10000",
 		"price": 500,
 		"value": 10000,
-		"desciption": "Sushiを購入します。",
+		"description": "Sushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -56,7 +56,7 @@
 		"icon": "sushi100000",
 		"price": 4500,
 		"value": 100000,
-		"desciption": "Sushiを購入します。",
+		"description": "Sushiを購入します。",
 		"detail": ""
 	},
 	{
@@ -66,7 +66,7 @@
 		"icon": "robo1",
 		"price": 60,
 		"value": "",
-		"desciption": "オフライン時も寿司をたくさん提供できるようになります。",
+		"description": "オフライン時も寿司をたくさん提供できるようになります。",
 		"detail": "1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少\n最大24時間稼働します"
 	},
 	{
@@ -76,7 +76,7 @@
 		"icon": "robo2",
 		"price": 600,
 		"value": "",
-		"desciption": "オフライン時も寿司をたくさん提供できるようになります。",
+		"description": "オフライン時も寿司をたくさん提供できるようになります。",
 		"detail": "1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少\n最大24時間稼働します"
 	},
 	{
@@ -86,7 +86,7 @@
 		"icon": "skin1",
 		"price": 10,
 		"value": "",
-		"desciption": "寿司の見た目がねこになります。",
+		"description": "寿司の見た目がねこになります。",
 		"detail": ""
 	},
 	{
@@ -96,7 +96,7 @@
 		"icon": "skin2",
 		"price": 20,
 		"value": "",
-		"desciption": "寿司の見た目がDogaになります。",
+		"description": "寿司の見た目がDogaになります。",
 		"detail": ""
 	}
 ]

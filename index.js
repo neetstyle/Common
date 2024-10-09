@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[0,3425,516,176],[518,3425,516,176],[7907,2706,136,68],[3565,1871,1042,985],[3381,3338,904,153],[2254,3463,516,176],[7907,2615,148,89],[8029,2498,115,115],[8045,2774,118,66],[1127,2438,1042,889],[4287,3465,754,101],[8045,2707,120,65],[8059,2242,116,126],[8059,2370,116,126],[5873,3511,662,46],[1036,3537,662,46],[6780,1128,1042,1191],[3215,2858,1125,478],[4609,2506,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[2772,3463,542,104],[5497,3511,374,91],[2171,3065,1039,224],[8048,994,122,122],[5448,3258,1125,251],[4609,1359,1042,1145],[7907,211,205,205],[6575,3323,1125,227],[7824,1748,300,300],[3215,2438,300,300],[7907,0,209,209],[7907,418,214,190],[7907,994,139,132],[7907,610,214,190],[8040,2050,150,190],[7907,802,214,190],[7824,2050,214,190],[1127,3329,1125,206],[7907,2776,102,63],[7907,2841,87,70],[7907,2394,120,120],[7702,3323,300,300],[7907,2516,90,90],[8057,2615,90,90],[4342,3144,1104,319],[0,2438,1125,985],[7824,1128,308,308],[3860,3493,300,128],[3215,2740,300,86],[7824,1438,308,308],[5043,3511,452,99],[3316,3493,542,104],[7907,2242,150,150],[5653,0,1125,1126],[6780,0,1125,1126],[5653,1128,1125,1126],[2254,3338,1125,123],[5653,2256,1125,1000],[2171,2438,1042,625],[6780,2321,1125,1000]]}
+		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[4338,3465,516,176],[4856,3465,516,176],[3565,1871,1042,985],[2168,3429,904,153],[5374,3511,516,176],[8024,2498,148,89],[7907,2394,115,115],[8029,2681,118,66],[1127,2438,1042,889],[3074,3546,754,101],[7907,2681,120,65],[8059,2242,116,126],[8059,2370,116,126],[6812,3552,662,46],[846,3555,662,46],[6780,1128,1042,1191],[3215,2858,1125,478],[4609,2506,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[5892,3511,542,104],[6436,3552,374,91],[1127,3329,1039,224],[8048,994,122,122],[5448,3258,1125,251],[4609,1359,1042,1145],[7907,211,205,205],[6575,3323,1125,227],[7824,1748,300,300],[3215,2438,300,300],[7907,0,209,209],[7907,418,214,190],[7907,994,139,132],[7907,610,214,190],[8040,2050,150,190],[7907,802,214,190],[7824,2050,214,190],[3211,3338,1125,206],[7907,2748,102,63],[8091,2589,87,70],[7702,3323,300,300],[7907,2511,90,90],[7999,2589,90,90],[4342,3144,1104,319],[0,2438,1125,985],[2171,3065,1038,362],[7824,1128,308,308],[544,3550,300,128],[3215,2740,300,86],[7824,1438,308,308],[3830,3546,452,99],[0,3550,542,104],[7907,2242,150,150],[5653,0,1125,1126],[6780,0,1125,1126],[5653,1128,1125,1126],[0,3425,1125,123],[5653,2256,1125,1000],[2171,2438,1042,625],[6780,2321,1125,1000]]}
 ];
 
 
@@ -55,415 +55,408 @@ lib.ssMetadata = [
 
 
 
-(lib._20 = function() {
+(lib._3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._3 = function() {
+(lib._3_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._3_1 = function() {
+(lib._4 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._4 = function() {
+(lib._4_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._4_1 = function() {
+(lib._5 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._5 = function() {
+(lib._5_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._5_1 = function() {
+(lib._6 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._6 = function() {
+(lib._7 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._7 = function() {
+(lib.a1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a1 = function() {
+(lib.a2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(13);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a2 = function() {
+(lib.a3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(14);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a3 = function() {
+(lib.a4 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(15);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a4 = function() {
+(lib.a5 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(16);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a5 = function() {
+(lib.a6 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(17);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a6 = function() {
+(lib.achievementDesciption = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(18);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementDesciption = function() {
+(lib.achievementDetailBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(19);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementDetailBG = function() {
+(lib.bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(20);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg = function() {
+(lib.bg1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(21);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg1 = function() {
+(lib.bg1_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(22);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg1_1 = function() {
+(lib.bg2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(23);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg2 = function() {
+(lib.cell_bg1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(24);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.cell_bg1 = function() {
+(lib.close = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(25);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.close = function() {
+(lib.footer_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(26);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.footer_bg = function() {
+(lib.generator_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(27);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.generator_bg = function() {
+(lib.hatena = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.hatena = function() {
+(lib.header_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.header_bg = function() {
+(lib.icon_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_golden = function() {
+(lib.icon_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_sushi = function() {
+(lib.iconFrame = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.iconFrame = function() {
+(lib.menu_achievement_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_achievement_button = function() {
+(lib.menu_config_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_config_button = function() {
+(lib.menu_generator_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_generator_button = function() {
+(lib.menu_invite = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_invite = function() {
+(lib.menu_shop_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_shop_button = function() {
+(lib.menu_upgrade_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_upgrade_button = function() {
+(lib.messageBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.messageBG = function() {
+(lib.mini_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_golden = function() {
+(lib.mini_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(41);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_sushi = function() {
+(lib.not = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(42);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._new = function() {
+(lib.notification1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(43);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not = function() {
+(lib.notification2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(44);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification1 = function() {
+(lib.NotificationBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(45);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification2 = function() {
+(lib.panel = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.NotificationBG = function() {
+(lib.shop_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.panel = function() {
+(lib.shop_goldenSushi_icon = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_goldenSushi_icon = function() {
+(lib.shop_label2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(49);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label2 = function() {
+(lib.shop_label3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(50);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label3 = function() {
+(lib.shop_sushi_icon = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(51);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_sushi_icon = function() {
+(lib.subTile2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTile2 = function() {
+(lib.subTitle = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(53);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTitle = function() {
+(lib.sushiMini = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(54);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.sushiMini = function() {
+(lib.SushiScroll1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(55);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll1 = function() {
+(lib.SushiScroll2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(56);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll2 = function() {
+(lib.SushiScroll3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(57);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.SushiScroll3 = function() {
+(lib.title = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(58);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.title = function() {
+(lib.underBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(59);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.underBG = function() {
+(lib.upgrade_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(60);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.upgrade_bg = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(61);
-}).prototype = p = new cjs.Sprite();
-
-
-
 (lib.upperBG = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(62);
+	this.gotoAndStop(61);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -792,14 +785,14 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(10,1,1).p("EhU1gktMCprAAAMAAABJbMiprAAAg");
-	this.shape.setTransform(563.05,238.65);
+	this.shape.graphics.f().s("#C5253A").ss(10,1,1).p("EhRLgcNMCiXAAAMAAAA4bMiiXAAAg");
+	this.shape.setTransform(519.6,180.55);
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopActiveMC, new cjs.Rectangle(15.1,-1.3,1096,480), null);
+}).prototype = getMCSymbolPrototype(lib.ShopActiveMC, new cjs.Rectangle(-5,-5,1049.2,371.1), null);
 
 
 (lib.NotificationMC = function(mode,startPosition,loop,reversed) {
@@ -920,27 +913,6 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.MessageMC, new cjs.Rectangle(0,0,1125,206), null);
-
-
-(lib.DoddMC = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// BG
-	this.instance = new lib._new();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.DoddMC, new cjs.Rectangle(0,0,120,120), null);
 
 
 (lib.BadgeMC = function(mode,startPosition,loop,reversed) {
@@ -1268,6 +1240,27 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.GeneratorDesciptionMC, new cjs.Rectangle(-42,-47,1125,1192), null);
+
+
+(lib.DoddMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.instance = new lib.notification1();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.DoddMC, new cjs.Rectangle(0,0,90,90), null);
 
 
 (lib.SliderButtonMC = function(mode,startPosition,loop,reversed) {
@@ -1865,27 +1858,6 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.RadiationMC, new cjs.Rectangle(0,0,2436,2436), null);
 
 
-(lib.BellDoddMC = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// レイヤー_1
-	this.instance = new lib.notification1();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.BellDoddMC, new cjs.Rectangle(0,0,90,90), null);
-
-
 (lib.AchievementSubTitleMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -1943,14 +1915,14 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(5,1,1).p("AxGxGMAiNAAAMAAAAiNMgiNAAAg");
+	this.shape.graphics.f().s("#C5253A").ss(10,1,1).p("AxGxGMAiNAAAMAAAAiNMgiNAAAg");
 	this.shape.setTransform(109.5,109.5);
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementActiveMC, new cjs.Rectangle(-2.5,-2.5,224,224), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementActiveMC, new cjs.Rectangle(-5,-5,229,229), null);
 
 
 (lib.UpgradeCellMC = function(mode,startPosition,loop,reversed) {
@@ -1990,7 +1962,7 @@ if (reversed == null) { reversed = false; }
 	// Dodd
 	this.DoddMC = new lib.DoddMC();
 	this.DoddMC.name = "DoddMC";
-	this.DoddMC.setTransform(1044,65,0.5,0.5,0,0,0,60,60);
+	this.DoddMC.setTransform(1060,57,1,1,0,0,0,45,45);
 
 	this.timeline.addTween(cjs.Tween.get(this.DoddMC).wait(20));
 
@@ -2046,7 +2018,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(45,32,1039,224);
+p.nominalBounds = new cjs.Rectangle(45,12,1060,244);
 
 
 (lib.ShopConfilmCell2MC = function(mode,startPosition,loop,reversed) {
@@ -2141,21 +2113,21 @@ if (reversed == null) { reversed = false; }
 	// BG_Button
 	this.ButtonMC = new lib.ButtonMC();
 	this.ButtonMC.name = "ButtonMC";
-	this.ButtonMC.setTransform(0,0,11.25,4.7799);
+	this.ButtonMC.setTransform(49.05,3.7,10.2599,3.5002,0,0,0,0.1,0.2);
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).wait(30));
 
 	// Active
 	this.ShopActiveMC = new lib.ShopActiveMC();
 	this.ShopActiveMC.name = "ShopActiveMC";
-	this.ShopActiveMC.setTransform(550,205.5,1,1,0,0,0,550,205.5);
+	this.ShopActiveMC.setTransform(592,203,1,1,0,0,0,550,205.5);
 	this.ShopActiveMC._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.ShopActiveMC).wait(9).to({_off:false},0).wait(21));
 
 	// Purchased
 	this.instance = new lib._5();
-	this.instance.setTransform(948,38);
+	this.instance.setTransform(945,30);
 	this.instance._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(9).to({_off:false},0).to({_off:true},10).wait(11));
@@ -2163,55 +2135,56 @@ if (reversed == null) { reversed = false; }
 	// Icon
 	this.IconMC = new lib.IconMC();
 	this.IconMC.name = "IconMC";
-	this.IconMC.setTransform(162.5,142.65,1,1,0,0,0,104.5,104.5);
+	this.IconMC.setTransform(173.5,137.5,1,1,0,0,0,104.5,104.5);
 
 	this.timeline.addTween(cjs.Tween.get(this.IconMC).wait(30));
 
 	// Text_desciption
-	this.desciption = new cjs.Text("オフライン時も寿司をたくさん提供できるようになります。", "50px 'Potta One'");
-	this.desciption.name = "desciption";
-	this.desciption.lineHeight = 74;
-	this.desciption.lineWidth = 996;
-	this.desciption.parent = this;
-	this.desciption.setTransform(65,272);
+	this.description = new cjs.Text("You will be able to offer a lot of\nsushi", "40px 'Potta One'", "#723826");
+	this.description.name = "description";
+	this.description.lineHeight = 58;
+	this.description.lineWidth = 734;
+	this.description.parent = this;
+	this.description.setTransform(267.6,187.05);
 
-	this.timeline.addTween(cjs.Tween.get(this.desciption).wait(30));
+	this.timeline.addTween(cjs.Tween.get(this.description).wait(30));
 
 	// Text_title
-	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
+	this.title = new cjs.Text("offline production upgrade", "40px 'Potta One'");
 	this.title.name = "title";
-	this.title.lineHeight = 89;
-	this.title.lineWidth = 636;
+	this.title.lineHeight = 60;
+	this.title.lineWidth = 802;
 	this.title.parent = this;
-	this.title.setTransform(284.55,40.15);
+	this.title.setTransform(240.55,32);
 
 	this.timeline.addTween(cjs.Tween.get(this.title).wait(30));
 
 	// Text_price
-	this.price = new cjs.Text("3.158,759", "60px 'Potta One'", "#C5253A");
+	this.price = new cjs.Text("9,999,999", "45px 'Potta One'", "#0D9000");
 	this.price.name = "price";
-	this.price.lineHeight = 89;
-	this.price.lineWidth = 496;
+	this.price.lineHeight = 67;
+	this.price.lineWidth = 636;
 	this.price.parent = this;
-	this.price.setTransform(424.55,156.25);
+	this.price.setTransform(332.7,97.15);
 
 	this.timeline.addTween(cjs.Tween.get(this.price).wait(30));
 
 	// Sushi
-	this.instance_1 = new lib._20();
-	this.instance_1.setTransform(283,166);
+	this.instance_1 = new lib.mini_golden();
+	this.instance_1.setTransform(240,104,0.8,0.8);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(30));
 
 	// BG
-	this.instance_2 = new lib.achievementDesciption();
+	this.instance_2 = new lib.shop_bg();
+	this.instance_2.setTransform(44,0);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(30));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,-1.3,1125,480);
+p.nominalBounds = new cjs.Rectangle(37,-7.5,1049.2,371.1);
 
 
 (lib.ShopCell2MC = function(mode,startPosition,loop,reversed) {
@@ -3054,7 +3027,7 @@ if (reversed == null) { reversed = false; }
 	// Dodd
 	this.DoddMC = new lib.DoddMC();
 	this.DoddMC.name = "DoddMC";
-	this.DoddMC.setTransform(1044,65,0.5,0.5,0,0,0,60,60);
+	this.DoddMC.setTransform(1060,57,1,1,0,0,0,45,45);
 
 	this.timeline.addTween(cjs.Tween.get(this.DoddMC).wait(30));
 
@@ -3128,7 +3101,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(45,31,1039,224);
+p.nominalBounds = new cjs.Rectangle(45,12,1060,243);
 
 
 (lib.DebugContentMC = function(mode,startPosition,loop,reversed) {
@@ -3871,12 +3844,13 @@ if (reversed == null) { reversed = false; }
 	// Icon_Button
 	this.IconButtonMC = new lib.ButtonMC();
 	this.IconButtonMC.name = "IconButtonMC";
-	this.IconButtonMC.setTransform(0.4,0.4,2.0898,2.0899,0,0,0,0.2,0.2);
+	this.IconButtonMC.setTransform(0.4,0.4,1.9998,1.9999,0,0,0,0.2,0.2);
 
 	this.timeline.addTween(cjs.Tween.get(this.IconButtonMC).to({_off:true},9).wait(11));
 
 	// hatena
 	this.instance = new lib.hatena();
+	this.instance.setTransform(0,0,0.9756,0.9756);
 	this.instance._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(9).to({_off:false},0).wait(11));
@@ -3884,21 +3858,21 @@ if (reversed == null) { reversed = false; }
 	// Active
 	this.AchievementActiveMC = new lib.AchievementActiveMC();
 	this.AchievementActiveMC.name = "AchievementActiveMC";
-	this.AchievementActiveMC.setTransform(104.5,104.5,0.9544,0.9543,0,0,0,109.5,109.5);
+	this.AchievementActiveMC.setTransform(100,100,0.9133,0.9132,0,0,0,109.5,109.5);
 
 	this.timeline.addTween(cjs.Tween.get(this.AchievementActiveMC).to({_off:true},9).wait(11));
 
 	// BG_Button
 	this.ButtonMC = new lib.ButtonMC();
 	this.ButtonMC.name = "ButtonMC";
-	this.ButtonMC.setTransform(0,0,2.0898,2.0899);
+	this.ButtonMC.setTransform(0,0,1.9998,1.9998);
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).to({_off:true},9).wait(11));
 
 	// Dodd
 	this.DoddMC = new lib.DoddMC();
 	this.DoddMC.name = "DoddMC";
-	this.DoddMC.setTransform(179,30,0.5,0.5,0,0,0,60,60);
+	this.DoddMC.setTransform(178,25.55,1,1,0,0,0,45,45);
 
 	this.timeline.addTween(cjs.Tween.get(this.DoddMC).to({_off:true},9).wait(11));
 
@@ -3912,7 +3886,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-2.4,-2.4,213.8,213.8);
+p.nominalBounds = new cjs.Rectangle(-4.5,-19.4,227.5,224);
 
 
 (lib.UpgradeContentMC = function(mode,startPosition,loop,reversed) {
@@ -4560,7 +4534,7 @@ if (reversed == null) { reversed = false; }
 	this.UpgradeBadgeMC.name = "UpgradeBadgeMC";
 	this.UpgradeBadgeMC.setTransform(457,56,1,1,0,0,0,45,45);
 
-	this.GeneratorDoddMC = new lib.BellDoddMC();
+	this.GeneratorDoddMC = new lib.DoddMC();
 	this.GeneratorDoddMC.name = "GeneratorDoddMC";
 	this.GeneratorDoddMC.setTransform(220,56,1,1,0,0,0,45,45);
 
@@ -5031,7 +5005,7 @@ if (reversed == null) { reversed = false; }
 			//Robo
 			posY += 30;
 			this.ContentMC.RoboTitleMC.y = posY;
-			this.ContentMC.RoboTitleMC.title.text = "Sushi Robot";
+			this.ContentMC.RoboTitleMC.title.text = "Item";
 			posY += 130;
 		
 			let roboCount = 0; 
@@ -5043,15 +5017,15 @@ if (reversed == null) { reversed = false; }
 				let clip = new lib.ShopCell3MC();
 				this.ContentMC.addChild(clip);
 				clip.ShopActiveMC.visible = (shop.data.id == main.skinId) ? true: false;
-				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");		
-				clip.title_O.text = shop.data.name;
-				clip.price_O = new Outline(lib, clip.price, 5, "#C5253A", "#FFFFFF");		
-				clip.price_O.text = shop.data.price.toLocaleString();
-				clip.desciption.text = shop.data.desciption;
-				SetWrapText(clip.desciption);
+				//clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");		
+				clip.title.text = shop.data.name;
+				//clip.price_O = new Outline(lib, clip.price, 5, "#C5253A", "#FFFFFF");		
+				clip.price.text = shop.data.price.toLocaleString();
+				clip.description.text = shop.data.description;
+				SetWrapText(clip.description);
 				shop.clip = clip;
 				clip.x = 0;
-				clip.y = posY + 480 * roboCount;
+				clip.y = posY + 380 * roboCount;
 				
 				clip.ButtonMC.addEventListener("click", function() {
 					this.OpenDesciption.call(this, shop);
@@ -5062,8 +5036,8 @@ if (reversed == null) { reversed = false; }
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
-				bitmap.scaleX = 1;
-				bitmap.scaleY = 1;
+				bitmap.scaleX = 160 / 209;
+				bitmap.scaleY = 160 / 209;
 				bitmap.mouseEnabled = false;		
 				if(shop.isPurchase)
 					clip.gotoAndStop("Used");
@@ -5073,7 +5047,7 @@ if (reversed == null) { reversed = false; }
 				roboCount++;
 			}
 		
-			posY += 480 * roboCount;
+			posY += 380 * roboCount;
 		
 			//////////////////////////////////////
 			//Skin
@@ -5090,16 +5064,16 @@ if (reversed == null) { reversed = false; }
 				
 				let clip = new lib.ShopCell3MC();
 				this.ContentMC.addChild(clip);
-				clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");		
-				clip.title_O.text = shop.data.name;
-				clip.price_O = new Outline(lib, clip.price, 5, "#C5253A", "#FFFFFF");		
-				clip.price_O.text = shop.data.price.toLocaleString();
-				clip.desciption.text = shop.data.desciption;
-				SetWrapText(clip.desciption);
+				//clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");		
+				clip.title.text = shop.data.name;
+				//clip.price_O = new Outline(lib, clip.price, 5, "#C5253A", "#FFFFFF");		
+				clip.price.text = shop.data.price.toLocaleString();
+				clip.description.text = shop.data.description;
+				SetWrapText(clip.description);
 				clip.ShopActiveMC.visible = (shop.data.id == main.skinId) ? true: false;
 				shop.clip = clip;
 				clip.x = 0;
-				clip.y = posY + 480 * skinCount;
+				clip.y = posY + 380 * skinCount;
 				
 				clip.ButtonMC.addEventListener("click", function() {
 					this.OpenDesciption.call(this, shop);
@@ -5110,8 +5084,8 @@ if (reversed == null) { reversed = false; }
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
-				bitmap.scaleX = 1;
-				bitmap.scaleY = 1;
+				bitmap.scaleX = 160 / 209;
+				bitmap.scaleY = 160 / 209;
 				bitmap.mouseEnabled = false;		
 				
 				if(shop.isPurchase)
@@ -5122,7 +5096,7 @@ if (reversed == null) { reversed = false; }
 				skinCount++;
 			}
 		
-			posY += 480 * skinCount;
+			posY += 380 * skinCount;
 		
 			//////////////////////////////////////
 		
@@ -5498,23 +5472,22 @@ if (reversed == null) { reversed = false; }
 					this.OpenDesciption.call(this, upgrade);
 				}.bind(this));
 				
-				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/Icon/Upgrade/" + upgrade.id + ".png");
+				let bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + upgrade.id.toString().padStart(2, '0') + ".webp");	
 				clip.IconMC.addChild(bitmap);
-				bitmap.x = 10;
-				bitmap.y = 10;
-				bitmap.scaleX = 193 / 48;
-				bitmap.scaleY = 193 / 48;
-				bitmap.mouseEnabled = false;		
-				
+				bitmap.x = 0;
+				bitmap.y = 0;
+				bitmap.scaleX = 200 / 300;
+				bitmap.scaleY = 200 / 300;	
+				bitmap.mouseEnabled = false;
+			
 				clip.gotoAndStop("Active");
 				clip.DoddMC.visible =  upgrade.isAchievementUnread;
 				clip.AchievementActiveMC.visible = false;
 				upgradeCount++;
 			}
 		
-			this.ContentMC.UpgradeTitleMC.title.text = "アップグレード";
-			this.ContentMC.UpgradeTitleMC.count.text = (upgradeCount/main.upgrades.length).toFixed(2) + "%"
+			this.ContentMC.UpgradeTitleMC.title.text = "Upgrade";
+			this.ContentMC.UpgradeTitleMC.count.text = (upgradeCount / main.upgrades.length * 100).toFixed(2) + "%"
 				+ "(" + upgradeCount + "/" + main.upgrades.length +")";
 		
 			posY += 250 * Math.ceil(upgradeCount / 4);
@@ -5562,8 +5535,8 @@ if (reversed == null) { reversed = false; }
 				clip.AchievementActiveMC.visible = false;
 			}
 		
-			this.ContentMC.AchievementTitleMC.title.text = "アチーブメント";
-			this.ContentMC.AchievementTitleMC.count.text = (achievementCount/main.achievements.length).toFixed(2) + "%"
+			this.ContentMC.AchievementTitleMC.title.text = "Achievement";
+			this.ContentMC.AchievementTitleMC.count.text = (achievementCount / main.achievements.length * 100).toFixed(2) + "%"
 				+ "(" + achievementCount + "/" + main.achievements.length +")";
 		
 			posY += 250 * Math.ceil(main.achievements.length / 4);
