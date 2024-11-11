@@ -3911,27 +3911,33 @@ if (reversed == null) { reversed = false; }
 					}
 					break;
 				case 4:
-					this.detail.text = this.obj.data["detail"];
-					SetWrapText(this.detail);
-					if(main.skinId == this.obj.data.id)
+					this.description.text = this.obj.description;
+					SetWrapText(this.description);
+					if(main.skinId == this.obj.id)
 					{
 						this.ShopType4ButtonMC.gotoAndStop("Selected");
 					}	
-					else if(this.obj.isPurchase)
+					else if(this.obj.posession)
 					{
 						this.ShopType4ButtonMC.gotoAndStop("NotSelected");
 					}
-					else if(this.obj.data.price > main.goldenSushi)
+					else if(this.obj.priceGolden > main.goldenSushi)
 					{
 						this.ShopType4ButtonMC.gotoAndStop("Shortage");	
-						//this.ShopType4ButtonMC.price.text = this.obj.data["price"] + "(所持" + main.goldenSushi + ")";
-						this.ShopType4ButtonMC.price.text = this.obj.data["price"].toLocaleString();
+						this.ShopType4ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
 					}
 					else
 					{
 						this.ShopType4ButtonMC.gotoAndStop("NotPurchased");
-						this.ShopType4ButtonMC.price.text = this.obj.data["price"].toLocaleString();
+						this.ShopType4ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
 					}
+					//アイコン生成
+					this.bitmap = new createjs.Bitmap("images/Icon/Shop/skin_" + this.obj.id.toString().padStart(2, '0') + ".webp");
+					this.addChild(this.bitmap);
+					this.bitmap.x = 50;
+					this.bitmap.y = 190;
+					this.bitmap.scaleX = 209 / 2000;
+					this.bitmap.scaleY = 209 / 2000;		
 					break;
 			}
 		}
@@ -4062,31 +4068,80 @@ if (reversed == null) { reversed = false; }
 		} 
 		this.ShopType3ButtonMC.addEventListener("click", this.SubmitType3.bind(this));
 		
-		this.SubmitType4 = function()
+		this.SubmitType4 = async function()
 		{
-			if(this.obj.data.price > main.goldenSushi)
-				return;
-		
-			if(main.skinId == this.obj.data.id)
-				return;	
-			
-			if(this.obj.isPurchase)
+			//所持している場合
+			if(this.obj.posession)
 			{
-				main.skinId = this.obj.data.id;
-				this.parent.MessageMC.Open(this.obj.data.name + "を設定しました");	
+				//設定している場合
+				if(main.skinId == this.obj.id)
+				{
+					main.skinId = 0;
+					this.parent.MessageMC.Open(this.obj.name + "を外しました");
+					console.log("API.Skinを除外");
+					API_Request({
+						url: '/skin/' + this.obj.id + '/unset',
+						method: 'POST',
+						maxAttempts: 3,
+					});
+				}
+				else
+				{
+					main.skinId = this.obj.id;
+					this.parent.MessageMC.Open(this.obj.name + "を設定しました");
+					console.log("API.Skinを設定");
+					await API_Request({
+						url: '/skin/' + this.obj.id + '/set',
+						method: 'POST',
+						maxAttempts: 3,
+					});
+				}
+				for (var i = 0; i < main.skinShops.length; i++)
+				{
+					main.skinShops[i].clip.ShopActiveMC.visible = (main.skinShops[i].id == main.skinId) ? true: false;
+				}
+				main.SetSkin();	
+				this.Close();
+				return;
+			}
+			
+			if(this.obj.priceGolden > main.goldenSushi)
+			{
+				return;
 			}
 			else
 			{
-				this.obj.isPurchase = true;
+				this.parent.Mask3MC.visible = true;
+				try {
+					console.log("API.Skinを購入");
+					await API_Request({
+						url: '/skin/' + this.obj.id + '/purchase',
+						method: 'POST',
+						maxAttempts: 3,
+					});
+				} catch (error) {
+					this.parent.MessageMC.Open("skinの購入に失敗しました");
+					this.parent.Mask3MC.visible = false;
+					this.Close();
+					return;
+				}
+			
+				console.log("API.自身のユーザー情報を得る");
+				API_userData = await API_Request({
+					url: '/user/me',
+					maxAttempts: 3
+				});
+				
+				main.sushi = Number(API_userData["user"].currentSushiCount);
+				main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
+				this.parent.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
+				this.obj.posession = true;
 				this.obj.clip.gotoAndStop("Purchased");
-				this.parent.MessageMC.Open(this.obj.data.name + "を入手しました");	
+				this.parent.MessageMC.Open(this.obj.name + "を入手しました");
+				this.parent.Mask3MC.visible = false;
+				this.Close();
 			}
-			for (var i = 0; i < main.shops.length; i++)
-			{
-				if(main.shops[i].data.type != 4) continue;
-				main.shops[i].clip.ShopActiveMC.visible = (main.shops[i].data.id == main.skinId) ? true: false;
-			}
-			this.Close();
+		
 		} 
 		this.ShopType4ButtonMC.addEventListener("click", this.SubmitType4.bind(this));
 	}
@@ -4132,10 +4187,12 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.ShopType1ButtonMC}]},9).to({state:[{t:this.ShopType2ButtonMC}]},10).to({state:[{t:this.ShopType4ButtonMC}]},11).to({state:[{t:this.ShopType3ButtonMC}]},10).wait(11));
 
 	// Text_desciption
-	this.text = new cjs.Text("性能", "60px 'Potta One'", "#FFFFFF");
-	this.text.lineHeight = 87;
-	this.text.parent = this;
-	this.text.setTransform(102.15,642.7);
+	this.description = new cjs.Text("1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少", "40px 'Potta One'");
+	this.description.name = "description";
+	this.description.lineHeight = 60;
+	this.description.lineWidth = 910;
+	this.description.parent = this;
+	this.description.setTransform(68.05,634.7);
 
 	this.detail = new cjs.Text("1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少\n最大24時間稼働します", "40px 'Potta One'");
 	this.detail.name = "detail";
@@ -4144,7 +4201,7 @@ if (reversed == null) { reversed = false; }
 	this.detail.parent = this;
 	this.detail.setTransform(68.05,748.2);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.detail},{t:this.text}]},40).wait(11));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.description,p:{x:68.05,y:634.7,text:"1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少",font:"40px 'Potta One'",color:"#000000",lineHeight:59.9,lineWidth:910}}]},30).to({state:[{t:this.detail},{t:this.description,p:{x:102.15,y:642.7,text:"性能",font:"60px 'Potta One'",color:"#FFFFFF",lineHeight:86.9,lineWidth:120}}]},10).wait(11));
 
 	// Text_title
 	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
@@ -4157,13 +4214,13 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.title).to({_off:true},9).wait(42));
 
 	// Text
-	this.description = new cjs.Text("Would you line to buy Golden Sushi?", "50px 'Potta One'");
-	this.description.name = "description";
-	this.description.textAlign = "center";
-	this.description.lineHeight = 72;
-	this.description.lineWidth = 1038;
-	this.description.parent = this;
-	this.description.setTransform(521,584.4);
+	this.description_1 = new cjs.Text("Would you line to buy Golden Sushi?", "50px 'Potta One'");
+	this.description_1.name = "description_1";
+	this.description_1.textAlign = "center";
+	this.description_1.lineHeight = 72;
+	this.description_1.lineWidth = 1038;
+	this.description_1.parent = this;
+	this.description_1.setTransform(521,584.4);
 
 	this.desciption = new cjs.Text("Confilm", "55px 'Potta One'", "#FFFFFF");
 	this.desciption.name = "desciption";
@@ -4173,7 +4230,7 @@ if (reversed == null) { reversed = false; }
 	this.desciption.parent = this;
 	this.desciption.setTransform(521,77);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}},{t:this.description,p:{text:"Would you line to buy Golden Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},9).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}},{t:this.description,p:{text:"Would you line to buy Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},10).to({state:[{t:this.desciption,p:{y:814.4,text:"Would you line to purchase this Skin?",font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}},{t:this.description,p:{text:"Skin",y:71,font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}}]},11).to({state:[]},10).wait(11));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}},{t:this.description_1,p:{text:"Would you line to buy Golden Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},9).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}},{t:this.description_1,p:{text:"Would you line to buy Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},10).to({state:[{t:this.desciption,p:{y:814.4,text:"Would you line to purchase this Skin?",font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}},{t:this.description_1,p:{text:"Skin",y:71,font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}}]},11).to({state:[]},10).wait(11));
 
 	// BG
 	this.instance = new lib.shop_sushi_bg();
@@ -4925,38 +4982,37 @@ if (reversed == null) { reversed = false; }
 			posY += 130;
 			
 			let skinCount = 0; 
-			for (let i = 0; i < main.shops.length; i++)
+			for (let i = 0; i < main.skinShops.length; i++)
 			{
-				if(main.shops[i].data.type != 4) continue;
-				let shop = main.shops[i];
+				let skinShop = main.skinShops[i];
 				
 				let clip = new lib.ShopCell3MC();
 				this.ContentMC.addChild(clip);
 				//clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");		
-				clip.title.text = shop.data.name;
-				//clip.price_O = new Outline(lib, clip.price, 5, "#C5253A", "#FFFFFF");		
-				clip.price.text = shop.data.price.toLocaleString();
-				clip.description.text = shop.data.description;
+				clip.title.text = skinShop.name;
+				//clip.price_O = new Outline(lib, clip.price, 5, "#C5253A", "#FFFFFF");	
+				clip.price.text = skinShop.priceGolden.toLocaleString();
+				clip.description.text = skinShop.description;
 				SetWrapText(clip.description);
-				clip.ShopActiveMC.visible = (shop.data.id == main.skinId) ? true: false;
-				shop.clip = clip;
+				clip.ShopActiveMC.visible = (skinShop.id == main.skinId) ? true: false;
+				skinShop.clip = clip;
 				clip.x = 0;
 				clip.y = posY + 380 * skinCount;
 				
 				clip.ButtonMC.addEventListener("click", function() {
-					this.OpenDesciption.call(this, shop);
+					this.OpenDesciption.call(this, skinShop);
 				}.bind(this));
 				
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/Icon/"+ shop.dir + "/" + shop.data["icon"] + ".png");
+				let bitmap = new createjs.Bitmap("images/Icon/Shop/skin_" + skinShop.id.toString().padStart(2, '0') + ".webp");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
-				bitmap.scaleX = 160 / 209;
-				bitmap.scaleY = 160 / 209;
+				bitmap.scaleX = 160 / 2000;
+				bitmap.scaleY = 160 / 2000;
 				bitmap.mouseEnabled = false;		
 				
-				if(shop.isPurchase)
+				if(skinShop.posession)
 					clip.gotoAndStop("Purchased");
 				else
 					clip.gotoAndStop("Active");
@@ -5652,7 +5708,6 @@ if (reversed == null) { reversed = false; }
 		{
 		    constructor()
 			{
-				this.category = 4;
 				this.clip = null;
 				this.dir = "Shop";
 				
@@ -5668,7 +5723,6 @@ if (reversed == null) { reversed = false; }
 		{
 		    constructor()
 			{
-				this.category = 4;
 				this.clip = null;
 				this.dir = "Shop";
 				
@@ -5677,6 +5731,22 @@ if (reversed == null) { reversed = false; }
 				this.amount = 0;
 				this.price = 0;
 				this.type = 2;
+		    }
+		}
+		
+		class SkinShop
+		{
+		    constructor()
+			{
+				this.clip = null;
+				this.dir = "Shop";
+				this.id = 0;
+				this.name = "";
+				this.description = "";
+				this.priceGolden = 0;
+				this.price = 0;
+				this.posession = false;
+				this.type = 4;
 		    }
 		}
 		
@@ -5765,6 +5835,7 @@ if (reversed == null) { reversed = false; }
 				//ショップ
 				this.sushiShops = [];
 				this.goldenSushiShops = [];
+				this.skinShops = [];
 				//////////////////////////////////////////////////////////
 				//実績
 				this.achievements = [];
@@ -5803,7 +5874,7 @@ if (reversed == null) { reversed = false; }
 			
 				//////////////////////////////////////////////////////////
 				//スキン
-				this.skinId = 3;
+				this.skinId = 0;
 				this.currentScroll = 0;
 				this.mainSkinBmp = null;
 				this.skinBG1Bmp = null;
@@ -6467,7 +6538,7 @@ if (reversed == null) { reversed = false; }
 		{
 			if( this.mainSkinBmp != null)
 			{
-				this.removeChild(this.bitmap);
+				exportRoot.SushiMC.SushiImageMC.removeChild(this.mainSkinBmp);
 				this.mainSkinBmp == null;
 			}
 		
@@ -6497,6 +6568,9 @@ if (reversed == null) { reversed = false; }
 				exportRoot.BgMC.removeChild(this.clickParticles[i]);
 				this.clickParticles[i] = null;
 			}
+		
+			this.bgParticles = [];
+			this.clickParticles = [];
 			
 			for (let i = 0; i < 50; i++)
 			{
@@ -6961,6 +7035,7 @@ if (reversed == null) { reversed = false; }
 		var API_upgradesData;
 		var API_sushiShopData;
 		var API_goldenSushiShopData;
+		var API_skinShopData;
 		
 		this.fetchSequentialAPIs = async function()
 		{
@@ -6970,27 +7045,34 @@ if (reversed == null) { reversed = false; }
 		            url: '/generator'
 		        });
 				console.log(API_generatorsData);
-				setProgress(85);
+				setProgress(80);
 			
 				console.log("API.アップグレード取得");
 		        API_upgradesData = await API_Request({
 		            url: '/upgrade'
 		        });
 				console.log(API_upgradesData);
-				setProgress(90);
+				setProgress(85);
 			
 				console.log("API.寿司ショップ取得");
 		        API_sushiShopData = await API_Request({
 		            url: '/market/sushi'
 		        });
 				console.log(API_sushiShopData);
-				setProgress(95);
+				setProgress(90);
 			
 				console.log("API.金寿司ショップ取得");
 		        API_goldenSushiShopData = await API_Request({
 		            url: '/market/golden-sushi'
 		        });
 				console.log(API_goldenSushiShopData);
+				setProgress(95);
+			
+				console.log("API.Skinショップ取得");
+		        API_skinShopData = await API_Request({
+		            url: '/skin'
+		        });
+				console.log(API_skinShopData);
 				setProgress(100);
 			
 		    } catch (error) {
@@ -7010,7 +7092,8 @@ if (reversed == null) { reversed = false; }
 			main.totalSushi = Number(API_userData["user"].totalSushiCount);
 			main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
 			main.createdAt = API_userData["user"].createdAt;
-		
+			main.skinId = Number(API_userData["user"].currentSkinMstId);
+			
 			//////////////////////////////////////////////////////////
 			//アップグレード
 			for (let i = 0; i < API_upgradesData["items"].length; i++)
@@ -7082,6 +7165,20 @@ if (reversed == null) { reversed = false; }
 				goldenSushiShop.amount = Number(API_goldenSushiShopData["items"][i].amount);	
 				goldenSushiShop.price =  Number(API_goldenSushiShopData["items"][i].price);
 				main.goldenSushiShops.push(goldenSushiShop);
+			}
+		
+			//////////////////////////////////////////////////////////
+			//Skinショップ
+			for (let i = 0; i < API_skinShopData["items"].length; i++)
+			{
+				var	skinShop = new SkinShop();
+				skinShop.id = Number(API_skinShopData["items"][i].id);
+				skinShop.name = API_skinShopData["items"][i].name;
+				skinShop.description = API_skinShopData["items"][i].description;
+				skinShop.priceGolden = Number(API_skinShopData["items"][i].priceGolden);	
+				skinShop.price =  Number(API_skinShopData["items"][i].price);
+				skinShop.posession = API_skinShopData["items"][i].posession;
+				main.skinShops.push(skinShop);
 			}
 		
 			//////////////////////////////////////////////////////////
