@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[5736,1382,516,176],[5736,1560,516,176],[5736,1227,904,153],[5736,1738,516,176],[6254,1667,148,89],[8043,514,115,115],[8043,1497,118,66],[4609,2361,1042,889],[5736,1916,754,101],[8043,815,120,65],[8043,258,116,126],[8043,386,116,126],[1127,3076,662,46],[1127,3124,662,46],[6697,0,1042,1191],[2059,2438,1125,478],[1044,2438,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[5736,2019,542,104],[6254,1574,374,91],[2254,3252,1039,224],[8043,134,122,122],[0,3076,1125,251],[6697,1193,1042,1145],[7952,906,205,205],[1127,3239,1125,227],[7741,0,300,300],[7741,302,300,300],[7741,906,209,209],[7952,1113,214,190],[8043,0,139,132],[7741,1305,214,190],[6470,1382,150,190],[7957,1305,214,190],[6254,1382,214,190],[3295,3252,1125,206],[8043,1565,102,63],[8043,1630,87,70],[7741,604,300,300],[8043,631,90,90],[8043,723,90,90],[2059,2918,1104,319],[6863,2340,1125,985],[3186,2888,1038,362],[7741,1497,300,128],[7741,1627,300,86],[5653,0,1042,1225],[3565,1871,1042,1015],[5736,2231,452,99],[5736,2125,542,104],[7741,1117,150,150],[4422,3252,1125,123],[4609,1359,1125,1000],[0,2438,1042,625],[5736,2340,1125,1000]]}
+		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[5736,1635,516,176],[5736,1813,516,176],[5736,1227,904,153],[5736,1991,516,176],[7741,1117,148,89],[7991,1774,115,115],[6254,1838,118,66],[5736,2340,1042,889],[5736,2169,754,101],[6487,1832,120,65],[6519,1704,116,126],[7873,1774,116,126],[5736,2272,662,46],[6780,2967,662,46],[6697,0,1042,1191],[0,2438,1125,478],[4609,2346,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[1127,2802,542,104],[7741,1593,374,91],[2167,2759,1039,224],[6395,1704,122,122],[5736,1382,550,251],[6697,1193,1042,1145],[7952,1002,205,205],[7741,1686,130,229],[7741,0,300,300],[7741,302,300,300],[7741,906,209,209],[7741,1209,214,190],[6254,1704,139,132],[7957,1209,214,190],[6504,1382,150,190],[6288,1382,214,190],[7741,1401,214,190],[3208,2888,1125,206],[7991,1891,102,63],[7952,906,87,70],[7741,604,300,300],[6590,1574,90,90],[6395,1828,90,90],[2167,2438,1104,319],[4609,1359,1125,985],[1127,2438,1038,362],[6288,1574,300,128],[7873,1686,300,86],[5653,0,1042,1225],[3565,1871,1042,1015],[1671,2802,452,99],[1127,2908,542,104],[7957,1401,150,150],[0,2918,1125,123],[8043,0,50,1000],[6780,2340,1042,625],[8095,0,50,1000]]}
 ];
 
 
@@ -202,7 +202,7 @@ lib.ssMetadata = [
 
 
 
-(lib.footer_bg = function() {
+(lib.footerBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(25);
 }).prototype = p = new cjs.Sprite();
@@ -223,7 +223,7 @@ lib.ssMetadata = [
 
 
 
-(lib.header_bg = function() {
+(lib.header2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
@@ -412,7 +412,7 @@ lib.ssMetadata = [
 
 
 
-(lib.underBG = function() {
+(lib.underBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(55);
 }).prototype = p = new cjs.Sprite();
@@ -426,7 +426,7 @@ lib.ssMetadata = [
 
 
 
-(lib.upperBG = function() {
+(lib.upperBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(57);
 }).prototype = p = new cjs.Sprite();
@@ -1711,13 +1711,14 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// レイヤー_1
-	this.instance = new lib.upperBG();
+	this.instance = new lib.upperBG2();
+	this.instance.setTransform(-700,0,49.9999,1);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpperBGMC, new cjs.Rectangle(0,0,1125,1000), null);
+}).prototype = getMCSymbolPrototype(lib.UpperBGMC, new cjs.Rectangle(-700,0,2500,1000), null);
 
 
 (lib.UnderBGMC = function(mode,startPosition,loop,reversed) {
@@ -1732,14 +1733,14 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// レイヤー_1
-	this.instance = new lib.underBG();
-	this.instance.setTransform(0,-490);
+	this.instance = new lib.underBG2();
+	this.instance.setTransform(-711,-491,50,1);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UnderBGMC, new cjs.Rectangle(0,-490,1125,1000), null);
+}).prototype = getMCSymbolPrototype(lib.UnderBGMC, new cjs.Rectangle(-711,-491,2500,1000), null);
 
 
 (lib.RadiationMC = function(mode,startPosition,loop,reversed) {
@@ -1755,12 +1756,13 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.instance = new lib.bg1();
+	this.instance.setTransform(-244,-244,1.2,1.2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.RadiationMC, new cjs.Rectangle(0,0,2436,2436), null);
+}).prototype = getMCSymbolPrototype(lib.RadiationMC, new cjs.Rectangle(-244,-244,2923.1,2923.1), null);
 
 
 (lib.AchievementSubTitleMC = function(mode,startPosition,loop,reversed) {
@@ -2886,13 +2888,61 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.OptionButtonMC).wait(1));
 
 	// BG
-	this.instance_1 = new lib.header_bg();
+	this.instance_1 = new lib.header2();
+	this.instance_1.setTransform(1548,0);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
+	this.instance_2 = new lib.header2();
+	this.instance_2.setTransform(-129,0);
+
+	this.instance_3 = new lib.header2();
+	this.instance_3.setTransform(-258,0);
+
+	this.instance_4 = new lib.header2();
+	this.instance_4.setTransform(-387,0);
+
+	this.instance_5 = new lib.header2();
+	this.instance_5.setTransform(-516,0);
+
+	this.instance_6 = new lib.header2();
+	this.instance_6.setTransform(1419,0);
+
+	this.instance_7 = new lib.header2();
+	this.instance_7.setTransform(1290,0);
+
+	this.instance_8 = new lib.header2();
+	this.instance_8.setTransform(1161,0);
+
+	this.instance_9 = new lib.header2();
+	this.instance_9.setTransform(1032,0);
+
+	this.instance_10 = new lib.header2();
+	this.instance_10.setTransform(903,0);
+
+	this.instance_11 = new lib.header2();
+	this.instance_11.setTransform(774,0);
+
+	this.instance_12 = new lib.header2();
+	this.instance_12.setTransform(645,0);
+
+	this.instance_13 = new lib.header2();
+	this.instance_13.setTransform(516,0);
+
+	this.instance_14 = new lib.header2();
+	this.instance_14.setTransform(387,0);
+
+	this.instance_15 = new lib.header2();
+	this.instance_15.setTransform(258,0);
+
+	this.instance_16 = new lib.header2();
+	this.instance_16.setTransform(129,0);
+
+	this.instance_17 = new lib.header2();
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_17},{t:this.instance_16},{t:this.instance_15},{t:this.instance_14},{t:this.instance_13},{t:this.instance_12},{t:this.instance_11},{t:this.instance_10},{t:this.instance_9},{t:this.instance_8},{t:this.instance_7},{t:this.instance_6},{t:this.instance_5},{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(0,0,1168.2,1758), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(-516,0,2194,1758), null);
 
 
 (lib.GeneratorCellMC = function(mode,startPosition,loop,reversed) {
@@ -3558,7 +3608,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-654.2,0,2436,2436), null);
+}).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-898.2,-243.9,2923.1000000000004,2923), null);
 
 
 (lib.AchievementDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -4405,7 +4455,7 @@ if (reversed == null) { reversed = false; }
 	// AS
 	this.ScrollMC = new lib.ScrollMC();
 	this.ScrollMC.name = "ScrollMC";
-	this.ScrollMC.setTransform(-75,25,1,1,0,0,0,25,25);
+	this.ScrollMC.setTransform(-75,3289.85,1,1,0,0,0,25,25);
 
 	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
 
@@ -4440,7 +4490,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.DebugPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3005), null);
+}).prototype = getMCSymbolPrototype(lib.DebugPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3317.9), null);
 
 
 (lib.FooterMC = function(mode,startPosition,loop,reversed) {
@@ -4492,13 +4542,23 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorButtonMC},{t:this.UpgradeButtonMC},{t:this.ShopButtonMC},{t:this.AchievementButtonMC},{t:this.InviteButtonMC}]}).wait(1));
 
 	// BG
-	this.instance = new lib.footer_bg();
+	this.instance = new lib.footerBG2();
+	this.instance.setTransform(-549,-1);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+	this.instance_1 = new lib.footerBG2();
+	this.instance_1.setTransform(1098,0);
+
+	this.instance_2 = new lib.footerBG2();
+	this.instance_2.setTransform(549,0);
+
+	this.instance_3 = new lib.footerBG2();
+	this.instance_3.setTransform(0,-1);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_3},{t:this.instance_2},{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(0,-1507,1125,1758), null);
+}).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(-549,-1507,2197,1758), null);
 
 
 (lib.AchievementContentMC = function(mode,startPosition,loop,reversed) {
@@ -4795,7 +4855,7 @@ if (reversed == null) { reversed = false; }
 	// AS
 	this.ScrollMC = new lib.ScrollMC();
 	this.ScrollMC.name = "ScrollMC";
-	this.ScrollMC.setTransform(-75,25,1,1,0,0,0,25,25);
+	this.ScrollMC.setTransform(-75,1232.05,1,1,0,0,0,25,25);
 
 	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
 
@@ -4824,7 +4884,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-100.5,-665,1225.5,1758), null);
+}).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-100.5,-665,1225.5,1922.6), null);
 
 
 (lib.ShopPanelMC = function(mode,startPosition,loop,reversed) {
@@ -5058,7 +5118,7 @@ if (reversed == null) { reversed = false; }
 	// AS
 	this.ScrollMC = new lib.ScrollMC();
 	this.ScrollMC.name = "ScrollMC";
-	this.ScrollMC.setTransform(-75,25,1,1,0,0,0,25,25);
+	this.ScrollMC.setTransform(-75,2709.65,1,1,0,0,0,25,25);
 
 	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
 
@@ -5087,7 +5147,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-100.5,-197,1225.5,2633), null);
+}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-100.5,-197,1225.5,2932.2), null);
 
 
 (lib.GeneratorPanelMC = function(mode,startPosition,loop,reversed) {
@@ -5278,7 +5338,7 @@ if (reversed == null) { reversed = false; }
 	// AS
 	this.ScrollMC = new lib.ScrollMC();
 	this.ScrollMC.name = "ScrollMC";
-	this.ScrollMC.setTransform(-75,25,1,1,0,0,0,25,25);
+	this.ScrollMC.setTransform(-75,1240.05,1,1,0,0,0,25,25);
 
 	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
 
@@ -5307,7 +5367,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-100.5,-665,1225.5,1758), null);
+}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-100.5,-665,1225.5,1930.6), null);
 
 
 (lib.AchievementPanelMC = function(mode,startPosition,loop,reversed) {
@@ -5550,7 +5610,7 @@ if (reversed == null) { reversed = false; }
 	// AS
 	this.ScrollMC = new lib.ScrollMC();
 	this.ScrollMC.name = "ScrollMC";
-	this.ScrollMC.setTransform(-75,25,1,1,0,0,0,25,25);
+	this.ScrollMC.setTransform(-75,3249.75,1,1,0,0,0,25,25);
 
 	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
 
@@ -5579,7 +5639,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3005), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3277.8), null);
 
 
 // stage content:
@@ -5877,10 +5937,14 @@ if (reversed == null) { reversed = false; }
 				this.skinId = 0;
 				this.currentScroll = 0;
 				this.mainSkinBmp = null;
-				this.skinBG1Bmp = null;
-				this.skinBG2Bmp = null;
-				this.skinBG3Bmp = null;
-			
+				this.skinBG1LBmp = null;
+				this.skinBG2LBmp = null;
+				this.skinBG3LBmp = null;
+				this.skinBG4LBmp = null;
+				this.skinBG1RBmp = null;
+				this.skinBG2RBmp = null;
+				this.skinBG3Rmp = null;
+				this.skinBG4Rmp = null;
 				//////////////////////////////////////////////////////////
 				//Debug
 				this.Debug_isSpeed = false;
@@ -6384,28 +6448,51 @@ if (reversed == null) { reversed = false; }
 		//Layout
 		//1125 * 2436
 		this.resizeCanvas = function() {
-			this.canvasScaleX = lib.properties.width / 1125;
-			this.canvasScaleY = lib.properties.height / 2436;
+			if(lib.properties.width / 1125 > 0.5)
+			{
+				this.canvasScaleX = 0.5;
+				this.canvasScaleY = lib.properties.height / 2436;
+				this.offsetX = (lib.properties.width - 1125 * 0.5)/2;
+			}	
+			else
+			{
+				this.canvasScaleX = lib.properties.width / 1125;
+				this.canvasScaleY = lib.properties.height / 2436;
+				this.offsetX = 0;
+			}
 		
 			this.BgMC.scaleX = this.canvasScaleX;
-			this.BgMC.scaleY = this.canvasScaleY;
+			this.BgMC.scaleY = this.canvasScaleX;
+		//	this.BgMC.scaleY = this.canvasScaleY;
+			this.BgMC.x = this.offsetX;
 		
 			this.HeaderMC.scaleX = this.canvasScaleX;
 			this.HeaderMC.scaleY = this.canvasScaleX;
+			this.HeaderMC.x = this.offsetX;
 		
 			this.FooterMC.scaleX = this.canvasScaleX;
 			this.FooterMC.scaleY = this.canvasScaleX;
 			this.FooterMC.y = 2436 * this.canvasScaleY;
+			this.FooterMC.x = this.offsetX;
 		
 			this.UpperBGMC.scaleX = this.canvasScaleX;
 			this.UpperBGMC.scaleY = this.canvasScaleX;
+			this.UpperBGMC.x = this.offsetX;
 		
 			this.UnderBGMC.scaleX = this.canvasScaleX;
 			this.UnderBGMC.scaleY = this.canvasScaleX;
 			this.UnderBGMC.y = 2436 * this.canvasScaleY;
+			this.UnderBGMC.x = this.offsetX;
 		
 			this.LodingMC.scaleX = this.canvasScaleX;
 			this.LodingMC.scaleY = this.canvasScaleY;
+			this.LodingMC.x = this.offsetX;
+			
+			this.GeneratorPanelMC.x = this.offsetX;
+			this.UpgradePanelMC.x = this.offsetX;
+			this.ShopPanelMC.x = this.offsetX;
+			this.AchievementPanelMC.x = this.offsetX;
+			this.DebugPanelMC.x = this.offsetX;
 		}
 		window.addEventListener('resize', this.resizeCanvas.bind(this));	
 		this.resizeCanvas();
@@ -6470,6 +6557,9 @@ if (reversed == null) { reversed = false; }
 		
 		main.BGScroll = function()
 		{
+			//debug
+			//this.sushiPs = 10000;	
+			
 			if (this.sushiPs >= 1000)
 			{
 				if(this.currentScroll != 3)
@@ -6498,31 +6588,83 @@ if (reversed == null) { reversed = false; }
 		
 		main.CreateBG = function()
 		{
-			if( this.skinBG1Bmp != null)
+			if( this.skinBG1RBmp != null)
 			{
-				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG1Bmp);
-				this.skinBG1Bmp == null;
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG1RBmp);
+				this.skinBG1RBmp == null;
 			}		
-			if( this.skinBG2Bmp != null)
+			if( this.skinBG2RBmp != null)
 			{
-				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG2Bmp);
-				this.skinBG2Bmp == null;
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG2RBmp);
+				this.skinBG2RBmp == null;
 			}
-			if( this.skinBG3Bmp != null)
+			if( this.skinBG3RBmp != null)
 			{
-				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG3Bmp);
-				this.skinBG3Bmp == null;
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG3RBmp);
+				this.skinBG3RBmp == null;
 			}
-			this.skinBG1Bmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1Bmp);
-			this.skinBG1Bmp.y = -1122;
+			if( this.skinBG4RBmp != null)
+			{
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4RBmp);
+				this.skinBG4RBmp == null;
+			}
+			this.skinBG1RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1RBmp);
+			this.skinBG1RBmp.y = -1122;
+			this.skinBG1RBmp.x = -1122 /2;
 		
-			this.skinBG2Bmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG2Bmp);
+			this.skinBG2RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG2RBmp);
+			this.skinBG2RBmp.x = -1122 /2;
 		
-			this.skinBG3Bmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG3Bmp);
-			this.skinBG3Bmp.y = 1122;
+			this.skinBG3RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG3RBmp);
+			this.skinBG3RBmp.y = 1122;
+			this.skinBG3RBmp.x = -1122 /2;
+		
+			this.skinBG4RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4RBmp);
+			this.skinBG4RBmp.y = 1122 * 2;
+			this.skinBG4RBmp.x = -1122 /2;
+		
+			if( this.skinBG1LBmp != null)
+			{
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG1LBmp);
+				this.skinBG1LBmp == null;
+			}		
+			if( this.skinBG2LBmp != null)
+			{
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG2LBmp);
+				this.skinBG2LBmp == null;
+			}
+			if( this.skinBG3LBmp != null)
+			{
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG3LBmp);
+				this.skinBG3LBmp == null;
+			}
+			if( this.skinBG4LBmp != null)
+			{
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4LBmp);
+				this.skinBG4LBmp == null;
+			}
+			this.skinBG1LBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1LBmp);
+			this.skinBG1LBmp.y = -1122;
+			this.skinBG1LBmp.x = 1122 /2;
+		
+			this.skinBG2LBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG2LBmp);
+			this.skinBG2LBmp.x = 1122 /2;
+		
+			this.skinBG3LBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG3LBmp);
+			this.skinBG3LBmp.y = 1122;
+			this.skinBG3LBmp.x = 1122 /2;
+		
+			this.skinBG4LBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4LBmp);
+			this.skinBG4LBmp.y = 1122 * 2;
+			this.skinBG4LBmp.x = 1122 /2;
 		
 			console.log("main.CreateBG");
 		}
@@ -6546,6 +6688,9 @@ if (reversed == null) { reversed = false; }
 			exportRoot.SushiMC.SushiImageMC.addChild(this.mainSkinBmp);
 			this.mainSkinBmp.scaleX = 0.5;
 			this.mainSkinBmp.scaleY = 0.5;
+		
+			//debug
+			//this.sushiPs = 10000;	
 		
 			if (this.sushiPs >= 1000)
 					this.currentScroll = 3;
@@ -6684,10 +6829,6 @@ if (reversed == null) { reversed = false; }
 		
 		//Layout
 		this.page = 0;
-		this.GeneratorPanelMC.visible = false;
-		this.UpgradePanelMC.visible = false;
-		this.ShopPanelMC.visible = false;
-		this.AchievementPanelMC.visible = false;
 		
 		//GeneratorPanel
 		this.FooterMC.GeneratorButtonMC.addEventListener("click", ClickHandler_GeneratorPanelOpen.bind(this));
@@ -6695,7 +6836,7 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(1);
 		}
-		this.GeneratorPanelMC.x = 0;
+		this.GeneratorPanelMC.x = this.offsetX;
 		this.GeneratorPanelMC.visible = false;	
 		
 		//UpgradePanel
@@ -6704,7 +6845,7 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(2);
 		}
-		this.UpgradePanelMC.x = 0;
+		this.UpgradePanelMC.x = this.offsetX;
 		this.UpgradePanelMC.visible = false;	
 		
 		//ShopPanel
@@ -6713,7 +6854,7 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(3);
 		}
-		this.ShopPanelMC.x = 0;
+		this.ShopPanelMC.x = this.offsetX;
 		this.ShopPanelMC.visible = false;	
 		
 		//AchievementPanel
@@ -6722,7 +6863,7 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(4);
 		}
-		this.AchievementPanelMC.x = 0;
+		this.AchievementPanelMC.x = this.offsetX;
 		this.AchievementPanelMC.visible = false;	
 		
 		//DebugPanel
@@ -6731,7 +6872,7 @@ if (reversed == null) { reversed = false; }
 		{
 			this.PanelOpen(5);
 		}
-		this.DebugPanelMC.x = 0;
+		this.DebugPanelMC.x = this.offsetX;
 		this.DebugPanelMC.visible = false;	
 		
 		this.resizeCanvas = function() {
@@ -6823,7 +6964,7 @@ if (reversed == null) { reversed = false; }
 		{
 			//パネルの移動
 			createjs.Tween.get(_targetMC, { override: true })
-			.to({ x: 0, y: 2436 * this.canvasScaleY -251 * this.canvasScaleX + 914 * this.canvasScaleX }, 250, createjs.Ease.backInOut)
+			.to({ x: this.offsetX, y: 2436 * this.canvasScaleY -251 * this.canvasScaleX + 914 * this.canvasScaleX }, 250, createjs.Ease.backInOut)
 			.call(() => {
 				_targetMC.visible = false;
 		    });
@@ -6848,13 +6989,13 @@ if (reversed == null) { reversed = false; }
 				//パネルの移動
 				var y = (914 * this.canvasScaleX) + (227 * this.canvasScaleX);		
 				createjs.Tween.get(_targetMC, { override: true })
-				.to({ x: 0, y: y }, 250, createjs.Ease.bounceOut);
+				.to({ x: this.offsetX, y: y }, 250, createjs.Ease.bounceOut);
 			}
 			else
 			{
 				//パネルの移動
 				createjs.Tween.get(_targetMC, { override: true })
-					.to({ x: 0, y: 2436 * this.canvasScaleY -251 * this.canvasScaleX }, 250, createjs.Ease.bounceOut);
+					.to({ x: this.offsetX, y: 2436 * this.canvasScaleY -251 * this.canvasScaleX }, 250, createjs.Ease.bounceOut);
 			
 				//寿司の移動
 				var y = ((2436 * this.canvasScaleY -251 * this.canvasScaleX -914 * this.canvasScaleX)
@@ -7209,6 +7350,12 @@ if (reversed == null) { reversed = false; }
 		
 		if(API_userData !== undefined)
 			this.Run();
+		
+		//debug
+		//main.SetSkin();	
+		//main.InitBGScroll();
+		//this.LodingMC.visible = false;
+		//hiddenLoadingScreen();
 	}
 
 	// actions tween:
