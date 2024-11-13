@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[5736,1635,516,176],[5736,1813,516,176],[5736,1227,904,153],[5736,1991,516,176],[7741,1117,148,89],[7991,1774,115,115],[6254,1838,118,66],[5736,2340,1042,889],[5736,2169,754,101],[6487,1832,120,65],[6519,1704,116,126],[7873,1774,116,126],[5736,2272,662,46],[6780,2967,662,46],[6697,0,1042,1191],[0,2438,1125,478],[4609,2346,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[1127,2802,542,104],[7741,1593,374,91],[2167,2759,1039,224],[6395,1704,122,122],[5736,1382,550,251],[6697,1193,1042,1145],[7952,1002,205,205],[7741,1686,130,229],[7741,0,300,300],[7741,302,300,300],[7741,906,209,209],[7741,1209,214,190],[6254,1704,139,132],[7957,1209,214,190],[6504,1382,150,190],[6288,1382,214,190],[7741,1401,214,190],[3208,2888,1125,206],[7991,1891,102,63],[7952,906,87,70],[7741,604,300,300],[6590,1574,90,90],[6395,1828,90,90],[2167,2438,1104,319],[4609,1359,1125,985],[1127,2438,1038,362],[6288,1574,300,128],[7873,1686,300,86],[5653,0,1042,1225],[3565,1871,1042,1015],[1671,2802,452,99],[1127,2908,542,104],[7957,1401,150,150],[0,2918,1125,123],[8043,0,50,1000],[6780,2340,1042,625],[8095,0,50,1000]]}
+		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[5736,1635,516,176],[5736,1813,516,176],[5736,1227,904,153],[5736,1991,516,176],[6440,1765,148,89],[7977,1743,115,115],[6254,1766,118,66],[5736,2340,1042,889],[5736,2169,754,101],[7741,1113,120,65],[7741,1697,116,126],[7859,1697,116,126],[5736,2272,662,46],[6780,2967,662,46],[6697,0,1042,1191],[0,2438,1125,478],[4609,2346,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[1127,2802,542,104],[7741,1516,374,91],[2167,2759,1039,224],[8043,1386,122,122],[5736,1382,550,251],[6697,1193,1042,1145],[7741,906,205,205],[6504,1382,130,229],[7741,0,300,300],[7741,302,300,300],[7948,1002,214,190],[8043,1609,139,132],[7741,1194,214,190],[6288,1574,150,190],[7957,1194,214,190],[6288,1382,214,190],[3208,2888,1125,206],[6592,1705,102,63],[8094,1743,87,70],[7741,604,300,300],[7948,906,90,90],[6592,1613,90,90],[2167,2438,1104,319],[4609,1359,1125,985],[1127,2438,1038,362],[7741,1386,300,128],[7741,1609,300,86],[5653,0,1042,1225],[3565,1871,1042,1015],[1671,2802,452,99],[1127,2908,542,104],[6440,1613,150,150],[0,2918,1125,123],[8043,0,50,1000],[6780,2340,1042,625],[8095,0,50,1000]]}
 ];
 
 
@@ -244,191 +244,184 @@ lib.ssMetadata = [
 
 
 
-(lib.iconFrame = function() {
+(lib.menu_achievement_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_achievement_button = function() {
+(lib.menu_config_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_config_button = function() {
+(lib.menu_generator_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_generator_button = function() {
+(lib.menu_invite = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_invite = function() {
+(lib.menu_shop_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_shop_button = function() {
+(lib.menu_upgrade_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_upgrade_button = function() {
+(lib.messageBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.messageBG = function() {
+(lib.mini_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_golden = function() {
+(lib.mini_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_sushi = function() {
+(lib.not = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not = function() {
+(lib.notification1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(41);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification1 = function() {
+(lib.notification2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(42);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification2 = function() {
+(lib.NotificationBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(43);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.NotificationBG = function() {
+(lib.panel = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(44);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.panel = function() {
+(lib.shop_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(45);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_bg = function() {
+(lib.shop_label2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label2 = function() {
+(lib.shop_label3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label3 = function() {
+(lib.shop_skin_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_skin_bg = function() {
+(lib.shop_sushi_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(49);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_sushi_bg = function() {
+(lib.subTile2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(50);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTile2 = function() {
+(lib.subTitle = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(51);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTitle = function() {
+(lib.sushiMini = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.sushiMini = function() {
+(lib.title = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(53);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.title = function() {
+(lib.underBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(54);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.underBG2 = function() {
+(lib.upgrade_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(55);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.upgrade_bg = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(56);
-}).prototype = p = new cjs.Sprite();
-
-
-
 (lib.upperBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(57);
+	this.gotoAndStop(56);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -519,7 +512,8 @@ if (reversed == null) { reversed = false; }
 			}
 			
 			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + this.obj.id.toString().padStart(2, '0') + ".webp");
+			//this.bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + this.obj.id.toString().padStart(2, '0') + ".webp");
+			this.bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + this.obj.image + ".webp");	
 			this.addChild(this.bitmap);
 			this.bitmap.x = 48;
 			this.bitmap.y = 80;
@@ -3683,12 +3677,15 @@ if (reversed == null) { reversed = false; }
 			}
 		
 			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.id + ".png");
+			if(this.obj.category == 2)
+				this.bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + this.obj.image + ".webp");
+			else
+				this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.id + ".png");
 			this.addChild(this.bitmap);
 			this.bitmap.x = 65;
 			this.bitmap.y = 45;
-			this.bitmap.scaleX = 193 / this.bitmap.image.width;
-			this.bitmap.scaleY = 193 / this.bitmap.image.height;
+			this.bitmap.scaleX = 193 / 300;
+			this.bitmap.scaleY = 193 / 300;
 		
 			this.title_O.text = this.obj.name;
 			this.description.text = this.obj.description;
@@ -3706,12 +3703,6 @@ if (reversed == null) { reversed = false; }
 	this.ButtonMC.setTransform(562.5,239.55,11.2502,4.8001,0,0,0,50,49.9);
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).wait(1));
-
-	// IconBG
-	this.instance = new lib.iconFrame();
-	this.instance.setTransform(57,38);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	// Text_title
 	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
@@ -3734,7 +3725,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.description).wait(1));
 
 	// BG
-	this.instance_1 = new lib.achievementDesciption();
+	this.instance = new lib.achievementDesciption();
 
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f().s("#00CC33").ss(1,1,1).p("EhSBgXbMCkDAAAMAAAAu3MikDAAAg");
@@ -3744,7 +3735,7 @@ if (reversed == null) { reversed = false; }
 	this.shape_1.graphics.f("#FF0000").s().p("EhSBAXcMAAAgu3MCkDAAAMAAAAu3g");
 	this.shape_1.setTransform(565.05,188);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape},{t:this.instance_1}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
@@ -3982,12 +3973,12 @@ if (reversed == null) { reversed = false; }
 						this.ShopType4ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
 					}
 					//アイコン生成
-					this.bitmap = new createjs.Bitmap("images/Icon/Shop/skin_" + this.obj.id.toString().padStart(2, '0') + ".webp");
+					this.bitmap = new createjs.Bitmap("images/Icon/Shop/shopitem_" + this.obj.id.toString().padStart(2, '0') + ".webp");
 					this.addChild(this.bitmap);
 					this.bitmap.x = 50;
 					this.bitmap.y = 190;
-					this.bitmap.scaleX = 209 / 2000;
-					this.bitmap.scaleY = 209 / 2000;		
+					this.bitmap.scaleX = 209 / 300;
+					this.bitmap.scaleY = 209 / 300;		
 					break;
 			}
 		}
@@ -4127,7 +4118,7 @@ if (reversed == null) { reversed = false; }
 				if(main.skinId == this.obj.id)
 				{
 					main.skinId = 0;
-					this.parent.MessageMC.Open(this.obj.name + "を外しました");
+					//this.parent.MessageMC.Open(this.obj.name + "を外しました");
 					console.log("API.Skinを除外");
 					API_Request({
 						url: '/skin/' + this.obj.id + '/unset',
@@ -4138,7 +4129,7 @@ if (reversed == null) { reversed = false; }
 				else
 				{
 					main.skinId = this.obj.id;
-					this.parent.MessageMC.Open(this.obj.name + "を設定しました");
+					//this.parent.MessageMC.Open(this.obj.name + "を設定しました");
 					console.log("API.Skinを設定");
 					await API_Request({
 						url: '/skin/' + this.obj.id + '/set',
@@ -4788,7 +4779,8 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));	
 		
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + upgrade.id.toString().padStart(2, '0') + ".webp");	
+				//let bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + upgrade.id.toString().padStart(2, '0') + ".webp");	
+				let bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + upgrade.image + ".webp");	
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
@@ -5064,12 +5056,12 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));
 				
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/Icon/Shop/skin_" + skinShop.id.toString().padStart(2, '0') + ".webp");
+				let bitmap = new createjs.Bitmap("images/Icon/Shop/shopitem_" + skinShop.id.toString().padStart(2, '0') + ".webp");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
-				bitmap.scaleX = 160 / 2000;
-				bitmap.scaleY = 160 / 2000;
+				bitmap.scaleX = 160 / 300;
+				bitmap.scaleY = 160 / 300;
 				bitmap.mouseEnabled = false;		
 				
 				if(skinShop.posession)
@@ -5456,7 +5448,8 @@ if (reversed == null) { reversed = false; }
 					this.OpenDesciption.call(this, upgrade);
 				}.bind(this));
 				
-				let bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + upgrade.id.toString().padStart(2, '0') + ".webp");	
+				//let bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + upgrade.id.toString().padStart(2, '0') + ".webp");	
+				let bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + upgrade.image + ".webp");	
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
@@ -5749,6 +5742,7 @@ if (reversed == null) { reversed = false; }
 				this.price = 0;
 				this.targetGeneratorMstId = 0;
 				this.targetType = 0;
+				this.image = "";
 		    }
 		}
 		
@@ -6462,8 +6456,8 @@ if (reversed == null) { reversed = false; }
 			}
 		
 			this.BgMC.scaleX = this.canvasScaleX;
-			this.BgMC.scaleY = this.canvasScaleX;
-		//	this.BgMC.scaleY = this.canvasScaleY;
+			//this.BgMC.scaleY = this.canvasScaleX;
+			this.BgMC.scaleY = this.canvasScaleY;
 			this.BgMC.x = this.offsetX;
 		
 			this.HeaderMC.scaleX = this.canvasScaleX;
@@ -7253,6 +7247,7 @@ if (reversed == null) { reversed = false; }
 				upgrade.price = Number(API_upgradesData["items"][i].price);
 				upgrade.targetGeneratorMstId = Number(API_upgradesData["items"][i].targetGeneratorMstId);
 				upgrade.targetType = Number(API_upgradesData["items"][i].targetType);
+				upgrade.image = API_upgradesData["items"][i].imageName;
 				main.upgrades.push(upgrade);
 			}
 			main.GetUpgradeNotification();

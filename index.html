@@ -181,15 +181,17 @@ function init() {
 	createjs.Sound.registerSound("sounds/generator.mp3", "generator");
 	createjs.Sound.registerSound("sounds/bgm.mp3", "bgm");
 	loader.loadManifest(lib.properties.manifest);
-	document.getElementById("animation_container").style.display = "block";
 }
 
 function resizeCanvas(domContainers, lib) {
-	var lastW, lastH;		
 	window.addEventListener('resize', resizeCanvas);		
-	resizeCanvas();		
+	document.getElementById("animation_container_out").style.display = "block";
+	resizeCanvas();
+	document.getElementById("animation_container_out").style.display = "none";
+
 	function resizeCanvas() {
 		const size = anim_container.getBoundingClientRect();
+
 		lib.properties.width = size.width;
 		lib.properties.height = size.height;
 
@@ -201,8 +203,7 @@ function resizeCanvas(domContainers, lib) {
 		domContainers.height = h * pRatio;
 
 		stage.scaleX = pRatio;			
-		stage.scaleY = pRatio;
-		lastW = iw; lastH = ih;          
+		stage.scaleY = pRatio;      
 		stage.tickOnUpdate = false;            
 		stage.update();            
 		stage.tickOnUpdate = true;		
@@ -238,13 +239,14 @@ function handleComplete(evt,comp) {
 	}	    
 	//Code to support hidpi screens and responsive scaling.
 	//AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
-	resizeCanvas(canvas,lib);
+	resizeCanvas(canvas, lib);
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 
 }
 function hiddenLoadingScreen() {
-    document.getElementById("loading_screen").style.display = "none";
+	document.getElementById("animation_container_out").style.display = "block";
+	document.getElementById("loading_screen_out").style.display = "none";
 }
 function setProgress(progress) {
     document.getElementById("progress_bar").style.width = progress + "%";
@@ -259,7 +261,7 @@ function setProgress(progress) {
 
     <div id="content-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 2;">
 
-        <div id="registration_out" style="width: 100%; height: 100%; max-width: 55vh; aspect-ratio: 1125 / 2436; position: relative;">
+        <div id="registration_out" style="width: 100%; height: 100%; max-width: 55vh; aspect-ratio: 1125 / 2436; position: absolute;">
             <div id="registration" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;">
                 <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
                 <div id="registration_form" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background-color: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 10px; text-align: center;">
@@ -271,7 +273,7 @@ function setProgress(progress) {
             </div>
         </div>
 
-        <div id="loading_screen_out" style="width: 100%; height: 100%; max-width: 55vh; aspect-ratio: 1125 / 2436; position: relative;">
+        <div id="loading_screen_out" style="width: 100%; height: 100%; max-width: 55vh; aspect-ratio: 1125 / 2436; position: absolute;">
             <div id="loading_screen" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;">
                 <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
                 <div id="progress_bar_container" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 80%; height: 20px; background-color: #423113;">
@@ -281,7 +283,7 @@ function setProgress(progress) {
             </div>
         </div>
 
-        <div id="animation_container_out" style="width: 100%; height: 100%; position: relative;">
+        <div id="animation_container_out" style="width: 100%; height: 100%; position: absolute;">
             <div id="animation_container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color:rgba(255, 255, 255, 1.00);">
                 <canvas id="canvas" style="position: absolute; display: block; width: 100%; height: 100%; background-color:rgba(255, 255, 255, 1.00);"></canvas>
                 <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:100%; height:100%; position: absolute; left: 0; top: 0; display: block;">
