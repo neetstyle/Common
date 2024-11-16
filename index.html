@@ -74,8 +74,9 @@
 	function checkInitialization() {
 		if (!(isLoad_html && isLoad_webFont && isLoad_anime && isLoad_data))
 			return;
-/*
-		if(isMobile())
+
+		//todo:一時的にブラウザで見るから
+		if(isMobile() && !(Telegram.WebApp.initDataUnsafe.user === undefined))
 		{
 			window.Telegram.WebApp.BiometricManager.init(this.CheckDeviceId);
 		}
@@ -90,19 +91,6 @@
 			}
 			this.checkInitialization2();
 		}
-*/
-
-
-		if (localStorage.getItem('uniqueId'))
-			deviceId = localStorage.getItem('uniqueId')
-		else
-		{
-			deviceId = Math.random().toString()
-			localStorage.setItem('uniqueId', deviceId)		
-		}
-		this.checkInitialization2();
-
-
 	}
 
 	this.CheckDeviceId = () => {
