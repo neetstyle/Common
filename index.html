@@ -74,7 +74,7 @@
 	function checkInitialization() {
 		if (!(isLoad_html && isLoad_webFont && isLoad_anime && isLoad_data))
 			return;
-
+/*
 		if(isMobile())
 		{
 			window.Telegram.WebApp.BiometricManager.init(this.CheckDeviceId);
@@ -90,6 +90,19 @@
 			}
 			this.checkInitialization2();
 		}
+*/
+
+
+		if (localStorage.getItem('uniqueId'))
+			deviceId = localStorage.getItem('uniqueId')
+		else
+		{
+			deviceId = Math.random().toString()
+			localStorage.setItem('uniqueId', deviceId)		
+		}
+		this.checkInitialization2();
+
+
 	}
 
 	this.CheckDeviceId = () => {
@@ -245,9 +258,6 @@ function handleComplete(evt,comp) {
 
 }
 function hiddenLoadingScreen() {
-
-	alert("hiddenLoadingScreen");
-
 	document.getElementById("animation_container_out").style.display = "block";
 	document.getElementById("loading_screen_out").style.display = "none";
 }
