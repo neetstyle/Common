@@ -6669,10 +6669,6 @@ if (reversed == null) { reversed = false; }
 			
 			
 			
-			
-			
-			
-					
 			if( this.skinBG1RBmp != null)
 			{
 				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG1RBmp);
@@ -6693,6 +6689,10 @@ if (reversed == null) { reversed = false; }
 				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4RBmp);
 				this.skinBG4RBmp == null;
 			}
+		
+			if(this.currentScroll == 0)
+				return;
+					
 			this.skinBG1RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
 			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1RBmp);
 			this.skinBG1RBmp.y = -1122;
