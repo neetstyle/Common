@@ -6582,6 +6582,9 @@ if (reversed == null) { reversed = false; }
 		
 		main.CreateBG = function()
 		{
+			
+			
+			/*
 			if( this.skinBG1RBmp != null)
 			{
 				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG1RBmp);
@@ -6661,6 +6664,51 @@ if (reversed == null) { reversed = false; }
 			this.skinBG4LBmp.x = 1122 /2;
 		
 			console.log("main.CreateBG");
+			*/
+			
+			
+			
+			
+			
+			
+			
+					
+			if( this.skinBG1RBmp != null)
+			{
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG1RBmp);
+				this.skinBG1RBmp == null;
+			}		
+			if( this.skinBG2RBmp != null)
+			{
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG2RBmp);
+				this.skinBG2RBmp == null;
+			}
+			if( this.skinBG3RBmp != null)
+			{
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG3RBmp);
+				this.skinBG3RBmp == null;
+			}
+			if( this.skinBG4RBmp != null)
+			{
+				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4RBmp);
+				this.skinBG4RBmp == null;
+			}
+			this.skinBG1RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1RBmp);
+			this.skinBG1RBmp.y = -1122;
+		
+			this.skinBG2RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG2RBmp);
+		
+			this.skinBG3RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG3RBmp);
+			this.skinBG3RBmp.y = 1122;
+		
+			this.skinBG4RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4RBmp);
+			this.skinBG4RBmp.y = 1122 * 2;
+			
+			
 		}
 		
 		main.InitBGScroll = function()
