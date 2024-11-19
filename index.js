@@ -7391,6 +7391,9 @@ if (reversed == null) { reversed = false; }
 			hiddenLoadingScreen();
 		}
 		
+		console.log("ログクリア");
+		localStorage.clear();
+		
 		if(API_userData !== undefined)
 			this.Run();
 		
