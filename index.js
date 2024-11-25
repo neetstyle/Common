@@ -6415,11 +6415,11 @@ if (reversed == null) { reversed = false; }
 		//Layout
 		//1125 * 2436
 		this.resizeCanvas = function() {
-			if(lib.properties.width / 1125 > 0.3)
+			if(lib.properties.width / 1125 > 0.4)
 			{
-				this.canvasScaleX = 0.3;
+				this.canvasScaleX = 0.4;
 				this.canvasScaleY = lib.properties.height / 2436;
-				this.offsetX = (lib.properties.width - 1125 * 0.3)/2;
+				this.offsetX = (lib.properties.width - 1125 * 0.4)/2;
 			}	
 			else
 			{
