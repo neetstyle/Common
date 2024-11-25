@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[5736,1635,516,176],[5736,1813,516,176],[5736,1227,904,153],[5736,1991,516,176],[6440,1765,148,89],[7977,1743,115,115],[6254,1766,118,66],[5736,2340,1042,889],[5736,2169,754,101],[7741,1113,120,65],[7741,1697,116,126],[7859,1697,116,126],[5736,2272,662,46],[6780,2967,662,46],[6697,0,1042,1191],[0,2438,1125,478],[4609,2346,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[1127,2802,542,104],[7741,1516,374,91],[2167,2759,1039,224],[8043,1386,122,122],[5736,1382,550,251],[6697,1193,1042,1145],[7741,906,205,205],[6504,1382,130,229],[7741,0,300,300],[7741,302,300,300],[7948,1002,214,190],[8043,1609,139,132],[7741,1194,214,190],[6288,1574,150,190],[7957,1194,214,190],[6288,1382,214,190],[3208,2888,1125,206],[6592,1705,102,63],[8094,1743,87,70],[7741,604,300,300],[7948,906,90,90],[6592,1613,90,90],[2167,2438,1104,319],[4609,1359,1125,985],[1127,2438,1038,362],[7741,1386,300,128],[7741,1609,300,86],[5653,0,1042,1225],[3565,1871,1042,1015],[1671,2802,452,99],[1127,2908,542,104],[6440,1613,150,150],[0,2918,1125,123],[8043,0,50,1000],[6780,2340,1042,625],[8095,0,50,1000]]}
+		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[5736,1635,516,176],[5736,1813,516,176],[5736,1227,904,153],[5736,1991,516,176],[7990,1773,148,89],[7873,1773,115,115],[6346,1832,118,66],[5736,2340,1042,889],[5736,2169,754,101],[8043,1136,120,65],[6378,1704,116,126],[6496,1704,116,126],[5736,2272,662,46],[6780,2967,662,46],[6697,0,1042,1191],[0,2438,1125,478],[4609,2346,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[1127,2802,542,104],[7741,1592,374,91],[2167,2759,1039,224],[6254,1704,122,122],[5736,1382,550,251],[6697,1193,1042,1145],[7741,1685,130,229],[7741,0,300,300],[7741,302,300,300],[7741,1208,214,190],[8043,1002,139,132],[7957,1208,214,190],[6504,1382,150,190],[6288,1382,214,190],[7741,1400,214,190],[3208,2888,1125,206],[6466,1832,102,63],[6570,1832,87,70],[7741,604,300,300],[7741,906,300,300],[6590,1574,90,90],[6254,1828,90,90],[2167,2438,1104,319],[4609,1359,1125,985],[1127,2438,1038,362],[6288,1574,300,128],[7873,1685,300,86],[5653,0,1042,1225],[3565,1871,1042,1015],[1671,2802,452,99],[1127,2908,542,104],[7957,1400,150,150],[0,2918,1125,123],[8043,0,50,1000],[6780,2340,1042,625],[8095,0,50,1000]]}
 ];
 
 
@@ -216,98 +216,98 @@ lib.ssMetadata = [
 
 
 
-(lib.hatena = function() {
+(lib.header2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(27);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.header2 = function() {
+(lib.icon_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_golden = function() {
+(lib.icon_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_sushi = function() {
+(lib.menu_achievement_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_achievement_button = function() {
+(lib.menu_config_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_config_button = function() {
+(lib.menu_generator_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_generator_button = function() {
+(lib.menu_invite = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_invite = function() {
+(lib.menu_shop_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_shop_button = function() {
+(lib.menu_upgrade_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_upgrade_button = function() {
+(lib.messageBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.messageBG = function() {
+(lib.mini_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_golden = function() {
+(lib.mini_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_sushi = function() {
+(lib.not = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not = function() {
+(lib.not2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
@@ -3680,13 +3680,13 @@ if (reversed == null) { reversed = false; }
 			if(this.obj.category == 2)
 				this.bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + this.obj.image + ".webp");
 			else
-				this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.id + ".png");
+				this.bitmap = new createjs.Bitmap("images/achievement/achievement_" + this.obj.image + ".webp");
 			this.addChild(this.bitmap);
 			this.bitmap.x = 65;
 			this.bitmap.y = 45;
-			this.bitmap.scaleX = 193 / 300;
-			this.bitmap.scaleY = 193 / 300;
-		
+			this.bitmap.scaleX = 200 / 300;
+			this.bitmap.scaleY = 200 / 300;	
+			
 			this.title_O.text = this.obj.name;
 			this.description.text = this.obj.description;
 			
@@ -3761,8 +3761,8 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.IconButtonMC).to({_off:true},9).wait(11));
 
 	// hatena
-	this.instance = new lib.hatena();
-	this.instance.setTransform(0,0,0.9756,0.9756);
+	this.instance = new lib.not2();
+	this.instance.setTransform(0,0,0.6667,0.6667);
 	this.instance._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(9).to({_off:false},0).wait(11));
@@ -3973,7 +3973,7 @@ if (reversed == null) { reversed = false; }
 						this.ShopType4ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
 					}
 					//アイコン生成
-					this.bitmap = new createjs.Bitmap("images/Icon/Shop/shopitem_" + this.obj.id.toString().padStart(2, '0') + ".webp");
+					this.bitmap = new createjs.Bitmap("images/shop/shopitem_" + this.obj.id.toString().padStart(2, '0') + ".webp");
 					this.addChild(this.bitmap);
 					this.bitmap.x = 50;
 					this.bitmap.y = 190;
@@ -5009,7 +5009,7 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));
 				
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/Icon/"+ shop.dir + "/" + shop.data["icon"] + ".png");
+				let bitmap = new createjs.Bitmap("images/shop/" + shop.data["icon"] + ".png");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
@@ -5056,7 +5056,7 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));
 				
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/Icon/Shop/shopitem_" + skinShop.id.toString().padStart(2, '0') + ".webp");
+				let bitmap = new createjs.Bitmap("images/shop/shopitem_" + skinShop.id.toString().padStart(2, '0') + ".webp");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
@@ -5491,15 +5491,15 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));
 				
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/Icon/Achievement/" + achievement.data["icon"] + ".png");
+				let bitmap = new createjs.Bitmap("images/achievement/achievement_" + achievement.image + ".webp");
 				clip.IconMC.addChild(bitmap);
-				bitmap.x = 10;
-				bitmap.y = 10;
-				bitmap.scaleX = 193 / 64;
-				bitmap.scaleY = 193 / 64;
+				//bitmap.x = 10;
+				//bitmap.y = 10;
+				bitmap.scaleX = 200 / 300;
+				bitmap.scaleY = 200 / 300;
 				bitmap.mouseEnabled = false;		
 				
-				if(achievement.unlock)
+				if(achievement.completed)
 				{
 					achievementCount++;
 					clip.gotoAndStop("Active");
@@ -5666,7 +5666,6 @@ if (reversed == null) { reversed = false; }
 				//this.data;
 				this.category = 1;
 				this.clip = null;
-				this.dir = "generator/gen_";
 				
 				//this.amount = 0;
 				this.totalSushies = 0;
@@ -5720,8 +5719,6 @@ if (reversed == null) { reversed = false; }
 				this.category = 2;
 				this.clip = null;
 				this.achievementClip = null;
-				this.dir = "Upgrade";
-		
 				//this.amount = 0;
 				
 				//this.isNotification = false;
@@ -5753,7 +5750,6 @@ if (reversed == null) { reversed = false; }
 				this.data;
 				this.category = 4;
 				this.clip = null;
-				this.dir = "Shop";
 				this.isPurchase = false;//購入済みか
 		    }
 		}
@@ -5763,7 +5759,6 @@ if (reversed == null) { reversed = false; }
 		    constructor()
 			{
 				this.clip = null;
-				this.dir = "Shop";
 				
 				this.id = 0;
 				this.name = "";
@@ -5778,7 +5773,6 @@ if (reversed == null) { reversed = false; }
 		    constructor()
 			{
 				this.clip = null;
-				this.dir = "Shop";
 				
 				this.id = 0;
 				this.name = "";
@@ -5793,7 +5787,6 @@ if (reversed == null) { reversed = false; }
 		    constructor()
 			{
 				this.clip = null;
-				this.dir = "Shop";
 				this.id = 0;
 				this.name = "";
 				this.description = "";
@@ -5811,20 +5804,19 @@ if (reversed == null) { reversed = false; }
 				this.data;
 				this.category = 3;
 				this.achievementClip = null;
-				this.dir = "Achievement";
-				this.unlock = false;
 		
 				//this.isNotification = false;
 				this.doddState = 0;
 				this.isAchievementUnread = true;
 				
-				
-				
-		
 				this.id = 0;
 				this.name = "";
 				this.description = "";
-				
+				this.image = "";
+				this.conditionType = 0;
+				this.conditionTargetMstId = 0;
+				this.conditionThreshold = "";
+				this.completed = false;
 		    }
 		}
 		
@@ -5893,18 +5885,6 @@ if (reversed == null) { reversed = false; }
 				//////////////////////////////////////////////////////////
 				//実績
 				this.achievements = [];
-				for (var i = 0; i < achievementData.length; i++)
-				{
-					var	achievement = new Achievement();
-					achievement.data = achievementData[i];
-					
-		achievement.id = achievement.data.id;
-		achievement.name = achievement.data.name;
-		achievement.description = achievement.data.description;		
-					
-					
-					this.achievements.push(achievement);
-				}
 				this.achievementNotificationNum = 0;
 				
 				//////////////////////////////////////////////////////////
@@ -5962,6 +5942,7 @@ if (reversed == null) { reversed = false; }
 			this.sushiAdd += value;
 			this.SushiDisplayUdates();
 			this.AddBGParticle();
+			this.CheckAchievement_Sushi();
 		}
 		
 		//寿司の消費、生産合計に影響しない
@@ -6043,9 +6024,9 @@ if (reversed == null) { reversed = false; }
 			generator.clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
 			generator.clip.posession.text = generator.posession;
 			
-		//todo
-		this.generatorNum++;
-		this.CheckAchievement_Generator();
+			//todo
+			this.generatorNum++;
+			this.CheckAchievement_Generator(generator);
 			
 			main.PlaySE("generator");
 			//----------------------------------------------
@@ -6130,11 +6111,11 @@ if (reversed == null) { reversed = false; }
 			this.touchSps = this.TouchSps();
 			exportRoot.UpgradePanelMC.Reset();
 			
-		//todo
-		this.upgradeNum++;
-		this.AddAchievement();
-		this.CheckAchievement_Generator();
-			
+			//todo
+			this.upgradeNum++;
+			this.AddAchievement();
+			this.CheckAchievement_Upgrade(upgrade);
+		
 			main.PlaySE("generator");
 			//----------------------------------------------
 			//購入
@@ -6582,9 +6563,6 @@ if (reversed == null) { reversed = false; }
 		
 		main.CreateBG = function()
 		{
-			
-			
-			/*
 			if( this.skinBG1RBmp != null)
 			{
 				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG1RBmp);
@@ -6605,24 +6583,6 @@ if (reversed == null) { reversed = false; }
 				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4RBmp);
 				this.skinBG4RBmp == null;
 			}
-			this.skinBG1RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1RBmp);
-			this.skinBG1RBmp.y = -1122;
-			this.skinBG1RBmp.x = -1122 /2;
-		
-			this.skinBG2RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG2RBmp);
-			this.skinBG2RBmp.x = -1122 /2;
-		
-			this.skinBG3RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG3RBmp);
-			this.skinBG3RBmp.y = 1122;
-			this.skinBG3RBmp.x = -1122 /2;
-		
-			this.skinBG4RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4RBmp);
-			this.skinBG4RBmp.y = 1122 * 2;
-			this.skinBG4RBmp.x = -1122 /2;
 		
 			if( this.skinBG1LBmp != null)
 			{
@@ -6644,71 +6604,49 @@ if (reversed == null) { reversed = false; }
 				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4LBmp);
 				this.skinBG4LBmp == null;
 			}
-			this.skinBG1LBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+		
+			if(this.currentScroll == 0)	
+				return;
+			
+			this.skinBG1RBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1RBmp);
+			this.skinBG1RBmp.y = -1122;
+			this.skinBG1RBmp.x = -1122 /2;
+		
+			this.skinBG2RBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG2RBmp);
+			this.skinBG2RBmp.x = -1122 /2;
+		
+			this.skinBG3RBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG3RBmp);
+			this.skinBG3RBmp.y = 1122;
+			this.skinBG3RBmp.x = -1122 /2;
+		
+			this.skinBG4RBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4RBmp);
+			this.skinBG4RBmp.y = 1122 * 2;
+			this.skinBG4RBmp.x = -1122 /2;
+		
+			this.skinBG1LBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
 			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1LBmp);
 			this.skinBG1LBmp.y = -1122;
 			this.skinBG1LBmp.x = 1122 /2;
 		
-			this.skinBG2LBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			this.skinBG2LBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
 			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG2LBmp);
 			this.skinBG2LBmp.x = 1122 /2;
 		
-			this.skinBG3LBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			this.skinBG3LBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
 			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG3LBmp);
 			this.skinBG3LBmp.y = 1122;
 			this.skinBG3LBmp.x = 1122 /2;
 		
-			this.skinBG4LBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			this.skinBG4LBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
 			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4LBmp);
 			this.skinBG4LBmp.y = 1122 * 2;
 			this.skinBG4LBmp.x = 1122 /2;
 		
 			console.log("main.CreateBG");
-			*/
-			
-			
-			
-			
-			if( this.skinBG1RBmp != null)
-			{
-				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG1RBmp);
-				this.skinBG1RBmp == null;
-			}		
-			if( this.skinBG2RBmp != null)
-			{
-				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG2RBmp);
-				this.skinBG2RBmp == null;
-			}
-			if( this.skinBG3RBmp != null)
-			{
-				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG3RBmp);
-				this.skinBG3RBmp == null;
-			}
-			if( this.skinBG4RBmp != null)
-			{
-				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4RBmp);
-				this.skinBG4RBmp == null;
-			}
-		
-			if(this.currentScroll == 0)
-				return;
-					
-			this.skinBG1RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1RBmp);
-			this.skinBG1RBmp.y = -1122;
-		
-			this.skinBG2RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG2RBmp);
-		
-			this.skinBG3RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG3RBmp);
-			this.skinBG3RBmp.y = 1122;
-		
-			this.skinBG4RBmp = new createjs.Bitmap("images/Icon/Skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4RBmp);
-			this.skinBG4RBmp.y = 1122 * 2;
-			
-			
 		}
 		
 		main.InitBGScroll = function()
@@ -6726,7 +6664,7 @@ if (reversed == null) { reversed = false; }
 				this.mainSkinBmp == null;
 			}
 		
-			this.mainSkinBmp = new createjs.Bitmap("images/Icon/Skin/skin_"+this.skinId.toString().padStart(2, '0')+".webp");
+			this.mainSkinBmp = new createjs.Bitmap("images/skin/skin_"+this.skinId.toString().padStart(2, '0')+".webp");
 			exportRoot.SushiMC.SushiImageMC.addChild(this.mainSkinBmp);
 			this.mainSkinBmp.scaleX = 0.5;
 			this.mainSkinBmp.scaleY = 0.5;
@@ -6761,7 +6699,7 @@ if (reversed == null) { reversed = false; }
 			
 			for (let i = 0; i < 50; i++)
 			{
-				let clip  = new createjs.Bitmap("images/Icon/Skin/fall_skin"+this.skinId.toString().padStart(2, '0')+".webp");
+				let clip  = new createjs.Bitmap("images/skin/fall_skin"+this.skinId.toString().padStart(2, '0')+".webp");
 				clip.regX = 75;
 				clip.regY = 75;
 				exportRoot.BgMC.addChild(clip);
@@ -6770,7 +6708,7 @@ if (reversed == null) { reversed = false; }
 			}
 			for (let i = 0; i < 30; i++)
 			{
-				let clip  = new createjs.Bitmap("images/Icon/Skin/fall_skin"+this.skinId.toString().padStart(2, '0')+".webp");
+				let clip  = new createjs.Bitmap("images/skin/fall_skin"+this.skinId.toString().padStart(2, '0')+".webp");
 				clip.regX = 75;
 				clip.regY = 75;		
 				exportRoot.addChild(clip);
@@ -6838,31 +6776,60 @@ if (reversed == null) { reversed = false; }
 			exportRoot.FooterMC.AchievementBadgeMC.notification.text = this.achievementNotificationNum;
 		}
 		
-		//実績、ジェネレーター・アップグレード
+		//実績・ジェネレーター
 		main.CheckAchievement_Generator = function(generator)
 		{
 			for (var i = 0; i < this.achievements.length; i++)
 			{
 				var achievement = this.achievements[i];
-				if(achievement.unlock == true) continue;
-				switch (achievement.data.type)
+				if(achievement.completed == true) continue;
+				if(achievement.conditionType == 2) continue;
+				if(!(generator.posession >= achievement.conditionThreshold)) continue;
+				
+				achievement.completed = true;
+				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.AddAchievement(achievement);
+			}
+		}
+		
+		//実績・アップグレード
+		main.CheckAchievement_Upgrade = function(upgrade)
+		{
+			for (var i = 0; i < this.achievements.length; i++)
+			{
+				var achievement = this.achievements[i];
+				if(achievement.completed == true) continue;
+				if(achievement.conditionType == 1) continue;
+				if(!(upgrade.posession >= achievement.conditionThreshold)) continue;
+				
+				achievement.completed = true;
+				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.AddAchievement(achievement);
+			}
+		}
+		
+		//実績・sushi
+		main.CheckAchievement_Sushi = function()
+		{
+			for (var i = 0; i < this.achievements.length; i++)
+			{
+				var achievement = this.achievements[i];
+				if(achievement.completed == true) continue;
+				
+				switch (achievement.conditionType)
 				{
-					case 1://ジェネレーターの数
-						if(!(this.generatorNum >= achievement.data.conditions1)) continue;
+					case 3://sushiの数
+						if(!(main.sushi >= achievement.conditionThreshold)) continue;
 						break;
-					case 2://アップグレードの数
-						if(!(this.upgradeNum >= achievement.data.conditions1)) continue;
-						break;
-					case 3://アップグレードとジェネレーターの数
-						if(!(this.upgradeNum >= achievement.data.conditions1 && this.generatorNum >= achievement.data.conditions1
-						)) continue;
+					case 4://TotalSushiの数
+						if(!(main.totalSushi >= achievement.conditionThreshold)) continue;
 						break;
 					default:
 						continue;
 				}
-				achievement.unlock = true;
-			
-				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/Icon/" + achievement.dir + "/" + achievement.id + ".png");
+				
+				achievement.completed = true;
+				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
 		}
@@ -7127,8 +7094,8 @@ if (reversed == null) { reversed = false; }
 			exportRoot.NotificationMC.addChild(exportRoot.NotificationMC.bitmap);
 			exportRoot.NotificationMC.bitmap.x = 72;
 			exportRoot.NotificationMC.bitmap.y = 55;
-			exportRoot.NotificationMC.bitmap.scaleX = 208 / 64;
-			exportRoot.NotificationMC.bitmap.scaleY = 208 / 64;
+			exportRoot.NotificationMC.bitmap.scaleX = 200 / 300;
+			exportRoot.NotificationMC.bitmap.scaleY = 200 / 300;
 		}
 		
 		main.GetGeneratorNotification = function() 
@@ -7219,6 +7186,7 @@ if (reversed == null) { reversed = false; }
 		var API_sushiShopData;
 		var API_goldenSushiShopData;
 		var API_skinShopData;
+		var API_achievementData;
 		
 		this.fetchSequentialAPIs = async function()
 		{
@@ -7228,34 +7196,41 @@ if (reversed == null) { reversed = false; }
 		            url: '/generator'
 		        });
 				console.log(API_generatorsData);
-				setProgress(80);
+				setProgress(75);
 			
 				console.log("API.アップグレード取得");
 		        API_upgradesData = await API_Request({
 		            url: '/upgrade'
 		        });
 				console.log(API_upgradesData);
-				setProgress(85);
+				setProgress(80);
 			
 				console.log("API.寿司ショップ取得");
 		        API_sushiShopData = await API_Request({
 		            url: '/market/sushi'
 		        });
 				console.log(API_sushiShopData);
-				setProgress(90);
+				setProgress(85);
 			
 				console.log("API.金寿司ショップ取得");
 		        API_goldenSushiShopData = await API_Request({
 		            url: '/market/golden-sushi'
 		        });
 				console.log(API_goldenSushiShopData);
-				setProgress(95);
+				setProgress(90);
 			
 				console.log("API.Skinショップ取得");
 		        API_skinShopData = await API_Request({
 		            url: '/skin'
 		        });
 				console.log(API_skinShopData);
+				setProgress(95);
+			
+				console.log("API.アチーブメント取得");
+		        API_achievementData = await API_Request({
+		            url: '/achievement'
+		        });
+				console.log(API_achievementData);
 				setProgress(100);
 			
 		    } catch (error) {
@@ -7366,6 +7341,22 @@ if (reversed == null) { reversed = false; }
 			}
 		
 			//////////////////////////////////////////////////////////
+			//アチーブメント
+			for (let i = 0; i < API_achievementData["items"].length; i++)
+			{
+				var	achievement = new Achievement();
+				achievement.id = Number(API_achievementData["items"][i].id);		
+				achievement.name = API_achievementData["items"][i].name;
+				achievement.description = API_achievementData["items"][i].description;
+				achievement.image = API_achievementData["items"][i].imageName;
+				achievement.conditionType = Number(API_achievementData["items"][i].conditionType);	
+				achievement.conditionTargetMstId = Number(API_achievementData["items"][i].conditionTargetMstId);	
+				achievement.conditionThreshold = API_achievementData["items"][i].conditionThreshold;
+				achievement.completed = API_achievementData["items"][i].completed;
+				main.achievements.push(achievement);
+			}
+		
+			//////////////////////////////////////////////////////////
 			//イニシャライズ
 			if (createjs.Touch.isSupported())
 				createjs.Touch.enable(stage);
@@ -7390,9 +7381,6 @@ if (reversed == null) { reversed = false; }
 			
 			hiddenLoadingScreen();
 		}
-		
-		console.log("ログクリア");
-		localStorage.clear();
 		
 		if(API_userData !== undefined)
 			this.Run();
