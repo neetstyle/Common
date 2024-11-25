@@ -5663,17 +5663,14 @@ if (reversed == null) { reversed = false; }
 		{
 		    constructor()
 			{
-				//this.data;
 				this.category = 1;
 				this.clip = null;
 				
-				//this.amount = 0;
 				this.totalSushies = 0;
 				this.storedTotalSps = 0;
 		
 				this.upgrades = [];
 				
-				//this.isNotification = false;		//通知を表示したか
 				this.doddState = 0;					//0:初期、1:表示、2:バッジ表示、3:バッジ削除済み
 				
 				this.available = false;
@@ -5689,7 +5686,6 @@ if (reversed == null) { reversed = false; }
 				
 				this.storedCost = 0;	//計算済み価格
 				this.storedSps = 0;		//ジェネレーター生産量
-				
 		    }
 		
 			CalculateSps = function()
@@ -5719,12 +5715,9 @@ if (reversed == null) { reversed = false; }
 				this.category = 2;
 				this.clip = null;
 				this.achievementClip = null;
-				//this.amount = 0;
 				
-				//this.isNotification = false;
 				this.doddState = 0;
 				this.isAchievementUnread = true;
-				
 				
 				this.available = false;
 				this.availableHasGeneratorCount = 0;
@@ -5805,7 +5798,6 @@ if (reversed == null) { reversed = false; }
 				this.category = 3;
 				this.achievementClip = null;
 		
-				//this.isNotification = false;
 				this.doddState = 0;
 				this.isAchievementUnread = true;
 				
@@ -6423,11 +6415,11 @@ if (reversed == null) { reversed = false; }
 		//Layout
 		//1125 * 2436
 		this.resizeCanvas = function() {
-			if(lib.properties.width / 1125 > 0.5)
+			if(lib.properties.width / 1125 > 0.3)
 			{
-				this.canvasScaleX = 0.5;
+				this.canvasScaleX = 0.3;
 				this.canvasScaleY = lib.properties.height / 2436;
-				this.offsetX = (lib.properties.width - 1125 * 0.5)/2;
+				this.offsetX = (lib.properties.width - 1125 * 0.3)/2;
 			}	
 			else
 			{

@@ -2,7 +2,7 @@
 //var isLoad_generatorData = false;
 //var isLoad_upgradeData = false;
 var isLoad_shopData = false;
-var isLoad_achievementData = false;
+//var isLoad_achievementData = false;
 /*
 var generatorData;
 fetch('generator.json')
@@ -23,7 +23,7 @@ fetch('upgrade.json')
 	CheckInitializationData();
 })
 .catch(error => console.error('Error fetching JSON data:', error));
-*/
+
 var achievementData;
 fetch('achievement.json')
 .then(response => response.json())
@@ -33,7 +33,7 @@ fetch('achievement.json')
 	CheckInitializationData();
 })
 .catch(error => console.error('Error fetching JSON data:', error));
-
+*/
 var shopData;
 fetch('shop.json')
 .then(response => response.json())
@@ -46,7 +46,7 @@ fetch('shop.json')
 
 function CheckInitializationData()
 {
-	if (isLoad_shopData && isLoad_achievementData) {
+	if (isLoad_shopData) {
 	//if (isLoad_generatorData && isLoad_upgradeData && isLoad_shopData && isLoad_achievementData) {
 		isLoad_data = true;
 		checkInitialization();
