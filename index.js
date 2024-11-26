@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[5736,1635,516,176],[5736,1813,516,176],[5736,1227,904,153],[5736,1991,516,176],[7990,1773,148,89],[7873,1773,115,115],[6346,1832,118,66],[5736,2340,1042,889],[5736,2169,754,101],[8043,1136,120,65],[6378,1704,116,126],[6496,1704,116,126],[5736,2272,662,46],[6780,2967,662,46],[6697,0,1042,1191],[0,2438,1125,478],[4609,2346,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[1127,2802,542,104],[7741,1592,374,91],[2167,2759,1039,224],[6254,1704,122,122],[5736,1382,550,251],[6697,1193,1042,1145],[7741,1685,130,229],[7741,0,300,300],[7741,302,300,300],[7741,1208,214,190],[8043,1002,139,132],[7957,1208,214,190],[6504,1382,150,190],[6288,1382,214,190],[7741,1400,214,190],[3208,2888,1125,206],[6466,1832,102,63],[6570,1832,87,70],[7741,604,300,300],[7741,906,300,300],[6590,1574,90,90],[6254,1828,90,90],[2167,2438,1104,319],[4609,1359,1125,985],[1127,2438,1038,362],[6288,1574,300,128],[7873,1685,300,86],[5653,0,1042,1225],[3565,1871,1042,1015],[1671,2802,452,99],[1127,2908,542,104],[7957,1400,150,150],[0,2918,1125,123],[8043,0,50,1000],[6780,2340,1042,625],[8095,0,50,1000]]}
+		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[5736,1815,516,176],[5736,1993,516,176],[5736,1227,904,153],[1127,2802,516,176],[7990,1773,148,89],[7873,1773,115,115],[6346,1832,118,66],[5736,2340,1042,889],[5736,2171,754,101],[8043,1136,120,65],[6380,1704,116,126],[6498,1704,116,126],[5736,2274,662,46],[1127,2980,662,46],[6697,0,1042,1191],[0,2438,1125,478],[4609,2346,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[6780,2967,542,104],[7741,1592,374,91],[5736,1635,518,178],[2167,2759,1039,224],[6256,1704,122,122],[5736,1382,550,251],[6697,1193,1042,1145],[7741,1685,130,229],[7741,0,300,300],[7741,302,300,300],[7741,1208,214,190],[8043,1002,139,132],[7957,1208,214,190],[6504,1382,150,190],[6288,1382,214,190],[7741,1400,214,190],[3208,2888,1125,206],[6466,1832,102,63],[6570,1832,87,70],[7741,604,300,300],[7741,906,300,300],[6590,1574,90,90],[6254,1828,90,90],[2167,2438,1104,319],[4609,1359,1125,985],[1127,2438,1038,362],[6288,1574,300,128],[7873,1685,300,86],[5653,0,1042,1225],[3565,1871,1042,1015],[1645,2802,452,99],[7324,2967,542,104],[7957,1400,150,150],[0,2918,1125,123],[8043,0,50,1000],[6780,2340,1042,625],[8095,0,50,1000]]}
 ];
 
 
@@ -188,240 +188,247 @@ lib.ssMetadata = [
 
 
 
-(lib.cell_bg1 = function() {
+(lib.button_false = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(23);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.close = function() {
+(lib.cell_bg1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(24);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.footerBG2 = function() {
+(lib.close = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(25);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.generator_bg = function() {
+(lib.footerBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(26);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.header2 = function() {
+(lib.generator_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(27);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_golden = function() {
+(lib.header2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_sushi = function() {
+(lib.icon_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_achievement_button = function() {
+(lib.icon_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_config_button = function() {
+(lib.menu_achievement_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_generator_button = function() {
+(lib.menu_config_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_invite = function() {
+(lib.menu_generator_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_shop_button = function() {
+(lib.menu_invite = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_upgrade_button = function() {
+(lib.menu_shop_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.messageBG = function() {
+(lib.menu_upgrade_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_golden = function() {
+(lib.messageBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_sushi = function() {
+(lib.mini_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not = function() {
+(lib.mini_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not2 = function() {
+(lib.not = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification1 = function() {
+(lib.not2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(41);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification2 = function() {
+(lib.notification1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(42);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.NotificationBG = function() {
+(lib.notification2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(43);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.panel = function() {
+(lib.NotificationBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(44);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_bg = function() {
+(lib.panel = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(45);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label2 = function() {
+(lib.shop_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label3 = function() {
+(lib.shop_label2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_skin_bg = function() {
+(lib.shop_label3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_sushi_bg = function() {
+(lib.shop_skin_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(49);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTile2 = function() {
+(lib.shop_sushi_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(50);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTitle = function() {
+(lib.subTile2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(51);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.sushiMini = function() {
+(lib.subTitle = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.title = function() {
+(lib.sushiMini = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(53);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.underBG2 = function() {
+(lib.title = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(54);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.upgrade_bg = function() {
+(lib.underBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(55);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.upperBG2 = function() {
+(lib.upgrade_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(56);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.upperBG2 = function() {
+	this.initialize(ss["index_atlas_1"]);
+	this.gotoAndStop(57);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -581,22 +588,22 @@ if (reversed == null) { reversed = false; }
 	this.price.parent = this;
 	this.price.setTransform(301.05,28);
 
-	this.timeline.addTween(cjs.Tween.get(this.price).wait(19).to({color:"#C5253A"},0).wait(20).to({x:258,y:36,text:"このスキンを使う",font:"60px 'Potta One'",color:"#FFFFFF",lineHeight:88.9,lineWidth:512},0).wait(19).to({x:344.05,y:28,text:"スキン使用中！",font:"70px 'Potta One'",color:"#C5253A",lineHeight:103.35,lineWidth:490},0).wait(21));
+	this.timeline.addTween(cjs.Tween.get(this.price).wait(19).to({color:"#C5253A"},0).wait(20).to({x:258,y:36,text:"Use",font:"60px 'Potta One'",color:"#FFFFFF",lineHeight:88.9,lineWidth:512},0).wait(19).to({text:"Remove"},0).wait(21));
 
 	// BG
 	this.instance = new lib._2();
 
 	this.instance_1 = new lib._4();
 
-	this.instance_2 = new lib._5();
-	this.instance_2.setTransform(-18,16);
+	this.instance_2 = new lib.button_false();
+	this.instance_2.setTransform(0,0,0.9961,0.9888);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},39).to({state:[{t:this.instance_2}]},19).wait(21));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-18,0,609.2,176);
+p.nominalBounds = new cjs.Rectangle(0,0,516,176);
 
 
 (lib.ShopType3ButtonMC = function(mode,startPosition,loop,reversed) {
@@ -749,16 +756,16 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// レイヤー_1
+	// レイヤー_2
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#C5253A").ss(10,1,1).p("EhRLgcNMCiXAAAMAAAA4bMiiXAAAg");
+	this.shape.graphics.f().s("#C5253A").ss(20,1,1).p("EhNRgcNMCajAAAQBnAABJBJQBKBKAABnMAAAAwnQAABnhKBJQhJBKhnAAMiajAAAQhoAAhJhKQhJhJAAhnMAAAgwnQAAhnBJhKQBJhJBoAAg");
 	this.shape.setTransform(519.6,180.55);
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopActiveMC, new cjs.Rectangle(-5,-5,1049.2,371.1), null);
+}).prototype = getMCSymbolPrototype(lib.ShopActiveMC, new cjs.Rectangle(-10,-10,1059.2,381.1), null);
 
 
 (lib.NotificationMC = function(mode,startPosition,loop,reversed) {
@@ -1759,6 +1766,29 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.RadiationMC, new cjs.Rectangle(-244,-244,2923.1,2923.1), null);
 
 
+(lib.AchievementUpgradeActiveMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// レイヤー_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#C5253A").ss(20,1,1).p("AvnvnIfPAAIAAfPI/PAAg");
+	this.shape.setTransform(100,100);
+
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.AchievementUpgradeActiveMC, new cjs.Rectangle(-10,-10,220,220), null);
+
+
 (lib.AchievementSubTitleMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -1816,14 +1846,14 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#C5253A").ss(10,1,1).p("AxGxGMAiNAAAMAAAAiNMgiNAAAg");
-	this.shape.setTransform(109.5,109.5);
+	this.shape.graphics.f().s("#C5253A").ss(20,1,1).p("AgEwbIOMIUIALQbIuIIIIudoIIAAwbg");
+	this.shape.setTransform(108.45,110.1);
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementActiveMC, new cjs.Rectangle(-5,-5,229,229), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementActiveMC, new cjs.Rectangle(7,-5,202.9,230.3), null);
 
 
 (lib.UpgradeCellMC = function(mode,startPosition,loop,reversed) {
@@ -2018,14 +2048,6 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).wait(30));
 
-	// Active
-	this.ShopActiveMC = new lib.ShopActiveMC();
-	this.ShopActiveMC.name = "ShopActiveMC";
-	this.ShopActiveMC.setTransform(592,203,1,1,0,0,0,550,205.5);
-	this.ShopActiveMC._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.ShopActiveMC).wait(9).to({_off:false},0).wait(21));
-
 	// Purchased
 	this.instance = new lib._5();
 	this.instance.setTransform(945,30);
@@ -2082,10 +2104,18 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(30));
 
+	// Active
+	this.ShopActiveMC = new lib.ShopActiveMC();
+	this.ShopActiveMC.name = "ShopActiveMC";
+	this.ShopActiveMC.setTransform(592,203,1,1,0,0,0,550,205.5);
+	this.ShopActiveMC._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.ShopActiveMC).wait(9).to({_off:false},0).wait(21));
+
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(37,-7.5,1049.2,371.1);
+p.nominalBounds = new cjs.Rectangle(32,-12.5,1059.2,381.1);
 
 
 (lib.ShopCell2MC = function(mode,startPosition,loop,reversed) {
@@ -3927,12 +3957,12 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// Icon_Button
-	this.IconButtonMC = new lib.ButtonMC();
-	this.IconButtonMC.name = "IconButtonMC";
-	this.IconButtonMC.setTransform(0.4,0.4,1.9998,1.9999,0,0,0,0.2,0.2);
+	// Dodd
+	this.DoddMC = new lib.DoddMC();
+	this.DoddMC.name = "DoddMC";
+	this.DoddMC.setTransform(178,25.55,1,1,0,0,0,45,45);
 
-	this.timeline.addTween(cjs.Tween.get(this.IconButtonMC).to({_off:true},9).wait(11));
+	this.timeline.addTween(cjs.Tween.get(this.DoddMC).to({_off:true},9).wait(11));
 
 	// hatena
 	this.instance = new lib.not2();
@@ -3941,26 +3971,12 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(9).to({_off:false},0).wait(11));
 
-	// Active
-	this.AchievementActiveMC = new lib.AchievementActiveMC();
-	this.AchievementActiveMC.name = "AchievementActiveMC";
-	this.AchievementActiveMC.setTransform(100,100,0.9133,0.9132,0,0,0,109.5,109.5);
-
-	this.timeline.addTween(cjs.Tween.get(this.AchievementActiveMC).to({_off:true},9).wait(11));
-
 	// BG_Button
 	this.ButtonMC = new lib.ButtonMC();
 	this.ButtonMC.name = "ButtonMC";
 	this.ButtonMC.setTransform(0,0,1.9998,1.9998);
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).to({_off:true},9).wait(11));
-
-	// Dodd
-	this.DoddMC = new lib.DoddMC();
-	this.DoddMC.name = "DoddMC";
-	this.DoddMC.setTransform(178,25.55,1,1,0,0,0,45,45);
-
-	this.timeline.addTween(cjs.Tween.get(this.DoddMC).to({_off:true},9).wait(11));
 
 	// Icon
 	this.IconMC = new lib.IconMC();
@@ -3969,10 +3985,24 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.IconMC).to({_off:true},9).wait(11));
 
+	// UpgradeActive
+	this.AchievementUpgradeActiveMC = new lib.AchievementUpgradeActiveMC();
+	this.AchievementUpgradeActiveMC.name = "AchievementUpgradeActiveMC";
+	this.AchievementUpgradeActiveMC.setTransform(108.5,110.1,1,1,0,0,0,108.5,110.1);
+
+	this.timeline.addTween(cjs.Tween.get(this.AchievementUpgradeActiveMC).to({_off:true},9).wait(11));
+
+	// Active
+	this.AchievementActiveMC = new lib.AchievementActiveMC();
+	this.AchievementActiveMC.name = "AchievementActiveMC";
+	this.AchievementActiveMC.setTransform(99,99,0.9133,0.9132,0,0,0,109.5,109.5);
+
+	this.timeline.addTween(cjs.Tween.get(this.AchievementActiveMC).to({_off:true},9).wait(11));
+
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-4.5,-19.4,227.5,224);
+p.nominalBounds = new cjs.Rectangle(-10,-19.4,233,229.4);
 
 
 (lib.UpgradeContentMC = function(mode,startPosition,loop,reversed) {
@@ -4070,15 +4100,6 @@ if (reversed == null) { reversed = false; }
 				this.removeChild(this.bitmap);
 				this.bitmap == null;
 			}
-		/*
-			//アイコン生成
-			this.bitmap = new createjs.Bitmap("images/Icon/" + this.obj.dir + "/" + this.obj.data["icon"] + ".png");
-			this.addChild(this.bitmap);
-			this.bitmap.x = 50;
-			this.bitmap.y = 190;
-			this.bitmap.scaleX = 209 / this.bitmap.image.width;
-			this.bitmap.scaleY = 209 / this.bitmap.image.height;
-		*/
 		
 			this.title_O.text = this.obj.name;
 			//this.desciption.text = this.obj.data["desciption"];
@@ -4124,6 +4145,13 @@ if (reversed == null) { reversed = false; }
 						this.ShopType3ButtonMC.gotoAndStop("Active");
 						this.ShopType3ButtonMC.price.text = this.obj.data["price"].toLocaleString();
 					}
+					//アイコン生成
+					this.bitmap = new createjs.Bitmap("images/shop/" + this.obj.data["icon"] + ".webp");
+					this.addChild(this.bitmap);
+					this.bitmap.x = 360;
+					this.bitmap.y = 228;
+					this.bitmap.scaleX = 1;
+					this.bitmap.scaleY = 1;	
 					break;
 				case 4:
 					this.description.text = this.obj.description;
@@ -4149,10 +4177,10 @@ if (reversed == null) { reversed = false; }
 					//アイコン生成
 					this.bitmap = new createjs.Bitmap("images/shop/shopitem_" + this.obj.id.toString().padStart(2, '0') + ".webp");
 					this.addChild(this.bitmap);
-					this.bitmap.x = 50;
-					this.bitmap.y = 190;
-					this.bitmap.scaleX = 209 / 300;
-					this.bitmap.scaleY = 209 / 300;		
+					this.bitmap.x = 360;
+					this.bitmap.y = 228;
+					this.bitmap.scaleX = 1;
+					this.bitmap.scaleY = 1;	
 					break;
 			}
 		}
@@ -4288,6 +4316,8 @@ if (reversed == null) { reversed = false; }
 			//所持している場合
 			if(this.obj.posession)
 			{
+				this.parent.Mask3MC.visible = true;
+				
 				//設定している場合
 				if(main.skinId == this.obj.id)
 				{
@@ -4316,6 +4346,7 @@ if (reversed == null) { reversed = false; }
 					main.skinShops[i].clip.ShopActiveMC.visible = (main.skinShops[i].id == main.skinId) ? true: false;
 				}
 				main.SetSkin();	
+				this.parent.Mask3MC.visible = false;
 				this.Close();
 				return;
 			}
@@ -5183,12 +5214,12 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));
 				
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/shop/" + shop.data["icon"] + ".png");
+				let bitmap = new createjs.Bitmap("images/shop/" + shop.data["icon"] + ".webp");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
-				bitmap.scaleX = 160 / 209;
-				bitmap.scaleY = 160 / 209;
+				bitmap.scaleX = 160 / 300;
+				bitmap.scaleY = 160 / 300;
 				bitmap.mouseEnabled = false;		
 				if(shop.isPurchase)
 					clip.gotoAndStop("Used");
@@ -5256,12 +5287,30 @@ if (reversed == null) { reversed = false; }
 		
 		this.Reset = function() 
 		{
+			for (let i = 0; i < main.goldenSushiShops.length; i++)
+			{
+				this.ContentMC.removeChild(main.goldenSushiShops[i].clip);
+				main.goldenSushiShops[i].clip = null;
+			}
+			
+			for (let i = 0; i < main.sushiShops.length; i++)
+			{
+				this.ContentMC.removeChild(main.sushiShops[i].clip);
+				main.sushiShops[i].clip = null;
+			}
+		
 			for (let i = 0; i < main.shops.length; i++)
 			{
-				let shop = main.shops[i];
-				this.ContentMC.removeChild(shop.clip);
-				shop.clip = null;
+				this.ContentMC.removeChild(main.shops[i].clip);
+				main.shops[i].clip = null;
 			}
+		
+			for (let i = 0; i < main.skinShops.length; i++)
+			{
+				this.ContentMC.removeChild(main.skinShops[i].clip);
+				main.skinShops[i].clip = null;
+			}
+		
 			this.Create();
 		}
 		
@@ -5584,15 +5633,22 @@ if (reversed == null) { reversed = false; }
 				for (let i = 0; i < main.achievements.length; i++)
 				{
 					main.achievements[i].achievementClip.AchievementActiveMC.visible = false;
+					main.achievements[i].achievementClip.AchievementUpgradeActiveMC.visible = false;
 				}
 		
 				for (let i = 0; i < main.upgrades.length; i++)
 				{
 					if(main.upgrades[i].achievementClip == null) continue;
+					{
 						main.upgrades[i].achievementClip.AchievementActiveMC.visible = false;
+						main.upgrades[i].achievementClip.AchievementUpgradeActiveMC.visible = false;
+					}
 				}
 		
-				data.achievementClip.AchievementActiveMC.visible = true;
+				if(data.category == 2)
+					data.achievementClip.AchievementUpgradeActiveMC.visible = true;
+				else
+					data.achievementClip.AchievementActiveMC.visible = true;
 			}
 		}
 		
@@ -5618,11 +5674,10 @@ if (reversed == null) { reversed = false; }
 				clip.x = 80 + 250 * (upgradeCount % 4);
 				clip.y = posY + 250 * Math.floor(upgradeCount / 4);
 				
-				clip.IconButtonMC.addEventListener("click", function() {
+				clip.ButtonMC.addEventListener("click", function() {
 					this.OpenDesciption.call(this, upgrade);
 				}.bind(this));
 				
-				//let bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + upgrade.id.toString().padStart(2, '0') + ".webp");	
 				let bitmap = new createjs.Bitmap("images/upgrade/upgrade_" + upgrade.image + ".webp");	
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
@@ -5634,6 +5689,7 @@ if (reversed == null) { reversed = false; }
 				clip.gotoAndStop("Active");
 				clip.DoddMC.visible =  upgrade.isAchievementUnread;
 				clip.AchievementActiveMC.visible = false;
+				clip.AchievementUpgradeActiveMC.visible = false;
 				upgradeCount++;
 			}
 		
@@ -5660,7 +5716,7 @@ if (reversed == null) { reversed = false; }
 				clip.x = 80 + 250 * (i % 4);
 				clip.y = posY + 250 * Math.floor(i / 4);
 		
-				clip.IconButtonMC.addEventListener("click", function() {
+				clip.ButtonMC.addEventListener("click", function() {
 					this.OpenDesciption.call(this, achievement);
 				}.bind(this));
 				
@@ -5684,6 +5740,7 @@ if (reversed == null) { reversed = false; }
 				}
 				clip.DoddMC.visible =  achievement.isAchievementUnread;
 				clip.AchievementActiveMC.visible = false;
+				clip.AchievementUpgradeActiveMC.visible = false;
 			}
 		
 			this.ContentMC.AchievementTitleMC.title.text = "Achievement";
@@ -6647,6 +6704,11 @@ if (reversed == null) { reversed = false; }
 			this.ShopPanelMC.x = this.offsetX;
 			this.AchievementPanelMC.x = this.offsetX;
 			this.DebugPanelMC.x = this.offsetX;
+			
+			this.NotificationMC.scaleX = this.canvasScaleX;
+			this.NotificationMC.scaleY = this.canvasScaleX;
+			this.NotificationMC.x = this.offsetX;
+			this.NotificationMC.y = this.canvasScaleY;
 		}
 		window.addEventListener('resize', this.resizeCanvas.bind(this));	
 		this.resizeCanvas();
@@ -7218,11 +7280,6 @@ if (reversed == null) { reversed = false; }
 		this.NotificationMC.bitmap = null;
 		exportRoot.NotificationMC.visible = false;
 		
-		this.NotificationMC.scaleX = this.canvasScaleX;
-		this.NotificationMC.scaleY = this.canvasScaleX;
-		this.NotificationMC.x = this.offsetX;
-		this.NotificationMC.y = 0 * this.canvasScaleY;
-		
 		main.AddNotification = function(messsage, image)
 		{
 			var notification = new Notification();
@@ -7246,13 +7303,16 @@ if (reversed == null) { reversed = false; }
 		
 		main.CreateNotification = function()
 		{
+			
 			exportRoot.NotificationMC.visible = true;
-			exportRoot.NotificationMC.x = this.offsetX;
+			exportRoot.NotificationMC.x = exportRoot.offsetX;
 			exportRoot.NotificationMC.y = -300 * exportRoot.canvasScaleY;
 			exportRoot.NotificationMC.alpha = 1;
-			
+			exportRoot.NotificationMC.scaleX = exportRoot.canvasScaleX;
+			exportRoot.NotificationMC.scaleY = exportRoot.canvasScaleX;	
+		
 			createjs.Tween.get(exportRoot.NotificationMC, { override: true })
-				.to({ y : 0}, 500, createjs.Ease.quadOut)//quadOut quadIn
+				.to({ y : 0 }, 500, createjs.Ease.quadOut)//quadOut quadIn
 				.wait(1500)
 				.to({ alpha: 0 }, 500, createjs.Ease.linear)
 				.call(() => {
