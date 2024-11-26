@@ -2194,6 +2194,180 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.ShopCell1MC, new cjs.Rectangle(-4,0,304,431), null);
 
 
+(lib.PendingDesciptionMC = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.resizeCanvas = function() {
+			this.scaleX = this.parent.canvasScaleX;
+			this.scaleY = this.parent.canvasScaleX;
+			this.x = lib.properties.width / 2;
+			this.y = lib.properties.height / 2;
+		}
+		window.addEventListener('resize', this.resizeCanvas.bind(this));	
+		this.resizeCanvas();
+		this.visible = false;
+		
+		this.obj;
+		
+		this.stop();
+		
+		this.Close = function()
+		{
+			this.parent.MaskMC.removeEventListener("click", this._mask);
+			this.parent.MaskMC.visible = false;
+			
+			createjs.Tween.get(this, { override: true })
+			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
+			.call(() => {
+				this.visible = false;
+		    });	
+			main.PlaySE("popup");
+		} 
+		
+		this.Open = function(_obj)
+		{
+			this.obj = _obj;
+			
+			this.visible = true;
+			this.scaleX = 0;
+			this.scaleY = 0;
+			
+			this._mask = this.parent.MaskMC.addEventListener("click", this.Mask.bind(this));
+			this.parent.MaskMC.visible = true;	
+			
+			createjs.Tween.get(this, { override: true })
+			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
+		
+			main.PlaySE("popup");
+		
+			this.amount.text = "×" + FormatNumber1(_obj.amount, 1, 2);
+		}
+		
+		this.Mask = function(){} 
+		
+		this.Received = async function()
+		{
+			this.parent.Mask3MC.visible = true;
+			
+			if(main.sushiAdd > 0)
+			{
+				console.log("API.クリックで得た寿司を保存");
+				await API_Request({
+					url: '/sushi/add',
+					method: 'POST',
+					maxAttempts: 3,
+					data: {
+						amount: main.sushiAdd
+					}
+				});	
+				main.sushiAdd = 0;
+			}
+		
+		    try {
+				console.log("API.未受取の寿司を受け取る");
+				var data = await API_Request({
+					url: '/sushi/pending/' + this.obj.id + '/receive',
+					method: 'POST',
+					maxAttempts: 3
+				});
+		    } catch (error) {
+				main.log(error.message);
+				this.parent.MessageMC.Open("通信エラー");
+				this.parent.Mask3MC.visible = false;
+				this.Close();
+				return;
+		    }
+		
+			this.obj.receive = true;
+		
+			console.log("API.自身のユーザー情報を得る");
+			API_userData = await API_Request({
+				url: '/user/me',
+				maxAttempts: 3
+			});
+			
+			main.sushi = Number(API_userData["user"].currentSushiCount);
+			main.totalSushi = Number(API_userData["user"].totalSushiCount);
+			main.SushiDisplayUdates();
+			this.parent.Mask3MC.visible = false;
+			this.Close();
+		
+			main.CheckPending();
+		} 
+		this.ReceiveduttonMC.addEventListener("click", this.Received.bind(this));
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
+	// Text
+	this.instance = new lib._4_1();
+	this.instance.setTransform(213,404);
+
+	this.amount = new cjs.Text("×100 Million", "70px 'Potta One'", "#C5253A");
+	this.amount.name = "amount";
+	this.amount.lineHeight = 101;
+	this.amount.parent = this;
+	this.amount.setTransform(418.4,392.35);
+
+	this.instance_1 = new lib._3();
+	this.instance_1.setTransform(63,368);
+
+	this.title = new cjs.Text("回収する", "50px 'Potta One'");
+	this.title.name = "title";
+	this.title.textAlign = "center";
+	this.title.lineHeight = 72;
+	this.title.lineWidth = 1038;
+	this.title.parent = this;
+	this.title.setTransform(521,681.95);
+
+	this.title_1 = new cjs.Text("ロボによる寿司を獲得しました！", "50px 'Potta One'");
+	this.title_1.name = "title_1";
+	this.title_1.textAlign = "center";
+	this.title_1.lineHeight = 72;
+	this.title_1.lineWidth = 1038;
+	this.title_1.parent = this;
+	this.title_1.setTransform(521,130);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.title_1},{t:this.title},{t:this.instance_1},{t:this.amount},{t:this.instance}]}).wait(1));
+
+	// Button
+	this.ReceiveduttonMC = new lib.ButtonMC();
+	this.ReceiveduttonMC.name = "ReceiveduttonMC";
+	this.ReceiveduttonMC.setTransform(521,718.2,4.9999,1.7,0,0,0,49.5,50.1);
+
+	this.timeline.addTween(cjs.Tween.get(this.ReceiveduttonMC).wait(1));
+
+	// BG
+	this.instance_2 = new lib._2_1();
+	this.instance_2.setTransform(263,637);
+
+	this.instance_3 = new lib._6();
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_3},{t:this.instance_2}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.PendingDesciptionMC, new cjs.Rectangle(0,0,1042,889), null);
+
+
 (lib.SushiMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -5812,6 +5986,16 @@ if (reversed == null) { reversed = false; }
 		    }
 		}
 		
+		class Pending
+		{
+		    constructor()
+			{
+				this.id = "";
+				this.amount = 0;
+				this.receive = false;
+		    }
+		}
+		
 		class Notification
 		{
 		    constructor()
@@ -5878,7 +6062,10 @@ if (reversed == null) { reversed = false; }
 				//実績
 				this.achievements = [];
 				this.achievementNotificationNum = 0;
-				
+				//////////////////////////////////////////////////////////
+				//ペンディング
+				this.pendings = [];
+			
 				//////////////////////////////////////////////////////////
 				//Tick
 				this.fps1LastTickTime = 0;
@@ -7033,7 +7220,7 @@ if (reversed == null) { reversed = false; }
 		
 		this.NotificationMC.scaleX = this.canvasScaleX;
 		this.NotificationMC.scaleY = this.canvasScaleX;
-		this.NotificationMC.x = 0;
+		this.NotificationMC.x = this.offsetX;
 		this.NotificationMC.y = 0 * this.canvasScaleY;
 		
 		main.AddNotification = function(messsage, image)
@@ -7060,11 +7247,12 @@ if (reversed == null) { reversed = false; }
 		main.CreateNotification = function()
 		{
 			exportRoot.NotificationMC.visible = true;
+			exportRoot.NotificationMC.x = this.offsetX;
 			exportRoot.NotificationMC.y = -300 * exportRoot.canvasScaleY;
 			exportRoot.NotificationMC.alpha = 1;
 			
 			createjs.Tween.get(exportRoot.NotificationMC, { override: true })
-				.to({ x: 0, y : 0}, 500, createjs.Ease.quadOut)//quadOut quadIn
+				.to({ y : 0}, 500, createjs.Ease.quadOut)//quadOut quadIn
 				.wait(1500)
 				.to({ alpha: 0 }, 500, createjs.Ease.linear)
 				.call(() => {
@@ -7171,6 +7359,25 @@ if (reversed == null) { reversed = false; }
 			localStorage.setItem('ug', array.join(","));
 		}
 		//////////////////////////////////////////////////////////
+		//Pending
+		exportRoot.PendingDesciptionMC.visible = false;
+		
+		this.PendingDesciptionMC.scaleX = this.canvasScaleX;
+		this.PendingDesciptionMC.scaleY = this.canvasScaleX;
+		this.PendingDesciptionMC.x = this.offsetX;
+		this.PendingDesciptionMC.y = 0 * this.canvasScaleY;
+		
+		main.CheckPending = function() 
+		{
+			for (let i = 0; i < this.pendings.length; i++)
+			{
+				var pending = this.pendings[i];
+				if(pending.receive == true) continue;
+				exportRoot.PendingDesciptionMC.Open(pending);
+				break;
+			}	
+		}
+		//////////////////////////////////////////////////////////
 		//Init
 		//var API_userData;
 		var API_generatorsData;
@@ -7179,6 +7386,7 @@ if (reversed == null) { reversed = false; }
 		var API_goldenSushiShopData;
 		var API_skinShopData;
 		var API_achievementData;
+		var API_pendingData;
 		
 		this.fetchSequentialAPIs = async function()
 		{
@@ -7223,6 +7431,13 @@ if (reversed == null) { reversed = false; }
 		            url: '/achievement'
 		        });
 				console.log(API_achievementData);
+				setProgress(100);
+			
+				console.log("API.ペンディング取得");
+		        API_pendingData = await API_Request({
+		            url: '/sushi/pending'
+		        });
+				console.log(API_pendingData);
 				setProgress(100);
 			
 		    } catch (error) {
@@ -7349,6 +7564,16 @@ if (reversed == null) { reversed = false; }
 			}
 		
 			//////////////////////////////////////////////////////////
+			//ペンディング
+			for (let i = 0; i < API_pendingData["items"].length; i++)
+			{
+				var	pending = new Pending();
+				pending.id = API_pendingData["items"][i].id;
+				pending.amount = Number(API_pendingData["items"][i].amount);
+				main.pendings.push(pending);
+			}
+		
+			//////////////////////////////////////////////////////////
 			//イニシャライズ
 			if (createjs.Touch.isSupported())
 				createjs.Touch.enable(stage);
@@ -7372,6 +7597,8 @@ if (reversed == null) { reversed = false; }
 			this.LodingMC.visible = false;
 			
 			hiddenLoadingScreen();
+			
+			main.CheckPending();			//ペンディングの表示
 		}
 		
 		if(API_userData !== undefined)
@@ -7432,6 +7659,10 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.Mask2MC).wait(1));
 
 	// Desciption
+	this.PendingDesciptionMC = new lib.PendingDesciptionMC();
+	this.PendingDesciptionMC.name = "PendingDesciptionMC";
+	this.PendingDesciptionMC.setTransform(-26.4,-1840.45,1,1,0,0,0,521,444.5);
+
 	this.ConfigDesciptionMC = new lib.ConfigDesciptionMC();
 	this.ConfigDesciptionMC.name = "ConfigDesciptionMC";
 	this.ConfigDesciptionMC.setTransform(1672.4,-1819.4,1,1,0,0,0,521,595.5);
@@ -7460,7 +7691,7 @@ if (reversed == null) { reversed = false; }
 	this.GeneratorDesciptionMC.name = "GeneratorDesciptionMC";
 	this.GeneratorDesciptionMC.setTransform(-2453.7,185.2,1,1,0,0,0,522,572.5);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.ShopDesciptionMC},{t:this.AchievementDesciptionMC},{t:this.InviteDesciptionMC},{t:this.InviteRewardDesciptionMC},{t:this.ConfigDesciptionMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.ShopDesciptionMC},{t:this.AchievementDesciptionMC},{t:this.InviteDesciptionMC},{t:this.InviteRewardDesciptionMC},{t:this.ConfigDesciptionMC},{t:this.PendingDesciptionMC}]}).wait(1));
 
 	// Mask
 	this.MaskMC = new lib.MaskMC();
