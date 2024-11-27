@@ -7739,13 +7739,6 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.SushiEffectMC},{t:this.instance}]}).wait(1));
 
-	// Side
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#000000").s().p("ECopE6sMAAApw/MHUwAAAMAAAJw/gEp9YE2UMAAApw+MHUwAAAMAAAJw+g");
-	this.shape.setTransform(563.25,1470.1);
-
-	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
-
 	// Message
 	this.MessageMC = new lib.MessageMC();
 	this.MessageMC.name = "MessageMC";
@@ -7875,7 +7868,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(-2953.5,-1241.9,7596,9957.6);
+p.nominalBounds = new cjs.Rectangle(-2636.9,-1241.9,6132.6,9957.6);
 // library properties:
 lib.properties = {
 	id: '969C0F3DFF839440AC4059700CCE57F9',
