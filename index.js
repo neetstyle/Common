@@ -975,16 +975,27 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// Image
-	this.text = new cjs.Text("×10", "60px 'Potta One'", "#C5253A");
-	this.text.lineHeight = 87;
-	this.text.parent = this;
-	this.text.setTransform(738.6,38);
+	// レイヤー_2
+	this.ammount = new cjs.Text("×10", "60px 'Potta One'", "#C5253A");
+	this.ammount.name = "ammount";
+	this.ammount.lineHeight = 87;
+	this.ammount.parent = this;
+	this.ammount.setTransform(738.6,38);
 
+	this.timeline.addTween(cjs.Tween.get(this.ammount).to({_off:true},9).wait(11));
+
+	// Image
 	this.instance = new lib._5_1();
 	this.instance.setTransform(598,45);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.text,p:{x:738.6,y:38,text:"×10",font:"60px 'Potta One'",color:"#C5253A",textAlign:"",lineHeight:86.9,lineWidth:108}}]}).to({state:[{t:this.text,p:{x:708.2,y:42.1,text:"受け取り済み",font:"50px 'Potta One'",color:"#000000",textAlign:"center",lineHeight:72.4,lineWidth:300}}]},9).wait(11));
+	this.invitationState = new cjs.Text("受け取り済み", "50px 'Potta One'");
+	this.invitationState.name = "invitationState";
+	this.invitationState.textAlign = "center";
+	this.invitationState.lineHeight = 72;
+	this.invitationState.parent = this;
+	this.invitationState.setTransform(708.2,42.1);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.invitationState}]},9).wait(11));
 
 	// Text
 	this.title = new cjs.Text("1人招待する", "50px 'Potta One'");
@@ -2725,13 +2736,7 @@ if (reversed == null) { reversed = false; }
 		}
 		window.addEventListener('resize', this.resizeCanvas.bind(this));	
 		this.resizeCanvas();
-		this.bitmap = null;
 		this.visible = false;
-		
-		this.InviteList1MC.title.text = "1人招待する";
-		this.InviteList2MC.title.text = "5人招待する";
-		this.InviteList3MC.title.text = "10人招待する";
-		this.InviteList4MC.title.text = "50人招待する";
 		
 		this.Close = function()
 		{
@@ -2747,7 +2752,11 @@ if (reversed == null) { reversed = false; }
 		} 
 		this.CloseButtonMC.addEventListener("click", this.Close.bind(this));
 		
-		this.Open = function()
+		this.InviteListMC.visible = false;
+		this.clips =[];
+		this.isInit = false;
+		
+		this.Open = async function()
 		{
 			this.visible = true;
 			this.scaleX = 0;
@@ -2761,27 +2770,45 @@ if (reversed == null) { reversed = false; }
 		
 			main.PlaySE("popup");
 		
-			this.invitationCount.text = main.invitationCount;
+			//古いクリップの削除
+			for (let i = 0; i < this.clips.length; i++)
+			{
+				this.removeChild(this.clips[i]);
+				this.clips[i] = null;
+			}
+			this.clips =[];
 		
-			if(main.invitationState < 1)
-				this.InviteList1MC.gotoAndStop("NotAcquisition");
-			else
-				this.InviteList1MC.gotoAndStop("Acquisition");
+			console.log("API.リファラル");
+			API_referralData = await API_Request({
+				url: '/user/referral-status	'
+			});
+			console.log(API_referralData);
 		
-			if(main.invitationState < 2)
-				this.InviteList2MC.gotoAndStop("NotAcquisition");
-			else
-				this.InviteList2MC.gotoAndStop("Acquisition");
+			this.invitationCount.text = API_referralData.totalReferralCount;
+		
+			for (let i = 0; i < API_referralData["rewards"].length; i++)
+			{
+				let clip = new lib.InviteListMC();
+				this.addChild(clip);
+				this.clips.push(clip);
+				clip.x = 69;
+				clip.y = 493  + 170 * i;
+				if(API_referralData["rewards"][i].received)	
+					clip.gotoAndStop("Acquired");
+				else
+					clip.gotoAndStop("NotAcquired");
+				clip.ammount.text = "×" + API_referralData["rewards"][i].sushiAmount;
+				clip.title.text = API_referralData["rewards"][i].invitationCount + "人招待する";
+			}
+		
+			console.log("API.自身のユーザー情報を得る");
+			API_userData = await API_Request({
+				url: '/user/me',
+				maxAttempts: 3
+			});
 			
-			if(main.invitationState < 3)
-				this.InviteList3MC.gotoAndStop("NotAcquisition");
-			else
-				this.InviteList3MC.gotoAndStop("Acquisition");
-			
-			if(main.invitationState < 4)
-				this.InviteList4MC.gotoAndStop("NotAcquisition");
-			else
-				this.InviteList4MC.gotoAndStop("Acquisition");
+			main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
+			main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
 		}
 		
 		this.Mask = function(){} 
@@ -2839,12 +2866,11 @@ if (reversed == null) { reversed = false; }
 		{
 			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
 			{
-				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + Telegram.WebApp.initDataUnsafe.user.id + "&text=寿司を作ろう";
+				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + main.referralCode + "&text=寿司を作ろう";
 				window.location.href = url;
 			}
 			else
 				this.parent.MessageMC.Open("Sorry, only in the Telegram.");	
-		
 		} 
 		this.ShareButtonMC.addEventListener("click", this.Share.bind(this));
 		
@@ -2852,9 +2878,8 @@ if (reversed == null) { reversed = false; }
 		{
 			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
 			{
-				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + Telegram.WebApp.initDataUnsafe.user.id + "&text=寿司を作ろう";
-				navigator.clipboard.writeText(url);
-				Telegram.WebApp.showAlert("招待URLをクリップボードにコピーしました。");	
+				navigator.clipboard.writeText(main.referralCode);
+				Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。");	
 			}
 			else
 				this.parent.MessageMC.Open("Sorry, only in the Telegram.");	
@@ -2890,21 +2915,9 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.CloseButtonMC},{t:this.CopyCodeButtonMC},{t:this.ShareButtonMC}]}).wait(1));
 
 	// Text
-	this.InviteList4MC = new lib.InviteListMC();
-	this.InviteList4MC.name = "InviteList4MC";
-	this.InviteList4MC.setTransform(521,1080.3,1,1,0,0,0,452,76.5);
-
-	this.InviteList3MC = new lib.InviteListMC();
-	this.InviteList3MC.name = "InviteList3MC";
-	this.InviteList3MC.setTransform(521,909.2,1,1,0,0,0,452,76.5);
-
-	this.InviteList2MC = new lib.InviteListMC();
-	this.InviteList2MC.name = "InviteList2MC";
-	this.InviteList2MC.setTransform(521,738.2,1,1,0,0,0,452,76.5);
-
-	this.InviteList1MC = new lib.InviteListMC();
-	this.InviteList1MC.name = "InviteList1MC";
-	this.InviteList1MC.setTransform(521,569.5,1,1,0,0,0,452,76.5);
+	this.InviteListMC = new lib.InviteListMC();
+	this.InviteListMC.name = "InviteListMC";
+	this.InviteListMC.setTransform(521,569.5,1,1,0,0,0,452,76.5);
 
 	this.text_1 = new cjs.Text("招待コードをコピー", "50px 'Potta One'", "#C5253A");
 	this.text_1.textAlign = "center";
@@ -2964,7 +2977,7 @@ if (reversed == null) { reversed = false; }
 	this.invitationCount.parent = this;
 	this.invitationCount.setTransform(815.2,242);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.invitationCount},{t:this.text_3},{t:this.desciption_3},{t:this.desciption_2},{t:this.desciption_1},{t:this.desciption},{t:this.instance},{t:this.text_2},{t:this.text_1},{t:this.InviteList1MC},{t:this.InviteList2MC},{t:this.InviteList3MC},{t:this.InviteList4MC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.invitationCount},{t:this.text_3},{t:this.desciption_3},{t:this.desciption_2},{t:this.desciption_1},{t:this.desciption},{t:this.instance},{t:this.text_2},{t:this.text_1},{t:this.InviteListMC}]}).wait(1));
 
 	// Image
 	this.instance_1 = new lib._3();
@@ -6062,6 +6075,16 @@ if (reversed == null) { reversed = false; }
 		    }
 		}
 		
+		class Rewards
+		{
+		    constructor()
+			{
+				this.id = 0;
+				this.invitationCount = 0;
+				this.received = false;
+		    }
+		}
+		
 		class Main
 		{
 		    constructor()
@@ -6078,8 +6101,8 @@ if (reversed == null) { reversed = false; }
 				this.totalGoldenSushi = 0;	//トータルゴールデン寿司
 				this.priceIncrease = 1.15;	//価格の上昇率
 				this.skinId = 0;			//スキンId
-				this.invitationCount = 49;	//招待数
-				this.invitationState = 0;	//招待報酬 0:未受取、1:1人、2:5人、3:10人、4:50人
+				//this.invitationCount = 49;	//招待数
+				//this.invitationState = 0;	//招待報酬 0:未受取、1:1人、2:5人、3:10人、4:50人
 				this.createdAt = "";		//ゲーム開始日時
 				
 				this.global_multiplier = 1;
@@ -6141,6 +6164,12 @@ if (reversed == null) { reversed = false; }
 				//////////////////////////////////////////////////////////
 				//通知
 				this.notifications = [];
+			
+				//////////////////////////////////////////////////////////
+				//招待
+				//this.rewards = [];
+				//this.totalReferralCount = 0;
+				//this.referralCode = "";	
 			
 				//////////////////////////////////////////////////////////
 				//スキン
@@ -7447,6 +7476,7 @@ if (reversed == null) { reversed = false; }
 		var API_skinShopData;
 		var API_achievementData;
 		var API_pendingData;
+		var API_referralData;
 		
 		this.fetchSequentialAPIs = async function()
 		{
@@ -7456,49 +7486,57 @@ if (reversed == null) { reversed = false; }
 		            url: '/generator'
 		        });
 				console.log(API_generatorsData);
-				setProgress(75);
+				setProgress(65);
 			
 				console.log("API.アップグレード取得");
 		        API_upgradesData = await API_Request({
 		            url: '/upgrade'
 		        });
 				console.log(API_upgradesData);
-				setProgress(80);
+				setProgress(70);
 			
 				console.log("API.寿司ショップ取得");
 		        API_sushiShopData = await API_Request({
 		            url: '/market/sushi'
 		        });
 				console.log(API_sushiShopData);
-				setProgress(85);
+				setProgress(75);
 			
 				console.log("API.金寿司ショップ取得");
 		        API_goldenSushiShopData = await API_Request({
 		            url: '/market/golden-sushi'
 		        });
 				console.log(API_goldenSushiShopData);
-				setProgress(90);
+				setProgress(80);
 			
 				console.log("API.Skinショップ取得");
 		        API_skinShopData = await API_Request({
 		            url: '/skin'
 		        });
 				console.log(API_skinShopData);
-				setProgress(95);
+				setProgress(85);
 			
 				console.log("API.アチーブメント取得");
 		        API_achievementData = await API_Request({
 		            url: '/achievement'
 		        });
 				console.log(API_achievementData);
-				setProgress(100);
+				setProgress(90);
 			
 				console.log("API.ペンディング取得");
 		        API_pendingData = await API_Request({
 		            url: '/sushi/pending'
 		        });
 				console.log(API_pendingData);
+				setProgress(95);
+		/*
+				console.log("API.リファラル");
+		        API_referralData = await API_Request({
+		            url: '/user/referral-status	'
+		        });
+				console.log(API_referralData);
 				setProgress(100);
+		*/
 			
 		    } catch (error) {
 		        console.error("todo:初期データロード", error);
@@ -7632,7 +7670,21 @@ if (reversed == null) { reversed = false; }
 				pending.amount = Number(API_pendingData["items"][i].amount);
 				main.pendings.push(pending);
 			}
-		
+		/*
+			//////////////////////////////////////////////////////////
+			//リファラル
+			main.totalReferralCount = API_referralData["totalReferralCount"];
+			main.referralCode = API_referralData["referralCode"];
+			for (let i = 0; i < API_referralData["rewards"].length; i++)
+			{
+				var	reward = new Rewards();
+				reward.id = API_referralData["rewards"][i].id;
+				reward.invitationCount = Number(API_pendingData["items"][i].invitationCount);
+				reward.sushiAmount = Number(API_pendingData["items"][i].sushiAmount);
+				reward.received = API_pendingData["items"][i]received;
+				main.rewards.push(reward);
+			}
+		*/
 			//////////////////////////////////////////////////////////
 			//イニシャライズ
 			if (createjs.Touch.isSupported())
