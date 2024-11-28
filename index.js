@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[4609,0,1042,1357],[3565,0,1042,1869],[5736,1815,516,176],[5736,1993,516,176],[5736,1227,904,153],[1127,2802,516,176],[7990,1773,148,89],[7873,1773,115,115],[6346,1832,118,66],[5736,2340,1042,889],[5736,2171,754,101],[8043,1136,120,65],[6380,1704,116,126],[6498,1704,116,126],[5736,2274,662,46],[1127,2980,662,46],[6697,0,1042,1191],[0,2438,1125,478],[4609,2346,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[6780,2967,542,104],[7741,1592,374,91],[5736,1635,518,178],[2167,2759,1039,224],[6256,1704,122,122],[5736,1382,550,251],[6697,1193,1042,1145],[7741,1685,130,229],[7741,0,300,300],[7741,302,300,300],[7741,1208,214,190],[8043,1002,139,132],[7957,1208,214,190],[6504,1382,150,190],[6288,1382,214,190],[7741,1400,214,190],[3208,2888,1125,206],[6466,1832,102,63],[6570,1832,87,70],[7741,604,300,300],[7741,906,300,300],[6590,1574,90,90],[6254,1828,90,90],[2167,2438,1104,319],[4609,1359,1125,985],[1127,2438,1038,362],[6288,1574,300,128],[7873,1685,300,86],[5653,0,1042,1225],[3565,1871,1042,1015],[1645,2802,452,99],[7324,2967,542,104],[7957,1400,150,150],[0,2918,1125,123],[8043,0,50,1000],[6780,2340,1042,625],[8095,0,50,1000]]}
+		{name:"index_atlas_1", frames: [[3565,0,1042,1869],[5736,2041,516,176],[3269,2888,516,176],[5736,1453,904,153],[3787,2888,516,176],[6256,1893,148,89],[6440,1853,115,115],[6557,1885,118,66],[5736,2340,1042,889],[5736,2219,754,101],[8043,1136,120,65],[7865,1810,116,126],[7983,1823,116,126],[7234,2967,662,46],[4305,2972,662,46],[6697,0,1042,1191],[1015,2438,1125,478],[0,2438,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[1015,2918,542,104],[6288,1608,374,91],[5736,1861,518,178],[5653,1227,1039,224],[7741,1810,122,122],[5736,1608,550,251],[6697,1193,1042,1145],[8043,1592,130,229],[7741,0,300,300],[7741,302,300,300],[7741,1208,214,190],[8043,1002,139,132],[7957,1208,214,190],[6288,1701,150,190],[7741,1400,214,190],[7957,1400,214,190],[2142,2802,1125,206],[7741,1934,102,63],[8101,1823,87,70],[7741,604,300,300],[7741,906,300,300],[6592,1701,90,90],[6592,1793,90,90],[4609,2526,1104,319],[4609,1539,1125,985],[2142,2438,1038,362],[7741,1592,300,128],[7741,1722,300,86],[4609,0,1042,1537],[5653,0,1042,1225],[3565,1871,1042,1015],[6780,2967,452,99],[1559,2918,542,104],[6440,1701,150,150],[4609,2847,1125,123],[8043,0,50,1000],[6780,2340,1042,625],[8095,0,50,1000]]}
 ];
 
 
@@ -34,336 +34,336 @@ lib.ssMetadata = [
 
 
 
-(lib._1_1 = function() {
+(lib._2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._2 = function() {
+(lib._2_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._2_1 = function() {
+(lib._3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._3 = function() {
+(lib._4 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._4 = function() {
+(lib._4_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._4_1 = function() {
+(lib._5 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._5 = function() {
+(lib._5_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._5_1 = function() {
+(lib._6 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._6 = function() {
+(lib._7 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._7 = function() {
+(lib.a1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a1 = function() {
+(lib.a2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a2 = function() {
+(lib.a3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a3 = function() {
+(lib.a4 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(13);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a4 = function() {
+(lib.a5 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(14);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a5 = function() {
+(lib.a6 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(15);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a6 = function() {
+(lib.achievementDesciption = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(16);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementDesciption = function() {
+(lib.achievementDetailBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(17);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementDetailBG = function() {
+(lib.bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(18);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg = function() {
+(lib.bg1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(19);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg1 = function() {
+(lib.bg1_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(20);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg1_1 = function() {
+(lib.bg2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(21);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg2 = function() {
+(lib.button_false = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(22);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.button_false = function() {
+(lib.cell_bg1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(23);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.cell_bg1 = function() {
+(lib.close = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(24);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.close = function() {
+(lib.footerBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(25);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.footerBG2 = function() {
+(lib.generator_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(26);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.generator_bg = function() {
+(lib.header2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(27);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.header2 = function() {
+(lib.icon_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_golden = function() {
+(lib.icon_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_sushi = function() {
+(lib.menu_achievement_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_achievement_button = function() {
+(lib.menu_config_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_config_button = function() {
+(lib.menu_generator_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_generator_button = function() {
+(lib.menu_invite = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_invite = function() {
+(lib.menu_shop_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_shop_button = function() {
+(lib.menu_upgrade_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_upgrade_button = function() {
+(lib.messageBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.messageBG = function() {
+(lib.mini_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_golden = function() {
+(lib.mini_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_sushi = function() {
+(lib.not = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not = function() {
+(lib.not2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not2 = function() {
+(lib.notification1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(41);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification1 = function() {
+(lib.notification2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(42);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification2 = function() {
+(lib.NotificationBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(43);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.NotificationBG = function() {
+(lib.panel = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(44);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.panel = function() {
+(lib.shop_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(45);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_bg = function() {
+(lib.shop_label2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label2 = function() {
+(lib.shop_label3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label3 = function() {
+(lib.shop_roboto_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
@@ -3002,7 +3002,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape},{t:this.instance_5},{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1}]}).wait(1));
 
 	// BG
-	this.instance_6 = new lib._1_1();
+	this.instance_6 = new lib._1();
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_6).wait(1));
 
@@ -4053,7 +4053,7 @@ if (reversed == null) { reversed = false; }
 	var props = new Object();
 	props.mode = mode;
 	props.startPosition = startPosition;
-	props.labels = {"type1":9,"type2":19,"type4":30,"type3":40};
+	props.labels = {"type1":9,"type2":19,"type3":30,"type4":41};
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
@@ -4115,8 +4115,6 @@ if (reversed == null) { reversed = false; }
 			}
 		
 			this.title_O.text = this.obj.name;
-			//this.desciption.text = this.obj.data["desciption"];
-			this.description.text = "Todo:ショップのdescriptionが欲しいです";
 			SetWrapText(this.desciption);
 			this.gotoAndStop("type" + this.obj.type);
 			
@@ -4141,25 +4139,24 @@ if (reversed == null) { reversed = false; }
 					}
 					break;
 				case 3:
-					this.detail.text = this.obj.data["detail"];
+					this.description.text = this.obj.description;
 					SetWrapText(this.detail);
-					if(this.obj.isPurchase)
+					if(this.obj.posession)
 					{
 						this.ShopType3ButtonMC.gotoAndStop("Selected");	
 					}
-					else if(this.obj.data.price > main.goldenSushi)
+					else if(this.obj.priceGolden > main.goldenSushi)
 					{
 						this.ShopType3ButtonMC.gotoAndStop("Shortage");
-						//this.ShopType3ButtonMC.price.text = this.obj.data["price"] + "(所持" + main.goldenSushi + ")";
-						this.ShopType3ButtonMC.price.text = this.obj.data["price"].toLocaleString();
+						this.ShopType3ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
 					}
 					else
 					{
 						this.ShopType3ButtonMC.gotoAndStop("Active");
-						this.ShopType3ButtonMC.price.text = this.obj.data["price"].toLocaleString();
+						this.ShopType3ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
 					}
 					//アイコン生成
-					this.bitmap = new createjs.Bitmap("images/shop/" + this.obj.data["icon"] + ".webp");
+					this.bitmap = new createjs.Bitmap("images/shop/robo" + this.obj.id + ".webp");
 					this.addChild(this.bitmap);
 					this.bitmap.x = 360;
 					this.bitmap.y = 228;
@@ -4307,19 +4304,47 @@ if (reversed == null) { reversed = false; }
 		} 
 		this.ShopType2ButtonMC.addEventListener("click", this.SubmitType2.bind(this));
 		
-		this.SubmitType3 = function()
+		this.SubmitType3 = async function()
 		{
-			if(this.obj.data.price > main.goldenSushi)
+			if(this.obj.posession)
+				return;
+					
+			if(this.obj.goldenSushi > main.goldenSushi)
 				return;
 			
-			//todo
-			if(this.obj.isPurchase)
+			this.parent.Mask3MC.visible = true;
+		
+		    try {
+				console.log("API.ロボットを購入");
+				await API_Request({
+					url: '/robot/' + this.obj.id + '/purchase',
+					method: 'POST',
+					maxAttempts: 3,
+				});
+		    } catch (error) {
+				this.parent.MessageMC.Open("購入に失敗しました");
+				this.parent.Mask3MC.visible = false;
+				this.Close();
 				return;
+		    }
 			
-			this.obj.isPurchase = true;
+			this.obj.posession = true;
 			this.obj.clip.ShopActiveMC.visible = true;
 			this.obj.clip.gotoAndStop("Used");
-			this.parent.MessageMC.Open( this.obj.data.name + "を入手しました");	
+		
+			console.log("API.自身のユーザー情報を得る");
+			API_userData = await API_Request({
+				url: '/user/me',
+				maxAttempts: 3
+			});
+			
+			main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
+			main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
+			this.parent.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
+		
+			this.parent.MessageMC.Open( this.obj.name + "を受け取りました");
+		
+			this.parent.Mask3MC.visible = false;
 			this.Close();
 		} 
 		this.ShopType3ButtonMC.addEventListener("click", this.SubmitType3.bind(this));
@@ -4435,32 +4460,38 @@ if (reversed == null) { reversed = false; }
 	this.ShopType2ButtonMC.name = "ShopType2ButtonMC";
 	this.ShopType2ButtonMC.setTransform(517,821,1,1,0,0,0,258,88);
 
+	this.ShopType3ButtonMC = new lib.ShopType3ButtonMC();
+	this.ShopType3ButtonMC.name = "ShopType3ButtonMC";
+	this.ShopType3ButtonMC.setTransform(517,1392,1,1,0,0,0,258,88);
+
 	this.ShopType4ButtonMC = new lib.ShopType4ButtonMC();
 	this.ShopType4ButtonMC.name = "ShopType4ButtonMC";
 	this.ShopType4ButtonMC.setTransform(517,1041,1,1,0,0,0,258,88);
 
-	this.ShopType3ButtonMC = new lib.ShopType3ButtonMC();
-	this.ShopType3ButtonMC.name = "ShopType3ButtonMC";
-	this.ShopType3ButtonMC.setTransform(517,1178,1,1,0,0,0,258,88);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.ShopType1ButtonMC}]},9).to({state:[{t:this.ShopType2ButtonMC}]},10).to({state:[{t:this.ShopType4ButtonMC}]},11).to({state:[{t:this.ShopType3ButtonMC}]},10).wait(11));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.ShopType1ButtonMC}]},9).to({state:[{t:this.ShopType2ButtonMC}]},10).to({state:[{t:this.ShopType3ButtonMC}]},11).to({state:[{t:this.ShopType4ButtonMC}]},11).wait(10));
 
 	// Text_desciption
-	this.description = new cjs.Text("1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少", "40px 'Potta One'");
+	this.description = new cjs.Text("1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少", "40px 'Potta One'", "#723826");
 	this.description.name = "description";
 	this.description.lineHeight = 60;
 	this.description.lineWidth = 910;
 	this.description.parent = this;
-	this.description.setTransform(68.05,634.7);
+	this.description.setTransform(68.05,568.7);
 
-	this.detail = new cjs.Text("1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少\n最大24時間稼働します", "40px 'Potta One'");
+	this.text = new cjs.Text("performance", "40px 'Potta One'", "#FFFFFF");
+	this.text.lineHeight = 58;
+	this.text.lineWidth = 273;
+	this.text.parent = this;
+	this.text.setTransform(90.15,738.7);
+
+	this.detail = new cjs.Text("1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少\n最大24時間稼働します", "40px 'Potta One'", "#723826");
 	this.detail.name = "detail";
 	this.detail.lineHeight = 60;
 	this.detail.lineWidth = 910;
 	this.detail.parent = this;
-	this.detail.setTransform(68.05,748.2);
+	this.detail.setTransform(68.05,834.2);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.description,p:{x:68.05,y:634.7,text:"1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少",font:"40px 'Potta One'",color:"#000000",lineHeight:59.9,lineWidth:910}}]},30).to({state:[{t:this.detail},{t:this.description,p:{x:102.15,y:642.7,text:"性能",font:"60px 'Potta One'",color:"#FFFFFF",lineHeight:86.9,lineWidth:120}}]},10).wait(11));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.detail},{t:this.text},{t:this.description,p:{y:568.7}}]},30).to({state:[{t:this.description,p:{y:634.7}}]},11).wait(10));
 
 	// Text_title
 	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
@@ -4489,21 +4520,21 @@ if (reversed == null) { reversed = false; }
 	this.desciption.parent = this;
 	this.desciption.setTransform(521,77);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}},{t:this.description_1,p:{text:"Would you line to buy Golden Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},9).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}},{t:this.description_1,p:{text:"Would you line to buy Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},10).to({state:[{t:this.desciption,p:{y:814.4,text:"Would you line to purchase this Skin?",font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}},{t:this.description_1,p:{text:"Skin",y:71,font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}}]},11).to({state:[]},10).wait(11));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Golden Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},9).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},10).to({state:[{t:this.desciption,p:{y:81,text:"offline production upgrade",font:"50px 'Potta One'",lineHeight:72.4,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to purchase this Item?",y:1182.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},11).to({state:[{t:this.desciption,p:{y:814.4,text:"Would you line to purchase this Skin?",font:"50px 'Potta One'",lineHeight:72.4,color:"#000000"}},{t:this.description_1,p:{text:"Skin",y:71,font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}}]},11).wait(10));
 
 	// BG
 	this.instance = new lib.shop_sushi_bg();
 
-	this.instance_1 = new lib.shop_skin_bg();
+	this.instance_1 = new lib.shop_roboto_bg();
 
-	this.instance_2 = new lib._1();
+	this.instance_2 = new lib.shop_skin_bg();
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},30).to({state:[{t:this.instance_2}]},10).wait(11));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},30).to({state:[{t:this.instance_2}]},11).wait(10));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,-45,1089,1402);
+p.nominalBounds = new cjs.Rectangle(0,-45,1089,1582);
 
 
 (lib.ShopContentMC = function(mode,startPosition,loop,reversed) {
@@ -5197,26 +5228,25 @@ if (reversed == null) { reversed = false; }
 			posY += 420 * Math.ceil(sushiCount / 3);
 		
 			//////////////////////////////////////
-			//Robo
+			//Robot
 			posY += 30;
 			this.ContentMC.RoboTitleMC.y = posY;
 			this.ContentMC.RoboTitleMC.title.text = "Item";
 			posY += 130;
 		
 			let roboCount = 0; 
-			for (let i = 0; i < main.shops.length; i++)
+			for (let i = 0; i < main.robotShops.length; i++)
 			{
-				if(main.shops[i].data.type != 3) continue;
-				let shop = main.shops[i];
+				let shop = main.robotShops[i];
 				
 				let clip = new lib.ShopCell3MC();
 				this.ContentMC.addChild(clip);
-				clip.ShopActiveMC.visible = (shop.data.id == main.skinId) ? true: false;
-				//clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");		
-				clip.title.text = shop.data.name;
-				//clip.price_O = new Outline(lib, clip.price, 5, "#C5253A", "#FFFFFF");		
-				clip.price.text = shop.data.price.toLocaleString();
-				clip.description.text = shop.data.description;
+				clip.ShopActiveMC.visible = shop.posession;
+			
+				clip.title.text = shop.name;
+				clip.price.text = shop.priceGolden.toLocaleString();
+				clip.description.text = shop.description;
+				
 				SetWrapText(clip.description);
 				shop.clip = clip;
 				clip.x = 0;
@@ -5227,14 +5257,14 @@ if (reversed == null) { reversed = false; }
 				}.bind(this));
 				
 				//アイコン生成
-				let bitmap = new createjs.Bitmap("images/shop/" + shop.data["icon"] + ".webp");
+				let bitmap = new createjs.Bitmap("images/shop/robo" + shop.id + ".webp");
 				clip.IconMC.addChild(bitmap);
 				bitmap.x = 0;
 				bitmap.y = 0;
 				bitmap.scaleX = 160 / 300;
 				bitmap.scaleY = 160 / 300;
 				bitmap.mouseEnabled = false;		
-				if(shop.isPurchase)
+				if(shop.posession)
 					clip.gotoAndStop("Used");
 				else
 					clip.gotoAndStop("Active");
@@ -5312,16 +5342,16 @@ if (reversed == null) { reversed = false; }
 				main.sushiShops[i].clip = null;
 			}
 		
-			for (let i = 0; i < main.shops.length; i++)
-			{
-				this.ContentMC.removeChild(main.shops[i].clip);
-				main.shops[i].clip = null;
-			}
-		
 			for (let i = 0; i < main.skinShops.length; i++)
 			{
 				this.ContentMC.removeChild(main.skinShops[i].clip);
 				main.skinShops[i].clip = null;
+			}
+		
+			for (let i = 0; i < main.robotShops.length; i++)
+			{
+				this.ContentMC.removeChild(main.robotShops[i].clip);
+				main.robotShops[i].clip = null;
 			}
 		
 			this.Create();
@@ -5980,17 +6010,6 @@ if (reversed == null) { reversed = false; }
 		    }
 		}
 		
-		class Shop
-		{
-		    constructor()
-			{
-				this.data;
-				this.category = 4;
-				this.clip = null;
-				this.isPurchase = false;//購入済みか
-		    }
-		}
-		
 		class GoldenSushiShop
 		{
 		    constructor()
@@ -6031,6 +6050,20 @@ if (reversed == null) { reversed = false; }
 				this.price = 0;
 				this.posession = false;
 				this.type = 4;
+		    }
+		}
+		
+		class RobotShop
+		{
+		    constructor()
+			{
+				this.clip = null;
+				this.id = 0;
+				this.name = "";
+				this.description = "";
+				this.priceGolden = 0;
+				this.posession = false;
+				this.type = 3;
 		    }
 		}
 		
@@ -6125,19 +6158,13 @@ if (reversed == null) { reversed = false; }
 				this.generatorNum = 0;
 				//this.generatorNotification = false;
 				//////////////////////////////////////////////////////////
-				//ショップ
-				this.shops = [];
-				for (var i = 0; i < shopData.length; i++)
-				{
-					var	shop = new Shop();
-					shop.data = shopData[i];	
-					this.shops.push(shop);
-				}
 				//////////////////////////////////////////////////////////
 				//ショップ
 				this.sushiShops = [];
 				this.goldenSushiShops = [];
 				this.skinShops = [];
+				this.robotShops = [];
+			
 				//////////////////////////////////////////////////////////
 				//実績
 				this.achievements = [];
@@ -7474,6 +7501,7 @@ if (reversed == null) { reversed = false; }
 		var API_sushiShopData;
 		var API_goldenSushiShopData;
 		var API_skinShopData;
+		var API_robotShopData;
 		var API_achievementData;
 		var API_pendingData;
 		var API_referralData;
@@ -7516,19 +7544,26 @@ if (reversed == null) { reversed = false; }
 				console.log(API_skinShopData);
 				setProgress(85);
 			
+				console.log("API.ロボット取得");
+		        API_robotShopData = await API_Request({
+		            url: '/robot	'
+		        });
+				console.log(API_robotShopData);
+				setProgress(90);	
+			
 				console.log("API.アチーブメント取得");
 		        API_achievementData = await API_Request({
 		            url: '/achievement'
 		        });
 				console.log(API_achievementData);
-				setProgress(90);
+				setProgress(95);
 			
 				console.log("API.ペンディング取得");
 		        API_pendingData = await API_Request({
 		            url: '/sushi/pending'
 		        });
 				console.log(API_pendingData);
-				setProgress(95);
+				setProgress(100);
 		/*
 				console.log("API.リファラル");
 		        API_referralData = await API_Request({
@@ -7537,7 +7572,6 @@ if (reversed == null) { reversed = false; }
 				console.log(API_referralData);
 				setProgress(100);
 		*/
-			
 		    } catch (error) {
 		        console.error("todo:初期データロード", error);
 		    }
@@ -7646,6 +7680,19 @@ if (reversed == null) { reversed = false; }
 			}
 		
 			//////////////////////////////////////////////////////////
+			//Robotショップ
+			for (let i = 0; i < API_robotShopData["items"].length; i++)
+			{
+				var	robot = new RobotShop();
+				robot.id = API_robotShopData["items"][i].id;
+				robot.name = API_robotShopData["items"][i].name;
+				robot.description = API_robotShopData["items"][i].description;
+				robot.priceGolden = Number(API_robotShopData["items"][i].priceGolden);
+				robot.posession = API_robotShopData["items"][i].posession;
+				main.robotShops.push(robot);
+			}
+		
+			//////////////////////////////////////////////////////////
 			//アチーブメント
 			for (let i = 0; i < API_achievementData["items"].length; i++)
 			{
@@ -7685,6 +7732,7 @@ if (reversed == null) { reversed = false; }
 				main.rewards.push(reward);
 			}
 		*/
+		
 			//////////////////////////////////////////////////////////
 			//イニシャライズ
 			if (createjs.Touch.isSupported())
