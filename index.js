@@ -3599,7 +3599,7 @@ if (reversed == null) { reversed = false; }
 		this.Save = async function()
 		{
 			main.SushiUpdate();
-			exportRoot.MessageMC.Open("セーブ完了");
+			exportRoot.MessageMC.Open("Save Complete.");
 			
 		} 
 		this.SaveButtonMC.addEventListener("click", this.Save.bind(this));
@@ -6442,7 +6442,7 @@ if (reversed == null) { reversed = false; }
 					main.SushiDisplayUdates();
 				
 					exportRoot.Mask3MC.visible = false;
-					exportRoot.MessageMC.Open( "通信エラーです");
+					exportRoot.MessageMC.Open("Communication Error.");
 			}
 		
 		}
@@ -6530,7 +6530,7 @@ if (reversed == null) { reversed = false; }
 				this.RebuildStore();	
 			
 				exportRoot.Mask3MC.visible = false;
-				exportRoot.MessageMC.Open( "通信エラーです");
+				exportRoot.MessageMC.Open("Communication Error.");
 			}
 		}
 		
