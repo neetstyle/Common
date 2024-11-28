@@ -626,7 +626,7 @@ if (reversed == null) { reversed = false; }
 	this.price.parent = this;
 	this.price.setTransform(301.05,28);
 
-	this.timeline.addTween(cjs.Tween.get(this.price).wait(19).to({color:"#C5253A"},0).wait(20).to({x:298.05,text:"使用中",lineWidth:210},0).wait(21));
+	this.timeline.addTween(cjs.Tween.get(this.price).wait(19).to({color:"#C5253A"},0).wait(20).to({x:306.05,y:24,text:"Active",lineWidth:240},0).wait(21));
 
 	// BG
 	this.instance = new lib._2();
@@ -998,7 +998,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.invitationState}]},9).wait(11));
 
 	// Text
-	this.title = new cjs.Text("1人招待する", "50px 'Potta One'");
+	this.title = new cjs.Text("Invite 1 Friend", "50px 'Potta One'");
 	this.title.name = "title";
 	this.title.lineHeight = 72;
 	this.title.lineWidth = 519;
@@ -1131,19 +1131,19 @@ if (reversed == null) { reversed = false; }
 		this._Tick;
 		this.Tick = function(event)
 		{
-			var text1 = "各[x]が毎秒[y]Sushi生産";
+			var text1 = "Each [x] produces [y]S Sushi per second";
 			this.desciption1.text = 
 				text1.replace("[x]", this.obj.name)
 				.replace("[y]", FormatNumber(Accuracy(this.obj.storedTotalSps), 1, 0));
 			
-			var text2 = "[x][y]が毎秒[z]Sushi生産(合計SpSの[w]%)";
+			var text2 = "[x] [y] produces [z] Sushi per second ([w]% of total SpS)";
 			this.desciption2.text = 
 				text2.replace("[x]", this.obj.posession)
 				.replace("[y]", this.obj.name)
 				.replace("[z]", FormatNumber(Accuracy(this.obj.storedTotalSps * this.obj.posession), 1, 2))
 				.replace("[w]", this.ratio.toFixed(1));
 			
-			var text3 = "これまで[x]Sushi生産";
+			var text3 = "[x] Sushi produced so far";
 			this.desciption3.text = text3.replace("[x]", FormatNumber(Math.floor(this.obj.totalSushies), 1, 0));
 		
 			SetWrapText(this.desciption1);
@@ -1724,13 +1724,13 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.instance = new lib.upperBG2();
-	this.instance.setTransform(-700,0,49.9999,1);
+	this.instance.setTransform(-1452,0,80.0002,1);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpperBGMC, new cjs.Rectangle(-700,0,2500,1000), null);
+}).prototype = getMCSymbolPrototype(lib.UpperBGMC, new cjs.Rectangle(-1452,0,4000,1000), null);
 
 
 (lib.UnderBGMC = function(mode,startPosition,loop,reversed) {
@@ -1746,13 +1746,13 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.instance = new lib.underBG2();
-	this.instance.setTransform(-711,-491,50,1);
+	this.instance.setTransform(-1591,-491,80.0003,1);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UnderBGMC, new cjs.Rectangle(-711,-491,2500,1000), null);
+}).prototype = getMCSymbolPrototype(lib.UnderBGMC, new cjs.Rectangle(-1591,-491,4000,1000), null);
 
 
 (lib.RadiationMC = function(mode,startPosition,loop,reversed) {
@@ -2371,7 +2371,7 @@ if (reversed == null) { reversed = false; }
 	this.instance_1 = new lib._3();
 	this.instance_1.setTransform(63,368);
 
-	this.title = new cjs.Text("回収する", "50px 'Potta One'");
+	this.title = new cjs.Text("Collect", "50px 'Potta One'", "#FFFFFF");
 	this.title.name = "title";
 	this.title.textAlign = "center";
 	this.title.lineHeight = 72;
@@ -2379,7 +2379,7 @@ if (reversed == null) { reversed = false; }
 	this.title.parent = this;
 	this.title.setTransform(521,681.95);
 
-	this.title_1 = new cjs.Text("ロボによる寿司を獲得しました！", "50px 'Potta One'");
+	this.title_1 = new cjs.Text("The sushi robot has made sushi", "50px 'Potta One'");
 	this.title_1.name = "title_1";
 	this.title_1.textAlign = "center";
 	this.title_1.lineHeight = 72;
@@ -2798,7 +2798,7 @@ if (reversed == null) { reversed = false; }
 				else
 					clip.gotoAndStop("NotAcquired");
 				clip.ammount.text = "×" + API_referralData["rewards"][i].sushiAmount;
-				clip.title.text = API_referralData["rewards"][i].invitationCount + "人招待する";
+				clip.title.text = "Invite " + API_referralData["rewards"][i].invitationCount + " Friends";
 			}
 		
 			console.log("API.自身のユーザー情報を得る");
@@ -2866,11 +2866,11 @@ if (reversed == null) { reversed = false; }
 		{
 			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
 			{
-				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + main.referralCode + "&text=寿司を作ろう";
+				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + main.referralCode + "&text=Let’s aim to become Sushi Masters together!";
 				window.location.href = url;
 			}
 			else
-				this.parent.MessageMC.Open("Sorry, only in the Telegram.");	
+				this.parent.MessageMC.Open("Sorry, Telegram only.");	
 		} 
 		this.ShareButtonMC.addEventListener("click", this.Share.bind(this));
 		
@@ -2879,10 +2879,10 @@ if (reversed == null) { reversed = false; }
 			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
 			{
 				navigator.clipboard.writeText(main.referralCode);
-				Telegram.WebApp.showAlert("招待コードをクリップボードにコピーしました。");	
+				Telegram.WebApp.showAlert("Invite code copied to clipboard.");	
 			}
 			else
-				this.parent.MessageMC.Open("Sorry, only in the Telegram.");	
+				this.parent.MessageMC.Open("Sorry, Telegram only.");	
 		} 
 		this.CopyCodeButtonMC.addEventListener("click", this.CopyCode.bind(this));
 	}
@@ -2891,9 +2891,9 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// AS
-	this.text = new cjs.Text("ゲームに招待する", "50px 'Potta One'", "#FFFFFF");
+	this.text = new cjs.Text("Invite to the Game", "45px 'Potta One'", "#FFFFFF");
 	this.text.textAlign = "center";
-	this.text.lineHeight = 72;
+	this.text.lineHeight = 65;
 	this.text.parent = this;
 	this.text.setTransform(512.95,1558.8);
 
@@ -2919,13 +2919,13 @@ if (reversed == null) { reversed = false; }
 	this.InviteListMC.name = "InviteListMC";
 	this.InviteListMC.setTransform(521,569.5,1,1,0,0,0,452,76.5);
 
-	this.text_1 = new cjs.Text("招待コードをコピー", "50px 'Potta One'", "#C5253A");
+	this.text_1 = new cjs.Text("Copy Invite Code", "50px 'Potta One'", "#C5253A");
 	this.text_1.textAlign = "center";
 	this.text_1.lineHeight = 72;
 	this.text_1.parent = this;
 	this.text_1.setTransform(624.2,1727);
 
-	this.text_2 = new cjs.Text("または", "50px 'Potta One'");
+	this.text_2 = new cjs.Text("or", "50px 'Potta One'");
 	this.text_2.textAlign = "center";
 	this.text_2.lineHeight = 72;
 	this.text_2.parent = this;
@@ -2934,7 +2934,7 @@ if (reversed == null) { reversed = false; }
 	this.instance = new lib._4_1();
 	this.instance.setTransform(234,1357);
 
-	this.desciption = new cjs.Text("友達の報酬", "50px 'Potta One'", "#FFFFFF");
+	this.desciption = new cjs.Text("Friend Rewards", "50px 'Potta One'", "#FFFFFF");
 	this.desciption.name = "desciption";
 	this.desciption.textAlign = "center";
 	this.desciption.lineHeight = 72;
@@ -2942,7 +2942,7 @@ if (reversed == null) { reversed = false; }
 	this.desciption.parent = this;
 	this.desciption.setTransform(521,1202.1);
 
-	this.desciption_1 = new cjs.Text("あなたの報酬", "50px 'Potta One'", "#FFFFFF");
+	this.desciption_1 = new cjs.Text("Number of people invited", "50px 'Potta One'", "#FFFFFF");
 	this.desciption_1.name = "desciption_1";
 	this.desciption_1.textAlign = "center";
 	this.desciption_1.lineHeight = 72;
@@ -2950,12 +2950,12 @@ if (reversed == null) { reversed = false; }
 	this.desciption_1.parent = this;
 	this.desciption_1.setTransform(521,376.65);
 
-	this.desciption_2 = new cjs.Text("招待した人数", "50px 'Potta One'");
+	this.desciption_2 = new cjs.Text("Number of Invites", "50px 'Potta One'");
 	this.desciption_2.name = "desciption_2";
 	this.desciption_2.textAlign = "center";
 	this.desciption_2.lineHeight = 72;
 	this.desciption_2.parent = this;
-	this.desciption_2.setTransform(406.1,242);
+	this.desciption_2.setTransform(473.85,242);
 
 	this.desciption_3 = new cjs.Text("Invite your friends!", "70px 'Potta One'", "#FFFFFF");
 	this.desciption_3.name = "desciption_3";
@@ -3100,60 +3100,105 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance_1 = new lib.header2();
-	this.instance_1.setTransform(1548,0);
+	this.instance_1.setTransform(-1032,0);
 
 	this.instance_2 = new lib.header2();
-	this.instance_2.setTransform(-129,0);
+	this.instance_2.setTransform(-1161,0);
 
 	this.instance_3 = new lib.header2();
-	this.instance_3.setTransform(-258,0);
+	this.instance_3.setTransform(-1290,0);
 
 	this.instance_4 = new lib.header2();
-	this.instance_4.setTransform(-387,0);
+	this.instance_4.setTransform(-1419,0);
 
 	this.instance_5 = new lib.header2();
-	this.instance_5.setTransform(-516,0);
+	this.instance_5.setTransform(-645,0);
 
 	this.instance_6 = new lib.header2();
-	this.instance_6.setTransform(1419,0);
+	this.instance_6.setTransform(-774,0);
 
 	this.instance_7 = new lib.header2();
-	this.instance_7.setTransform(1290,0);
+	this.instance_7.setTransform(-903,0);
 
 	this.instance_8 = new lib.header2();
-	this.instance_8.setTransform(1161,0);
+	this.instance_8.setTransform(2580,0);
 
 	this.instance_9 = new lib.header2();
-	this.instance_9.setTransform(1032,0);
+	this.instance_9.setTransform(2451,0);
 
 	this.instance_10 = new lib.header2();
-	this.instance_10.setTransform(903,0);
+	this.instance_10.setTransform(2322,0);
 
 	this.instance_11 = new lib.header2();
-	this.instance_11.setTransform(774,0);
+	this.instance_11.setTransform(2193,0);
 
 	this.instance_12 = new lib.header2();
-	this.instance_12.setTransform(645,0);
+	this.instance_12.setTransform(2064,0);
 
 	this.instance_13 = new lib.header2();
-	this.instance_13.setTransform(516,0);
+	this.instance_13.setTransform(1935,0);
 
 	this.instance_14 = new lib.header2();
-	this.instance_14.setTransform(387,0);
+	this.instance_14.setTransform(1806,0);
 
 	this.instance_15 = new lib.header2();
-	this.instance_15.setTransform(258,0);
+	this.instance_15.setTransform(1677,0);
 
 	this.instance_16 = new lib.header2();
-	this.instance_16.setTransform(129,0);
+	this.instance_16.setTransform(1548,0);
 
 	this.instance_17 = new lib.header2();
+	this.instance_17.setTransform(-129,0);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_17},{t:this.instance_16},{t:this.instance_15},{t:this.instance_14},{t:this.instance_13},{t:this.instance_12},{t:this.instance_11},{t:this.instance_10},{t:this.instance_9},{t:this.instance_8},{t:this.instance_7},{t:this.instance_6},{t:this.instance_5},{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1}]}).wait(1));
+	this.instance_18 = new lib.header2();
+	this.instance_18.setTransform(-258,0);
+
+	this.instance_19 = new lib.header2();
+	this.instance_19.setTransform(-387,0);
+
+	this.instance_20 = new lib.header2();
+	this.instance_20.setTransform(-516,0);
+
+	this.instance_21 = new lib.header2();
+	this.instance_21.setTransform(1419,0);
+
+	this.instance_22 = new lib.header2();
+	this.instance_22.setTransform(1290,0);
+
+	this.instance_23 = new lib.header2();
+	this.instance_23.setTransform(1161,0);
+
+	this.instance_24 = new lib.header2();
+	this.instance_24.setTransform(1032,0);
+
+	this.instance_25 = new lib.header2();
+	this.instance_25.setTransform(903,0);
+
+	this.instance_26 = new lib.header2();
+	this.instance_26.setTransform(774,0);
+
+	this.instance_27 = new lib.header2();
+	this.instance_27.setTransform(645,0);
+
+	this.instance_28 = new lib.header2();
+	this.instance_28.setTransform(516,0);
+
+	this.instance_29 = new lib.header2();
+	this.instance_29.setTransform(387,0);
+
+	this.instance_30 = new lib.header2();
+	this.instance_30.setTransform(258,0);
+
+	this.instance_31 = new lib.header2();
+	this.instance_31.setTransform(129,0);
+
+	this.instance_32 = new lib.header2();
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_32},{t:this.instance_31},{t:this.instance_30},{t:this.instance_29},{t:this.instance_28},{t:this.instance_27},{t:this.instance_26},{t:this.instance_25},{t:this.instance_24},{t:this.instance_23},{t:this.instance_22},{t:this.instance_21},{t:this.instance_20},{t:this.instance_19},{t:this.instance_18},{t:this.instance_17},{t:this.instance_16},{t:this.instance_15},{t:this.instance_14},{t:this.instance_13},{t:this.instance_12},{t:this.instance_11},{t:this.instance_10},{t:this.instance_9},{t:this.instance_8},{t:this.instance_7},{t:this.instance_6},{t:this.instance_5},{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(-516,0,2194,1758), null);
+}).prototype = getMCSymbolPrototype(lib.HeaderMC, new cjs.Rectangle(-1419,0,4129,1758), null);
 
 
 (lib.GeneratorCellMC = function(mode,startPosition,loop,reversed) {
@@ -3813,13 +3858,13 @@ if (reversed == null) { reversed = false; }
 	// BG
 	this.RadiationMC = new lib.RadiationMC();
 	this.RadiationMC.name = "RadiationMC";
-	this.RadiationMC.setTransform(563.75,1218,1,1,0,0,0,1218,1218);
+	this.RadiationMC.setTransform(564.25,1218.65,1.3684,1.3684,0,0,0,1217.9,1218);
 
 	this.timeline.addTween(cjs.Tween.get(this.RadiationMC).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-898.2,-243.9,2923.1000000000004,2923), null);
+}).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-1436.2,-781.9,4000,4000), null);
 
 
 (lib.AchievementDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -4140,7 +4185,9 @@ if (reversed == null) { reversed = false; }
 					break;
 				case 3:
 					this.description.text = this.obj.description;
-					SetWrapText(this.detail);
+					SetWrapText(this.description);
+					this.longDescription.text = this.obj.longDescription;
+					SetWrapText(this.longDescription);
 					if(this.obj.posession)
 					{
 						this.ShopType3ButtonMC.gotoAndStop("Selected");	
@@ -4280,7 +4327,7 @@ if (reversed == null) { reversed = false; }
 					maxAttempts: 3,
 				});
 		    } catch (error) {
-				this.parent.MessageMC.Open("購入に失敗しました");
+				this.parent.MessageMC.Open("Purchase Failed.");
 				this.parent.Mask3MC.visible = false;
 				this.Close();
 				return;
@@ -4297,7 +4344,7 @@ if (reversed == null) { reversed = false; }
 			main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
 			this.parent.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
 			main.SushiDisplayUdates();
-			this.parent.MessageMC.Open( this.obj.name + "を受け取りました");
+			this.parent.MessageMC.Open( this.obj.name + " Received.");
 		
 			this.parent.Mask3MC.visible = false;
 			this.Close();
@@ -4322,7 +4369,7 @@ if (reversed == null) { reversed = false; }
 					maxAttempts: 3,
 				});
 		    } catch (error) {
-				this.parent.MessageMC.Open("購入に失敗しました");
+				this.parent.MessageMC.Open("Purchase Failed.");
 				this.parent.Mask3MC.visible = false;
 				this.Close();
 				return;
@@ -4342,7 +4389,7 @@ if (reversed == null) { reversed = false; }
 			main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
 			this.parent.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
 		
-			this.parent.MessageMC.Open( this.obj.name + "を受け取りました");
+			this.parent.MessageMC.Open( this.obj.name + " Received.");
 		
 			this.parent.Mask3MC.visible = false;
 			this.Close();
@@ -4404,7 +4451,7 @@ if (reversed == null) { reversed = false; }
 						maxAttempts: 3,
 					});
 				} catch (error) {
-					this.parent.MessageMC.Open("skinの購入に失敗しました");
+					this.parent.MessageMC.Open("Purchase Failed.");
 					this.parent.Mask3MC.visible = false;
 					this.Close();
 					return;
@@ -4421,7 +4468,7 @@ if (reversed == null) { reversed = false; }
 				this.parent.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
 				this.obj.posession = true;
 				this.obj.clip.gotoAndStop("Purchased");
-				this.parent.MessageMC.Open(this.obj.name + "を入手しました");
+				this.parent.MessageMC.Open(this.obj.name + " Received.");
 				this.parent.Mask3MC.visible = false;
 				this.Close();
 			}
@@ -4484,14 +4531,14 @@ if (reversed == null) { reversed = false; }
 	this.text.parent = this;
 	this.text.setTransform(90.15,738.7);
 
-	this.detail = new cjs.Text("1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少\n最大24時間稼働します", "40px 'Potta One'", "#723826");
-	this.detail.name = "detail";
-	this.detail.lineHeight = 60;
-	this.detail.lineWidth = 910;
-	this.detail.parent = this;
-	this.detail.setTransform(68.05,834.2);
+	this.longDescription = new cjs.Text("1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少\n最大24時間稼働します", "40px 'Potta One'", "#723826");
+	this.longDescription.name = "longDescription";
+	this.longDescription.lineHeight = 60;
+	this.longDescription.lineWidth = 910;
+	this.longDescription.parent = this;
+	this.longDescription.setTransform(68.05,834.2);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.detail},{t:this.text},{t:this.description,p:{y:568.7}}]},30).to({state:[{t:this.description,p:{y:634.7}}]},11).wait(10));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.longDescription},{t:this.text},{t:this.description,p:{y:568.7}}]},30).to({state:[{t:this.description,p:{y:634.7}}]},11).wait(10));
 
 	// Text_title
 	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
@@ -4783,22 +4830,34 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.footerBG2();
-	this.instance.setTransform(-549,-1);
+	this.instance.setTransform(2195,0);
 
 	this.instance_1 = new lib.footerBG2();
-	this.instance_1.setTransform(1098,0);
+	this.instance_1.setTransform(-1647,-1);
 
 	this.instance_2 = new lib.footerBG2();
-	this.instance_2.setTransform(549,0);
+	this.instance_2.setTransform(-1097,-1);
 
 	this.instance_3 = new lib.footerBG2();
-	this.instance_3.setTransform(0,-1);
+	this.instance_3.setTransform(1646,0);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_3},{t:this.instance_2},{t:this.instance_1},{t:this.instance}]}).wait(1));
+	this.instance_4 = new lib.footerBG2();
+	this.instance_4.setTransform(-549,-1);
+
+	this.instance_5 = new lib.footerBG2();
+	this.instance_5.setTransform(1098,0);
+
+	this.instance_6 = new lib.footerBG2();
+	this.instance_6.setTransform(549,0);
+
+	this.instance_7 = new lib.footerBG2();
+	this.instance_7.setTransform(0,-1);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_7},{t:this.instance_6},{t:this.instance_5},{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(-549,-1507,2197,1758), null);
+}).prototype = getMCSymbolPrototype(lib.FooterMC, new cjs.Rectangle(-1647,-1507,4392,1758), null);
 
 
 (lib.AchievementContentMC = function(mode,startPosition,loop,reversed) {
@@ -4813,83 +4872,89 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Text
-	this.detail_totalClick = new cjs.Text("234,432回", "50px 'Potta One'");
+	this.detail_totalClick = new cjs.Text("234,432", "40px 'Potta One'");
 	this.detail_totalClick.name = "detail_totalClick";
 	this.detail_totalClick.textAlign = "right";
-	this.detail_totalClick.lineHeight = 74;
+	this.detail_totalClick.lineHeight = 60;
 	this.detail_totalClick.lineWidth = 496;
 	this.detail_totalClick.parent = this;
-	this.detail_totalClick.setTransform(998,704.35);
+	this.detail_totalClick.setTransform(998,713.35);
 
-	this.detail_touchSps = new cjs.Text("125", "50px 'Potta One'");
+	this.detail_touchSps = new cjs.Text("125", "40px 'Potta One'");
 	this.detail_touchSps.name = "detail_touchSps";
 	this.detail_touchSps.textAlign = "right";
-	this.detail_touchSps.lineHeight = 74;
+	this.detail_touchSps.lineHeight = 60;
 	this.detail_touchSps.lineWidth = 496;
 	this.detail_touchSps.parent = this;
-	this.detail_touchSps.setTransform(998,614.5);
+	this.detail_touchSps.setTransform(998,620.5);
 
-	this.detail_gameStart = new cjs.Text("7日, 1時間前", "50px 'Potta One'");
+	this.detail_gameStart = new cjs.Text("7日, 1時間前", "40px 'Potta One'");
 	this.detail_gameStart.name = "detail_gameStart";
 	this.detail_gameStart.textAlign = "right";
-	this.detail_gameStart.lineHeight = 74;
+	this.detail_gameStart.lineHeight = 60;
 	this.detail_gameStart.lineWidth = 496;
 	this.detail_gameStart.parent = this;
-	this.detail_gameStart.setTransform(998,523.95);
+	this.detail_gameStart.setTransform(998,529.95);
 
-	this.detail_generatorNum = new cjs.Text("23", "50px 'Potta One'");
+	this.detail_generatorNum = new cjs.Text("23", "40px 'Potta One'");
 	this.detail_generatorNum.name = "detail_generatorNum";
 	this.detail_generatorNum.textAlign = "right";
-	this.detail_generatorNum.lineHeight = 74;
+	this.detail_generatorNum.lineHeight = 60;
 	this.detail_generatorNum.lineWidth = 496;
 	this.detail_generatorNum.parent = this;
-	this.detail_generatorNum.setTransform(998,432.65);
+	this.detail_generatorNum.setTransform(998,441.65);
 
-	this.detail_totalSushi = new cjs.Text("5.999 billion", "50px 'Potta One'");
+	this.detail_totalSushi = new cjs.Text("5.999 billion", "40px 'Potta One'");
 	this.detail_totalSushi.name = "detail_totalSushi";
 	this.detail_totalSushi.textAlign = "right";
-	this.detail_totalSushi.lineHeight = 74;
+	this.detail_totalSushi.lineHeight = 60;
 	this.detail_totalSushi.lineWidth = 496;
 	this.detail_totalSushi.parent = this;
-	this.detail_totalSushi.setTransform(998,341.95);
+	this.detail_totalSushi.setTransform(998,352.95);
 
-	this.detail_sushi = new cjs.Text("5.999 billion", "50px 'Potta One'");
+	this.detail_sushi = new cjs.Text("5.999 billion", "40px 'Potta One'");
 	this.detail_sushi.name = "detail_sushi";
 	this.detail_sushi.textAlign = "right";
-	this.detail_sushi.lineHeight = 74;
+	this.detail_sushi.lineHeight = 60;
 	this.detail_sushi.lineWidth = 496;
 	this.detail_sushi.parent = this;
-	this.detail_sushi.setTransform(998,250.7);
+	this.detail_sushi.setTransform(998,260.7);
 
-	this.text = new cjs.Text("タップ", "50px 'Potta One'");
-	this.text.lineHeight = 74;
+	this.text = new cjs.Text("Number of Taps", "40px 'Potta One'");
+	this.text.lineHeight = 60;
+	this.text.lineWidth = 344;
 	this.text.parent = this;
-	this.text.setTransform(182,704.35);
+	this.text.setTransform(182,713.35);
 
-	this.text_1 = new cjs.Text("1タップあたりの寿司提供数", "50px 'Potta One'");
-	this.text_1.lineHeight = 74;
+	this.text_1 = new cjs.Text("Sushi Served Per Tap", "40px 'Potta One'");
+	this.text_1.lineHeight = 60;
+	this.text_1.lineWidth = 473;
 	this.text_1.parent = this;
-	this.text_1.setTransform(182,614.5);
+	this.text_1.setTransform(182,620.5);
 
-	this.text_2 = new cjs.Text("ゲーム開始", "50px 'Potta One'");
-	this.text_2.lineHeight = 74;
+	this.text_2 = new cjs.Text("Start Game", "40px 'Potta One'");
+	this.text_2.lineHeight = 60;
+	this.text_2.lineWidth = 251;
 	this.text_2.parent = this;
-	this.text_2.setTransform(182,523.95);
+	this.text_2.setTransform(182,529.95);
 
-	this.text_3 = new cjs.Text("施設数", "50px 'Potta One'");
-	this.text_3.lineHeight = 74;
+	this.text_3 = new cjs.Text("Number of Facilities", "40px 'Potta One'");
+	this.text_3.lineHeight = 60;
+	this.text_3.lineWidth = 438;
 	this.text_3.parent = this;
-	this.text_3.setTransform(182,432.65);
+	this.text_3.setTransform(182,441.65);
 
-	this.text_4 = new cjs.Text("寿司生産数", "50px 'Potta One'");
-	this.text_4.lineHeight = 74;
+	this.text_4 = new cjs.Text("Sushi Production Count", "35px 'Potta One'");
+	this.text_4.lineHeight = 53;
+	this.text_4.lineWidth = 452;
 	this.text_4.parent = this;
-	this.text_4.setTransform(182,341.95);
+	this.text_4.setTransform(182,356.95);
 
-	this.text_5 = new cjs.Text("提供中の寿司", "50px 'Potta One'");
-	this.text_5.lineHeight = 74;
+	this.text_5 = new cjs.Text("Sushi Being Served", "40px 'Potta One'");
+	this.text_5.lineHeight = 60;
+	this.text_5.lineWidth = 418;
 	this.text_5.parent = this;
-	this.text_5.setTransform(182,250.7);
+	this.text_5.setTransform(182,260.7);
 
 	this.detail = new cjs.Text("Achievement", "70px 'Potta One'", "#FFFFFF");
 	this.detail.name = "detail";
@@ -5376,7 +5441,7 @@ if (reversed == null) { reversed = false; }
 	// AS
 	this.ScrollMC = new lib.ScrollMC();
 	this.ScrollMC.name = "ScrollMC";
-	this.ScrollMC.setTransform(-75,2709.65,1,1,0,0,0,25,25);
+	this.ScrollMC.setTransform(-131,4878.15,1,1,0,0,0,25,25);
 
 	this.timeline.addTween(cjs.Tween.get(this.ScrollMC).wait(1));
 
@@ -5401,11 +5466,14 @@ if (reversed == null) { reversed = false; }
 	// BG
 	this.instance = new lib.bg();
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+	this.instance_1 = new lib.bg();
+	this.instance_1.setTransform(0,4830,1,1,0,180,0);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-100.5,-197,1225.5,2932.2), null);
+}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-156.5,-197,1281.5,5100.7), null);
 
 
 (lib.GeneratorPanelMC = function(mode,startPosition,loop,reversed) {
@@ -5826,13 +5894,13 @@ if (reversed == null) { reversed = false; }
 		    const diffDays = Math.floor(diffHours / 24);
 		
 		    if (diffDays > 0) {
-		        return `${diffDays}日, ${diffHours % 24}時間前`;
+		        return `${diffDays}days, ${diffHours % 24}hours ago`;
 		    } else if (diffHours > 0) {
-		        return `${diffHours}時間, ${diffMinutes % 60}分前`;
+		        return `${diffHours}hours, ${diffMinutes % 60}minutes ago`;
 		    } else if (diffMinutes > 0) {
-		        return `${diffMinutes}分前`;
+		        return `${diffMinutes}minutes ago`;
 		    } else {
-		        return `${diffSeconds}秒前`;
+		        return `${diffSeconds}seconds ago`;
 		    }
 		}
 		
@@ -6061,6 +6129,7 @@ if (reversed == null) { reversed = false; }
 				this.id = 0;
 				this.name = "";
 				this.description = "";
+				this.longDescription = "";
 				this.priceGolden = 0;
 				this.posession = false;
 				this.type = 3;
@@ -7339,7 +7408,7 @@ if (reversed == null) { reversed = false; }
 		main.AddNotification = function(messsage, image)
 		{
 			var notification = new Notification();
-			notification.message = messsage;
+			notification.message = "Achievement Unlocked.\n" + messsage;
 			notification.image = image;
 			
 			this.notifications.push(notification);
@@ -7416,7 +7485,9 @@ if (reversed == null) { reversed = false; }
 				for (let i = 0; i < array1.length; i++)
 				{
 					let array2 = array1[i].split(':');
-					main.GetGenerator(array2[0]).doddState = array2[1];
+					let generator = main.GetGenerator(array2[0]);			
+					if(generator !== undefined)
+						generator.doddState = array2[1];
 				}
 			}
 		}
@@ -7456,7 +7527,10 @@ if (reversed == null) { reversed = false; }
 				for (let i = 0; i < array1.length; i++)
 				{
 					let array2 = array1[i].split(':');
-					 main.GetUpgrade(array2[0]).doddState = array2[1];
+					let upgrade = main.GetUpgrade(array2[0]);			
+					
+					if(upgrade !== undefined)
+						upgrade.doddState = array2[1];
 				}
 			}
 		}
@@ -7687,6 +7761,7 @@ if (reversed == null) { reversed = false; }
 				robot.id = API_robotShopData["items"][i].id;
 				robot.name = API_robotShopData["items"][i].name;
 				robot.description = API_robotShopData["items"][i].description;
+				robot.longDescription = API_robotShopData["items"][i].longDescription;
 				robot.priceGolden = Number(API_robotShopData["items"][i].priceGolden);
 				robot.posession = API_robotShopData["items"][i].posession;
 				main.robotShops.push(robot);

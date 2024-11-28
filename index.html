@@ -64,7 +64,7 @@
 
 	function init_body() {
 		isLoad_html = true
-		document.getElementById("loading_screen_out").style.display = "none";
+		document.getElementById("loading_screen_out").style.display = "block";
 		document.getElementById("registration_out").style.display = "none";
 		document.getElementById("animation_container_out").style.display = "none";
 		checkInitialization();
@@ -112,6 +112,7 @@
 			document.getElementById("loading_screen_out").style.display = "block";
 			init();
 	    } catch (error) {
+	    	document.getElementById("loading_screen_out").style.display = "none";
 	    	document.getElementById("registration_out").style.display = "block";
 	    }
 	}
