@@ -6980,11 +6980,11 @@ if (reversed == null) { reversed = false; }
 				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG3RBmp);
 				this.skinBG3RBmp == null;
 			}
-			if( this.skinBG4RBmp != null)
-			{
-				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4RBmp);
-				this.skinBG4RBmp == null;
-			}
+			//if( this.skinBG4RBmp != null)
+			//{
+			//	exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4RBmp);
+			//	this.skinBG4RBmp == null;
+			//}
 		
 			if( this.skinBG1LBmp != null)
 			{
@@ -7001,11 +7001,11 @@ if (reversed == null) { reversed = false; }
 				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG3LBmp);
 				this.skinBG3LBmp == null;
 			}
-			if( this.skinBG4LBmp != null)
-			{
-				exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4LBmp);
-				this.skinBG4LBmp == null;
-			}
+			//if( this.skinBG4LBmp != null)
+			//{
+			//	exportRoot.BgMC.SushiBGScrollMC.removeChild(this.skinBG4LBmp);
+			//	this.skinBG4LBmp == null;
+			//}
 		
 			if(this.currentScroll == 0)	
 				return;
@@ -7024,10 +7024,10 @@ if (reversed == null) { reversed = false; }
 			this.skinBG3RBmp.y = 1122;
 			this.skinBG3RBmp.x = -1122 /2;
 		
-			this.skinBG4RBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4RBmp);
-			this.skinBG4RBmp.y = 1122 * 2;
-			this.skinBG4RBmp.x = -1122 /2;
+			//this.skinBG4RBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			//exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4RBmp);
+			//this.skinBG4RBmp.y = 1122 * 2;
+			//this.skinBG4RBmp.x = -1122 /2;
 		
 			this.skinBG1LBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
 			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG1LBmp);
@@ -7043,10 +7043,10 @@ if (reversed == null) { reversed = false; }
 			this.skinBG3LBmp.y = 1122;
 			this.skinBG3LBmp.x = 1122 /2;
 		
-			this.skinBG4LBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
-			exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4LBmp);
-			this.skinBG4LBmp.y = 1122 * 2;
-			this.skinBG4LBmp.x = 1122 /2;
+			//this.skinBG4LBmp = new createjs.Bitmap("images/skin/scroll_" + this.skinId.toString().padStart(2, '0') + "_" + this.currentScroll+".webp");
+			//exportRoot.BgMC.SushiBGScrollMC.addChild(this.skinBG4LBmp);
+			//this.skinBG4LBmp.y = 1122 * 2;
+			//this.skinBG4LBmp.x = 1122 /2;
 		
 			console.log("main.CreateBG");
 		}
