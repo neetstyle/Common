@@ -2867,8 +2867,8 @@ if (reversed == null) { reversed = false; }
 		{
 			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
 			{
-				//var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + main.referralCode + "&text=Let’s aim to become Sushi Masters together!";
-				var url = "https://t.me/taro2077_bot?start=" + main.referralCode + "&text=Let’s aim to become Sushi Masters together!";
+				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + main.referralCode + "&text=Let’s aim to become Sushi Masters together!";
+				//var url = "https://t.me/taro2077_bot?start=" + main.referralCode + "&text=Let’s aim to become Sushi Masters together!";
 				window.location.href = url;
 			}
 			else
@@ -2880,6 +2880,9 @@ if (reversed == null) { reversed = false; }
 		{
 			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
 			{
+				
+		alert(main.referralCode)		;
+				
 				navigator.clipboard.writeText(main.referralCode);
 				Telegram.WebApp.showAlert("Invite code copied to clipboard.");	
 			}
