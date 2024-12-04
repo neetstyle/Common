@@ -2904,10 +2904,11 @@ if (reversed == null) { reversed = false; }
 		{
 			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
 			{
+				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + main.referralCode + "&text=Let’s aim to become Sushi Masters together!";
 				if(navigator.clipboard == undefined) {
-				  window.clipboardData.setData('Text', main.referralCode);
+				  window.clipboardData.setData('Text', url);
 				} else {
-				  navigator.clipboard.writeText(main.referralCode);
+				  navigator.clipboard.writeText(url);
 				}
 				Telegram.WebApp.showAlert("Invite code copied to clipboard.");	
 			}
