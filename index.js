@@ -2867,7 +2867,8 @@ if (reversed == null) { reversed = false; }
 		{
 			if(Telegram.WebApp.initDataUnsafe.user !== undefined)
 			{
-				var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + main.referralCode + "&text=Let’s aim to become Sushi Masters together!";
+				//var url = "https://t.me/share/url?url=https://t.me/taro2077_bot?start=" + main.referralCode + "&text=Let’s aim to become Sushi Masters together!";
+				var url = "https://t.me/taro2077_bot?start=" + main.referralCode + "&text=Let’s aim to become Sushi Masters together!";
 				window.location.href = url;
 			}
 			else
@@ -6269,7 +6270,7 @@ if (reversed == null) { reversed = false; }
 				//招待
 				//this.rewards = [];
 				//this.totalReferralCount = 0;
-				//this.referralCode = "";	
+				this.referralCode = "";	
 			
 				//////////////////////////////////////////////////////////
 				//スキン
@@ -7672,6 +7673,7 @@ if (reversed == null) { reversed = false; }
 			main.createdAt = API_userData["user"].createdAt;
 			main.skinId = Number(API_userData["user"].currentSkinMstId);
 			main.totalClickCount = Number(API_userData["user"].totalClickCount);
+			main.referralCode = API_userData["user"].referralCode;
 			
 			//////////////////////////////////////////////////////////
 			//アップグレード
