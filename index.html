@@ -25,22 +25,6 @@
 </style>
 
 <script>
-
-
-let url = new URL(window.location.href);
-let params = url.searchParams;
-alert(params.get('start'));
-
-
-
-
-
-
-
-
-
-
-
 	var isLoad_html = false;
 	var isLoad_webFont = false;
 	var isLoad_anime = false;
@@ -130,6 +114,12 @@ alert(params.get('start'));
 	    } catch (error) {
 	    	document.getElementById("loading_screen_out").style.display = "none";
 	    	document.getElementById("registration_out").style.display = "block";
+
+			let url = new URL(window.location.href);
+			let params = url.searchParams;
+			let referralCode = params.get('start');
+			if(referralCode !== undefined)
+				document.getElementById('invite_code').value = referralCode;
 	    }
 	}
 
@@ -139,8 +129,12 @@ alert(params.get('start'));
 		isRegistration = true;
 
 		document.getElementById('invite_code').blur();
-	    const inviteCodeInput = document.getElementById('invite_code');
-		let referralCode = null;
+	    let referralCode = document.getElementById('invite_code').value;
+
+		const regex = /^[a-zA-Z0-9\-]+$/;
+		if (!regex.test(referralCode))
+		    referralCode = null;
+
 		if(inviteCodeInput.value != "")
 			referralCode = inviteCodeInput.value;
 		try {
@@ -149,7 +143,7 @@ alert(params.get('start'));
 				url: '/user/register',
 				method: 'POST',
 				data: {
-					referralCode: null
+					referralCode: referralCode
 				}
 			});
 		} catch (error) {
