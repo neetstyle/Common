@@ -2453,7 +2453,8 @@ if (reversed == null) { reversed = false; }
 		{
 			var amount = main.touchSps;
 			main.AddSushi(amount);
-			main.totalClick++;
+			main.clickAdd++;
+			main.totalClickCount++;
 			
 			var clip = new lib.DispNumMC();
 			this.parent.addChild(clip);
@@ -5915,7 +5916,7 @@ if (reversed == null) { reversed = false; }
 			this.ContentMC.detail_generatorNum.text = FormatNumber(generatorNum, 1, 0);
 			this.ContentMC.detail_gameStart.text = this.TimeAgo(main.createdAt);
 			this.ContentMC.detail_touchSps.text = FormatNumber(main.touchSps, 1, 0);
-			this.ContentMC.detail_totalClick.text = FormatNumber(main.totalClick, 1, 0);
+			this.ContentMC.detail_totalClick.text = FormatNumber(main.totalClickCount, 1, 0);
 		}
 		
 		this.Open =  function() 
@@ -6198,7 +6199,7 @@ if (reversed == null) { reversed = false; }
 				this.sushiDebt = 0;			//
 				this.fractionSps = 0;		//小数点以下の寿司
 				this.touchSps = 0			//クリック当たりの寿司
-				this.totalClick = 0;		//トータルクリック数
+				//this.totalClick = 0;		//トータルクリック数
 				this.goldenSushi = 0;		//ゴールデン寿司
 				this.totalGoldenSushi = 0;	//トータルゴールデン寿司
 				this.priceIncrease = 1.15;	//価格の上昇率
@@ -6206,6 +6207,9 @@ if (reversed == null) { reversed = false; }
 				//this.invitationCount = 49;	//招待数
 				//this.invitationState = 0;	//招待報酬 0:未受取、1:1人、2:5人、3:10人、4:50人
 				this.createdAt = "";		//ゲーム開始日時
+				
+				this.totalClickCount = 0;	//クリック数
+				this.clickAdd = 0;			//サーバとの差分
 				
 				this.global_multiplier = 1;
 				this.click_cps_boost = 1;
@@ -6244,12 +6248,12 @@ if (reversed == null) { reversed = false; }
 			
 				//////////////////////////////////////////////////////////
 				//Tick
-				this.fps1LastTickTime = 0;
+				//this.fps1LastTickTime = 0;
 				this.fps2LastTickTime = 0;
 				this.fps3LastTickTime = -60;
 				this.fps1Count = 0;
 				this.fps2Count = 0;
-				this.fps3Count = 0;
+				//this.fps3Count = 0;
 				this.bgLastTickTime = 0;
 		
 				//////////////////////////////////////////////////////////
@@ -6628,10 +6632,13 @@ if (reversed == null) { reversed = false; }
 					url: '/sushi/add',
 					method: 'POST',
 					data: {
-						amount: this.sushiAdd
+						amount: this.sushiAdd,
+						clickCount : this.clickAdd,
 					}
 				});	
 				this.sushiAdd = 0;
+				this.clickAdd = 0;
+			
 			} catch (error) {
 				console.error("現在の寿司の更新エラー", error);
 			}
@@ -6639,15 +6646,10 @@ if (reversed == null) { reversed = false; }
 		
 		main.MainTick = function(event)
 		{
-			//todoオフライン時の処理が入ってないよ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-			
+			//毎秒
 			this.fps1Count += event.delta;
 			if (this.fps1Count >= 1000 / 1)
 			{
-				//delta
-				var now = createjs.Ticker.getTime() * 0.001;
-				var delta = now - this.fps1LastTickTime;
-				this.fps1LastTickTime = now;
 				this.fps1Count = 0;
 				
 				this.CalculateGains();
@@ -6657,6 +6659,7 @@ if (reversed == null) { reversed = false; }
 				this.Debug_Memory();
 			}
 			
+			//0.1秒
 			this.fps2Count += event.delta;
 			if (this.fps2Count >= 1000 / 10)
 			{
@@ -6666,17 +6669,20 @@ if (reversed == null) { reversed = false; }
 				this.fps2LastTickTime = now;
 				this.fps2Count = 0;
 				
-				for (var i = 0; i < this.generators.length; i++)
+				if(delta < 10)
 				{
-					this.generators[i].totalSushies += this.generators[i].storedTotalSps * delta;
+					for (var i = 0; i < this.generators.length; i++)
+					{
+						this.generators[i].totalSushies += this.generators[i].storedTotalSps * delta;
+					}
+		
+					var ammount = this.sushiPs * delta + this.fractionSps;
+					this.fractionSps = ammount - Math.floor(ammount);
+					ammount -= this.fractionSps;
+		
+					if(ammount > 0)
+						this.AddSushi(ammount);
 				}
-		
-				var ammount = this.sushiPs * delta + this.fractionSps;
-				this.fractionSps = ammount - Math.floor(ammount);
-				ammount -= this.fractionSps;
-		
-				if(ammount > 0)
-					this.AddSushi(ammount);
 			}
 		
 			{
@@ -6875,14 +6881,15 @@ if (reversed == null) { reversed = false; }
 				return;
 		
 			particle.visible = true;
-			particle.x = Math.random() * 1125;	
-			particle.y = 200;
+			//particle.x = Math.random() * 1125 / exportRoot.canvasScaleX + exportRoot.offsetX;
+			particle.x = (Math.random() * 1125 - exportRoot.offsetX) / exportRoot.canvasScaleX;
+			particle.y = 100;
 			particle.rotation = Math.random() * 360;	
 			particle.alpha = 1;
 			
 			lib.properties.width / 1125;
 			createjs.Tween.get(particle)
-				.to({ y: 2535 * 0.9, rotation : particle.rotation + (0.5 - Math.random()) * 300}, 6000, createjs.Ease.linear)
+				.to({ y: 2535 * 0.9, rotation : particle.rotation + (0.5 - Math.random()) * 300}, 6600, createjs.Ease.linear)
 				.call(() => {
 				particle.visible = false;
 		    });
@@ -7664,6 +7671,7 @@ if (reversed == null) { reversed = false; }
 			main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
 			main.createdAt = API_userData["user"].createdAt;
 			main.skinId = Number(API_userData["user"].currentSkinMstId);
+			main.totalClickCount = Number(API_userData["user"].totalClickCount);
 			
 			//////////////////////////////////////////////////////////
 			//アップグレード
