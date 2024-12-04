@@ -135,8 +135,6 @@
 		if (!regex.test(referralCode))
 		    referralCode = null;
 
-		if(inviteCodeInput.value != "")
-			referralCode = inviteCodeInput.value;
 		try {
 			console.log("API.新規ユーザ登録");
 			await API_Request({
