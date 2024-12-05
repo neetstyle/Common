@@ -2819,8 +2819,9 @@ if (reversed == null) { reversed = false; }
 				this.clips.push(clip);
 				clip.x = 69;
 				clip.y = 493  + 170 * i;
+				
 				if(API_referralData["rewards"][i].received)	
-					clip.gotoAndStop("Acquired");
+					clip.gotoAndStop("Acquisition");
 				else
 					clip.gotoAndStop("NotAcquired");
 				clip.ammount.text = "×" + API_referralData["rewards"][i].sushiAmount;
