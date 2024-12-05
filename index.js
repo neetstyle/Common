@@ -2323,7 +2323,17 @@ if (reversed == null) { reversed = false; }
 		
 			main.PlaySE("popup");
 		
-			this.amount.text = "×" + FormatNumber1(_obj.amount, 1, 2);
+			this.amount.text = "×" + FormatNumber1(this.obj.amount, 1, 2);
+		
+			switch (this.obj.category)
+			{
+				case "robot":
+					this.title.text = "The sushi robot has made sushi";
+					break;
+				case "use_invite_code_reward":
+					this.title.text = "Friend Rewards Earned!";	
+					break;
+			}
 		}
 		
 		this.Mask = function(){} 
@@ -2396,23 +2406,22 @@ if (reversed == null) { reversed = false; }
 	this.instance_1 = new lib._3();
 	this.instance_1.setTransform(63,368);
 
-	this.title = new cjs.Text("Collect", "50px 'Potta One'", "#FFFFFF");
+	this.text = new cjs.Text("Collect", "50px 'Potta One'", "#FFFFFF");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 72;
+	this.text.lineWidth = 1038;
+	this.text.parent = this;
+	this.text.setTransform(521,681.95);
+
+	this.title = new cjs.Text("The sushi robot has made sushi", "50px 'Potta One'");
 	this.title.name = "title";
 	this.title.textAlign = "center";
 	this.title.lineHeight = 72;
 	this.title.lineWidth = 1038;
 	this.title.parent = this;
-	this.title.setTransform(521,681.95);
+	this.title.setTransform(521,130);
 
-	this.title_1 = new cjs.Text("The sushi robot has made sushi", "50px 'Potta One'");
-	this.title_1.name = "title_1";
-	this.title_1.textAlign = "center";
-	this.title_1.lineHeight = 72;
-	this.title_1.lineWidth = 1038;
-	this.title_1.parent = this;
-	this.title_1.setTransform(521,130);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.title_1},{t:this.title},{t:this.instance_1},{t:this.amount},{t:this.instance}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.title},{t:this.text},{t:this.instance_1},{t:this.amount},{t:this.instance}]}).wait(1));
 
 	// Button
 	this.ReceiveduttonMC = new lib.ButtonMC();
@@ -6196,6 +6205,7 @@ if (reversed == null) { reversed = false; }
 			{
 				this.id = "";
 				this.amount = 0;
+				this.category = "";
 				this.receive = false;
 		    }
 		}
@@ -7830,6 +7840,7 @@ if (reversed == null) { reversed = false; }
 				var	pending = new Pending();
 				pending.id = API_pendingData["items"][i].id;
 				pending.amount = Number(API_pendingData["items"][i].amount);
+				pending.category = API_pendingData["items"][i].category;
 				main.pendings.push(pending);
 			}
 		/*
