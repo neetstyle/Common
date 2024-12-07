@@ -869,6 +869,20 @@ if (reversed == null) { reversed = false; }
 			createjs.Tween.get(this, { override: true })
 			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
 		}
+		
+		this.LeftOpen = function(_message)
+		{
+			this.message.text = _message;	
+			
+			this.visible = true;
+			this.scaleX = 0;
+			this.scaleY = 0;
+			
+			this.parent.Mask3MC.visible = true;
+			
+			createjs.Tween.get(this, { override: true })
+			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
+		}
 	}
 
 	// actions tween:
@@ -6254,6 +6268,9 @@ if (reversed == null) { reversed = false; }
 				
 				this.global_multiplier = 1;
 				this.click_cps_boost = 1;
+				
+				this.isLogin = false;
+				this.isStop = false;
 				//////////////////////////////////////////////////////////
 				this.bgm = 0.25;
 				this.se = 0.8;
@@ -6685,8 +6702,40 @@ if (reversed == null) { reversed = false; }
 			}
 		}
 		
+		//他端末チェック
+		main.CheckDevice = async function()
+		{
+			try {
+				console.log("API.ユーザ情報取得");
+				API_userData = await API_Request({
+					url: '/user/me',
+					maxAttempts: 1
+				});
+		
+				if(!main.isLogin || deviceId == API_userData["user"].latestOnlineDeviceId)
+				{
+					console.log("API.最新ログイン日時を更新");
+					API_Request({
+						url: '/user/online',
+						method: 'POST'
+					});
+					main.isLogin = true;
+					main.SushiUpdate();
+				}
+				else
+				{
+						this.isStop = true;
+						exportRoot.MessageMC.LeftOpen("Logged in from Another Device.");
+				}
+					
+			} catch (error) {}
+		}
+		
 		main.MainTick = function(event)
 		{
+			if(this.isStop)
+				return;
+			
 			//毎秒
 			this.fps1Count += event.delta;
 			if (this.fps1Count >= 1000 / 1)
@@ -6731,14 +6780,8 @@ if (reversed == null) { reversed = false; }
 				if (now - this.fps3LastTickTime >= 60)
 				{
 					this.fps3LastTickTime = now;
-					console.log("API.最新ログイン日時を更新");
-					API_Request({
-						url: '/user/online',
-						method: 'POST'
-					});
-					main.SushiUpdate();
+					main.CheckDevice();
 				}
-		
 			}
 		}
 		//////////////////////////////////////////////////////////
