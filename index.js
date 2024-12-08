@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[3565,0,1042,1869],[7188,2807,516,176],[5348,2882,516,176],[1127,2802,904,153],[5866,2882,516,176],[3390,2566,148,89],[3273,2562,115,115],[7741,2687,118,66],[3565,1871,1042,889],[3669,2887,754,101],[8043,2235,120,65],[3397,2438,116,126],[8045,2541,116,126],[1088,2957,662,46],[1752,2970,662,46],[6697,0,1042,1191],[0,2438,1125,478],[5653,2244,1013,636],[2438,0,1125,2436],[0,0,2436,2436],[0,2918,542,104],[7741,2314,374,91],[6668,2807,518,178],[4609,2514,1039,224],[3273,2438,122,122],[4796,2740,550,251],[4609,1539,1042,973],[8043,2004,130,229],[7741,0,300,300],[7741,302,300,300],[7824,1416,214,190],[8045,2407,139,132],[7824,1608,214,190],[7741,2407,150,190],[7824,1800,214,190],[7824,1992,214,190],[2167,2762,1500,206],[7824,1208,300,206],[3273,2679,102,63],[7861,2687,87,70],[7741,604,300,300],[7824,906,300,300],[3390,2657,90,90],[8043,2669,90,90],[2167,2438,1104,319],[6697,1193,1125,985],[1127,2438,1038,362],[7741,2184,300,128],[7741,2599,300,86],[4609,0,1042,1537],[5653,0,1042,1225],[5653,1227,1042,1015],[7706,2807,452,99],[544,2918,542,104],[7893,2407,150,150],[3669,2762,1125,123],[8126,0,50,1000],[6697,2180,1042,625],[8126,1002,50,1000]]}
+		{name:"index_atlas_1", frames: [[2244,1443,516,176],[0,1345,904,153],[2996,1623,115,115],[1510,1728,754,101],[1785,0,521,935],[1785,937,521,445],[3919,1002,120,65],[2532,1842,116,126],[2650,1842,116,126],[1282,1831,662,46],[0,1838,662,46],[3354,0,521,596],[2762,1445,516,176],[1679,1384,563,239],[2831,1125,507,318],[1220,0,563,1218],[2788,1750,542,104],[0,0,1218,1218],[906,1775,374,91],[3340,1408,518,178],[2266,1728,520,112],[906,1345,122,122],[1127,1220,550,251],[2308,771,521,487],[1946,1831,130,229],[906,1473,300,300],[1208,1473,300,300],[3877,1093,214,190],[664,1838,139,132],[3877,1285,214,190],[2078,1831,150,190],[3860,1477,214,190],[3876,1669,214,190],[2244,1623,750,103],[604,1500,300,206],[1679,1312,102,63],[3113,1623,87,70],[0,1500,300,300],[302,1500,300,300],[1679,1220,90,90],[1030,1345,90,90],[3280,1588,552,160],[3354,598,563,493],[2308,1260,519,181],[604,1708,300,128],[2230,1842,300,86],[2308,0,521,769],[2831,0,521,613],[2831,615,521,508],[1510,1625,452,99],[3332,1750,542,104],[1510,1473,150,150],[0,1220,1125,123],[3919,0,50,1000],[3354,1093,521,313],[3971,0,50,1000]]}
 ];
 
 
@@ -27,415 +27,394 @@ lib.ssMetadata = [
 
 
 
-(lib._1 = function() {
+(lib._2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._2 = function() {
+(lib._3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._2_1 = function() {
+(lib._5 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._3 = function() {
+(lib._7 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._4 = function() {
+(lib._1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._4_1 = function() {
+(lib._6 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._5 = function() {
+(lib.a1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._5_1 = function() {
+(lib.a2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._6 = function() {
+(lib.a3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib._7 = function() {
+(lib.a4 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a1 = function() {
+(lib.a5 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a2 = function() {
+(lib.a6 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a3 = function() {
+(lib.aaaaaa = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a4 = function() {
+(lib.achievementDesciption = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(13);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a5 = function() {
+(lib.achievementDetailBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(14);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.a6 = function() {
+(lib.bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(15);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementDesciption = function() {
+(lib.bg1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(16);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.achievementDetailBG = function() {
+(lib.bg1_1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(17);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg = function() {
+(lib.bg2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(18);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg1 = function() {
+(lib.button_false = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(19);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg1_1 = function() {
+(lib.cell_bg1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(20);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.bg2 = function() {
+(lib.close = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(21);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.button_false = function() {
+(lib.footerBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(22);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.cell_bg1 = function() {
+(lib.generator_bg2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(23);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.close = function() {
+(lib.header2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(24);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.footerBG2 = function() {
+(lib.icon_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(25);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.generator_bg2 = function() {
+(lib.icon_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(26);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.header2 = function() {
+(lib.menu_achievement_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(27);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_golden = function() {
+(lib.menu_config_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.icon_sushi = function() {
+(lib.menu_generator_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_achievement_button = function() {
+(lib.menu_invite = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_config_button = function() {
+(lib.menu_shop_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_generator_button = function() {
+(lib.menu_upgrade_button = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_invite = function() {
+(lib.messageBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_shop_button = function() {
+(lib.messageBG3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.menu_upgrade_button = function() {
+(lib.mini_golden = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.messageBG2 = function() {
+(lib.mini_sushi = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.messageBG3 = function() {
+(lib.not = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_golden = function() {
+(lib.not2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.mini_sushi = function() {
+(lib.notification1 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not = function() {
+(lib.notification2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.not2 = function() {
+(lib.NotificationBG = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(41);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification1 = function() {
+(lib.panel = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(42);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.notification2 = function() {
+(lib.shop_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(43);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.NotificationBG = function() {
+(lib.shop_label2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(44);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.panel = function() {
+(lib.shop_label3 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(45);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_bg = function() {
+(lib.shop_roboto_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label2 = function() {
+(lib.shop_skin_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_label3 = function() {
+(lib.shop_sushi_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_roboto_bg = function() {
+(lib.subTile2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(49);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_skin_bg = function() {
+(lib.subTitle = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(50);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop_sushi_bg = function() {
+(lib.sushiMini = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(51);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTile2 = function() {
+(lib.title = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.subTitle = function() {
+(lib.underBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(53);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.sushiMini = function() {
+(lib.upgrade_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(54);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.title = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(55);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.underBG2 = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(56);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.upgrade_bg = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(57);
-}).prototype = p = new cjs.Sprite();
-
-
-
 (lib.upperBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(58);
+	this.gotoAndStop(55);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -567,12 +546,13 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.upgrade_bg();
+	this.instance.setTransform(0,0,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpgradeDesciptionMC, new cjs.Rectangle(0,0,1042,625), null);
+}).prototype = getMCSymbolPrototype(lib.UpgradeDesciptionMC, new cjs.Rectangle(0,0,1042,626), null);
 
 
 (lib.ShopType4ButtonMC = function(mode,startPosition,loop,reversed) {
@@ -598,14 +578,17 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.price).wait(19).to({color:"#C5253A"},0).wait(20).to({x:258,y:36,text:"Use",font:"60px 'Potta One'",color:"#FFFFFF",lineHeight:88.9,lineWidth:512},0).wait(19).to({text:"Remove"},0).wait(21));
 
 	// BG
-	this.instance = new lib._2();
+	this.instance = new lib.mini_golden();
+	this.instance.setTransform(70,45,1.2,1.2);
 
-	this.instance_1 = new lib._4();
+	this.instance_1 = new lib._2();
 
-	this.instance_2 = new lib.button_false();
-	this.instance_2.setTransform(0,0,0.9961,0.9888);
+	this.instance_2 = new lib.aaaaaa();
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},39).to({state:[{t:this.instance_2}]},19).wait(21));
+	this.instance_3 = new lib.button_false();
+	this.instance_3.setTransform(0,0,0.9961,0.9888);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).to({state:[{t:this.instance_2}]},39).to({state:[{t:this.instance_3}]},19).wait(21));
 
 	this._renderFirstFrame();
 
@@ -636,12 +619,15 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.price).wait(19).to({color:"#C5253A"},0).wait(20).to({x:306.05,y:24,text:"Active",lineWidth:240},0).wait(21));
 
 	// BG
-	this.instance = new lib._2();
+	this.instance = new lib.mini_golden();
+	this.instance.setTransform(70,45,1.2,1.2);
 
-	this.instance_1 = new lib._5();
-	this.instance_1.setTransform(75,16);
+	this.instance_1 = new lib._2();
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},39).wait(21));
+	this.instance_2 = new lib._5();
+	this.instance_2.setTransform(75,16);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).to({state:[{t:this.instance_2}]},39).wait(21));
 
 	this._renderFirstFrame();
 
@@ -672,9 +658,12 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.price).wait(19).to({color:"#C5253A"},0).wait(20));
 
 	// BG
-	this.instance = new lib._2();
+	this.instance = new lib.mini_golden();
+	this.instance.setTransform(70,45,1.2,1.2);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(39));
+	this.instance_1 = new lib._2();
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(39));
 
 	this._renderFirstFrame();
 
@@ -712,7 +701,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.price},{t:this.text}]}).wait(1));
 
 	// BG
-	this.instance = new lib._4();
+	this.instance = new lib.aaaaaa();
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
@@ -743,7 +732,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.title).wait(1));
 
 	// BG
-	this.instance = new lib.bg1_1();
+	this.instance = new lib.bg1();
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
@@ -798,13 +787,13 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.NotificationBG();
-	this.instance.setTransform(11,0);
+	this.instance.setTransform(0,0,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.NotificationMC, new cjs.Rectangle(11,0,1104,319), null);
+}).prototype = getMCSymbolPrototype(lib.NotificationMC, new cjs.Rectangle(0,0,1104,320), null);
 
 
 (lib.MessageMC = function(mode,startPosition,loop,reversed) {
@@ -900,32 +889,32 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.message).wait(1));
 
 	// BG
-	this.instance = new lib.messageBG3();
-	this.instance.setTransform(1912,0);
+	this.instance = new lib.messageBG2();
+	this.instance.setTransform(-186,0,2,2);
 
 	this.instance_1 = new lib.messageBG3();
-	this.instance_1.setTransform(2212,0);
+	this.instance_1.setTransform(1912,0);
 
 	this.instance_2 = new lib.messageBG3();
-	this.instance_2.setTransform(-1385,0);
+	this.instance_2.setTransform(2212,0);
 
 	this.instance_3 = new lib.messageBG3();
-	this.instance_3.setTransform(-1086,0);
+	this.instance_3.setTransform(-1385,0);
 
 	this.instance_4 = new lib.messageBG3();
-	this.instance_4.setTransform(1313,0);
+	this.instance_4.setTransform(-1086,0);
 
 	this.instance_5 = new lib.messageBG3();
-	this.instance_5.setTransform(1613,0);
+	this.instance_5.setTransform(1313,0);
 
 	this.instance_6 = new lib.messageBG3();
-	this.instance_6.setTransform(-786,0);
+	this.instance_6.setTransform(1613,0);
 
 	this.instance_7 = new lib.messageBG3();
-	this.instance_7.setTransform(-486,0);
+	this.instance_7.setTransform(-786,0);
 
-	this.instance_8 = new lib.messageBG2();
-	this.instance_8.setTransform(-186,0);
+	this.instance_8 = new lib.messageBG3();
+	this.instance_8.setTransform(-486,0);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_8},{t:this.instance_7},{t:this.instance_6},{t:this.instance_5},{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1},{t:this.instance}]}).wait(1));
 
@@ -966,50 +955,6 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.BadgeMC, new cjs.Rectangle(0,0,90,90), null);
 
 
-(lib.RewardMC = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {type1:0,type2:10,type4:21,type3:31};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// Text
-	this.text = new cjs.Text("×100 Million", "70px 'Potta One'", "#C5253A");
-	this.text.lineHeight = 101;
-	this.text.parent = this;
-	this.text.setTransform(355.4,24.35);
-
-	this.timeline.addTween(cjs.Tween.get(this.text).wait(39));
-
-	// Image
-	this.instance = new lib._4_1();
-	this.instance.setTransform(150,36);
-
-	this.text_1 = new cjs.Text("×100 Million", "70px 'Potta One'", "#C5253A");
-	this.text_1.lineHeight = 101;
-	this.text_1.parent = this;
-	this.text_1.setTransform(355.4,24.35);
-
-	this.instance_1 = new lib._5_1();
-	this.instance_1.setTransform(162,46);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text_1},{t:this.instance}]}).to({state:[{t:this.text_1},{t:this.instance_1}]},10).wait(29));
-
-	// BG
-	this.instance_2 = new lib._3();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(39));
-
-	this._renderFirstFrame();
-
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,0,904,153);
-
-
 (lib.InviteListMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -1031,8 +976,8 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.ammount).to({_off:true},9).wait(11));
 
 	// Image
-	this.instance = new lib._5_1();
-	this.instance.setTransform(598,45);
+	this.instance = new lib.mini_golden();
+	this.instance.setTransform(599,43,1.2,1.2);
 
 	this.invitationState = new cjs.Text("受け取り済み", "50px 'Potta One'");
 	this.invitationState.name = "invitationState";
@@ -1257,12 +1202,13 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.generator_bg2();
+	this.instance.setTransform(0,0,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.GeneratorDesciptionMC, new cjs.Rectangle(-42,-47,1125,1192), null);
+}).prototype = getMCSymbolPrototype(lib.GeneratorDesciptionMC, new cjs.Rectangle(0,0,1042,974), null);
 
 
 (lib.DoddMC = function(mode,startPosition,loop,reversed) {
@@ -1805,15 +1751,15 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// レイヤー_1
-	this.instance = new lib.bg1();
-	this.instance.setTransform(-244,-244,1.2,1.2);
+	// BG
+	this.instance = new lib.bg1_1();
+	this.instance.setTransform(-244,-244,2.3998,2.3998);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.RadiationMC, new cjs.Rectangle(-244,-244,2923.1,2923.1), null);
+}).prototype = getMCSymbolPrototype(lib.RadiationMC, new cjs.Rectangle(-244,-244,2923,2923), null);
 
 
 (lib.AchievementUpgradeActiveMC = function(mode,startPosition,loop,reversed) {
@@ -1992,14 +1938,14 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance_1 = new lib.cell_bg1();
-	this.instance_1.setTransform(45,32);
+	this.instance_1.setTransform(45,31,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(20));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(45,12,1060,244);
+p.nominalBounds = new cjs.Rectangle(45,12,1060,243);
 
 
 (lib.ShopConfilmCell2MC = function(mode,startPosition,loop,reversed) {
@@ -2150,7 +2096,7 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance_2 = new lib.shop_bg();
-	this.instance_2.setTransform(44,0);
+	this.instance_2.setTransform(44,0,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(30));
 
@@ -2408,8 +2354,8 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// Text
-	this.instance = new lib._4_1();
-	this.instance.setTransform(213,404);
+	this.instance = new lib.mini_sushi();
+	this.instance.setTransform(222,391,1.5,1.5);
 
 	this.amount = new cjs.Text("×100 Million", "70px 'Potta One'", "#C5253A");
 	this.amount.name = "amount";
@@ -2445,16 +2391,17 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.ReceiveduttonMC).wait(1));
 
 	// BG
-	this.instance_2 = new lib._2_1();
-	this.instance_2.setTransform(263,637);
+	this.instance_2 = new lib._6();
+	this.instance_2.setTransform(0,0,2,2);
 
-	this.instance_3 = new lib._6();
+	this.instance_3 = new lib._2();
+	this.instance_3.setTransform(263,637);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_3},{t:this.instance_2}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.PendingDesciptionMC, new cjs.Rectangle(0,0,1042,889), null);
+}).prototype = getMCSymbolPrototype(lib.PendingDesciptionMC, new cjs.Rectangle(0,0,1042,890), null);
 
 
 (lib.SushiMC = function(mode,startPosition,loop,reversed) {
@@ -2623,138 +2570,6 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.SushiMC, new cjs.Rectangle(0,-197.5,1000,1000), null);
-
-
-(lib.InviteRewardDesciptionMC = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	this.isSingleFrame = false;
-	// timeline functions:
-	this.frame_0 = function() {
-		if(this.isSingleFrame) {
-			return;
-		}
-		if(this.totalFrames == 1) {
-			this.isSingleFrame = true;
-		}
-		this.resizeCanvas = function() {
-			this.scaleX = this.parent.canvasScaleX;
-			this.scaleY = this.parent.canvasScaleX;
-			this.x = lib.properties.width / 2;
-			this.y = lib.properties.height / 2;
-		}
-		window.addEventListener('resize', this.resizeCanvas.bind(this));	
-		this.resizeCanvas();
-		this.bitmap = null;
-		this.visible = false;
-		
-		this.obj;
-		
-		this.stop();
-		
-		this.Close = function()
-		{
-			this.parent.MaskMC.removeEventListener("click", this._mask);
-			this.parent.MaskMC.visible = false;
-			
-			createjs.Tween.get(this, { override: true })
-			.to({ scaleX: 0, scaleY: 0 }, 250, createjs.Ease.backInOut)
-			.call(() => {
-				this.visible = false;
-		    });	
-			main.PlaySE("popup");
-		} 
-		this.CloseButtonMC.addEventListener("click", this.Close.bind(this));
-		
-		this.Open = function(_obj)
-		{
-			this.obj = _obj;
-			
-			this.visible = true;
-			this.scaleX = 0;
-			this.scaleY = 0;
-			
-			this._mask = this.parent.MaskMC.addEventListener("click", this.Mask.bind(this));
-			this.parent.MaskMC.visible = true;	
-			
-			createjs.Tween.get(this, { override: true })
-			.to({ scaleX: this.parent.canvasScaleX, scaleY: this.parent.canvasScaleX }, 250, createjs.Ease.backInOut);
-		
-			main.PlaySE("popup");
-		
-			if( this.bitmap != null)
-			{
-				this.removeChild(this.bitmap);
-				this.bitmap == null;
-			}
-		
-		//	this.title_O.text = this.obj.data["name"];
-		//	this.desciption.text = this.obj.data["desciption"];
-			this.gotoAndStop("type" + this.obj.data.type);
-		
-			switch (this.obj.data.type)
-			{
-				case 1:
-					this.RewardMC.gotoAndStop("type1");
-					break;
-			}
-		}
-		
-		this.Mask = function(){}
-	}
-
-	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
-
-	// Text
-	this.title = new cjs.Text("回収する", "50px 'Potta One'");
-	this.title.name = "title";
-	this.title.textAlign = "center";
-	this.title.lineHeight = 72;
-	this.title.lineWidth = 1038;
-	this.title.parent = this;
-	this.title.setTransform(521,681.95);
-
-	this.title_1 = new cjs.Text("招待報酬を獲得しました！", "50px 'Potta One'");
-	this.title_1.name = "title_1";
-	this.title_1.textAlign = "center";
-	this.title_1.lineHeight = 72;
-	this.title_1.lineWidth = 1038;
-	this.title_1.parent = this;
-	this.title_1.setTransform(521,130);
-
-	this.RewardMC = new lib.RewardMC();
-	this.RewardMC.name = "RewardMC";
-	this.RewardMC.setTransform(515,444.5,1,1,0,0,0,452,76.5);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.RewardMC},{t:this.title_1},{t:this.title}]}).wait(1));
-
-	// Button
-	this.instance = new lib._2_1();
-	this.instance.setTransform(263,637);
-
-	this.CloseButtonMC = new lib.CloseButtonMC();
-	this.CloseButtonMC.name = "CloseButtonMC";
-	this.CloseButtonMC.setTransform(1028,16,1,1,0,0,0,61,61);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.CloseButtonMC},{t:this.instance}]}).wait(1));
-
-	// BG
-	this.instance_1 = new lib._6();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.InviteRewardDesciptionMC, new cjs.Rectangle(0,-45,1089,934), null);
 
 
 (lib.InviteDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -2970,6 +2785,9 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.CloseButtonMC},{t:this.CopyCodeButtonMC},{t:this.ShareButtonMC}]}).wait(1));
 
 	// Text
+	this.instance = new lib.mini_sushi();
+	this.instance.setTransform(243,1344,1.5,1.5);
+
 	this.InviteListMC = new lib.InviteListMC();
 	this.InviteListMC.name = "InviteListMC";
 	this.InviteListMC.setTransform(521,569.5,1,1,0,0,0,452,76.5);
@@ -2985,9 +2803,6 @@ if (reversed == null) { reversed = false; }
 	this.text_2.lineHeight = 72;
 	this.text_2.parent = this;
 	this.text_2.setTransform(317.1,1727);
-
-	this.instance = new lib._4_1();
-	this.instance.setTransform(234,1357);
 
 	this.desciption = new cjs.Text("Friend Rewards", "50px 'Potta One'", "#FFFFFF");
 	this.desciption.name = "desciption";
@@ -3032,7 +2847,7 @@ if (reversed == null) { reversed = false; }
 	this.invitationCount.parent = this;
 	this.invitationCount.setTransform(815.2,242);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.invitationCount},{t:this.text_3},{t:this.desciption_3},{t:this.desciption_2},{t:this.desciption_1},{t:this.desciption},{t:this.instance},{t:this.text_2},{t:this.text_1},{t:this.InviteListMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.invitationCount},{t:this.text_3},{t:this.desciption_3},{t:this.desciption_2},{t:this.desciption_1},{t:this.desciption},{t:this.text_2},{t:this.text_1},{t:this.InviteListMC},{t:this.instance}]}).wait(1));
 
 	// Image
 	this.instance_1 = new lib._3();
@@ -3044,7 +2859,7 @@ if (reversed == null) { reversed = false; }
 	this.instance_3 = new lib._7();
 	this.instance_3.setTransform(144,367);
 
-	this.instance_4 = new lib._2_1();
+	this.instance_4 = new lib._2();
 	this.instance_4.setTransform(250,1515);
 
 	this.instance_5 = new lib.title();
@@ -3058,12 +2873,13 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance_6 = new lib._1();
+	this.instance_6.setTransform(0,0,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_6).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.InviteDesciptionMC, new cjs.Rectangle(-36,-45,1125,1914), null);
+}).prototype = getMCSymbolPrototype(lib.InviteDesciptionMC, new cjs.Rectangle(-36,-45,1125,1915), null);
 
 
 (lib.HeaderMC = function(mode,startPosition,loop,reversed) {
@@ -3360,7 +3176,7 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance_2 = new lib.cell_bg1();
-	this.instance_2.setTransform(45,31);
+	this.instance_2.setTransform(45,31,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(30));
 
@@ -3706,7 +3522,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.SaveButtonMC).wait(1));
 
 	// Button
-	this.instance = new lib._2_1();
+	this.instance = new lib._2();
 	this.instance.setTransform(263,277);
 
 	this.CloseButtonMC = new lib.CloseButtonMC();
@@ -3715,7 +3531,7 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.CloseButtonMC},{t:this.instance}]}).wait(1));
 
-	// BG
+	// Image
 	this.BGMSliderMC = new lib.SliderMC();
 	this.BGMSliderMC.name = "BGMSliderMC";
 	this.BGMSliderMC.setTransform(188.9,753.1);
@@ -3727,13 +3543,17 @@ if (reversed == null) { reversed = false; }
 	this.instance_1 = new lib.title();
 	this.instance_1.setTransform(-36,50);
 
-	this.instance_2 = new lib.a6();
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.SESliderMC},{t:this.BGMSliderMC}]}).wait(1));
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_2},{t:this.instance_1},{t:this.SESliderMC},{t:this.BGMSliderMC}]}).wait(1));
+	// BG
+	this.instance_2 = new lib.a6();
+	this.instance_2.setTransform(0,0,2,2);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ConfigDesciptionMC, new cjs.Rectangle(-142.1,-45,1231.1,1236), null);
+}).prototype = getMCSymbolPrototype(lib.ConfigDesciptionMC, new cjs.Rectangle(-142.1,-45,1231.1,1237), null);
 
 
 (lib.UpgradeButtonMC = function(mode,startPosition,loop,reversed) {
@@ -3919,7 +3739,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-1436.2,-781.9,4000,4000), null);
+}).prototype = getMCSymbolPrototype(lib.bgMC, new cjs.Rectangle(-1436.2,-781.9,3999.8999999999996,3999.8), null);
 
 
 (lib.AchievementDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -4043,20 +3863,13 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.achievementDesciption();
+	this.instance.setTransform(0,0,2,2);
 
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#00CC33").ss(1,1,1).p("EhSBgXbMCkDAAAMAAAAu3MikDAAAg");
-	this.shape.setTransform(565.05,188);
-
-	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#FF0000").s().p("EhSBAXcMAAAgu3MCkDAAAMAAAAu3g");
-	this.shape_1.setTransform(565.05,188);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape},{t:this.instance}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementDesciptionMC, new cjs.Rectangle(0,0,1125,480), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementDesciptionMC, new cjs.Rectangle(0,0,1126,480), null);
 
 
 (lib.AchievementCellMC = function(mode,startPosition,loop,reversed) {
@@ -4144,7 +3957,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpgradeContentMC, new cjs.Rectangle(0,0,1125,256), null);
+}).prototype = getMCSymbolPrototype(lib.UpgradeContentMC, new cjs.Rectangle(0,0,1125,255), null);
 
 
 (lib.ShopDesciptionMC = function(mode,startPosition,loop,reversed) {
@@ -4153,7 +3966,7 @@ if (reversed == null) { reversed = false; }
 	var props = new Object();
 	props.mode = mode;
 	props.startPosition = startPosition;
-	props.labels = {"type1":9,"type2":19,"type3":30,"type4":41};
+	props.labels = {type1:9,type2:19,type3:30,type4:41};
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
@@ -4626,17 +4439,20 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.shop_sushi_bg();
+	this.instance.setTransform(0,0,2,2);
 
 	this.instance_1 = new lib.shop_roboto_bg();
+	this.instance_1.setTransform(0,0,2,2);
 
 	this.instance_2 = new lib.shop_skin_bg();
+	this.instance_2.setTransform(0,0,2,2);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},30).to({state:[{t:this.instance_2}]},11).wait(10));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,-45,1089,1582);
+p.nominalBounds = new cjs.Rectangle(0,-45,1089,1583);
 
 
 (lib.ShopContentMC = function(mode,startPosition,loop,reversed) {
@@ -5026,8 +4842,11 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.AchievementCellMC},{t:this.detail},{t:this.text_5},{t:this.text_4},{t:this.text_3},{t:this.text_2},{t:this.text_1},{t:this.text},{t:this.detail_sushi},{t:this.detail_totalSushi},{t:this.detail_generatorNum},{t:this.detail_gameStart},{t:this.detail_touchSps},{t:this.detail_totalClick}]}).wait(1));
 
 	// Image
-	this.instance = new lib.title();
-	this.instance.setTransform(0,48);
+	this.instance = new lib.achievementDetailBG();
+	this.instance.setTransform(56,198,2,2);
+
+	this.instance_1 = new lib.title();
+	this.instance_1.setTransform(0,48);
 
 	this.AchievementTitleMC = new lib.AchievementSubTitleMC();
 	this.AchievementTitleMC.name = "AchievementTitleMC";
@@ -5037,10 +4856,7 @@ if (reversed == null) { reversed = false; }
 	this.UpgradeTitleMC.name = "UpgradeTitleMC";
 	this.UpgradeTitleMC.setTransform(0,954.55);
 
-	this.instance_1 = new lib.achievementDetailBG();
-	this.instance_1.setTransform(56,198);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.UpgradeTitleMC},{t:this.AchievementTitleMC},{t:this.instance}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.UpgradeTitleMC},{t:this.AchievementTitleMC},{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	// BG
 	this.ContentBGMC = new lib.ButtonMC();
@@ -5051,7 +4867,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementContentMC, new cjs.Rectangle(0,0,1125,10000), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementContentMC, new cjs.Rectangle(0,0,1125,1492.7), null);
 
 
 (lib.UpgradePanelMC = function(mode,startPosition,loop,reversed) {
@@ -5240,12 +5056,13 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.panel();
+	this.instance.setTransform(0,0,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-100.5,-665,1225.5,1922.6), null);
+}).prototype = getMCSymbolPrototype(lib.UpgradePanelMC, new cjs.Rectangle(-100.5,-665,1226.5,1922.6), null);
 
 
 (lib.ShopPanelMC = function(mode,startPosition,loop,reversed) {
@@ -5520,15 +5337,16 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.bg();
+	this.instance.setTransform(0,0,2,2);
 
 	this.instance_1 = new lib.bg();
-	this.instance_1.setTransform(0,4830,1,1,0,180,0);
+	this.instance_1.setTransform(0,2394,2,2);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-156.5,-197,1281.5,5100.7), null);
+}).prototype = getMCSymbolPrototype(lib.ShopPanelMC, new cjs.Rectangle(-156.5,-197,1282.5,5100.7), null);
 
 
 (lib.GeneratorPanelMC = function(mode,startPosition,loop,reversed) {
@@ -5743,12 +5561,13 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.panel();
+	this.instance.setTransform(0,0,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-100.5,-665,1225.5,1930.6), null);
+}).prototype = getMCSymbolPrototype(lib.GeneratorPanelMC, new cjs.Rectangle(-100.5,0,1226.5,1265.6), null);
 
 
 (lib.AchievementPanelMC = function(mode,startPosition,loop,reversed) {
@@ -6024,12 +5843,13 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.instance = new lib.panel();
+	this.instance.setTransform(0,0,2,2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-100.5,-2.5,1228,3277.8), null);
+}).prototype = getMCSymbolPrototype(lib.AchievementPanelMC, new cjs.Rectangle(-100.5,0,1226.5,3275.3), null);
 
 
 // stage content:
@@ -7996,10 +7816,6 @@ if (reversed == null) { reversed = false; }
 	this.ConfigDesciptionMC.name = "ConfigDesciptionMC";
 	this.ConfigDesciptionMC.setTransform(1672.4,-1819.4,1,1,0,0,0,521,595.5);
 
-	this.InviteRewardDesciptionMC = new lib.InviteRewardDesciptionMC();
-	this.InviteRewardDesciptionMC.name = "InviteRewardDesciptionMC";
-	this.InviteRewardDesciptionMC.setTransform(-2504.95,-1852.45,1,1,0,0,0,521,492.5);
-
 	this.InviteDesciptionMC = new lib.InviteDesciptionMC();
 	this.InviteDesciptionMC.name = "InviteDesciptionMC";
 	this.InviteDesciptionMC.setTransform(-1405.2,-1418.35,1,1,0,0,0,526.5,934.5);
@@ -8020,7 +7836,7 @@ if (reversed == null) { reversed = false; }
 	this.GeneratorDesciptionMC.name = "GeneratorDesciptionMC";
 	this.GeneratorDesciptionMC.setTransform(-2453.7,185.2,1,1,0,0,0,522,572.5);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.ShopDesciptionMC},{t:this.AchievementDesciptionMC},{t:this.InviteDesciptionMC},{t:this.InviteRewardDesciptionMC},{t:this.ConfigDesciptionMC},{t:this.PendingDesciptionMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.GeneratorDesciptionMC},{t:this.UpgradeDesciptionMC},{t:this.ShopDesciptionMC},{t:this.AchievementDesciptionMC},{t:this.InviteDesciptionMC},{t:this.ConfigDesciptionMC},{t:this.PendingDesciptionMC}]}).wait(1));
 
 	// Mask
 	this.MaskMC = new lib.MaskMC();
