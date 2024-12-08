@@ -3981,7 +3981,6 @@ if (reversed == null) { reversed = false; }
 		this.bitmap = null;
 		this.visible = false;
 		
-		this.title_O = new Outline(lib, this.title, 5, "#000000", "#FFFFFF");
 		this.obj;
 		
 		this.stop();
@@ -4024,7 +4023,6 @@ if (reversed == null) { reversed = false; }
 				this.bitmap == null;
 			}
 		
-			this.title_O.text = this.obj.name;
 			SetWrapText(this.desciption);
 			this.gotoAndStop("type" + this.obj.type);
 			
