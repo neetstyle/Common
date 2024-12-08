@@ -7123,8 +7123,8 @@ if (reversed == null) { reversed = false; }
 		
 			this.mainSkinBmp = new createjs.Bitmap("images/skin/skin_"+this.skinId.toString().padStart(2, '0')+".webp");
 			exportRoot.SushiMC.SushiImageMC.addChild(this.mainSkinBmp);
-			this.mainSkinBmp.scaleX = 0.5;
-			this.mainSkinBmp.scaleY = 0.5;
+			this.mainSkinBmp.scaleX = 1.0;
+			this.mainSkinBmp.scaleY = 1.0;
 		
 			//debug
 			//this.sushiPs = 10000;	
