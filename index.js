@@ -970,7 +970,7 @@ if (reversed == null) { reversed = false; }
 	this.instance = new lib.mini_golden();
 	this.instance.setTransform(599,43,1.2,1.2);
 
-	this.invitationState = new cjs.Text("受け取り済み", "50px 'Potta One'");
+	this.invitationState = new cjs.Text("Received", "50px 'Potta One'");
 	this.invitationState.name = "invitationState";
 	this.invitationState.textAlign = "center";
 	this.invitationState.lineHeight = 72;
@@ -3533,14 +3533,20 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.ReceiveduttonMC).wait(1));
 
+	// レイヤー_2
+	this.instance_2 = new lib._2();
+	this.instance_2.setTransform(263,633);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(1));
+
 	// BG
-	this.instance_2 = new lib._6();
-	this.instance_2.setTransform(0,0,2,2);
+	this.instance_3 = new lib._6();
+	this.instance_3.setTransform(0,0,2,2);
 
-	this.instance_3 = new lib._2();
-	this.instance_3.setTransform(263,637);
+	this.instance_4 = new lib._2();
+	this.instance_4.setTransform(263,637);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_3},{t:this.instance_2}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_4},{t:this.instance_3}]}).wait(1));
 
 	this._renderFirstFrame();
 
@@ -4399,21 +4405,11 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.longDescription},{t:this.text},{t:this.description,p:{y:568.7}}]},30).to({state:[{t:this.description,p:{y:634.7}}]},11).wait(10));
 
-	// Text_title
-	this.title = new cjs.Text("Sushi Syokunin", "60px 'Potta One'");
-	this.title.name = "title";
-	this.title.lineHeight = 87;
-	this.title.lineWidth = 716;
-	this.title.parent = this;
-	this.title.setTransform(201.05,918.2);
-
-	this.timeline.addTween(cjs.Tween.get(this.title).to({_off:true},9).wait(42));
-
 	// Text
-	this.description_1 = new cjs.Text("Would you line to buy Golden Sushi?", "50px 'Potta One'");
+	this.description_1 = new cjs.Text("Would you line to buy Golden Sushi?", "45px 'Potta One'");
 	this.description_1.name = "description_1";
 	this.description_1.textAlign = "center";
-	this.description_1.lineHeight = 72;
+	this.description_1.lineHeight = 65;
 	this.description_1.lineWidth = 1038;
 	this.description_1.parent = this;
 	this.description_1.setTransform(521,584.4);
@@ -4426,7 +4422,7 @@ if (reversed == null) { reversed = false; }
 	this.desciption.parent = this;
 	this.desciption.setTransform(521,77);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Golden Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},9).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Sushi?",y:584.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},10).to({state:[{t:this.desciption,p:{y:81,text:"offline production upgrade",font:"50px 'Potta One'",lineHeight:72.4,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to purchase this Item?",y:1182.4,font:"50px 'Potta One'",color:"#000000",lineHeight:72.4}}]},11).to({state:[{t:this.desciption,p:{y:814.4,text:"Would you line to purchase this Skin?",font:"50px 'Potta One'",lineHeight:72.4,color:"#000000"}},{t:this.description_1,p:{text:"Skin",y:71,font:"55px 'Potta One'",color:"#FFFFFF",lineHeight:79.65}}]},11).wait(10));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Golden Sushi?",font:"45px 'Potta One'",lineHeight:65.15,y:584.4,color:"#000000"}}]},9).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Sushi?",font:"50px 'Potta One'",lineHeight:72.4,y:584.4,color:"#000000"}}]},10).to({state:[{t:this.desciption,p:{y:81,text:"offline production upgrade",font:"50px 'Potta One'",lineHeight:72.4,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to purchase this Item?",font:"45px 'Potta One'",lineHeight:65.15,y:1182.4,color:"#000000"}}]},11).to({state:[{t:this.desciption,p:{y:814.4,text:"Would you line to purchase this Skin?",font:"45px 'Potta One'",lineHeight:65.15,color:"#000000"}},{t:this.description_1,p:{text:"Skin",font:"55px 'Potta One'",lineHeight:79.65,y:71,color:"#FFFFFF"}}]},11).wait(10));
 
 	// BG
 	this.instance = new lib.shop_sushi_bg();
