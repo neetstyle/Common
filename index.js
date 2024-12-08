@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"index_atlas_1", frames: [[2244,1443,516,176],[0,1345,904,153],[2568,1621,115,115],[1510,1625,754,101],[1785,0,521,935],[1785,937,521,445],[3919,1002,120,65],[3205,1445,116,126],[3910,1794,116,126],[2784,1799,662,46],[0,1802,662,46],[3354,0,521,596],[1679,1384,563,239],[2831,1125,507,318],[1220,0,563,1218],[3064,1693,542,104],[0,0,1218,1218],[1126,1775,374,91],[3340,1408,518,178],[302,1662,520,112],[906,1345,122,122],[1127,1220,550,251],[2308,771,521,487],[2054,1728,130,229],[2762,1445,300,300],[906,1473,300,300],[3877,1093,214,190],[3064,1445,139,132],[3877,1285,214,190],[664,1776,150,190],[3860,1477,214,190],[2568,1747,214,190],[3064,1588,750,103],[2266,1621,300,206],[1679,1312,102,63],[3448,1799,87,70],[1208,1473,300,300],[0,1500,300,300],[1679,1220,90,90],[1030,1345,90,90],[302,1500,552,160],[3354,598,563,493],[2308,1260,519,181],[824,1775,300,128],[3608,1794,300,86],[2308,0,521,769],[2831,0,521,613],[2831,615,521,508],[3608,1693,452,99],[1510,1728,542,104],[1510,1473,150,150],[0,1220,1125,123],[3919,0,50,1000],[3354,1093,521,313],[3971,0,50,1000]]}
+		{name:"index_atlas_1", frames: [[2244,1443,516,176],[0,1345,904,153],[1510,1473,115,115],[1510,1625,754,101],[1785,0,521,935],[1785,937,521,445],[3860,1571,120,65],[3064,1445,116,126],[3182,1445,116,126],[2870,1799,662,46],[0,1802,662,46],[3354,0,521,596],[1679,1384,563,239],[2831,1125,507,318],[1220,0,563,1218],[3064,1693,542,104],[0,0,1218,1218],[824,1775,374,91],[3340,1408,518,178],[302,1662,520,112],[906,1345,122,122],[1127,1220,550,251],[2308,771,521,487],[3919,576,130,229],[2762,1445,300,300],[906,1473,300,300],[3877,0,214,190],[3860,1437,139,132],[3877,192,214,190],[3919,807,150,190],[3877,384,214,190],[3877,1093,214,190],[3064,1588,750,103],[2266,1621,300,206],[1679,1312,102,63],[1030,1345,87,70],[1208,1473,300,300],[0,1500,300,300],[3919,999,90,90],[1679,1220,90,90],[302,1500,552,160],[3354,598,563,493],[2308,1260,519,181],[2568,1747,300,128],[1200,1775,300,86],[2308,0,521,769],[2831,0,521,613],[2831,615,521,508],[3608,1693,452,99],[1510,1728,542,104],[3877,1285,150,150],[0,1220,1125,123],[3354,1093,521,313],[4071,576,25,500]]}
 ];
 
 
@@ -391,23 +391,16 @@ lib.ssMetadata = [
 
 
 
-(lib.underBG2 = function() {
+(lib.upgrade_bg = function() {
 	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.upgrade_bg = function() {
-	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(53);
-}).prototype = p = new cjs.Sprite();
-
-
-
 (lib.upperBG2 = function() {
 	this.initialize(ss["index_atlas_1"]);
-	this.gotoAndStop(54);
+	this.gotoAndStop(53);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -1700,13 +1693,13 @@ if (reversed == null) { reversed = false; }
 
 	// レイヤー_1
 	this.instance = new lib.upperBG2();
-	this.instance.setTransform(-1452,0,80.0002,1);
+	this.instance.setTransform(-1565,0,175.0852,1.9999);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UpperBGMC, new cjs.Rectangle(-1452,0,4000,1000), null);
+}).prototype = getMCSymbolPrototype(lib.UpperBGMC, new cjs.Rectangle(-1565,0,4377.2,1000), null);
 
 
 (lib.UnderBGMC = function(mode,startPosition,loop,reversed) {
@@ -1720,15 +1713,15 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// レイヤー_1
-	this.instance = new lib.underBG2();
-	this.instance.setTransform(-1591,-491,80.0003,1);
+	// レイヤー_2
+	this.instance = new lib.upperBG2();
+	this.instance.setTransform(2697.8,507.95,175.393,1.9999,180);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.UnderBGMC, new cjs.Rectangle(-1591,-491,4000,1000), null);
+}).prototype = getMCSymbolPrototype(lib.UnderBGMC, new cjs.Rectangle(-1687,-492,4384.8,1000), null);
 
 
 (lib.RadiationMC = function(mode,startPosition,loop,reversed) {
