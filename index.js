@@ -5573,45 +5573,72 @@ if (reversed == null) { reversed = false; }
 		
 		this.OpenDesciption = function (data)
 		{
-		    if (!this.ScrollMC.isScrolled()) {
+			if (this.ScrollMC.isScrolled())
+			return;
 				
-				if(this.parent.AchievementDesciptionMC.visible)
+			if(this.parent.AchievementDesciptionMC.visible)
+			{
+				if(this.parent.AchievementDesciptionMC.obj.id == data.id)
 				{
-					if(this.parent.AchievementDesciptionMC.obj.id == data.id)
-					{
-						this.parent.AchievementDesciptionMC.Close();
-						return;
-					}
+					this.parent.AchievementDesciptionMC.Close();
+					return;
 				}
-				
-		        this.parent.AchievementDesciptionMC.Open(data);
-				main.PlaySE("popup");
-				if(data.isAchievementUnread)
-				{
-					main.RemoveAchievement();
-					data.isAchievementUnread = false;
-					data.achievementClip.DoddMC.visible =  false;
-				}
+			}
 			
+			this.parent.AchievementDesciptionMC.Open(data);
+			main.PlaySE("popup");
+			//if(data.isAchievementUnread)
+			//{
+				//main.RemoveAchievement();
+				//data.isAchievementUnread = false;
+				//data.achievementClip.DoddMC.visible =  false;
+			//}
+		
+			for (let i = 0; i < main.achievements.length; i++)
+			{
+				main.achievements[i].achievementClip.AchievementActiveMC.visible = false;
+				main.achievements[i].achievementClip.AchievementUpgradeActiveMC.visible = false;
+			}
+		
+			for (let i = 0; i < main.upgrades.length; i++)
+			{
+				if(main.upgrades[i].achievementClip == null) continue;
+				{
+					main.upgrades[i].achievementClip.AchievementActiveMC.visible = false;
+					main.upgrades[i].achievementClip.AchievementUpgradeActiveMC.visible = false;
+				}
+			}
+		
+			if(data.category == 2)
+			{
+				data.achievementClip.AchievementUpgradeActiveMC.visible = true;
+			}
+			else
+			{
+				data.achievementClip.AchievementActiveMC.visible = true;
+				this.CheckNotification(data);
+			}
+		}
+		
+		this.CheckNotification = function (data)
+		{
+			let num = 0;
+			if(data.doddState == 2)
+			{
+				data.doddState = 3;
+				main.SetAchievementNotification();
+				
+				data.achievementClip.DoddMC.visible = false;
+				exportRoot.FooterMC.AchievementBadgeMC.visible = false;
 				for (let i = 0; i < main.achievements.length; i++)
 				{
-					main.achievements[i].achievementClip.AchievementActiveMC.visible = false;
-					main.achievements[i].achievementClip.AchievementUpgradeActiveMC.visible = false;
-				}
-		
-				for (let i = 0; i < main.upgrades.length; i++)
-				{
-					if(main.upgrades[i].achievementClip == null) continue;
+					if(main.achievements[i].doddState == 2)
 					{
-						main.upgrades[i].achievementClip.AchievementActiveMC.visible = false;
-						main.upgrades[i].achievementClip.AchievementUpgradeActiveMC.visible = false;
+						exportRoot.FooterMC.AchievementBadgeMC.visible = true;
+						num++;
 					}
 				}
-		
-				if(data.category == 2)
-					data.achievementClip.AchievementUpgradeActiveMC.visible = true;
-				else
-					data.achievementClip.AchievementActiveMC.visible = true;
+				exportRoot.FooterMC.AchievementBadgeMC.notification.text = num;	
 			}
 		}
 		
@@ -5650,7 +5677,8 @@ if (reversed == null) { reversed = false; }
 				bitmap.mouseEnabled = false;
 			
 				clip.gotoAndStop("Active");
-				clip.DoddMC.visible =  upgrade.isAchievementUnread;
+				//clip.DoddMC.visible =  upgrade.isAchievementUnread;
+				clip.DoddMC.visible =  false;
 				clip.AchievementActiveMC.visible = false;
 				clip.AchievementUpgradeActiveMC.visible = false;
 				upgradeCount++;
@@ -5701,9 +5729,13 @@ if (reversed == null) { reversed = false; }
 				{
 					clip.gotoAndStop("Lock");
 				}
-				clip.DoddMC.visible =  achievement.isAchievementUnread;
+				//clip.DoddMC.visible =  achievement.isAchievementUnread;
+				clip.DoddMC.visible = achievement.doddState == 2 ? true : false;
 				clip.AchievementActiveMC.visible = false;
 				clip.AchievementUpgradeActiveMC.visible = false;
+				
+				if(achievement.doddState == 2)
+					exportRoot.FooterMC.AchievementBadgeMC.visible = true;
 			}
 		
 			this.ContentMC.AchievementTitleMC.title.text = "Achievement";
@@ -5912,7 +5944,6 @@ if (reversed == null) { reversed = false; }
 				this.achievementClip = null;
 				
 				this.doddState = 0;
-				this.isAchievementUnread = true;
 				
 				this.available = false;
 				this.availableHasGeneratorCount = 0;
@@ -5998,7 +6029,6 @@ if (reversed == null) { reversed = false; }
 				this.achievementClip = null;
 		
 				this.doddState = 0;
-				this.isAchievementUnread = true;
 				
 				this.id = 0;
 				this.name = "";
@@ -6428,6 +6458,11 @@ if (reversed == null) { reversed = false; }
 		    return this.upgrades.find(upgrade => upgrade.id == id);
 		}
 		
+		main.GetAchievement = function(id)
+		{
+		    return this.achievements.find(achievement => achievement.id == id);
+		}
+		
 		main.RebuildStore = function()
 		{
 			var num = 0;
@@ -6608,8 +6643,13 @@ if (reversed == null) { reversed = false; }
 				main.generators[i].doddState = 0;
 			for (let i = 0; i < main.upgrades.length; i++)
 				main.upgrades[i].doddState = 0;
+			for (let i = 0; i < main.achievements.length; i++)
+				main.achievements[i].doddState = 0;	
+			
 			main.SetGeneratorNotification();
 			main.SetUpgradeNotification();
+			main.SetAchievementNotification();
+			
 			main.PlaySE("click");
 		});
 		
@@ -7018,18 +7058,21 @@ if (reversed == null) { reversed = false; }
 		//Achievement
 		main.AddAchievement = function(achievement)
 		{
+			achievement.doddState = 2;
+			achievement.completed = true;
 			this.achievementNotificationNum++;
 			exportRoot.FooterMC.AchievementBadgeMC.visible = true;
 			exportRoot.FooterMC.AchievementBadgeMC.notification.text = this.achievementNotificationNum;
+			this.SetAchievementNotification();
 		}
 		
-		main.RemoveAchievement = function()
-		{
-			this.achievementNotificationNum--;
-			if(this.achievementNotificationNum <= 0)
-				exportRoot.FooterMC.AchievementBadgeMC.visible = false;
-			exportRoot.FooterMC.AchievementBadgeMC.notification.text = this.achievementNotificationNum;
-		}
+		//main.RemoveAchievement = function()
+		//{
+		//	this.achievementNotificationNum--;
+		//	if(this.achievementNotificationNum <= 0)
+		//		exportRoot.FooterMC.AchievementBadgeMC.visible = false;
+		//	exportRoot.FooterMC.AchievementBadgeMC.notification.text = this.achievementNotificationNum;
+		//}
 		
 		//実績・ジェネレーター
 		main.CheckAchievement_Generator = function(generator)
@@ -7041,7 +7084,6 @@ if (reversed == null) { reversed = false; }
 				if(achievement.conditionType == 2) continue;
 				if(!(generator.posession >= achievement.conditionThreshold)) continue;
 				
-				achievement.completed = true;
 				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
@@ -7057,7 +7099,6 @@ if (reversed == null) { reversed = false; }
 				if(achievement.conditionType == 1) continue;
 				if(!(upgrade.posession >= achievement.conditionThreshold)) continue;
 				
-				achievement.completed = true;
 				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
@@ -7083,7 +7124,6 @@ if (reversed == null) { reversed = false; }
 						continue;
 				}
 				
-				achievement.completed = true;
 				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
@@ -7358,7 +7398,7 @@ if (reversed == null) { reversed = false; }
 			
 			console.log("GeneratorNotification : " + notification);	
 			
-			if(notification === null)
+			if(notification === null || notification =="")
 			{
 				//別端末の場合は通知は無し
 				for (var i = 0; i < this.generators.length; i++)
@@ -7400,7 +7440,7 @@ if (reversed == null) { reversed = false; }
 			
 			console.log("UpgradeNotification : " + notification);	
 			
-			if(notification === null)
+			if(notification === null || notification =="")
 			{
 				//別端末の場合は通知は無し
 				for (var i = 0; i < this.upgrades.length; i++)
@@ -7436,6 +7476,57 @@ if (reversed == null) { reversed = false; }
 					array.push(this.upgrades[i].id +":" +this.upgrades[i].doddState);
 			}
 			localStorage.setItem('ug', array.join(","));
+		}
+		
+		main.GetAchievementNotification = function() 
+		{
+			let notification = localStorage.getItem('ac')
+			
+			console.log("AchievementNotification : " + notification);	
+			
+			if(notification === null || notification =="")
+			{
+				//別端末の場合は通知は無し
+				for (var i = 0; i < this.achievements.length; i++)
+				{	
+					if(this.achievements[i].completed)
+						this.achievements[i].doddState = 3;
+				}
+				exportRoot.FooterMC.UpgradeBadgeMC.notification.text = 0;
+				exportRoot.FooterMC.AchievementBadgeMC.visible = false;
+			}
+			else
+			{
+				let num = 0;
+				let array1 = notification.split(',');
+		
+				for (let i = 0; i < array1.length; i++)
+				{
+					let array2 = array1[i].split(':');
+					let achievement = main.GetAchievement(array2[0]);			
+		
+					achievement.doddState = array2[1];
+					
+					if(achievement.doddState == 2)
+						num++;
+				}
+				exportRoot.FooterMC.AchievementBadgeMC.notification.text = num;
+				exportRoot.FooterMC.AchievementBadgeMC.visible = num > 0;
+			}
+		}
+		
+		main.SetAchievementNotification = function() 
+		{
+			console.log("SetAchievementNotification");
+			
+			let array =[];
+			
+			for (var i = 0; i < this.achievements.length; i++)
+			{
+				if(this.achievements[i].doddState == 2 || this.achievements[i].doddState == 3)
+					array.push(this.achievements[i].id +":" +this.achievements[i].doddState);
+			}
+			localStorage.setItem('ac', array.join(","));
 		}
 		//////////////////////////////////////////////////////////
 		//Pending
@@ -7673,6 +7764,7 @@ if (reversed == null) { reversed = false; }
 				achievement.completed = API_achievementData["items"][i].completed;
 				main.achievements.push(achievement);
 			}
+			main.GetAchievementNotification();
 		
 			//////////////////////////////////////////////////////////
 			//ペンディング
