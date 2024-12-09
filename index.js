@@ -6364,7 +6364,7 @@ if (reversed == null) { reversed = false; }
 			
 			//todo
 			this.upgradeNum++;
-			this.AddAchievement();
+			//this.AddAchievement();
 			this.CheckAchievement_Upgrade(upgrade);
 		
 			main.PlaySE("generator");
@@ -7064,6 +7064,7 @@ if (reversed == null) { reversed = false; }
 			exportRoot.FooterMC.AchievementBadgeMC.visible = true;
 			exportRoot.FooterMC.AchievementBadgeMC.notification.text = this.achievementNotificationNum;
 			this.SetAchievementNotification();
+			this.AchievementNotificationCount();
 		}
 		
 		//main.RemoveAchievement = function()
@@ -7081,10 +7082,10 @@ if (reversed == null) { reversed = false; }
 			{
 				var achievement = this.achievements[i];
 				if(achievement.completed == true) continue;
-				if(achievement.conditionType == 2) continue;
+				if(achievement.conditionType != 2) continue;
 				if(!(generator.posession >= achievement.conditionThreshold)) continue;
 				
-				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
 		}
@@ -7096,10 +7097,10 @@ if (reversed == null) { reversed = false; }
 			{
 				var achievement = this.achievements[i];
 				if(achievement.completed == true) continue;
-				if(achievement.conditionType == 1) continue;
+				if(achievement.conditionType != 1) continue;
 				if(!(upgrade.posession >= achievement.conditionThreshold)) continue;
 				
-				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
 		}
@@ -7124,7 +7125,9 @@ if (reversed == null) { reversed = false; }
 						continue;
 				}
 				
-				this.AddNotification("実績が解除されました\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.SushiUpdate();	
+			
+				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
 		}
@@ -7337,7 +7340,7 @@ if (reversed == null) { reversed = false; }
 		main.AddNotification = function(messsage, image)
 		{
 			var notification = new Notification();
-			notification.message = "Achievement Unlocked.\n" + messsage;
+			notification.message = messsage;
 			notification.image = image;
 			
 			this.notifications.push(notification);
@@ -7497,7 +7500,6 @@ if (reversed == null) { reversed = false; }
 			}
 			else
 			{
-				let num = 0;
 				let array1 = notification.split(',');
 		
 				for (let i = 0; i < array1.length; i++)
@@ -7506,12 +7508,8 @@ if (reversed == null) { reversed = false; }
 					let achievement = main.GetAchievement(array2[0]);			
 		
 					achievement.doddState = array2[1];
-					
-					if(achievement.doddState == 2)
-						num++;
 				}
-				exportRoot.FooterMC.AchievementBadgeMC.notification.text = num;
-				exportRoot.FooterMC.AchievementBadgeMC.visible = num > 0;
+				this.AchievementNotificationCount();
 			}
 		}
 		
@@ -7527,6 +7525,20 @@ if (reversed == null) { reversed = false; }
 					array.push(this.achievements[i].id +":" +this.achievements[i].doddState);
 			}
 			localStorage.setItem('ac', array.join(","));
+		}
+		
+		
+		main.AchievementNotificationCount = function() 
+		{
+			let num = 0;
+			for (var i = 0; i < this.achievements.length; i++)
+			{
+				if(this.achievements[i].doddState == 2)
+					num++;
+			}
+		
+			exportRoot.FooterMC.AchievementBadgeMC.notification.text = num;
+			exportRoot.FooterMC.AchievementBadgeMC.visible = num > 0;
 		}
 		//////////////////////////////////////////////////////////
 		//Pending
