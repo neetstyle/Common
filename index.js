@@ -7144,6 +7144,7 @@ if (reversed == null) { reversed = false; }
 				if(achievement.conditionType != 5) continue;
 				if(!(count >= achievement.conditionThreshold)) continue;
 				
+				achievement.completed = true;
 				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
@@ -7561,10 +7562,7 @@ if (reversed == null) { reversed = false; }
 			for (var i = 0; i < this.achievements.length; i++)
 			{
 				if(this.achievements[i].doddState == 2)
-				{
 					num++;
-					console.log(this.achievements[i].id);
-				}
 			}
 		
 			exportRoot.FooterMC.AchievementBadgeMC.notification.text = num;
