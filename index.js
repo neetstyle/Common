@@ -1861,6 +1861,13 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).to({_off:true},9).wait(11));
 
+	// Dodd
+	this.DoddMC = new lib.DoddMC();
+	this.DoddMC.name = "DoddMC";
+	this.DoddMC.setTransform(1060,57,1,1,0,0,0,45,45);
+
+	this.timeline.addTween(cjs.Tween.get(this.DoddMC).wait(20));
+
 	// Mask
 	this.MaskMC = new lib.MaskMC();
 	this.MaskMC.name = "MaskMC";
@@ -1869,13 +1876,6 @@ if (reversed == null) { reversed = false; }
 	this.MaskMC._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.MaskMC).wait(9).to({_off:false},0).wait(11));
-
-	// Dodd
-	this.DoddMC = new lib.DoddMC();
-	this.DoddMC.name = "DoddMC";
-	this.DoddMC.setTransform(1060,57,1,1,0,0,0,45,45);
-
-	this.timeline.addTween(cjs.Tween.get(this.DoddMC).wait(20));
 
 	// Icon
 	this.IconMC = new lib.IconMC();
@@ -2897,6 +2897,13 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).to({_off:true},19).wait(11));
 
+	// Dodd
+	this.DoddMC = new lib.DoddMC();
+	this.DoddMC.name = "DoddMC";
+	this.DoddMC.setTransform(1060,57,1,1,0,0,0,45,45);
+
+	this.timeline.addTween(cjs.Tween.get(this.DoddMC).wait(30));
+
 	// Mask
 	this.MaskMC = new lib.MaskMC();
 	this.MaskMC.name = "MaskMC";
@@ -2905,13 +2912,6 @@ if (reversed == null) { reversed = false; }
 	this.MaskMC._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.MaskMC).wait(9).to({_off:false},0).wait(10).to({regX:0.6,x:54.15,alpha:1},0).wait(11));
-
-	// Dodd
-	this.DoddMC = new lib.DoddMC();
-	this.DoddMC.name = "DoddMC";
-	this.DoddMC.setTransform(1060,57,1,1,0,0,0,45,45);
-
-	this.timeline.addTween(cjs.Tween.get(this.DoddMC).wait(30));
 
 	// レイヤー_8
 	this.titleHatena = new cjs.Text("???", "40px 'Potta One'");
