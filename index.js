@@ -2474,6 +2474,8 @@ if (reversed == null) { reversed = false; }
 			
 			main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
 			main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
+		
+			main.CheckAchievement_Invite(API_referralData.totalReferralCount);
 		}
 		
 		this.Mask = function(){} 
@@ -7131,6 +7133,21 @@ if (reversed == null) { reversed = false; }
 				this.AddAchievement(achievement);
 			}
 		}
+		
+		//実績・友人招待
+		main.CheckAchievement_Invite = function(count)
+		{
+			for (var i = 0; i < this.achievements.length; i++)
+			{
+				var achievement = this.achievements[i];
+				if(achievement.completed == true) continue;
+				if(achievement.conditionType != 5) continue;
+				if(!(count >= achievement.conditionThreshold)) continue;
+				
+				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.AddAchievement(achievement);
+			}
+		}
 		//////////////////////////////////////////////////////////
 		//Panel
 		
@@ -7509,6 +7526,16 @@ if (reversed == null) { reversed = false; }
 		
 					achievement.doddState = array2[1];
 				}
+				
+				for (var i = 0; i < this.achievements.length; i++)
+				{
+					if(this.achievements[i].conditionType == 3 || this.achievements[i].conditionType == 4 || this.achievements[i].conditionType == 5)			
+					{
+						//完了済みで通知が無かったら2
+						if(this.achievements[i].completed && this.achievements[i].doddState == 0)
+							this.achievements[i].doddState = 2;
+					}
+				}
 				this.AchievementNotificationCount();
 			}
 		}
@@ -7534,7 +7561,10 @@ if (reversed == null) { reversed = false; }
 			for (var i = 0; i < this.achievements.length; i++)
 			{
 				if(this.achievements[i].doddState == 2)
+				{
 					num++;
+					console.log(this.achievements[i].id);
+				}
 			}
 		
 			exportRoot.FooterMC.AchievementBadgeMC.notification.text = num;
