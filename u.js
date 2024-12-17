@@ -428,74 +428,77 @@ var api_host = "https://clicker-api-stg.sasaki-11c.workers.dev";
 var deviceId ="";
 
 function API_Request(options) {
-    const fullUrl = api_host + options.url;
     const maxAttempts = options.maxAttempts || 3;
-    let attempts = 0;
+    const baseDelay = 1000; // 初期待機時間（ミリ秒）
 
-    // $.ajaxをPromise化する関数
     function ajaxPromise(finalOptions) {
         return new Promise(function(resolve, reject) {
             $.ajax({
                 ...finalOptions,
-                success: function(response) {
-                    resolve(response);
-                },
+                success: resolve,
                 error: function(jqXHR, textStatus, errorThrown) {
-                    if (textStatus === "timeout") {
-                        reject({ reason: "timeout", jqXHR }); // タイムアウトの場合
-                    } else {
-                        reject({ reason: "other", jqXHR });  // タイムアウト以外
-                    }
+                    reject({ 
+                        reason: textStatus === "timeout" ? "timeout" : "error", 
+                        jqXHR, 
+                        textStatus, 
+                        errorThrown 
+                    });
                 }
             });
         });
     }
 
     return new Promise(async function(resolve, reject) {
-        const requestWithRetry = async () => {
-            while (attempts < maxAttempts) {
-                attempts++;
-                try {
-                    var defaultOptions = {
-                        method: 'GET',
-                        dataType: 'json',
-                        contentType: 'application/json',
-                        headers: {
-                            'Authorization': authorization,
-							'Device-Id' : deviceId
-                        }
-                    };
-                    var finalOptions = $.extend({}, defaultOptions, options);
-                    finalOptions.url = api_host + options.url;
+        for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+            try {
+                const defaultOptions = {
+                    method: 'GET',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    headers: {
+                        'Authorization': authorization,
+                        'Device-Id': deviceId
+                    },
+                    timeout: 10000 // 10秒のタイムアウト
+                };
 
-                    if (options.data) {
-                        finalOptions.data = JSON.stringify(options.data);
-                    }
+                const finalOptions = $.extend({}, defaultOptions, options);
+                finalOptions.url = api_host + options.url;
 
-                    // $.ajaxのPromise化された結果をawaitで待機
-                    const response = await ajaxPromise(finalOptions);
-                    resolve(response);  // 成功した場合はPromiseを解決
-                    return;  // 成功したらループを抜ける
-                } catch (error) {
-                    if (error.reason === "timeout") {
-                        console.log(`試行 ${attempts} 回目失敗: タイムアウト`);
-                    } else {
-                        // タイムアウト以外のエラーは即座に失敗とする
-                        reject(`APIリクエストが失敗しました。エラー: ${error.jqXHR.statusText}`);
-                        return;
-                    }
-
-                    if (attempts >= maxAttempts) {
-                        reject(`APIリクエストが${maxAttempts}回失敗しました。エラー: タイムアウト`);
-                        return;
-                    }
-
-                    // タイムアウトの場合のみ1秒間待機して再試行
-                    await new Promise(resolve => setTimeout(resolve, 1000));
+                if (options.data) {
+                    finalOptions.data = JSON.stringify(options.data);
                 }
-            }
-        };
 
-        await requestWithRetry();
+                const response = await ajaxPromise(finalOptions);
+                resolve(response);
+                return;
+
+            } catch (error) {
+                // タイムアウト以外のエラーは即座に終了
+                if (error.reason !== "timeout") {
+                    reject({
+                        message: 'APIリクエストでエラーが発生しました',
+                        details: error
+                    });
+                    return;
+                }
+
+                // タイムアウトの場合のみ再試行
+                if (attempt === maxAttempts) {
+                    reject({
+                        message: `タイムアウトが${maxAttempts}回発生しました`,
+                        details: error
+                    });
+                    return;
+                }
+
+                // 指数バックオフを実装（タイムアウト時のみ）
+                const delay = baseDelay * Math.pow(2, attempt - 1);
+                console.log(`タイムアウト 試行 ${attempt} 回目。${delay}ミリ秒後に再試行します。`);
+                
+                // 待機してから再試行
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+        }
     });
 }
