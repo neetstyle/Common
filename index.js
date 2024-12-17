@@ -7085,6 +7085,7 @@ if (reversed == null) { reversed = false; }
 				var achievement = this.achievements[i];
 				if(achievement.completed == true) continue;
 				if(achievement.conditionType != 2) continue;
+				if(achievement.conditionTargetMstId != generator.id) continue;
 				if(!(generator.posession >= achievement.conditionThreshold)) continue;
 				
 				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");

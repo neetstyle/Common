@@ -424,7 +424,7 @@ var COOKIES = COOKIES || {
 var authorization = window.Telegram.WebApp.initData;
 if(Telegram.WebApp.initDataUnsafe.user === undefined)
 	authorization = "query_id=AAHjfQgwAwAAAON9CDDlFPkV&user=%7B%22id%22%3A7248313827%2C%22first_name%22%3A%22NEETStyle%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22ja%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726546734&hash=ef00201ae2db1cd90e423aefc1574db5a33fa814815be426f5d9ad1a96f25b4a";
-var api_host = "https://clicker-api.tomoya-ishisaka.workers.dev";
+var api_host = "https://clicker-api-stg.sasaki-11c.workers.dev";
 var deviceId ="";
 
 function API_Request(options) {
