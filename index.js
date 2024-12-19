@@ -3293,6 +3293,16 @@ if (reversed == null) { reversed = false; }
 			this.SESliderMC.SetValue(main.se);
 			this.SESliderMC.SetIcon("SE");
 			this.SESliderMC.SetCallBack(this.ChangeSEVolume);
+		
+		
+		
+		alert(
+		this.desciption.regY
+		+" / " + 
+		this.desciption.getMeasuredLineHeight()
+		);
+		
+		
 		}
 		
 		this.Mask = function(){} 
