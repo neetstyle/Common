@@ -3297,11 +3297,15 @@ if (reversed == null) { reversed = false; }
 		
 		
 		alert(
-		this.desciption.regY
-		+" / " + 
-		this.desciption.getMeasuredLineHeight()
+		    "Desc: " + this.desciption.text + "\n" +
+		    "Font: " + this.desciption.font + "\n" +
+		    "LineHeight: " + this.desciption.lineHeight + "\n" +
+		    "MeasuredLineHeight: " + this.desciption.getMeasuredLineHeight() + "\n" +
+		    "MeasuredHeight: " + this.desciption.getMeasuredHeight() + "\n" +  
+		    "Y: " + this.desciption.y + "\n" +
+		    "RegY: " + this.desciption.regY + "\n" +
+		    "TextBaseline: " + this.desciption.textBaseline
 		);
-		
 		
 		}
 		
