@@ -75,8 +75,8 @@
 			return;
 
 		//todo:一時的にブラウザで見るから
-		//if(isMobile() && !(Telegram.WebApp.initDataUnsafe.user === undefined))
-		if(isMobile())
+		if(isMobile() && !(Telegram.WebApp.initDataUnsafe.user === undefined))
+		//if(isMobile())
 		{
 			window.Telegram.WebApp.BiometricManager.init(this.CheckDeviceId);
 		}

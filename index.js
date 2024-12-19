@@ -3014,6 +3014,10 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Text
+	this.AccountResetButtonMC = new lib.DebugMC();
+	this.AccountResetButtonMC.name = "AccountResetButtonMC";
+	this.AccountResetButtonMC.setTransform(834.4,370.1,1,1,0,0,0,250,50);
+
 	this.ClearNotificationButtonMC = new lib.DebugMC();
 	this.ClearNotificationButtonMC.name = "ClearNotificationButtonMC";
 	this.ClearNotificationButtonMC.setTransform(290,228,1,1,0,0,0,250,50);
@@ -3041,7 +3045,7 @@ if (reversed == null) { reversed = false; }
 	this.ClearButtonMC.name = "ClearButtonMC";
 	this.ClearButtonMC.setTransform(290,370.1,1,1,0,0,0,250,50);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.ClearButtonMC},{t:this.log},{t:this.SpeedButtonMC},{t:this.MemoryButtonMC},{t:this.LocalStorageButtonMC},{t:this.ClearNotificationButtonMC}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.ClearButtonMC},{t:this.log},{t:this.SpeedButtonMC},{t:this.MemoryButtonMC},{t:this.LocalStorageButtonMC},{t:this.ClearNotificationButtonMC},{t:this.AccountResetButtonMC}]}).wait(1));
 
 	// BG
 	this.ContentBGMC = new lib.ButtonMC();
@@ -6193,7 +6197,7 @@ if (reversed == null) { reversed = false; }
 				this.Debug_isSound = true;
 				this.Debug_isBGM = true;
 				
-				this.isAPIWait = false;
+				//this.isAPIWait = false;
 		    }
 		}
 		
@@ -6301,6 +6305,7 @@ if (reversed == null) { reversed = false; }
 			//----------------------------------------------
 			//購入
 			try {
+				/*
 				console.log("API.現在の寿司の更新");
 				if(!this.isAPIWait){
 					this.isAPIWait = true;	
@@ -6323,10 +6328,26 @@ if (reversed == null) { reversed = false; }
 				});
 			
 				this.isAPIWait = false;	
+				*/
+				console.log("API.現在の寿司の更新");
+				//寿司の差分を更新
+				API_Request({
+					url: '/sushi/add',
+					method: 'POST',
+					data: {
+						amount: Math.floor(this.sushiAdd)
+					}
+				});
+				this.sushiAdd = 0;
 			
+				console.log("API.ジェネレーター購入");
+				 API_Request({
+					url: '/generator/' + generator.id + '/purchase',
+					method: 'POST'
+				});
 			} catch (error) {
 				console.error("ジェネレーター購入エラー", error);
-				this.isAPIWait = false;		
+				//this.isAPIWait = false;		
 				exportRoot.Mask3MC.visible = true;
 			
 				console.log("API.自身のユーザー情報を得る");
@@ -6395,6 +6416,7 @@ if (reversed == null) { reversed = false; }
 			//----------------------------------------------
 			//購入
 			try {
+				/*
 				console.log("API.現在の寿司の更新");
 				if(!this.isAPIWait){
 					this.isAPIWait = true;	
@@ -6416,9 +6438,26 @@ if (reversed == null) { reversed = false; }
 					method: 'POST'
 				});
 				this.isAPIWait = false;	
+				*/
+				console.log("API.現在の寿司の更新");
+				//寿司の差分を更新
+				API_Request({
+					url: '/sushi/add',
+					method: 'POST',
+					data: {
+						amount: Math.floor(this.sushiAdd)
+					}
+				});
+				this.sushiAdd = 0;
+				console.log("API.アップグレード購入");
+				//ジェネレーター購入
+				API_Request({
+					url: '/upgrade/' + upgrade.id + '/purchase',
+					method: 'POST'
+				});
 			} catch (error) {
 				console.error("アップグレード購入エラー", error);
-				this.isAPIWait = false;			
+				//this.isAPIWait = false;			
 				exportRoot.Mask3MC.visible = true;
 			
 				console.log("API.自身のユーザー情報を得る");
@@ -6666,6 +6705,15 @@ if (reversed == null) { reversed = false; }
 			main.PlaySE("click");
 		});
 		
+		this.DebugPanelMC.ContentMC.AccountResetButtonMC.on("click", function(evt) {
+			localStorage.clear();
+			API_generatorsData = API_Request({
+				url: '/user/force-reset',
+				method: 'POST'
+			});	
+			location.reload();
+		});
+		
 		this.DebugPanelMC.ContentMC.ClearNotificationButtonMC.on("click", function(evt) {
 			for (let i = 0; i < main.generators.length; i++)
 				main.generators[i].doddState = 0;
@@ -6691,6 +6739,8 @@ if (reversed == null) { reversed = false; }
 		
 			exportRoot.DebugPanelMC.ContentMC.LocalStorageButtonMC.status.text = "StorageClear";
 			exportRoot.DebugPanelMC.ContentMC.ClearNotificationButtonMC.status.text = "ResetNotification";
+			
+			exportRoot.DebugPanelMC.ContentMC.AccountResetButtonMC.status.text = "AccountReset";
 		}
 		
 		main.Debug_Memory = function()
