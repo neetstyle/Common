@@ -2955,7 +2955,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.IconMC).to({_off:true},19).wait(11));
 
 	// Text_amount
-	this.posession = new cjs.Text("100", "65px 'Potta One'");
+	this.posession = new cjs.Text("100", "65px 'Potta One'", "#723826");
 	this.posession.name = "posession";
 	this.posession.textAlign = "center";
 	this.posession.lineHeight = 96;
@@ -2973,6 +2973,16 @@ if (reversed == null) { reversed = false; }
 	this.title.setTransform(262,64);
 
 	this.timeline.addTween(cjs.Tween.get(this.title).to({_off:true},19).wait(11));
+
+	// レイヤー_2
+	this.sps = new cjs.Text("3.158,759", "50px 'Potta One'", "#723826");
+	this.sps.name = "sps";
+	this.sps.lineHeight = 74;
+	this.sps.lineWidth = 496;
+	this.sps.parent = this;
+	this.sps.setTransform(416.55,128.1);
+
+	this.timeline.addTween(cjs.Tween.get(this.sps).wait(30));
 
 	// Text_cost
 	this.cost = new cjs.Text("3.158,759", "50px 'Potta One'", "#0D9000");
@@ -5428,6 +5438,8 @@ if (reversed == null) { reversed = false; }
 				//clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");
 				clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
 				clip.posession.text = generator.posession;
+				clip.sps.text = "+" + FormatNumber(generator.storedSps, 1, 0);	
+				clip.sps.x = clip.cost.x + clip.cost.getMeasuredWidth() + 10;
 				clip.x = 0;
 				clip.y = 0 + 240 * i;
 				generator.clip = clip;
@@ -6296,6 +6308,7 @@ if (reversed == null) { reversed = false; }
 			main.touchSps = main.TouchSps();
 			generator.clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
 			generator.clip.posession.text = generator.posession;
+			generator.clip.sps.x = generator.clip.cost.x + generator.clip.cost.getMeasuredWidth() + 10;
 			
 			//todo
 			this.generatorNum++;
@@ -6369,6 +6382,7 @@ if (reversed == null) { reversed = false; }
 					_generator.nextPrice = Number(API_generatorsData["items"][i].nextPrice);
 					_generator.clip.cost.text = FormatNumber(_generator.storedCost, 1, 0);
 					_generator.clip.posession.text = _generator.posession;
+					_generator.clip.sps.x = _generator.clip.cost.x + _generator.clip.cost.getMeasuredWidth() + 10;
 				}			
 			
 				main.touchSps = Number(API_userData.sushiPerClick);
@@ -6406,6 +6420,8 @@ if (reversed == null) { reversed = false; }
 			this.RebuildStore();
 			this.touchSps = this.TouchSps();
 			exportRoot.UpgradePanelMC.Reset();
+			for (var i = 0; i < this.generators.length; i++)
+				this.generators[i].clip.sps.text = "+" + FormatNumber(this.generators[i].storedSps, 1, 0);
 			
 			//todo
 			this.upgradeNum++;
@@ -6472,6 +6488,8 @@ if (reversed == null) { reversed = false; }
 				this.CalculateGains();
 				this.RebuildStore();
 				this.touchSps = this.TouchSps();
+				for (var i = 0; i < this.generators.length; i++)
+					this.generators[i].clip.sps.text = "+" + FormatNumber(this.generators[i].storedSps, 1, 0);
 			
 				console.log("API.アップグレード取得");
 				API_upgradesData = await API_Request({
@@ -6705,12 +6723,12 @@ if (reversed == null) { reversed = false; }
 			main.PlaySE("click");
 		});
 		
-		this.DebugPanelMC.ContentMC.AccountResetButtonMC.on("click", function(evt) {
-			localStorage.clear();
-			API_generatorsData = API_Request({
+		this.DebugPanelMC.ContentMC.AccountResetButtonMC.on("click", async function(evt) {
+			await API_Request({
 				url: '/user/force-reset',
 				method: 'POST'
 			});	
+			localStorage.clear();
 			location.reload();
 		});
 		
@@ -7187,6 +7205,8 @@ if (reversed == null) { reversed = false; }
 		//実績・sushi
 		main.CheckAchievement_Sushi = function()
 		{
+			let isUpdate = false;
+			
 			for (var i = 0; i < this.achievements.length; i++)
 			{
 				var achievement = this.achievements[i];
@@ -7203,12 +7223,12 @@ if (reversed == null) { reversed = false; }
 					default:
 						continue;
 				}
-				
-				this.SushiUpdate();	
-			
+				isUpdate = true;
 				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
+			if(isUpdate)
+				this.SushiUpdate();	
 		}
 		
 		//実績・友人招待
