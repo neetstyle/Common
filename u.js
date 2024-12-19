@@ -502,3 +502,18 @@ function API_Request(options) {
         }
     });
 }
+
+// 元のsetTransformメソッドを保存
+const originalSetTransform = createjs.Text.prototype.setTransform;
+
+// setTransformメソッドを上書き
+createjs.Text.prototype.setTransform = function(x, y, ...args) {
+    // iOS以外の場合はyを調整
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (!isIOS) {
+        y += 12; // 必要な調整値
+    }
+    // 元のsetTransformを呼び出し
+    return originalSetTransform.call(this, x, y, ...args);
+};
+

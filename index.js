@@ -1109,13 +1109,13 @@ if (reversed == null) { reversed = false; }
 			var text1 = "Each [x] produces [y]S Sushi per second";
 			this.desciption1.text = 
 				text1.replace("[x]", this.obj.name)
-				.replace("[y]", FormatNumber(Accuracy(this.obj.storedTotalSps), 1, 0));
+				.replace("[y]", FormatNumber(Accuracy(this.obj.storedSps), 1, 0));
 			
 			var text2 = "[x] [y] produces [z] Sushi per second ([w]% of total SpS)";
 			this.desciption2.text = 
 				text2.replace("[x]", this.obj.posession)
 				.replace("[y]", this.obj.name)
-				.replace("[z]", FormatNumber(Accuracy(this.obj.storedTotalSps * this.obj.posession), 1, 2))
+				.replace("[z]", FormatNumber(Accuracy(this.obj.storedSps * this.obj.posession), 1, 2))
 				.replace("[w]", this.ratio.toFixed(1));
 			
 			//var text3 = "[x] Sushi produced so far";
@@ -3293,20 +3293,6 @@ if (reversed == null) { reversed = false; }
 			this.SESliderMC.SetValue(main.se);
 			this.SESliderMC.SetIcon("SE");
 			this.SESliderMC.SetCallBack(this.ChangeSEVolume);
-		
-		
-		
-		alert(
-		    "Desc: " + this.desciption.text + "\n" +
-		    "Font: " + this.desciption.font + "\n" +
-		    "LineHeight: " + this.desciption.lineHeight + "\n" +
-		    "MeasuredLineHeight: " + this.desciption.getMeasuredLineHeight() + "\n" +
-		    "MeasuredHeight: " + this.desciption.getMeasuredHeight() + "\n" +  
-		    "Y: " + this.desciption.y + "\n" +
-		    "RegY: " + this.desciption.regY + "\n" +
-		    "TextBaseline: " + this.desciption.textBaseline
-		);
-		
 		}
 		
 		this.Mask = function(){} 
