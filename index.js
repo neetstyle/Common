@@ -4092,7 +4092,7 @@ if (reversed == null) { reversed = false; }
 					this.bitmap = new createjs.Bitmap("images/shop/robo" + this.obj.id + ".webp");
 					this.addChild(this.bitmap);
 					this.bitmap.x = 360;
-					this.bitmap.y = 228;
+					this.bitmap.y = 228 - 200;
 					this.bitmap.scaleX = 1;
 					this.bitmap.scaleY = 1;	
 					break;
@@ -4121,7 +4121,7 @@ if (reversed == null) { reversed = false; }
 					this.bitmap = new createjs.Bitmap("images/shop/shopitem_" + this.obj.id.toString().padStart(2, '0') + ".webp");
 					this.addChild(this.bitmap);
 					this.bitmap.x = 360;
-					this.bitmap.y = 228;
+					this.bitmap.y = 228 - 120;
 					this.bitmap.scaleX = 1;
 					this.bitmap.scaleY = 1;	
 					break;
@@ -4371,7 +4371,7 @@ if (reversed == null) { reversed = false; }
 	this.CloseButtonMC.name = "CloseButtonMC";
 	this.CloseButtonMC.setTransform(1028,16,1,1,0,0,0,61,61);
 
-	this.timeline.addTween(cjs.Tween.get(this.CloseButtonMC).wait(51));
+	this.timeline.addTween(cjs.Tween.get(this.CloseButtonMC).wait(30).to({y:-184},0).wait(11).to({y:-114},0).wait(10));
 
 	// レイヤー_2
 	this.ShopConfilmCell1MC = new lib.ShopConfilmCell1MC();
@@ -4395,11 +4395,11 @@ if (reversed == null) { reversed = false; }
 
 	this.ShopType3ButtonMC = new lib.ShopType3ButtonMC();
 	this.ShopType3ButtonMC.name = "ShopType3ButtonMC";
-	this.ShopType3ButtonMC.setTransform(517,1392,1,1,0,0,0,258,88);
+	this.ShopType3ButtonMC.setTransform(517,1192,1,1,0,0,0,258,88);
 
 	this.ShopType4ButtonMC = new lib.ShopType4ButtonMC();
 	this.ShopType4ButtonMC.name = "ShopType4ButtonMC";
-	this.ShopType4ButtonMC.setTransform(517,1041,1,1,0,0,0,258,88);
+	this.ShopType4ButtonMC.setTransform(517,911,1,1,0,0,0,258,88);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.ShopType1ButtonMC}]},9).to({state:[{t:this.ShopType2ButtonMC}]},10).to({state:[{t:this.ShopType3ButtonMC}]},11).to({state:[{t:this.ShopType4ButtonMC}]},11).wait(10));
 
@@ -4409,22 +4409,22 @@ if (reversed == null) { reversed = false; }
 	this.description.lineHeight = 60;
 	this.description.lineWidth = 910;
 	this.description.parent = this;
-	this.description.setTransform(68.05,568.7);
+	this.description.setTransform(68.05,368.7);
 
 	this.text = new cjs.Text("performance", "40px 'Potta One'", "#FFFFFF");
 	this.text.lineHeight = 58;
 	this.text.lineWidth = 273;
 	this.text.parent = this;
-	this.text.setTransform(90.15,738.7);
+	this.text.setTransform(90.15,538.7);
 
 	this.longDescription = new cjs.Text("1時間あたりのSpS（Sushi per Second）の5%\n1時間経過後、提供力が10分の1まで減少\n最大24時間稼働します", "40px 'Potta One'", "#723826");
 	this.longDescription.name = "longDescription";
 	this.longDescription.lineHeight = 60;
 	this.longDescription.lineWidth = 910;
 	this.longDescription.parent = this;
-	this.longDescription.setTransform(68.05,834.2);
+	this.longDescription.setTransform(68.05,634.2);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.longDescription},{t:this.text},{t:this.description,p:{y:568.7}}]},30).to({state:[{t:this.description,p:{y:634.7}}]},11).wait(10));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.longDescription},{t:this.text},{t:this.description,p:{y:368.7}}]},30).to({state:[{t:this.description,p:{y:504.7}}]},11).wait(10));
 
 	// Text
 	this.description_1 = new cjs.Text("Would you line to buy Golden Sushi?", "45px 'Potta One'");
@@ -4443,24 +4443,24 @@ if (reversed == null) { reversed = false; }
 	this.desciption.parent = this;
 	this.desciption.setTransform(521,77);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Golden Sushi?",font:"45px 'Potta One'",lineHeight:65.15,y:584.4,color:"#000000"}}]},9).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Sushi?",font:"50px 'Potta One'",lineHeight:72.4,y:584.4,color:"#000000"}}]},10).to({state:[{t:this.desciption,p:{y:81,text:"offline production upgrade",font:"50px 'Potta One'",lineHeight:72.4,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to purchase this Item?",font:"45px 'Potta One'",lineHeight:65.15,y:1182.4,color:"#000000"}}]},11).to({state:[{t:this.desciption,p:{y:814.4,text:"Would you line to purchase this Skin?",font:"45px 'Potta One'",lineHeight:65.15,color:"#000000"}},{t:this.description_1,p:{text:"Skin",font:"55px 'Potta One'",lineHeight:79.65,y:71,color:"#FFFFFF"}}]},11).wait(10));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Golden Sushi?",font:"45px 'Potta One'",lineHeight:65.15,y:584.4,color:"#000000"}}]},9).to({state:[{t:this.desciption,p:{y:77,text:"Confilm",font:"55px 'Potta One'",lineHeight:79.65,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to buy Sushi?",font:"50px 'Potta One'",lineHeight:72.4,y:584.4,color:"#000000"}}]},10).to({state:[{t:this.desciption,p:{y:-119,text:"offline production upgrade",font:"50px 'Potta One'",lineHeight:72.4,color:"#FFFFFF"}},{t:this.description_1,p:{text:"Would you line to purchase this Item?",font:"45px 'Potta One'",lineHeight:65.15,y:982.4,color:"#000000"}}]},11).to({state:[{t:this.desciption,p:{y:684.4,text:"Would you line to purchase this Skin?",font:"45px 'Potta One'",lineHeight:65.15,color:"#000000"}},{t:this.description_1,p:{text:"Skin",font:"55px 'Potta One'",lineHeight:79.65,y:-59,color:"#FFFFFF"}}]},11).wait(10));
 
 	// BG
 	this.instance = new lib.shop_sushi_bg();
 	this.instance.setTransform(0,0,2,2);
 
 	this.instance_1 = new lib.shop_roboto_bg();
-	this.instance_1.setTransform(0,0,2,2);
+	this.instance_1.setTransform(0,-200,2,2);
 
 	this.instance_2 = new lib.shop_skin_bg();
-	this.instance_2.setTransform(0,0,2,2);
+	this.instance_2.setTransform(0,-130,2,2);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},30).to({state:[{t:this.instance_2}]},11).wait(10));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,-45,1089,1583);
+p.nominalBounds = new cjs.Rectangle(0,-245,1089,1583);
 
 
 (lib.ShopContentMC = function(mode,startPosition,loop,reversed) {
@@ -7182,7 +7182,8 @@ if (reversed == null) { reversed = false; }
 				if(achievement.conditionTargetMstId != generator.id) continue;
 				if(!(generator.posession >= achievement.conditionThreshold)) continue;
 				
-				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				//this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.AddNotification(achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
 		}
@@ -7197,7 +7198,7 @@ if (reversed == null) { reversed = false; }
 				if(achievement.conditionType != 1) continue;
 				if(!(upgrade.posession >= achievement.conditionThreshold)) continue;
 				
-				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.AddNotification(achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
 		}
@@ -7224,7 +7225,7 @@ if (reversed == null) { reversed = false; }
 						continue;
 				}
 				isUpdate = true;
-				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.AddNotification(achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
 			if(isUpdate)
@@ -7242,7 +7243,7 @@ if (reversed == null) { reversed = false; }
 				if(!(count >= achievement.conditionThreshold)) continue;
 				
 				achievement.completed = true;
-				this.AddNotification("Achievement Unlocked.\n" + achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
+				this.AddNotification(achievement.description ,"images/achievement/achievement_" + achievement.image + ".webp");
 				this.AddAchievement(achievement);
 			}
 		}
@@ -7493,6 +7494,7 @@ if (reversed == null) { reversed = false; }
 		
 			//exportRoot.NotificationMC.message_O.text = this.notifications[0].message;
 			exportRoot.NotificationMC.message.text = this.notifications[0].message;
+			SetWrapText(exportRoot.NotificationMC.message);
 			//SetWrapOutlineText(exportRoot.NotificationMC.message_O);		
 			
 			if( exportRoot.NotificationMC.bitmap != null)
