@@ -67,10 +67,10 @@
 	//	document.getElementById("loading_screen_out").style.display = "block";
 	//	document.getElementById("registration_out").style.display = "none";
 	//	document.getElementById("animation_container_out").style.display = "none";
-
-		document.getElementById("loading_screen_out").style.display = "none";
-		document.getElementById("registration_out").style.display = "none";
-		document.getElementById("animation_container_out").style.display = "block";
+//
+	//	document.getElementById("loading_screen_out").style.display = "none";
+	//	document.getElementById("registration_out").style.display = "none";
+	//	document.getElementById("animation_container_out").style.display = "block";
 
 		checkInitialization();
 	}
@@ -115,17 +115,13 @@
 		        url: '/user/me'
 		    });
 			console.log(API_userData);
-	//		document.getElementById("loading_screen_out").style.display = "block";
+
 			init();
 	    } catch (error) {
-	 //   	document.getElementById("loading_screen_out").style.display = "none";
-	 //   	document.getElementById("registration_out").style.display = "block";
 
-			let url = new URL(window.location.href);
-			let params = url.searchParams;
-			let referralCode = params.get('start');
-			if(referralCode !== undefined)
-				document.getElementById('invite_code').value = referralCode;
+
+alert(error);
+
 	    }
 	}
 
@@ -231,10 +227,13 @@ function resizeCanvas(domContainers, lib) {
 }
 
 function handleProgress(evt) {
+
+	/*
     var progressBar = document.getElementById("progress_bar");
     var progress = (evt.progress * 100).toFixed(2);
     progressBar.style.width = (progress * 0.60) + "%";
     console.log("Loading progress: " + progress + "%");
+    */
 }
 function handleFileLoad(evt, comp) {
 	var images=comp.getImages();	
@@ -263,46 +262,29 @@ function handleComplete(evt,comp) {
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 function hiddenLoadingScreen() {
 //	document.getElementById("animation_container_out").style.display = "block";
 //	document.getElementById("loading_screen_out").style.display = "none";
 
-
-
-
-
-	var comp=AdobeAn.getComposition("969C0F3DFF839440AC4059700CCE57F9");
-	var lib=comp.getLibrary();
-
-
-
-
-
-
-
-
-
-		const size = anim_container.getBoundingClientRect();
-
-		lib.properties.width = size.width;
-		lib.properties.height = size.height;
-
-		var w = lib.properties.width, h = lib.properties.height;			
-		var iw = window.innerWidth, ih=window.innerHeight;			
-		var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h;			
-
-		canvas.width = w * pRatio;			
-		canvas.height = h * pRatio;
-
-		stage.scaleX = pRatio;			
-		stage.scaleY = pRatio;      
-		stage.tickOnUpdate = false;            
-		stage.update();            
-		stage.tickOnUpdate = true;		
-
-
-alert(2);
 
 
 
@@ -317,7 +299,7 @@ alert(2);
 
 }
 function setProgress(progress) {
-    document.getElementById("progress_bar").style.width = progress + "%";
+   // document.getElementById("progress_bar").style.width = progress + "%";
 }
 
 </script>
@@ -329,27 +311,7 @@ function setProgress(progress) {
 
     <div id="content-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 2;">
 
-        <div id="registration_out" style="width: 100%; height: 100%; max-width: 55vh; aspect-ratio: 1125 / 2436; position: absolute;">
-            <div id="registration" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;">
-                <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
-                <div id="registration_form" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background-color: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 10px; text-align: center;">
-                    <h2 style="font-family: Arial, sans-serif; color: black;">New registration</h2>
-                    <input type="text" id="invite_code" style="width: 95%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" enterkeyhint="done" onkeydown="if(event.key === 'Enter'){ document.getElementById('register_button').click(); }">
-                    <button id="register_button" style="width: 100%; padding: 10px; background-color: #28a745; color: white; font-size: 16px; border: none; border-radius: 5px; cursor: pointer;" onclick="registration();">I will become a sushi master!</button>
-                </div>
-   				<img id="loading_background" src="images/loding-background2.webp" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-        </div>
 
-        <div id="loading_screen_out" style="width: 100%; height: 100%; max-width: 55vh; aspect-ratio: 1125 / 2436; position: absolute;">
-            <div id="loading_screen" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;">
-                <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
-                <div id="progress_bar_container" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 80%; height: 20px; background-color: #423113;">
-                    <div id="progress_bar" style="width: 0%; height: 100%; background-color: #1AC600;"></div>
-                </div>
-				<img id="loading_background" src="images/loding-background2.webp" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-        </div>
 
         <div id="animation_container_out" style="width: 100%; height: 100%; max-width: 75vh; aspect-ratio: 1125 / 2436; position: absolute;">
             <div id="animation_container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color:rgba(255, 255, 255, 1.00);">
