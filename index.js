@@ -2928,11 +2928,10 @@ if (reversed == null) { reversed = false; }
 	this.MaskMC.name = "MaskMC";
 	this.MaskMC.setTransform(49.05,34.2,10.28,2.12,0,0,0,0.1,0.1);
 	this.MaskMC.alpha = 0.5;
-	this.MaskMC._off = true;
 
-	this.timeline.addTween(cjs.Tween.get(this.MaskMC).wait(9).to({_off:false},0).wait(10).to({regX:0.6,x:54.15,alpha:1},0).wait(11));
+	this.timeline.addTween(cjs.Tween.get(this.MaskMC).wait(19).to({regX:0.6,x:54.15,alpha:1},0).wait(11));
 
-	// レイヤー_8
+	// Hatena
 	this.titleHatena = new cjs.Text("???", "40px 'Potta One'");
 	this.titleHatena.name = "titleHatena";
 	this.titleHatena.lineHeight = 60;
@@ -2965,7 +2964,7 @@ if (reversed == null) { reversed = false; }
 	this.posession.parent = this;
 	this.posession.setTransform(992.15,89);
 
-	this.timeline.addTween(cjs.Tween.get(this.posession).to({_off:true},9).wait(21));
+	this.timeline.addTween(cjs.Tween.get(this.posession).to({_off:true},19).wait(11));
 
 	// Text_title
 	this.title = new cjs.Text("Sushi Master's Chopsticks", "40px 'Potta One'");
@@ -5514,7 +5513,9 @@ if (reversed == null) { reversed = false; }
 				else if((main.sushi >= generator.availableSushiCount || generator.available ) && lastLocked == 0)
 				{
 					//購入可能
-					generator.clip.gotoAndStop("Lock");
+					generator.clip.gotoAndStop("Active");
+					//generator.clip.gotoAndStop("Lock");
+					generator.clip.posession.text = "";
 					dispCount++;
 					lastLocked++;
 				}
@@ -5534,10 +5535,17 @@ if (reversed == null) { reversed = false; }
 				}
 				
 				if(main.sushi >= generator.storedCost)
+				{
 					generator.clip.cost.color = "#0D9000";
+					generator.clip.MaskMC.visible = false;
+					//generator.clip.gotoAndStop("Active");
+				}
 				else
+				{
 					generator.clip.cost.color = "#C5253A";
-			
+					generator.clip.MaskMC.visible = true;
+					//generator.clip.gotoAndStop("Lock");
+				}
 			}
 			this.ScrollMC.count = dispCount;
 			this.ScrollMC.Reload();
