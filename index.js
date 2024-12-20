@@ -6220,7 +6220,11 @@ if (reversed == null) { reversed = false; }
 				this.Debug_isSound = true;
 				this.Debug_isBGM = true;
 				
-				//this.isAPIWait = false;
+				this.isRollbackGenerator = false;
+				this.buyGeneratorCount = 0;
+				
+				this.isRollbackUpgrade = false;
+				this.buyUpgradeCount = 0;
 		    }
 		}
 		
@@ -6328,83 +6332,77 @@ if (reversed == null) { reversed = false; }
 			main.PlaySE("generator");
 			//----------------------------------------------
 			//購入
-			try {
-				/*
-				console.log("API.現在の寿司の更新");
-				if(!this.isAPIWait){
-					this.isAPIWait = true;	
-					//寿司の差分を更新
-					await API_Request({
-						url: '/sushi/add',
-						method: 'POST',
-						data: {
-							amount: Math.floor(this.sushiAdd)
-						}
-					});
-					this.sushiAdd = 0;
+			console.log("API.現在の寿司の更新");
+			//寿司の差分を更新
+			API_Request({
+				url: '/sushi/add',
+				method: 'POST',
+				data: {
+					amount: Math.floor(this.sushiAdd)
 				}
-			
-				console.log("API.ジェネレーター購入");
-				//ジェネレーター購入
-				await API_Request({
-					url: '/generator/' + generator.id + '/purchase',
-					method: 'POST'
-				});
-			
-				this.isAPIWait = false;	
-				*/
-				console.log("API.現在の寿司の更新");
-				//寿司の差分を更新
-				API_Request({
-					url: '/sushi/add',
-					method: 'POST',
-					data: {
-						amount: Math.floor(this.sushiAdd)
-					}
-				});
-				this.sushiAdd = 0;
-			
-				console.log("API.ジェネレーター購入");
-				 API_Request({
-					url: '/generator/' + generator.id + '/purchase',
-					method: 'POST'
-				});
-			} catch (error) {
-				console.error("ジェネレーター購入エラー", error);
-				//this.isAPIWait = false;		
-				exportRoot.Mask3MC.visible = true;
-			
-				console.log("API.自身のユーザー情報を得る");
-				API_userData = await API_Request({
-					url: '/user/me'
-				});
+			});
+			this.sushiAdd = 0;
 		
-				console.log("API.ジェネレーター取得");
-				API_generatorsData = await API_Request({
-					url: '/generator'
-				});
-			
-				for (var i = 0; i < API_generatorsData["items"].length; i++)
-				{
-					let _generator = main.generators[i];
-					_generator.available = API_generatorsData["items"][i].available;
-					_generator.posession = Number(API_generatorsData["items"][i].posession);
-					_generator.basePrice = Number(API_generatorsData["items"][i].basePrice);
-					_generator.nextPrice = Number(API_generatorsData["items"][i].nextPrice);
-					_generator.clip.cost.text = FormatNumber(_generator.storedCost, 1, 0);
-					_generator.clip.posession.text = _generator.posession;
-					_generator.clip.sps.x = _generator.clip.cost.x + _generator.clip.cost.getMeasuredWidth() + 10;
-				}			
-			
-				main.touchSps = Number(API_userData.sushiPerClick);
-				main.sushi = Number(API_userData["user"].currentSushiCount);
-				main.totalSushi = Number(API_userData["user"].totalSushiCount);
-				main.SushiDisplayUdates();
-			
-				exportRoot.Mask3MC.visible = false;
-				exportRoot.MessageMC.Open("Communication Error.");
-			}
+			this.buyGeneratorCount++;
+			console.log("API.ジェネレーター購入 buyGeneratorCount :" + this.buyGeneratorCount);
+			API_Request({
+				url: '/generator/' + generator.id + '/purchase',
+				method: 'POST'
+			}).then(response => {
+				this.buyGeneratorCount--;
+				console.log("API.ジェネレーター購入 成功 buyGeneratorCount : " + this.buyGeneratorCount);
+				this.CheckGeneratorRollback();
+			}).catch(error => {
+				this.buyGeneratorCount--;
+				console.error("ジェネレーター購入エラー : " + this.buyGeneratorCount, error);
+				this.isRollbackGenerator = true;			
+				this.CheckGeneratorRollback();	
+			});
+		}
 		
+		main.CheckGeneratorRollback = async function()
+		{
+			if(this.buyGeneratorCount > 0)
+				return;
+			
+			if(!this.isRollbackGenerator)
+				return;
+				
+			console.log("ロールバック処理");
+			exportRoot.Mask3MC.visible = true;
+		
+			console.log("API.自身のユーザー情報を得る");
+			API_userData = await API_Request({
+				url: '/user/me'
+			});
+		
+			console.log("API.ジェネレーター取得");
+			API_generatorsData = await API_Request({
+				url: '/generator'
+			});
+		
+			for (var i = 0; i < API_generatorsData["items"].length; i++)
+			{
+				let _generator = main.generators[i];
+				_generator.available = API_generatorsData["items"][i].available;
+				_generator.posession = Number(API_generatorsData["items"][i].posession);
+				_generator.basePrice = Number(API_generatorsData["items"][i].basePrice);
+				_generator.nextPrice = Number(API_generatorsData["items"][i].nextPrice);
+				_generator.clip.cost.text = FormatNumber(_generator.storedCost, 1, 0);
+				_generator.clip.posession.text = _generator.posession;
+				_generator.clip.sps.x = _generator.clip.cost.x + _generator.clip.cost.getMeasuredWidth() + 10;
+			}			
+		
+			this.sushiAdd = 0;
+			this.touchSps = Number(API_userData.sushiPerClick);
+			this.sushi = Number(API_userData["user"].currentSushiCount);
+			this.totalSushi = Number(API_userData["user"].totalSushiCount);
+			this.SushiDisplayUdates();
+		
+			exportRoot.Mask3MC.visible = false;
+			exportRoot.MessageMC.Open("Communication Error.");
+			
+			this.isRollbackGenerator = false;
 		}
 		
 		//ジェネレーターの価格更新
@@ -6442,82 +6440,78 @@ if (reversed == null) { reversed = false; }
 			main.PlaySE("generator");
 			//----------------------------------------------
 			//購入
-			try {
-				/*
-				console.log("API.現在の寿司の更新");
-				if(!this.isAPIWait){
-					this.isAPIWait = true;	
-					//寿司の差分を更新
-					await API_Request({
-						url: '/sushi/add',
-						method: 'POST',
-						data: {
-							amount: Math.floor(this.sushiAdd)
-						}
-					});
-					this.sushiAdd = 0;
+			console.log("API.現在の寿司の更新");
+			//寿司の差分を更新
+			API_Request({
+				url: '/sushi/add',
+				method: 'POST',
+				data: {
+					amount: Math.floor(this.sushiAdd)
 				}
-			
-				console.log("API.アップグレード購入");
-				//ジェネレーター購入
-				await API_Request({
-					url: '/upgrade/' + upgrade.id + '/purchase',
-					method: 'POST'
-				});
-				this.isAPIWait = false;	
-				*/
-				console.log("API.現在の寿司の更新");
-				//寿司の差分を更新
-				API_Request({
-					url: '/sushi/add',
-					method: 'POST',
-					data: {
-						amount: Math.floor(this.sushiAdd)
-					}
-				});
-				this.sushiAdd = 0;
-				console.log("API.アップグレード購入");
-				//ジェネレーター購入
-				API_Request({
-					url: '/upgrade/' + upgrade.id + '/purchase',
-					method: 'POST'
-				});
-			} catch (error) {
-				console.error("アップグレード購入エラー", error);
-				//this.isAPIWait = false;			
-				exportRoot.Mask3MC.visible = true;
-			
-				console.log("API.自身のユーザー情報を得る");
-				API_userData = await API_Request({
-					url: '/user/me'
-				});
+			});
+			this.sushiAdd = 0;
 		
-				this.touchSps = Number(API_userData.sushiPerClick);
-				this.sushi = Number(API_userData["user"].currentSushiCount);
-				this.totalSushi = Number(API_userData["user"].totalSushiCount);
-				this.SushiDisplayUdates();
-				this.CalculateGains();
-				this.RebuildStore();
-				this.touchSps = this.TouchSps();
-				for (var i = 0; i < this.generators.length; i++)
-					this.generators[i].clip.sps.text = "+" + FormatNumber(this.generators[i].storedSps, 1, 0);
+			this.buyUpgradeCount++;
+			console.log("API.アップグレード購入 buyUpgradeCount :" + this.buyUpgradeCount);
+			API_Request({
+				url: '/upgrade/' + upgrade.id + '/purchase',
+				method: 'POST'
+			}).then(response => {
+				this.buyUpgradeCount--;
+				console.log("API.アップグレード購入 成功 buyUpgradeCount : " + this.buyUpgradeCount);
+				this.CheckUpgradeRollback();
+			}).catch(error => {
+				this.buyUpgradeCount--;
+				console.error("アップグレード購入エラー : " + this.buyUpgradeCount, error);
+				this.isRollbackUpgrade = true;			
+				this.CheckUpgradeRollback();	
+			});
+		}
+		
+		main.CheckUpgradeRollback = async function()
+		{
+			if(this.buyUpgradeCount > 0)
+				return;
 			
-				console.log("API.アップグレード取得");
-				API_upgradesData = await API_Request({
-					url: '/upgrade'
-				});
-			
-				for (let i = 0; i < API_upgradesData["items"].length; i++)
-				{
-					let _upgrade = this.upgrades[i];
-					_upgrade.available = API_upgradesData["items"][i].available;
-					_upgrade.posession = API_upgradesData["items"][i].posession;
-				}
-				this.RebuildStore();	
-			
-				exportRoot.Mask3MC.visible = false;
-				exportRoot.MessageMC.Open("Communication Error.");
+			if(!this.isRollbackUpgrade)
+				return;
+				
+			console.log("ロールバック処理");
+			exportRoot.Mask3MC.visible = true;
+		
+			console.log("API.自身のユーザー情報を得る");
+			API_userData = await API_Request({
+				url: '/user/me'
+			});
+		
+			console.log("API.アップグレード取得");
+			API_upgradesData = await API_Request({
+				url: '/upgrade'
+			});
+		
+			for (let i = 0; i < API_upgradesData["items"].length; i++)
+			{
+				this.upgrades[i].available = API_upgradesData["items"][i].available;
+				this.upgrades[i].posession = API_upgradesData["items"][i].posession;
 			}
+		
+			this.sushiAdd = 0;
+			this.touchSps = Number(API_userData.sushiPerClick);
+			this.sushi = Number(API_userData["user"].currentSushiCount);
+			this.totalSushi = Number(API_userData["user"].totalSushiCount);
+			this.SushiDisplayUdates();
+			this.CalculateGains();
+			this.RebuildStore();
+			this.touchSps = this.TouchSps();
+			for (var i = 0; i < this.generators.length; i++)
+				this.generators[i].clip.sps.text = "+" + FormatNumber(this.generators[i].storedSps, 1, 0);
+		
+			exportRoot.UpgradePanelMC.Reset();
+		
+			exportRoot.Mask3MC.visible = false;
+			exportRoot.MessageMC.Open("Communication Error.");
+			
+			this.isRollbackUpgrade = false;
 		}
 		
 		main.RebuildGenerator = function()
