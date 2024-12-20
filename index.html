@@ -64,9 +64,14 @@
 
 	function init_body() {
 		isLoad_html = true
-		document.getElementById("loading_screen_out").style.display = "block";
+	//	document.getElementById("loading_screen_out").style.display = "block";
+	//	document.getElementById("registration_out").style.display = "none";
+	//	document.getElementById("animation_container_out").style.display = "none";
+
+		document.getElementById("loading_screen_out").style.display = "none";
 		document.getElementById("registration_out").style.display = "none";
-		document.getElementById("animation_container_out").style.display = "none";
+		document.getElementById("animation_container_out").style.display = "block";
+
 		checkInitialization();
 	}
 
@@ -110,11 +115,11 @@
 		        url: '/user/me'
 		    });
 			console.log(API_userData);
-			document.getElementById("loading_screen_out").style.display = "block";
+	//		document.getElementById("loading_screen_out").style.display = "block";
 			init();
 	    } catch (error) {
-	    	document.getElementById("loading_screen_out").style.display = "none";
-	    	document.getElementById("registration_out").style.display = "block";
+	 //   	document.getElementById("loading_screen_out").style.display = "none";
+	 //   	document.getElementById("registration_out").style.display = "block";
 
 			let url = new URL(window.location.href);
 			let params = url.searchParams;
@@ -161,8 +166,8 @@
 			location.reload();
 			return;
 		}
-		document.getElementById("loading_screen_out").style.display = "block";
-		document.getElementById("registration_out").style.display = "none";
+	//	document.getElementById("loading_screen_out").style.display = "block";
+	//	document.getElementById("registration_out").style.display = "none";
 		init();
 	}
 </script>
@@ -196,10 +201,13 @@ function init() {
 }
 
 function resizeCanvas(domContainers, lib) {
-	window.addEventListener('resize', resizeCanvas);		
-	document.getElementById("animation_container_out").style.display = "block";
+	window.addEventListener('resize', resizeCanvas);
+
+
+
+//	document.getElementById("animation_container_out").style.display = "block";
 	resizeCanvas();
-	document.getElementById("animation_container_out").style.display = "none";
+//	document.getElementById("animation_container_out").style.display = "none";
 
 	function resizeCanvas() {
 		const size = anim_container.getBoundingClientRect();
@@ -257,8 +265,8 @@ function handleComplete(evt,comp) {
 
 }
 function hiddenLoadingScreen() {
-	document.getElementById("animation_container_out").style.display = "block";
-	document.getElementById("loading_screen_out").style.display = "none";
+//	document.getElementById("animation_container_out").style.display = "block";
+//	document.getElementById("loading_screen_out").style.display = "none";
 
 
 
@@ -272,7 +280,6 @@ function hiddenLoadingScreen() {
 
 
 
-	document.getElementById("animation_container_out").style.display = "block";
 
 
 
