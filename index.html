@@ -259,6 +259,55 @@ function handleComplete(evt,comp) {
 function hiddenLoadingScreen() {
 	document.getElementById("animation_container_out").style.display = "block";
 	document.getElementById("loading_screen_out").style.display = "none";
+
+
+
+
+
+	var comp=AdobeAn.getComposition("969C0F3DFF839440AC4059700CCE57F9");
+	var lib=comp.getLibrary();
+
+
+
+
+
+
+	document.getElementById("animation_container_out").style.display = "block";
+
+
+
+		const size = anim_container.getBoundingClientRect();
+
+		lib.properties.width = size.width;
+		lib.properties.height = size.height;
+
+		var w = lib.properties.width, h = lib.properties.height;			
+		var iw = window.innerWidth, ih=window.innerHeight;			
+		var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h;			
+
+		canvas.width = w * pRatio;			
+		canvas.height = h * pRatio;
+
+		stage.scaleX = pRatio;			
+		stage.scaleY = pRatio;      
+		stage.tickOnUpdate = false;            
+		stage.update();            
+		stage.tickOnUpdate = true;		
+
+
+alert(1);
+
+
+
+
+
+
+
+
+
+
+
+
 }
 function setProgress(progress) {
     document.getElementById("progress_bar").style.width = progress + "%";
