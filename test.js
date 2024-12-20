@@ -2,7 +2,9 @@
 
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
-lib.ssMetadata = [];
+lib.ssMetadata = [
+		{name:"test_atlas_1", frames: [[0,0,107,95]]}
+];
 
 
 (lib.AnMovieClip = function(){
@@ -25,6 +27,13 @@ lib.ssMetadata = [];
 
 
 
+(lib.menu_upgrade_button = function() {
+	this.initialize(ss["test_atlas_1"]);
+	this.gotoAndStop(0);
+}).prototype = p = new cjs.Sprite();
+
+
+
 // stage content:
 (lib.test = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
@@ -38,16 +47,19 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// レイヤー_1
+	this.instance = new lib.menu_upgrade_button();
+	this.instance.setTransform(21,6);
+
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f("#723826").s().p("A9IQBMAAAggBMA6RAAAMAAAAgBg");
 	this.shape.setTransform(271.525,246.525);
 
-	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(405.1,384.1,52.89999999999998,-35.10000000000002);
+p.nominalBounds = new cjs.Rectangle(341,246,117,103);
 // library properties:
 lib.properties = {
 	id: '1FBB9F5AF5188743BEC3452546D3F8E8',
@@ -56,7 +68,9 @@ lib.properties = {
 	fps: 24,
 	color: "#00FF33",
 	opacity: 1.00,
-	manifest: [],
+	manifest: [
+		{src:"images/test_atlas_1.png", id:"test_atlas_1"}
+	],
 	preloads: []
 };
 
