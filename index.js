@@ -7394,18 +7394,36 @@ if (reversed == null) { reversed = false; }
 			}
 		}
 		
+		function customBounceOut(t) {
+		    // 各バウンドの高さをスケールする
+		    const scale = 0.3; // 反動の強さ（0.5で弱める、1.0でデフォルト）	
+			
+		    if (t < 1 / 2.75) {
+		        return scale * (7.5625 * t * t); // 最初のバウンド
+		    } else if (t < 2 / 2.75) {
+		        t -= 1.5 / 2.75;
+		        return scale * (7.5625 * t * t + 0.75) + (1 - scale); // バウンドを弱める
+		    } else if (t < 2.5 / 2.75) {
+		        t -= 2.25 / 2.75;
+		        return scale * (7.5625 * t * t + 0.9375) + (1 - scale); // バウンドをさらに弱める
+		    } else {
+		        t -= 2.625 / 2.75;
+		        return scale * (7.5625 * t * t + 0.984375) + (1 - scale); // 最後のバウンド
+		    }
+		}
+		
 		this.Close = function (_targetMC)
 		{
 			//パネルの移動
 			createjs.Tween.get(_targetMC, { override: true })
-			.to({ x: this.offsetX, y: 2436 * this.canvasScaleY -251 * this.canvasScaleX + 914 * this.canvasScaleX }, 250, createjs.Ease.backInOut)
+			.to({ x: this.offsetX, y: 2436 * this.canvasScaleY -251 * this.canvasScaleX + 914 * this.canvasScaleX }, 250, customBounceOut)
 			.call(() => {
 				_targetMC.visible = false;
 		    });
 		
 			//寿司の移動
 			createjs.Tween.get(this.SushiMC, { override: true })
-			.to({ y: document.documentElement.clientHeight / 2 }, 250, createjs.Ease.cubicInOut);
+			.to({ y: document.documentElement.clientHeight / 2 }, 250, createjs.Ease.expoOut);
 		
 			//背景も動かす場合
 			//createjs.Tween.get(this.BgMC, { override: true })
@@ -7423,19 +7441,19 @@ if (reversed == null) { reversed = false; }
 				//パネルの移動
 				var y = (914 * this.canvasScaleX) + (227 * this.canvasScaleX);		
 				createjs.Tween.get(_targetMC, { override: true })
-				.to({ x: this.offsetX, y: y }, 250, createjs.Ease.bounceOut);
+				.to({ x: this.offsetX, y: y }, 250, customBounceOut);
 			}
 			else
 			{
 				//パネルの移動
 				createjs.Tween.get(_targetMC, { override: true })
-					.to({ x: this.offsetX, y: 2436 * this.canvasScaleY -251 * this.canvasScaleX }, 250, createjs.Ease.bounceOut);
+					.to({ x: this.offsetX, y: 2436 * this.canvasScaleY -251 * this.canvasScaleX }, 250, customBounceOut);
 			
 				//寿司の移動
 				var y = ((2436 * this.canvasScaleY -251 * this.canvasScaleX -914 * this.canvasScaleX)
 					- (227 * this.canvasScaleX)) / 2 + (227 * this.canvasScaleX);
 				createjs.Tween.get(this.SushiMC, { override: true })
-				.to({ y: y }, 250, createjs.Ease.cubicInOut);
+				.to({ y: y }, 250, createjs.Ease.expoOut);
 			}
 		
 			//背景も動かす場合
