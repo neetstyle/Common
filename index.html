@@ -18,15 +18,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vconsole/dist/vconsole.min.js"></script>
 <style>
     .no_scroll {
         overflow: hidden;
     }
 </style>
-
-
-<script src="https://cdn.jsdelivr.net/npm/vconsole/dist/vconsole.min.js"></script>
-
 
 <script>
 	var isLoad_html = false;
@@ -68,16 +65,11 @@
 
 	function init_body() {
 		isLoad_html = true
-	//	document.getElementById("loading_screen_out").style.display = "block";
-	//	document.getElementById("registration_out").style.display = "none";
-	//	document.getElementById("animation_container_out").style.display = "none";
-//
-	//	document.getElementById("loading_screen_out").style.display = "none";
-	//	document.getElementById("registration_out").style.display = "none";
-	//	document.getElementById("animation_container_out").style.display = "block";
-
-const vConsole = new VConsole();
+		document.getElementById("loading_screen_out").style.display = "block";
+		document.getElementById("registration_out").style.display = "none";
+		document.getElementById("animation_container_out").style.display = "none";
 		checkInitialization();
+		const vConsole = new VConsole();
 	}
 
 	function checkInitialization() {
@@ -120,13 +112,17 @@ const vConsole = new VConsole();
 		        url: '/user/me'
 		    });
 			console.log(API_userData);
-
+			document.getElementById("loading_screen_out").style.display = "block";
 			init();
 	    } catch (error) {
+	    	document.getElementById("loading_screen_out").style.display = "none";
+	    	document.getElementById("registration_out").style.display = "block";
 
-
-alert(error);
-
+			let url = new URL(window.location.href);
+			let params = url.searchParams;
+			let referralCode = params.get('start');
+			if(referralCode !== undefined)
+				document.getElementById('invite_code').value = referralCode;
 	    }
 	}
 
@@ -167,8 +163,8 @@ alert(error);
 			location.reload();
 			return;
 		}
-	//	document.getElementById("loading_screen_out").style.display = "block";
-	//	document.getElementById("registration_out").style.display = "none";
+		document.getElementById("loading_screen_out").style.display = "block";
+		document.getElementById("registration_out").style.display = "none";
 		init();
 	}
 </script>
@@ -197,18 +193,15 @@ function init() {
 	createjs.Sound.registerSound("sounds/generator.mp3", "generator");
 	createjs.Sound.registerSound("sounds/bgm.mp3", "bgm");
 	loader.setMaxConnections(6);
-	loader.loadManifest([{src:"images/index_atlas_1.png", id:"index_atlas_1"}]);
+	loader.loadManifest([{src:"images/index_atlas_1.webp", id:"index_atlas_1"}]);
 	//loader.loadManifest(lib.properties.manifest);
 }
 
 function resizeCanvas(domContainers, lib) {
-	window.addEventListener('resize', resizeCanvas);
-
-
-
-//	document.getElementById("animation_container_out").style.display = "block";
+	window.addEventListener('resize', resizeCanvas);		
+	document.getElementById("animation_container_out").style.display = "block";
 	resizeCanvas();
-//	document.getElementById("animation_container_out").style.display = "none";
+	document.getElementById("animation_container_out").style.display = "none";
 
 	function resizeCanvas() {
 		const size = anim_container.getBoundingClientRect();
@@ -232,13 +225,10 @@ function resizeCanvas(domContainers, lib) {
 }
 
 function handleProgress(evt) {
-
-	/*
     var progressBar = document.getElementById("progress_bar");
     var progress = (evt.progress * 100).toFixed(2);
     progressBar.style.width = (progress * 0.60) + "%";
     console.log("Loading progress: " + progress + "%");
-    */
 }
 function handleFileLoad(evt, comp) {
 	var images=comp.getImages();	
@@ -267,58 +257,55 @@ function handleComplete(evt,comp) {
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 function hiddenLoadingScreen() {
-//	document.getElementById("animation_container_out").style.display = "block";
-//	document.getElementById("loading_screen_out").style.display = "none";
-
-
-
-
-
-
-
-
-
-
-
-
-
+	document.getElementById("animation_container_out").style.display = "block";
+	document.getElementById("loading_screen_out").style.display = "none";
 }
 function setProgress(progress) {
-   // document.getElementById("progress_bar").style.width = progress + "%";
+    document.getElementById("progress_bar").style.width = progress + "%";
 }
 
 </script>
 </head>
 <body onload="init_body();" style="margin:0px;">
+    <div id="bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; z-index: 1;">
+        <img id="loading_background" src="images/loding-background.webp" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
 
+    <div id="content-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 2;">
 
+        <div id="registration_out" style="width: 100%; height: 100%; max-width: 55vh; aspect-ratio: 1125 / 2436; position: absolute;">
+            <div id="registration" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;">
+                <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
+                <div id="registration_form" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background-color: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 10px; text-align: center;">
+                    <h2 style="font-family: Arial, sans-serif; color: black;">New registration</h2>
+                    <input type="text" id="invite_code" style="width: 95%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" enterkeyhint="done" onkeydown="if(event.key === 'Enter'){ document.getElementById('register_button').click(); }">
+                    <button id="register_button" style="width: 100%; padding: 10px; background-color: #28a745; color: white; font-size: 16px; border: none; border-radius: 5px; cursor: pointer;" onclick="registration();">I will become a sushi master!</button>
+                </div>
+   				<img id="loading_background" src="images/loding-background2.webp" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
 
+        <div id="loading_screen_out" style="width: 100%; height: 100%; max-width: 55vh; aspect-ratio: 1125 / 2436; position: absolute;">
+            <div id="loading_screen" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;">
+                <div id="version_info" style="position: absolute; top: 20px; right: 20px; color: white; font-family: Arial, sans-serif; font-size: 16px;">ver 0.9.1</div>
+                <div id="progress_bar_container" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 80%; height: 20px; background-color: #423113;">
+                    <div id="progress_bar" style="width: 0%; height: 100%; background-color: #1AC600;"></div>
+                </div>
+				<img id="loading_background" src="images/loding-background2.webp" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+
+        <div id="animation_container_out" style="width: 100%; height: 100%; max-width: 75vh; aspect-ratio: 1125 / 2436; position: absolute;">
             <div id="animation_container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color:rgba(255, 255, 255, 1.00);">
                 <canvas id="canvas" style="position: absolute; display: block; width: 100%; height: 100%; background-color:rgba(255, 255, 255, 1.00);"></canvas>
                 <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:100%; height:100%; position: absolute; left: 0; top: 0; display: block;">
                 </div>
             </div>
-  
+        </div>
+
+    </div>
 
 </body>
 </html>
