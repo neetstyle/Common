@@ -46,20 +46,33 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// レイヤー_1
-	this.instance = new lib.menu_upgrade_button();
-	this.instance.setTransform(21,6);
+	// レイヤー_3
+	this.text = new cjs.Text("aaaa", "45px 'Potta One'", "#723826");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 67;
+	this.text.lineWidth = 100;
+	this.text.parent = this;
+	this.text.setTransform(198.05,2);
 
+	this.timeline.addTween(cjs.Tween.get(this.text).wait(1));
+
+	// レイヤー_2
+	this.instance = new lib.menu_upgrade_button();
+	this.instance.setTransform(18,11);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	// レイヤー_1
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f("#723826").s().p("A9IQBMAAAggBMA6RAAAMAAAAgBg");
 	this.shape.setTransform(271.525,246.525);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape},{t:this.instance}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(341,246,117,103);
+p.nominalBounds = new cjs.Rectangle(338,240,120,109);
 // library properties:
 lib.properties = {
 	id: '1FBB9F5AF5188743BEC3452546D3F8E8',
