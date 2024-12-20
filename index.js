@@ -1106,7 +1106,10 @@ if (reversed == null) { reversed = false; }
 		this._Tick;
 		this.Tick = function(event)
 		{
-			var text1 = "Each [x] produces [y]S Sushi per second";
+			if(this.obj.posession == 0)
+				return;
+			
+			var text1 = "Each [x] produces [y] Sushi per second";
 			this.desciption1.text = 
 				text1.replace("[x]", this.obj.name)
 				.replace("[y]", FormatNumber(Accuracy(this.obj.storedSps), 1, 0));
