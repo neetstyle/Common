@@ -2264,7 +2264,13 @@ if (reversed == null) { reversed = false; }
 		this.Click = function(evt)
 		{
 			var amount = main.touchSps;
-			main.AddSushi(amount);
+			
+			//alert("touchSps : "+	typeof main.touchSps 		)	;	
+			//alert("amount : "+	typeof amount 		)	;	
+			
+			main.AddSushi(main.touchSps);
+			
+			
 			main.clickAdd++;
 			main.totalClickCount++;
 			
@@ -5436,11 +5442,11 @@ if (reversed == null) { reversed = false; }
 				//clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
 				clip.title.text = generator.name;
 				//clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
-				clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
 				//clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");
-				clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
+				clip.cost.text = FormatNumber(generator.storedCost, 1, 2, false);
 				clip.posession.text = generator.posession;
-				clip.sps.text = "+" + FormatNumber(generator.storedSps, 1, 0);	
+				//clip.sps.text = "+" + FormatNumber(generator.storedSps / 1000n, 1, 0);	
+				clip.sps.text = "+" + FormatBig(generator.storedSps, 1, 2, true);	
 				clip.sps.x = clip.cost.x + clip.cost.getMeasuredWidth() + 10;
 				clip.x = 0;
 				clip.y = 0 + 240 * i;
@@ -5937,7 +5943,7 @@ if (reversed == null) { reversed = false; }
 				this.clip = null;
 				
 				this.totalSushies = 0;
-				this.storedTotalSps = 0;
+		
 		
 				this.upgrades = [];
 				
@@ -5950,16 +5956,23 @@ if (reversed == null) { reversed = false; }
 				this.name = "";
 				this.posession = 0;
 				this.power = 0;
+				
+				this.powerDecimalScale = 0;
+			
+				
 				this.basePrice = 0;
 				this.nextPrice = 0;
 				this.priceScalingFactor = 0;
 				
-				this.storedCost = 0;	//計算済み価格
-				this.storedSps = 0;		//ジェネレーター生産量
-		    }
+				this.storedCost = BigInt(0);	//計算済み価格
+				this.storedSps = BigInt(0);		//ジェネレーター生産量
+				this.storedTotalSps = BigInt(0);//ジェネレータートータル生産量
+		
+			}
 		
 			CalculateSps = function()
 			{
+				/*
 				let mult = 1;
 				for (let i = 0; i < this.upgrades.length; i++)
 				{
@@ -5969,12 +5982,37 @@ if (reversed == null) { reversed = false; }
 					mult *= upgrade.operationValue;
 				}
 				this.storedSps = this.power * mult * main.global_multiplier;
+				*/
+				let mult = 1;
+				for (let i = 0; i < this.upgrades.length; i++)
+				{
+					let upgrade = this.upgrades[i];
+					if(!upgrade.available)
+						continue;
+					mult *= upgrade.operationValue;
+				}
+				this.storedSps = BigInt(Math.floor(this.power / Math.pow(10, this.powerDecimalScale) * mult * 1000));
 			}
 		
 			//コストの計算
 			CalculateCost = function()
 			{
-				this.storedCost = Math.ceil(this.basePrice * Math.pow(this.priceScalingFactor, this.posession));
+				//this.storedCost = Math.ceil(this.basePrice * Math.pow(this.priceScalingFactor, this.posession));
+		//		this.storedCost = BigInt(this.basePrice) * BigInt(Math.pow(this.priceScalingFactor, this.posession));
+			
+		
+		
+		/*
+		const scaledFactor = Math.round(this.priceScalingFactor * 10000);
+		const scaledBasePrice = BigInt(this.basePrice) * 10000n;
+		const scaledPower = BigInt(Math.pow(scaledFactor, this.posession)); 
+		this.storedCost = (scaledBasePrice * scaledPower) / BigInt(10000 ** this.posession);
+		*/
+				
+		this.storedCost = BigInt(this.basePrice) * BigInt(Math.floor(Math.pow(this.priceScalingFactor, this.posession) * 1000)) /1000n
+		
+				
+				
 			}
 		}
 		
@@ -6118,27 +6156,39 @@ if (reversed == null) { reversed = false; }
 		{
 		    constructor()
 			{
-		        this.sushi = 0;				//所持寿司
-		        this.totalSushi = 0;		//生成寿司
-				this.sushiPs = 0;			//一秒間当たりの寿司
-				this.sushiAdd = 0;			//サーバとの差分
-				this.sushiDebt = 0;			//
-				this.fractionSps = 0;		//小数点以下の寿司
-				this.touchSps = 0			//クリック当たりの寿司
-				//this.totalClick = 0;		//トータルクリック数
+		        this.sushi = BigInt(0);				//所持寿司
+		        this.totalSushi =  BigInt(0);		//生成寿司
+		
+		
+				this.sushiPs = BigInt(0);			//一秒間当たりの寿司
+				//this.sushiPsf = 0;					//一秒間当たりの寿司の少数点
+				
+				
+				
+				this.sushiAdd =  BigInt(0);			//サーバとの差分
+				this.fractionSps =  BigInt(0);		//小数点以下の寿司
+				
+				
+				
+				
+				this.touchSps =  BigInt(0);			//クリック当たりの寿司
+		
 				this.goldenSushi = 0;		//ゴールデン寿司
 				this.totalGoldenSushi = 0;	//トータルゴールデン寿司
+		
 				this.priceIncrease = 1.15;	//価格の上昇率
+		
 				this.skinId = 0;			//スキンId
-				//this.invitationCount = 49;	//招待数
-				//this.invitationState = 0;	//招待報酬 0:未受取、1:1人、2:5人、3:10人、4:50人
+		
+		
+		
 				this.createdAt = "";		//ゲーム開始日時
 				
-				this.totalClickCount = 0;	//クリック数
+				this.totalClickCount = BigInt(0);	//クリック数
 				this.clickAdd = 0;			//サーバとの差分
 				
-				this.global_multiplier = 1;
-				this.click_cps_boost = 1;
+				//this.global_multiplier = 1;
+				//this.click_cps_boost = 1;
 				
 				this.isLogin = false;
 				this.isStop = false;
@@ -6234,8 +6284,8 @@ if (reversed == null) { reversed = false; }
 		//寿司の追加
 		main.AddSushi = function(value) 
 		{
-			if(this.Debug_isSpeed)
-				value = value * 1000;
+			//if(this.Debug_isSpeed)
+			//	value = value * 1000n;
 			
 			this.sushi += value;
 			this.totalSushi += value;
@@ -6249,7 +6299,6 @@ if (reversed == null) { reversed = false; }
 		main.UseSushi = function(value) 
 		{
 			this.sushi -= value;
-			//this.sushiAdd -= value;
 			this.SushiDisplayUdates();
 		}
 		
@@ -6263,7 +6312,8 @@ if (reversed == null) { reversed = false; }
 			let centerX = 1125 / 2;
 			exportRoot.HeaderMC.SushiR_O.x = (centerX - (lw + rw) / 2) + lw;
 			exportRoot.HeaderMC.SushiL_O.x = exportRoot.HeaderMC.SushiR_O.x;
-			exportRoot.HeaderMC.Sps_O .text = "per Second : " + FormatNumber(this.sushiPs, 1, 2) + " pieces";
+			//exportRoot.HeaderMC.Sps_O .text = "per Second : " + FormatNumber(this.sushiPs / 1000n, 1, 2) + " pieces";
+			exportRoot.HeaderMC.Sps_O .text = "per Second : " + FormatBig(this.sushiPs, 1, 2, true) + " pieces";
 		}
 		
 		//クリック生産量の更新
@@ -6290,12 +6340,14 @@ if (reversed == null) { reversed = false; }
 						continue;
 				}
 			}
-			return (add * mult + main.sushiPs * main.click_cps_boost) * main.global_multiplier;
+			//return (add * mult + main.sushiPs * main.click_cps_boost) * main.global_multiplier;
+			return BigInt(add * mult) + main.sushiPs / 1000n;
 		}
 		
 		//自動生産の更新
 		main.CalculateGains = function()
 		{
+			/*
 			this.sushiPs = 0;
 			for (var i = 0; i < this.generators.length; i++)
 			{
@@ -6305,11 +6357,24 @@ if (reversed == null) { reversed = false; }
 				this.sushiPs += generator.storedTotalSps;
 			}
 			this.SushiDisplayUdates();
+			*/
+			this.sushiPs = 0n;
+			for (var i = 0; i < this.generators.length; i++)
+			{
+				var generator = this.generators[i];
+				generator.CalculateSps();
+				generator.storedTotalSps = BigInt(generator.posession) * generator.storedSps;
+				this.sushiPs += generator.storedTotalSps;
+			}
+			this.SushiDisplayUdates();
 		}
 		
 		//ジェネレータの購入
 		main.BuyGenerator = async function(generator)
 		{
+				console.log(this.sushi +" / "+ generator.storedCost);
+		
+			
 			if(this.sushi < generator.storedCost)
 				return;
 			
@@ -6338,10 +6403,10 @@ if (reversed == null) { reversed = false; }
 				url: '/sushi/add',
 				method: 'POST',
 				data: {
-					amount: Math.floor(this.sushiAdd)
+					amount: this.sushiAdd.toString()
 				}
 			});
-			this.sushiAdd = 0;
+			this.sushiAdd = 0n;
 		
 			this.buyGeneratorCount++;
 			console.log("API.ジェネレーター購入 buyGeneratorCount :" + this.buyGeneratorCount);
@@ -6391,12 +6456,12 @@ if (reversed == null) { reversed = false; }
 				_generator.clip.cost.text = FormatNumber(_generator.storedCost, 1, 0);
 				_generator.clip.posession.text = _generator.posession;
 				_generator.clip.sps.x = _generator.clip.cost.x + _generator.clip.cost.getMeasuredWidth() + 10;
-			}			
+			}
 		
-			this.sushiAdd = 0;
-			this.touchSps = Number(API_userData.sushiPerClick);
-			this.sushi = Number(API_userData["user"].currentSushiCount);
-			this.totalSushi = Number(API_userData["user"].totalSushiCount);
+			this.sushiAdd = 0n;
+			this.touchSps = BigInt(API_userData.sushiPerClick);
+			this.sushi = BigInt(API_userData["user"].currentSushiCount);
+			this.totalSushi = BigInt(API_userData["user"].totalSushiCount);
 			this.SushiDisplayUdates();
 		
 			exportRoot.Mask3MC.visible = false;
@@ -6446,10 +6511,10 @@ if (reversed == null) { reversed = false; }
 				url: '/sushi/add',
 				method: 'POST',
 				data: {
-					amount: Math.floor(this.sushiAdd)
+					amount: this.sushiAdd.toString()
 				}
 			});
-			this.sushiAdd = 0;
+			this.sushiAdd = 0n;
 		
 			this.buyUpgradeCount++;
 			console.log("API.アップグレード購入 buyUpgradeCount :" + this.buyUpgradeCount);
@@ -6495,7 +6560,7 @@ if (reversed == null) { reversed = false; }
 				this.upgrades[i].posession = API_upgradesData["items"][i].posession;
 			}
 		
-			this.sushiAdd = 0;
+			this.sushiAdd = 0n;
 			this.touchSps = Number(API_userData.sushiPerClick);
 			this.sushi = Number(API_userData["user"].currentSushiCount);
 			this.totalSushi = Number(API_userData["user"].totalSushiCount);
@@ -6613,12 +6678,12 @@ if (reversed == null) { reversed = false; }
 					url: '/sushi/add',
 					method: 'POST',
 					data: {
-						amount: Math.floor(this.sushiAdd),
-						clickCount : this.clickAdd,
+						amount: this.sushiAdd.toString(),
+						clickCount : this.clickAdd.toString()
 					}
 				});	
-				this.sushiAdd = 0;
-				this.clickAdd = 0;
+				this.sushiAdd = 0n;
+				this.clickAdd = 0n;
 			
 			} catch (error) {
 				console.error("現在の寿司の更新エラー", error);
@@ -6656,6 +6721,9 @@ if (reversed == null) { reversed = false; }
 		
 		main.MainTick = function(event)
 		{
+			
+		return;	
+			
 			if(this.isStop)
 				return;
 			
@@ -6684,17 +6752,23 @@ if (reversed == null) { reversed = false; }
 				
 				if(delta < 10)
 				{
-					for (var i = 0; i < this.generators.length; i++)
-					{
-						this.generators[i].totalSushies += this.generators[i].storedTotalSps * delta;
-					}
-		
+					//for (var i = 0; i < this.generators.length; i++)
+					//{
+					//	this.generators[i].totalSushies += this.generators[i].storedTotalSps * delta;
+					//}
+		/*
 					var ammount = this.sushiPs * delta + this.fractionSps;
 					this.fractionSps = ammount - Math.floor(ammount);
 					ammount -= this.fractionSps;
 		
 					if(ammount > 0)
 						this.AddSushi(ammount);
+					*/
+					
+					var ammount = this.sushiPs * BigInt(Math.floor(delta * 1000)) + this.fractionSps;
+					this.fractionSps = ammount % 1000n;
+					if(ammount > 1000n)
+						this.AddSushi(ammount / 1000n);
 				}
 			}
 		
@@ -6931,7 +7005,7 @@ if (reversed == null) { reversed = false; }
 			//debug
 			//this.sushiPs = 10000;	
 			
-			if (this.sushiPs >= 1000)
+			if (this.sushiPs / 1000n >= 1000)
 			{
 				if(this.currentScroll != 3)
 				{
@@ -6939,7 +7013,7 @@ if (reversed == null) { reversed = false; }
 					this.CreateBG();
 				}
 			}		
-			else if (this.sushiPs >= 500)
+			else if (this.sushiPs / 1000n >= 500)
 			{
 				if(this.currentScroll != 2)
 				{
@@ -6947,7 +7021,7 @@ if (reversed == null) { reversed = false; }
 					this.CreateBG();
 				}
 			}
-			else if (this.sushiPs >= 50)
+			else if (this.sushiPs / 1000n >= 50)
 			{
 				if(this.currentScroll != 1)
 				{
@@ -7799,14 +7873,14 @@ if (reversed == null) { reversed = false; }
 			
 			//////////////////////////////////////////////////////////
 			//ユーザデータ
-			main.touchSps = Number(API_userData.sushiPerClick);
-			main.sushi = Number(API_userData["user"].currentSushiCount);
+			main.touchSps = BigInt(API_userData.sushiPerClick);
+			main.sushi = BigInt(API_userData["user"].currentSushiCount);
 			main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
-			main.totalSushi = Number(API_userData["user"].totalSushiCount);
+			main.totalSushi = BigInt(API_userData["user"].totalSushiCount);
 			main.totalGoldenSushi = Number(API_userData["user"].totalGoldSushiCount);
 			main.createdAt = API_userData["user"].createdAt;
 			main.skinId = Number(API_userData["user"].currentSkinMstId);
-			main.totalClickCount = Number(API_userData["user"].totalClickCount);
+			main.totalClickCount = BigInt(API_userData["user"].totalClickCount);
 			main.referralCode = API_userData["user"].referralCode;
 			
 			//////////////////////////////////////////////////////////
@@ -7843,6 +7917,7 @@ if (reversed == null) { reversed = false; }
 				generator.name = API_generatorsData["items"][i].name;
 				generator.posession = Number(API_generatorsData["items"][i].posession);
 				generator.power = Number(API_generatorsData["items"][i].power);
+				generator.powerDecimalScale = Number(API_generatorsData["items"][i].powerDecimalScale);
 				generator.basePrice = Number(API_generatorsData["items"][i].basePrice);
 				generator.nextPrice = Number(API_generatorsData["items"][i].nextPrice);
 				generator.priceScalingFactor = Number(API_generatorsData["items"][i].priceScalingFactor);
@@ -7981,6 +8056,10 @@ if (reversed == null) { reversed = false; }
 			
 			main.CheckPending();			//ペンディングの表示
 		}
+		
+		
+		
+		
 		
 		if(API_userData !== undefined)
 			this.Run();

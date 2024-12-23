@@ -46,6 +46,9 @@ function numberWithCommas(x) {
 }
 
 function FormatShortNumber(num, n, f) {
+
+
+    /*
     if (num >= 1e42) {
         return parseFloat((num / 1e42).toFixed(f)) + 'Tr'; // Tredecillion
     } else if (num >= 1e39) {
@@ -83,9 +86,80 @@ function FormatShortNumber(num, n, f) {
     } else {
         return numberWithCommas(parseFloat(num.toFixed(f))); // Less than a thousand
     }
+    */
+
+
+        if (typeof num === 'bigint') {
+        if (num >= 10n ** 42n) {
+            return `${(Number(num) / 1e42).toFixed(f)} Tredecillion`;
+        } else if (num >= 10n ** 39n) {
+            return `${(Number(num) / 1e39).toFixed(f)} Duodecillion`;
+        } else if (num >= 10n ** 36n) {
+            return `${(Number(num) / 1e36).toFixed(f)} Undecillion`;
+        } else if (num >= 10n ** 33n) {
+            return `${(Number(num) / 1e33).toFixed(f)} Decillion`;
+        } else if (num >= 10n ** 30n) {
+            return `${(Number(num) / 1e30).toFixed(f)} Nonillion`;
+        } else if (num >= 10n ** 27n) {
+            return `${(Number(num) / 1e27).toFixed(f)} Octillion`;
+        } else if (num >= 10n ** 24n) {
+            return `${(Number(num) / 1e24).toFixed(f)} Septillion`;
+        } else if (num >= 10n ** 21n) {
+            return `${(Number(num) / 1e21).toFixed(f)} Sextillion`;
+        } else if (num >= 10n ** 18n) {
+            return `${(Number(num) / 1e18).toFixed(f)} Quintillion`;
+        } else if (num >= 10n ** 15n) {
+            return `${(Number(num) / 1e15).toFixed(f)} Quadrillion`;
+        } else if (num >= 10n ** 12n) {
+            return `${(Number(num) / 1e12).toFixed(f)} Trillion`;
+        } else if (num >= 10n ** 9n) {
+            return `${(Number(num) / 1e9).toFixed(f)} Billion`;
+        } else if (num >= 10n ** 6n) {
+            return `${(Number(num) / 1e6).toFixed(f)} Million`;
+        } else if (num >= 10n ** 3n) {
+            return `${(Number(num) / 1e3).toFixed(f)} Thousand`;
+        } else {
+            return num.toString(); // 1000未満の場合そのまま表示
+        }
+    } else {
+        // 通常のNumber型の処理
+        if (num >= 1e42) {
+            return parseFloat((num / 1e42).toFixed(f)) + ' Tredecillion';
+        } else if (num >= 1e39) {
+            return parseFloat((num / 1e39).toFixed(f)) + ' Duodecillion';
+        } else if (num >= 1e36) {
+            return parseFloat((num / 1e36).toFixed(f)) + ' Undecillion';
+        } else if (num >= 1e33) {
+            return parseFloat((num / 1e33).toFixed(f)) + ' Decillion';
+        } else if (num >= 1e30) {
+            return parseFloat((num / 1e30).toFixed(f)) + ' Nonillion';
+        } else if (num >= 1e27) {
+            return parseFloat((num / 1e27).toFixed(f)) + ' Octillion';
+        } else if (num >= 1e24) {
+            return parseFloat((num / 1e24).toFixed(f)) + ' Septillion';
+        } else if (num >= 1e21) {
+            return parseFloat((num / 1e21).toFixed(f)) + ' Sextillion';
+        } else if (num >= 1e18) {
+            return parseFloat((num / 1e18).toFixed(f)) + ' Quintillion';
+        } else if (num >= 1e15) {
+            return parseFloat((num / 1e15).toFixed(f)) + ' Quadrillion';
+        } else if (num >= 1e12) {
+            return parseFloat((num / 1e12).toFixed(f)) + ' Trillion';
+        } else if (num >= 1e9) {
+            return parseFloat((num / 1e9).toFixed(f)) + ' Billion';
+        } else if (num >= 1e6) {
+            return parseFloat((num / 1e6).toFixed(f)) + ' Million';
+        } else if (num >= 1e3) {
+            return parseFloat((num / 1e3).toFixed(f)) + ' Thousand';
+        } else {
+            return num.toString(); // 1000未満の場合そのまま表示
+        }
+    }
 }
 
 function FormatNumber(num, n, f) {
+
+/*
     if (num >= 1e42) {
         return parseFloat((num / 1e42).toFixed(f)) + ' Tredecillion';
     } else if (num >= 1e39) {
@@ -123,83 +197,193 @@ function FormatNumber(num, n, f) {
     } else {
         return numberWithCommas(parseFloat(num.toFixed(f))); // Less than a thousand
     }
-}
+    */
 
-function FormatNumber1(num, n, f) {
-    if (num >= 1e42) {
-        return parseFloat((num / 1e42).toFixed(f));
-    } else if (num >= 1e39) {
-        return parseFloat((num / 1e39).toFixed(f));
-    } else if (num >= 1e36) {
-        return parseFloat((num / 1e36).toFixed(f));
-    } else if (num >= 1e33) {
-        return parseFloat((num / 1e33).toFixed(f));
-    } else if (num >= 1e30) {
-        return parseFloat((num / 1e30).toFixed(f));
-    } else if (num >= 1e27) {
-        return parseFloat((num / 1e27).toFixed(f));
-    } else if (num >= 1e24) {
-        return parseFloat((num / 1e24).toFixed(f));
-    } else if (num >= 1e21) {
-        return parseFloat((num / 1e21).toFixed(f));
-    } else if (num >= 1e18) {
-        return parseFloat((num / 1e18).toFixed(f));
-    } else if (num >= 1e15) {
-        return parseFloat((num / 1e15).toFixed(f));
-    } else if (num >= 1e12) {
-        return parseFloat((num / 1e12).toFixed(f));
-    } else if (num >= 1e9) {
-        return parseFloat((num / 1e9).toFixed(f));
-    } else if (num >= 1e6) {
-		if(n < 2)
-			return parseFloat((num / 1e6).toFixed(f));
-		else
-        	return numberWithCommas(parseFloat(num.toFixed(f)));
-    } else if (num >= 1e3) {
-		if(n < 1)
-			return parseFloat((num / 1e3).toFixed(f));
-		else
-        	return numberWithCommas(parseFloat(num.toFixed(f)));
+    if (typeof num === 'bigint') {
+        if (num >= 10n ** 42n) {
+            return `${(Number(num) / 1e42).toFixed(f)} Tredecillion`;
+        } else if (num >= 10n ** 39n) {
+            return `${(Number(num) / 1e39).toFixed(f)} Duodecillion`;
+        } else if (num >= 10n ** 36n) {
+            return `${(Number(num) / 1e36).toFixed(f)} Undecillion`;
+        } else if (num >= 10n ** 33n) {
+            return `${(Number(num) / 1e33).toFixed(f)} Decillion`;
+        } else if (num >= 10n ** 30n) {
+            return `${(Number(num) / 1e30).toFixed(f)} Nonillion`;
+        } else if (num >= 10n ** 27n) {
+            return `${(Number(num) / 1e27).toFixed(f)} Octillion`;
+        } else if (num >= 10n ** 24n) {
+            return `${(Number(num) / 1e24).toFixed(f)} Septillion`;
+        } else if (num >= 10n ** 21n) {
+            return `${(Number(num) / 1e21).toFixed(f)} Sextillion`;
+        } else if (num >= 10n ** 18n) {
+            return `${(Number(num) / 1e18).toFixed(f)} Quintillion`;
+        } else if (num >= 10n ** 15n) {
+            return `${(Number(num) / 1e15).toFixed(f)} Quadrillion`;
+        } else if (num >= 10n ** 12n) {
+            return `${(Number(num) / 1e12).toFixed(f)} Trillion`;
+        } else if (num >= 10n ** 9n) {
+            return `${(Number(num) / 1e9).toFixed(f)} Billion`;
+        } else if (num >= 10n ** 6n) {
+            return `${(Number(num) / 1e6).toFixed(f)} Million`;
+        } else if (num >= 10n ** 3n) {
+            return `${(Number(num) / 1e3).toFixed(f)} Thousand`;
+        } else {
+            return num.toString(); // 1000未満の場合そのまま表示
+        }
     } else {
-        return numberWithCommas(parseFloat(num.toFixed(f)));
+        // 通常のNumber型の処理
+        if (num >= 1e42) {
+            return parseFloat((num / 1e42).toFixed(f)) + ' Tredecillion';
+        } else if (num >= 1e39) {
+            return parseFloat((num / 1e39).toFixed(f)) + ' Duodecillion';
+        } else if (num >= 1e36) {
+            return parseFloat((num / 1e36).toFixed(f)) + ' Undecillion';
+        } else if (num >= 1e33) {
+            return parseFloat((num / 1e33).toFixed(f)) + ' Decillion';
+        } else if (num >= 1e30) {
+            return parseFloat((num / 1e30).toFixed(f)) + ' Nonillion';
+        } else if (num >= 1e27) {
+            return parseFloat((num / 1e27).toFixed(f)) + ' Octillion';
+        } else if (num >= 1e24) {
+            return parseFloat((num / 1e24).toFixed(f)) + ' Septillion';
+        } else if (num >= 1e21) {
+            return parseFloat((num / 1e21).toFixed(f)) + ' Sextillion';
+        } else if (num >= 1e18) {
+            return parseFloat((num / 1e18).toFixed(f)) + ' Quintillion';
+        } else if (num >= 1e15) {
+            return parseFloat((num / 1e15).toFixed(f)) + ' Quadrillion';
+        } else if (num >= 1e12) {
+            return parseFloat((num / 1e12).toFixed(f)) + ' Trillion';
+        } else if (num >= 1e9) {
+            return parseFloat((num / 1e9).toFixed(f)) + ' Billion';
+        } else if (num >= 1e6) {
+            return parseFloat((num / 1e6).toFixed(f)) + ' Million';
+        } else if (num >= 1e3) {
+            return parseFloat((num / 1e3).toFixed(f)) + ' Thousand';
+        } else {
+            return num.toString(); // 1000未満の場合そのまま表示
+        }
     }
 }
 
-function FormatNumber2(num, n, f) {
-    if (num >= 1e42) {
+function FormatBig(num, n, f, isDivisor) {
+    let originalNum;
+
+    if (isDivisor) {
+        // numを1000で割り、スケールを考慮して小数を保持
+        const divisor = 1000n;
+        const integerPart = num / divisor; // 商（整数部分）
+        const remainder = num % divisor; // 余り（小数部分）
+
+        // 小数部分を計算（スケール適用）
+        const decimalPart = Number(remainder) / Number(divisor);
+
+        // 結合して元の値を計算
+        originalNum = Number(integerPart) + decimalPart;
+    } else {
+        // そのまま num を使用（BigInt を Number に変換）
+        originalNum = Number(num);
+    }
+
+    if (originalNum >= 1e42) {
+        return `${(originalNum / 1e42).toFixed(f)} Tredecillion`;
+    } else if (originalNum >= 1e39) {
+        return `${(originalNum / 1e39).toFixed(f)} Duodecillion`;
+    } else if (originalNum >= 1e36) {
+        return `${(originalNum / 1e36).toFixed(f)} Undecillion`;
+    } else if (originalNum >= 1e33) {
+        return `${(originalNum / 1e33).toFixed(f)} Decillion`;
+    } else if (originalNum >= 1e30) {
+        return `${(originalNum / 1e30).toFixed(f)} Nonillion`;
+    } else if (originalNum >= 1e27) {
+        return `${(originalNum / 1e27).toFixed(f)} Octillion`;
+    } else if (originalNum >= 1e24) {
+        return `${(originalNum / 1e24).toFixed(f)} Septillion`;
+    } else if (originalNum >= 1e21) {
+        return `${(originalNum / 1e21).toFixed(f)} Sextillion`;
+    } else if (originalNum >= 1e18) {
+        return `${(originalNum / 1e18).toFixed(f)} Quintillion`;
+    } else if (originalNum >= 1e15) {
+        return `${(originalNum / 1e15).toFixed(f)} Quadrillion`;
+    } else if (originalNum >= 1e12) {
+        return `${(originalNum / 1e12).toFixed(f)} Trillion`;
+    } else if (originalNum >= 1e9) {
+        return `${(originalNum / 1e9).toFixed(f)} Billion`;
+    } else if (originalNum >= 1e6) {
+        return `${(originalNum / 1e6).toFixed(f)} Million`;
+    } else if (originalNum >= 1e3) {
+        return `${(originalNum / 1e3).toFixed(f)} Thousand`;
+    } else {
+        return originalNum.toFixed(f); // 1000未満はそのまま表示
+    }
+}
+
+function FormatNumber1(num, f) {
+    if (num >= 10n ** 42n) {
+        return `${(Number(num) / 1e42).toFixed(f)} Tredecillion`;
+    } else if (num >= 10n ** 39n) {
+        return `${(Number(num) / 1e39).toFixed(f)} Duodecillion`;
+    } else if (num >= 10n ** 36n) {
+        return `${(Number(num) / 1e36).toFixed(f)} Undecillion`;
+    } else if (num >= 10n ** 33n) {
+        return `${(Number(num) / 1e33).toFixed(f)} Decillion`;
+    } else if (num >= 10n ** 30n) {
+        return `${(Number(num) / 1e30).toFixed(f)} Nonillion`;
+    } else if (num >= 10n ** 27n) {
+        return `${(Number(num) / 1e27).toFixed(f)} Octillion`;
+    } else if (num >= 10n ** 24n) {
+        return `${(Number(num) / 1e24).toFixed(f)} Septillion`;
+    } else if (num >= 10n ** 21n) {
+        return `${(Number(num) / 1e21).toFixed(f)} Sextillion`;
+    } else if (num >= 10n ** 18n) {
+        return `${(Number(num) / 1e18).toFixed(f)} Quintillion`;
+    } else if (num >= 10n ** 15n) {
+        return `${(Number(num) / 1e15).toFixed(f)} Quadrillion`;
+    } else if (num >= 10n ** 12n) {
+        return `${(Number(num) / 1e12).toFixed(f)} Trillion`;
+    } else if (num >= 10n ** 9n) {
+        return `${(Number(num) / 1e9).toFixed(f)} Billion`;
+    } else if (num >= 10n ** 6n) {
+        return `${(Number(num) / 1e6).toFixed(f)} Million`;
+    } else if (num >= 10n ** 3n) {
+        return `${(Number(num) / 1e3).toFixed(f)} Thousand`;
+    } else {
+        return num.toString(); // 1000未満はそのまま表示
+    }
+}
+
+function FormatNumber2(num, n) {
+    if (num >= 10n ** 42n) {
         return 'Tredecillion';
-    } else if (num >= 1e39) {
+    } else if (num >= 10n ** 39n) {
         return 'Duodecillion';
-    } else if (num >= 1e36) {
+    } else if (num >= 10n ** 36n) {
         return 'Undecillion';
-    } else if (num >= 1e33) {
+    } else if (num >= 10n ** 33n) {
         return 'Decillion';
-    } else if (num >= 1e30) {
+    } else if (num >= 10n ** 30n) {
         return 'Nonillion';
-    } else if (num >= 1e27) {
+    } else if (num >= 10n ** 27n) {
         return 'Octillion';
-    } else if (num >= 1e24) {
+    } else if (num >= 10n ** 24n) {
         return 'Septillion';
-    } else if (num >= 1e21) {
+    } else if (num >= 10n ** 21n) {
         return 'Sextillion';
-    } else if (num >= 1e18) {
+    } else if (num >= 10n ** 18n) {
         return 'Quintillion';
-    } else if (num >= 1e15) {
+    } else if (num >= 10n ** 15n) {
         return 'Quadrillion';
-    } else if (num >= 1e12) {
+    } else if (num >= 10n ** 12n) {
         return 'Trillion';
-    } else if (num >= 1e9) {
+    } else if (num >= 10n ** 9n) {
         return 'Billion';
-    } else if (num >= 1e6) {
-		if(n < 2)
-			return 'Million';
-		else
-        	return '';
-    } else if (num >= 1e3) {
-		if(n < 1)
-			return 'Thousand';
-		else
-        	return '';
+    } else if (num >= 10n ** 6n) {
+        if (n < 2) return 'Million';
+        else return '';
+    } else if (num >= 10n ** 3n) {
+        if (n < 1) return 'Thousand';
+        else return '';
     } else {
         return '';
     }
