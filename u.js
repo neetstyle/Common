@@ -347,7 +347,8 @@ function FormatNumber1(num, f) {
     } else if (num >= 10n ** 6n) {
         return `${(Number(num) / 1e6).toFixed(f)} Million`;
     } else if (num >= 10n ** 3n) {
-        return `${(Number(num) / 1e3).toFixed(f)} Thousand`;
+        //return `${(Number(num) / 1e3).toFixed(f)} Thousand`;
+        return num.toString(); // 1000未満はそのまま表示
     } else {
         return num.toString(); // 1000未満はそのまま表示
     }
@@ -382,8 +383,9 @@ function FormatNumber2(num, n) {
         if (n < 2) return 'Million';
         else return '';
     } else if (num >= 10n ** 3n) {
-        if (n < 1) return 'Thousand';
-        else return '';
+        //if (n < 1) return 'Thousand';
+        //else return '';
+        return '';
     } else {
         return '';
     }
@@ -700,4 +702,6 @@ createjs.Text.prototype.setTransform = function(x, y, ...args) {
     // 元のsetTransformを呼び出し
     return originalSetTransform.call(this, x, y, ...args);
 };
+
+
 

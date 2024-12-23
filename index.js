@@ -5999,20 +5999,13 @@ if (reversed == null) { reversed = false; }
 			{
 				//this.storedCost = Math.ceil(this.basePrice * Math.pow(this.priceScalingFactor, this.posession));
 		//		this.storedCost = BigInt(this.basePrice) * BigInt(Math.pow(this.priceScalingFactor, this.posession));
-			
-		
-		
 		/*
 		const scaledFactor = Math.round(this.priceScalingFactor * 10000);
 		const scaledBasePrice = BigInt(this.basePrice) * 10000n;
 		const scaledPower = BigInt(Math.pow(scaledFactor, this.posession)); 
 		this.storedCost = (scaledBasePrice * scaledPower) / BigInt(10000 ** this.posession);
 		*/
-				
-		this.storedCost = BigInt(this.basePrice) * BigInt(Math.floor(Math.pow(this.priceScalingFactor, this.posession) * 1000)) /1000n
-		
-				
-				
+				this.storedCost = BigInt(this.basePrice) * BigInt(Math.floor(Math.pow(this.priceScalingFactor, this.posession) * 1000)) /1000n;
 			}
 		}
 		
@@ -6284,8 +6277,8 @@ if (reversed == null) { reversed = false; }
 		//寿司の追加
 		main.AddSushi = function(value) 
 		{
-			//if(this.Debug_isSpeed)
-			//	value = value * 1000n;
+			if(this.Debug_isSpeed)
+				value = value * 1000n;
 			
 			this.sushi += value;
 			this.totalSushi += value;
@@ -6372,9 +6365,6 @@ if (reversed == null) { reversed = false; }
 		//ジェネレータの購入
 		main.BuyGenerator = async function(generator)
 		{
-				console.log(this.sushi +" / "+ generator.storedCost);
-		
-			
 			if(this.sushi < generator.storedCost)
 				return;
 			
@@ -6722,8 +6712,6 @@ if (reversed == null) { reversed = false; }
 		main.MainTick = function(event)
 		{
 			
-		return;	
-			
 			if(this.isStop)
 				return;
 			
@@ -6764,8 +6752,7 @@ if (reversed == null) { reversed = false; }
 					if(ammount > 0)
 						this.AddSushi(ammount);
 					*/
-					
-					var ammount = this.sushiPs * BigInt(Math.floor(delta * 1000)) + this.fractionSps;
+					var ammount = this.sushiPs * BigInt(Math.floor(delta * 1000))/1000n + this.fractionSps;
 					this.fractionSps = ammount % 1000n;
 					if(ammount > 1000n)
 						this.AddSushi(ammount / 1000n);
@@ -6991,7 +6978,7 @@ if (reversed == null) { reversed = false; }
 				particle.visible = false;
 		    });
 		
-			if (this.sushiPs < 50)
+			if (this.sushiPs < 50000n)
 			{
 				createjs.Tween.get(particle)
 					.wait(3500)
@@ -7005,7 +6992,7 @@ if (reversed == null) { reversed = false; }
 			//debug
 			//this.sushiPs = 10000;	
 			
-			if (this.sushiPs / 1000n >= 1000)
+			if (this.sushiPs >= 1000000n)
 			{
 				if(this.currentScroll != 3)
 				{
@@ -7013,7 +7000,7 @@ if (reversed == null) { reversed = false; }
 					this.CreateBG();
 				}
 			}		
-			else if (this.sushiPs / 1000n >= 500)
+			else if (this.sushiPs >= 500000n)
 			{
 				if(this.currentScroll != 2)
 				{
@@ -7021,7 +7008,7 @@ if (reversed == null) { reversed = false; }
 					this.CreateBG();
 				}
 			}
-			else if (this.sushiPs / 1000n >= 50)
+			else if (this.sushiPs >= 50000n)
 			{
 				if(this.currentScroll != 1)
 				{
@@ -7142,11 +7129,11 @@ if (reversed == null) { reversed = false; }
 			//debug
 			//this.sushiPs = 10000;	
 		
-			if (this.sushiPs >= 1000)
+			if (this.sushiPs >= 1000000n)
 					this.currentScroll = 3;
-			else if (this.sushiPs >= 500)
+			else if (this.sushiPs >= 500000n)
 					this.currentScroll = 2;
-			else if (this.sushiPs >= 50)
+			else if (this.sushiPs >= 50000n)
 					this.currentScroll = 1;
 		
 			this.CreateBG();
