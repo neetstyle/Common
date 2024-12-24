@@ -1086,13 +1086,13 @@ if (reversed == null) { reversed = false; }
 			
 			if(this.obj.posession > 0)
 			{
-				var total = 0;
+				let total = 0n;
 				for (var i = 0; i < main.generators.length; i++)
 				{
 					total += main.generators[i].storedTotalSps;	
 				}
-				this.ratio = this.obj.storedTotalSps / total * 100;
-		
+				//this.ratio = this.obj.storedTotalSps / total;
+				this.ratio = Number(this.obj.storedTotalSps) / Number(total);	
 				this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));
 			}
 			else
@@ -1112,14 +1112,16 @@ if (reversed == null) { reversed = false; }
 			var text1 = "Each [x] produces [y] Sushi per second";
 			this.desciption1.text = 
 				text1.replace("[x]", this.obj.name)
-				.replace("[y]", FormatNumber(Accuracy(this.obj.storedSps), 1, 0));
+				//.replace("[y]", FormatBig(Accuracy(this.obj.storedSps), 1, 0));
+			.replace("[y]", FormatBig(this.obj.storedSps / 1000n, 1, 2));
 			
 			var text2 = "[x] [y] produces [z] Sushi per second ([w]% of total SpS)";
 			this.desciption2.text = 
 				text2.replace("[x]", this.obj.posession)
 				.replace("[y]", this.obj.name)
-				.replace("[z]", FormatNumber(Accuracy(this.obj.storedSps * this.obj.posession), 1, 2))
-				.replace("[w]", this.ratio.toFixed(1));
+				//.replace("[z]", FormatBig(Accuracy(this.obj.storedSps * this.obj.posession), 1, 2))
+				.replace("[z]", FormatBig(this.obj.storedSps * BigInt(this.obj.posession) / 1000n, 1, 2))		
+			.replace("[w]", this.ratio.toFixed(2));
 			
 			//var text3 = "[x] Sushi produced so far";
 			//this.desciption3.text = text3.replace("[x]", FormatNumber(Math.floor(this.obj.totalSushies), 1, 0));
@@ -3457,7 +3459,7 @@ if (reversed == null) { reversed = false; }
 		
 			main.PlaySE("popup");
 		
-			this.amount.text = "×" + FormatNumber1(this.obj.amount, 1, 2);
+			this.amount.text = "×" + FormatBig(this.obj.amount, 1, 2, false);
 		
 			switch (this.obj.category)
 			{
@@ -3484,10 +3486,10 @@ if (reversed == null) { reversed = false; }
 					method: 'POST',
 					maxAttempts: 3,
 					data: {
-						amount: Math.floor(main.sushiAdd)
+						amount: main.sushiAdd.toString()
 					}
 				});	
-				main.sushiAdd = 0;
+				main.sushiAdd = 0n;
 			}
 		
 		    try {
@@ -3513,8 +3515,8 @@ if (reversed == null) { reversed = false; }
 				maxAttempts: 3
 			});
 			
-			main.sushi = Number(API_userData["user"].currentSushiCount);
-			main.totalSushi = Number(API_userData["user"].totalSushiCount);
+			main.sushi = BigInt(API_userData["user"].currentSushiCount);
+			main.totalSushi = BigInt(API_userData["user"].totalSushiCount);
 			main.SushiDisplayUdates();
 			this.parent.Mask3MC.visible = false;
 			this.Close();
@@ -4207,10 +4209,10 @@ if (reversed == null) { reversed = false; }
 					method: 'POST',
 					maxAttempts: 3,
 					data: {
-						amount: Math.floor(main.sushiAdd)
+						amount: main.sushiAdd.toString()
 					}
 				});	
-				main.sushiAdd = 0;
+				main.sushiAdd = 0n;
 			}
 		
 		    try {
@@ -4233,8 +4235,8 @@ if (reversed == null) { reversed = false; }
 				maxAttempts: 3
 			});
 			
-			main.sushi = Number(API_userData["user"].currentSushiCount);
-			main.totalSushi = Number(API_userData["user"].totalSushiCount);
+			main.sushi = BigInt(API_userData["user"].currentSushiCount);
+			main.totalSushi = BigInt(API_userData["user"].totalSushiCount);
 			main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
 			this.parent.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
 			main.SushiDisplayUdates();
@@ -4357,7 +4359,7 @@ if (reversed == null) { reversed = false; }
 					maxAttempts: 3
 				});
 				
-				main.sushi = Number(API_userData["user"].currentSushiCount);
+				main.sushi = BigInt(API_userData["user"].currentSushiCount);
 				main.goldenSushi = Number(API_userData["user"].currentGoldSushiCount);
 				this.parent.ShopPanelMC.ContentMC.goldenSushi.text = main.goldenSushi;
 				this.obj.posession = true;
@@ -6120,7 +6122,7 @@ if (reversed == null) { reversed = false; }
 		    constructor()
 			{
 				this.id = "";
-				this.amount = 0;
+				this.amount = BigInt(0);
 				this.category = "";
 				this.receive = false;
 		    }
@@ -6477,7 +6479,7 @@ if (reversed == null) { reversed = false; }
 		
 			//----------------------------------------------
 			//仮想的に購入
-			this.UseSushi(upgrade.price);
+			this.UseSushi(BigInt(upgrade.price));
 			upgrade.posession = true;
 			upgrade.available = true;
 			this.CalculateGains();
@@ -6551,9 +6553,9 @@ if (reversed == null) { reversed = false; }
 			}
 		
 			this.sushiAdd = 0n;
-			this.touchSps = Number(API_userData.sushiPerClick);
-			this.sushi = Number(API_userData["user"].currentSushiCount);
-			this.totalSushi = Number(API_userData["user"].totalSushiCount);
+			this.touchSps = BigInt(API_userData.sushiPerClick);
+			this.sushi = BigInt(API_userData["user"].currentSushiCount);
+			this.totalSushi = BigInt(API_userData["user"].totalSushiCount);
 			this.SushiDisplayUdates();
 			this.CalculateGains();
 			this.RebuildStore();
@@ -7996,7 +7998,7 @@ if (reversed == null) { reversed = false; }
 			{
 				var	pending = new Pending();
 				pending.id = API_pendingData["items"][i].id;
-				pending.amount = Number(API_pendingData["items"][i].amount);
+				pending.amount = BigInt(API_pendingData["items"][i].amount);
 				pending.category = API_pendingData["items"][i].category;
 				main.pendings.push(pending);
 			}
