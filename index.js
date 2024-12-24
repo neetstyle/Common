@@ -1112,16 +1112,14 @@ if (reversed == null) { reversed = false; }
 			var text1 = "Each [x] produces [y] Sushi per second";
 			this.desciption1.text = 
 				text1.replace("[x]", this.obj.name)
-				//.replace("[y]", FormatBig(Accuracy(this.obj.storedSps), 1, 0));
-			.replace("[y]", FormatBig(this.obj.storedSps / 1000n, 1, 2));
+			.replace("[y]", FormatNumber3(this.obj.storedSps, 4, true, true, true)	);
 			
 			var text2 = "[x] [y] produces [z] Sushi per second ([w]% of total SpS)";
 			this.desciption2.text = 
 				text2.replace("[x]", this.obj.posession)
 				.replace("[y]", this.obj.name)
-				//.replace("[z]", FormatBig(Accuracy(this.obj.storedSps * this.obj.posession), 1, 2))
-				.replace("[z]", FormatBig(this.obj.storedSps * BigInt(this.obj.posession) / 1000n, 1, 2))		
-			.replace("[w]", this.ratio.toFixed(2));
+				.replace("[z]", FormatNumber3(this.obj.storedSps * BigInt(this.obj.posession), 4, true, true, true))
+				.replace("[w]", this.ratio.toFixed(2));
 			
 			//var text3 = "[x] Sushi produced so far";
 			//this.desciption3.text = text3.replace("[x]", FormatNumber(Math.floor(this.obj.totalSushies), 1, 0));
@@ -2280,7 +2278,7 @@ if (reversed == null) { reversed = false; }
 			this.parent.addChild(clip);
 			
 			clip.num_O = new Outline(lib, clip.num, 3, "#FFFFFF", "#000000");	
-			clip.num_O.text = "+" + FormatShortNumber(amount, 0, 0);	
+			clip.num_O.text = "+" + FormatNumber3(amount, 4, true, false, false);
 			
 			var pt = stage.globalToLocal(evt.stageX, evt.stageY);
 			clip.x = pt.x + GetRandomInt(-200, 200) * this.parent.canvasScaleX;
@@ -3459,7 +3457,7 @@ if (reversed == null) { reversed = false; }
 		
 			main.PlaySE("popup");
 		
-			this.amount.text = "×" + FormatBig(this.obj.amount, 1, 2, false);
+			this.amount.text = "×" + FormatNumber3(this.obj.amount, 4, true, false, false);
 		
 			switch (this.obj.category)
 			{
@@ -5445,10 +5443,10 @@ if (reversed == null) { reversed = false; }
 				clip.title.text = generator.name;
 				//clip.titleHatena_O = new Outline(lib, clip.titleHatena, 5, "#000000", "#FFFFFF");
 				//clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");
-				clip.cost.text = FormatNumber(generator.storedCost, 1, 2, false);
+				clip.cost.text = FormatNumber3(generator.storedCost, 4, true, false, false);
 				clip.posession.text = generator.posession;
 				//clip.sps.text = "+" + FormatNumber(generator.storedSps / 1000n, 1, 0);	
-				clip.sps.text = "+" + FormatBig(generator.storedSps, 1, 2, true);	
+				clip.sps.text = "+" + FormatNumber3(generator.storedSps, 4, true, true, false);	
 				clip.sps.x = clip.cost.x + clip.cost.getMeasuredWidth() + 10;
 				clip.x = 0;
 				clip.y = 0 + 240 * i;
@@ -6300,15 +6298,21 @@ if (reversed == null) { reversed = false; }
 		//所持寿司の表示更新
 		main.SushiDisplayUdates = function() 
 		{
-			exportRoot.HeaderMC.SushiL_O.text = FormatNumber1(main.sushi, 1, 2);
-			exportRoot.HeaderMC.SushiR_O.text = " " + FormatNumber2(main.sushi, 1, 2) + " pieces";
+			let value = FormatNumber3(main.sushi, 4, true, false, true);
+			exportRoot.HeaderMC.SushiL_O.text = value.split(" ")[0];
+			if(value.split(" ").length == 2 )
+				exportRoot.HeaderMC.SushiR_O.text = " " + value.split(" ")[1];
+			else
+				exportRoot.HeaderMC.SushiR_O.text = "";
+			//exportRoot.HeaderMC.SushiL_O.text = FormatNumber1(main.sushi, 1, 2);
+			//exportRoot.HeaderMC.SushiR_O.text = " " + FormatNumber2(main.sushi, 1, 2) + " pieces";
 			let lw = exportRoot.HeaderMC.SushiL_O.base.getMeasuredWidth();
 			let rw = exportRoot.HeaderMC.SushiR_O.base.getMeasuredWidth();
 			let centerX = 1125 / 2;
 			exportRoot.HeaderMC.SushiR_O.x = (centerX - (lw + rw) / 2) + lw;
 			exportRoot.HeaderMC.SushiL_O.x = exportRoot.HeaderMC.SushiR_O.x;
 			//exportRoot.HeaderMC.Sps_O .text = "per Second : " + FormatNumber(this.sushiPs / 1000n, 1, 2) + " pieces";
-			exportRoot.HeaderMC.Sps_O .text = "per Second : " + FormatBig(this.sushiPs, 1, 2, true) + " pieces";
+			exportRoot.HeaderMC.Sps_O .text = "per Second : " + FormatNumber3(this.sushiPs, 4, true, true, false) + " pieces";
 		}
 		
 		//クリック生産量の更新
@@ -6378,7 +6382,7 @@ if (reversed == null) { reversed = false; }
 			generator.CalculateCost();
 			main.CalculateGains();
 			main.touchSps = main.TouchSps();
-			generator.clip.cost.text = FormatNumber(generator.storedCost, 1, 0);
+			generator.clip.cost.text = FormatNumber3(generator.storedCost, 4, true, false, false);
 			generator.clip.posession.text = generator.posession;
 			generator.clip.sps.x = generator.clip.cost.x + generator.clip.cost.getMeasuredWidth() + 10;
 			
@@ -6445,7 +6449,7 @@ if (reversed == null) { reversed = false; }
 				_generator.posession = Number(API_generatorsData["items"][i].posession);
 				_generator.basePrice = Number(API_generatorsData["items"][i].basePrice);
 				_generator.nextPrice = Number(API_generatorsData["items"][i].nextPrice);
-				_generator.clip.cost.text = FormatNumber(_generator.storedCost, 1, 0);
+				_generator.clip.cost.text = FormatNumber3(_generator.storedCost, 4, true, false, false);
 				_generator.clip.posession.text = _generator.posession;
 				_generator.clip.sps.x = _generator.clip.cost.x + _generator.clip.cost.getMeasuredWidth() + 10;
 			}
