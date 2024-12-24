@@ -45,116 +45,6 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function FormatNumber(num, n, f) {
-
-/*
-    if (num >= 1e42) {
-        return parseFloat((num / 1e42).toFixed(f)) + ' Tredecillion';
-    } else if (num >= 1e39) {
-        return parseFloat((num / 1e39).toFixed(f)) + ' Duodecillion';
-    } else if (num >= 1e36) {
-        return parseFloat((num / 1e36).toFixed(f)) + ' Undecillion';
-    } else if (num >= 1e33) {
-        return parseFloat((num / 1e33).toFixed(f)) + ' Decillion';
-    } else if (num >= 1e30) {
-        return parseFloat((num / 1e30).toFixed(f)) + ' Nonillion';
-    } else if (num >= 1e27) {
-        return parseFloat((num / 1e27).toFixed(f)) + ' Octillion';
-    } else if (num >= 1e24) {
-        return parseFloat((num / 1e24).toFixed(f)) + ' Septillion';
-    } else if (num >= 1e21) {
-        return parseFloat((num / 1e21).toFixed(f)) + ' Sextillion';
-    } else if (num >= 1e18) {
-        return parseFloat((num / 1e18).toFixed(f)) + ' Quintillion';
-    } else if (num >= 1e15) {
-        return parseFloat((num / 1e15).toFixed(f)) +  'Quadrillion';
-    } else if (num >= 1e12) {
-        return parseFloat((num / 1e12).toFixed(f)) + ' Trillion';
-    } else if (num >= 1e9) {
-        return parseFloat((num / 1e9).toFixed(f)) + ' Billion';
-    } else if (num >= 1e6) {
-		if(n < 2)
-			return parseFloat((num / 1e6).toFixed(f)) + ' Million';
-		else
-        	return numberWithCommas(parseFloat(num.toFixed(f)));
-    } else if (num >= 1e3) {
-		if(n < 1)
-			return parseFloat((num / 1e3).toFixed(f)) + 'Thousand';
-		else
-        	return numberWithCommas(parseFloat(num.toFixed(f)));
-    } else {
-        return numberWithCommas(parseFloat(num.toFixed(f))); // Less than a thousand
-    }
-    */
-
-    if (typeof num === 'bigint') {
-        if (num >= 10n ** 42n) {
-            return `${(Number(num) / 1e42).toFixed(f)} Tredecillion`;
-        } else if (num >= 10n ** 39n) {
-            return `${(Number(num) / 1e39).toFixed(f)} Duodecillion`;
-        } else if (num >= 10n ** 36n) {
-            return `${(Number(num) / 1e36).toFixed(f)} Undecillion`;
-        } else if (num >= 10n ** 33n) {
-            return `${(Number(num) / 1e33).toFixed(f)} Decillion`;
-        } else if (num >= 10n ** 30n) {
-            return `${(Number(num) / 1e30).toFixed(f)} Nonillion`;
-        } else if (num >= 10n ** 27n) {
-            return `${(Number(num) / 1e27).toFixed(f)} Octillion`;
-        } else if (num >= 10n ** 24n) {
-            return `${(Number(num) / 1e24).toFixed(f)} Septillion`;
-        } else if (num >= 10n ** 21n) {
-            return `${(Number(num) / 1e21).toFixed(f)} Sextillion`;
-        } else if (num >= 10n ** 18n) {
-            return `${(Number(num) / 1e18).toFixed(f)} Quintillion`;
-        } else if (num >= 10n ** 15n) {
-            return `${(Number(num) / 1e15).toFixed(f)} Quadrillion`;
-        } else if (num >= 10n ** 12n) {
-            return `${(Number(num) / 1e12).toFixed(f)} Trillion`;
-        } else if (num >= 10n ** 9n) {
-            return `${(Number(num) / 1e9).toFixed(f)} Billion`;
-        } else if (num >= 10n ** 6n) {
-            return `${(Number(num) / 1e6).toFixed(f)} Million`;
-        } else if (num >= 10n ** 3n) {
-            return `${(Number(num) / 1e3).toFixed(f)} Thousand`;
-        } else {
-            return num.toString(); // 1000未満の場合そのまま表示
-        }
-    } else {
-        // 通常のNumber型の処理
-        if (num >= 1e42) {
-            return parseFloat((num / 1e42).toFixed(f)) + ' Tredecillion';
-        } else if (num >= 1e39) {
-            return parseFloat((num / 1e39).toFixed(f)) + ' Duodecillion';
-        } else if (num >= 1e36) {
-            return parseFloat((num / 1e36).toFixed(f)) + ' Undecillion';
-        } else if (num >= 1e33) {
-            return parseFloat((num / 1e33).toFixed(f)) + ' Decillion';
-        } else if (num >= 1e30) {
-            return parseFloat((num / 1e30).toFixed(f)) + ' Nonillion';
-        } else if (num >= 1e27) {
-            return parseFloat((num / 1e27).toFixed(f)) + ' Octillion';
-        } else if (num >= 1e24) {
-            return parseFloat((num / 1e24).toFixed(f)) + ' Septillion';
-        } else if (num >= 1e21) {
-            return parseFloat((num / 1e21).toFixed(f)) + ' Sextillion';
-        } else if (num >= 1e18) {
-            return parseFloat((num / 1e18).toFixed(f)) + ' Quintillion';
-        } else if (num >= 1e15) {
-            return parseFloat((num / 1e15).toFixed(f)) + ' Quadrillion';
-        } else if (num >= 1e12) {
-            return parseFloat((num / 1e12).toFixed(f)) + ' Trillion';
-        } else if (num >= 1e9) {
-            return parseFloat((num / 1e9).toFixed(f)) + ' Billion';
-        } else if (num >= 1e6) {
-            return parseFloat((num / 1e6).toFixed(f)) + ' Million';
-        } else if (num >= 1e3) {
-            return parseFloat((num / 1e3).toFixed(f)) + ' Thousand';
-        } else {
-            return num.toString(); // 1000未満の場合そのまま表示
-        }
-    }
-}
-
 function GetRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -468,7 +358,7 @@ createjs.Text.prototype.setTransform = function(x, y, ...args) {
 };
 
 //値、少数第、少数点の有無、bigintの少数点確保、略式
-function FormatNumber3(num, f, isCut = false, isDivisor = false, isFull = true) {
+function FormatNumber3(num, f, isCut = false, isDivisor = false, isFull = true, isT = false) {
     let originalNum;
 
     if (typeof num === "bigint") {
@@ -482,7 +372,6 @@ function FormatNumber3(num, f, isCut = false, isDivisor = false, isFull = true) 
             originalNum = Number(num);
         }
     } else if (typeof num === "number") {
-        // `num` が `number` の場合
         originalNum = num;
     } else {
         throw new Error("Invalid type for num: must be a number or bigint");
@@ -491,7 +380,6 @@ function FormatNumber3(num, f, isCut = false, isDivisor = false, isFull = true) 
     const formatWithComma = (value, fractionDigits, cutDecimals) => {
         let formatted = value.toFixed(fractionDigits);
         if (cutDecimals) {
-            // 小数点以下がすべて0ならカット
             formatted = parseFloat(formatted).toLocaleString();
         } else {
             const [integerPart, decimalPart] = formatted.split(".");
@@ -517,6 +405,7 @@ function FormatNumber3(num, f, isCut = false, isDivisor = false, isFull = true) 
               "Trillion",
               "Billion",
               "Million",
+              "Thousand",
           ]
         : [
               "Td",
@@ -532,23 +421,23 @@ function FormatNumber3(num, f, isCut = false, isDivisor = false, isFull = true) 
               "T",
               "B",
               "M",
+              "K", // Thousandの略称
           ];
 
     const thresholds = [
-        1e42, 1e39, 1e36, 1e33, 1e30, 1e27, 1e24, 1e21, 1e18, 1e15, 1e12, 1e9, 1e6,
+        1e42, 1e39, 1e36, 1e33, 1e30, 1e27, 1e24, 1e21, 1e18, 1e15, 1e12, 1e9, 1e6, 1e3,
     ];
 
-    for (let i = 0; i < thresholds.length; i++) {
+    // `isT` が有効でない場合は、1e3（千）を通常のカンマ区切りにする
+    const maxIndex = isT ? thresholds.length : thresholds.length - 1;
+
+    for (let i = 0; i < maxIndex; i++) {
         if (originalNum >= thresholds[i]) {
-            return `${formatWithComma(originalNum / thresholds[i], f, isCut)} ${units[i]}`;
+            return `${formatWithComma(originalNum / thresholds[i], f, isCut)}${units[i]}`;
         }
     }
 
-    if (originalNum >= 1e3) {
-        return formatWithComma(originalNum, f, isCut);
-    } else {
-        return formatWithComma(originalNum, f, isCut);
-    }
+    return formatWithComma(originalNum, f, isCut);
 }
 
 //console.log(FormatNumber3(1234567890123456789012345678901234567890n, 2, false, true, true));  // BigInt + 長い表記

@@ -1974,7 +1974,7 @@ if (reversed == null) { reversed = false; }
 	this.amount.lineHeight = 89;
 	this.amount.lineWidth = 286;
 	this.amount.parent = this;
-	this.amount.setTransform(284,205);
+	this.amount.setTransform(284,217);
 
 	this.timeline.addTween(cjs.Tween.get(this.amount).wait(1));
 
@@ -1985,7 +1985,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopConfilmCell2MC, new cjs.Rectangle(-4,0,304,300), null);
+}).prototype = getMCSymbolPrototype(lib.ShopConfilmCell2MC, new cjs.Rectangle(-4,0,304,305.9), null);
 
 
 (lib.ShopConfilmCell1MC = function(mode,startPosition,loop,reversed) {
@@ -2013,7 +2013,7 @@ if (reversed == null) { reversed = false; }
 	this.amount.lineHeight = 89;
 	this.amount.lineWidth = 286;
 	this.amount.parent = this;
-	this.amount.setTransform(284,205);
+	this.amount.setTransform(284,217);
 
 	this.timeline.addTween(cjs.Tween.get(this.amount).wait(1));
 
@@ -2024,7 +2024,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ShopConfilmCell1MC, new cjs.Rectangle(-4,0,304,300), null);
+}).prototype = getMCSymbolPrototype(lib.ShopConfilmCell1MC, new cjs.Rectangle(-4,0,304,305.9), null);
 
 
 (lib.ShopCell3MC = function(mode,startPosition,loop,reversed) {
@@ -4061,14 +4061,14 @@ if (reversed == null) { reversed = false; }
 			{
 				case 1:
 					//this.regY = 1145 / 2;
-					this.ShopConfilmCell1MC.amount.text = "×" + this.obj.amount.toLocaleString();
-					this.ShopType1ButtonMC.price.text = this.obj.price.toLocaleString();
+					this.ShopConfilmCell1MC.amount.text = "×" + FormatNumber3(this.obj.amount, 4, true, false, false, true);
+					this.ShopType1ButtonMC.price.text = FormatNumber3(this.obj.price, 4, true, false, false, true);
 					break;
 				case 2:
-					this.ShopConfilmCell2MC.amount.text = "×" + this.obj.amount.toLocaleString();
+					this.ShopConfilmCell2MC.amount.text = "×" + FormatNumber3(this.obj.amount, 4, true, false, false, true);
 					if(this.obj.price > main.goldenSushi)
 					{
-						this.ShopType2ButtonMC.price.text = this.obj.price.toLocaleString();
+						this.ShopType2ButtonMC.price.text = FormatNumber3(this.obj.price, 4, true, false, false, true);
 						this.ShopType2ButtonMC.gotoAndStop("Shortage");
 					}
 					else
@@ -4089,12 +4089,12 @@ if (reversed == null) { reversed = false; }
 					else if(this.obj.priceGolden > main.goldenSushi)
 					{
 						this.ShopType3ButtonMC.gotoAndStop("Shortage");
-						this.ShopType3ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
+						this.ShopType3ButtonMC.price.text = FormatNumber3(this.obj.priceGolden, 4, true, false, false, true);
 					}
 					else
 					{
 						this.ShopType3ButtonMC.gotoAndStop("Active");
-						this.ShopType3ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
+						this.ShopType3ButtonMC.price.text = FormatNumber3(this.obj.priceGolden, 4, true, false, false, true);
 					}
 					//アイコン生成
 					this.bitmap = new createjs.Bitmap("images/shop/robo" + this.obj.id + ".webp");
@@ -4118,12 +4118,12 @@ if (reversed == null) { reversed = false; }
 					else if(this.obj.priceGolden > main.goldenSushi)
 					{
 						this.ShopType4ButtonMC.gotoAndStop("Shortage");	
-						this.ShopType4ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
+						this.ShopType4ButtonMC.price.text = FormatNumber3(this.obj.priceGolden, 4, true, false, false, true);
 					}
 					else
 					{
 						this.ShopType4ButtonMC.gotoAndStop("NotPurchased");
-						this.ShopType4ButtonMC.price.text = this.obj.priceGolden.toLocaleString();
+						this.ShopType4ButtonMC.price.text = FormatNumber3(this.obj.priceGolden, 4, true, false, false, true);
 					}
 					//アイコン生成
 					this.bitmap = new createjs.Bitmap("images/shop/shopitem_" + this.obj.id.toString().padStart(2, '0') + ".webp");
@@ -4964,7 +4964,7 @@ if (reversed == null) { reversed = false; }
 				//clip.gotoAndStop("On");
 				clip.title.text = upgrade.name;
 				//clip.title_O = new Outline(lib, clip.title, 5, "#000000", "#FFFFFF");
-				clip.cost.text = FormatNumber(upgrade.price, 1, 0);
+				clip.cost.text = FormatNumber3(upgrade.price, 4, true, false, false);
 				//clip.cost_O = new Outline(lib, clip.cost, 5, "#C5253A", "#FFFFFF");				
 				clip.description.text = upgrade.description;
 				
@@ -5138,8 +5138,8 @@ if (reversed == null) { reversed = false; }
 					this.OpenDesciption.call(this, goldenSushiShop);
 				}.bind(this));
 			
-				clip.price.text = goldenSushiShop.price.toLocaleString();
-				clip.amount.text = "×" + goldenSushiShop.amount.toLocaleString();		
+				clip.price.text = FormatNumber3(goldenSushiShop.price, 4, true, false, false, true);
+				clip.amount.text = "×" + FormatNumber3(goldenSushiShop.amount, 4, true, false, false, true);		
 				clip.amount_O = new Outline(lib, clip.amount, 5, "#000000", "#FFFFFF");
 			
 				clip.gotoAndStop("Active");
@@ -5170,8 +5170,9 @@ if (reversed == null) { reversed = false; }
 					this.OpenDesciption.call(this, sushiShop);
 				}.bind(this));
 				
-				clip.price.text = sushiShop.price.toLocaleString();
-				clip.amount.text = "×" + sushiShop.amount.toLocaleString();
+				clip.price.text = FormatNumber3(sushiShop.price, 4, true, false, false, true);
+				//clip.amount.text = "×" + sushiShop.amount.toLocaleString();
+				clip.amount.text = "×" + FormatNumber3(sushiShop.amount, 4, true, false, false, true);
 				clip.amount_O = new Outline(lib, clip.amount, 5, "#000000", "#FFFFFF");	
 				
 				clip.gotoAndStop("Active");
@@ -5843,12 +5844,12 @@ if (reversed == null) { reversed = false; }
 			for (let i = 0; i < main.generators.length; i++)
 				generatorNum += main.generators[i].posession;
 		
-			this.ContentMC.detail_sushi.text = FormatNumber(main.sushi, 1, 0);
-			this.ContentMC.detail_totalSushi.text = FormatNumber(main.totalSushi, 1, 0);
-			this.ContentMC.detail_generatorNum.text = FormatNumber(generatorNum, 1, 0);
+			this.ContentMC.detail_sushi.text = FormatNumber3(main.sushi, 4, true, false, true);
+			this.ContentMC.detail_totalSushi.text = FormatNumber3(main.totalSushi, 4, true, false, true);
+			this.ContentMC.detail_generatorNum.text = FormatNumber3(generatorNum, 4, true, false, true);
 			this.ContentMC.detail_gameStart.text = this.TimeAgo(main.createdAt);
-			this.ContentMC.detail_touchSps.text = FormatNumber(main.touchSps, 1, 0);
-			this.ContentMC.detail_totalClick.text = FormatNumber(main.totalClickCount, 1, 0);
+			this.ContentMC.detail_touchSps.text = FormatNumber3(main.touchSps, 4, true, false, true);
+			this.ContentMC.detail_totalClick.text = FormatNumber3(main.totalClickCount, 4, true, false, true);
 		}
 		
 		this.Open =  function() 
@@ -6299,9 +6300,10 @@ if (reversed == null) { reversed = false; }
 		main.SushiDisplayUdates = function() 
 		{
 			let value = FormatNumber3(main.sushi, 4, true, false, true);
-			exportRoot.HeaderMC.SushiL_O.text = value.split(" ")[0];
-			if(value.split(" ").length == 2 )
-				exportRoot.HeaderMC.SushiR_O.text = " " + value.split(" ")[1];
+			let match = value.match(/^([\d.,]+)\s*([a-zA-Z]*)$/);
+			exportRoot.HeaderMC.SushiL_O.text = match[1];
+			if(match.length > 1 )
+				exportRoot.HeaderMC.SushiR_O.text = " " + match[2];
 			else
 				exportRoot.HeaderMC.SushiR_O.text = "";
 			//exportRoot.HeaderMC.SushiL_O.text = FormatNumber1(main.sushi, 1, 2);
@@ -6491,7 +6493,7 @@ if (reversed == null) { reversed = false; }
 			this.touchSps = this.TouchSps();
 			exportRoot.UpgradePanelMC.Reset();
 			for (var i = 0; i < this.generators.length; i++)
-				this.generators[i].clip.sps.text = "+" + FormatNumber(this.generators[i].storedSps, 1, 0);
+				this.generators[i].clip.sps.text = "+" + FormatNumber3(this.generators[i].storedSps, 4, true, true, false);
 			
 			//todo
 			this.upgradeNum++;
@@ -6565,7 +6567,7 @@ if (reversed == null) { reversed = false; }
 			this.RebuildStore();
 			this.touchSps = this.TouchSps();
 			for (var i = 0; i < this.generators.length; i++)
-				this.generators[i].clip.sps.text = "+" + FormatNumber(this.generators[i].storedSps, 1, 0);
+				this.generators[i].clip.sps.text = "+" + FormatNumber3(this.generators[i].storedSps, 4, true, true, false);
 		
 			exportRoot.UpgradePanelMC.Reset();
 		
