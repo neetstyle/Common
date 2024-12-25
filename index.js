@@ -1290,6 +1290,12 @@ if (reversed == null) { reversed = false; }
 		{
 			this.content.ContentBGMC.scaleY = (0 + 240 * this.count) * 0.01;
 			minY = -(50 + 240 * this.count) + 914;
+			if (content.y < minY) {
+				content.y = minY;
+			}
+			if (content.y > maxY) {
+				content.y = maxY;
+			}
 		}
 		
 		this.SetFullSize = function(size) 
@@ -6709,7 +6715,6 @@ if (reversed == null) { reversed = false; }
 		
 		main.MainTick = function(event)
 		{
-			
 			if(this.isStop)
 				return;
 			
