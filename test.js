@@ -64,6 +64,23 @@ if (reversed == null) { reversed = false; }
 		this.content;
 		this.count;
 		
+		var count = 0;
+		var logHistory = [];
+		
+		this.addLog = function(message) {
+			count++;
+			message = count + "." + message;	
+			
+		    logHistory.push(message);
+		
+		    if (logHistory.length > 15) {
+		        logHistory.shift(); 
+		    }
+		
+		    // 表示用にテキストを結合して更新
+		    exportRoot.log1.text = logHistory.join("\n");
+		}
+		
 		this.Reload = function() 
 		{
 			this.content.ContentBGMC.scaleY = (0 + 240 * this.count) * 0.01;
@@ -81,37 +98,34 @@ if (reversed == null) { reversed = false; }
 		var content = this.content;
 		var startY;
 		var startScrollY;
-		var isScrolling = false;
+		
 		var velocity = 0;
 		var friction = 0.95; // 慣性スクロールの減速率
 		var minY = -(50 + 240 * this.count) + 914;
 		var maxY = 0;
 		var lastY;
 		var lastMoveTime;
-		var isScrolled = false;
-		var clickPrevented = false;
+		var isScroll = false;
+		
+		var isClicked = false;
 		
 		this.isScrolled =  function() 
 		{
-			return isScrolled; 
+			return isScroll; 
 		}
 		
-		// クリックイベントのハンドラを追加
-		function handleClick(event) {
-		    if (clickPrevented) {
-		        event.preventDefault();
-		        event.stopPropagation();
-		        return false;
-		    }
-		    // 通常のクリック処理
-		}
+		
 		
 		// コンテンツにクリックイベントリスナーを追加
 		this.Open = function() {
 		    content.addEventListener("mousedown", startScroll);
 		    stage.addEventListener("stagemousemove", doScroll);
 		    stage.addEventListener("stagemouseup", endScroll);
-		    content.addEventListener("click", handleClick, true); // キャプチャリングフェーズでクリックをチェック
+		
+			
+		this._Tick = createjs.Ticker.addEventListener("tick", this.Tick.bind(this));	
+			
+			
 		}
 		
 		this.Close = function() {
@@ -122,20 +136,36 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		function startScroll(event) {
+			
+		
+		startScroll_event =event;
+				
+			
+		exportRoot.PanelMC.ScrollMC.addLog("startScroll");
+			
 		    event.preventDefault();
-		    isScrolling = true;
+			
 		    startY = getY(event);
 		    startScrollY = content.y;
 		    velocity = 0;
 		    lastY = getY(event);
 		    lastMoveTime = new Date().getTime();
-		    isScrolled = false;
-		    clickPrevented = false; // クリック抑制のフラグをリセット
+		
+			
+		    isScroll = false;
+		    isClicked = true;
 		}
 			
 		function doScroll(event) {
 			
-		    if (isScrolling) {
+			if (isClicked) {
+				if(Math.abs(startY - getY(event)) > 5)	
+					isScroll = true;
+			}
+			
+		    if (isScroll && isClicked) {
+				
+				exportRoot.PanelMC.ScrollMC.addLog("doScroll");			
 				
 		        event.preventDefault();
 		        var dy = getY(event) - startY;
@@ -158,13 +188,16 @@ if (reversed == null) { reversed = false; }
 		        lastY = getY(event);
 		        lastMoveTime = now;
 			
-		        isScrolled = true;
-		        clickPrevented = true; // スクロール中はクリックを抑制
 		    }
+		
 		}
 		
 		function endScroll(event) {
-		    isScrolling = false;
+			
+		exportRoot.PanelMC.ScrollMC.addLog("endScroll velocity : " + velocity);	
+			
+		    isClicked = false;
+			isScrolled = false;
 		    // 速度が小さい場合にリセット
 		    if (Math.abs(velocity) < 0.5) {
 		        velocity = 0;
@@ -174,7 +207,7 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		function applyInertia(event) {
-		    if (!isScrolling) {
+		    if (isScroll) {
 		        content.y += velocity * event.delta / 1000;
 		        velocity *= friction;
 		        
@@ -191,13 +224,14 @@ if (reversed == null) { reversed = false; }
 		        // 慣性がほぼ止まったらタイマーを停止
 		        if (Math.abs(velocity) < 1) {
 		            createjs.Ticker.removeEventListener("tick", applyInertia);
-		            isScrolled = false;
+		            isScroll = false;
+					velocity = 0;
 		        }
 		    }
 		}
 		
-		
 		function getY(event) {
+			
 			var y;	
 		    if (event.touches && event.touches.length > 0) {
 		        y = event.touches[0].clientY;
@@ -205,6 +239,25 @@ if (reversed == null) { reversed = false; }
 		    y = event.stageY;	
 			var pt = stage.globalToLocal(0, y);
 		    return pt.y;
+		}
+		
+		
+		var startScroll_event;
+		
+		
+		this._Tick;
+		this.Tick = function(event)
+		{
+			exportRoot.log2.text = "isClicked :" + isClicked + "\n";
+			exportRoot.log2.text += "isScroll :" + isScroll + "\n";
+				exportRoot.log2.text += "velocity :" + velocity+ "\n";
+			
+			
+			if(startScroll_event)
+			exportRoot.log2.text += "touches :" + startScroll_event+ "\n";
+		
+		
+			
 		}
 	}
 
@@ -273,7 +326,7 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.ButtonMC, new cjs.Rectangle(0,0,100,100), null);
 
 
-(lib.GeneratorCellMC = function(mode,startPosition,loop,reversed) {
+(lib.CellMC = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -294,7 +347,7 @@ if (reversed == null) { reversed = false; }
 	// BG_Button
 	this.ButtonMC = new lib.ButtonMC();
 	this.ButtonMC.name = "ButtonMC";
-	this.ButtonMC.setTransform(48,34,10.2799,2.1202);
+	this.ButtonMC.setTransform(49.1,34.2,3.6751,2.1202,0,0,0,0.1,0.1);
 
 	this.timeline.addTween(cjs.Tween.get(this.ButtonMC).wait(1));
 
@@ -306,25 +359,25 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 	// Title
-	this.title = new cjs.Text("test data", "40px 'Potta One'");
+	this.title = new cjs.Text("test data", "30px 'Potta One'");
 	this.title.name = "title";
-	this.title.lineHeight = 60;
-	this.title.lineWidth = 636;
+	this.title.lineHeight = 45;
+	this.title.lineWidth = 166;
 	this.title.parent = this;
-	this.title.setTransform(262,116);
+	this.title.setTransform(248,116);
 
 	this.timeline.addTween(cjs.Tween.get(this.title).wait(1));
 
 	// BG
 	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#CCCC66").s().p("EhRPARgMAAAgi/MCifAAAMAAAAi/g");
-	this.shape_1.setTransform(565,143);
+	this.shape_1.graphics.f("#CCCC66").s().p("EgiPARgMAAAgi/MBEfAAAMAAAAi/g");
+	this.shape_1.setTransform(228.95,146);
 
 	this.timeline.addTween(cjs.Tween.get(this.shape_1).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.GeneratorCellMC, new cjs.Rectangle(45,31,1040,224), null);
+}).prototype = getMCSymbolPrototype(lib.CellMC, new cjs.Rectangle(9.7,34,438.5,224), null);
 
 
 (lib.ContentMC = function(mode,startPosition,loop,reversed) {
@@ -339,21 +392,21 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Cell
-	this.GeneratorCellMC = new lib.GeneratorCellMC();
-	this.GeneratorCellMC.name = "GeneratorCellMC";
+	this.CellMC = new lib.CellMC();
+	this.CellMC.name = "CellMC";
 
-	this.timeline.addTween(cjs.Tween.get(this.GeneratorCellMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.CellMC).wait(1));
 
 	// ScrollButton
 	this.ContentBGMC = new lib.ButtonMC();
 	this.ContentBGMC.name = "ContentBGMC";
-	this.ContentBGMC.setTransform(0,0,11.25,0.9999);
+	this.ContentBGMC.setTransform(0,0,4.7844,0.9999);
 
 	this.timeline.addTween(cjs.Tween.get(this.ContentBGMC).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.ContentMC, new cjs.Rectangle(0,0,1125,255), null);
+}).prototype = getMCSymbolPrototype(lib.ContentMC, new cjs.Rectangle(0,0,478.5,258), null);
 
 
 (lib.PanelMC = function(mode,startPosition,loop,reversed) {
@@ -382,21 +435,24 @@ if (reversed == null) { reversed = false; }
 		{
 			if (this.ScrollMC.isScrolled())
 				return;
-			alert(str.text + " Click!!");
+			
+		this.ScrollMC.addLog("【OpenDesciption】");
+			
 		}
 		
 		this.AddGenerator = function (str)
 		{
 			if (this.ScrollMC.isScrolled())
 				return;
-			alert(str.text+ " Click!!");
+			
+		this.ScrollMC.addLog("【AddGenerator】");	
 		}
 		
 		this.Create = function() 
 		{
 			for (let i = 0; i < 20; i++)
 			{
-				let clip = new lib.GeneratorCellMC ();
+				let clip = new lib.CellMC ();
 				this.ContentMC.addChild(clip);
 				clip.title.text = "test" + i;
 				clip.x = 0;
@@ -443,14 +499,14 @@ if (reversed == null) { reversed = false; }
 
 	// BG
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#336666").s().p("EhXhBzCMAAAjmDMCvDAAAMAAADmDg");
-	this.shape.setTransform(560.15,736.2);
+	this.shape.graphics.f("#336666").s().p("EglMBzCMAAAjmDMBKZAAAMAAADmDg");
+	this.shape.setTransform(238.1,736.2);
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.PanelMC, new cjs.Rectangle(-100.5,0,1225.5,1472.4), null);
+}).prototype = getMCSymbolPrototype(lib.PanelMC, new cjs.Rectangle(-100.5,0,579,1472.4), null);
 
 
 // stage content:
@@ -493,11 +549,25 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// OBJ
+	this.log2 = new cjs.Text("aaaaa", "30px 'MS Gothic'");
+	this.log2.name = "log2";
+	this.log2.lineHeight = 32;
+	this.log2.lineWidth = 583;
+	this.log2.parent = this;
+	this.log2.setTransform(507,571.7);
+
+	this.log1 = new cjs.Text("1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n1\n2\n3\n4\n5", "30px 'MS Gothic'");
+	this.log1.name = "log1";
+	this.log1.lineHeight = 32;
+	this.log1.lineWidth = 585;
+	this.log1.parent = this;
+	this.log1.setTransform(507,29.65);
+
 	this.PanelMC = new lib.PanelMC();
 	this.PanelMC.name = "PanelMC";
 	this.PanelMC.setTransform(0,913,1,1,0,0,0,0,913);
 
-	this.timeline.addTween(cjs.Tween.get(this.PanelMC).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.PanelMC},{t:this.log1},{t:this.log2}]}).wait(1));
 
 	this._renderFirstFrame();
 
@@ -509,7 +579,7 @@ lib.properties = {
 	width: 1125,
 	height: 1125,
 	fps: 30,
-	color: "#FF0000",
+	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [],
 	preloads: []
