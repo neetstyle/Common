@@ -1309,29 +1309,18 @@ if (reversed == null) { reversed = false; }
 		var content = this.content;
 		var startY;
 		var startScrollY;
-		var isScrolling = false;
 		var velocity = 0;
 		var friction = 0.95; // 慣性スクロールの減速率
 		var minY = -(50 + 240 * this.count) + 914;
 		var maxY = 0;
 		var lastY;
 		var lastMoveTime;
-		var isScrolled = false;
-		var clickPrevented = false;
+		var isScroll = false;
+		var isClicked = false;
 		
 		this.isScrolled =  function() 
 		{
-			return isScrolled; 
-		}
-		
-		// クリックイベントのハンドラを追加
-		function handleClick(event) {
-		    if (clickPrevented) {
-		        event.preventDefault();
-		        event.stopPropagation();
-		        return false;
-		    }
-		    // 通常のクリック処理
+			return isScroll; 
 		}
 		
 		// コンテンツにクリックイベントリスナーを追加
@@ -1339,30 +1328,33 @@ if (reversed == null) { reversed = false; }
 		    content.addEventListener("mousedown", startScroll);
 		    stage.addEventListener("stagemousemove", doScroll);
 		    stage.addEventListener("stagemouseup", endScroll);
-		    content.addEventListener("click", handleClick, true); // キャプチャリングフェーズでクリックをチェック
 		}
 		
 		this.Close = function() {
 		    content.removeEventListener("mousedown", startScroll);
 		    stage.removeEventListener("stagemousemove", doScroll);
 		    stage.removeEventListener("stagemouseup", endScroll);
-		    content.removeEventListener("click", handleClick, true);
 		}
 		
 		function startScroll(event) {
 		    event.preventDefault();
-		    isScrolling = true;
 		    startY = getY(event);
 		    startScrollY = content.y;
 		    velocity = 0;
 		    lastY = getY(event);
 		    lastMoveTime = new Date().getTime();
-		    isScrolled = false;
-		    clickPrevented = false; // クリック抑制のフラグをリセット
+		    isScroll = false;
+		    isClicked = true;
 		}
 			
 		function doScroll(event) {
-		    if (isScrolling) {
+		    //一定以下は無視
+			if (isClicked) {
+				if(Math.abs(startY - getY(event)) > 5)	
+					isScroll = true;
+			}
+		
+		    if (isScroll && isClicked) {
 		        event.preventDefault();
 		        var dy = getY(event) - startY;
 		        content.y = startScrollY + dy;
@@ -1381,14 +1373,12 @@ if (reversed == null) { reversed = false; }
 		        }
 		        lastY = getY(event);
 		        lastMoveTime = now;
-			
-		        isScrolled = true;
-		        clickPrevented = true; // スクロール中はクリックを抑制
 		    }
 		}
 		
 		function endScroll(event) {
-		    isScrolling = false;
+		    isClicked = false;
+			isScrolled = false;
 		    // 速度が小さい場合にリセット
 		    if (Math.abs(velocity) < 0.5) {
 		        velocity = 0;
@@ -1398,7 +1388,7 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		function applyInertia(event) {
-		    if (!isScrolling) {
+		    if (isScroll) {
 		        content.y += velocity * event.delta / 1000;
 		        velocity *= friction;
 		        
@@ -1415,11 +1405,11 @@ if (reversed == null) { reversed = false; }
 		        // 慣性がほぼ止まったらタイマーを停止
 		        if (Math.abs(velocity) < 1) {
 		            createjs.Ticker.removeEventListener("tick", applyInertia);
-		            isScrolled = false;
+		            isScroll = false;
+					velocity = 0;
 		        }
 		    }
 		}
-		
 		
 		function getY(event) {
 			var y;	
