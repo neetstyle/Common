@@ -6177,7 +6177,7 @@ if (reversed == null) { reversed = false; }
 				this.isLogin = false;
 				this.isStop = false;
 				//////////////////////////////////////////////////////////
-				this.bgm = 0.25;
+				this.bgm = 0.5;
 				this.se = 0.8;
 				this.bgm_instance = null;
 				
