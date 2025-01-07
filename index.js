@@ -6414,7 +6414,8 @@ if (reversed == null) { reversed = false; }
 			}).catch(error => {
 				this.buyGeneratorCount--;
 				console.error("ジェネレーター購入エラー : " + this.buyGeneratorCount, error);
-				this.isRollbackGenerator = true;			
+				this.isRollbackGenerator = true;
+				exportRoot.Mask3MC.visible = true;
 				this.CheckGeneratorRollback();	
 			});
 		}
@@ -6522,7 +6523,8 @@ if (reversed == null) { reversed = false; }
 			}).catch(error => {
 				this.buyUpgradeCount--;
 				console.error("アップグレード購入エラー : " + this.buyUpgradeCount, error);
-				this.isRollbackUpgrade = true;			
+				this.isRollbackUpgrade = true;
+				exportRoot.Mask3MC.visible = true;
 				this.CheckUpgradeRollback();	
 			});
 		}
